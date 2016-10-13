@@ -1,20 +1,15 @@
 <template>
     <div>
-        <el-dialog title="收货地址" v-model="dialogFormVisible">
-            <el-form :model="form">
-                <el-form-item label="活动名称" :label-width="formLabelWidth">
-                    <el-input v-model="form.name" auto-complete="off"></el-input>
+        <el-dialog title="企业湾账号登录" v-model="dialogVisible" size="tiny">
+            <el-form label-position="top" :model="formStacked" class="demo-form-stacked">
+                <el-form-item label="手机号">
+                    <el-input v-model="formStacked.phone"></el-input>
                 </el-form-item>
-                <el-form-item label="活动区域" :label-width="formLabelWidth">
-                    <el-select v-model="form.region" placeholder="请选择活动区域">
-                        <el-option label="区域一" value="shanghai"></el-option>
-                        <el-option label="区域二" value="beijing"></el-option>
-                    </el-select>
+                <el-form-item label="密码">
+                    <el-input type="password" v-model="formStacked.password"></el-input>
                 </el-form-item>
             </el-form>
-            <span slot="footer" class="dialog-footer">
-            <el-button type="primary" @click.native="dialogFormVisible = false">登 录</el-button>
-            </span>
+            <el-button type="primary" @click.native="dialogVisible = false" style="width: 100%">登 录</el-button>
         </el-dialog>
     </div>
 </template>
