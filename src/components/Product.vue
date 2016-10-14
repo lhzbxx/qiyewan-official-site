@@ -1,57 +1,21 @@
 <style scoped>
-    .text {
-        font-size: 14px;
-    }
-
-    .time {
-        font-size: 13px;
-        color: #999;
-    }
-
-    .bottom {
-        margin-top: 13px;
-        line-height: 12px;
-    }
-
-    .item {
-        padding: 18px 0;
-    }
-
-    .button {
-        padding: 0;
-        float: right;
-    }
-
     .image {
         width: 100%;
         display: block;
-    }
-
-    .clearfix {
-    @utils-clearfix;
-    }
-
-    .box-card {
-        width: 480px;
     }
 </style>
 
 <template>
     <div>
-        <el-row>
-            <el-col :span="8" v-for="(o, index) in 2" :offset="index > 0 ? 2 : 0">
-                <el-card :body-style="{ padding: '0px' }">
-                    <img src="../assets/logo.png" class="image">
-                    <div style="padding: 14px;">
-                        <span>好吃的汉堡</span>
-                        <div class="bottom clearfix">
-                            <time class="time">2016年10月13日</time>
-                            <el-button type="text" class="button">操作按钮</el-button>
-                        </div>
-                    </div>
-                </el-card>
-            </el-col>
-        </el-row>
+        <el-card :body-style="{ padding: '0px' }" style="margin: 10px;">
+            <img src="../assets/logo.png" class="image">
+            <div style="padding: 14px;">
+                <p style="font-size: 16px; color: #333;">{{ product.title }}</p>
+                <p style="font-size: 13px; color: #aaa;">{{ product.summary }}</p>
+                <br>
+                <p style="color: red;">￥{{ product.price }}</p>
+            </div>
+        </el-card>
     </div>
 </template>
 
@@ -60,13 +24,11 @@
     export default {
         data () {
             return {
-                dialogVisible: false,
-                formStacked: {
-                    name: '',
-                    region: '',
-                    type: ''
-                },
-                currentDate: "2016年10月13日"
+                product: {
+                    title: "经营地址变更（不跨区）",
+                    summary: "这个服务只会有助于您事半功倍！",
+                    price: 998
+                }
             }
         },
         methods: {}

@@ -1,6 +1,10 @@
 <template>
     <div id="app">
+        <top-bar></top-bar>
         <el-menu default-active="1" mode="horizontal">
+            <el-row>
+                <el-col :span="3"></el-col>
+            </el-row>
             <el-menu-item index="1">工商服务</el-menu-item>
             <el-menu-item index="2">人事服务</el-menu-item>
             <el-menu-item index="3">法律服务</el-menu-item>
@@ -32,6 +36,7 @@
 
 <style>
     body {
+        background-color: #fff;
         font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
     }
 </style>
