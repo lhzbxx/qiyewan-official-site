@@ -13,9 +13,11 @@ import ProductDetail from './pages/ProductDetail.vue'
 import OrderList from './pages/OrderList.vue'
 import Cart from './pages/Cart.vue'
 import Pay from './pages/Pay.vue'
+import AccountProfile from './pages/AccountProfile.vue'
 
 import TopBar from './components/TopBar.vue'
 import Product from './components/Product.vue'
+import TableHeader from './components/TableHeader.vue'
 
 
 Vue.use(ElementUI)
@@ -24,8 +26,9 @@ Vue.use(Vuex)
 
 Vue.component('top-bar', TopBar)
 Vue.component('product', Product)
+Vue.component('table-header', TableHeader)
 
 new Vue({
     el: '#app',
-    render: h => h(Pay)
+    render: h => h(AccountProfile)
 })
