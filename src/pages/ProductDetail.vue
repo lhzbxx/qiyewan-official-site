@@ -10,6 +10,38 @@
                      style="width: 100%;">
             </el-col>
             <el-col :span="14">
+                <h3>代办税务</h3>
+                <p style="font-size: 13px;
+                          color: red;">
+                    温馨提示：请选择服务区域、服务时长、购买数目；如有问题，请拨打售后服务热线：400-716-8896
+                </p>
+                <div style="background-color: #eee;
+                            font-size: 14px;
+                            margin: 10px 0 10px 10px;
+                            padding: 20px;">
+                    <p style="font-size: 13px;
+                              color: #aaa;
+                              ">
+                        市场价格：&yen;{{ product.marketPrice }}
+                    </p>
+                    <p style="margin: 10px 0;">价格：
+                        <span style="font-size: 20px;
+                                     color: red;">
+                            &yen;{{ product.price }}
+                        </span></p>
+                    <p style="">用户评分：
+                        <el-rate
+                                v-model="product.rate"
+                                disabled
+                                show-text
+                                :colors="['#99A9BF', '#F7BA2A', '#FF9900']"
+                                text-color="#ff9900"
+                                text-template="{value}"
+                                style="display: inline;">
+                        </el-rate>
+                        <span>（{{ product.reviewNum }}位用户参与评分）</span>
+                    </p>
+                </div>
                 <el-form :model="form" label-width="100px">
                     <el-form-item label="服务区域">
                         <el-row>
@@ -141,6 +173,12 @@
     export default {
         data() {
             return {
+                product: {
+                    price: "200.00",
+                    marketPrice: "1000.00",
+                    rate: 4.5,
+                    reviewNum: 108
+                },
                 reviews: [
                     {
                         content: "专业的 服务也好 效率快 价格优惠推荐",
