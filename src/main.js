@@ -9,6 +9,7 @@ import App from './App.vue'
 import Review from './pages/Review.vue'
 import ProductReview from './pages/ProductDetail.vue'
 import ProductList from './pages/ProductList.vue'
+import ProductDetail from './pages/ProductDetail.vue'
 import OrderList from './pages/OrderList.vue'
 import Cart from './pages/Cart.vue'
 
@@ -25,5 +26,5 @@ Vue.component('product', Product)
 
 new Vue({
     el: '#app',
-    render: h => h(Cart)
+    render: h => h(ProductDetail)
 })
