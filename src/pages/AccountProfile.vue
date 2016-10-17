@@ -31,44 +31,75 @@
                           top: -40px;
                           right: 0;
                           float: right;
-                          height: 40px;">
+                          height: 40px;"
+                   @click.native="editCompanyInfo"
+                   v-if="!isEditing">
             修改
         </el-button>
         <div style="border: 1px solid #eee; padding: 10px 20px;">
-            <table border="0">
+            <table border="0" ref="companyInfoTable">
                 <tr>
                     <td width="120" height="35" align="right">公司名称： </td>
-                    <td>企业湾</td>
+                    <td>
+                        <el-input v-model="companyInfo.name"
+                                  v-if="isEditing"></el-input>
+                        <span v-else>{{ companyInfo.name }}</span></td>
                 </tr>
                 <tr>
                     <td width="120" height="35" align="right">法人代表： </td>
-                    <td>企业湾</td>
+                    <td>
+                        <el-input v-model="companyInfo.legalRepresentative"
+                                  v-if="isEditing"></el-input>
+                        <span v-else>{{ companyInfo.legalRepresentative }}</span></td>
                 </tr>
                 <tr>
                     <td width="120" height="35" align="right">公司地址： </td>
-                    <td>企业湾</td>
+                    <td>
+                        <el-input v-model="companyInfo.address"
+                                  v-if="isEditing"></el-input>
+                        <span v-else>{{ companyInfo.address }}</span>
+                    </td>
                 </tr>
                 <tr>
                     <td width="120" height="35" align="right">注册资本： </td>
-                    <td>企业湾</td>
+                    <td>
+                        <el-input v-model="companyInfo.registeredCapital"
+                                  v-if="isEditing"></el-input>
+                        <span v-else>{{ companyInfo.registeredCapital }}</span></td>
                 </tr>
                 <tr>
                     <td width="120" height="35" align="right">员工人数： </td>
-                    <td>企业湾</td>
+                    <td>
+                        <el-input v-model="companyInfo.staffNum"
+                                  v-if="isEditing"></el-input>
+                        <span v-else>{{ companyInfo.staffNum }}</span></td>
                 </tr>
                 <tr>
                     <td width="120" height="35" align="right">营业执照号： </td>
-                    <td>企业湾</td>
+                    <td>
+                        <el-input v-model="companyInfo.businessLicense"
+                                  v-if="isEditing"></el-input>
+                        <span v-else>{{ companyInfo.businessLicense }}</span></td>
                 </tr>
                 <tr>
                     <td width="120" height="35" align="right">税务登记号： </td>
-                    <td>企业湾</td>
+                    <td>
+                        <el-input v-model="companyInfo.taxRegistration"
+                                  v-if="isEditing"></el-input>
+                        <span v-else>{{ companyInfo.taxRegistration }}</span></td>
                 </tr>
                 <tr>
                     <td width="120" height="35" align="right">其它联系方式： </td>
-                    <td>企业湾</td>
+                    <td>
+                        <el-input v-model="companyInfo.contactNumber"
+                                  v-if="isEditing"></el-input>
+                        <span v-else>{{ companyInfo.contactNumber }}</span></td>
                 </tr>
             </table>
+            <el-button v-if="isEditing"
+                       @click.native="confirmCompanyInfo"
+                       type="primary"
+                       style="margin-left: 125px; margin-top: 5px; margin-bottom: 5px;">确认修改</el-button>
         </div>
         <br>
         <table-header title="账户安全"></table-header>
@@ -79,7 +110,8 @@
                           color: #20A0FF; vertical-align: middle; margin-right: 5px;"></i>
                 登录密码建议您定期更换密码，且设置一个包含数字和字母，且长度6位以上的密码。
                 <div style="float: right;">
-                    <el-button type="primary">修改</el-button>
+                    <el-button type="primary"
+                               @click.native="openDialog">修改</el-button>
                 </div>
             </div>
         </div>
@@ -108,6 +140,7 @@
                 登陆历史只记录最近20条，请您核对登录时间及地点，如您确定在某时间未登录过，请立即“修改登录密码”以保障账号安全。因宽带提供商导致的IP地址变化，登录地点有可能显示不准确，请您以登录时间为参考基准。
             </p>
         </div>
+        <lh-reset-password ref="dialog"></lh-reset-password>
     </div>
 </template>
 
@@ -115,6 +148,24 @@
     export default {
         data() {
             return {
+                isEditing: false,
+                companyInfo: {
+                    name: "企业湾",
+                    legalRepresentative: "企业湾",
+                    address: "公司地址",
+                    registeredCapital: "2000万元",
+                    staffNum: 2000,
+                    businessLicense: "218r4101141",
+                    taxRegistration: "jjds9230194321",
+                    contactNumber: "1321321"
+                },
+                isVisible: true,
+                formStacked: {
+                    phone: "",
+                    captcha: "",
+                    password: "",
+                    password2: ""
+                },
                 history: [
                     {
                         loginAt: "2016-10-16 13:06:53",
@@ -183,6 +234,17 @@
                         mode: "PC端登录"
                     }
                 ]
+            }
+        },
+        methods: {
+            openDialog() {
+                this.$refs.dialog.openDialog()
+            },
+            editCompanyInfo() {
+                this.isEditing = true
+            },
+            confirmCompanyInfo() {
+                this.isEditing = false
             }
         }
     }

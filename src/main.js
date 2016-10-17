@@ -18,6 +18,9 @@ import AccountProfile from './pages/AccountProfile.vue'
 import TopBar from './components/TopBar.vue'
 import Product from './components/Product.vue'
 import TableHeader from './components/TableHeader.vue'
+import Login from './components/Login.vue'
+import Register from './components/Register.vue'
+import ResetPassword from './components/ResetPassword.vue'
 
 
 Vue.use(ElementUI)
@@ -27,6 +30,9 @@ Vue.use(Vuex)
 Vue.component('top-bar', TopBar)
 Vue.component('product', Product)
 Vue.component('table-header', TableHeader)
+Vue.component('lh-login', Login)
+Vue.component('lh-register', Register)
+Vue.component('lh-reset-password', ResetPassword)
 
 new Vue({
     el: '#app',
