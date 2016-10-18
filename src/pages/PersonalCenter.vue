@@ -25,7 +25,7 @@
                     </el-row>
                 </div>
                 <br>
-                <table-header title="我的购物车" color="light"></table-header>
+                <lh-table-header title="我的购物车" color="light"></lh-table-header>
                 <el-table
                         :data="unpaidProducts"
                         selection-mode="multiple"

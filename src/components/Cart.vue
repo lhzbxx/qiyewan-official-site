@@ -1,9 +1,5 @@
 <template>
     <div>
-        <el-breadcrumb separator=">" style="padding: 10px 0; border-bottom: 1px solid #eee">
-            <el-breadcrumb-item>首页</el-breadcrumb-item>
-            <el-breadcrumb-item>购物车</el-breadcrumb-item>
-        </el-breadcrumb>
         <el-table
                 :data="unpaidProducts"
                 selection-mode="multiple"
@@ -63,7 +59,7 @@
                     label="数量"
                     width="210">
                 <div>
-                    <el-input-number @change="handleAmountChange"
+                    <el-input-number @change="handleAmountChange(row)"
                                      :min="1"
                                      size="small"
                                      v-model="row.amount">
@@ -97,7 +93,7 @@
             <span style="font-size: 13px; margin-right: 30px;">
                 已选择0件商品，合计：
                 <span style="color: red; font-size: 20px;">
-                    &yen;400
+                    &yen;{{ totalPrice }}
                 </span>
             </span>
             <el-button type="primary"
@@ -136,11 +132,8 @@
             }
         },
         methods: {
-            handleSelectionChange(val) {
-                this.multipleSelection = val;
-            },
             handleMultipleSelectionChange(val) {
-
+                this.multipleSelection = val;
             },
             show() {
                 this.$confirm('确认删除该商品吗？', '删除商品', {
@@ -153,7 +146,17 @@
                 }).catch(() => {
                 });
             },
-            handleAmountChange() {
+            handleAmountChange(item) {
+                item.totalPrice = item.unitPrice * item.amount;
+            }
+        },
+        computed: {
+            totalPrice() {
+                var r = 0;
+                for (var i of this.multipleSelection) {
+                    r = r + i.amount * i.unitPrice
+                }
+                return r
             }
         }
     }

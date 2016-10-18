@@ -1,6 +1,6 @@
 <template>
     <div style="margin: 10px;">
-        <table-header title="个人信息"></table-header>
+        <lh-table-header title="个人信息"></lh-table-header>
         <div style="border: 1px solid #eee; padding: 10px 20px;">
             <table border="0">
                 <tr>
@@ -34,8 +34,8 @@
             </table>
         </div>
         <br>
-        <table-header title="公司信息">
-        </table-header>
+        <lh-table-header title="公司信息">
+        </lh-table-header>
         <el-button type="text"
                    style="position: relative;
                           top: -40px;
@@ -112,7 +112,7 @@
                        style="margin-left: 125px; margin-top: 5px; margin-bottom: 5px;">确认修改</el-button>
         </div>
         <br>
-        <table-header title="账户安全"></table-header>
+        <lh-table-header title="账户安全"></lh-table-header>
         <div style="border: 1px solid #eee; border-bottom: none; padding: 20px 20px;">
             <div style="line-height: 50px;">
                 <i class="el-icon-circle-check"
