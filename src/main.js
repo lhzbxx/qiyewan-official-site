@@ -43,5 +43,5 @@ Vue.component('lh-hot-products', HotProducts)
 
 new Vue({
     el: '#app',
-    render: h => h(OrderList)
+    render: h => h(PersonalCenter)
 })

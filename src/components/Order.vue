@@ -8,7 +8,15 @@
                     label="商品信息"
                     width="300">
                 <div>
-                    <el-row style="height: 102.5px;">
+                    <el-row style="height: 130px;">
+                        <!--<p style="font-size: 13px; line-height: 20px;">-->
+                            <!--创建于：-->
+                            <!--{{ row.createAt }}-->
+                        <!--</p>-->
+                        <!--<p style="font-size: 13px; line-height: 20px; ">-->
+                            <!--订单号：-->
+                            <!--{{ row.serialId }}-->
+                        <!--</p>-->
                         <el-col :span="5" style="height: 100%; display: table;">
                             <div style="width: 100%;
                                         height: 100%;
@@ -20,7 +28,9 @@
                                             vertical-align: middle;">
                             </div>
                         </el-col>
-                        <el-col :span="19" style="height: 100%; display: table;">
+                        <el-col :span="19"
+                                style="height: 100%;
+                                       display: table;">
                             <div style="width: 100%;
                                         height: 100%;
                                         display: table-cell;
@@ -29,7 +39,7 @@
                                 <p style="line-height: 16px; margin-bottom: 5px;">
                                     {{ row.product.title }}
                                 </p>
-                                <p style="font-size: 13px; line-height: 15px; color: #aaa;">
+                                <p style="font-size: 13px; line-height: 15px; color: #aaa; margin-bottom: 10px;">
                                     区域：{{ row.product.address }}
                                 </p>
                             </div>
@@ -110,6 +120,8 @@
                     unit: "年",
                     totalPrice: 200,
                     orderState: 1,
+                    createAt: Date.now(),
+                    serialId: "UO9023hi1"
                 }, {
                     product: {
                         cover: "",
@@ -120,7 +132,9 @@
                     amount: 1,
                     unit: "年",
                     totalPrice: 200,
-                    orderState: 2
+                    orderState: 2,
+                    createAt: Date.now(),
+                    serialId: "UO9023hi1"
                 }],
                 orderState(state) {
                     switch(state) {
