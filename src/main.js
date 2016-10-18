@@ -14,6 +14,7 @@ import OrderList from './pages/OrderList.vue'
 import Cart from './pages/Cart.vue'
 import Pay from './pages/Pay.vue'
 import AccountProfile from './pages/AccountProfile.vue'
+import PersonalCenter from './pages/PersonalCenter.vue'
 
 import TopBar from './components/TopBar.vue'
 import Product from './components/Product.vue'
@@ -36,5 +37,5 @@ Vue.component('lh-reset-password', ResetPassword)
 
 new Vue({
     el: '#app',
-    render: h => h(AccountProfile)
+    render: h => h(PersonalCenter)
 })

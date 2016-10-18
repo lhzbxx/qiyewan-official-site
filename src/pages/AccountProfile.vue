@@ -5,9 +5,19 @@
             <table border="0">
                 <tr>
                     <td width="100">会员名</td>
-                    <td width="150">一个昵称</td>
+                    <td width="150">
+                        <el-input v-model="username" v-if="isEditingUsername"></el-input>
+                        <span v-else>{{ username }}</span>
+                    </td>
                     <td>
-                        <el-button type="text">
+                        <el-button type="text"
+                                   @click.native="confirmUsername"
+                                   v-if="isEditingUsername">
+                            确认
+                        </el-button>
+                        <el-button type="text"
+                                   @click.native="isEditingUsername = true"
+                                   v-else>
                             修改
                         </el-button>
                     </td>
@@ -32,8 +42,8 @@
                           right: 0;
                           float: right;
                           height: 40px;"
-                   @click.native="editCompanyInfo"
-                   v-if="!isEditing">
+                   @click.native="isEditingCompanyInfo = true"
+                   v-if="!isEditingCompanyInfo">
             修改
         </el-button>
         <div style="border: 1px solid #eee; padding: 10px 20px;">
@@ -42,21 +52,21 @@
                     <td width="120" height="35" align="right">公司名称： </td>
                     <td>
                         <el-input v-model="companyInfo.name"
-                                  v-if="isEditing"></el-input>
+                                  v-if="isEditingCompanyInfo"></el-input>
                         <span v-else>{{ companyInfo.name }}</span></td>
                 </tr>
                 <tr>
                     <td width="120" height="35" align="right">法人代表： </td>
                     <td>
                         <el-input v-model="companyInfo.legalRepresentative"
-                                  v-if="isEditing"></el-input>
+                                  v-if="isEditingCompanyInfo"></el-input>
                         <span v-else>{{ companyInfo.legalRepresentative }}</span></td>
                 </tr>
                 <tr>
                     <td width="120" height="35" align="right">公司地址： </td>
                     <td>
                         <el-input v-model="companyInfo.address"
-                                  v-if="isEditing"></el-input>
+                                  v-if="isEditingCompanyInfo"></el-input>
                         <span v-else>{{ companyInfo.address }}</span>
                     </td>
                 </tr>
@@ -64,39 +74,39 @@
                     <td width="120" height="35" align="right">注册资本： </td>
                     <td>
                         <el-input v-model="companyInfo.registeredCapital"
-                                  v-if="isEditing"></el-input>
+                                  v-if="isEditingCompanyInfo"></el-input>
                         <span v-else>{{ companyInfo.registeredCapital }}</span></td>
                 </tr>
                 <tr>
                     <td width="120" height="35" align="right">员工人数： </td>
                     <td>
                         <el-input v-model="companyInfo.staffNum"
-                                  v-if="isEditing"></el-input>
+                                  v-if="isEditingCompanyInfo"></el-input>
                         <span v-else>{{ companyInfo.staffNum }}</span></td>
                 </tr>
                 <tr>
                     <td width="120" height="35" align="right">营业执照号： </td>
                     <td>
                         <el-input v-model="companyInfo.businessLicense"
-                                  v-if="isEditing"></el-input>
+                                  v-if="isEditingCompanyInfo"></el-input>
                         <span v-else>{{ companyInfo.businessLicense }}</span></td>
                 </tr>
                 <tr>
                     <td width="120" height="35" align="right">税务登记号： </td>
                     <td>
                         <el-input v-model="companyInfo.taxRegistration"
-                                  v-if="isEditing"></el-input>
+                                  v-if="isEditingCompanyInfo"></el-input>
                         <span v-else>{{ companyInfo.taxRegistration }}</span></td>
                 </tr>
                 <tr>
                     <td width="120" height="35" align="right">其它联系方式： </td>
                     <td>
                         <el-input v-model="companyInfo.contactNumber"
-                                  v-if="isEditing"></el-input>
+                                  v-if="isEditingCompanyInfo"></el-input>
                         <span v-else>{{ companyInfo.contactNumber }}</span></td>
                 </tr>
             </table>
-            <el-button v-if="isEditing"
+            <el-button v-if="isEditingCompanyInfo"
                        @click.native="confirmCompanyInfo"
                        type="primary"
                        style="margin-left: 125px; margin-top: 5px; margin-bottom: 5px;">确认修改</el-button>
@@ -148,7 +158,10 @@
     export default {
         data() {
             return {
-                isEditing: false,
+                isEditingUsername: false,
+                username: "某某某",
+                phoneNumber: "132413423",
+                isEditingCompanyInfo: false,
                 companyInfo: {
                     name: "企业湾",
                     legalRepresentative: "企业湾",
@@ -240,11 +253,11 @@
             openDialog() {
                 this.$refs.dialog.openDialog()
             },
-            editCompanyInfo() {
-                this.isEditing = true
-            },
             confirmCompanyInfo() {
-                this.isEditing = false
+                this.isEditingCompanyInfo = false
+            },
+            confirmUsername() {
+                this.isEditingUsername = false
             }
         }
     }

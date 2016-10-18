@@ -34,7 +34,9 @@
                     </el-button>
                 </el-checkbox>
             </el-form>
-            <el-button type="primary" @click.native="isVisible = false" style="width: 100%">确 认</el-button>
+            <el-button type="primary"
+                       @click.native="isVisible = false"
+                       style="width: 100%">确 认</el-button>
         </el-dialog>
     </div>
 </template>
