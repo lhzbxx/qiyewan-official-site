@@ -105,10 +105,10 @@
         <el-row>
             <el-col :span="6">
                 <p>您可能需要：</p>
-                <product></product>
-                <product></product>
-                <product></product>
-                <product></product>
+                <lh-product></lh-product>
+                <lh-product></lh-product>
+                <lh-product></lh-product>
+                <lh-product></lh-product>
             </el-col>
             <el-col :span="18">
                 <el-tabs type="border-card"

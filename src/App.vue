@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <top-bar></top-bar>
+        <lh-top-bar></lh-top-bar>
         <el-menu default-active="1" mode="horizontal">
             <el-row>
                 <el-col :span="3"></el-col>

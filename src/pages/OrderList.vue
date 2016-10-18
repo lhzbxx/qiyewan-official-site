@@ -201,7 +201,7 @@
                     <b>热门推荐</b>
                 </el-col>
                 <el-col :span="6" v-for="(o, index) in 4" :offset="0">
-                    <product></product>
+                    <lh-product></lh-product>
                 </el-col>
             </el-row>
         </div>

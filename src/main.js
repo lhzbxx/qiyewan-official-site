@@ -23,21 +23,23 @@ import Login from './components/Login.vue'
 import Register from './components/Register.vue'
 import ResetPassword from './components/ResetPassword.vue'
 import Cart from './components/Cart.vue'
+import Order from './components/Order.vue'
 
 
 Vue.use(ElementUI)
 Vue.use(VueRouter)
 Vue.use(Vuex)
 
-Vue.component('top-bar', TopBar)
-Vue.component('product', Product)
+Vue.component('lh-top-bar', TopBar)
+Vue.component('lh-product', Product)
 Vue.component('lh-table-header', TableHeader)
 Vue.component('lh-login', Login)
 Vue.component('lh-register', Register)
 Vue.component('lh-reset-password', ResetPassword)
 Vue.component('lh-cart', Cart)
+Vue.component('lh-order', Order)
 
 new Vue({
     el: '#app',
-    render: h => h(MyCart)
+    render: h => h(PersonalCenter)
 })

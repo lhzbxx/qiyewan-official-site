@@ -45,7 +45,6 @@
             </el-table-column>
             <el-table-column
                     inline-template
-                    property="unitPrice"
                     label="单价">
                 <div>&yen;
                     <span>
@@ -55,7 +54,6 @@
             </el-table-column>
             <el-table-column
                     inline-template
-                    property="amount"
                     label="数量"
                     width="210">
                 <div>
@@ -91,7 +89,7 @@
         </el-table>
         <div style="border: 1px solid #e0e6ed; border-top: none; width: 100%; text-align: right;">
             <span style="font-size: 13px; margin-right: 30px;">
-                已选择0件商品，合计：
+                已选择{{ amountOfSelection }}件商品，合计：
                 <span style="color: red; font-size: 20px;">
                     &yen;{{ totalPrice }}
                 </span>
@@ -147,10 +145,14 @@
                 });
             },
             handleAmountChange(item) {
+                console.log(item.amount);
                 item.totalPrice = item.unitPrice * item.amount;
             }
         },
         computed: {
+            amountOfSelection() {
+                return this.multipleSelection.length
+            },
             totalPrice() {
                 var r = 0;
                 for (var i of this.multipleSelection) {
