@@ -1,16 +1,14 @@
 <template>
     <div>
         <el-table
-                :data="paidProducts"
-                selection-mode="multiple"
-                style="width: 100%"
-                @selectionchange="handleMultipleSelectionChange">
+                :data="orders"
+                style="width: 100%">
             <el-table-column
                     inline-template
                     label="商品信息"
                     width="300">
                 <div>
-                    <el-row style="height: 62.5px;">
+                    <el-row style="height: 102.5px;">
                         <el-col :span="5" style="height: 100%; display: table;">
                             <div style="width: 100%;
                                         height: 100%;
@@ -63,25 +61,85 @@
             </el-table-column>
             <el-table-column
                     inline-template
-                    property="orderState"
                     label="交易状态">
                 <div>
-                    {{ row.orderState }}
+                    {{ orderState(row.orderState) }}
                 </div>
             </el-table-column>
             <el-table-column
                     inline-template
-                    property="action"
+                    align="center"
                     label="操作">
                 <div>
-                    <el-button type="primary" icon="edit" size="small" v-if="row.isReviewed">
-                        去评价
-                    </el-button>
-                    <el-button type="text" :disabled="true" size="small" v-else>
-                        已评价
-                    </el-button>
+                    <div v-if="row.orderState == 1">
+                        <el-button type="primary" size="small">
+                            去付款
+                        </el-button>
+                        <br>
+                        <el-button type="text">
+                            取消订单
+                        </el-button>
+                    </div>
+                    <div v-if="row.orderState == 2">
+                        <el-button type="primary" icon="edit" size="small">
+                            去评价
+                        </el-button>
+                    </div>
+                    <div v-if="row.orderState == 3">
+                        <el-button type="text" :disabled="true" size="small">
+                            已评价
+                        </el-button>
+                    </div>
                 </div>
             </el-table-column>
         </el-table>
     </div>
 </template>
+
+<script>
+    export default {
+        data() {
+            return {
+                orders: [{
+                    product: {
+                        cover: "",
+                        title: "个人社保公积金账户代开户",
+                        address: "上海-上海市-松江区"
+                    },
+                    amount: 1,
+                    unit: "年",
+                    totalPrice: 200,
+                    orderState: 1,
+                }, {
+                    product: {
+                        cover: "",
+                        title: "个人社保公积金账户代开户",
+                        address: "上海-上海市-松江区"
+                    },
+                    unitPrice: 200,
+                    amount: 1,
+                    unit: "年",
+                    totalPrice: 200,
+                    orderState: 2
+                }],
+                orderState(state) {
+                    switch(state) {
+                        case 1:
+                            return "未付款"
+                        case 2:
+                            return "交易完成"
+                        case 10:
+                            return "交易超时"
+                        default:
+                            return "交易完成"
+                    }
+                }
+            }
+        },
+        methods: {
+
+        },
+        computed: {
+        }
+    }
+</script>

@@ -32,6 +32,7 @@
                 <lh-order></lh-order>
             </el-col>
         </el-row>
+        <lh-hot-products></lh-hot-products>
     </div>
 </template>
 

@@ -24,6 +24,7 @@ import Register from './components/Register.vue'
 import ResetPassword from './components/ResetPassword.vue'
 import Cart from './components/Cart.vue'
 import Order from './components/Order.vue'
+import HotProducts from './components/HotProducts.vue'
 
 
 Vue.use(ElementUI)
@@ -38,8 +39,9 @@ Vue.component('lh-register', Register)
 Vue.component('lh-reset-password', ResetPassword)
 Vue.component('lh-cart', Cart)
 Vue.component('lh-order', Order)
+Vue.component('lh-hot-products', HotProducts)
 
 new Vue({
     el: '#app',
-    render: h => h(PersonalCenter)
+    render: h => h(OrderList)
 })
