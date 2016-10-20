@@ -17,6 +17,7 @@ import AccountProfile from './pages/AccountProfile.vue'
 import PersonalCenter from './pages/PersonalCenter.vue'
 
 import TopBar from './components/TopBar.vue'
+import Footer from './components/Footer.vue'
 import Product from './components/Product.vue'
 import TableHeader from './components/TableHeader.vue'
 import Login from './components/Login.vue'
@@ -40,8 +41,9 @@ Vue.component('lh-reset-password', ResetPassword)
 Vue.component('lh-cart', Cart)
 Vue.component('lh-order', Order)
 Vue.component('lh-hot-products', HotProducts)
+Vue.component('lh-footer', Footer)
 
 new Vue({
     el: '#app',
-    render: h => h(PersonalCenter)
+    render: h => h(App)
 })

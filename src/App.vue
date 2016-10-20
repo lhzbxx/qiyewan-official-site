@@ -14,6 +14,7 @@
             <el-menu-item index="7">快捷入口</el-menu-item>
             <el-menu-item index="8">400-716-8896</el-menu-item>
         </el-menu>
+        <lh-footer></lh-footer>
     </div>
 </template>
 
