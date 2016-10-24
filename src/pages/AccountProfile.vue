@@ -1,5 +1,5 @@
 <template>
-    <div style="margin: 10px;">
+    <div class="container">
         <lh-table-header title="个人信息"></lh-table-header>
         <div style="border: 1px solid #eee; padding: 10px 20px;">
             <table border="0">

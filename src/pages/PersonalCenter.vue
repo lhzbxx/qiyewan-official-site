@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <el-row>
             <el-col :span="4">
                 <el-menu mode="vertical"

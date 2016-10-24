@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <h3 style="text-align: center; color: #333; margin: 20px 0;">订单评价</h3>
         <p style="text-align: center; color: #aaa; margin-bottom: 15px; font-size: 15px;">
             订单号

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <el-breadcrumb separator=">" style="padding: 10px 0; border-bottom: 1px solid #eee">
             <el-breadcrumb-item>首页</el-breadcrumb-item>
             <el-breadcrumb-item>工商查询</el-breadcrumb-item>

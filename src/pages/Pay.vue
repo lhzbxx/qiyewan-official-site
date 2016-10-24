@@ -6,7 +6,7 @@
 </style>
 
 <template>
-    <div style="margin: 10px;">
+    <div class="container">
         <div style="border: 1px solid #eee;
                     border-bottom: none;
                     padding: 20px;">

@@ -121,16 +121,14 @@
         border-top: 1px solid rgb(219, 219, 219);
         border-bottom: 1px solid rgb(219, 219, 219);
         position: relative;
+        transition: all 0.3s ease-in-out;
     }
 
-    .hot-product:hover .content-second {
-        transition: margin-right;
-        margin-right: 119px;
-        display: block;
-    }
-
-    .hot-product_last:hover .sec_detail1 {
-        display: block;
+    .hot-product:hover {
+        width: 392px;
+        border: 1px solid #55b2da;
+        box-shadow: 0 0 10px #55b2da;
+        transition: all 0.3s ease-in-out;
     }
 
     .hot-product_li {
@@ -149,35 +147,35 @@
         height: 400px;
         z-index: -1;
         opacity: 0;
+        position: absolute;
+        transition: all 0.3s ease-in-out;
     }
 
     .hot-product:hover .content-second {
         width: 390px;
-        position: absolute;
-        top: -15px;
+        top: 160px;
         left: 0;
         background-color: #fff;
-        border: 1px solid #55b2da;
-        box-shadow: 0 0 10px #55b2da;
         display: block;
         z-index: 20;
         opacity: 1;
+        transition: all 0.3s ease-in-out;
     }
 
     .content-info {
         width: 270px;
         height: 160px;
         background-color: rgb(235, 235, 236);
-        padding-top: 35px;
+        padding-top: 20px;
         text-align: center;
-        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+        transition: all 0.3s ease-in-out;
     }
 
     .hot-product:hover .content-info {
         width: 390px;
         height: 180px;
         background-color: #eef5f8;
-        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+        transition: all 0.3s ease-in-out;
     }
 
     .classification-title {
@@ -187,25 +185,24 @@
         font-weight: bold;
         padding-top: 10px;
         padding-bottom: 6px;
-        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+        transition: all 0.3s ease-in-out;
     }
 
     .hot-product:hover .classification-title {
         color: #019bdf;
         font-size: 18px;
-        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+        transition: all 0.3s ease-in-out;
     }
 
     .classification-summary {
         font-size: 12px;
         color: #9a9fa3;
-        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+        transition: color 0.3s ease-in-out;
     }
 
     .hot-product:hover .classification-summary {
-        font-size: 12px;
         color: #2daee7;
-        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+        transition: color 0.3s ease-in-out;
     }
 
     .content-split-line {
@@ -213,18 +210,23 @@
         border-top: 1px solid rgb(92, 92, 92);
         width: 63px;
         margin: 0 auto;
-        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+        transition: color 0.3s ease-in-out;
     }
 
     .hot-product:hover .content-split-line {
         border-top: 1px solid rgb(34, 166, 224);
         width: 348px;
-        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+        transition: color 0.3s ease-in-out;
     }
 
     .main-product {
         padding-bottom: 25px;
         border-bottom: 1px solid #eee;
+    }
+
+    .other-product-summary {
+        font-size: 12px;
+        color: #9a9fa3;
     }
 
     .content-second-detail {
@@ -293,6 +295,63 @@
     .other-product a:hover {
         text-decoration: underline;
     }
+
+    .tool {
+        height: 385px;
+    }
+
+    .tool ul {
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    .tool ul li {
+        float: left;
+        width: 193px;
+        position: relative;
+        margin-right: 75px;
+        cursor: pointer;
+    }
+
+    .tool ul :last-child {
+        margin-right: 0px;
+    }
+
+    .tool ul li:hover {
+        border-bottom: 3px solid #0098db;
+    }
+
+    .tool ul li:hover .img_fugai {
+        opacity: 0.5;
+    }
+
+    .img_fugai {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 193px;
+        height: 115px;
+        background-color: #0098db;
+        opacity: 0;
+        transition: all 1s;
+    }
+
+    .img_fugai img {
+        padding: 30px 63px;
+    }
+
+    .tool ul li p {
+        color: #676767;
+        font-size: 12px;
+        margin: 8px 0 5px 0;
+    }
+
+    .tool ul li h5 {
+        color: #2f2f2f;
+        font-size: 18px;
+        font-weight: normal;
+        padding-bottom: 10px;
+    }
 </style>
 
 <template>
@@ -324,12 +383,12 @@
                             <div class="classification-icon"><img src="./assets/img/ser_4.png"></div>
                             <div class="classification-title">{{ hotProduct4.title }}</div>
                             <div class="classification-summary">{{ hotProduct4.summary }}</div>
-                            <div class="content-split-line"></div>
                         </div>
+                        <div class="content-split-line"></div>
                         <div class="content-first">
-                            <br>
+                            <p></p>
                             <p v-for="item in hotProduct4.first">{{ item }}</p>
-                            <br>
+                            <p></p>
                         </div>
                         <div class="content-second">
                             <div class="content-second-detail">
@@ -346,11 +405,61 @@
                                 </div>
                                 <div class="l other-product" v-for="item in hotProduct4.other">
                                     <h6>{{ item.title }}</h6>
-                                    <div class="classification-summary">{{ item.summary }}</div>
+                                    <div class="other-product-summary">{{ item.summary }}</div>
                                     <a href="">立即购买</a>
                                 </div>
                             </div>
                         </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="tool">
+            <div class="container">
+                <div class="title">
+                    <h3>实用工具</h3>
+                    <div class="prompt">我们只做用户的需求，而不是用户找需求</div>
+                </div>
+                <ul>
+                    <li>
+                        <div class="tool_img"><img src="./assets/img/tool1.png" alt="">
+                        </div>
+                        <div class="img_fugai">
+                            <img src="./assets/img/sousuo.png" alt="">
+                        </div>
+
+                        <p>国际知识产权局</p>
+                        <h5>商标查询</h5>
+                    </li>
+                    <li>
+                        <div class="tool_img"><img src="./assets/img/tool2.png" alt="">
+                        </div>
+                        <div class="img_fugai">
+                            <img src="./assets/img/sousuo.png" alt="">
+                        </div>
+
+                        <p>国际知识产权局</p>
+                        <h5>工商查询</h5>
+                    </li>
+                    <li>
+                        <div class="tool_img"><img src="./assets/img/tool3.png" alt="">
+                        </div>
+                        <div class="img_fugai">
+                            <img src="./assets/img/sousuo.png" alt="">
+                        </div>
+
+                        <p>国际知识产权局</p>
+                        <h5>专利查询</h5>
+                    </li>
+                    <li>
+                        <div class="tool_img"><img src="./assets/img/tool4.png" alt="">
+                        </div>
+                        <div class="img_fugai">
+                            <img src="./assets/img/sousuo.png" alt="">
+                        </div>
+                        <p>国际知识产权局</p>
+                        <h5>软件著作权查询</h5>
                     </li>
                 </ul>
             </div>
