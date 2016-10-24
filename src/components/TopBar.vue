@@ -28,14 +28,6 @@
         left: 6px;
     }
 
-    .l {
-        float: left;
-    }
-
-    .r {
-        float: right;
-    }
-
     .tel a {
         color: #4e4e4e;
     }

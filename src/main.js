@@ -26,6 +26,7 @@ import ResetPassword from './components/ResetPassword.vue'
 import Cart from './components/Cart.vue'
 import Order from './components/Order.vue'
 import HotProducts from './components/HotProducts.vue'
+import Header from './components/Header.vue'
 
 
 Vue.use(ElementUI)
@@ -41,6 +42,7 @@ Vue.component('lh-reset-password', ResetPassword)
 Vue.component('lh-cart', Cart)
 Vue.component('lh-order', Order)
 Vue.component('lh-hot-products', HotProducts)
+Vue.component('lh-header', Header)
 Vue.component('lh-footer', Footer)
 
 new Vue({
