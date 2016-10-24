@@ -24,8 +24,8 @@
 
     .nav ul li:hover .show {
         opacity: 1;
-        display: block;
-        transition: opacity 1s;
+        z-index: 10;
+        transition: all 0.3s ease-in-out;
     }
 
     .show {
@@ -34,12 +34,11 @@
         height: 165px;
         background-color: rgba(255, 255, 255, .8);
         margin-left: 36px;
-        display: none;
         transform: translate(-50%, 0%);
-        transition: opacity 0.3s;
         opacity: 0;
+        z-index: -1;
         top: 70px;
-        z-index: 20;
+        transition: all 0.3s ease-in-out;
     }
 
     .show_l, .show_r {
@@ -75,11 +74,13 @@
         margin-left: 10px;
         color: #5e5e5e;
         background-color: #fdfdfd;
+        transition: color 0.3s ease-in-out;
     }
 
     .show_l span:hover, .show_r span:hover {
         cursor: pointer;
         color: #0098db;
+        transition: color 0.3s ease-in-out;
     }
 
     .nav ul li a {

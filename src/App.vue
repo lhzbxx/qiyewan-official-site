@@ -57,16 +57,16 @@
         cursor: pointer;
         height: 107px;
         width: 278px;
+        transition: all 0.3s ease-in-out;
     }
 
     .introduce ul li:hover {
-        -webkit-box-shadow: 0 0 7px #55b2da;
-        -moz-box-shadow: 0 0 7px #55b2da;
         box-shadow: 0 0 7px #55b2da;
     }
 
     .introduce ul li:hover h5 {
         color: #0098db;
+        transition: color 0.3s ease-in-out;
     }
 
     .introduce ul :last-child {
@@ -79,6 +79,7 @@
         font-weight: normal;
         margin-top: 7px;
         letter-spacing: 2px;
+        transition: color 0.3s ease-in-out;
     }
 
     .introduce p {
@@ -113,7 +114,7 @@
         padding-bottom: 40px;
     }
 
-    .hot-products ul li {
+    .hot-product {
         float: left;
         width: 269px;
         border-right: 1px solid rgb(219, 219, 219);
@@ -122,7 +123,7 @@
         position: relative;
     }
 
-    .hot-products ul li:hover .content-second {
+    .hot-product:hover .content-second {
         transition: margin-right;
         margin-right: 119px;
         display: block;
@@ -136,7 +137,7 @@
         border-left: 1px solid rgb(219, 219, 219);
     }
 
-    .hot-products ul li p {
+    .hot-product p {
         height: 50px;
         line-height: 50px;
         text-align: center;
@@ -144,35 +145,13 @@
         font-size: 16px;
     }
 
-    .content-info {
-        height: 160px;
-        background-color: rgb(235, 235, 236);
-        padding-top: 35px;
-        text-align: center;
-    }
-
-    .classification-title {
-        text-align: center;
-        color: black;
-        font-size: 16px;
-        font-weight: bold;
-        padding-top: 10px;
-        padding-bottom: 6px;
-    }
-
-    .classification-summary {
-        font-size: 12px;
-        color: #9a9fa3;
-    }
-
-    .content-split-line {
-        height: 0;
-        border-top: 1px solid rgb(92, 92, 92);
-        width: 63px;
-        margin: 0 auto;
-    }
-
     .content-second {
+        height: 400px;
+        z-index: -1;
+        opacity: 0;
+    }
+
+    .hot-product:hover .content-second {
         width: 390px;
         position: absolute;
         top: -15px;
@@ -182,34 +161,65 @@
         box-shadow: 0 0 10px #55b2da;
         display: block;
         z-index: 20;
+        opacity: 1;
     }
 
     .content-info {
-        height: 180px;
-        background-color: #eef5f8;
+        width: 270px;
+        height: 160px;
+        background-color: rgb(235, 235, 236);
         padding-top: 35px;
         text-align: center;
+        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+    }
+
+    .hot-product:hover .content-info {
+        width: 390px;
+        height: 180px;
+        background-color: #eef5f8;
+        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
     }
 
     .classification-title {
         text-align: center;
-        color: #019bdf;
-        font-size: 18px;
+        color: black;
+        font-size: 16px;
         font-weight: bold;
         padding-top: 10px;
         padding-bottom: 6px;
+        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+    }
+
+    .hot-product:hover .classification-title {
+        color: #019bdf;
+        font-size: 18px;
+        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
     }
 
     .classification-summary {
         font-size: 12px;
+        color: #9a9fa3;
+        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+    }
+
+    .hot-product:hover .classification-summary {
+        font-size: 12px;
         color: #2daee7;
+        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
     }
 
     .content-split-line {
         height: 0;
+        border-top: 1px solid rgb(92, 92, 92);
+        width: 63px;
+        margin: 0 auto;
+        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+    }
+
+    .hot-product:hover .content-split-line {
         border-top: 1px solid rgb(34, 166, 224);
         width: 348px;
-        margin: 0 auto;
+        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
     }
 
     .main-product {
@@ -292,33 +302,12 @@
         <div class="introduce">
             <div class="container">
                 <ul>
-                    <li>
+                    <li v-for="item in introduces">
                         <div class="l">
-                            <h5>注册财税一条龙</h5>
-                            <p>你身边的会计大神</p>
+                            <h5>{{ item.title }}</h5>
+                            <p>{{ item.summary }}</p>
                         </div>
-                        <div class="r introduce_img introduce_img1"></div>
-                    </li>
-                    <li>
-                        <div class="l">
-                            <h5>发财宝</h5>
-                            <p>你身边的会计大神</p>
-                        </div>
-                        <div class="r introduce_img introduce_img2"></div>
-                    </li>
-                    <li>
-                        <div class="l">
-                            <h5>商标宝</h5>
-                            <p>你身边的会计大神</p>
-                        </div>
-                        <div class="r introduce_img introduce_img3"></div>
-                    </li>
-                    <li>
-                        <div class="l">
-                            <h5>人事宝</h5>
-                            <p>你身边的会计大神</p>
-                        </div>
-                        <div class="r introduce_img introduce_img4"></div>
+                        <div class="r introduce_img" :class="item.image"></div>
                     </li>
                 </ul>
             </div>
@@ -374,6 +363,28 @@
     export default {
         data () {
             return {
+                introduces: [
+                    {
+                        "title": "注册财税一条龙",
+                        "summary": "你身边的会计大神",
+                        "image": "introduce_img1"
+                    },
+                    {
+                        "title": "发财宝",
+                        "summary": "你身边的会计大神",
+                        "image": "introduce_img2"
+                    },
+                    {
+                        "title": "商标宝",
+                        "summary": "你身边的会计大神",
+                        "image": "introduce_img3"
+                    },
+                    {
+                        "title": "人事宝",
+                        "summary": "你身边的会计大神",
+                        "image": "introduce_img4"
+                    }
+                ],
                 hotProduct1: {
                     title: "工商服务",
                 },
