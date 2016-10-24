@@ -43,7 +43,7 @@
     }
 
     .footer_ul_2 {
-        width: 300px;
+        width: 270px;
         text-align: center;
     }
 
@@ -61,17 +61,55 @@
         margin: 20px 30px;
     }
 
-    .footer_b {
+    .footer_bottom {
         height: 39px;
         margin-top: 15px;
         background-color: #eaeaea;
     }
 
-    .footer_b p {
+    .footer_bottom p {
         text-align: center;
         font-size: 12px;
         color: #999999;
         line-height: 39px;
+    }
+
+    .weibo {
+        background-image: url('../assets/img/foo_3.png');
+        height: 67px;
+        width: 67px;
+        margin: 24px 24px 0 0;
+        cursor: pointer;
+    }
+
+    .wechat {
+        background-image: url('../assets/img/foo_2.png');
+        height: 67px;
+        width: 67px;
+        margin-top: 24px;
+    }
+
+    .weibo:hover {
+        background-image: url('../assets/img/foo_3_active.png');
+    }
+
+    .wechat:hover {
+        background-image: url('../assets/img/foo_2_active.png');
+    }
+
+    .wechat:hover + .wechat-qrcode {
+        opacity: 1;
+        left: 20px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .wechat-qrcode {
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+        left: -20px;
+        width: 100px;
+        margin: 5px 0 0 0 !important;
     }
 </style>
 
@@ -103,13 +141,14 @@
                     <p>400-716-8896</p>
                 </li>
                 <li class="footer_ul_3">
-                    <img src="../assets/img/foo_2.png">
-                    <img src="../assets/img/foo_3.png">
+                    <div class="weibo l"></div>
+                    <div class="wechat l"></div>
+                    <img class="wechat-qrcode" src="../assets/wechat-qrcode.jpg">
                 </li>
             </ul>
         </div>
         <div class="clearfix"></div>
-        <div class="footer_b">
+        <div class="footer_bottom">
             <p>Copyright @ 2015-2016 www.qiyewan.com 企业湾 备案号：沪CP备15043250号-2</p>
         </div>
     </div>
