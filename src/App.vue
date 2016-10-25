@@ -1,5 +1,5 @@
 <style scoped>
-    .introduce {
+    #introduce {
         height: 127px;
         width: 100%;
         margin: 0 auto;
@@ -11,7 +11,7 @@
         background: url("./assets/img/intro_1.png") no-repeat;
     }
 
-    .introduce ul li:hover .introduce_img1 {
+    #introduce ul li:hover .introduce_img1 {
         background: url("./assets/img/intro_5.png") no-repeat;
     }
 
@@ -21,7 +21,7 @@
         background: url("./assets/img/intro_2.png") no-repeat;
     }
 
-    .introduce ul li:hover .introduce_img2 {
+    #introduce ul li:hover .introduce_img2 {
         background: url("./assets/img/intro_6.png") no-repeat;
     }
 
@@ -31,7 +31,7 @@
         background: url("./assets/img/intro_3.png") no-repeat;
     }
 
-    .introduce ul li:hover .introduce_img3 {
+    #introduce ul li:hover .introduce_img3 {
         background: url("./assets/img/intro_7.png") no-repeat;
     }
 
@@ -41,15 +41,15 @@
         background: url("./assets/img/intro_4.png") no-repeat;
     }
 
-    .introduce ul li:hover .introduce_img4 {
+    #introduce ul li:hover .introduce_img4 {
         background: url("./assets/img/intro_8.png") no-repeat;
     }
 
-    .introduce ul {
+    #introduce ul {
         margin-top: 30px;
     }
 
-    .introduce ul li {
+    #introduce ul li {
         float: left;
         border: 1px solid #e9e9e9;
         margin-right: 15px;
@@ -60,20 +60,20 @@
         transition: all 0.3s ease-in-out;
     }
 
-    .introduce ul li:hover {
+    #introduce ul li:hover {
         box-shadow: 0 0 7px #55b2da;
     }
 
-    .introduce ul li:hover h5 {
+    #introduce ul li:hover h5 {
         color: #0098db;
         transition: color 0.3s ease-in-out;
     }
 
-    .introduce ul :last-child {
+    #introduce ul :last-child {
         margin-right: 0;
     }
 
-    .introduce h5 {
+    #introduce h5 {
         font-size: 19px;
         color: #2f2f2f;
         font-weight: normal;
@@ -82,15 +82,15 @@
         transition: color 0.3s ease-in-out;
     }
 
-    .introduce p {
+    #introduce p {
         font-size: 14px;
         color: #707070;
         margin-top: 5px;
         letter-spacing: 1px;
     }
 
-    .hot-products {
-        height: 750px;
+    #hot-products {
+        height: 760px;
         width: 100%;
         background-color: #f5f6f6;
     }
@@ -116,23 +116,28 @@
 
     .hot-product {
         float: left;
-        width: 269px;
-        border-right: 1px solid rgb(219, 219, 219);
-        border-top: 1px solid rgb(219, 219, 219);
-        border-bottom: 1px solid rgb(219, 219, 219);
+        width: 22%;
+        height: 563px;
+        border: 1px solid rgb(219, 219, 219);
         position: relative;
-        transition: all 0.3s ease-in-out;
+        z-index: 10;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
-    .hot-product:hover {
-        width: 392px;
+    .hot-product.active {
+        width: 34%;
+        height: 573px;
         border: 1px solid #55b2da;
-        box-shadow: 0 0 10px #55b2da;
-        transition: all 0.3s ease-in-out;
+        box-shadow: 0 0 20px #55b2da;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        z-index: 100;
     }
 
-    .hot-product_li {
-        border-left: 1px solid rgb(219, 219, 219);
+    .card {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
     }
 
     .hot-product p {
@@ -143,39 +148,67 @@
         font-size: 16px;
     }
 
-    .content-second {
-        height: 400px;
-        z-index: -1;
-        opacity: 0;
+    .content-first {
+        width: 100%;
         position: absolute;
-        transition: all 0.3s ease-in-out;
+        z-index: 3;
+        opacity: 1;
+        top: 160px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
-    .hot-product:hover .content-second {
-        width: 390px;
+    .hot-product.active .content-first {
+        z-index: 2;
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+    }
+
+    .content-second {
+        width: 100%;
+        height: 400px;
+        z-index: 2;
+        opacity: 0;
+        left: 0;
         top: 160px;
+        position: absolute;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+    }
+
+    .hot-product.active .content-second {
+        width: 100%;
         left: 0;
         background-color: #fff;
         display: block;
-        z-index: 20;
+        z-index: 3;
         opacity: 1;
-        transition: all 0.3s ease-in-out;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .content-info {
-        width: 270px;
-        height: 160px;
+        width: 100%;
+        height: 159px;
+        z-index: 1;
+        top: 0;
+        left: 0;
         background-color: rgb(235, 235, 236);
         padding-top: 20px;
         text-align: center;
-        transition: all 0.3s ease-in-out;
+        position: absolute;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
-    .hot-product:hover .content-info {
-        width: 390px;
-        height: 180px;
+    .content-info-detail {
+        position: absolute;
+        bottom: 17px;
+        width: 100%;
+    }
+
+    .hot-product.active .content-info {
+        top: -10px;
+        height: 169px;
         background-color: #eef5f8;
-        transition: all 0.3s ease-in-out;
+        z-index: 3;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .classification-title {
@@ -185,24 +218,24 @@
         font-weight: bold;
         padding-top: 10px;
         padding-bottom: 6px;
-        transition: all 0.3s ease-in-out;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
-    .hot-product:hover .classification-title {
+    .hot-product.active .classification-title {
         color: #019bdf;
         font-size: 18px;
-        transition: all 0.3s ease-in-out;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .classification-summary {
         font-size: 12px;
         color: #9a9fa3;
-        transition: color 0.3s ease-in-out;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
-    .hot-product:hover .classification-summary {
+    .hot-product.active .classification-summary {
         color: #2daee7;
-        transition: color 0.3s ease-in-out;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .content-split-line {
@@ -210,13 +243,16 @@
         border-top: 1px solid rgb(92, 92, 92);
         width: 63px;
         margin: 0 auto;
-        transition: color 0.3s ease-in-out;
+        position: relative;
+        top: 159px;
+        z-index: 3;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
-    .hot-product:hover .content-split-line {
+    .hot-product.active .content-split-line {
         border-top: 1px solid rgb(34, 166, 224);
         width: 348px;
-        transition: color 0.3s ease-in-out;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .main-product {
@@ -230,7 +266,7 @@
     }
 
     .content-second-detail {
-        width: 348px;
+        max-width: 348px;
         margin: 0 auto;
         background-color: #fff;
         height: 410px;
@@ -296,11 +332,11 @@
         text-decoration: underline;
     }
 
-    .tools {
+    #tools {
         height: 385px;
     }
 
-    .tools ul {
+    #tools ul {
         width: 1000px;
         margin: 0 auto;
     }
@@ -313,7 +349,7 @@
         cursor: pointer;
     }
 
-    .tools ul :last-child {
+    #tools ul :last-child {
         margin-right: 0;
     }
 
@@ -368,7 +404,7 @@
     <div id="app">
         <lh-top-bar></lh-top-bar>
         <lh-header></lh-header>
-        <div class="introduce">
+        <div id="introduce">
             <div class="container">
                 <ul>
                     <li v-for="item in introduces">
@@ -381,7 +417,7 @@
                 </ul>
             </div>
         </div>
-        <div class="hot-products">
+        <div id="hot-products">
             <div class="container">
                 <div class="title">
                     <h3>大热门服务</h3>
@@ -392,45 +428,49 @@
                         v-for="(hotProduct, index) in hotProducts"
                         :class="{active: isActive(index)}"
                         v-on:mouseover="setActive(index)">
-                        <div class="content-info">
-                            <div class="classification-icon">
-                                <img src="./assets/img/ser_4.png">
-                            </div>
-                            <div class="classification-title">
-                                {{ hotProduct.title }}
-                            </div>
-                            <div class="classification-summary">
-                                {{ hotProduct.summary }}
-                            </div>
-                        </div>
-                        <div class="content-split-line"></div>
-                        <div class="content-first">
-                            <p></p>
-                            <p v-for="item in hotProduct.first">{{ item }}</p>
-                            <p></p>
-                        </div>
-                        <div class="content-second">
-                            <div class="content-second-detail">
-                                <div class="main-product">
-                                    <h5>
-                                        {{ hotProduct.main.title }}
-                                    </h5>
-                                    <div class="main-product-summary">
-                                        {{ hotProduct.main.summary }}
+                        <div class="card">
+                            <div class="content-info">
+                                <div class="content-info-detail">
+                                    <div class="classification-icon">
+                                        <img src="./assets/img/ser_4.png">
                                     </div>
-                                    <button class="main-btn">
-                                        立即购买
-                                    </button>
+                                    <div class="classification-title">
+                                        {{ hotProduct.title }}
+                                    </div>
+                                    <div class="classification-summary">
+                                        {{ hotProduct.summary }}
+                                    </div>
                                 </div>
-                                <div class="l other-product"
-                                     v-for="item in hotProduct.other">
-                                    <h6>
-                                        {{ item.title }}
-                                    </h6>
-                                    <div class="other-product-summary">
-                                        {{ item.summary }}
+                            </div>
+                            <div class="content-split-line"></div>
+                            <div class="content-first">
+                                <p></p>
+                                <p v-for="item in hotProduct.first">{{ item }}</p>
+                                <p></p>
+                            </div>
+                            <div class="content-second">
+                                <div class="content-second-detail">
+                                    <div class="main-product">
+                                        <h5>
+                                            {{ hotProduct.main.title }}
+                                        </h5>
+                                        <div class="main-product-summary">
+                                            {{ hotProduct.main.summary }}
+                                        </div>
+                                        <button class="main-btn">
+                                            立即购买
+                                        </button>
                                     </div>
-                                    <a href="">立即购买</a>
+                                    <div class="l other-product"
+                                         v-for="item in hotProduct.other">
+                                        <h6>
+                                            {{ item.title }}
+                                        </h6>
+                                        <div class="other-product-summary">
+                                            {{ item.summary }}
+                                        </div>
+                                        <a href="">立即购买</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -439,7 +479,7 @@
             </div>
         </div>
         <div class="clearfix"></div>
-        <div class="tools">
+        <div id="tools">
             <div class="container">
                 <div class="title">
                     <h3>实用工具</h3>
