@@ -385,37 +385,51 @@
             <div class="container">
                 <div class="title">
                     <h3>大热门服务</h3>
-                    <div class="prompt">我们只做用户的需求，而不是用户找需求</div>
+                    <div class="prompt">我们只做用户的需求，而不是用户找需求。</div>
                 </div>
                 <ul>
-                    <li class="hot-product">
+                    <li class="hot-product"
+                        v-for="(hotProduct, index) in hotProducts"
+                        :class="{active: isActive(index)}"
+                        v-on:mouseover="setActive(index)">
                         <div class="content-info">
-                            <div class="classification-icon"><img src="./assets/img/ser_4.png"></div>
-                            <div class="classification-title">{{ hotProduct4.title }}</div>
-                            <div class="classification-summary">{{ hotProduct4.summary }}</div>
+                            <div class="classification-icon">
+                                <img src="./assets/img/ser_4.png">
+                            </div>
+                            <div class="classification-title">
+                                {{ hotProduct.title }}
+                            </div>
+                            <div class="classification-summary">
+                                {{ hotProduct.summary }}
+                            </div>
                         </div>
                         <div class="content-split-line"></div>
                         <div class="content-first">
                             <p></p>
-                            <p v-for="item in hotProduct4.first">{{ item }}</p>
+                            <p v-for="item in hotProduct.first">{{ item }}</p>
                             <p></p>
                         </div>
                         <div class="content-second">
                             <div class="content-second-detail">
                                 <div class="main-product">
                                     <h5>
-                                        {{ hotProduct4.main.title }}
+                                        {{ hotProduct.main.title }}
                                     </h5>
                                     <div class="main-product-summary">
-                                        {{ hotProduct4.main.summary }}
+                                        {{ hotProduct.main.summary }}
                                     </div>
                                     <button class="main-btn">
                                         立即购买
                                     </button>
                                 </div>
-                                <div class="l other-product" v-for="item in hotProduct4.other">
-                                    <h6>{{ item.title }}</h6>
-                                    <div class="other-product-summary">{{ item.summary }}</div>
+                                <div class="l other-product"
+                                     v-for="item in hotProduct.other">
+                                    <h6>
+                                        {{ item.title }}
+                                    </h6>
+                                    <div class="other-product-summary">
+                                        {{ item.summary }}
+                                    </div>
                                     <a href="">立即购买</a>
                                 </div>
                             </div>
@@ -429,7 +443,9 @@
             <div class="container">
                 <div class="title">
                     <h3>实用工具</h3>
-                    <div class="prompt">我们只做用户的需求，而不是用户找需求</div>
+                    <div class="prompt">
+                        我们只做用户的需求，而不是用户找需求。
+                    </div>
                 </div>
                 <ul>
                     <li class="tool" v-for="item in tools">
@@ -476,16 +492,7 @@
                         "image": "introduce_img4"
                     }
                 ],
-                hotProduct1: {
-                    title: "工商服务",
-                },
-                hotProduct2: {
-                    title: "财税服务",
-                },
-                hotProduct3: {
-                    title: "法律服务",
-                },
-                hotProduct4: {
+                hotProducts: [{
                     title: "IT&设计",
                     summary: "专业、专注、专心",
                     first: [
@@ -498,7 +505,7 @@
                     ],
                     main: {
                         title: "个人社保",
-                        summary: "办理员工用退工，社保、公积金增加减少以及缴费基数变更（服务费：3人及以下98.8元/月",
+                        summary: "办理员工用退工，社保、公积金增加减少以及缴费基数变更（服务费：3人及以下98.8元/月）",
                     },
                     other: [
                         {
@@ -519,6 +526,109 @@
                         }
                     ]
                 },
+                    {
+                        title: "IT&设计",
+                        summary: "专业、专注、专心",
+                        first: [
+                            "个人社保",
+                            "人力资源管理",
+                            "个人社保",
+                            "人力资源管理",
+                            "个人社保",
+                            "人力资源管理",
+                        ],
+                        main: {
+                            title: "个人社保",
+                            summary: "办理员工用退工，社保、公积金增加减少以及缴费基数变更（服务费：3人及以下98.8元/月）",
+                        },
+                        other: [
+                            {
+                                title: "人力资源管理",
+                                summary: "专业、专注、专心"
+                            },
+                            {
+                                title: "人力资源管理",
+                                summary: "专业、专注、专心"
+                            },
+                            {
+                                title: "人力资源管理",
+                                summary: "专业、专注、专心"
+                            },
+                            {
+                                title: "人力资源管理",
+                                summary: "专业、专注、专心"
+                            }
+                        ]
+                    },
+                    {
+                        title: "IT&设计",
+                        summary: "专业、专注、专心",
+                        first: [
+                            "个人社保",
+                            "人力资源管理",
+                            "个人社保",
+                            "人力资源管理",
+                            "个人社保",
+                            "人力资源管理",
+                        ],
+                        main: {
+                            title: "个人社保",
+                            summary: "办理员工用退工，社保、公积金增加减少以及缴费基数变更（服务费：3人及以下98.8元/月）",
+                        },
+                        other: [
+                            {
+                                title: "人力资源管理",
+                                summary: "专业、专注、专心"
+                            },
+                            {
+                                title: "人力资源管理",
+                                summary: "专业、专注、专心"
+                            },
+                            {
+                                title: "人力资源管理",
+                                summary: "专业、专注、专心"
+                            },
+                            {
+                                title: "人力资源管理",
+                                summary: "专业、专注、专心"
+                            }
+                        ]
+                    },
+                    {
+                        title: "IT&设计",
+                        summary: "专业、专注、专心",
+                        first: [
+                            "个人社保",
+                            "人力资源管理",
+                            "个人社保",
+                            "人力资源管理",
+                            "个人社保",
+                            "人力资源管理",
+                        ],
+                        main: {
+                            title: "个人社保",
+                            summary: "办理员工用退工，社保、公积金增加减少以及缴费基数变更（服务费：3人及以下98.8元/月）",
+                        },
+                        other: [
+                            {
+                                title: "人力资源管理",
+                                summary: "专业、专注、专心"
+                            },
+                            {
+                                title: "人力资源管理",
+                                summary: "专业、专注、专心"
+                            },
+                            {
+                                title: "人力资源管理",
+                                summary: "专业、专注、专心"
+                            },
+                            {
+                                title: "人力资源管理",
+                                summary: "专业、专注、专心"
+                            }
+                        ]
+                    }
+                ],
                 tools: [
                     {
                         department: "国家知识产权局",
@@ -551,9 +661,17 @@
                     region: '',
                     type: ''
                 },
-                currentDate: "2016年10月13日"
+                currentDate: "2016年10月13日",
+                active: 3,
             }
         },
-        methods: {}
+        methods: {
+            setActive(index) {
+                this.active = index;
+            },
+            isActive(index) {
+                return this.active == index;
+            }
+        }
     }
 </script>
