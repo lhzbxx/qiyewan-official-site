@@ -409,13 +409,15 @@
         height: 50px;
         line-height: 50px;
         width: 25%;
-        border-right: 1px solid #dcdcdc;
+        border: 1px solid #dcdcdc;
         float: left;
         font-size: 20px;
         position: relative;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
     }
 
-    #timeline ul li:before, #timeline ul li:after {
+    #timeline ul li.active:before, #timeline ul li.active:after {
         border: solid transparent;
         content: ' ';
         height: 0;
@@ -425,28 +427,35 @@
         width: 0;
     }
 
-    #timeline ul li:before {
+    #timeline ul li.active:before {
         top: -1px;
-        border-width: 25px;
-        border-left-color: rgb(220, 220, 220);
+        border-left-width: 26px;
+        border-right-width: 26px;
+        border-bottom-width: 25px;
+        border-top-width: 25px;
+        border-left-color: #139cd7;
+        z-index: 10;
     }
 
-    #timeline ul li:after {
-        top: 2px;
-        border-width: 22px;
+    #timeline ul li.active {
+        color: #139cd7;
+        border-color: #139cd7;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 0 20px #139cd7;
+    }
+
+    #timeline ul li.active:after {
+        top: 0;
+        border-width: 24px;
         border-left-color: white;
+        z-index: 10;
     }
 
     #timeline ul li a {
         color: #555555;
     }
 
-    #timeline ul :last-child {
-        border-right: none;
-    }
-
     #timeline ul {
-        border: 1px solid #dcdcdc;
         height: 50px;
     }
 
@@ -455,43 +464,57 @@
         width: 140px;
         height: 36px !important;
         font-size: 14px;
-        color: #139cd7;
-        border: 1px solid #139cd7;
+        color: #dcdcdc;
+        border: 1px solid #dcdcdc;
         margin: 25px 25px 20px 0;
         line-height: 36px;
         text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
     }
 
-    .timeline-products span:hover {
+    .timeline-products span.active {
         color: #139cd7;
-        background-color: #139cd7;
+        border-color: #139cd7;
+        transition: all 0.3s ease-in-out;
     }
 
     .timeline-pic {
         padding: 10px;
     }
 
+    .timeline-pic:hover img {
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        transform: translate3d(0, -3px, 0);
+    }
+
+    .timeline-pic img {
+        width: 100%;
+        height: 100%;
+        transition: all .2s linear;
+        cursor: pointer;
+    }
+
     .timeline-pic-left {
         width: 20%;
         height: 510px;
-        background-color: pink;
+        float: left;
     }
 
     .timeline-pic-right {
         width: 80%;
         height: 510px;
+        float: right;
     }
 
     .timeline-pic-one {
         width: 50%;
         height: 245px;
-        background-color: pink;
     }
 
     .timeline-pic-two {
         width: 25%;
         height: 245px;
-        background-color: pink;
     }
 </style>
 
@@ -580,35 +603,31 @@
                     <div class="prompt">我们只做用户的需求，而不是用户找需求。</div>
                 </div>
                 <ul>
-                    <li>
-                        公司初创
-                    </li>
-                    <li>
-                        快速开展
-                    </li>
-                    <li>
-                        持续经营
-                    </li>
-                    <li>
-                        成功退出
+                    <li v-for="(item, index) in timelines"
+                        v-on:mouseover="state=index, stateType=0"
+                        :class="{active: state == index}">
+                        {{ item.title }}
                     </li>
                 </ul>
                 <div class="timeline-products">
-                    <span>办税务</span>
-                    <span>办税务</span>
-                    <span>办税务</span>
-                    <span>办税务</span>
+                    <span v-for="(item, index) in timelines[state].types"
+                          v-on:mouseover="stateType=index"
+                          :class="{active: stateType == index}">
+                        {{ item.title }}
+                    </span>
                 </div>
                 <div class="timeline-pics">
-                    <div class="l timeline-pic-left timeline-pic"></div>
-                    <div class="timeline-pic-right r">
-                        <div class="l timeline-pic-one timeline-pic"></div>
-                        <div class="l timeline-pic-two timeline-pic"></div>
-                        <div class="l timeline-pic-two timeline-pic"></div>
-                        <div class="l timeline-pic-two timeline-pic"></div>
-                        <div class="l timeline-pic-two timeline-pic"></div>
-                        <div class="l timeline-pic-two timeline-pic"></div>
-                        <div class="l timeline-pic-two timeline-pic"></div>
+                    <div class="timeline-pic-left timeline-pic">
+                        <img :src="timelines[state].types[stateType].products.left.url">
+                    </div>
+                    <div class="timeline-pic-right">
+                        <div class="l timeline-pic-one timeline-pic">
+                            <img :src="timelines[state].types[stateType].products.right.url">
+                        </div>
+                        <div class="l timeline-pic-two timeline-pic"
+                             v-for="item in timelines[state].types[stateType].products.one">
+                            <img :src="item.url">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -830,6 +849,176 @@
                         cover: "http://ofl0lw9er.bkt.clouddn.com/tool4.png"
                     }
                 ],
+                timelines: [
+                    {
+                        title: "公司初创",
+                        types: [
+                            {
+                                title: "办税务",
+                                products: {
+                                    left: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    right: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    one: [
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                title: "办税务",
+                                products: {
+                                    left: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    right: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    one: [
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                title: "办税务",
+                                products: {
+                                    left: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    right: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    one: [
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                title: "办税务",
+                                products: {
+                                    left: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    right: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    one: [
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        title: "快速开展",
+                        types: [
+                            {
+                                title: "办税务"
+                            },
+                            {
+                                title: "办税务"
+                            },
+                            {
+                                title: "办税务"
+                            },
+                            {
+                                title: "办税务"
+                            }
+                        ]
+                    },
+                    {
+                        title: "持续经营",
+                        types: [
+                            {
+                                title: "办税务"
+                            },
+                            {
+                                title: "办税务"
+                            },
+                            {
+                                title: "办税务"
+                            },
+                            {
+                                title: "办税务"
+                            }
+                        ]
+                    },
+                    {
+                        title: "成功退出",
+                        types: [
+                            {
+                                title: "办税务"
+                            },
+                            {
+                                title: "办税务"
+                            },
+                            {
+                                title: "办税务"
+                            },
+                            {
+                                title: "办税务"
+                            }
+                        ]
+                    }
+                ],
                 dialogVisible: false,
                 formStacked: {
                     name: '',
@@ -838,6 +1027,8 @@
                 },
                 currentDate: "2016年10月13日",
                 active: 3,
+                state: 0,
+                stateType: 0
             }
         },
         methods: {
