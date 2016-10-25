@@ -305,7 +305,7 @@
         margin: 0 auto;
     }
 
-    .tools ul li {
+    .tool {
         float: left;
         width: 193px;
         position: relative;
@@ -317,7 +317,7 @@
         margin-right: 0;
     }
 
-    .tools ul li:hover .tool-underline {
+    .tool:hover .tool-underline {
         width: 100%;
         opacity: 1;
         transition: all 0.3s ease-in-out;
@@ -331,7 +331,7 @@
         transition: all 0.3s ease-in-out;
     }
 
-    .tools ul li:hover .tool-img-mask {
+    .tool:hover .tool-img-mask {
         opacity: 0.5;
     }
 
@@ -350,13 +350,13 @@
         padding: 30px 63px;
     }
 
-    .tools ul li p {
+    .tool p {
         color: #676767;
         font-size: 12px;
         margin: 8px 0 5px 0;
     }
 
-    .tools ul li h5 {
+    .tool h5 {
         color: #2f2f2f;
         font-size: 18px;
         font-weight: normal;

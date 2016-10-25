@@ -1,15 +1,15 @@
 <style scoped>
-    .nav {
+    #nav {
         height: 68px;
         width: 100%;
     }
 
-    .nav ul {
+    #nav ul {
         float: left;
         margin-left: 30px;
     }
 
-    .nav ul li {
+    #nav ul li {
         float: left;
         padding-left: 40px;
         font-size: 16px;
@@ -18,11 +18,11 @@
         border-bottom: 2px solid white;
     }
 
-    .nav ul li:hover a {
+    #nav ul li:hover a {
         border-bottom: 2px solid #0098db;
     }
 
-    .nav ul li:hover .show {
+    #nav ul li:hover .show {
         opacity: 1;
         z-index: 10;
         transition: all 0.3s ease-in-out;
@@ -41,11 +41,11 @@
         transition: all 0.3s ease-in-out;
     }
 
-    .show_l, .show_r {
+    .nav-show-left, .nav-show-right {
         width: 50%;
     }
 
-    .show_l_con {
+    .nav-show-content {
         margin-left: 13px;
     }
 
@@ -62,7 +62,7 @@
         color: #0098db;
     }
 
-    .show_l span, .show_r span {
+    .nav-show-content span {
         text-align: center;
         font-size: 12px;
         width: 85px;
@@ -77,13 +77,13 @@
         transition: color 0.3s ease-in-out;
     }
 
-    .show_l span:hover, .show_r span:hover {
+    .nav-show-left span:hover, .nav-show-right span:hover {
         cursor: pointer;
         color: #0098db;
         transition: color 0.3s ease-in-out;
     }
 
-    .nav ul li a {
+    #nav ul li a {
         color: #282828;
         display: block;
         line-height: 68px;
@@ -91,7 +91,7 @@
 </style>
 
 <template>
-    <div class="nav">
+    <div id="nav">
         <div class="container">
             <div class="logo l">
                 <a href="#">
@@ -99,222 +99,28 @@
                 </a>
             </div>
             <ul>
-                <li>
-                    <a href="">工商服务</a>
+                <li v-for="item in navigators">
+                    <a href="">{{ item.title }}</a>
                     <div class="show">
-                        <div class="show_l l">
-                            <div class="show_l_con">
-                                <div class="registration">商标注册</div>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
+                        <div class="nav-show-left l">
+                            <div class="nav-show-content">
+                                <div class="registration">{{ item.l.title }}</div>
+                                <span v-for="i in item.l.list">{{ i }}</span>
                             </div>
                         </div>
-                        <div class="show_r l">
-                            <div class="show_l_con">
-                                <div class="registration">商标注册</div>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <a href="">人事服务</a>
-                    <div class="show">
-                        <div class="show_l l">
-                            <div class="show_l_con">
-                                <div class="registration">商标注册</div>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                            </div>
-                        </div>
-                        <div class="show_r l">
-                            <div class="show_l_con">
-                                <div class="registration">商标注册</div>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <a href="">法律服务</a>
-                    <div class="show">
-                        <div class="show_l l">
-                            <div class="show_l_con">
-                                <div class="registration">商标注册</div>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                            </div>
-                        </div>
-                        <div class="show_r l">
-                            <div class="show_l_con">
-                                <div class="registration">商标注册</div>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <a href="">财税服务</a>
-                    <div class="show">
-                        <div class="show_l l">
-                            <div class="show_l_con">
-                                <div class="registration">商标注册</div>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                            </div>
-                        </div>
-                        <div class="show_r l">
-                            <div class="show_l_con">
-                                <div class="registration">商标注册</div>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <a href="">IT&服务</a>
-                    <div class="show">
-                        <div class="show_l l">
-                            <div class="show_l_con">
-                                <div class="registration">商标注册</div>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                            </div>
-                        </div>
-                        <div class="show_r l">
-                            <div class="show_l_con">
-                                <div class="registration">商标注册</div>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
+                        <div class="nav-show-right l">
+                            <div class="nav-show-content">
+                                <div class="registration">{{ item.r.title }}</div>
+                                <span v-for="i in item.r.list">{{ i }}</span>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li>
                     <a href="">套餐服务</a>
-                    <div class="show">
-                        <div class="show_l l">
-                            <div class="show_l_con">
-                                <div class="registration">商标注册</div>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                            </div>
-                        </div>
-                        <div class="show_r l">
-                            <div class="show_l_con">
-                                <div class="registration">商标注册</div>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                            </div>
-                        </div>
-                    </div>
                 </li>
                 <li>
                     <a href="">快捷入口</a>
-                    <div class="show">
-                        <div class="show_l l">
-                            <div class="show_l_con">
-                                <div class="registration">商标注册</div>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                            </div>
-                        </div>
-                        <div class="show_r l">
-                            <div class="show_l_con">
-                                <div class="registration">商标注册</div>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                                <span>商标查询</span>
-                            </div>
-                        </div>
-                    </div>
                 </li>
                 <li>
                     <a>400-716-8896</a>
@@ -328,7 +134,41 @@
 <script>
     export default {
         data() {
-            return {}
+            return {
+                navigators: [
+                    {
+                        title: "工商服务",
+                        l: {
+                            title: "工商变更",
+                            list: [
+                                "工商注销",
+                                "内资企业注销",
+                                "外资企业注销",
+                                "1元补差产品",
+                                "股东、股权变更",
+                                "注册资本变更",
+                                "经营地址变更（不跨区）",
+                                "公司高管变更",
+                                "法人代表变更",
+                                "经营范围变更",
+                                "公司名称变更",
+                                "分公司注册",
+                                "合伙企业注册",
+                                "有限责任公司注册",
+                                "三证合一"
+                            ]
+                        },
+                        r: {
+                            title: "工商注销",
+                            list: [
+                                "内资企业注销",
+                                "外资企业注销",
+                                "1元补差产品"
+                            ]
+                        }
+                    }
+                ]
+            }
         }
     }
 </script>

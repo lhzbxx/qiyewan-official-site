@@ -200,10 +200,10 @@ li{
     display: none;
     z-index:20;
 }
-.show_l,.show_r{
+.nav-show-left,.nav-show-right {
     width:50%;
 }
-.show_l_con{
+.nav-show-content {
     margin-left:13px;
 }
 .registration{
@@ -218,7 +218,7 @@ li{
     cursor: pointer;
     color: #0098db;
 }
-.show_l span,.show_r span{
+.nav-show-left span,.nav-show-right span{
     text-align: center;
     font-size:12px;
     width:85px;
@@ -231,7 +231,7 @@ li{
     color:#5e5e5e;
     background-color: #fdfdfd;
 }
-.show_l span:hover,.show_r span:hover{
+.nav-show-left span:hover,.nav-show-right span:hover{
     cursor: pointer;
     color: #0098db;
 }
