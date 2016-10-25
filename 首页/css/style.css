@@ -522,11 +522,11 @@ li{
 
 /*hotserve结束*/
 /*timer开始*/
-.timer{
+.timeline {
     width:100%;
     height:600px;
 }
-.timer ul li{
+.timeline ul li{
     text-align: center;
     height:50px;
     line-height:50px;
@@ -536,13 +536,13 @@ li{
     font-size:20px;
     font-family:"Microsoft YaHei";
 }
-.timer ul li a{
+.timeline ul li a{
     color: #555555;
 }
-.timer ul :last-child{
+.timeline ul :last-child{
     border-right:none;
 }
-.timer ul{
+.timeline ul{
     border:1px solid #dcdcdc;
     height:50px;
 }
@@ -564,23 +564,23 @@ li{
     color:white;
     background-color: #139cd7;
 }
-.timer_pic_l{
+.timeline-pic-left {
     width:220px;
     height:510px;
     background-color: pink;
 }
-.timer_pic_r{
+.timeline-pic-right {
     width:980px;
     height:510px;
 }
-.timer_pic_one{
+.timeline-pic-one {
     width:470px;
     height:245px;
     background-color: pink;
     margin-bottom:20px;
     margin-left:20px;
 }
-.timer_pic_two{
+.timeline-pic-two {
     width:225px;
     height:245px;
     background-color: pink;

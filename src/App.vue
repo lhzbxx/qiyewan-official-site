@@ -398,6 +398,101 @@
         font-weight: normal;
         padding-bottom: 10px;
     }
+
+    #timeline {
+        width: 100%;
+        height: 600px;
+    }
+
+    #timeline ul li {
+        text-align: center;
+        height: 50px;
+        line-height: 50px;
+        width: 25%;
+        border-right: 1px solid #dcdcdc;
+        float: left;
+        font-size: 20px;
+        position: relative;
+    }
+
+    #timeline ul li:before, #timeline ul li:after {
+        border: solid transparent;
+        content: ' ';
+        height: 0;
+        left: 100%;
+        top: 0;
+        position: absolute;
+        width: 0;
+    }
+
+    #timeline ul li:before {
+        top: -1px;
+        border-width: 25px;
+        border-left-color: rgb(220, 220, 220);
+    }
+
+    #timeline ul li:after {
+        top: 2px;
+        border-width: 22px;
+        border-left-color: white;
+    }
+
+    #timeline ul li a {
+        color: #555555;
+    }
+
+    #timeline ul :last-child {
+        border-right: none;
+    }
+
+    #timeline ul {
+        border: 1px solid #dcdcdc;
+        height: 50px;
+    }
+
+    .timeline-products span {
+        display: inline-block;
+        width: 140px;
+        height: 36px !important;
+        font-size: 14px;
+        color: #139cd7;
+        border: 1px solid #139cd7;
+        margin: 25px 25px 20px 0;
+        line-height: 36px;
+        text-align: center;
+    }
+
+    .timeline-products span:hover {
+        color: #139cd7;
+        background-color: #139cd7;
+    }
+
+    .timeline-pic {
+        padding: 10px;
+    }
+
+    .timeline-pic-left {
+        width: 20%;
+        height: 510px;
+        background-color: pink;
+    }
+
+    .timeline-pic-right {
+        width: 80%;
+        height: 510px;
+    }
+
+    .timeline-pic-one {
+        width: 50%;
+        height: 245px;
+        background-color: pink;
+    }
+
+    .timeline-pic-two {
+        width: 25%;
+        height: 245px;
+        background-color: pink;
+    }
 </style>
 
 <template>
@@ -476,6 +571,46 @@
                         </div>
                     </li>
                 </ul>
+            </div>
+        </div>
+        <div id="timeline">
+            <div class="container">
+                <div class="title">
+                    <h3>中小企业发展时间轴</h3>
+                    <div class="prompt">我们只做用户的需求，而不是用户找需求。</div>
+                </div>
+                <ul>
+                    <li>
+                        公司初创
+                    </li>
+                    <li>
+                        快速开展
+                    </li>
+                    <li>
+                        持续经营
+                    </li>
+                    <li>
+                        成功退出
+                    </li>
+                </ul>
+                <div class="timeline-products">
+                    <span>办税务</span>
+                    <span>办税务</span>
+                    <span>办税务</span>
+                    <span>办税务</span>
+                </div>
+                <div class="timeline-pics">
+                    <div class="l timeline-pic-left timeline-pic"></div>
+                    <div class="timeline-pic-right r">
+                        <div class="l timeline-pic-one timeline-pic"></div>
+                        <div class="l timeline-pic-two timeline-pic"></div>
+                        <div class="l timeline-pic-two timeline-pic"></div>
+                        <div class="l timeline-pic-two timeline-pic"></div>
+                        <div class="l timeline-pic-two timeline-pic"></div>
+                        <div class="l timeline-pic-two timeline-pic"></div>
+                        <div class="l timeline-pic-two timeline-pic"></div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="clearfix"></div>
