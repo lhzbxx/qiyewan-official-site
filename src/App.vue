@@ -296,16 +296,16 @@
         text-decoration: underline;
     }
 
-    .tool {
+    .tools {
         height: 385px;
     }
 
-    .tool ul {
+    .tools ul {
         width: 1000px;
         margin: 0 auto;
     }
 
-    .tool ul li {
+    .tools ul li {
         float: left;
         width: 193px;
         position: relative;
@@ -313,19 +313,29 @@
         cursor: pointer;
     }
 
-    .tool ul :last-child {
-        margin-right: 0px;
+    .tools ul :last-child {
+        margin-right: 0;
     }
 
-    .tool ul li:hover {
-        border-bottom: 3px solid #0098db;
+    .tools ul li:hover .tool-underline {
+        width: 100%;
+        opacity: 1;
+        transition: all 0.3s ease-in-out;
     }
 
-    .tool ul li:hover .img_fugai {
+    .tool-underline {
+        height: 0;
+        width: 0;
+        opacity: 0;
+        border-top: 3px solid #0098db;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .tools ul li:hover .tool-img-mask {
         opacity: 0.5;
     }
 
-    .img_fugai {
+    .tool-img-mask {
         position: absolute;
         top: 0;
         left: 0;
@@ -336,17 +346,17 @@
         transition: all 1s;
     }
 
-    .img_fugai img {
+    .tool-img-mask img {
         padding: 30px 63px;
     }
 
-    .tool ul li p {
+    .tools ul li p {
         color: #676767;
         font-size: 12px;
         margin: 8px 0 5px 0;
     }
 
-    .tool ul li h5 {
+    .tools ul li h5 {
         color: #2f2f2f;
         font-size: 18px;
         font-weight: normal;
@@ -415,51 +425,23 @@
             </div>
         </div>
         <div class="clearfix"></div>
-        <div class="tool">
+        <div class="tools">
             <div class="container">
                 <div class="title">
                     <h3>实用工具</h3>
                     <div class="prompt">我们只做用户的需求，而不是用户找需求</div>
                 </div>
                 <ul>
-                    <li>
-                        <div class="tool_img"><img src="./assets/img/tool1.png" alt="">
+                    <li class="tool" v-for="item in tools">
+                        <div class="tool-img">
+                            <img :src="item.cover" alt="">
                         </div>
-                        <div class="img_fugai">
+                        <div class="tool-img-mask">
                             <img src="./assets/img/sousuo.png" alt="">
                         </div>
-
-                        <p>国际知识产权局</p>
-                        <h5>商标查询</h5>
-                    </li>
-                    <li>
-                        <div class="tool_img"><img src="./assets/img/tool2.png" alt="">
-                        </div>
-                        <div class="img_fugai">
-                            <img src="./assets/img/sousuo.png" alt="">
-                        </div>
-
-                        <p>国际知识产权局</p>
-                        <h5>工商查询</h5>
-                    </li>
-                    <li>
-                        <div class="tool_img"><img src="./assets/img/tool3.png" alt="">
-                        </div>
-                        <div class="img_fugai">
-                            <img src="./assets/img/sousuo.png" alt="">
-                        </div>
-
-                        <p>国际知识产权局</p>
-                        <h5>专利查询</h5>
-                    </li>
-                    <li>
-                        <div class="tool_img"><img src="./assets/img/tool4.png" alt="">
-                        </div>
-                        <div class="img_fugai">
-                            <img src="./assets/img/sousuo.png" alt="">
-                        </div>
-                        <p>国际知识产权局</p>
-                        <h5>软件著作权查询</h5>
+                        <p>{{ item.department }}</p>
+                        <h5>{{ item.service }}</h5>
+                        <div class="tool-underline"></div>
                     </li>
                 </ul>
             </div>
@@ -537,6 +519,32 @@
                         }
                     ]
                 },
+                tools: [
+                    {
+                        department: "国家知识产权局",
+                        service: "商标查询",
+                        url: "",
+                        cover: "http://ofl0lw9er.bkt.clouddn.com/tool1.png"
+                    },
+                    {
+                        department: "国家知识产权局",
+                        service: "工商查询",
+                        url: "",
+                        cover: "http://ofl0lw9er.bkt.clouddn.com/tool2.png"
+                    },
+                    {
+                        department: "国家知识产权局",
+                        service: "专利查询",
+                        url: "",
+                        cover: "http://ofl0lw9er.bkt.clouddn.com/tool3.png"
+                    },
+                    {
+                        department: "国家知识产权局",
+                        service: "软件著作权查询",
+                        url: "",
+                        cover: "http://ofl0lw9er.bkt.clouddn.com/tool4.png"
+                    }
+                ],
                 dialogVisible: false,
                 formStacked: {
                     name: '',

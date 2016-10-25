@@ -24,8 +24,14 @@
 
     .location img {
         position: absolute;
-        top: 0;
+        top: -3px;
         left: 6px;
+    }
+
+    .location span {
+        position: relative;
+        left: 25px;
+        top: 5px;
     }
 
     .tel a {
@@ -39,9 +45,9 @@
     .tel {
         font-size: 13px;
         color: #4e4e4e;
-        position: absolute;
-        top: 8px;
-        right: 400px;
+        position: relative;
+        top: -10px;
+        right: 20px;
     }
 
     .area {
