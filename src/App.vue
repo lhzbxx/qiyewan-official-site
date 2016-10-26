@@ -2,7 +2,7 @@
     .banner {
         margin-top: 5px;
         width: 100%;
-        background-color: #26a6bf;
+        overflow: hidden;
     }
 
     .slider {
