@@ -1,4 +1,72 @@
 <style scoped>
+    .banner {
+        margin-top: 5px;
+        width: 100%;
+        background-color: #26a6bf;
+    }
+
+    .slider {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .wrap {
+        width: 70000px;
+    }
+
+    .wrap ul {
+        position: relative;
+        left: 0;
+    }
+
+    .wrap ul li {
+        float: left;
+    }
+
+    .wrap ul li img {
+        width: 100%;
+    }
+
+    .control {
+        position: absolute;
+        left: 50%;
+        bottom: 20px;
+        transform: translate(-50%, 0);
+    }
+
+    .control li {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #9a918f;
+        float: left;
+        margin-right: 5px;
+        cursor: pointer;
+    }
+
+    .control li.active, .control li:hover {
+        background-color: #00afdb;
+    }
+
+    .slider .left {
+        font-size: 30px;
+        color: #FFFFFF;
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        width: 20px
+    }
+
+    .slider .right {
+        font-size: 30px;
+        color: #FFFFFF;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        width: 20px
+    }
+
     #introduce {
         height: 127px;
         width: 100%;
@@ -129,7 +197,6 @@
         height: 573px;
         border: 1px solid #55b2da;
         box-shadow: 0 0 20px #55b2da;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
         z-index: 100;
     }
 
@@ -160,7 +227,6 @@
     .hot-product.active .content-first {
         z-index: 2;
         opacity: 0;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .content-second {
@@ -181,7 +247,6 @@
         display: block;
         z-index: 3;
         opacity: 1;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .content-info {
@@ -197,18 +262,17 @@
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
-    .content-info-detail {
-        position: absolute;
-        bottom: 17px;
-        width: 100%;
-    }
-
     .hot-product.active .content-info {
         top: -10px;
         height: 169px;
         background-color: #eef5f8;
         z-index: 3;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+    }
+
+    .content-info-detail {
+        position: absolute;
+        bottom: 17px;
+        width: 100%;
     }
 
     .classification-title {
@@ -224,7 +288,6 @@
     .hot-product.active .classification-title {
         color: #019bdf;
         font-size: 18px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .classification-summary {
@@ -235,7 +298,6 @@
 
     .hot-product.active .classification-summary {
         color: #2daee7;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .content-split-line {
@@ -252,7 +314,6 @@
     .hot-product.active .content-split-line {
         border-top: 1px solid rgb(34, 166, 224);
         width: 348px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .main-product {
@@ -305,7 +366,6 @@
     .main-btn:hover {
         background-color: rgb(34, 166, 224);
         color: white;
-        transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
     }
 
     .other-product {
@@ -440,8 +500,7 @@
     #timeline ul li.active {
         color: #139cd7;
         border-color: #139cd7;
-        transition: all 0.3s ease-in-out;
-        box-shadow: 0 0 20px #139cd7;
+        /* box-shadow: 0 0 20px #139cd7; */
     }
 
     #timeline ul li.active:after {
@@ -473,10 +532,16 @@
         transition: all 0.3s ease-in-out;
     }
 
-    .timeline-products span.active {
+    .timeline-products span:hover {
         color: #139cd7;
         border-color: #139cd7;
-        transition: all 0.3s ease-in-out;
+    }
+
+    .timeline-products span.active {
+        color: white;
+        border-color: #139cd7;
+        background-color: #139cd7;
+
     }
 
     .timeline-pic {
@@ -484,7 +549,7 @@
     }
 
     .timeline-pic:hover img {
-        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         transform: translate3d(0, -3px, 0);
     }
 
@@ -497,24 +562,24 @@
 
     .timeline-pic-left {
         width: 20%;
-        height: 510px;
+        height: 504px;
         float: left;
     }
 
     .timeline-pic-right {
         width: 80%;
-        height: 510px;
+        height: 504px;
         float: right;
     }
 
     .timeline-pic-one {
         width: 50%;
-        height: 245px;
+        height: 243px;
     }
 
     .timeline-pic-two {
         width: 25%;
-        height: 245px;
+        height: 243px;
     }
 </style>
 
@@ -522,6 +587,28 @@
     <div id="app">
         <lh-top-bar></lh-top-bar>
         <lh-header></lh-header>
+        <div class="banner">
+            <div class="slider">
+                <div class="wrap">
+                    <ul>
+                        <li><img src="./assets/img/banner_1.jpg"></li>
+                        <li><img src="./assets/img/adver_1.jpg"></li>
+                        <li><img src="./assets/img/banner_1.jpg"></li>
+                        <li><img src="./assets/img/banner_1.jpg"></li>
+                        <li><img src="./assets/img/banner_1.jpg"></li>
+                    </ul>
+                </div>
+                <ul class="control">
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <div class="left">  </div>
+                <div class="right">  </div>
+            </div>
+        </div>
         <div id="introduce">
             <div class="container">
                 <ul>
@@ -611,7 +698,7 @@
                 </ul>
                 <div class="timeline-products">
                     <span v-for="(item, index) in timelines[state].types"
-                          v-on:mouseover="stateType=index"
+                          v-on:click="stateType=index"
                           :class="{active: stateType == index}">
                         {{ item.title }}
                     </span>
@@ -971,16 +1058,88 @@
                         title: "快速开展",
                         types: [
                             {
-                                title: "办税务"
+                                title: "办税务",
+                                products: {
+                                    left: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    right: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    one: [
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        }
+                                    ]
+                                }
                             },
                             {
-                                title: "办税务"
+                                title: "办税务",
+                                products: {
+                                    left: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    right: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    one: [
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        }
+                                    ]
+                                }
                             },
                             {
-                                title: "办税务"
-                            },
-                            {
-                                title: "办税务"
+                                title: "办税务",
+                                products: {
+                                    left: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    right: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    one: [
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        }
+                                    ]
+                                }
                             }
                         ]
                     },
@@ -988,16 +1147,88 @@
                         title: "持续经营",
                         types: [
                             {
-                                title: "办税务"
+                                title: "办税务",
+                                products: {
+                                    left: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    right: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    one: [
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        }
+                                    ]
+                                }
                             },
                             {
-                                title: "办税务"
+                                title: "办税务",
+                                products: {
+                                    left: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    right: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    one: [
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        }
+                                    ]
+                                }
                             },
                             {
-                                title: "办税务"
-                            },
-                            {
-                                title: "办税务"
+                                title: "办税务",
+                                products: {
+                                    left: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    right: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    one: [
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        }
+                                    ]
+                                }
                             }
                         ]
                     },
@@ -1005,16 +1236,172 @@
                         title: "成功退出",
                         types: [
                             {
-                                title: "办税务"
+                                title: "办税务",
+                                products: {
+                                    left: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    right: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    one: [
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        }
+                                    ]
+                                }
                             },
                             {
-                                title: "办税务"
+                                title: "办税务",
+                                products: {
+                                    left: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    right: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    one: [
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        }
+                                    ]
+                                }
                             },
                             {
-                                title: "办税务"
+                                title: "办税务",
+                                products: {
+                                    left: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    right: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    one: [
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        }
+                                    ]
+                                }
                             },
                             {
-                                title: "办税务"
+                                title: "办税务",
+                                products: {
+                                    left: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    right: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    one: [
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                title: "办税务",
+                                products: {
+                                    left: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    right: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    one: [
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                title: "办税务",
+                                products: {
+                                    left: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    right: {
+                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                    },
+                                    one: [
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        },
+                                        {
+                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        }
+                                    ]
+                                }
                             }
                         ]
                     }
