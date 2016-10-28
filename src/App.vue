@@ -555,6 +555,7 @@
         height: 100%;
         position: absolute;
         right: 0;
+        transition: transform 0.2s ease-in-out;
     }
 
     .slide img {
@@ -676,9 +677,12 @@
                         <p>{{ item.summary }}</p>
                         <button>了解详情</button>
                     </div>
-                    <div class="slide-right">
-                         <!--onmousemove="console.log((event.clientX + document.body.scrollLeft - 1160 * 0.2) + ', ' + (event.clientY + document.body.scrollTop));"-->
-                         <!--v-bind:style="bannerEffect">-->
+                    <div class="slide-right"
+                         onmousemove="x = (event.clientX + document.body.scrollLeft - 360 - (window.screen.width - 1160) / 2);
+                          y = event.clientY + document.body.scrollTop - 108;
+                          console.log((x - 400) / 800 + ', ' + (y - 250) / 500);
+                          this.style.transform='rotateX(' + 10 * (x - 400) / 800 + 'deg) rotateY(' + 10 * (y - 250) / 500 + 'deg'"
+                         v-bind:style="bannerEffect">
                         <img src="./assets/logo.png">
                     </div>
                 </div>
@@ -1514,9 +1518,6 @@
                 active: 3,
                 state: 0,
                 stateType: 0,
-//                bannerEffect: {
-//                    transform: 'rotateX(3deg) rotateY(13deg)'
-//                }
             }
         },
         methods: {
