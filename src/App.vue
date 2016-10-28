@@ -1,72 +1,4 @@
 <style scoped>
-    .banner {
-        margin-top: 5px;
-        width: 100%;
-        overflow: hidden;
-    }
-
-    .slider {
-        width: 100%;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .wrap {
-        width: 70000px;
-    }
-
-    .wrap ul {
-        position: relative;
-        left: 0;
-    }
-
-    .wrap ul li {
-        float: left;
-    }
-
-    .wrap ul li img {
-        width: 100%;
-    }
-
-    .control {
-        position: absolute;
-        left: 50%;
-        bottom: 20px;
-        transform: translate(-50%, 0);
-    }
-
-    .control li {
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-        background-color: #9a918f;
-        float: left;
-        margin-right: 5px;
-        cursor: pointer;
-    }
-
-    .control li.active, .control li:hover {
-        background-color: #00afdb;
-    }
-
-    .slider .left {
-        font-size: 30px;
-        color: #FFFFFF;
-        position: absolute;
-        top: 50%;
-        left: 10px;
-        width: 20px
-    }
-
-    .slider .right {
-        font-size: 30px;
-        color: #FFFFFF;
-        position: absolute;
-        top: 50%;
-        right: 10px;
-        width: 20px
-    }
-
     #introduce {
         height: 127px;
         width: 100%;
@@ -582,33 +514,180 @@
         width: 25%;
         height: 243px;
     }
+
+    #banner {
+        margin-top: 5px;
+        width: 100%;
+        position: relative;
+        height: 500px;
+        overflow: hidden;
+    }
+
+    .slide {
+        transform: translate3d(0, 100%, 0);
+        position: absolute;;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        background: #139cd7;
+        animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+    }
+
+    .slide.active {
+        transform: translate3d(0, 0, 0);
+    }
+
+    .slide .slide-left {
+        top: 160px;
+        left: 0;
+        line-height: 50px;
+        text-align: left;
+        position: absolute;
+        color: #fff;
+    }
+
+    .slide.active .slide-left {
+        animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+    }
+
+    .slide .slide-right {
+        width: 800px;
+        height: 100%;
+        position: absolute;
+        right: 0;
+    }
+
+    .slide img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate3d(-50%, -50%, 0);
+    }
+
+    .slide.active img {
+        animation: re-banner-slide-80 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+    }
+
+    @keyframes re-banner-slide-20
+    {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, 20px, 0);
+        }
+        100% {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    @keyframes re-banner-slide-80
+    {
+        0% {
+            opacity: 0;
+            transform: translate3d(-50%, 20px, 0);
+        }
+        100% {
+            opacity: 1;
+            transform: translate3d(-50%, -50%, 0);
+        }
+    }
+
+    .slide .slide-left > .title {
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    #banner button {
+        background-color: transparent;
+        width: 120px;
+        height: 36px;
+        font-size: 16px;
+        text-align: center;
+        border: 1px solid white;
+        color: white;
+        margin-top: 30px;
+        cursor: pointer;
+        outline: none;
+        transition: all 0.3s ease-in-out;
+    }
+
+    #banner button:hover {
+        background-color: white;
+        color: #139cd7;
+    }
+
+    #banner h1 {
+        text-align: left;
+        font-size: 44px;
+        margin-bottom: 10px;
+    }
+
+    #banner p {
+        font-size: 20px;
+    }
+    
+    #banner .big-title {
+        background: rgba(0, 0, 0, 0.15);
+        padding: 8px 15px;
+    }
+
+    #banner-tab {
+        position: absolute;
+        left: 50%;
+        bottom: 5px;
+        transform: translate(-50%, 0);
+        z-index: 20;
+    }
+
+    #banner-tab li {
+        background: #a1a1a3;
+        text-align: center;
+        float: left;
+        color: #FFFFFF;
+        width: 26px;
+        height: 4px;
+        padding: 10px 3px;
+        cursor: pointer;
+        transition: all 0.8s ease-out;
+        background-clip: content-box;
+        box-sizing: content-box;
+    }
+
+    #banner-tab li.active, #banner-tab li:hover {
+        background: #fff;
+        background-clip: content-box;
+        box-sizing: content-box;
+    }
 </style>
 
 <template>
     <div id="app">
         <lh-top-bar></lh-top-bar>
         <lh-header></lh-header>
-        <div class="banner">
-            <div class="slider">
-                <div class="wrap">
-                    <ul>
-                        <li><img src="./assets/img/banner_1.jpg"></li>
-                        <li><img src="./assets/img/adver_1.jpg"></li>
-                        <li><img src="./assets/img/banner_1.jpg"></li>
-                        <li><img src="./assets/img/banner_1.jpg"></li>
-                        <li><img src="./assets/img/banner_1.jpg"></li>
-                    </ul>
+        <div id="banner">
+            <div class="slide"
+                 :class="{active: isBannerActive(index)}"
+                 v-for="(item, index) in banners">
+                <div class="container" style="position: relative; height: 100%;">
+                    <div class="slide-left">
+                        <h1>
+                            <span class="big-title">{{ item.mainTitle }}</span>
+                            {{ item.subTitle }}
+                        </h1>
+                        <p>{{ item.summary }}</p>
+                        <button>了解详情</button>
+                    </div>
+                    <div class="slide-right">
+                         <!--onmousemove="console.log((event.clientX + document.body.scrollLeft - 1160 * 0.2) + ', ' + (event.clientY + document.body.scrollTop));"-->
+                         <!--v-bind:style="bannerEffect">-->
+                        <img src="./assets/logo.png">
+                    </div>
                 </div>
-                <ul class="control">
-                    <li class="active"></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-                <div class="left">  </div>
-                <div class="right">  </div>
             </div>
+            <ul id="banner-tab">
+                <li v-for="n in banners.length"
+                    v-on:click="setBannerActive(n-1)"
+                    :class="{active: isBannerActive(n-1)}"></li>
+            </ul>
         </div>
         <div id="introduce">
             <div class="container">
@@ -1413,10 +1492,31 @@
                     region: '',
                     type: ''
                 },
+                banners: [
+                    {
+                        mainTitle: "公司注册",
+                        subTitle: "快人一步",
+                        summary: "创业园区、孵化基地专业对接"
+                    },
+                    {
+                        mainTitle: "工商服务",
+                        subTitle: "代理记账",
+                        summary: "仅需要998即可获得服务"
+                    },
+                    {
+                        mainTitle: "公司注册",
+                        subTitle: "快人一步",
+                        summary: "创业园区、孵化基地专业对接"
+                    },
+                ],
                 currentDate: "2016年10月13日",
+                banner: 0,
                 active: 3,
                 state: 0,
-                stateType: 0
+                stateType: 0,
+//                bannerEffect: {
+//                    transform: 'rotateX(3deg) rotateY(13deg)'
+//                }
             }
         },
         methods: {
@@ -1425,6 +1525,12 @@
             },
             isActive(index) {
                 return this.active == index;
+            },
+            setBannerActive(index) {
+                this.banner = index;
+            },
+            isBannerActive(index) {
+                return this.banner == index;
             }
         }
     }

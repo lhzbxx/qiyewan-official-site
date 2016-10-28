@@ -36,7 +36,7 @@ $(function(){
                 ul.css("left",(dis*len+1)*-1);
                 index=len;
             }
-            $(".control li.active").removeClass("active");
+            $(".banner-tab li.active").removeClass("active");
             $(".control li:eq("+(index-1)+")").addClass("active");
         }
 
@@ -53,8 +53,8 @@ $(function(){
                 function(){
                     auto();
                 })
-            $(".control li").click(function(){
-                var ind=$(".control li").index($(this));
+            $(".banner-tab li").click(function(){
+                var ind=$(".banner-tab li").index($(this));
                 index=ind+1;
                 goslider();
             })
@@ -63,12 +63,12 @@ $(function(){
                 goslider();
             })
 
-            $(".slider .left").click(function(){
+            $(".slide .slide-left").click(function(){
                 index--;
                 goslider();
             })
 
-            $(".slider .right").click(function(){
+            $(".slide .right").click(function(){
                 index++;
                 goslider();
             })

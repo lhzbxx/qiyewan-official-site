@@ -248,21 +248,21 @@ li{
     width: 100%;
     background-color: #26a6bf;
 }
-.slider{width: 100%;overflow: hidden;position: relative;}
+.slide {width: 100%;overflow: hidden;position: relative;}
 .wrap{width:70000px;}
 .wrap ul{position: relative;left: 0;}
 .wrap ul li{float: left;}
 .wrap ul li img{width:100%;}
-.control{position: absolute;left: 50%;bottom: 20px;
+.banner-tab {position: absolute;left: 50%;bottom: 20px;
     -webkit-transform: translate(-50%,0);
     -moz-transform: translate(-50%,0);
     -ms-transform: translate(-50%,0);
     -o-transform: translate(-50%,0);
     transform: translate(-50%,0);}
-.control li{ width: 15px; height: 15px;border-radius:50%;background-color: #9a918f; float:left; margin-right: 5px; cursor: pointer;}
-.control li.active,.control li:hover{ background-color:#00afdb;}
-.slider .left{font-size: 30px;color: #FFFFFF;position: absolute;top: 50%;left: 10px; width: 20px}
-.slider .right{font-size: 30px;color: #FFFFFF;position: absolute;top: 50%;right: 10px; width: 20px}
+.banner-tab li{ width: 15px; height: 15px;border-radius:50%;background-color: #9a918f; float:left; margin-right: 5px; cursor: pointer;}
+.banner-tab li.active,.banner-tab li:hover{ background-color:#00afdb;}
+.slide .slide-left {font-size: 30px;color: #FFFFFF;position: absolute;top: 50%;left: 10px; width: 20px}
+.slide .right{font-size: 30px;color: #FFFFFF;position: absolute;top: 50%;right: 10px; width: 20px}
 /*banner结束*/
 /*intruduce开始*/
 .intruduce{
