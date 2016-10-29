@@ -137,7 +137,7 @@
         height: 100%;
         padding: 0;
         margin: 0;
-	background-color: white;
+        background-color: white;
     }
 
     .hot-product p {
@@ -154,7 +154,7 @@
         z-index: 3;
         opacity: 1;
         top: 160px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
     }
 
     .hot-product.active .content-first {
@@ -170,7 +170,7 @@
         left: 0;
         top: 160px;
         position: absolute;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
     }
 
     .hot-product.active .content-second {
@@ -555,7 +555,16 @@
         height: 100%;
         position: absolute;
         right: 0;
-        transition: transform 0.2s ease-in-out;
+        transition: all 0.5s ease-out;
+        transform-style: preserve-3d;
+    }
+
+    .slide .slide-right .right-image {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 
     .slide img {
@@ -563,14 +572,14 @@
         left: 50%;
         top: 50%;
         transform: translate3d(-50%, -50%, 0);
+        width: 800px;
     }
 
     .slide.active img {
         animation: re-banner-slide-80 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
     }
 
-    @keyframes re-banner-slide-20
-    {
+    @keyframes re-banner-slide-20 {
         0% {
             opacity: 0;
             transform: translate3d(0, 20px, 0);
@@ -581,11 +590,10 @@
         }
     }
 
-    @keyframes re-banner-slide-80
-    {
+    @keyframes re-banner-slide-80 {
         0% {
             opacity: 0;
-            transform: translate3d(-50%, 20px, 0);
+            transform: translate3d(-50%, -40%, 0);
         }
         100% {
             opacity: 1;
@@ -625,7 +633,7 @@
     #banner p {
         font-size: 20px;
     }
-    
+
     #banner .big-title {
         background: rgba(0, 0, 0, 0.15);
         padding: 8px 15px;
@@ -678,12 +686,20 @@
                         <button>了解详情</button>
                     </div>
                     <div class="slide-right"
-                         onmousemove="x = (event.clientX + document.body.scrollLeft - 360 - (window.screen.width - 1160) / 2);
-                          y = event.clientY + document.body.scrollTop - 108;
+                         onmouseleave="this.style.transform='rotateX(0deg) rotateY(0deg)'"
+                         onmousemove="x = event.clientY + document.body.scrollTop - 108;
+                          y = (event.clientX + document.body.scrollLeft - 360 - (window.screen.width - 1160) / 2);
                           console.log((x - 400) / 800 + ', ' + (y - 250) / 500);
-                          this.style.transform='rotateX(' + 10 * (x - 400) / 800 + 'deg) rotateY(' + 10 * (y - 250) / 500 + 'deg'"
-                         v-bind:style="bannerEffect">
-                        <img src="./assets/logo.png">
+                          this.style.transform='rotateX(' + 15 * (x - 250) / 500 + 'deg) rotateY(' + 15 * (400 - y) / 800 + 'deg)'">
+                        <div class="right-image" data-zindex="50" style="transform: translateZ(50px);">
+                            <img src="https://img.alicdn.com/tps/TB1LhnINVXXXXalXpXXXXXXXXXX-1600-1120.png" alt="">
+                        </div>
+                        <div class="right-image" data-zindex="100" style="transform: translateZ(100px);">
+                            <img src="https://img.alicdn.com/tps/TB12xYANVXXXXaXXFXXXXXXXXXX-1600-1120.png" alt="">
+                        </div>
+                        <div class="right-image" data-zindex="150" style="transform: translateZ(150px);">
+                            <img src="https://img.alicdn.com/tps/TB13mjINVXXXXaZXpXXXXXXXXXX-1600-1120.png" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
