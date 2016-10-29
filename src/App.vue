@@ -129,7 +129,7 @@
         height: 573px;
         border: 1px solid #55b2da;
         box-shadow: 0 0 20px #55b2da;
-        z-index: 100;
+        z-index: 101;
     }
 
     .card {
@@ -516,19 +516,22 @@
         position: relative;
         height: 500px;
         overflow: hidden;
+        background: #139cd7;
     }
 
     .slide {
         transform: translate3d(0, 100%, 0);
-        position: absolute;;
+        position: absolute;
         height: 100%;
         width: 100%;
         overflow: hidden;
-        background: #139cd7;
+        background: transparent;
+        visibility: hidden;
         animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
     }
 
     .slide.active {
+        visibility: visible;
         transform: translate3d(0, 0, 0);
     }
 
@@ -684,7 +687,7 @@
                          onmouseleave="this.style.transform='rotateX(0deg) rotateY(0deg)'"
                          onmousemove="x = event.clientY + document.body.scrollTop - 108;
                           y = (event.clientX + document.body.scrollLeft - 360 - (window.screen.width - 1160) / 2);
-                          console.log((x - 400) / 800 + ', ' + (y - 250) / 500);
+                          console.log((x - 250) / 500+ ', ' + (400 - y) / 800);
                           this.style.transform='rotateX(' + 15 * (x - 250) / 500 + 'deg) rotateY(' + 15 * (400 - y) / 800 + 'deg)'">
                         <div class="right-image" data-zindex="50" style="transform: translateZ(50px);">
                             <img src="https://img.alicdn.com/tps/TB1LhnINVXXXXalXpXXXXXXXXXX-1600-1120.png" alt="">
