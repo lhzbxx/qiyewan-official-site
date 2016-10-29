@@ -120,7 +120,7 @@
         height: 563px;
         border: 1px solid rgb(219, 219, 219);
         position: relative;
-        z-index: 10;
+        z-index: 100;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
@@ -165,6 +165,7 @@
     .hot-product.active .content-first {
         z-index: 2;
         opacity: 0;
+        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0s;
     }
 
     .content-second {
@@ -175,12 +176,13 @@
         background-color: #fff;
         height: 410px;
         padding-top: 15px;
-        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0s;
     }
 
     .hot-product.active .content-second {
         z-index: 3;
         opacity: 1;
+        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
     }
 
     .content-info {
