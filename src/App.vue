@@ -403,6 +403,7 @@
         position: relative;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
+        margin-left: -1px;
     }
 
     #timeline ul li.active:before, #timeline ul li.active:after {
