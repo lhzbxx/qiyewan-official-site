@@ -148,12 +148,17 @@
         font-size: 16px;
     }
 
+    .hot-product-content {
+        position: absolute;
+        top: 160px;
+        height: 400px;
+        width: 100%;
+    }
+
     .content-first {
         width: 100%;
-        position: absolute;
         z-index: 3;
         opacity: 1;
-        top: 160px;
         transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
     }
 
@@ -163,21 +168,17 @@
     }
 
     .content-second {
-        width: 100%;
-        height: 400px;
         z-index: 2;
         opacity: 0;
-        left: 0;
-        top: 160px;
-        position: absolute;
+        left: 25px;
+        max-width: 343px;
+        background-color: #fff;
+        height: 410px;
+        padding-top: 15px;
         transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
     }
 
     .hot-product.active .content-second {
-        width: 100%;
-        left: 0;
-        background-color: #fff;
-        display: block;
         z-index: 3;
         opacity: 1;
     }
@@ -259,15 +260,7 @@
         color: #9a9fa3;
     }
 
-    .content-second-detail {
-        max-width: 348px;
-        margin: 0 auto;
-        background-color: #fff;
-        height: 410px;
-        padding-top: 15px;
-    }
-
-    .content-second-detail h5 {
+    .content-second h5 {
         padding-top: 15px;
         padding-bottom: 10px;
         font-size: 18px;
@@ -748,34 +741,32 @@
                                 </div>
                             </div>
                             <div class="content-split-line"></div>
-                            <div class="content-first">
+                            <div class="hot-product-content content-first">
                                 <p></p>
                                 <p v-for="item in hotProduct.first">{{ item }}</p>
                                 <p></p>
                             </div>
-                            <div class="content-second">
-                                <div class="content-second-detail">
-                                    <div class="main-product">
-                                        <h5>
-                                            {{ hotProduct.main.title }}
-                                        </h5>
-                                        <div class="main-product-summary">
-                                            {{ hotProduct.main.summary }}
-                                        </div>
-                                        <button class="main-btn">
-                                            立即购买
-                                        </button>
+                            <div class="hot-product-content content-second">
+                                <div class="main-product">
+                                    <h5>
+                                        {{ hotProduct.main.title }}
+                                    </h5>
+                                    <div class="main-product-summary">
+                                        {{ hotProduct.main.summary }}
                                     </div>
-                                    <div class="l other-product"
-                                         v-for="item in hotProduct.other">
-                                        <h6>
-                                            {{ item.title }}
-                                        </h6>
-                                        <div class="other-product-summary">
-                                            {{ item.summary }}
-                                        </div>
-                                        <a href="">立即购买</a>
+                                    <button class="main-btn">
+                                        立即购买
+                                    </button>
+                                </div>
+                                <div class="l other-product"
+                                     v-for="item in hotProduct.other">
+                                    <h6>
+                                        {{ item.title }}
+                                    </h6>
+                                    <div class="other-product-summary">
+                                        {{ item.summary }}
                                     </div>
+                                    <a href="">立即购买</a>
                                 </div>
                             </div>
                         </div>
