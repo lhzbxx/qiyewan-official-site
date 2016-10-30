@@ -389,7 +389,7 @@
 
     #timeline {
         width: 100%;
-        height: 600px;
+        height: 820px;
     }
 
     #timeline ul li {
@@ -669,18 +669,55 @@
     #voices {
         width: 100%;
         height: 300px;
-
+        margin-bottom: 20px;
+        background: #eee;
+        position: relative;
     }
 
     .voice {
-
+        width: 100%;
+        height: 300px;
     }
 
     .voice-control {
-        width: 50px;
+        width: 35px;
         height: 50px;
         background-color: lightslategray;
         position: absolute;
+        top: 50%;
+        margin-top: -25px;
+        cursor: pointer;
+        
+    }
+
+    .voice-left-img {
+        float: left;
+        width: 50%;
+        height: 100%;
+        position: relative;
+    }
+
+    .voice-left-img img {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        height: 200px;
+        margin-top: -100px;
+    }
+
+    .voice-right-img {
+        float: left;
+        width: 50%;
+        height: 100%;
+        position: relative;
+    }
+
+    .voice-right-img img {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        height: 200px;
+        margin-top: -100px;
     }
 
     #voice-control-left {
@@ -875,6 +912,30 @@
             </div>
         </div>
         <div class="clearfix"></div>
+        <div class="container" style="height: 100%;">
+            <div class="title">
+                <h3>客户声音</h3>
+                <div class="prompt">我们只做用户的需求，而不是用户找需求。</div>
+            </div>
+        </div>
+        <div id="voices">
+            <div class="voice">
+                <div class="voice-left-img">
+                    <img src="./assets/logo.png">
+                </div>
+                <div class="voice-right-img">
+                    <img src="./assets/logo.png">
+                </div>
+            </div>
+            <div class="container"
+                 style="position: absolute;
+                        height: 300px; top: 0;
+                        margin-left: -580px;
+                        left: 50%;">
+                <div id="voice-control-left" class="voice-control"></div>
+                <div id="voice-control-right" class="voice-control"></div>
+            </div>
+        </div>
         <div class="container">
             <ul id="news-tabs">
                 <li class="news-tab"
@@ -893,16 +954,6 @@
             </div>
         </div>
         <div class="clearfix"></div>
-        <div id="voices">
-            <div class="container">
-                <div class="voice"></div>
-                <div class="voice"></div>
-                <div class="voice"></div>
-                <div class="voice"></div>
-                <div id="voice-control-left" class="voice-control"></div>
-                <div id="voice-control-right" class="voice-control"></div>
-            </div>
-        </div>
         <div id="tools">
             <div class="container">
                 <div class="title">
