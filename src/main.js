@@ -27,6 +27,7 @@ import Cart from './components/Cart.vue'
 import Order from './components/Order.vue'
 import HotProducts from './components/HotProducts.vue'
 import Header from './components/Header.vue'
+import News from './components/News.vue'
 
 
 Vue.use(ElementUI)
@@ -44,6 +45,7 @@ Vue.component('lh-order', Order)
 Vue.component('lh-hot-products', HotProducts)
 Vue.component('lh-header', Header)
 Vue.component('lh-footer', Footer)
+Vue.component('lh-news', News)
 
 new Vue({
     el: '#app',

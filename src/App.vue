@@ -665,6 +665,34 @@
         background-clip: content-box;
         box-sizing: content-box;
     }
+
+    #voices {
+        width: 100%;
+        height: 300px;
+    }
+
+    .voice {
+
+    }
+
+    .voice-control {
+        width: 50px;
+        height: 50px;
+        background-color: lightslategray;
+        position: absolute;
+    }
+
+    #voice-control-left {
+        left: 0
+    }
+
+    #voice-control-right {
+        right: 0
+    }
+
+    #news {
+        float: left;
+    }
 </style>
 
 <template>
@@ -840,6 +868,33 @@
                 </ul>
             </div>
         </div>
+        <div id="voices">
+            <div class="container">
+                <div class="voice"></div>
+                <div class="voice"></div>
+                <div class="voice"></div>
+                <div class="voice"></div>
+                <div id="voice-control-left" class="voice-control"></div>
+                <div id="voice-control-right" class="voice-control"></div>
+            </div>
+        </div>
+        <div class="container">
+            <ul id="news-tabs">
+                <li class="news-tab">创业咨询</li>
+                <li class="news-tab">工商干货</li>
+                <li class="news-tab">财税干活</li>
+                <li class="news-tab">法律</li>
+                <li class="news-tab">人事</li>
+            </ul>
+            <div id="news">
+                <lh-news style="margin-right: 8px;"></lh-news>
+                <lh-news style="margin-right: 8px;"></lh-news>
+                <lh-news style="margin-right: 8px;"></lh-news>
+                <lh-news style="margin-right: 8px;"></lh-news>
+                <lh-news style="margin-right: 8px;"></lh-news>
+            </div>
+        </div>
+        <div class="clearfix"></div>
         <lh-footer></lh-footer>
     </div>
 </template>
