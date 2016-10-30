@@ -669,6 +669,7 @@
     #voices {
         width: 100%;
         height: 300px;
+
     }
 
     .voice {
@@ -692,6 +693,35 @@
 
     #news {
         float: left;
+        margin-top: 5px;
+    }
+
+    #news-tabs {
+    }
+
+    .news-tab {
+        font-size: 16px;
+        float: left;
+        display: inline-block;
+        width: 150px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        z-index: 5;
+        border: 1px solid #dcdcdc;
+        border-bottom: 2px solid #139cd7;
+        cursor: pointer;
+        background-color: #eee;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .news-tab.active {
+        z-index: 10;
+        border: 1px solid #139cd7;
+        border-top-width: 2px;
+        border-bottom: 2px solid transparent;
+        background-color: white;
+        color: #139cd7;
     }
 </style>
 
@@ -880,11 +910,12 @@
         </div>
         <div class="container">
             <ul id="news-tabs">
-                <li class="news-tab">创业咨询</li>
-                <li class="news-tab">工商干货</li>
-                <li class="news-tab">财税干活</li>
-                <li class="news-tab">法律</li>
-                <li class="news-tab">人事</li>
+                <li class="news-tab"
+                    v-for="(item, index) in news"
+                    :class="{active: isNewsTab(index)}"
+                    v-on:click="setNewsTab(index)">
+                    {{ item.title }}
+                </li>
             </ul>
             <div id="news">
                 <lh-news style="margin-right: 8px;"></lh-news>
@@ -1581,11 +1612,29 @@
                         summary: "创业园区、孵化基地专业对接"
                     },
                 ],
+                news: [
+                    {
+                        title: "创业资讯"
+                    },
+                    {
+                        title: "工商干货"
+                    },
+                    {
+                        title: "财税干货"
+                    },
+                    {
+                        title: "法律干货"
+                    },
+                    {
+                        title: "人事干货"
+                    }
+                ],
                 currentDate: "2016年10月13日",
                 banner: 0,
                 active: 3,
                 state: 0,
                 stateType: 0,
+                newsTab: 0
             }
         },
         methods: {
@@ -1600,6 +1649,12 @@
             },
             isBannerActive(index) {
                 return this.banner == index;
+            },
+            setNewsTab(index) {
+                this.newsTab = index;
+            },
+            isNewsTab(index) {
+                return this.newsTab == index;
             }
         }
     }
