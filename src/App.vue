@@ -875,6 +875,34 @@
             </div>
         </div>
         <div class="clearfix"></div>
+        <div class="container">
+            <ul id="news-tabs">
+                <li class="news-tab"
+                    v-for="(item, index) in news"
+                    :class="{active: isNewsTab(index)}"
+                    v-on:click="setNewsTab(index)">
+                    {{ item.title }}
+                </li>
+            </ul>
+            <div id="news">
+                <lh-news style="margin-right: 8px;"></lh-news>
+                <lh-news style="margin-right: 8px;"></lh-news>
+                <lh-news style="margin-right: 8px;"></lh-news>
+                <lh-news style="margin-right: 8px;"></lh-news>
+                <lh-news style="margin-right: 8px;"></lh-news>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div id="voices">
+            <div class="container">
+                <div class="voice"></div>
+                <div class="voice"></div>
+                <div class="voice"></div>
+                <div class="voice"></div>
+                <div id="voice-control-left" class="voice-control"></div>
+                <div id="voice-control-right" class="voice-control"></div>
+            </div>
+        </div>
         <div id="tools">
             <div class="container">
                 <div class="title">
@@ -898,34 +926,6 @@
                 </ul>
             </div>
         </div>
-        <div id="voices">
-            <div class="container">
-                <div class="voice"></div>
-                <div class="voice"></div>
-                <div class="voice"></div>
-                <div class="voice"></div>
-                <div id="voice-control-left" class="voice-control"></div>
-                <div id="voice-control-right" class="voice-control"></div>
-            </div>
-        </div>
-        <div class="container">
-            <ul id="news-tabs">
-                <li class="news-tab"
-                    v-for="(item, index) in news"
-                    :class="{active: isNewsTab(index)}"
-                    v-on:click="setNewsTab(index)">
-                    {{ item.title }}
-                </li>
-            </ul>
-            <div id="news">
-                <lh-news style="margin-right: 8px;"></lh-news>
-                <lh-news style="margin-right: 8px;"></lh-news>
-                <lh-news style="margin-right: 8px;"></lh-news>
-                <lh-news style="margin-right: 8px;"></lh-news>
-                <lh-news style="margin-right: 8px;"></lh-news>
-            </div>
-        </div>
-        <div class="clearfix"></div>
         <lh-footer></lh-footer>
     </div>
 </template>
