@@ -6,6 +6,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 
 import App from './App.vue'
+import Home from './pages/Home.vue'
 import Review from './pages/Review.vue'
 import ProductReview from './pages/ProductDetail.vue'
 import ProductList from './pages/ProductList.vue'
@@ -47,7 +48,26 @@ Vue.component('lh-header', Header)
 Vue.component('lh-footer', Footer)
 Vue.component('lh-news', News)
 
+const routes = [
+    { path: '/', component: Home },
+    { path: '/review', component: Review },
+    { path: '/product/review', component: ProductReview },
+    { path: '/product/list', component: ProductList },
+    { path: '/product/review', component: ProductReview },
+    { path: '/product/detail', component: ProductDetail },
+    { path: '/order', component: OrderList },
+    { path: '/cart', component: MyCart },
+    { path: '/pay', component: Pay },
+    { path: '/account', component: AccountProfile },
+    { path: '/person', component: PersonalCenter },
+]
+
+const router = new VueRouter({
+    routes
+})
+
 new Vue({
+    router,
     el: '#app',
     render: h => h(App)
-})
+}).$mount(App)

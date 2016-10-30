@@ -18,7 +18,7 @@
         border-bottom: 2px solid white;
     }
 
-    #nav ul li:hover a {
+    #nav ul li:hover > a {
         border-bottom: 2px solid #0098db;
     }
 
@@ -83,7 +83,7 @@
         transition: color 0.3s ease-in-out;
     }
 
-    #nav ul li a {
+    #nav ul li > a {
         color: #282828;
         display: block;
         line-height: 68px;
@@ -94,9 +94,9 @@
     <div id="nav">
         <div class="container">
             <div class="logo l">
-                <a href="#">
+                <router-link to="/">
                     <img src="../assets/img/logo.png" alt="">
-                </a>
+                </router-link>
             </div>
             <ul>
                 <li v-for="item in navigators">
@@ -104,8 +104,16 @@
                     <div class="show">
                         <div class="nav-show-left l">
                             <div class="nav-show-content">
-                                <div class="registration">{{ item.l.title }}</div>
-                                <span v-for="i in item.l.list">{{ i }}</span>
+                                <router-link to="/product/list">
+                                    <div class="registration">
+                                        {{ item.l.title }}
+                                    </div>
+                                </router-link>
+                                <router-link to="/product/detail">
+                                    <span v-for="i in item.l.list">
+                                        {{ i }}
+                                    </span>
+                                </router-link>
                             </div>
                         </div>
                         <div class="nav-show-right l">
