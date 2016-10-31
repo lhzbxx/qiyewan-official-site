@@ -985,11 +985,13 @@
                 </li>
             </ul>
             <div id="news">
-                <lh-news style="margin-right: 8px;"></lh-news>
-                <lh-news style="margin-right: 8px;"></lh-news>
-                <lh-news style="margin-right: 8px;"></lh-news>
-                <lh-news style="margin-right: 8px;"></lh-news>
-                <lh-news style="margin-right: 8px;"></lh-news>
+                <lh-news style="margin-right: 8px;"
+                         v-for="item in news[newsTab].list"
+                         :title="item.title"
+                         :summary="item.summary"
+                         :tags="item.tags"
+                         :date="item.date"
+                         :views="item.views"></lh-news>
             </div>
         </div>
         <div class="clearfix"></div>
@@ -1512,19 +1514,223 @@
                 ],
                 news: [
                     {
-                        title: "创业资讯"
+                        title: "创业资讯",
+                        list: [
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事",
+                                    "法律"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            },
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事",
+                                    "法律"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            },
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事",
+                                    "法律"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            },
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事",
+                                    "法律"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            },
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事",
+                                    "法律"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            }
+                        ]
                     },
                     {
-                        title: "工商干货"
+                        title: "创业资讯",
+                        list: [
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事",
+                                    "法律"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            },
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事",
+                                    "法律"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            },
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事",
+                                    "法律"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            },
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            },
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事",
+                                    "法律"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            }
+                        ]
                     },
                     {
-                        title: "财税干货"
+                        title: "创业资讯",
+                        list: [
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事",
+                                    "法律"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            },
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事",
+                                    "法律"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            },
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事",
+                                    "法律"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            },
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事",
+                                    "法律"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            },
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事",
+                                    "法律"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            }
+                        ]
                     },
                     {
-                        title: "法律干货"
-                    },
-                    {
-                        title: "人事干货"
+                        title: "创业资讯",
+                        list: [
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事",
+                                    "法律"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            },
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事",
+                                    "法律"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            },
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事",
+                                    "法律"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            },
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事",
+                                    "法律"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            },
+                            {
+                                title: "创业资讯",
+                                summary: "123",
+                                tags: [
+                                    "人事",
+                                    "法律"
+                                ],
+                                date: "2016.1.10",
+                                views: 102
+                            }
+                        ]
                     }
                 ],
                 currentDate: "2016年10月13日",
