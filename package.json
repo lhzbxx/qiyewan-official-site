@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "deploy": "cross-env NODE_ENV=production webpack --progress --hide-modules && scp -r dist/ root@115.28.71.169:/home/www/qiyewan"
   },
   "dependencies": {
     "element-ui": "^1.0.0-rc.4",

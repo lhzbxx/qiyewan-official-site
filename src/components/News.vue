@@ -53,17 +53,15 @@
     <div id="news">
         <img src="../assets/logo.png" alt="">
         <div id="detail">
-            <h3>总理开辟上海自由港</h3>
-            <p>办理员工用退工、社保、公积金增加减少以及缴费基数变更（服务费：3人及以下98.8元/月）。办理员工用退工、社保、公积金增加减少以及缴费基数变更（服务费：3人及以下98.8元/月）。办理员工用退工、社保、公积金增加减少以及缴费基数变更（服务费：3人及以下98.8元/月）。</p>
-
+            <h3>{{ title }}</h3>
+            <p>{{ summary }}</p>
             <ul id="tags">
-                <li class="tag">法律</li>
-                <li class="tag">人事</li>
+                <li class="tag" v-for="item in tags">{{ item }}</li>
             </ul>
             <div class="clearfix"></div>
             <div style="width: 100%;">
-                <span id="time">2016.10.1</span>
-                <span id="views">106</span>
+                <span id="time">{{ date }}</span>
+                <span id="views">{{ views }}</span>
             </div>
         </div>
     </div>
@@ -74,6 +72,15 @@
         data() {
             return {
             }
+        },
+        props: {
+            title: String,
+            summary: String,
+            tags: {
+                type: Array
+            },
+            date: String,
+            views: Number
         }
     }
 </script>
