@@ -16,6 +16,7 @@ import MyCart from './pages/MyCart.vue'
 import Pay from './pages/Pay.vue'
 import AccountProfile from './pages/AccountProfile.vue'
 import PersonalCenter from './pages/PersonalCenter.vue'
+import Article from './pages/Article.vue'
 
 import TopBar from './components/TopBar.vue'
 import Footer from './components/Footer.vue'
@@ -60,6 +61,7 @@ const routes = [
     { path: '/pay', component: Pay },
     { path: '/account', component: AccountProfile },
     { path: '/person', component: PersonalCenter },
+    { path: '/article', component: Article}
 ]
 
 const router = new VueRouter({

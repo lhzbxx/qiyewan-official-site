@@ -1,3 +1,9 @@
+<style>
+    .el-table .cell{
+        font-weight:normal;
+    }
+</style>
+
 <template>
     <div>
         <el-table
