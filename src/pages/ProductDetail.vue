@@ -106,10 +106,22 @@
         <el-row>
             <el-col :span="6">
                 <p style="font-size:14px;">您可能需要：</p>
-                <lh-product></lh-product>
-                <lh-product></lh-product>
-                <lh-product></lh-product>
-                <lh-product></lh-product>
+                <lh-product :title="123"
+                            :summary="123"
+                            img="http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                            :price=123></lh-product>
+                <lh-product :title="123"
+                            :summary="123"
+                            img="http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                            :price=123></lh-product>
+                <lh-product :title="123"
+                            :summary="123"
+                            img="http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                            :price=123></lh-product>
+                <lh-product :title="123"
+                            :summary="123"
+                            img="http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                            :price=123></lh-product>
             </el-col>
             <el-col :span="18">
                 <el-tabs type="border-card"
