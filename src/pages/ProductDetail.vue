@@ -4,30 +4,30 @@
             <el-breadcrumb-item>首页</el-breadcrumb-item>
             <el-breadcrumb-item>工商查询</el-breadcrumb-item>
         </el-breadcrumb>
-        <el-row>
-            <el-col :span="10">
+        <el-row style="margin-top:20px">
+            <el-col :span="11" style="margin-right:30px">
                 <img src="../assets/logo.png"
                      style="width: 100%;">
             </el-col>
-            <el-col :span="14">
-                <h3>代办税务</h3>
-                <p style="font-size: 13px;
-                          color: red;">
+            <el-col :span="10">
+                <h3 style="margin:10px 0;font-size:20px;color:#383838">代办税务</h3>
+                <p style="font-size: 12px;
+                          color: #dd2726;line-height:1.8em">
                     温馨提示：请选择服务区域、服务时长、购买数目；如有问题，请拨打售后服务热线：400-716-8896
                 </p>
                 <div style="background-color: #eee;
                             font-size: 14px;
-                            margin: 10px 0 10px 10px;
+                            margin: 10px 0;
                             padding: 20px;">
                     <p style="font-size: 13px;
                               color: #aaa;
                               ">
-                        市场价格：&yen;{{ product.marketPrice }}
+                        市场价格：&nbsp;&yen; {{ product.marketPrice }}
                     </p>
-                    <p style="margin: 10px 0;">价格：
+                    <p style="margin: 10px 0;">价 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：
                         <span style="font-size: 20px;
                                      color: red;">
-                            &yen;{{ product.price }}
+                            &yen; {{ product.price }}
                         </span></p>
                     <p style="">用户评分：
                         <el-rate
@@ -39,10 +39,10 @@
                                 text-template="{value}"
                                 style="display: inline;">
                         </el-rate>
-                        <span>（{{ product.reviewNum }}位用户参与评分）</span>
+                        <span>（<span style="color:#f57c43">{{ product.reviewNum }}</span> 位用户参与评分）</span>
                     </p>
                 </div>
-                <el-form :model="form" label-width="100px">
+                <el-form :model="form" label-width="75px" style="text-align:left">
                     <el-form-item label="服务区域">
                         <el-row>
                             <el-col :span="8">
@@ -68,14 +68,14 @@
                             </el-col>
                         </el-row>
                     </el-form-item>
-                    <el-form-item label="购买时长">
+                    <el-form-item label="购买时长" style="margin-bottom:8px">
                         <el-radio-group v-model="form.period">
                             <el-radio-button label="一季度"></el-radio-button>
                             <el-radio-button label="半年"></el-radio-button>
                             <el-radio-button label="一年"></el-radio-button>
                         </el-radio-group>
                     </el-form-item>
-                    <el-form-item label="活动形式">
+                    <el-form-item label="活动形式" style="margin-bottom:8px">
                         <el-input-number @change="handleAmountChange"
                                          :min="1"
                                          size="small"
@@ -86,18 +86,19 @@
                 <el-button type="primary"
                            size="large"
                            style="width: 120px;
-                                  margin-left: 30px;">
+                                 font-family:'Microsoft yahei';
+                                  margin-left: 10px;">
                     立即购买
                 </el-button>
                 <el-button size="large"
                            style="width: 120px;
-                                  margin-left: 10px;">
+                                  margin-left: 10px;
+                                  font-family:'Microsoft yahei';">
                     加入购物车
                 </el-button>
                 <p style="font-size: 13px;
                           color: #aaa;
-                          margin-left: 30px;
-                          margin-top: 10px;">
+                          margin: 10px 0 30px 30px;">
                     服务承诺：一站超值 快速响应 专业服务 全程无忧
                 </p>
             </el-col>
@@ -153,13 +154,14 @@
                     <div v-for="item in qa" style="margin-bottom: 10px;">
                         <p style="color: orange;
                                   font-size: 16px;
-                                  margin: 5px 0;
+                                  margin: 10px 0;
                                   white-space: normal">
                             {{ item.q }}
                         </p>
                         <div style="color: #333;
-                                  font-size: 13px;
-                                  white-space: normal;">
+                                  font-size: 14px;
+                                  white-space: normal;
+                                  line-height: 1.5em;">
                             {{ item.a }}
                         </div>
                     </div>
