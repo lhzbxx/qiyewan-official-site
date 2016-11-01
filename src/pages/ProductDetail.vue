@@ -105,7 +105,7 @@
         </el-row>
         <el-row>
             <el-col :span="6">
-                <p>您可能需要：</p>
+                <p style="font-size:14px;">您可能需要：</p>
                 <lh-product></lh-product>
                 <lh-product></lh-product>
                 <lh-product></lh-product>

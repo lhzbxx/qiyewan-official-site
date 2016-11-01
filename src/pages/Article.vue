@@ -109,8 +109,15 @@
     color:#9f9f9f;
     font-size:14px;
 }
-
-
+.share span{
+    width:20px;
+    height:20px;
+    display: inline-block;
+}
+.qq{
+    background: url("../assets/img/share.png") no-repeat;
+    background-position: 0 0;
+}
 </style>
 
 <template>
@@ -151,10 +158,10 @@
                         是母亲的学历？本文通过机器挖掘算法和中学真实的学生数据为您揭秘影响中学生学业的关键因素有哪些。
                     </div>
                     <div class="share">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <span class="qq"></span>
+                        <span class="qzone"></span>
+                        <span class="wechat"></span>
+                        <span class="weibo"></span>
                     </div>
                     <div class="art_before">
                         <span class="l">上一篇：</span>
