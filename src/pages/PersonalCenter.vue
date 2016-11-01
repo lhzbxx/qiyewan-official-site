@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container">
-            <el-row>
+            <el-row class="clearfix">
                 <el-col :span="4">
                     <el-menu mode="vertical"
                              default-active="1"

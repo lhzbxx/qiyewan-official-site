@@ -95,6 +95,7 @@
 
     .wechat:hover {
         background-image: url('../assets/img/foo_2_active.png');
+        cursor: pointer;
     }
 
     .wechat:hover + .wechat-qrcode {

@@ -5,7 +5,7 @@
             <el-breadcrumb-item>购物车</el-breadcrumb-item>
         </el-breadcrumb>
         <br>
-        <lh-cart></lh-cart>
+        <lh-cart style="min-height: 305px;"></lh-cart>
     </div>
 </template>
 

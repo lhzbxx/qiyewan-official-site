@@ -1,4 +1,4 @@
-<style scoped>
+<style scoped xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
     #introduce {
         height: 127px;
         width: 100%;
@@ -760,6 +760,44 @@
         background-color: white;
         color: #139cd7;
     }
+    .promise{
+    height:410px;
+    background-color: #f6f6f6;
+}
+.promise ul{
+    width:1000px;
+    margin:30px auto;
+}
+.promise ul li{
+    width:236px;
+    float: left;
+    border-right:1px solid rgb(224,224,224);
+    margin-left:17px;
+}
+.promise ul :first-child{
+    margin-left:0px;
+}
+.promise ul :last-child{
+    border-right:none;
+}
+.pro_r {
+    margin-left:10px;
+}
+.pro_r h5{
+    font-weight:normal;
+    font-size:17px;
+    margin-top:12px;
+    letter-spacing:3px;
+}
+.pro_r p{
+    font-size:12px;
+    margin-top:8px;
+    letter-spacing:1px;
+    color: rgb(103,102,101);
+}
+.pro_img img{
+    width:100%;
+}
 </style>
 
 <template>
@@ -820,7 +858,7 @@
             <div class="container">
                 <div class="title">
                     <h3>大热门服务</h3>
-                    <div class="prompt">我们只做用户的需求，而不是用户找需求。</div>
+                    <div class="prompt">聚焦企业服务需求，一站式全方位服务</div>
                 </div>
                 <ul>
                     <li class="hot-product"
@@ -878,8 +916,8 @@
         <div id="timeline">
             <div class="container">
                 <div class="title">
-                    <h3>中小企业发展时间轴</h3>
-                    <div class="prompt">我们只做用户的需求，而不是用户找需求。</div>
+                    <h3>企业树发展史</h3>
+                    <div class="prompt">不同阶段,企业树需要不同的浇灌</div>
                 </div>
                 <ul>
                     <li v-for="(item, index) in timelines"
@@ -915,7 +953,7 @@
         <div class="container" style="height: 100%;">
             <div class="title">
                 <h3>客户声音</h3>
-                <div class="prompt">我们只做用户的需求，而不是用户找需求。</div>
+                <div class="prompt">您的声音，是我们前进的动力</div>
             </div>
         </div>
         <div id="voices">
@@ -961,7 +999,7 @@
                 <div class="title">
                     <h3>实用工具</h3>
                     <div class="prompt">
-                        我们只做用户的需求，而不是用户找需求。
+                        工商、商标等查询，为您创业开启便捷之路
                     </div>
                 </div>
                 <ul>
@@ -979,9 +1017,41 @@
                 </ul>
             </div>
         </div>
+        <div class="promise">
+            <div class="pro_img"><img src="../assets/img/intru.jpg"></div>
+            <ul>
+                <li>
+                    <div class="pro_l l"><img src="../assets/img/pro_1.png"></div>
+                    <div class="l pro_r">
+                        <h5>资质认证</h5>
+                        <p>服务商100%实名审核认证</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="pro_l l"><img src="../assets/img/pro_2.png"></div>
+                    <div class="l pro_r">
+                        <h5>支付安全</h5>
+                        <p>明码标价支付及信息安全</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="pro_l l"><img src="../assets/img/pro_3.png"></div>
+                    <div class="l pro_r">
+                        <h5>高效优质</h5>
+                        <p>太平洋保险提供担保赔付</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="pro_l l"><img src="../assets/img/pro_1.png"></div>
+                    <div class="l pro_r">
+                        <h5>全程无忧</h5>
+                        <p>服务出问题客服经理全程跟进</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
-
 <script>
     export default {
         data () {
@@ -989,183 +1059,184 @@
                 introduces: [
                     {
                         "title": "注册财税一条龙",
-                        "summary": "你身边的会计大神",
+                        "summary": "助您专注核心业务",
                         "image": "introduce_img1"
                     },
                     {
                         "title": "发财宝",
-                        "summary": "你身边的会计大神",
+                        "summary": "法律、财务保驾护航",
                         "image": "introduce_img2"
                     },
                     {
                         "title": "商标宝",
-                        "summary": "你身边的会计大神",
+                        "summary": "助您提升企业形象",
                         "image": "introduce_img3"
                     },
                     {
                         "title": "人事宝",
-                        "summary": "你身边的会计大神",
+                        "summary": "社保全程无忧",
                         "image": "introduce_img4"
                     }
                 ],
                 hotProducts: [{
-                    title: "IT&设计",
-                    summary: "专业、专注、专心",
+                    title: "工商服务",
+                    summary: "工商，就这么简单…",
                     first: [
-                        "个人社保",
-                        "人力资源管理",
-                        "个人社保",
-                        "人力资源管理",
-                        "个人社保",
-                        "人力资源管理",
+                        "公司注册",
+                        "1元注册+零申报记账",
+                        "公司名称变更",
+                        "经营范围变更",
+                        "法人代表变更",
+                        "三证合一"
+
                     ],
                     main: {
-                        title: "个人社保",
-                        summary: "办理员工用退工，社保、公积金增加减少以及缴费基数变更（服务费：3人及以下98.8元/月）",
+                        title: "公司注册",
+                        summary: "有限责任公司、分公司、合伙企业注册，三/五证合一营业执照全程无忧直通车",
                     },
                     other: [
                         {
-                            title: "人力资源管理",
-                            summary: "专业、专注、专心"
+                            title: "1元注册+零申报记账",
+                            summary: "1年代账送1元公司注册"
                         },
                         {
-                            title: "人力资源管理",
-                            summary: "专业、专注、专心"
+                            title: "公司名称变更",
+                            summary: "工商变更，章证照统一变更"
                         },
                         {
-                            title: "人力资源管理",
-                            summary: "专业、专注、专心"
+                            title: "经营范围变更",
+                            summary: "工商变更，不包括税务变更"
                         },
                         {
-                            title: "人力资源管理",
-                            summary: "专业、专注、专心"
+                            title: "法人代表变更",
+                            summary: "工商变更，证照变更"
                         }
                     ]
                 },
                     {
-                        title: "IT&设计",
-                        summary: "专业、专注、专心",
+                        title: "财税服务",
+                        summary: "财务清晰，纳税放心",
                         first: [
-                            "个人社保",
-                            "人力资源管理",
-                            "个人社保",
-                            "人力资源管理",
-                            "个人社保",
+                            "零申报代理记账",
+                            "小规模纳税人代理记账",
+                            "一般纳税人代理记账",
+                            "税务报道，税种认证",
+                            "一般纳税人认定",
                             "人力资源管理",
                         ],
                         main: {
-                            title: "个人社保",
-                            summary: "办理员工用退工，社保、公积金增加减少以及缴费基数变更（服务费：3人及以下98.8元/月）",
+                            title: "零申报代理记账",
+                            summary: "专业会计提供税务、财务咨询，为您做账、报税。零申报(无经济业务发生，申报数据为零)",
                         },
                         other: [
                             {
-                                title: "人力资源管理",
-                                summary: "专业、专注、专心"
+                                title: "小规模纳税人代理记账",
+                                summary: "免费财税咨询，做账、报税"
                             },
                             {
-                                title: "人力资源管理",
-                                summary: "专业、专注、专心"
+                                title: "一般纳税人代理记账",
+                                summary: "免费财税咨询，做账、报税"
                             },
                             {
-                                title: "人力资源管理",
-                                summary: "专业、专注、专心"
+                                title: "税务报道，税种认证",
+                                summary: "报税、核税，购买CA证书等"
                             },
                             {
-                                title: "人力资源管理",
-                                summary: "专业、专注、专心"
+                                title: "一般纳税人认定",
+                                summary: "报税、核税，购买CA证书等"
                             }
                         ]
                     },
                     {
-                        title: "IT&设计",
-                        summary: "专业、专注、专心",
+                        title: "法律服务",
+                        summary: "您的私人法律顾问",
                         first: [
-                            "个人社保",
-                            "人力资源管理",
-                            "个人社保",
-                            "人力资源管理",
-                            "个人社保",
-                            "人力资源管理",
+                            "商标注册",
+                            "合同撰写与审查（定制）",
+                            "法律咨询",
+                            "股东，合伙协议",
+                            "实用新型专利申请",
+                            "公司章程"
                         ],
                         main: {
-                            title: "个人社保",
-                            summary: "办理员工用退工，社保、公积金增加减少以及缴费基数变更（服务费：3人及以下98.8元/月）",
+                            title: "商标注册",
+                            summary: "专业律师查询意向商标预，提交商标申请建议书，专人全程办理。",
                         },
                         other: [
                             {
-                                title: "人力资源管理",
-                                summary: "专业、专注、专心"
+                                title: "合同撰写与审查（定制）",
+                                summary: "专业律师帮您撰写与审查合同"
                             },
                             {
-                                title: "人力资源管理",
-                                summary: "专业、专注、专心"
+                                title: "法律咨询",
+                                summary: "专业律师，一对一咨询"
                             },
                             {
-                                title: "人力资源管理",
-                                summary: "专业、专注、专心"
+                                title: "股东，合伙协议",
+                                summary: "专业律师撰写股东合伙协议"
                             },
                             {
-                                title: "人力资源管理",
-                                summary: "专业、专注、专心"
+                                title: "实用新型专利申请",
+                                summary: "专业律师制定知识产权战略"
                             }
                         ]
                     },
                     {
-                        title: "IT&设计",
-                        summary: "专业、专注、专心",
+                        title: "人事服务",
+                        summary: "创业不忘养老",
                         first: [
-                            "个人社保",
-                            "人力资源管理",
-                            "个人社保",
-                            "人力资源管理",
-                            "个人社保",
-                            "人力资源管理",
+                            "委托代缴社保公积金服务",
+                            "企业社保账户开户",
+                            "企业公积金账户开户",
+                            "个人社保开户",
+                            "个人社保公积金代缴",
+                            "人力资源基础文档"
                         ],
                         main: {
-                            title: "个人社保",
-                            summary: "办理员工用退工，社保、公积金增加减少以及缴费基数变更（服务费：3人及以下98.8元/月）",
+                            title: "委托代缴社保公积金服务",
+                            summary: "办理员工用退工，社保、公积金增加减少以及缴费基数变更(服务费：3人及以下98.8元/月;从第四人开始，每增加一人，服务费多增加18.8元/月)",
                         },
                         other: [
                             {
-                                title: "人力资源管理",
-                                summary: "专业、专注、专心"
+                                title: "企业社保账户开户",
+                                summary: "办理企业社保开户许可"
                             },
                             {
-                                title: "人力资源管理",
-                                summary: "专业、专注、专心"
+                                title: "企业公积金账户开户",
+                                summary: "办理企业公积金开户许可"
                             },
                             {
-                                title: "人力资源管理",
-                                summary: "专业、专注、专心"
+                                title: "个人社保开户",
+                                summary: "办理个人社保开户许可"
                             },
                             {
-                                title: "人力资源管理",
-                                summary: "专业、专注、专心"
+                                title: "个人社保开户",
+                                summary: "社保交纳、基数变更"
                             }
                         ]
                     }
                 ],
                 tools: [
                     {
-                        department: "国家知识产权局",
+                        department: "中国商标网【商标局】",
                         service: "商标查询",
                         url: "",
                         cover: "http://ofl0lw9er.bkt.clouddn.com/tool1.png"
                     },
                     {
-                        department: "国家知识产权局",
+                        department: "全国企业信用信息公示系统",
                         service: "工商查询",
                         url: "",
                         cover: "http://ofl0lw9er.bkt.clouddn.com/tool2.png"
                     },
                     {
-                        department: "国家知识产权局",
+                        department: "国际知识产权局",
                         service: "专利查询",
                         url: "",
                         cover: "http://ofl0lw9er.bkt.clouddn.com/tool3.png"
                     },
                     {
-                        department: "国家知识产权局",
+                        department: "中国版权保护中心",
                         service: "软件著作权查询",
                         url: "",
                         cover: "http://ofl0lw9er.bkt.clouddn.com/tool4.png"
@@ -1173,10 +1244,10 @@
                 ],
                 timelines: [
                     {
-                        title: "公司初创",
+                        title: "种子萌芽",
                         types: [
                             {
-                                title: "办税务",
+                                title: "创立公司",
                                 products: {
                                     left: {
                                         url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
@@ -1204,7 +1275,7 @@
                                 }
                             },
                             {
-                                title: "办税务",
+                                title: "财税服务",
                                 products: {
                                     left: {
                                         url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
@@ -1232,35 +1303,7 @@
                                 }
                             },
                             {
-                                title: "办税务",
-                                products: {
-                                    left: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                    },
-                                    right: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                    },
-                                    one: [
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                title: "办税务",
+                                title: "法律服务",
                                 products: {
                                     left: {
                                         url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
@@ -1290,10 +1333,10 @@
                         ]
                     },
                     {
-                        title: "快速开展",
+                        title: "茁壮成长",
                         types: [
                             {
-                                title: "办税务",
+                                title: "工商服务",
                                 products: {
                                     left: {
                                         url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
@@ -1321,35 +1364,7 @@
                                 }
                             },
                             {
-                                title: "办税务",
-                                products: {
-                                    left: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                    },
-                                    right: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                    },
-                                    one: [
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                title: "办税务",
+                                title: "财税法+",
                                 products: {
                                     left: {
                                         url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
@@ -1379,10 +1394,10 @@
                         ]
                     },
                     {
-                        title: "持续经营",
+                        title: "枝繁叶茂",
                         types: [
                             {
-                                title: "办税务",
+                                title: "法律服务",
                                 products: {
                                     left: {
                                         url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
@@ -1410,35 +1425,7 @@
                                 }
                             },
                             {
-                                title: "办税务",
-                                products: {
-                                    left: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                    },
-                                    right: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                    },
-                                    one: [
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                title: "办税务",
+                                title: "增值服务",
                                 products: {
                                     left: {
                                         url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
@@ -1468,150 +1455,10 @@
                         ]
                     },
                     {
-                        title: "成功退出",
+                        title: "落叶归根",
                         types: [
                             {
-                                title: "办税务",
-                                products: {
-                                    left: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                    },
-                                    right: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                    },
-                                    one: [
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                title: "办税务",
-                                products: {
-                                    left: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                    },
-                                    right: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                    },
-                                    one: [
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                title: "办税务",
-                                products: {
-                                    left: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                    },
-                                    right: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                    },
-                                    one: [
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                title: "办税务",
-                                products: {
-                                    left: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                    },
-                                    right: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                    },
-                                    one: [
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                title: "办税务",
-                                products: {
-                                    left: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                    },
-                                    right: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                    },
-                                    one: [
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                title: "办税务",
+                                title: "注销公司",
                                 products: {
                                     left: {
                                         url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
