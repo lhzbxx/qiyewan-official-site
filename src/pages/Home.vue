@@ -1,4 +1,4 @@
-<style scoped>
+<style scoped xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
     #introduce {
         height: 127px;
         width: 100%;
