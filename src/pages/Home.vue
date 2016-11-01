@@ -1031,7 +1031,7 @@
                         },
                         {
                             title: "人力资源管理",
-                            summary: "专业、专注、专心"
+                            summary: "专业、专注、专心dfghfghdfh"
                         },
                         {
                             title: "人力资源管理",
