@@ -17,6 +17,9 @@ import Pay from './pages/Pay.vue'
 import AccountProfile from './pages/AccountProfile.vue'
 import PersonalCenter from './pages/PersonalCenter.vue'
 import Article from './pages/Article.vue'
+import NewsList from './pages/NewsList.vue'
+import AboutUs from './pages/AboutUs.vue'
+import Recruitment from './pages/Recruitment.vue'
 
 import TopBar from './components/TopBar.vue'
 import Footer from './components/Footer.vue'
@@ -30,6 +33,7 @@ import Order from './components/Order.vue'
 import HotProducts from './components/HotProducts.vue'
 import Header from './components/Header.vue'
 import News from './components/News.vue'
+
 
 
 Vue.use(ElementUI)
@@ -61,7 +65,11 @@ const routes = [
     { path: '/pay', component: Pay },
     { path: '/account', component: AccountProfile },
     { path: '/person', component: PersonalCenter },
-    { path: '/article', component: Article}
+    { path: '/article', component: Article},
+    { path: '/news', component: NewsList},
+    { path: '/aboutus', component: AboutUs},
+    { path: '/recruitment', component: Recruitment}
+
 ]
 
 const router = new VueRouter({

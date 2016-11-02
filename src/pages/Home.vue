@@ -363,8 +363,11 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 193px;
-        height: 115px;
+        width: 188px;
+        height: 113px;
+        -webkit-border-radius:10px;
+        -moz-border-radius:10px;
+        border-radius:10px;
         background-color: #0098db;
         opacity: 0;
         transition: all 1s;
@@ -491,7 +494,7 @@
 
     .timeline-pic-left {
         width: 20%;
-        height: 504px;
+        height: 487px;
         float: left;
     }
 
@@ -512,7 +515,6 @@
     }
 
     #banner {
-        margin-top: 5px;
         width: 100%;
         position: relative;
         height: 500px;
@@ -870,7 +872,7 @@
                             <div class="content-info">
                                 <div class="content-info-detail">
                                     <div class="classification-icon">
-                                        <img src="../assets/img/ser_4.png">
+                                        <img src="../assets/img/ser_1.png">
                                     </div>
                                     <div class="classification-title">
                                         {{ hotProduct.title }}
@@ -1079,6 +1081,7 @@
                 ],
                 hotProducts: [{
                     title: "工商服务",
+                    image:"../assets/img/ser_1.png",
                     summary: "工商，就这么简单…",
                     first: [
                         "公司注册",
@@ -1114,6 +1117,7 @@
                 },
                     {
                         title: "财税服务",
+                        image:"../assets/img/ser_2.png",
                         summary: "财务清晰，纳税放心",
                         first: [
                             "零申报代理记账",
@@ -1148,6 +1152,7 @@
                     },
                     {
                         title: "法律服务",
+                        image:"../assets/img/ser_3.png",
                         summary: "您的私人法律顾问",
                         first: [
                             "商标注册",

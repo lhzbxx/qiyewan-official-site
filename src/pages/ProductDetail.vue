@@ -9,7 +9,7 @@
                 <img src="../assets/logo.png"
                      style="width: 100%;">
             </el-col>
-            <el-col :span="10">
+            <el-col :span="10" >
                 <h3 style="margin:10px 0;font-size:20px;color:#383838">代办税务</h3>
                 <p style="font-size: 12px;
                           color: #dd2726;line-height:1.8em">

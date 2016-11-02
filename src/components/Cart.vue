@@ -4,7 +4,7 @@
                 :data="unpaidProducts"
                 selection-mode="multiple"
                 style="width: 100%"
-                @selectionchange="handleMultipleSelectionChange">
+                @selection-change="handleMultipleSelectionChange">
             <el-table-column
                     type="selection"
                     width="50">

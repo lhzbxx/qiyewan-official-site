@@ -9,7 +9,7 @@
 <template>
     <div>
         <el-card :body-style="{ padding: '0px' }" style="margin:10px 20px 20px 0;">
-            <img src="../assets/logo.png" class="image">
+            <img src="http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-6.png" class="image">
             <div style="padding: 14px;">
                 <p style="font-size: 16px; color: #333;">{{ product.title }}</p>
                 <p style="font-size: 13px; color: #aaa;">{{ product.summary }}</p>
