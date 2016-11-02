@@ -1025,28 +1025,28 @@
                     <div class="pro_l l"><img src="../assets/img/pro_1.png"></div>
                     <div class="l pro_r">
                         <h5>资质认证</h5>
-                        <p>服务商100%实名审核认证</p>
+                        <p>专业资质及实名服务</p>
                     </div>
                 </li>
                 <li>
                     <div class="pro_l l"><img src="../assets/img/pro_2.png"></div>
                     <div class="l pro_r">
                         <h5>支付安全</h5>
-                        <p>明码标价支付及信息安全</p>
+                        <p>明码标价及赔付机制</p>
                     </div>
                 </li>
                 <li>
                     <div class="pro_l l"><img src="../assets/img/pro_3.png"></div>
                     <div class="l pro_r">
                         <h5>高效优质</h5>
-                        <p>太平洋保险提供担保赔付</p>
+                        <p>专业人员对口接待</p>
                     </div>
                 </li>
                 <li>
                     <div class="pro_l l"><img src="../assets/img/pro_1.png"></div>
                     <div class="l pro_r">
                         <h5>全程无忧</h5>
-                        <p>服务出问题客服经理全程跟进</p>
+                        <p>服务进度实时反馈</p>
                     </div>
                 </li>
             </ul>
