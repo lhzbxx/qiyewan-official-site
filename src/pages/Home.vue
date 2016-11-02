@@ -365,9 +365,9 @@
         left: 0;
         width: 188px;
         height: 113px;
-        -webkit-border-radius:10px;
-        -moz-border-radius:10px;
-        border-radius:10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
         background-color: #0098db;
         opacity: 0;
         transition: all 1s;
@@ -762,44 +762,53 @@
         background-color: white;
         color: #139cd7;
     }
-    .promise{
-    height:410px;
-    background-color: #f6f6f6;
-}
-.promise ul{
-    width:1000px;
-    margin:30px auto;
-}
-.promise ul li{
-    width:236px;
-    float: left;
-    border-right:1px solid rgb(224,224,224);
-    margin-left:17px;
-}
-.promise ul :first-child{
-    margin-left:0px;
-}
-.promise ul :last-child{
-    border-right:none;
-}
-.pro_r {
-    margin-left:10px;
-}
-.pro_r h5{
-    font-weight:normal;
-    font-size:17px;
-    margin-top:12px;
-    letter-spacing:3px;
-}
-.pro_r p{
-    font-size:12px;
-    margin-top:8px;
-    letter-spacing:1px;
-    color: rgb(103,102,101);
-}
-.pro_img img{
-    width:100%;
-}
+
+    .promise {
+        height: 410px;
+        background-color: #f6f6f6;
+    }
+
+    .promise ul {
+        width: 1000px;
+        margin: 30px auto;
+    }
+
+    .promise ul li {
+        width: 236px;
+        float: left;
+        border-right: 1px solid rgb(224, 224, 224);
+        margin-left: 17px;
+    }
+
+    .promise ul :first-child {
+        margin-left: 0px;
+    }
+
+    .promise ul :last-child {
+        border-right: none;
+    }
+
+    .pro_r {
+        margin-left: 10px;
+    }
+
+    .pro_r h5 {
+        font-weight: normal;
+        font-size: 17px;
+        margin-top: 12px;
+        letter-spacing: 3px;
+    }
+
+    .pro_r p {
+        font-size: 12px;
+        margin-top: 8px;
+        letter-spacing: 1px;
+        color: rgb(103, 102, 101);
+    }
+
+    .pro_img img {
+        width: 100%;
+    }
 </style>
 
 <template>
@@ -823,13 +832,13 @@
                           y = (event.clientX + document.body.scrollLeft - 360 - (window.screen.width - 1160) / 2);
                           this.style.transform='rotateX(' + 15 * (x - 250) / 500 + 'deg) rotateY(' + 15 * (400 - y) / 800 + 'deg)'">
                         <div class="right-image" data-zindex="50" style="transform: translateZ(50px);">
-                            <img src="http://ofw6tmkxn.bkt.clouddn.com/banner-1_1-bottom.png" alt="">
+                            <img :src="item.imgBottomUrl" alt="">
                         </div>
                         <div class="right-image" data-zindex="100" style="transform: translateZ(100px);">
-                            <img src="http://ofw6tmkxn.bkt.clouddn.com/banner-1_2-middle.png" alt="">
+                            <img :src="item.imgMiddleUrl" alt="">
                         </div>
                         <div class="right-image" data-zindex="150" style="transform: translateZ(150px);">
-                            <img src="http://ofw6tmkxn.bkt.clouddn.com/banner-1_3-top.png" alt="">
+                            <img :src="item.imgTopUrl" alt="">
                         </div>
                     </div>
                 </div>
@@ -1080,7 +1089,7 @@
                 ],
                 hotProducts: [{
                     title: "工商服务",
-                    image:"../assets/img/ser_1.png",
+                    image: "../assets/img/ser_1.png",
                     summary: "工商，就这么简单…",
                     first: [
                         "公司注册",
@@ -1116,7 +1125,7 @@
                 },
                     {
                         title: "财税服务",
-                        image:"../assets/img/ser_2.png",
+                        image: "../assets/img/ser_2.png",
                         summary: "财务清晰，纳税放心",
                         first: [
                             "零申报代理记账",
@@ -1151,7 +1160,7 @@
                     },
                     {
                         title: "法律服务",
-                        image:"../assets/img/ser_3.png",
+                        image: "../assets/img/ser_3.png",
                         summary: "您的私人法律顾问",
                         first: [
                             "商标注册",
@@ -1502,43 +1511,42 @@
                         mainTitle: "公司注册",
                         subTitle: "快人一步",
                         summary: "创业园区、孵化基地专业对接",
-                        imgTopUrl:"http://ofw6tmkxn.bkt.clouddn.com/banner-1_3-top.png",
-                        imgMiddleUrl:"http://ofw6tmkxn.bkt.clouddn.com/banner-1_2-middle.png",
-                        imgBottomUrl:"http://ofw6tmkxn.bkt.clouddn.com/banner-1_1-bottom.png"
+                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-1-top.png",
+                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-1-middle.png",
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-1-bottom.png"
 
                     },
                     {
                         mainTitle: "代理记账",
                         subTitle: "只需98元",
                         summary: "免费财税咨询，作账报税无忧",
-                        imgTopUrl:"",
-                        imgMiddleUrl:"http://ofw6tmkxn.bkt.clouddn.com/banner-2-middle.png",
-                        imgBottomUrl:""
+                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-2-top.png",
+                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-2-middle.png",
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-2-bottom.png"
                     },
                     {
                         mainTitle: "法律咨询",
                         subTitle: "全程陪同",
                         summary: "专业律师为企业保驾护航",
-                        imgTopUrl:"",
-                        imgMiddleUrl:"",
-                        imgBottomUrl:""
+                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-top.png",
+                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-middle.png",
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-bottom.png"
                     },
                     {
                         mainTitle: "社保公积金缴纳",
                         subTitle: "只需18.8元",
                         summary: "缴纳社保公积金,养老无忧",
-                        imgTopUrl:"",
-                        imgMiddleUrl:"",
-                        imgBottomUrl:""
-                    },    {
+                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-top.png",
+                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-middle.png",
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-bottom.png"
+                    }, {
                         mainTitle: "公司注册",
                         subTitle: "快人一步",
                         summary: "创业园区、孵化基地专业对接",
-                        imgTopUrl:"",
-                        imgMiddleUrl:"",
-                        imgBottomUrl:""
+                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-top.png",
+                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-middle.png",
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-bottom.png"
                     },
-
                 ],
                 news: [
                     {
