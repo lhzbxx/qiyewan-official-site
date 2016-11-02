@@ -2,12 +2,13 @@
     .image {
         width: 100%;
         display: block;
+
     }
 </style>
 
 <template>
     <div>
-        <el-card :body-style="{ padding: '0px' }" style="margin: 10px;">
+        <el-card :body-style="{ padding: '0px' }" style="margin:10px 20px 20px 0;">
             <img src="../assets/logo.png" class="image">
             <div style="padding: 14px;">
                 <p style="font-size: 16px; color: #333;">{{ product.title }}</p>

@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h3 style="text-align: center; color: #333; margin: 20px 0;">订单评价</h3>
+        <h3 style="text-align: center; color: #585858; margin: 20px 0;font-size:18px;font-weight: normal;letter-spacing: 2px;">订单评价</h3>
         <p style="text-align: center; color: #aaa; margin-bottom: 15px; font-size: 15px;">
             订单号
             <span style="margin-right: 20px;">#89137843</span>
@@ -10,7 +10,7 @@
         <el-row style="border: 1px solid #eee;">
             <el-col :span="8"
                     style="text-align: center;
-                    border-right: 1px solid black;
+                    border-right: 1px solid #eee;
                     margin-top: 30px;
                     margin-bottom: 30px;">
                 <div style="position: relative; width: 200px; margin: auto;">
@@ -38,7 +38,7 @@
                         label-width="100px"
                         @submit.prevent="onSubmit"
                         style="margin: 30px 20px;">
-                    <el-form-item label="商品满意度">
+                    <el-form-item label="商品满意度" style="color:#464646;font-size:14px">
                         <el-rate
                                 v-model="rateToast"
                                 show-text
@@ -46,7 +46,7 @@
                                 :colors="['#99A9BF', '#F7BA2A', '#FF9900']">
                         </el-rate>
                     </el-form-item>
-                    <el-form-item label="评价">
+                    <el-form-item label="评价" style="color:#464646;font-size:14px">
                         <el-input type="textarea" v-model="form.desc"></el-input>
                     </el-form-item>
                     <el-form-item>
