@@ -182,6 +182,9 @@
         padding:15px;
         margin-top:30px;
     }
+    .advan_pic img{
+        width:100%;
+    }
 </style>
 <template>
     <div class="container">
@@ -383,6 +386,9 @@
                     </div>
                     <div class="advan">
                         <div class="tit">我们的服务优势</div>
+                        <div class="advan_pic">
+                            <img src="../assets/img/advan.png">
+                        </div>
                     </div>
                     <div class="padd">
                         <div v-for="item in reviews">

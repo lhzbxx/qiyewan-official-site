@@ -49,7 +49,7 @@
         background: url("../assets/img/about_ban.jpg") no-repeat;
         -webkit-background-size: 100%;
         background-size: 100%;
-        height: 265px;
+        height: 307px;
         padding: 45px 0 15px 35px;
     }
 
@@ -384,7 +384,7 @@
             </div>
             <!--联系我们开始   -->
             <div class="contact_con all_con">
-                <div class="contact_img"><img src="../assets/img/contact.jpg"></div>
+                <div class="contact_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/contact-us-banner-2.jpg"></div>
                 <ul>
                     <li class="li_">
                         <h5>企业湾总部</h5>
@@ -440,7 +440,7 @@
             </div>
             <!--索取发票-->
             <div class="receipt all_con">
-                <div class="receipt_img"><img src="../assets/img/contact.jpg"></div>
+                <div class="receipt_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/ask-for-invoice-banner-1.jpg"></div>
                 <h4>索取发票</h4>
                 <p>1.本规则适用于在企业湾网站上进行的所有的订单服务。</p>
                 <p>2.企业湾提供的收费服务，用户均可申请开具发票。为了保证发票开具的准确性，收票方必须先行提交填写发票所需的准确信息。</p>
@@ -449,7 +449,7 @@
             </div>
             <!--支付方式-->
             <div class="pay all_con">
-                <div class="pay_img"><img src="../assets/img/contact.jpg"></div>
+                <div class="pay_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/method-of-payment-banner-3.jpg"></div>
                 <h4>支付方式</h4>
                 <p>1、企业湾提供网上支付方式。如您在结算时使用支付宝在线付款，企业湾可实时确认收款，快速进入操作阶段。</p>
                 <p>2、如您通过网银接口付款，有可能存在跨行结算的情况，企业湾需要1-2个工作日来确认收款。</p>
@@ -457,7 +457,7 @@
             </div>
             <!--退款说明-->
             <div class="refund all_con">
-                <div class="refund_img"><img src="../assets/img/contact.jpg"></div>
+                <div class="refund_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/refund-instructions-banner-4.jpg"></div>
                 <h4>退款说明</h4>
                 <table width="100%" border="1">
                     <tr height="65px">
@@ -519,7 +519,7 @@
             </div>
             <!--用户协议-->
             <div class="protocol all_con">
-                <div class="protocol_img"><img src="../assets/img/contact.jpg"></div>
+                <div class="protocol_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/user-agreement-banner-5.jpg"></div>
                 <h4>企业湾用户服务协议</h4>
                 <p>
                     您与企业湾所有者上海知加信息科技有限公司(以下简称为“本公司”)之间就金贝壳服务等相关事宜所订立的契约，请您仔细阅读本注册协议，同意本协议并接受全部条款下注册成为会员，本协议具有合同效力。您点击“立即注册”按钮后，本协议即构成对双方有约束力的法律文件。</p>
