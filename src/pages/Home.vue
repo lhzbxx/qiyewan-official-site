@@ -672,7 +672,7 @@
         width: 100%;
         height: 300px;
         margin-bottom: 20px;
-        background: #eee;
+        background: url("http://ofw6tmkxn.bkt.clouddn.com/customer-voice-background.png") no-repeat;
         position: relative;
     }
 
@@ -955,6 +955,12 @@
                         <div class="l timeline-pic-two timeline-pic"
                              v-for="item in timelines[state].types[stateType].products.one">
                             <img :src="item.url">
+                        </div>
+                        <div class="l timeline-pic-one timeline-pic">
+                            <img :src="timelines[state].types[stateType].products.rightBottom.url">
+                        </div>
+                        <div class="l timeline-pic-two timeline-pic">
+                            <img :src="timelines[state].types[stateType].products.bottomOne.url">
                         </div>
                     </div>
                 </div>
@@ -1276,14 +1282,13 @@
                                         },
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
+                                        }],
+                                    rightBottom: {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         },
-                                        {
+                                    bottomOne: {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         }
-                                    ]
                                 }
                             },
                             {
@@ -1304,14 +1309,15 @@
                                         },
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
+                                        }],
+                                    rightBottom:
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         },
+                                    bottonOne:
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         }
-                                    ]
                                 }
                             },
                             {
@@ -1332,14 +1338,15 @@
                                         },
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
+                                        }],
+                                    rightBottom:
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         },
+                                    bottomOne:
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         }
-                                    ]
                                 }
                             }
                         ]
@@ -1426,14 +1433,16 @@
                                         },
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
+                                        }],
+                                    rightBottom:
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         },
+                                    bottomOne:
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         }
-                                    ]
+
                                 }
                             },
                             {
@@ -1534,7 +1543,7 @@
                     },
                     {
                         mainTitle: "社保公积金缴纳",
-                        subTitle: "只需18.8元",
+                        subTitle: "",
                         summary: "缴纳社保公积金,养老无忧",
                         imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-top.png",
                         imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-middle.png",
