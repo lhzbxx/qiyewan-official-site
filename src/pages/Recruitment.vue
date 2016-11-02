@@ -349,8 +349,9 @@
 
 </template>
 
+<!--
 
-<!--  <script>
+  <script>
 
       $(".department li").click(function(){
           var num=$(".department li").index($(this));

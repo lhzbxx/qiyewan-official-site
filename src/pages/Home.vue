@@ -824,13 +824,13 @@
                           console.log((x - 250) / 500+ ', ' + (400 - y) / 800);
                           this.style.transform='rotateX(' + 15 * (x - 250) / 500 + 'deg) rotateY(' + 15 * (400 - y) / 800 + 'deg)'">
                         <div class="right-image" data-zindex="50" style="transform: translateZ(50px);">
-                            <img src="https://img.alicdn.com/tps/TB1LhnINVXXXXalXpXXXXXXXXXX-1600-1120.png" alt="">
+                            <img src="http://ofw6tmkxn.bkt.clouddn.com/banner-1_1-bottom.png" alt="">
                         </div>
                         <div class="right-image" data-zindex="100" style="transform: translateZ(100px);">
-                            <img src="https://img.alicdn.com/tps/TB12xYANVXXXXaXXFXXXXXXXXXX-1600-1120.png" alt="">
+                            <img src="http://ofw6tmkxn.bkt.clouddn.com/banner-1_2-middle.png" alt="">
                         </div>
                         <div class="right-image" data-zindex="150" style="transform: translateZ(150px);">
-                            <img src="https://img.alicdn.com/tps/TB13mjINVXXXXaZXpXXXXXXXXXX-1600-1120.png" alt="">
+                            <img src="http://ofw6tmkxn.bkt.clouddn.com/banner-1_3-top.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -1502,18 +1502,44 @@
                     {
                         mainTitle: "公司注册",
                         subTitle: "快人一步",
-                        summary: "创业园区、孵化基地专业对接"
+                        summary: "创业园区、孵化基地专业对接",
+                        imgTopUrl:"http://ofw6tmkxn.bkt.clouddn.com/banner-1_3-top.png",
+                        imgMiddleUrl:"http://ofw6tmkxn.bkt.clouddn.com/banner-1_2-middle.png",
+                        imgBottomUrl:"http://ofw6tmkxn.bkt.clouddn.com/banner-1_1-bottom.png"
+
                     },
                     {
-                        mainTitle: "工商服务",
-                        subTitle: "代理记账",
-                        summary: "仅需要998即可获得服务"
+                        mainTitle: "代理记账",
+                        subTitle: "只需98元",
+                        summary: "免费财税咨询，作账报税无忧",
+                        imgTopUrl:"",
+                        imgMiddleUrl:"http://ofw6tmkxn.bkt.clouddn.com/banner-2-middle.png",
+                        imgBottomUrl:""
                     },
                     {
+                        mainTitle: "法律咨询",
+                        subTitle: "全程陪同",
+                        summary: "专业律师为企业保驾护航",
+                        imgTopUrl:"",
+                        imgMiddleUrl:"",
+                        imgBottomUrl:""
+                    },
+                    {
+                        mainTitle: "社保公积金缴纳",
+                        subTitle: "只需18.8元",
+                        summary: "缴纳社保公积金,养老无忧",
+                        imgTopUrl:"",
+                        imgMiddleUrl:"",
+                        imgBottomUrl:""
+                    },    {
                         mainTitle: "公司注册",
                         subTitle: "快人一步",
-                        summary: "创业园区、孵化基地专业对接"
+                        summary: "创业园区、孵化基地专业对接",
+                        imgTopUrl:"",
+                        imgMiddleUrl:"",
+                        imgBottomUrl:""
                     },
+
                 ],
                 news: [
                     {
