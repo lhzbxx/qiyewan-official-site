@@ -2,19 +2,22 @@
     .image {
         width: 100%;
         display: block;
+    }
 
+    #product {
+        cursor: pointer;
     }
 </style>
 
 <template>
     <div>
-        <el-card :body-style="{ padding: '0px' }" style="margin:10px 20px 20px 0;">
-            <img src="http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-6.png" class="image">
+        <el-card id="product" :body-style="{ padding: '0px' }" style="margin:10px 20px 20px 0;">
+            <img :src="img" class="image">
             <div style="padding: 14px;">
-                <p style="font-size: 16px; color: #333;">{{ product.title }}</p>
-                <p style="font-size: 13px; color: #aaa;">{{ product.summary }}</p>
+                <p style="font-size: 16px; color: #333;">{{ title }}</p>
+                <p style="font-size: 13px; color: #aaa;">{{ summary }}</p>
                 <br>
-                <p style="color: red;">￥{{ product.price }}</p>
+                <p style="color: red;">￥{{ price }}</p>
             </div>
         </el-card>
     </div>
@@ -32,6 +35,12 @@
                 }
             }
         },
-        methods: {}
+        methods: {},
+        props: {
+            title: String,
+            summary: String,
+            price: Number,
+            img: String
+        }
     }
 </script>
