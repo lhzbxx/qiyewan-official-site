@@ -27,6 +27,7 @@
 }
 .share{
     border-bottom:1px solid #e5e5e5;
+    padding-bottom:20px;
 }
 .con_r{
     width:280px
@@ -110,14 +111,31 @@
     font-size:14px;
 }
 .share span{
-    width:20px;
-    height:20px;
+    width:25px;
+    height:25px;
     display: inline-block;
 }
 .qq{
     background: url("../assets/img/share.png") no-repeat;
-    background-position: 0 0;
+    background-position: -5px 0;
 }
+.qzone{
+     background: url("../assets/img/share.png") no-repeat;
+     background-position: -40px 0;
+}
+.wechat{
+      background: url("../assets/img/share.png") no-repeat;
+      background-position: -77px -1px;
+}
+.weibo{
+       background: url("../assets/img/share.png") no-repeat;
+       background-position: -137px -1px;
+}
+.share i{
+    font-style: normal;
+    /*line-height:10px;*/
+}
+
 </style>
 
 <template>
@@ -158,6 +176,7 @@
                         是母亲的学历？本文通过机器挖掘算法和中学真实的学生数据为您揭秘影响中学生学业的关键因素有哪些。
                     </div>
                     <div class="share">
+                        <i>分享到：</i>
                         <span class="qq"></span>
                         <span class="qzone"></span>
                         <span class="wechat"></span>
