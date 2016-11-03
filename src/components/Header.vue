@@ -2,6 +2,8 @@
     #nav {
         height: 68px;
         width: 100%;
+        border-bottom: 1px solid #dcdbdb;
+        box-shadow: 0 2px 2px #f3f3f3;
     }
 
     #nav ul {
@@ -11,6 +13,7 @@
 
     #nav ul li {
         float: left;
+        height: 58px;
         padding-left: 40px;
         font-size: 16px;
         letter-spacing: 2px;
@@ -91,7 +94,7 @@
     #nav ul li > a {
         color: #282828;
         display: block;
-        line-height: 68px;
+        line-height: 65px;
     }
 </style>
 

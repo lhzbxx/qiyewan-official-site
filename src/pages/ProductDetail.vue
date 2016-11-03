@@ -1,3 +1,188 @@
+<style>
+    .el-tabs__content{
+        padding:0px!important;
+    }
+    .detail_pic{
+        background: url(../assets/img/Product_2.png) no-repeat;
+        width:100%;
+        height:350px;
+        background-size:108%;;
+        background-position: -36px -7px;
+    }
+    .detail_tit{
+        width:380px;
+        margin-left:370px;
+        padding-top:65px;
+        white-space: normal;
+    }
+    .detail_tit h3{
+        color:#279ad2;
+        font-size:32px;
+    }
+    .detail_tit p{
+        color:#747474;
+        font-size:16px;
+        margin-top:20px;
+        word-wrap:break-word;
+        word-break:normal;
+        line-height:1.7em;
+    }
+    .detail_pic h4{
+        color:#ffffff;
+        font-size:20px;
+        margin-top:79px;
+        text-align: center;
+    }
+    .step ul li{
+        border:1px solid #0098db;
+        height:75px;
+        margin:25px 35px 0px 35px;
+        padding:10px 20px 0 20px;
+    }
+    .step ul li p{
+        color:#385055;
+        font-size:16px;
+        text-indent: 1em;
+        margin-top:5px;
+    }
+    .step ul li h5{
+        color:#0098da;
+        font-size:20px;
+    }
+    .Process{
+        background: url(../assets/img/progress.png) no-repeat;
+        -webkit-background-size:100%;
+        background-size:100%;
+        width:100%;
+        height:305px;
+        margin-top:30px;
+        position: relative;
+    }
+    .Process .btn{
+        width:156px;
+        margin:0 auto;
+        height:42px;
+        color:#009ada;
+        font-size:24px;
+        background-color: #fff;
+        line-height:42px;
+        text-align: center;
+    }
+    .Process p{
+        height:30px;
+    }
+    .Process ul{
+        margin-left:77px;
+    }
+    .zhushi{
+        position: absolute;
+        top:80%;
+        text-align: center;
+        width: 100%;
+        font-size:14px;
+        color:white;
+    }
+    .Process ul li{
+        margin-top:20px;
+        width:180px;
+        height:52px;
+        background-color: #fff;
+        font-size:20px;
+        color:#049fe2;
+        line-height:52px;
+        text-align: center;
+        float: left;
+        position: relative;
+        z-index:10;
+    }
+    .Process ul :nth-child(4n){
+        width:165px;
+    }
+    .Process ul li:last-child span{
+        display: none;
+    }
+
+    .Process ul li span{
+        position: absolute;
+        top:-4px;
+        left:119px;
+        z-index:50;
+    }
+    .detail_bg,.internet{
+        background-color: #f7f7f7;
+    }
+    .tit{
+        color:#2a9cd4;
+        font-size:20px;
+        font-weight:600;
+        text-align: center;
+        margin:30px 0;
+    }
+    .pro_pic,.get_pic{
+        text-align: center;
+    }
+    .p_c{
+        text-align: center;
+    }
+    .internet{
+        height:360px;
+    }
+    .internet ul{
+        margin-left:30px;
+        margin-top:30px;
+    }
+    .internet ul li{
+        text-align: center;
+        float: left;
+        width: 180px;
+        margin-right:28px;
+        border-radius: 8px;
+        background-color: #fff;
+        height:170px;
+        position: relative;
+    }
+    .internet ul li::after{
+        position: absolute;
+        content: '';
+        border-top: 12px solid white;
+        border-left: 11px solid transparent;
+        border-right: 11px solid transparent;
+        top:100%;
+        left:44%;
+    }
+    .internet ul li h5{
+        height:35px;
+        line-height:35px;
+        background-color: #38b0e5;
+        font-size:18px;
+        font-weight:normal;
+        color:white;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    .internet ul li p{
+        font-size:14px;
+        color:#616161;
+        line-height:1.5em;
+        margin:10px 0;
+    }
+    .li_con{
+        width:140px;
+        white-space: normal;
+        margin:0 auto;
+    }
+    .inter_bg{
+        margin-top:30px;
+        margin-left:-14px;
+    }
+    .inter_bg img{
+        width:100%;
+    }
+    .padd{
+        padding:15px;
+        margin-top:30px;
+    }
+</style>
 <template>
     <div class="container">
         <el-breadcrumb separator=">" style="padding: 10px 0; border-bottom: 1px solid #eee">
@@ -9,7 +194,7 @@
                 <img src="../assets/logo.png"
                      style="width: 100%;">
             </el-col>
-            <el-col :span="10">
+            <el-col :span="10" >
                 <h3 style="margin:10px 0;font-size:20px;color:#383838">代办税务</h3>
                 <p style="font-size: 12px;
                           color: #dd2726;line-height:1.8em">
@@ -124,46 +309,128 @@
                             :price=123></lh-product>
             </el-col>
             <el-col :span="18">
+
                 <el-tabs type="border-card"
-                         style="width: 100%;">
+                         style="width: 100%;padding: 0;">
                     <el-tab-pane label="服务详情"></el-tab-pane>
                     <el-tab-pane label="用户评价（30）"></el-tab-pane>
                     <el-tab-pane label="常见问题"></el-tab-pane>
-                    <div v-for="item in reviews">
-                        <el-row style="margin: 10px 0;">
-                            <el-col :span="12">
-                                <p style="font-size: 15px;
-                                          color: #333;
-                                          white-space: normal; margin-bottom: 5px;">
-                                    {{ item.content }}
-                                </p>
-                                <p style="font-size: 13px;
-                                          color: #aaa;">
-                                    {{ item.createAt }}
-                                </p>
-                            </el-col>
-                            <el-col :span="6">
-                                <el-rate
-                                        v-model="item.rate"
-                                        disabled
-                                        show-text
-                                        :colors="['#99A9BF', '#F7BA2A', '#FF9900']"
-                                        text-color="#ff9900"
-                                        text-template="{value}">
-                                </el-rate>
-                            </el-col>
-                            <el-col :span="6"
-                                    style="text-align: center;">
-                                <img src="../assets/logo.png"
-                                     style="width: 60px;
-                                            border-radius: 50%;">
-                                <p>
-                                    {{ item.username }}
-                                </p>
-                            </el-col>
-                        </el-row>
+                    <div class="detail_bg">
+                        <div class="detail_pic">
+                            <div class="detail_tit">
+                                <h3>代办税务</h3>
+                                <p>多数主管税务机关要求企业提供软件著作权和软件登记检测报告，才可享受增值税即征即退，最多可退增值税</p>
+                            </div>
+                            <h4>为什么要代办税务／服务内容（服务能帮助您做什么）</h4>
+                        </div>
+                        <div class="step">
+                            <ul>
+                                <li>
+                                    <h5>1.参与</h5>
+                                    <p>让你知道什么人可以成为公司股东，参与股权分配。让你知道什么人可以成为公司股东，参与股权分配。</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="Process">
+                            <p></p>
+                            <div class="btn">服务流程</div>
+                            <ul>
+                                <li>1 在线下单 <span><img src="../assets/img/border1.png"></span></li>
+                                <li>2 提交材料 <span><img src="../assets/img/border1.png"></span></li>
+                                <li>3 材料审核 <span><img src="../assets/img/border1.png"></span></li>
+                                <li>4 支付费用 <span><img src="../assets/img/border1.png"></span></li>
+                                <li>5 办理追踪 <span><img src="../assets/img/border1.png"></span></li>
+                            </ul>
+                            <div class="zhushi">注：由于地域、政策等因素不同，所需时间有差异  </div>
+
+                        </div>
+                        <div class="provide">
+                            <div class="tit">您需要提供</div>
+                            <div class="pro_pic"><img src="../assets/img/provide.png" alt=""></div>
+                        </div>
+
                     </div>
-                    <div v-for="item in qa" style="margin-bottom: 10px;">
+                    <div class="get">
+                        <div class="tit">您将得到</div>
+                        <div class="get_pic"><img src="../assets/img/provide.png"></div>
+                    </div>
+                    <div class="internet">
+                        <div class="tit" style="padding-top:30px;">网上预约流程</div>
+                        <p class="p_c">多数主管税务机关要求企业提供软件著作权和软件登记检测报告，才可享受增值税即征即退，最多可退增值税额82%</p>
+                        <ul>
+                            <li>
+                                <h5>在线下单</h5>
+                                <div class="li_con">
+                                    <p>在线直接下单，安全便捷</p>
+                                    <img src="../assets/img/internet_1.png">
+                                </div>
+                            </li>
+                            <li>
+                                <h5>即时响应</h5>
+                                <div class="li_con">
+                                    <p>服务专员快速联系，4小时响应</p>
+                                    <img src="../assets/img/internet_2.png">
+                                </div>
+                            </li>
+                            <li>
+                                <h5>快速交付</h5>
+                                <div class="li_con">
+                                    <p>定制专业、简约流程，不走弯路</p>
+                                    <img src="../assets/img/internet_3.png">
+                                </div>
+                            </li>
+                            <li>
+                                <h5>满意为止</h5>
+                                <div class="li_con">
+                                    <p>全程专业人员服务，满意为止</p>
+                                    <img src="../assets/img/internet_4.png">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                        <div class="inter_bg">
+                            <img src="../assets/img/internet_bg.png">
+                        </div>
+                    </div>
+                    <div class="advan">
+                        <div class="tit">我们的服务优势</div>
+                    </div>
+                    <div class="padd">
+                        <div v-for="item in reviews">
+                            <el-row style="margin: 10px 0;">
+                                <el-col :span="12">
+                                    <p style="font-size: 15px;
+                                              color: #333;
+                                              white-space: normal; margin-bottom: 5px;">
+                                        {{ item.content }}
+                                    </p>
+                                    <p style="font-size: 13px;
+                                              color: #aaa;">
+                                        {{ item.createAt }}
+                                    </p>
+                                </el-col>
+                                <el-col :span="6">
+                                    <el-rate
+                                            v-model="item.rate"
+                                            disabled
+                                            show-text
+                                            :colors="['#99A9BF', '#F7BA2A', '#FF9900']"
+                                            text-color="#ff9900"
+                                            text-template="{value}">
+                                    </el-rate>
+                                </el-col>
+                                <el-col :span="6"
+                                        style="text-align: center;">
+                                    <img src="../assets/logo.png"
+                                         style="width: 60px;
+                                                border-radius: 50%;">
+                                    <p>
+                                        {{ item.username }}
+                                    </p>
+                                </el-col>
+                            </el-row>
+                        </div>
+                        <div v-for="item in qa" style="margin-bottom: 10px;">
                         <p style="color: orange;
                                   font-size: 16px;
                                   margin: 10px 0;
@@ -176,6 +443,7 @@
                                   line-height: 1.5em;">
                             {{ item.a }}
                         </div>
+                    </div>
                     </div>
                 </el-tabs>
             </el-col>

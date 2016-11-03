@@ -151,10 +151,13 @@
         <br>
         <el-button type="primary"
                    size="large"
-                   style="border-radius: 3px;
+                   style="border-radius: 3px;margin-bottom: 12px;
                           float: right;">
             立即支付
         </el-button>
+        <br>
+        <br>
+        <br>
     </div>
 </template>
 

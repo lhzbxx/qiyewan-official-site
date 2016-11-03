@@ -363,8 +363,11 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 193px;
-        height: 115px;
+        width: 188px;
+        height: 113px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
         background-color: #0098db;
         opacity: 0;
         transition: all 1s;
@@ -491,7 +494,7 @@
 
     .timeline-pic-left {
         width: 20%;
-        height: 504px;
+        height: 487px;
         float: left;
     }
 
@@ -512,7 +515,6 @@
     }
 
     #banner {
-        margin-top: 5px;
         width: 100%;
         position: relative;
         height: 500px;
@@ -670,7 +672,7 @@
         width: 100%;
         height: 300px;
         margin-bottom: 20px;
-        background: #eee;
+        background: url("http://ofw6tmkxn.bkt.clouddn.com/customer-voice-background.png") no-repeat;
         position: relative;
     }
 
@@ -760,44 +762,53 @@
         background-color: white;
         color: #139cd7;
     }
-    .promise{
-    height:410px;
-    background-color: #f6f6f6;
-}
-.promise ul{
-    width:1000px;
-    margin:30px auto;
-}
-.promise ul li{
-    width:236px;
-    float: left;
-    border-right:1px solid rgb(224,224,224);
-    margin-left:17px;
-}
-.promise ul :first-child{
-    margin-left:0px;
-}
-.promise ul :last-child{
-    border-right:none;
-}
-.pro_r {
-    margin-left:10px;
-}
-.pro_r h5{
-    font-weight:normal;
-    font-size:17px;
-    margin-top:12px;
-    letter-spacing:3px;
-}
-.pro_r p{
-    font-size:12px;
-    margin-top:8px;
-    letter-spacing:1px;
-    color: rgb(103,102,101);
-}
-.pro_img img{
-    width:100%;
-}
+
+    .promise {
+        height: 410px;
+        background-color: #f6f6f6;
+    }
+
+    .promise ul {
+        width: 1000px;
+        margin: 30px auto;
+    }
+
+    .promise ul li {
+        width: 236px;
+        float: left;
+        border-right: 1px solid rgb(224, 224, 224);
+        margin-left: 17px;
+    }
+
+    .promise ul :first-child {
+        margin-left: 0px;
+    }
+
+    .promise ul :last-child {
+        border-right: none;
+    }
+
+    .pro_r {
+        margin-left: 10px;
+    }
+
+    .pro_r h5 {
+        font-weight: normal;
+        font-size: 17px;
+        margin-top: 12px;
+        letter-spacing: 3px;
+    }
+
+    .pro_r p {
+        font-size: 12px;
+        margin-top: 8px;
+        letter-spacing: 1px;
+        color: rgb(103, 102, 101);
+    }
+
+    .pro_img img {
+        width: 100%;
+    }
 </style>
 
 <template>
@@ -821,13 +832,13 @@
                           y = (event.clientX + document.body.scrollLeft - 360 - (window.screen.width - 1160) / 2);
                           this.style.transform='rotateX(' + 15 * (x - 250) / 500 + 'deg) rotateY(' + 15 * (400 - y) / 800 + 'deg)'">
                         <div class="right-image" data-zindex="50" style="transform: translateZ(50px);">
-                            <img src="../assets/banner-1-1.png" alt="">
+                            <img :src="item.imgBottomUrl" alt="">
                         </div>
                         <div class="right-image" data-zindex="100" style="transform: translateZ(100px);">
-                            <img src="../assets/banner-1-2.png" alt="">
+                            <img :src="item.imgMiddleUrl" alt="">
                         </div>
                         <div class="right-image" data-zindex="150" style="transform: translateZ(150px);">
-                            <img src="../assets/banner-1-3.png" alt="">
+                            <img :src="item.imgTopUrl" alt="">
                         </div>
                     </div>
                 </div>
@@ -869,7 +880,7 @@
                             <div class="content-info">
                                 <div class="content-info-detail">
                                     <div class="classification-icon">
-                                        <img src="../assets/img/ser_4.png">
+                                        <img src="../assets/img/ser_1.png">
                                     </div>
                                     <div class="classification-title">
                                         {{ hotProduct.title }}
@@ -945,6 +956,12 @@
                              v-for="item in timelines[state].types[stateType].products.one">
                             <img :src="item.url">
                         </div>
+                        <div class="l timeline-pic-one timeline-pic">
+                            <img :src="timelines[state].types[stateType].products.rightBottom.url">
+                        </div>
+                        <div class="l timeline-pic-two timeline-pic">
+                            <img :src="timelines[state].types[stateType].products.bottomOne.url">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -984,13 +1001,11 @@
                 </li>
             </ul>
             <div id="news">
-                <lh-news style="margin-right: 8px;"
-                         v-for="item in news[newsTab].list"
-                         :title="item.title"
-                         :summary="item.summary"
-                         :tags="item.tags"
-                         :date="item.date"
-                         :views="item.views"></lh-news>
+                <lh-news style="margin-right: 8px;"></lh-news>
+                <lh-news style="margin-right: 8px;"></lh-news>
+                <lh-news style="margin-right: 8px;"></lh-news>
+                <lh-news style="margin-right: 8px;"></lh-news>
+                <lh-news style="margin-right: 8px;"></lh-news>
             </div>
         </div>
         <div class="clearfix"></div>
@@ -1024,28 +1039,28 @@
                     <div class="pro_l l"><img src="../assets/img/pro_1.png"></div>
                     <div class="l pro_r">
                         <h5>资质认证</h5>
-                        <p>服务商100%实名审核认证</p>
+                        <p>专业资质及实名服务</p>
                     </div>
                 </li>
                 <li>
                     <div class="pro_l l"><img src="../assets/img/pro_2.png"></div>
                     <div class="l pro_r">
                         <h5>支付安全</h5>
-                        <p>明码标价支付及信息安全</p>
+                        <p>明码标价及赔付机制</p>
                     </div>
                 </li>
                 <li>
                     <div class="pro_l l"><img src="../assets/img/pro_3.png"></div>
                     <div class="l pro_r">
                         <h5>高效优质</h5>
-                        <p>太平洋保险提供担保赔付</p>
+                        <p>专业人员对口接待</p>
                     </div>
                 </li>
                 <li>
                     <div class="pro_l l"><img src="../assets/img/pro_1.png"></div>
                     <div class="l pro_r">
                         <h5>全程无忧</h5>
-                        <p>服务出问题客服经理全程跟进</p>
+                        <p>服务进度实时反馈</p>
                     </div>
                 </li>
             </ul>
@@ -1080,6 +1095,7 @@
                 ],
                 hotProducts: [{
                     title: "工商服务",
+                    image: "../assets/img/ser_1.png",
                     summary: "工商，就这么简单…",
                     first: [
                         "公司注册",
@@ -1115,6 +1131,7 @@
                 },
                     {
                         title: "财税服务",
+                        image: "../assets/img/ser_2.png",
                         summary: "财务清晰，纳税放心",
                         first: [
                             "零申报代理记账",
@@ -1149,6 +1166,7 @@
                     },
                     {
                         title: "法律服务",
+                        image: "../assets/img/ser_3.png",
                         summary: "您的私人法律顾问",
                         first: [
                             "商标注册",
@@ -1264,14 +1282,13 @@
                                         },
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
+                                        }],
+                                    rightBottom: {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         },
-                                        {
+                                    bottomOne: {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         }
-                                    ]
                                 }
                             },
                             {
@@ -1292,14 +1309,15 @@
                                         },
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
+                                        }],
+                                    rightBottom:
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         },
+                                    bottonOne:
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         }
-                                    ]
                                 }
                             },
                             {
@@ -1320,14 +1338,15 @@
                                         },
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
+                                        }],
+                                    rightBottom:
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         },
+                                    bottomOne:
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         }
-                                    ]
                                 }
                             }
                         ]
@@ -1414,14 +1433,16 @@
                                         },
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
+                                        }],
+                                    rightBottom:
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         },
+                                    bottomOne:
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         }
-                                    ]
+
                                 }
                             },
                             {
@@ -1498,238 +1519,59 @@
                     {
                         mainTitle: "公司注册",
                         subTitle: "快人一步",
-                        summary: "创业园区、孵化基地专业对接"
+                        summary: "创业园区、孵化基地专业对接",
+                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-1-top.png",
+                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-1-middle.png",
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-1-bottom.png"
+
                     },
                     {
-                        mainTitle: "工商服务",
-                        subTitle: "代理记账",
-                        summary: "仅需要998即可获得服务"
+                        mainTitle: "代理记账",
+                        subTitle: "只需98元",
+                        summary: "免费财税咨询，作账报税无忧",
+                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-2-top.png",
+                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-2-middle.png",
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-2-bottom.png"
                     },
                     {
+                        mainTitle: "法律咨询",
+                        subTitle: "全程陪同",
+                        summary: "专业律师为企业保驾护航",
+                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-top.png",
+                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-middle.png",
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-bottom.png"
+                    },
+                    {
+                        mainTitle: "社保公积金缴纳",
+                        subTitle: "",
+                        summary: "缴纳社保公积金,养老无忧",
+                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-top.png",
+                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-middle.png",
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-bottom.png"
+                    }, {
                         mainTitle: "公司注册",
                         subTitle: "快人一步",
-                        summary: "创业园区、孵化基地专业对接"
+                        summary: "创业园区、孵化基地专业对接",
+                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-top.png",
+                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-middle.png",
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-bottom.png"
                     },
                 ],
                 news: [
                     {
-                        title: "创业资讯",
-                        list: [
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事",
-                                    "法律"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            },
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事",
-                                    "法律"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            },
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事",
-                                    "法律"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            },
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事",
-                                    "法律"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            },
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事",
-                                    "法律"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            }
-                        ]
+                        title: "创业资讯"
                     },
                     {
-                        title: "创业资讯",
-                        list: [
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事",
-                                    "法律"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            },
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事",
-                                    "法律"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            },
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事",
-                                    "法律"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            },
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            },
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事",
-                                    "法律"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            }
-                        ]
+                        title: "工商干货"
                     },
                     {
-                        title: "创业资讯",
-                        list: [
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事",
-                                    "法律"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            },
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事",
-                                    "法律"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            },
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事",
-                                    "法律"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            },
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事",
-                                    "法律"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            },
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事",
-                                    "法律"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            }
-                        ]
+                        title: "财税干货"
                     },
                     {
-                        title: "创业资讯",
-                        list: [
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事",
-                                    "法律"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            },
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事",
-                                    "法律"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            },
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事",
-                                    "法律"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            },
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事",
-                                    "法律"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            },
-                            {
-                                title: "创业资讯",
-                                summary: "123",
-                                tags: [
-                                    "人事",
-                                    "法律"
-                                ],
-                                date: "2016.1.10",
-                                views: 102
-                            }
-                        ]
+                        title: "法律干货"
+                    },
+                    {
+                        title: "人事干货"
                     }
                 ],
                 currentDate: "2016年10月13日",
