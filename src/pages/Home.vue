@@ -365,9 +365,9 @@
         left: 0;
         width: 188px;
         height: 113px;
-        -webkit-border-radius:10px;
-        -moz-border-radius:10px;
-        border-radius:10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
         background-color: #0098db;
         opacity: 0;
         transition: all 1s;
@@ -565,7 +565,7 @@
         height: 100%;
         position: absolute;
         top: 0;
-        left: 0;
+        left: 0px;
     }
 
     .slide img {
@@ -673,7 +673,7 @@
         height: 300px;
         margin-bottom: 20px;
         background: url("http://ofw6tmkxn.bkt.clouddn.com/customer-voice-background.png") no-repeat;
-        background-size:100%;
+        background-size: 100%;
         position: relative;
     }
 
@@ -763,44 +763,60 @@
         background-color: white;
         color: #139cd7;
     }
-    .promise{
-    height:410px;
-    background-color: #f6f6f6;
-}
-.promise ul{
-    width:1000px;
-    margin:30px auto;
-}
-.promise ul li{
-    width:236px;
-    float: left;
-    border-right:1px solid rgb(224,224,224);
-    margin-left:17px;
-}
-.promise ul :first-child{
-    margin-left:0px;
-}
-.promise ul :last-child{
-    border-right:none;
-}
-.pro_r {
-    margin-left:10px;
-}
-.pro_r h5{
-    font-weight:normal;
-    font-size:17px;
-    margin-top:12px;
-    letter-spacing:3px;
-}
-.pro_r p{
-    font-size:12px;
-    margin-top:8px;
-    letter-spacing:1px;
-    color: rgb(103,102,101);
-}
-.pro_img img{
-    width:100%;
-}
+
+    .promise {
+        height: 410px;
+        background-color: #f6f6f6;
+    }
+
+    @media screen and (min-width: 1400px) {
+        .promise {
+            height: 530px;
+            background-color: #f6f6f6;
+        }
+    }
+
+    .promise ul {
+        width: 1000px;
+        margin: 30px auto;
+    }
+
+    .promise ul li {
+        width: 236px;
+        float: left;
+        border-right: 1px solid rgb(224, 224, 224);
+        margin-left: 17px;
+    }
+
+    .promise ul :first-child {
+        margin-left: 0px;
+    }
+
+    .promise ul :last-child {
+        border-right: none;
+    }
+
+    .pro_r {
+        margin-left: 10px;
+    }
+
+    .pro_r h5 {
+        font-weight: normal;
+        font-size: 17px;
+        margin-top: 12px;
+        letter-spacing: 3px;
+    }
+
+    .pro_r p {
+        font-size: 12px;
+        margin-top: 8px;
+        letter-spacing: 1px;
+        color: rgb(103, 102, 101);
+    }
+
+    .pro_img img {
+        width: 100%;
+    }
 </style>
 
 <template>
@@ -949,6 +965,12 @@
                              v-for="item in timelines[state].types[stateType].products.one">
                             <img :src="item.url">
                         </div>
+                        <div class="l timeline-pic-one timeline-pic">
+                            <img :src="timelines[state].types[stateType].products.rightBottom.url">
+                        </div>
+                        <div class="l timeline-pic-two timeline-pic">
+                            <img :src="timelines[state].types[stateType].products.bottomOne.url">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1052,6 +1074,7 @@
                 </li>
             </ul>
         </div>
+        <div class="clearfix"></div>
     </div>
 </template>
 <script>
@@ -1082,7 +1105,7 @@
                 ],
                 hotProducts: [{
                     title: "工商服务",
-                    image:"../assets/img/ser_1.png",
+                    image: "../assets/img/ser_1.png",
                     summary: "工商，就这么简单…",
                     first: [
                         "公司注册",
@@ -1118,7 +1141,7 @@
                 },
                     {
                         title: "财税服务",
-                        image:"../assets/img/ser_2.png",
+                        image: "../assets/img/ser_2.png",
                         summary: "财务清晰，纳税放心",
                         first: [
                             "零申报代理记账",
@@ -1153,7 +1176,7 @@
                     },
                     {
                         title: "法律服务",
-                        image:"../assets/img/ser_3.png",
+                        image: "../assets/img/ser_3.png",
                         summary: "您的私人法律顾问",
                         first: [
                             "商标注册",
@@ -1269,14 +1292,14 @@
                                         },
                                         {
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-5.png"
-                                        },
-                                        {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-6.png"
-                                        },
-                                        {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-7.png"
-                                        }
-                                    ]
+                                        }],
+                                    rightBottom: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-6.png"
+                                    },
+                                    bottomOne: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-7.png"
+                                    }
+
                                 }
                             },
                             {
@@ -1297,17 +1320,14 @@
                                         },
                                         {
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-5.png"
-                                        },
-                                        {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-6.png"
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        }, {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        },
-                                        {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-7.png"
-                                        }
-                                    ]
+                                        }],
+                                    rightBottom: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-6.png"
+                                    },
+                                    bottomOne: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-7.png"
+                                    }
+
                                 }
                             },
                             {
@@ -1328,14 +1348,13 @@
                                         },
                                         {
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-5.png"
-                                        },
-                                        {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-6.png"
-                                        },
-                                        {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-7.png"
-                                        }
-                                    ]
+                                        }], rightBottom: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-6.png"
+                                    },
+                                    bottomOne: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-7.png"
+                                    }
+
                                 }
                             }
                         ]
@@ -1361,14 +1380,12 @@
                                         },
                                         {
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-5.png"
-                                        },
-                                        {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-6.png"
-                                        },
-                                        {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-7.png"
-                                        }
-                                    ]
+                                        }], rightBottom: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-6.png"
+                                    }, bottomOne: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-7.png"
+                                    }
+
                                 }
                             },
                             {
@@ -1389,14 +1406,13 @@
                                         },
                                         {
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-5.png"
-                                        },
-                                        {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-6.png"
-                                        },
-                                        {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-7.png"
-                                        }
-                                    ]
+                                        }], rightBottom: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-6.png"
+                                    },
+                                    bottomOne: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-7.png"
+                                    }
+
                                 }
                             }
                         ]
@@ -1422,14 +1438,12 @@
                                         },
                                         {
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-5.png"
-                                        },
-                                        {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-6.png"
-                                        },
-                                        {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-7.png"
-                                        }
-                                    ]
+                                        }], rightBottom: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-6.png"
+                                    }, bottomOne: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-7.png"
+                                    }
+
                                 }
                             },
                             {
@@ -1450,14 +1464,12 @@
                                         },
                                         {
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-5.png"
-                                        },
-                                        {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-6.png"
-                                        },
-                                        {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-7.png"
-                                        }
-                                    ]
+                                        }], rightBottom: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-6.png"
+                                    }, bottomOne: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-7.png"
+                                    }
+
                                 }
                             }
                         ]
@@ -1483,14 +1495,15 @@
                                         },
                                         {
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-5.png"
-                                        },
-                                        {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-6.png"
-                                        },
-                                        {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-7.png"
                                         }
-                                    ]
+                                    ],
+                                    rightBottom: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-6.png"
+                                    },
+                                    bottomOne: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-7.png"
+                                    }
+
                                 }
                             }
                         ]
@@ -1521,6 +1534,21 @@
                         imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-2-bottom.png"
                     },
                     {
+                        mainTitle: "法律咨询",
+                        subTitle: "全程陪同",
+                        summary: "专业律师为企业保驾护航",
+                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-top.png",
+                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-middle.png",
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-bottom.png"
+                    },
+                    {
+                        mainTitle: "社保公积金缴纳",
+                        subTitle: "",
+                        summary: "缴纳社保公积金,养老无忧",
+                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-top.png",
+                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-middle.png",
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-bottom.png"
+                    }, {
                         mainTitle: "公司注册",
                         subTitle: "快人一步",
                         summary: "创业园区、孵化基地专业对接",
