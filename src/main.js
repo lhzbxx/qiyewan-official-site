@@ -69,7 +69,6 @@ const routes = [
     { path: '/news', component: NewsList},
     { path: '/aboutus', component: AboutUs},
     { path: '/recruitment', component: Recruitment}
-
 ]
 
 const router = new VueRouter({
