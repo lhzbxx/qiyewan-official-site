@@ -108,6 +108,12 @@
         padding-top: 12px;
         letter-spacing: 1px;
     }
+    div.show{
+        display: block;
+    }
+    div.hide{
+        display: none;
+    }
 
     .title {
         text-align: center;
@@ -565,7 +571,7 @@
         height: 100%;
         position: absolute;
         top: 0;
-        left: 0px;
+        left: 60px;
     }
 
     .slide img {
@@ -573,7 +579,7 @@
         left: 50%;
         top: 50%;
         transform: translate3d(-50%, -50%, 0);
-        width: 800px;
+        width: 600px;
     }
 
     .slide.active img {
@@ -670,7 +676,7 @@
 
     #voices {
         width: 100%;
-        height: 300px;
+        height: 400px;
         margin-bottom: 20px;
         background: url("http://ofw6tmkxn.bkt.clouddn.com/customer-voice-background.png") no-repeat;
         background-size: 100%;
@@ -679,18 +685,30 @@
 
     .voice {
         width: 100%;
-        height: 300px;
+        height: 400px;
+        display: none;
+        animation: fadeIn 0.5s ease-in-out .2s ;
     }
 
+    @-webkit-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: .5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
     .voice-control {
         width: 35px;
         height: 50px;
         background-color: lightslategray;
         position: absolute;
-        top: 50%;
+        top: 65%;
         margin-top: -25px;
         cursor: pointer;
-
     }
 
     .voice-left-img {
@@ -703,9 +721,12 @@
     .voice-left-img img {
         position: absolute;
         right: 0;
-        top: 50%;
-        height: 200px;
+        top: 40%;
+        height: 280px;
+        width: 420px;
         margin-top: -100px;
+        border: 3px solid #e0e0e0;
+        border-radius: 5px;
     }
 
     .voice-right-img {
@@ -715,20 +736,50 @@
         position: relative;
     }
 
-    .voice-right-img img {
+    .voice-right-img .summary {
         position: absolute;
         left: 0;
-        top: 50%;
-        height: 200px;
+        top: 40%;
+        height: 280px;
+        width: 420px;
         margin-top: -100px;
+        padding-right: 130px;
+        color: #e9e9e9;
+        margin-left: 80px;
+    }
+    .voice-right-img .summary h2{
+        margin-top: 30px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        line-height: 25px;
+    }
+    .voice-right-img .summary h2:first-letter{
+        margin-left: 20px;
+    }
+    .voice-right-img .summary p{
+        text-align: right;
+        font-size: 14px;
+        line-height: 25px;
+    }
+    .voice-right-img .summary .name{
+        font-weight: 800;
     }
 
     #voice-control-left {
-        left: 0
+        left: 0;
+        padding-top: 10px;
+        padding-left:2px;
+        font-size: 28px;
+        color: #d5d5d5;
+
     }
 
     #voice-control-right {
-        right: 0
+        right: 0;
+        padding-top: 10px;
+        padding-left:5px;
+        font-size: 28px;
+        color: #d5d5d5;
     }
 
     #news {
@@ -889,7 +940,7 @@
                             <div class="content-info">
                                 <div class="content-info-detail">
                                     <div class="classification-icon">
-                                        <img src="../assets/img/ser_1.png">
+                                        <img  :src="hotProduct.activeImage">
                                     </div>
                                     <div class="classification-title">
                                         {{ hotProduct.title }}
@@ -983,12 +1034,19 @@
             </div>
         </div>
         <div id="voices">
-            <div class="voice">
+            <div class="voice"
+                 :class="{show: isVoiceBannerActive(index)}"
+                 v-for="(voice,index) in customerVoices">
                 <div class="voice-left-img">
-                    <img src="../assets/logo.png">
+                    <img src="../assets/img/customer1.png">
                 </div>
                 <div class="voice-right-img">
-                    <img src="../assets/logo.png">
+                   <div class="summary">
+                       <h2>{{ voice.content}}</h2>
+                       <p>{{ voice.company}}</p>
+                       <p class="position">{{ voice.posion}}</p>
+                       <p class="name">{{ voice.name}}</p>
+                   </div>
                 </div>
             </div>
             <div class="container"
@@ -996,8 +1054,8 @@
                         height: 300px; top: 0;
                         margin-left: -580px;
                         left: 50%;">
-                <div id="voice-control-left" class="voice-control"></div>
-                <div id="voice-control-right" class="voice-control"></div>
+                <div id="voice-control-left" v-on:click="setVoiceBanner(voiceBanner-1)" class="voice-control el-icon-arrow-left"></div>
+                <div id="voice-control-right" v-on:click="setVoiceBanner(voiceBanner+1)" class="voice-control  el-icon-arrow-right"></div>
             </div>
         </div>
         <div class="container">
@@ -1005,16 +1063,18 @@
                 <li class="news-tab"
                     v-for="(item, index) in news"
                     :class="{active: isNewsTab(index)}"
-                    v-on:click="setNewsTab(index)">
+                    v-on:click="setNewsTab(index),newsTab=index">
                     {{ item.title }}
                 </li>
             </ul>
-            <div id="news">
-                <lh-news style="margin-right: 8px;"></lh-news>
-                <lh-news style="margin-right: 8px;"></lh-news>
-                <lh-news style="margin-right: 8px;"></lh-news>
-                <lh-news style="margin-right: 8px;"></lh-news>
-                <lh-news style="margin-right: 8px;"></lh-news>
+            <div id="news" >
+                <lh-news v-for="article in news[newsTab].articles" style="margin-right: 8px;"
+                         :img="article.img"
+                        :title="article.title"
+                        :summary="article.summary"
+                        :tags="article.tags"
+                        :date="article.date"
+                        :views="article.views"></lh-news>
             </div>
         </div>
         <div class="clearfix"></div>
@@ -1028,15 +1088,17 @@
                 </div>
                 <ul>
                     <li class="tool" v-for="item in tools">
-                        <div class="tool-img">
-                            <img :src="item.cover" alt="">
-                        </div>
-                        <div class="tool-img-mask">
-                            <img src="../assets/img/sousuo.png" alt="">
-                        </div>
-                        <p>{{ item.department }}</p>
-                        <h5>{{ item.service }}</h5>
-                        <div class="tool-underline"></div>
+                        <a :href="item.url" target="_blank">
+                            <div class="tool-img">
+                                <img :src="item.cover" alt="">
+                            </div>
+                            <div class="tool-img-mask">
+                                <img src="../assets/img/sousuo.png" alt="">
+                            </div>
+                            <p>{{ item.department }}</p>
+                            <h5>{{ item.service }}</h5>
+                            <div class="tool-underline"></div>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -1103,9 +1165,11 @@
                         "image": "introduce_img4"
                     }
                 ],
-                hotProducts: [{
+                hotProducts: [
+                    {
                     title: "工商服务",
-                    image: "../assets/img/ser_1.png",
+                    image: "http://ofw6tmkxn.bkt.clouddn.com/hot_1.png",
+                        activeImage:"http://ofw6tmkxn.bkt.clouddn.com/ser_1.png",
                     summary: "工商，就这么简单…",
                     first: [
                         "公司注册",
@@ -1141,7 +1205,8 @@
                 },
                     {
                         title: "财税服务",
-                        image: "../assets/img/ser_2.png",
+                        image: "http://ofw6tmkxn.bkt.clouddn.com/hot_2.png",
+                        activeImage:"http://ofw6tmkxn.bkt.clouddn.com/ser_2.png",
                         summary: "财务清晰，纳税放心",
                         first: [
                             "零申报代理记账",
@@ -1176,7 +1241,8 @@
                     },
                     {
                         title: "法律服务",
-                        image: "../assets/img/ser_3.png",
+                        image: "http://ofw6tmkxn.bkt.clouddn.com/hot_3.png",
+                        activeImage:"http://ofw6tmkxn.bkt.clouddn.com/ser_3.png",
                         summary: "您的私人法律顾问",
                         first: [
                             "商标注册",
@@ -1211,6 +1277,8 @@
                     },
                     {
                         title: "人事服务",
+                        image: "http://ofw6tmkxn.bkt.clouddn.com/hot_4.png",
+                        activeImage:"http://ofw6tmkxn.bkt.clouddn.com/ser_4.png",
                         summary: "创业不忘养老",
                         first: [
                             "委托代缴社保公积金服务",
@@ -1248,25 +1316,25 @@
                     {
                         department: "中国商标网【商标局】",
                         service: "商标查询",
-                        url: "",
+                        url: "http://sbj.saic.gov.cn/sbcx/",
                         cover: "http://ofl0lw9er.bkt.clouddn.com/tool1.png"
                     },
                     {
                         department: "全国企业信用信息公示系统",
                         service: "工商查询",
-                        url: "",
+                        url: "http://gsxt.saic.gov.cn/",
                         cover: "http://ofl0lw9er.bkt.clouddn.com/tool2.png"
                     },
                     {
                         department: "国际知识产权局",
                         service: "专利查询",
-                        url: "",
+                        url: "http://cpquery.sipo.gov.cn/",
                         cover: "http://ofl0lw9er.bkt.clouddn.com/tool3.png"
                     },
                     {
                         department: "中国版权保护中心",
                         service: "软件著作权查询",
-                        url: "",
+                        url: "http://www.ccopyright.com.cn/cpcc/RRegisterAction.do?method=list&no=fck",
                         cover: "http://ofl0lw9er.bkt.clouddn.com/tool4.png"
                     }
                 ],
@@ -1438,7 +1506,8 @@
                                         },
                                         {
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-5.png"
-                                        }], rightBottom: {
+                                        }
+                                    ], rightBottom: {
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-6.png"
                                     }, bottomOne: {
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-7.png"
@@ -1464,9 +1533,12 @@
                                         },
                                         {
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-5.png"
-                                        }], rightBottom: {
+                                        }
+                                    ],
+                                    rightBottom: {
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-6.png"
-                                    }, bottomOne: {
+                                    },
+                                    bottomOne: {
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-7.png"
                                     }
 
@@ -1503,7 +1575,6 @@
                                     bottomOne: {
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-7.png"
                                     }
-
                                 }
                             }
                         ]
@@ -1559,27 +1630,285 @@
                 ],
                 news: [
                     {
-                        title: "创业资讯"
+                        title: "创业资讯",
+                        articles: [
+                            {
+                                img: '',
+                                title: '创业公司如何招聘？',
+                                summary: '在风风火火拿到融资以后，找人就成为了创业公司最大的事情。没有好的人和团队，是不会...',
+                                tags: ['人事','招聘'],
+                                date: '2016年8月29日',
+                                views: 236
+                            },
+                            {
+                                img: '',
+                                title: '财务部非金钱激励员工的108种手段',
+                                summary: '在任何一个组织里，管理者都是下属的镜子。可以说，只要看一看这个组织的管理者....',
+                                tags: ['专利申请'],
+                                date: '2016年8月25日',
+                                views: 359
+                            },
+                            {
+                                img: '',
+                                title: '公司对于老东家的知识产权的法律风险防范',
+                                summary: '我们在第一讲就提到，在创业的过程中，您首先考虑是否侵犯了老东家的知识产权...',
+                                tags: ['知识产权','法律'],
+                                date: '2016年829日',
+                                views: 599
+                            },
+                            {
+                                img: '',
+                                title: '老公司向新公司迁移时的用户迁移问题',
+                                summary: '老公司向新公司迁移的时候，还有员工的问题，这也是要考虑的。一方面要...',
+                                tags: ['公司变更'],
+                                date: '2016年9月3日',
+                                views: 366
+                            },
+                            {
+                                img: '',
+                                title: '商标相关问答',
+                                summary: '商标的价值其实是眼睛看不到手却拿得到的财富，从我们的角度看，创业公司在创业的...',
+                                tags: ['商标'],
+                                date: '2016年9月5日',
+                                views: 688
+                            }
+                        ]
                     },
                     {
-                        title: "工商干货"
+                        title: "工商干货",
+                        articles:[
+                            {
+                                img: '',
+                                title: '营业执照上隐藏的那些秘密—— 企业类型之股份公司',
+                                summary: '讲完了个人独资企业与合伙企业这些非公司制企业之后，我们现在来看看大家耳熟能详的...',
+                                tags: ['工商','营业执照'],
+                                date: '2016年9月12日',
+                                views: 289
+                            },
+                            {
+                                img: '',
+                                title: '别让人情拖垮你的公司！',
+                                summary: '中国是一个非常讲“人情”讲“关系”的国家，有时候靠人情刷脸，靠关系办事会...',
+                                tags: ['工商','营业执照'],
+                                date: '2016年9月12日',
+                                views: 289
+                            },
+                            {
+                                img: '',
+                                title: '作为公司老板，只有这20%工作是你需要亲自做的',
+                                summary: '作为公司老板，你只需专注那些能为公司带来最大利益的事情。通常说来，这些事情...',
+                                tags: ['工商','营业执照'],
+                                date: '2016年9月12日',
+                                views: 289
+                            },
+                            {
+                                img: '',
+                                title: '你做了什么，可以多出四个工作日？',
+                                summary: '你说人生究竟什么最重要？听到这个问题，每个人第一反应一定是：“钱”。事实...',
+                                tags: ['工商','营业执照'],
+                                date: '2016年9月12日',
+                                views: 289
+                            },
+                            {
+                                img: '',
+                                title: '商标相关问答',
+                                summary: '商标的价值其实是眼睛看不到手却拿得到的财富，从我们的角度看，创业...',
+                                tags: ['工商','营业执照'],
+                                date: '2016年9月12日',
+                                views: 289
+                            }
+                        ]
+
                     },
                     {
-                        title: "财税干货"
+                        title: "财税干货",
+                        articles: [
+                            {
+                                img: '',
+                                title: '个人股东占用公司资金也要交个人所得税',
+                                summary: '许多初创公司往往由创业者自身持有100%的股权或者绝大部分股权，这就给创业者造成...',
+                                tags: ['财税','税务'],
+                                date: '2016年9月13日',
+                                views: 453
+                            },
+                            {
+                                img: '',
+                                title: '采购商品你真的会比价吗？',
+                                summary: '谈到采购商品的比价问题，站在消费者个人的角度来看，真的是一个...',
+                                tags: ['财税','采购'],
+                                date: '2016年9月15日',
+                                views: 259
+                            },
+                            {
+                                img: '',
+                                title: '公司采购业务中的这些税收风险你知道吗？',
+                                summary: '一项采购交易中，通常由买方直接取得卖方开具的销售发票，并且直接向卖方...',
+                                tags: ['财税','采购','税务'],
+                                date: '2016年9月16日',
+                                views: 459
+                            },
+                            {
+                                img: '',
+                                title: '小规模纳税人 OR 一般纳税人？',
+                                summary: '最近遇到好几个准备设立公司的创业者问我这样一个问题：“我该选择增值税一般纳税人还是...',
+                                tags: ['财税','税务'],
+                                date: '2016年9月17日',
+                                views: 459
+                            },
+                            {
+                                img: '',
+                                title: '只有错买，没有错卖！企业湾教您如何收购股权',
+                                summary: '商业交易是由卖方提供商品或服务，因此卖方通常比买方更加熟知所销售的...',
+                                tags: ['财税','股权'],
+                                date: '2016年9月19日',
+                                views: 429
+                            },
+                        ]
                     },
                     {
-                        title: "法律干货"
+                        title: "法律干货",
+                        articles:[
+                            {
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-1.png',
+                                title: '买卖合同中涉及的问题',
+                                summary: '买卖合同看似很简单，只是买家和卖家交易某样东西，一手交钱一手交货。但...',
+                                tags: ['法律','合同'],
+                                date: '2016年9月21日',
+                                views: 359
+                            },
+                            {
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-2.png',
+                                title: '员工个人自行缴社保的书面承诺有效吗？ ',
+                                summary: '王某于2011年5月进入F公司设于宁波某商场的品牌专柜从事营业员工作。F公司与王某签订...',
+                                tags: ['法律','社保'],
+                                date: '2016年9月22日',
+                                views: 389
+                            },
+                            {
+                                img: '',
+                                title: '公司知识产权',
+                                summary: '上周我们创业科普中一直都是在讲公司的控制权，似乎公司只有勾心斗角...',
+                                tags: ['法律','知识产权'],
+                                date: '2016年8月23日',
+                                views: 233
+                            },
+                            {
+                                img: '',
+                                title: 'APP可否申请专利的探讨(续)',
+                                summary: '跟着上期我们继续来讲APP可否申请专利。针对App申请发明专利....',
+                                tags: ['专利申请'],
+                                date: '2016年8月25日',
+                                views: 359
+                            },
+                            {
+                                img: '',
+                                title: '拟定合同过程中的关注点（一）',
+                                summary: '通常来讲，合同的主体不需要关注，因为大多数情况下，合同主体都不会出现问题。何时合同主体会带来致命的...',
+                                tags: ['法律','合同'],
+                                date: '2016年9月21日',
+                                views: 359
+                            }
+                        ]
+
                     },
                     {
-                        title: "人事干货"
+                        title: "人事干货",
+                        articles:[
+                            {
+                                img: '',
+                                title: '作为公司老板，只有这20%工作是你需要亲自做的',
+                                summary: '作为公司老板，你只需专注那些能为公司带来最大利益的事情。通常说来，这些事情...',
+                                tags: ['人事'],
+                                date: '2016年9月20日',
+                                views: 469
+                            },
+                            {
+                                img: '',
+                                title: '别让人情拖垮你的公司！',
+                                summary: '中国是一个非常讲“人情”讲“关系”的国家，有时候靠人情刷脸，靠关系办事会比...',
+                                tags: ['人事'],
+                                date: '2016年9月23日',
+                                views: 469
+                            },
+                            {
+                                img: '',
+                                title: '创业公司的员工激励怎么做？',
+                                summary: '当你费劲苦心，把员工招募进来后，怎么让他们死心塌地的和你一起拼命干就是...',
+                                tags: ['人事'],
+                                date: '2016年9月25日',
+                                views: 469
+                            },
+                            {
+                                img: '',
+                                title: '财务部非金钱激励员工的108种手段 ，你一定要懂！',
+                                summary: '在任何一个组织里，管理者都是下属的镜子。可以说，只要看一看这个组织的管理者是如何...',
+                                tags: ['人事'],
+                                date: '2016年9月28日',
+                                views: 369
+                            },
+                            {
+                                img: '',
+                                title: '你做了什么，可以多出四个工作日？',
+                                summary: '你说人生究竟什么最重要？听到这个问题，每个人第一反应一定是...',
+                                tags: ['人事'],
+                                date: '2016年10月8日',
+                                views: 469
+                            }
+                        ]
                     }
+                ],
+                customerVoices:[
+                    {
+                        headImg:"",
+                        content:"企业湾的增值服务特别适合像我们这样的创业型公司,服务专业，价格公道,适合创业公司在经费不宽裕的情况下把事情推行下去。我认为企业湾是一个一站式、超值，适合创业公司的合格的企业服务供应商。",
+                        company:"成都天添益网络科技有限公司",
+                        position:"COO",
+                        name:""
+                    },
+                    {
+                        headImg:"",
+                        content:"平和温润、真诚无华为朴，知行合一、志坚质洁为正.正是这种相同的真挚的价值观让朴正教育咨询和企业湾相遇相知，并开始了旗下花田儿童教育项目的顺利筹建感谢企业湾专业细致的服务和支持，让我们不忘初心一起走下去！",
+                        company:"四川朴正教育咨询有限公司",
+                        position:"花田教育",
+                        name:""
+                    },
+                    {
+                        headImg:"",
+                        content:"企业湾为我们提供人事、法律、财务等相当专业的服务，他们以专业的水准、负责的态度服务于客户，提供全方位的咨询与服务，使我们无后顾之忧",
+                        company:"镇江市红包兔信息技术有限公司",
+                        position:"创始人兼CEO",
+                        name:""
+                    },
+                    {
+                        headImg:"",
+                        content:"企业湾为我们解决了初创企业在财务、法律方面资源短缺、缺乏行业经验的老大难问题，让我们在创业的路上省了不少心。用优质贴心专业的服务，为中小型企业的创业之路保驾护航",
+                        company:"上海恩陶投资管理有限公司",
+                        position:"公司负责人",
+                        name:""
+                    },
+                    {
+                        headImg:"",
+                        content:"我们不仅是企业湾的客户，也是企业湾的战略合作伙伴。企业湾人诚恳的态度、专业的服务让我感动，作为创业企业，我们共同进步",
+                        company:"上海云简软件科技有限公司",
+                        position:"创始人兼CEO",
+                        name:""
+                    },
+                    {
+                        headImg:"",
+                        content:"响应迅速，帮我们节省了很多的时间，从工商，到人事、法律在企业湾一站式解决了，省时省事，是我们有更多的精力专业住本质工作",
+                        company:"南京贝贝帮教育咨询有限公司",
+                        position:"创始人兼CEO",
+                        name:""
+                    },
+
                 ],
                 currentDate: "2016年10月13日",
                 banner: 0,
                 active: 3,
                 state: 0,
                 stateType: 0,
-                newsTab: 0
+                newsTab: 0,
+                voiceBanner:0
             }
         },
         methods: {
@@ -1592,8 +1921,18 @@
             setBannerActive(index) {
                 this.banner = index;
             },
+
             isBannerActive(index) {
                 return this.banner == index;
+            },
+            setVoiceBanner(index){
+                if(index < 0) index = 5;
+                if(index > 5) index = 0;
+                this.voiceBanner = index;
+                console.log(this.voiceBanner)
+            },
+            isVoiceBannerActive(index) {
+                return this.voiceBanner == index;
             },
             setNewsTab(index) {
                 this.newsTab = index;
