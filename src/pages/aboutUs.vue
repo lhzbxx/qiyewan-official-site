@@ -32,6 +32,12 @@
         background-color: #0da3e5;
         color: white !important;;
     }
+   .con_r .show{
+        display: block;
+    }
+    .hide{
+        display: none;
+    }
 
     /*content右边*/
     .con_r {
@@ -321,19 +327,18 @@
     <div class="container">
         <div class="con_l clear">
             <ul>
-                <li class="active con_li1">关于企业湾</li>
-                <li>联系我们</li>
-
-                <li>索取发票</li>
-                <li>支付方式</li>
-                <li>退款说明</li>
-                <li>用户协议</li>
-                <p onclick="javascript:location.href='Recruitment.vue'">加入我们</p>
+                <li :class="{active: isShow('about')}"  v-on:click="setLiName('about')" >关于企业湾</li>
+                <li :class="{active: isShow('contact')}"  v-on:click="setLiName('contact')" >联系我们</li>
+                <li :class="{active: isShow('invoice')}"  v-on:click="setLiName('invoice')" >索取发票</li>
+                <li :class="{active: isShow('pay')}" v-on:click="setLiName('pay')">支付方式</li>
+                <li :class="{active: isShow('refund')}"  v-on:click="setLiName('refund')">退款说明</li>
+                <li :class="{active: isShow('protocol')}"  v-on:click="setLiName('protocol')">用户协议</li>
+                <router-link to="/recruitment" target="_blank"><p>加入我们</p></router-link>
             </ul>
         </div>
         <div class="con_r">
             <!--关于企业湾-->
-            <div class="about-con all_con">
+            <div class="about-con"  :class="{show: isShow('about'),hide: !isShow('about')}" >
                 <div class="about_intru">
                     <h3 class="about_tit">企业介绍</h3>
                     <div class="about_tit_b"></div>
@@ -380,7 +385,7 @@
                 </div>
             </div>
             <!--联系我们开始   -->
-            <div class="contact_con all_con">
+            <div class="contact_con" :class="{show: isShow('contact'),hide: !isShow('contact')}" >
                 <div class="contact_img"><img src="../assets/img/contact.jpg"></div>
                 <ul>
                     <li class="li_">
@@ -436,7 +441,7 @@
                 </ul>
             </div>
             <!--索取发票-->
-            <div class="receipt all_con">
+            <div class="receipt"  :class="{show: isShow('invoice'),hide: !isShow('invoice')}">
                 <div class="receipt_img"><img src="../assets/img/contact.jpg"></div>
                 <h4>索取发票</h4>
                 <p>1.本规则适用于在企业湾网站上进行的所有的订单服务。</p>
@@ -445,7 +450,7 @@
                 <p class="last_p">4.发票一旦开具，就无法更改发票内容，请申请开具发票的用户务必准确填写开具发票所需信息和详细联系方式。</p>
             </div>
             <!--支付方式-->
-            <div class="pay all_con">
+            <div class="pay" :class="{show: isShow('pay'),hide: !isShow('pay')}">
                 <div class="pay_img"><img src="../assets/img/contact.jpg"></div>
                 <h4>支付方式</h4>
                 <p>1、企业湾提供网上支付方式。如您在结算时使用支付宝在线付款，企业湾可实时确认收款，快速进入操作阶段。</p>
@@ -453,7 +458,7 @@
                 <p class="last_p">3、为保证业务快速进行，推荐使用第1种网上支付方式。</p>
             </div>
             <!--退款说明-->
-            <div class="refund all_con">
+            <div class="refund"  :class="{show: isShow('refund'),hide: !isShow('refund')}" >
                 <div class="refund_img"><img src="../assets/img/contact.jpg"></div>
                 <h4>退款说明</h4>
                 <table width="100%" border="1">
@@ -515,7 +520,7 @@
                 <p class="last_p">3、因银行系统升级，退银行卡服务不支持信用卡退款。</p>
             </div>
             <!--用户协议-->
-            <div class="protocol all_con">
+            <div class="protocol" :class="{show: isShow('protocol'),hide: isShow('protocol')}">
                 <div class="protocol_img"><img src="../assets/img/contact.jpg"></div>
                 <h4>企业湾用户服务协议</h4>
                 <p>
@@ -636,15 +641,24 @@
         <div class="clearfix"></div>
     </div>
 </template>
-<!--<script>
-    function tab(pa){
-        $(pa).click(function(e){
-            var ind=$(pa).index($(this));
-            $(".all_con:visible").hide();
-            $(".all_con:eq("+ind+")").show();
-            $(pa).removeClass("active");
-            $(this).addClass("active");y
-        })
+<script>
+    export default {
+        data() {
+            return {
+                liName: 'about'
+            }
+        },
+        methods: {
+            setLiName(liName) {
+                this.liName = liName;
+            },
+            getLiName(){
+                return this.liName;
+            },
+            isShow(liName){
+                return liName == this.liName;
+            }
+        }
     }
-    tab(".con_l ul li");
-</script>-->
+
+</script>

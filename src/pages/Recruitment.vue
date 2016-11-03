@@ -9,6 +9,12 @@
         background-color: #48d684;
     }
 
+    .contianer .show{
+        display: block;
+    }
+    .contianer .hide{
+        display: none;
+    }
     .rec_word {
         text-align: center;
         padding-top: 60px;
@@ -117,8 +123,6 @@
     .technology_r {
         width: 880px;
     }
-
-
 </style>
 <template>
     <div class="container">
@@ -127,19 +131,19 @@
                 <img src="../assets/img/recruitment_1.png">
             </div>
             <ul class="department">
-                <li>技术部 <span></span></li>
-                <li>运营部 <span class="hide"></span></li>
-                <li class="business">商务部<span class="hide"></span></li>
+                <li v-on:click="setLiName('it')">技术部 <span :class="{show: getLiName() == 'it',hide: getLiName() != 'it'}"></span></li>
+                <li v-on:click="setLiName('operation')">运营部 <span :class="{show: getLiName() == 'operation',hide: getLiName() != 'operation'}"></span></li>
+                <li v-on:click="setLiName('commerce')" class="business">商务部<span :class="{show: getLiName() == 'commerce',hide: getLiName() != 'commerce'}"></span></li>
             </ul>
         </div>
             <div class="recruitment_con">
                 <div class="contianer">
                     <!--技术部-->
-                    <div class="content">
+                    <div class="content" :class="{show: getLiName() == 'it',hide: getLiName() != 'it'}">
                         <span></span>
                         <div class="technology_l l">
                             <ul>
-                                <li class="on">Java工程师</li>
+                                <li  :class="{on: getSubLiName() == 'it-java'}"  v-on:click="setSubLiName('it-java')">Java工程师</li>
                             </ul>
                         </div>
                         <div class="technology_r l">
@@ -160,19 +164,19 @@
                         </div>
                     </div>
                     <!--运营部-->
-                    <div class="content hide">
+                    <div class="content" :class="{show: getLiName() == 'operation',hide: getLiName() != 'operation'}">
                         <div class="technology_l l">
                             <ul>
-                                <li class="on">服务经理</li>
-                                <li>工商服务专员</li>
-                                <li>会计</li>
-                                <li>会计实习生</li>
-                                <li>人力资源经理</li>
-                                <li>审计会计</li>
-                                <li>新媒体运营</li>
+                                <li :class="{on: getSubLiName() == 'opt-manager'}"  v-on:click="setSubLiName('opt-manager')">服务经理</li>
+                                <li :class="{on: getSubLiName() == 'opt-commissioner'}"  v-on:click="setSubLiName('opt-commissioner')">工商服务专员</li>
+                                <li :class="{on: getSubLiName() == 'opt-accounting'}"  v-on:click="setSubLiName('opt-accounting')">会计</li>
+                                <li :class="{on: getSubLiName() == 'opt-intern'}"  v-on:click="setSubLiName('opt-intern')">会计实习生</li>
+                                <li :class="{on: getSubLiName() == 'opt-resources'}"  v-on:click="setSubLiName('opt-resources')">人力资源经理</li>
+                                <li :class="{on: getSubLiName() == 'opt-audit'}"  v-on:click="setSubLiName('opt-audit')">审计会计</li>
+                                <li :class="{on: getSubLiName() == 'opt-media'}"  v-on:click="setSubLiName('opt-media')">新媒体运营</li>
                             </ul>
                         </div>
-                        <div class="technology_r l">
+                        <div class="technology_r l" :class="{show: getSubLiName() == 'opt-manager',hide: getSubLiName() != 'opt-manager'}">
                             <h5>职位描述</h5>
                             <p>1. 服务流程 - 基于业务需求的监督、设计和交付服务系统。对服务流程进行审查和建议，提高合规性；<br>
                                 2. 业务流程 - 与客户和员工联系，收集想法，提出解决方案，以提高过程的有效性和使用性；<br>
@@ -195,7 +199,7 @@
                                 11. 关注细节。
                             </p>
                         </div>
-                        <div class="technology_r hide l">
+                        <div class="technology_r l" :class="{show: getSubLiName() == 'opt-commissioner',hide: getSubLiName() != 'opt-commissioner'}">
                             <h5>职位描述</h5>
                             <p>1. 负责工商业务客户的咨询、解答并能够与政府部门进行有效沟通，办理业务；<br>
                                 2. 能够为客户提供专业的工商咨询服务,工商注册办理；<br>
@@ -210,7 +214,7 @@
                                 4. 具有良好的个人品德和职业操守，有较强的事业心和抗压能力。
                             </p>
                         </div>
-                        <div class="technology_r hide l">
+                        <div class="technology_r l" :class="{show: getSubLiName() == 'opt-accounting',hide: getSubLiName() != 'opt-accounting'}">
                             <h5>职位描述</h5>
                             <p>1. 管理一个多家客户，审查客户的每月凭证，财务报告和分析，以确保在记录和及时向客户报告的准确性；<br>
                                 2. 确保每月结帐的准确性和及时性，为客户准备报告；<br>
@@ -231,7 +235,7 @@
                                 7. 在解决日常税务和会计事宜方面的技术能力。
                             </p>
                         </div>
-                        <div class="technology_r hide l">
+                        <div class="technology_r l" :class="{show: getSubLiName() == 'opt-intern',hide: getSubLiName() != 'opt-intern'}">
                             <h5>职位描述</h5>
                             <p>1. 协助会计进行帐务处理及报税；<br>
                                 2. 收集、审核财务所需票据；<br>
@@ -245,7 +249,7 @@
                                 4.认真细致，爱岗敬业，吃苦耐劳，有良好的职业操守。
                             </p>
                         </div>
-                        <div class="technology_r hide l">
+                        <div class="technology_r l" :class="{show: getSubLiName() == 'opt-resources',hide: getSubLiName() != 'opt-resources'}">
                             <h5>职位描述</h5>
                             <p>1. 提供全方位的专业人力资源服务，包括计划，执行和实施中国地区的战略和战术人力资源，人才管理，发展计划和举措；<br>
                                 2. 监督人力资源计划和计划的制定和实施，并确定该地区新的人力资源计划，以支持组织发展；<br>
@@ -267,7 +271,7 @@
                                 8. 具备可以创造性解决问题的能力，以及获得各级管理层的信任，尊重和信任的良好记录。
                             </p>
                         </div>
-                        <div class="technology_r hide l">
+                        <div class="technology_r l" :class="{show: getSubLiName() == 'opt-audit',hide: getSubLiName() != 'opt-audit'}">
                             <h5>职位描述</h5>
                             <p>1. 财务核算、税务工作的审核；<br>
                                 2. 核对账务信息；<br>
@@ -284,7 +288,7 @@
                                 5. 良好的沟通能力，人际交往能力，组织协调和解决问题的能力。
                             </p>
                         </div>
-                        <div class="technology_r hide l">
+                        <div class="technology_r l" :class="{show: getSubLiName() == 'opt-media',hide: getSubLiName() != 'opt-media'}">
                             <h5>职位描述</h5>
                             <p>1. 负责公司自媒体平台的文案编辑、推广；<br>
                                 2. 协助完成线下活动策划并保证活动的顺利进行；<br>
@@ -303,14 +307,14 @@
                         </div>
                     </div>
                     <!--商务部-->
-                    <div class="content hide">
+                    <div class="content" :class="{show: getLiName() == 'commerce',hide: getLiName() != 'commerce'}">
                         <div class="technology_l l">
                             <ul>
-                                <li class="on">客服实习生</li>
-                                <li>销售</li>
+                                <li :class="{on: getSubLiName() == 'com-customer'}"  v-on:click="setSubLiName('com-customer')">客服实习生</li>
+                                <li :class="{on: getSubLiName() == 'com-saler'}"  v-on:click="setSubLiName('com-saler')">销售</li>
                             </ul>
                         </div>
-                        <div class="technology_r l">
+                        <div class="technology_r l"  :class="{show: getSubLiName() == 'com-customer',hide: getSubLiName() != 'com-customer'}">
                             <h5>职位描述</h5>
                             <p>1. 办公室信息录入； <br>
                                 2. 日常后台的维护； <br>
@@ -323,7 +327,7 @@
                                 4. 良好的沟通能力，做过客服的优先。
                             </p>
                         </div>
-                        <div class="technology_r hide l">
+                        <div class="technology_r l" :class="{show: getSubLiName() == 'com-saler',hide: getSubLiName() != 'com-saler'}">
                             <h5>职位描述</h5>
                             <p>1. 发展和执行商业计划，包括但是不限于销售业务改进计划，以提高整体客户服务质量，开发和维护销售渠道，实现公司销售目标；<br>
                                 2. 支持销售主管完成销售指标，定期分析销售业务；<br>
@@ -339,7 +343,6 @@
                                 4. 愿意接受挑战，渴望成长。
                             </p>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -349,33 +352,39 @@
 
 </template>
 
-<!--
+<script>
+    export default {
+        data() {
+            return {
+                currentLi: 'it',
+                currentSubLi:'it-java'
+            }
+        },
+        methods: {
+            setLiName(liName) {
+                this.currentLi = liName;
+                switch (liName){
+                    case 'it':
+                        this.currentSubLi = 'it-java';
+                        break;
+                    case 'operation':
+                        this.currentSubLi = 'opt-manager';
+                        break;
+                    case 'commerce':
+                        this.currentSubLi = 'com-customer';
+                        break;
+                }
+            },
+            getLiName(){
+                return this.currentLi;
+            },
+            setSubLiName(currentSubLi) {
+                this.currentSubLi = currentSubLi;
+            },
+            getSubLiName(){
+                return this.currentSubLi;
+            },
+        }
+    }
 
-  <script>
-
-      $(".department li").click(function(){
-          var num=$(".department li").index($(this));
-          $(".content:visible").hide();
-          $(".department li span:visible").hide();
-          $(this).find('span').show();
-          var $currentCon = $($(".content:eq("+num+")"));
-          $currentCon.show();
-          var allLi = $currentCon.find('li');
-          $(allLi).removeClass('on');
-          var $firstLi = $(allLi.get(0));
-          $firstLi.addClass('on');
-      })
-
-
-      function tab(pa){
-          $(pa+"l ul li").click(function(e){
-              var ind=$(pa+"l ul li").index($(this));
-              $(pa+"r:visible").hide();
-              $(pa+"r:eq("+ind+")").show();
-              $(pa+"l ul li").removeClass("on");
-              $(this).addClass("on");
-          })
-      }
-      tab(".technology_");
-  </script>
--->
+</script>
