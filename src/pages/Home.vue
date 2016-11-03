@@ -956,12 +956,6 @@
                              v-for="item in timelines[state].types[stateType].products.one">
                             <img :src="item.url">
                         </div>
-                        <div class="l timeline-pic-one timeline-pic">
-                            <img :src="timelines[state].types[stateType].products.rightBottom.url">
-                        </div>
-                        <div class="l timeline-pic-two timeline-pic">
-                            <img :src="timelines[state].types[stateType].products.bottomOne.url">
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1282,13 +1276,14 @@
                                         },
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        }],
-                                    rightBottom: {
+                                        },
+                                        {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         },
-                                    bottomOne: {
+                                        {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         }
+                                    ]
                                 }
                             },
                             {
@@ -1309,15 +1304,13 @@
                                         },
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        }],
-                                    rightBottom:
-                                        {
+                                        }, {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         },
-                                    bottonOne:
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         }
+                                    ]
                                 }
                             },
                             {
@@ -1338,16 +1331,16 @@
                                         },
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        }],
-                                    rightBottom:
-                                        {
+                                        }, {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         },
-                                    bottomOne:
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         }
+                                    ]
                                 }
+
+
                             }
                         ]
                     },
@@ -1433,15 +1426,13 @@
                                         },
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        }],
-                                    rightBottom:
-                                        {
+                                        }, {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         },
-                                    bottomOne:
                                         {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         }
+                                    ]
 
                                 }
                             },

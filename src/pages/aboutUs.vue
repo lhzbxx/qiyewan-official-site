@@ -323,11 +323,12 @@
             <ul>
                 <li class="active con_li1">关于企业湾</li>
                 <li>联系我们</li>
-                <p onclick="javascript:location.href='Recruitment.vue'">加入我们</p>
+
                 <li>索取发票</li>
                 <li>支付方式</li>
                 <li>退款说明</li>
                 <li>用户协议</li>
+                <p onclick="javascript:location.href='Recruitment.vue'">加入我们</p>
             </ul>
         </div>
         <div class="con_r">
@@ -339,7 +340,6 @@
                     <p>
                         企业湾成立于2015年，由上市公司高管以及国内知名互联网企业的精英组成,由伯藜基金、哈佛校友投资创建,汇聚中国广大的优秀大学生和专业的退休人员,整合业内优秀的财务、法务、人事、IT技术等资源,通过线上线下的服务方式，优化服务流程，降低服务成本,为中国千万中小企业、创新创业者提供一站超值的服务。</p>
                 </div>
-
 
                 <div class="culture">
                     <h3 class="about_tit">企业文化</h3>
@@ -366,7 +366,6 @@
                             <p>对企业负责就是忠诚，对客户和合作者负责就是守信。对企业负责就是忠诚，对客户和合作者负责就是守信。</p>
                         </li>
                     </ul>
-
                 </div>
                 <p class=" clear clearfix"></p>
                 <div class="advantage">
@@ -379,8 +378,6 @@
                     <div class="about_tit_b1"></div>
                     <div class="advan_img"><img src="../assets/img/about_dream.jpg"></div>
                 </div>
-
-
             </div>
             <!--联系我们开始   -->
             <div class="contact_con all_con">
