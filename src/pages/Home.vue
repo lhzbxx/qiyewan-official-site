@@ -365,9 +365,9 @@
         left: 0;
         width: 188px;
         height: 113px;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        border-radius: 10px;
+        -webkit-border-radius:10px;
+        -moz-border-radius:10px;
+        border-radius:10px;
         background-color: #0098db;
         opacity: 0;
         transition: all 1s;
@@ -573,7 +573,7 @@
         left: 50%;
         top: 50%;
         transform: translate3d(-50%, -50%, 0);
-        width: 600px;
+        width: 800px;
     }
 
     .slide.active img {
@@ -673,6 +673,7 @@
         height: 300px;
         margin-bottom: 20px;
         background: url("http://ofw6tmkxn.bkt.clouddn.com/customer-voice-background.png") no-repeat;
+        background-size:100%;
         position: relative;
     }
 
@@ -762,53 +763,44 @@
         background-color: white;
         color: #139cd7;
     }
-
-    .promise {
-        height: 410px;
-        background-color: #f6f6f6;
-    }
-
-    .promise ul {
-        width: 1000px;
-        margin: 30px auto;
-    }
-
-    .promise ul li {
-        width: 236px;
-        float: left;
-        border-right: 1px solid rgb(224, 224, 224);
-        margin-left: 17px;
-    }
-
-    .promise ul :first-child {
-        margin-left: 0px;
-    }
-
-    .promise ul :last-child {
-        border-right: none;
-    }
-
-    .pro_r {
-        margin-left: 10px;
-    }
-
-    .pro_r h5 {
-        font-weight: normal;
-        font-size: 17px;
-        margin-top: 12px;
-        letter-spacing: 3px;
-    }
-
-    .pro_r p {
-        font-size: 12px;
-        margin-top: 8px;
-        letter-spacing: 1px;
-        color: rgb(103, 102, 101);
-    }
-
-    .pro_img img {
-        width: 100%;
-    }
+    .promise{
+    height:410px;
+    background-color: #f6f6f6;
+}
+.promise ul{
+    width:1000px;
+    margin:30px auto;
+}
+.promise ul li{
+    width:236px;
+    float: left;
+    border-right:1px solid rgb(224,224,224);
+    margin-left:17px;
+}
+.promise ul :first-child{
+    margin-left:0px;
+}
+.promise ul :last-child{
+    border-right:none;
+}
+.pro_r {
+    margin-left:10px;
+}
+.pro_r h5{
+    font-weight:normal;
+    font-size:17px;
+    margin-top:12px;
+    letter-spacing:3px;
+}
+.pro_r p{
+    font-size:12px;
+    margin-top:8px;
+    letter-spacing:1px;
+    color: rgb(103,102,101);
+}
+.pro_img img{
+    width:100%;
+}
 </style>
 
 <template>
@@ -830,6 +822,7 @@
                          onmouseleave="this.style.transform='rotateX(0deg) rotateY(0deg)'"
                          onmousemove="x = event.clientY + document.body.scrollTop - 108;
                           y = (event.clientX + document.body.scrollLeft - 360 - (window.screen.width - 1160) / 2);
+                          console.log((x - 250) / 500+ ', ' + (400 - y) / 800);
                           this.style.transform='rotateX(' + 15 * (x - 250) / 500 + 'deg) rotateY(' + 15 * (400 - y) / 800 + 'deg)'">
                         <div class="right-image" data-zindex="50" style="transform: translateZ(50px);">
                             <img :src="item.imgBottomUrl" alt="">
@@ -1089,7 +1082,7 @@
                 ],
                 hotProducts: [{
                     title: "工商服务",
-                    image: "../assets/img/ser_1.png",
+                    image:"../assets/img/ser_1.png",
                     summary: "工商，就这么简单…",
                     first: [
                         "公司注册",
@@ -1125,7 +1118,7 @@
                 },
                     {
                         title: "财税服务",
-                        image: "../assets/img/ser_2.png",
+                        image:"../assets/img/ser_2.png",
                         summary: "财务清晰，纳税放心",
                         first: [
                             "零申报代理记账",
@@ -1160,7 +1153,7 @@
                     },
                     {
                         title: "法律服务",
-                        image: "../assets/img/ser_3.png",
+                        image:"../assets/img/ser_3.png",
                         summary: "您的私人法律顾问",
                         first: [
                             "商标注册",
@@ -1262,26 +1255,26 @@
                                 title: "创立公司",
                                 products: {
                                     left: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-1.png"
                                     },
                                     right: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-2.png"
                                     },
                                     one: [
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-3.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-4.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-5.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-6.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-7.png"
                                         }
                                     ]
                                 }
@@ -1290,25 +1283,29 @@
                                 title: "财税服务",
                                 products: {
                                     left: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-1.png"
                                     },
                                     right: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-2.png"
                                     },
                                     one: [
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-3.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-4.png"
                                         },
                                         {
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-5.png"
+                                        },
+                                        {
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-6.png"
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         }, {
                                             url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-7.png"
                                         }
                                     ]
                                 }
@@ -1317,25 +1314,26 @@
                                 title: "法律服务",
                                 products: {
                                     left: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-1.png"
                                     },
                                     right: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-2.png"
                                     },
                                     one: [
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-3.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-4.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        }, {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-5.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-6.png"
+                                        },
+                                        {
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-7.png"
                                         }
                                     ]
                                 }
@@ -1349,26 +1347,26 @@
                                 title: "工商服务",
                                 products: {
                                     left: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-1.png"
                                     },
                                     right: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-2.png"
                                     },
                                     one: [
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-3.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-4.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-5.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-6.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-7.png"
                                         }
                                     ]
                                 }
@@ -1377,26 +1375,26 @@
                                 title: "财税法+",
                                 products: {
                                     left: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-1.png"
                                     },
                                     right: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-2.png"
                                     },
                                     one: [
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-3.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-4.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-5.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-6.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-7.png"
                                         }
                                     ]
                                 }
@@ -1410,54 +1408,54 @@
                                 title: "法律服务",
                                 products: {
                                     left: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-1.png"
                                     },
                                     right: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-2.png"
                                     },
                                     one: [
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-3.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-4.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
-                                        }, {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-5.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-6.png"
+                                        },
+                                        {
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-7.png"
                                         }
                                     ]
-
                                 }
                             },
                             {
                                 title: "增值服务",
                                 products: {
                                     left: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-1.png"
                                     },
                                     right: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-2.png"
                                     },
                                     one: [
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-3.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-4.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-5.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-6.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-7.png"
                                         }
                                     ]
                                 }
@@ -1471,26 +1469,26 @@
                                 title: "注销公司",
                                 products: {
                                     left: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-1.png"
                                     },
                                     right: {
-                                        url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-2.png"
                                     },
                                     one: [
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-3.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-4.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-5.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-6.png"
                                         },
                                         {
-                                            url: "http://ofl0lw9er.bkt.clouddn.com/test.jpg"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-7.png"
                                         }
                                     ]
                                 }
@@ -1523,21 +1521,6 @@
                         imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-2-bottom.png"
                     },
                     {
-                        mainTitle: "法律咨询",
-                        subTitle: "全程陪同",
-                        summary: "专业律师为企业保驾护航",
-                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-top.png",
-                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-middle.png",
-                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-bottom.png"
-                    },
-                    {
-                        mainTitle: "社保公积金缴纳",
-                        subTitle: "",
-                        summary: "缴纳社保公积金,养老无忧",
-                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-top.png",
-                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-middle.png",
-                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-bottom.png"
-                    }, {
                         mainTitle: "公司注册",
                         subTitle: "快人一步",
                         summary: "创业园区、孵化基地专业对接",
