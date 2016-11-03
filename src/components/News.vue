@@ -5,9 +5,11 @@
         height: 335px;
         overflow: hidden;
         position: relative;
+        cursor: pointer;
     }
     img {
-        height: 50%;
+        height: 45%;
+        width: 100%;
     }
     #detail {
         margin: 0 auto;
@@ -16,17 +18,19 @@
         padding-top: 5px;
     }
     h3 {
+        height: 60px;
         line-height: 30px;
+        color: #444;
     }
     p {
         height: 65px;
+        color: #666;
         overflow: hidden;
     }
     #tags {
         position: relative;
-        bottom: 0;
+        bottom: 5px;
         margin-left: 0;
-        padding-top: 7px;
     }
     .tag:first-child {
         margin-left: 0;
@@ -41,17 +45,19 @@
         position: absolute;
         left: 20px;
         bottom: 10px;
+        color: #888;
     }
     #views {
         position: absolute;
         right: 20px;
         bottom: 10px;
+        color: #888;
     }
 </style>
 
 <template>
     <div id="news">
-        <img src="../assets/logo.png" alt="">
+        <img :src="img" alt="">
         <div id="detail">
             <h3>{{ title }}</h3>
             <p>{{ summary }}</p>
@@ -61,7 +67,7 @@
             <div class="clearfix"></div>
             <div style="width: 100%;">
                 <span id="time">{{ date }}</span>
-                <span id="views">{{ views }}</span>
+                <span id="views">{{ views }} 次浏览</span>
             </div>
         </div>
     </div>
@@ -74,6 +80,8 @@
             }
         },
         props: {
+            img:String,
+            url:String,
             title: String,
             summary: String,
             tags: {
