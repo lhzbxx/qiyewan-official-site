@@ -237,12 +237,12 @@
                     <p style="font-size: 13px;
                               color: #aaa;
                               ">
-                        市场价格：&nbsp;&yen; {{ product.marketPrice }}
+                        市场价格：&nbsp;&yen; {{ product.unitPrice * 5 }}
                     </p>
                     <p style="margin: 10px 0;">价 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：
                         <span style="font-size: 20px;
                                      color: red;">
-                            &yen; {{ product.price }}
+                            &yen; {{ product.unitPrice }}
                         </span></p>
                     <p style="">用户评分：
                         <el-rate
@@ -485,6 +485,7 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex'
     export default {
         data() {
             return {
@@ -525,6 +526,9 @@
                 error: null
             }
         },
+        computed: mapState({
+            product: 'product'
+        }),
         created () {
             this.fetchData()
         },
@@ -536,11 +540,10 @@
 
             },
             fetchData () {
-                this.$store.commit("changeRegion", {
-//                    serialId:
+                this.$store.commit("getProduct", {
+                    serialId: this.$route.params.serialId,
                 })
             }
         }
-
     }
 </script>

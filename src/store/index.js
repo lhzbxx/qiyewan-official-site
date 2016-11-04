@@ -20,7 +20,8 @@ export default new Vuex.Store({
             phone: "",
             token: ""
         },
-        carts: []
+        carts: [],
+        product: {}
     },
     getters,
     actions,

@@ -5,9 +5,11 @@
         <br>
         <p style="font-size: 20px;">哎呀，找不到了呢！</p>
         <br>
-        <el-button type="primary"
-                   size="large">
-            返回首页
-        </el-button>
+        <router-link to="/">
+            <el-button type="primary"
+                       size="large">
+                返回首页
+            </el-button>
+        </router-link>
     </div>
 </template>
