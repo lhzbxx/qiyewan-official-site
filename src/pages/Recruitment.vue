@@ -125,17 +125,18 @@
     }
 </style>
 <template>
-    <div class="container">
-        <div class="banner">
-            <div class="rec_word">
-                <img src="../assets/img/recruitment_1.png">
-            </div>
-            <ul class="department">
-                <li v-on:click="setLiName('it')">技术部 <span :class="{show: getLiName() == 'it',hide: getLiName() != 'it'}"></span></li>
-                <li v-on:click="setLiName('operation')">运营部 <span :class="{show: getLiName() == 'operation',hide: getLiName() != 'operation'}"></span></li>
-                <li v-on:click="setLiName('commerce')" class="business">商务部<span :class="{show: getLiName() == 'commerce',hide: getLiName() != 'commerce'}"></span></li>
-            </ul>
+    <div>
+    <div class="banner">
+        <div class="rec_word">
+            <img src="../assets/img/recruitment_1.png">
         </div>
+        <ul class="department">
+            <li v-on:click="setLiName('it')">技术部 <span :class="{show: getLiName() == 'it',hide: getLiName() != 'it'}"></span></li>
+            <li v-on:click="setLiName('operation')">运营部 <span :class="{show: getLiName() == 'operation',hide: getLiName() != 'operation'}"></span></li>
+            <li v-on:click="setLiName('commerce')" class="business">商务部<span :class="{show: getLiName() == 'commerce',hide: getLiName() != 'commerce'}"></span></li>
+        </ul>
+    </div>
+    <div class="container">
             <div class="recruitment_con">
                 <div class="contianer">
                     <!--技术部-->
@@ -346,10 +347,11 @@
                     </div>
                 </div>
             </div>
-        <div class="recruitment_2"><img src="../assets/img/recruitment_2.jpg"></div>
+
        <div class="clearfix"></div>
     </div>
-
+        <div class="recruitment_2"><img src="../assets/img/recruitment_2.jpg"></div>
+    </div>
 </template>
 
 <script>

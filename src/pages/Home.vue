@@ -704,7 +704,6 @@
     .voice-control {
         width: 35px;
         height: 50px;
-        background-color: #89998b;
         position: absolute;
         top: 65%;
         margin-top: -25px;
@@ -713,7 +712,7 @@
 
     .voice-left-img {
         float: left;
-        width: 50%;
+        width: 45%;
         height: 100%;
         position: relative;
     }
@@ -739,27 +738,28 @@
     .voice-right-img .summary {
         position: absolute;
         left: 0;
-        top: 40%;
+        top: 0;
+        bottom:0;
+        margin: auto 0;
         height: 280px;
-        width: 420px;
-        margin-top: -100px;
-        padding-right: 100px;
+        width: 473px;
+        padding-right: 61px;
         color: #e9e9e9;
-        margin-left: 80px;
+        margin-left: 40px;
     }
     .voice-right-img .summary h2{
         margin-top: 30px;
         margin-bottom: 20px;
         overflow: hidden;
         font-weight: normal;
-        line-height: 25px;
+        line-height: 2em;
     }
     .voice-right-img .summary h2:first-letter{
         margin-left: 20px;
     }
     .voice-right-img .summary p{
         text-align: right;
-        font-size: 14px;
+        font-size: 15px;
         line-height: 25px;
     }
     .voice-right-img .summary .name{
@@ -772,9 +772,10 @@
         padding-left:2px;
         font-size: 28px;
         color: #d5d5d5;
-
     }
-
+    #voice-control-left:hover, #voice-control-right:hover{
+        background-color:rgba(108,108,108,0.4);
+    }
     .voice-control-con {
         position: absolute;
         height: 300px;
@@ -1638,7 +1639,7 @@
                         title: "创业资讯",
                         articles: [
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/startup_01.jpg',
                                 title: '创业公司如何招聘？',
                                 summary: '在风风火火拿到融资以后，找人就成为了创业公司最大的事情。没有好的...',
                                 tags: ['人事','招聘'],
@@ -1646,7 +1647,7 @@
                                 views: 236
                             },
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/startup_02.jpg',
                                 title: '财务部非金钱激励员工的108种手段',
                                 summary: '在任何一个组织里，管理者都是下属的镜子。可以说，只要看....',
                                 tags: ['专利申请'],
@@ -1654,7 +1655,7 @@
                                 views: 359
                             },
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/startup_03.jpg',
                                 title: '公司对于老东家的知识产权的法律风险防范',
                                 summary: '我们在第一讲就提到，在创业的过程中，您首先考虑是否侵犯了老东家的知识...',
                                 tags: ['知识产权','法律'],
@@ -1662,7 +1663,7 @@
                                 views: 599
                             },
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/startup_04.jpg',
                                 title: '老公司向新公司迁移时的用户迁移问题',
                                 summary: '老公司向新公司迁移的时候，还有员工的问题，这也是要考虑的。一方面要...',
                                 tags: ['公司变更'],
@@ -1670,7 +1671,7 @@
                                 views: 366
                             },
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/startup_05.jpg',
                                 title: '商标相关问答',
                                 summary: '商标的价值其实是眼睛看不到手却拿得到的财富，从我们的角度看，创业公司...',
                                 tags: ['商标'],
@@ -1683,7 +1684,7 @@
                         title: "工商干货",
                         articles:[
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_01.jpg',
                                 title: '企业类型之股份公司',
                                 summary: '讲完了个人独资企业与合伙企业这些非公司制企业之后，我们现在来看看大家...',
                                 tags: ['工商','营业执照'],
@@ -1691,7 +1692,7 @@
                                 views: 289
                             },
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_02.jpg',
                                 title: '企业类型之个人独资企业！',
                                 summary: '怀揣着满满热情的创业者们,欢迎又来到了我们的财税微课堂啦,让我们继续挖掘...',
                                 tags: ['工商','营业执照'],
@@ -1699,7 +1700,7 @@
                                 views: 289
                             },
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_03.jpg',
                                 title: '注册资本1万亿 没钱也任性！',
                                 summary: '近两年设立公司的创业者都知道，现在开公司只需要在公司章程中写明...',
                                 tags: ['工商','营业执照'],
@@ -1707,7 +1708,7 @@
                                 views: 289
                             },
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_04.jpg',
                                 title: '企业名称',
                                 summary: '你说人生究竟什么最重要？听到这个问题，每个人第一反应一定是：“钱”。事实...',
                                 tags: ['工商','营业执照'],
@@ -1715,7 +1716,7 @@
                                 views: 289
                             },
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_5.jpg',
                                 title: '商标相关问答',
                                 summary: '哈喽，各位亲爱的创业小伙伴咱们又见面啦在上一期的财税微课堂中束进老师...',
                                 tags: ['工商','营业执照'],
@@ -1729,7 +1730,7 @@
                         title: "财税干货",
                         articles: [
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_01.jpg',
                                 title: '个人股东占用公司资金也要交个人所得税',
                                 summary: '许多初创公司往往由创业者自身持有100%的股权或者绝大部分股权，这...',
                                 tags: ['财税','税务'],
@@ -1737,7 +1738,7 @@
                                 views: 453
                             },
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_02.jpg',
                                 title: '采购商品你真的会比价吗？',
                                 summary: '谈到采购商品的比价问题，站在消费者个人的角度来看，真的是一个...',
                                 tags: ['财税','采购'],
@@ -1745,7 +1746,7 @@
                                 views: 259
                             },
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_03.jpg',
                                 title: '公司采购业务中的这些税收风险你知道吗？',
                                 summary: '一项采购交易中，通常由买方直接取得卖方开具的销售发票，并且直接向卖方...',
                                 tags: ['财税','采购','税务'],
@@ -1753,7 +1754,7 @@
                                 views: 459
                             },
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_04.jpg',
                                 title: '小规模纳税人 OR 一般纳税人？',
                                 summary: '最近遇到好几个准备设立公司的创业者问我这样一个问题：“我该选择...',
                                 tags: ['财税','税务'],
@@ -1761,7 +1762,7 @@
                                 views: 459
                             },
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_05.jpg',
                                 title: '只有错买，没有错卖！企业湾教您如何收购股权',
                                 summary: '商业交易是由卖方提供商品或服务，因此卖方通常比买方更加熟知所销售的...',
                                 tags: ['财税','股权'],
@@ -1774,7 +1775,7 @@
                         title: "法律干货",
                         articles:[
                             {
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-1.png',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/law_01.jpg',
                                 title: '买卖合同中涉及的问题',
                                 summary: '买卖合同看似很简单，只是买家和卖家交易某样东西，一手交钱一手交货。但...',
                                 tags: ['法律','合同'],
@@ -1782,7 +1783,7 @@
                                 views: 359
                             },
                             {
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-2.png',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/law_02.jpg',
                                 title: '员工个人自行缴社保的书面承诺有效吗？ ',
                                 summary: '王某于2011年5月进入F公司设于宁波某商场的品牌专柜从事营业员工...',
                                 tags: ['法律','社保'],
@@ -1790,7 +1791,7 @@
                                 views: 389
                             },
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/law_03.jpg',
                                 title: '公司知识产权',
                                 summary: '上周我们创业科普中一直都是在讲公司的控制权，似乎公司只有勾心斗角...',
                                 tags: ['法律','知识产权'],
@@ -1798,7 +1799,7 @@
                                 views: 233
                             },
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/law_04.jpg',
                                 title: 'APP可否申请专利的探讨(续)',
                                 summary: '跟着上期我们继续来讲APP可否申请专利。针对App申请发明专利....',
                                 tags: ['专利申请'],
@@ -1806,7 +1807,7 @@
                                 views: 359
                             },
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/law_05.jpg',
                                 title: '拟定合同过程中的关注点（一）',
                                 summary: '通常来讲，合同的主体不需要关注，因为大多数情况下，合同...',
                                 tags: ['法律','合同'],
@@ -1820,7 +1821,7 @@
                         title: "人事干货",
                         articles:[
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/hr_01.jpg',
                                 title: '作为公司老板，只有这20%工作是你需要亲自做的',
                                 summary: '作为公司老板，你只需专注那些能为公司带来最大利益的事情。通常说来，这些事情...',
                                 tags: ['人事'],
@@ -1828,7 +1829,7 @@
                                 views: 469
                             },
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/hr_02.jpg',
                                 title: '别让人情拖垮你的公司！',
                                 summary: '中国是一个非常讲“人情”讲“关系”的国家，有时候靠人情刷脸，靠关系办事会比...',
                                 tags: ['人事'],
@@ -1836,7 +1837,7 @@
                                 views: 469
                             },
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/hr_03.jpg',
                                 title: '创业公司的员工激励怎么做？',
                                 summary: '当你费劲苦心，把员工招募进来后，怎么让他们死心塌地的和你一起拼命干就是...',
                                 tags: ['人事'],
@@ -1844,7 +1845,7 @@
                                 views: 469
                             },
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/hr_04.jpg',
                                 title: '财务部非金钱激励员工的108种手段 ，你一定要懂！',
                                 summary: '在任何一个组织里，管理者都是下属的镜子。可以说，只...',
                                 tags: ['人事'],
@@ -1852,7 +1853,7 @@
                                 views: 369
                             },
                             {
-                                img: '',
+                                img: 'http://ofw6tmkxn.bkt.clouddn.com/hr_05.jpg',
                                 title: '你做了什么，可以多出四个工作日？',
                                 summary: '你说人生究竟什么最重要？听到这个问题，每个人第一反应一定是...',
                                 tags: ['人事'],
