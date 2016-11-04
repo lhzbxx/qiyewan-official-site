@@ -173,7 +173,9 @@
                 <div id="area">
                     <ul>
                         <p></p>
-                        <li v-for="(item, index) in $store.getters.getRegions" :class="{active: index == $store.state.region}">
+                        <li v-for="(item, index) in $store.getters.getRegions"
+                            :class="{active: index == $store.state.region}"
+                            v-on:click="changeRegion(index)">
                             {{ item.name }}
                         </li>
                     </ul>
@@ -181,24 +183,24 @@
             </div>
             <div id="header-user-block" class="r">
                 <ul>
-                    <li v-if="!$store.state.isLogin"
+                    <li v-if="!$store.getters.isLogin"
                         v-on:click="openRegisterDialog()">
                         <a>注册</a>
                     </li>
-                    <li v-if="!$store.state.isLogin"
+                    <li v-if="!$store.getters.isLogin"
                         v-on:click="openLoginDialog()">
                         <a>登录</a>
                     </li>
-                    <li v-if="$store.state.isLogin">
+                    <li v-if="$store.getters.isLogin">
                         <router-link to="/orders">订单</router-link>
                     </li>
-                    <li v-if="$store.state.isLogin">
+                    <li v-if="$store.getters.isLogin">
                         <router-link to="/profile">个人中心</router-link>
                     </li>
-                    <li v-if="$store.state.isLogin"><a href="#">购物车（0）</a></li>
+                    <li v-if="$store.getters.isLogin"><a href="#">购物车（0）</a></li>
                 </ul>
-                <div id="tel" v-if="$store.state.isLogin">
-                    <span>{{ $store.state.user.phone }}</span>&nbsp;
+                <div id="tel" v-if="$store.getters.isLogin">
+                    <span>{{ $store.getters.getPhone }}</span>&nbsp;
                     <a href="#">退出</a>
                 </div>
             </div>
@@ -216,6 +218,9 @@
             },
             openRegisterDialog() {
                 this.$refs.registerDialog.openDialog()
+            },
+            changeRegion(index) {
+                this.$store.commit("changeRegion", index)
             }
         }
     }

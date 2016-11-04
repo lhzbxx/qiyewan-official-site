@@ -27,5 +27,5 @@ export default new Vuex.Store({
     mutations,
     // 注意：
     // 在发布时需要注释该行，以免影响性能！
-    strict: true
+    // strict: true
 })

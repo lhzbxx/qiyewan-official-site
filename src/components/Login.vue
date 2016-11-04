@@ -10,7 +10,7 @@
                 </el-form-item>
             </el-form>
             <el-button type="primary"
-                       @click.native="login"
+                       @click.native="submit"
                        style="width: 100%">登 录</el-button>
         </el-dialog>
     </div>
@@ -32,12 +32,13 @@
             openDialog() {
                 this.$refs.dialog.open()
             },
-            login() {
+            submit() {
                 this.isVisible = false
                 this.$store.commit("login", {
-                    'phone': this.formStacked.phone,
-                    'password': this.formStacked.password
+                    phone: this.formStacked.phone,
+                    password: this.formStacked.password
                 })
+                this.formStacked.password = ""
             }
         }
     }

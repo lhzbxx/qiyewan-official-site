@@ -20,3 +20,11 @@ export const getRegion = state => {
 export const getRegionCode = state => {
     return regions[state.region].code
 }
+
+export const isLogin = state => {
+    return state.isLogin
+}
+
+export const getPhone = state => {
+    return state.user.phone
+}
