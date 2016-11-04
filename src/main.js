@@ -9,7 +9,6 @@ import 'element-ui/lib/theme-default/index.css'
 import App from './App.vue'
 import Home from './pages/Home.vue'
 import Review from './pages/Review.vue'
-import ProductReview from './pages/ProductDetail.vue'
 import ProductList from './pages/ProductList.vue'
 import ProductDetail from './pages/ProductDetail.vue'
 import OrderList from './pages/OrderList.vue'
@@ -55,31 +54,66 @@ Vue.component('lh-footer', Footer)
 Vue.component('lh-news', News)
 
 const routes = [
-    { path: '/', component: Home },
-    { path: '/review', component: Review,
+    {
+        path: '*',
+        component: NotFound
+    },
+    {path: '/', component: Home},
+    {
+        path: '/order/:orderSerialId/product/:productSerialId/review',
+        name: 'review',
         beforeEnter: (to, from, next) => {
 
-        }
+        },
+        component: Review
     },
-    { path: '/product/review', component: ProductReview },
-    { path: '/product/list', component: ProductList },
-    { path: '/product/review', component: ProductReview },
-    { path: '/product/detail', component: ProductDetail },
-    { path: '/order', component: OrderList },
-    { path: '/cart', component: MyCart },
-    { path: '/pay', component: Pay },
-    { path: '/account', component: AccountProfile },
-    { path: '/person', component: PersonalCenter },
-    { path: '/article', component: Article},
-    { path: '/news', component: NewsList},
-    { path: '/about-us', component: AboutUs},
-    { path: '/recruitment', component: Recruitment},
-    { path: '*', component: NotFound }
+    {path: '/product/:category/list', component: ProductList},
+    {
+        path: '/product/:serialId/detail',
+        name: 'product-detail',
+        component: ProductDetail
+    },
+    {
+        path: '/order',
+        component: OrderList
+    },
+    {
+        path: '/cart',
+        component: MyCart
+    },
+    {
+        path: '/pay',
+        component: Pay
+    },
+    {
+        path: '/account',
+        component: AccountProfile
+    },
+    {
+        path: '/person',
+        component: PersonalCenter
+    },
+    {
+        path: '/article/:id',
+        component: Article
+    },
+    {
+        path: '/news',
+        component: NewsList
+    },
+    {
+        path: '/about-us',
+        component: AboutUs
+    },
+    {
+        path: '/recruitment',
+        component: Recruitment
+    }
 ]
 
 const router = new VueRouter({
     mode: 'history',
-    routes
+    routes: routes
 })
 
 new Vue({
