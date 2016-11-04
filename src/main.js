@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import store from './store'
@@ -37,6 +38,7 @@ import News from './components/News.vue'
 
 
 Vue.use(ElementUI)
+Vue.use(Vuex)
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
@@ -60,7 +62,7 @@ const routes = [
         name: 'review',
         beforeEnter: (to, from, next) => {
             if (this.store.state.isLogin) {
-                
+                next(false)
             }
         },
         component: Review
@@ -114,7 +116,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-    mode: 'history',
+    // mode: 'history',
     routes: routes
 })
 

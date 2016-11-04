@@ -4,8 +4,17 @@
  * mutations.js
  */
 
-import * as api from '../api'
+import api from '../api'
 
-export const login = function () {
-    api.login();
+export const login = function (state, payload) {
+    api.login(payload.phone, payload.password,
+        token => {
+            if (!token) {
+                state.isLogin = true
+                state.user.token = token
+            }
+        },
+        error => {
+        }
+    );
 }
