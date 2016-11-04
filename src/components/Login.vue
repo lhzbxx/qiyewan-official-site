@@ -9,7 +9,9 @@
                     <el-input type="password" v-model="formStacked.password"></el-input>
                 </el-form-item>
             </el-form>
-            <el-button type="primary" @click.native="isVisible = false" style="width: 100%">登 录</el-button>
+            <el-button type="primary"
+                       @click.native="login"
+                       style="width: 100%">登 录</el-button>
         </el-dialog>
     </div>
 </template>
@@ -29,6 +31,10 @@
         methods: {
             openDialog() {
                 this.$refs.dialog.open()
+            },
+            login() {
+                this.isVisible = false
+                this.$store.commit("login")
             }
         }
     }

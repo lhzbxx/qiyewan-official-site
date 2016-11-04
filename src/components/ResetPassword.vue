@@ -48,7 +48,7 @@
                 isVisible: false,
                 checked: false,
                 formStacked: {
-                    phone: "",
+                    phone: this.$store.state.user.phone,
                     captcha: "",
                     password: "",
                     password2: ""

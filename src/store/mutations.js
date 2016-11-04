@@ -3,3 +3,9 @@
  *
  * mutations.js
  */
+
+import * as api from '../api'
+
+export const login = function () {
+    api.login();
+}

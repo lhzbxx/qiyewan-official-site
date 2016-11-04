@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 import store from './store'
 
 import ElementUI from 'element-ui'
@@ -37,6 +38,7 @@ import News from './components/News.vue'
 
 Vue.use(ElementUI)
 Vue.use(VueRouter)
+Vue.use(VueResource)
 
 Vue.component('lh-top-bar', TopBar)
 Vue.component('lh-product', Product)
