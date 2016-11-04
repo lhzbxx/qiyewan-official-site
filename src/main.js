@@ -54,16 +54,14 @@ Vue.component('lh-footer', Footer)
 Vue.component('lh-news', News)
 
 const routes = [
-    {
-        path: '*',
-        component: NotFound
-    },
     {path: '/', component: Home},
     {
         path: '/order/:orderSerialId/product/:productSerialId/review',
         name: 'review',
         beforeEnter: (to, from, next) => {
-
+            if (this.store.state.isLogin) {
+                
+            }
         },
         component: Review
     },
@@ -108,6 +106,10 @@ const routes = [
     {
         path: '/recruitment',
         component: Recruitment
+    },
+    {
+        path: '*',
+        component: NotFound
     }
 ]
 
