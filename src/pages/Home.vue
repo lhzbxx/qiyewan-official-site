@@ -889,7 +889,6 @@
                          onmouseleave="this.style.transform='rotateX(0deg) rotateY(0deg)'"
                          onmousemove="x = event.clientY + document.body.scrollTop - 108;
                           y = (event.clientX + document.body.scrollLeft - 360 - (window.screen.width - 1160) / 2);
-                          console.log((x - 250) / 500+ ', ' + (400 - y) / 800);
                           this.style.transform='rotateX(' + 15 * (x - 250) / 500 + 'deg) rotateY(' + 15 * (400 - y) / 800 + 'deg)'">
                         <div class="right-image" data-zindex="50" style="transform: translateZ(50px);">
                             <img :src="item.imgBottomUrl" alt="">

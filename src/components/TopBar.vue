@@ -166,54 +166,32 @@
         <div class="container">
             <div id="location" class="l">
                 <img src="../assets/img/icon_location.png">
-                <span>{{ currentRegion }}</span>
+                <span>{{ $store.getters.getRegion.name }}</span>
                 <i class="ci-right">
                     <s>◇</s>
                 </i>
                 <div id="area">
                     <ul>
                         <p></p>
-                        <li v-for="(item, index) in regions" :class="{active: isActive(item)}">
-                            {{ item }}
+                        <li v-for="(item, index) in $store.getters.getRegions" :class="{active: index == $store.state.region}">
+                            {{ item.name }}
                         </li>
                     </ul>
                 </div>
             </div>
             <div id="header-user-block" class="r">
                 <ul>
-                    <li v-if="!isLogin"><a href="#">注册</a></li>
-                    <li v-if="!isLogin"><a href="#">登录</a></li>
-                    <li v-if="isLogin"><a href="#">订单</a></li>
-                    <li v-if="isLogin"><a href="#">个人中心</a></li>
-                    <li v-if="isLogin"><a href="#">购物车（0）</a></li>
+                    <li v-if="!$store.state.isLogin"><a href="#">注册</a></li>
+                    <li v-if="!$store.state.isLogin"><a href="#">登录</a></li>
+                    <li v-if="$store.state.isLogin"><a href="#">订单</a></li>
+                    <li v-if="$store.state.isLogin"><a href="#">个人中心</a></li>
+                    <li v-if="$store.state.isLogin"><a href="#">购物车（0）</a></li>
                 </ul>
-                <div id="tel" v-if="isLogin">
-                    <span>18883390061</span>&nbsp;
+                <div id="tel" v-if="$store.state.isLogin">
+                    <span>{{ $store.state.user.phone }}</span>&nbsp;
                     <a href="#">退出</a>
                 </div>
             </div>
         </div>
     </div>
 </template>
-
-<script>
-    export default {
-        data() {
-            return {
-                regions: [
-                    "北京",
-                    "上海",
-                    "成都",
-                    "广州",
-                    "镇江"
-                ],
-                currentRegion: "上海",
-                isLogin: true,
-                index: 0,
-                isActive: function (item) {
-                    return item == this.currentRegion;
-                }
-            }
-        }
-    }
-</script>

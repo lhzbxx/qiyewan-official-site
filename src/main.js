@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Vuex from 'vuex'
+import store from './store'
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
@@ -35,10 +35,8 @@ import Header from './components/Header.vue'
 import News from './components/News.vue'
 
 
-
 Vue.use(ElementUI)
 Vue.use(VueRouter)
-Vue.use(Vuex)
 
 Vue.component('lh-top-bar', TopBar)
 Vue.component('lh-product', Product)
@@ -67,7 +65,7 @@ const routes = [
     { path: '/person', component: PersonalCenter },
     { path: '/article', component: Article},
     { path: '/news', component: NewsList},
-    { path: '/aboutus', component: AboutUs},
+    { path: '/about-us', component: AboutUs},
     { path: '/recruitment', component: Recruitment}
 ]
 
@@ -77,6 +75,7 @@ const router = new VueRouter({
 
 new Vue({
     router,
+    store,
     el: '#app',
     render: h => h(App)
 }).$mount(App)
