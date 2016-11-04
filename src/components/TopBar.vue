@@ -181,10 +181,20 @@
             </div>
             <div id="header-user-block" class="r">
                 <ul>
-                    <li v-if="!$store.state.isLogin"><a href="#">注册</a></li>
-                    <li v-if="!$store.state.isLogin"><a href="#">登录</a></li>
-                    <li v-if="$store.state.isLogin"><a href="#">订单</a></li>
-                    <li v-if="$store.state.isLogin"><a href="#">个人中心</a></li>
+                    <li v-if="!$store.state.isLogin"
+                        v-on:click="openRegisterDialog()">
+                        <a>注册</a>
+                    </li>
+                    <li v-if="!$store.state.isLogin"
+                        v-on:click="openLoginDialog()">
+                        <a>登录</a>
+                    </li>
+                    <li v-if="$store.state.isLogin">
+                        <router-link to="/orders">订单</router-link>
+                    </li>
+                    <li v-if="$store.state.isLogin">
+                        <router-link to="/profile">个人中心</router-link>
+                    </li>
                     <li v-if="$store.state.isLogin"><a href="#">购物车（0）</a></li>
                 </ul>
                 <div id="tel" v-if="$store.state.isLogin">
@@ -192,6 +202,21 @@
                     <a href="#">退出</a>
                 </div>
             </div>
+            <lh-login ref="loginDialog"></lh-login>
+            <lh-register ref="registerDialog"></lh-register>
         </div>
     </div>
 </template>
+
+<script>
+    export default {
+        methods: {
+            openLoginDialog() {
+                this.$refs.loginDialog.openDialog()
+            },
+            openRegisterDialog() {
+                this.$refs.registerDialog.openDialog()
+            }
+        }
+    }
+</script>
