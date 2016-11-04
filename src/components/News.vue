@@ -6,6 +6,11 @@
         overflow: hidden;
         position: relative;
         cursor: pointer;
+        transition: all .2s linear;
+    }
+    #news:hover{
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        transform: translate3d(0, -5px, 0);
     }
     img {
         height: 45%;
@@ -23,7 +28,8 @@
         color: #444;
     }
     p {
-        height: 65px;
+        height: 52px;
+        margin-bottom: 15px;
         color: #666;
         overflow: hidden;
     }

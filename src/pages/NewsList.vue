@@ -205,7 +205,7 @@
 
 <template>
     <div class="container">
-        <div class="top-img"><img src="../assets/img/banner_2.png"></div>
+        <div class="top-img"><img src="http://ofw6tmkxn.bkt.clouddn.com/aritle-banner.png"></div>
         <el-row>
             <el-col :span="16">
                 <div>

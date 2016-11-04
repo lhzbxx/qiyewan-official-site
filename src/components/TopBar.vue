@@ -183,9 +183,9 @@
                 <ul>
                     <li v-if="!isLogin"><a href="#">注册</a></li>
                     <li v-if="!isLogin"><a href="#">登录</a></li>
-                    <li v-if="isLogin"><a href="#">订单</a></li>
-                    <li v-if="isLogin"><a href="#">个人中心</a></li>
-                    <li v-if="isLogin"><a href="#">购物车（0）</a></li>
+                    <li v-if="isLogin"><router-link to="/order">订单</router-link></li>
+                    <li v-if="isLogin"><router-link to="/account">个人中心</router-link></li>
+                    <li v-if="isLogin"><router-link to="/cart">购物车（0）</router-link></li>
                 </ul>
                 <div id="tel" v-if="isLogin">
                     <span>18883390061</span>&nbsp;
