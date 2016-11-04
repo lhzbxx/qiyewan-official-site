@@ -11,7 +11,7 @@
         margin-left: 30px;
     }
 
-    #nav ul li {
+    #nav ul li,#nav ul p{
         float: left;
         height: 58px;
         padding-left: 40px;
@@ -20,7 +20,6 @@
         position: relative;
         border-bottom: 2px solid white;
     }
-
     #nav ul li:hover > a {
         border-bottom: 2px solid #0098db;
     }
@@ -91,7 +90,7 @@
         transition: color 0.3s ease-in-out;
     }
 
-    #nav ul li > a {
+    #nav ul li > a,#nav ul p > a {
         color: #282828;
         display: block;
         line-height: 65px;
@@ -135,12 +134,12 @@
                 <li>
                     <a href="">套餐服务</a>
                 </li>
-                <li>
+                <p>
                     <a href="">快捷入口</a>
-                </li>
-                <li>
+                </p>
+                <p>
                     <a>400-716-8896</a>
-                </li>
+                </p>
             </ul>
         </div>
         <div class="clearfix"></div>
