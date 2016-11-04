@@ -126,7 +126,8 @@
         height: 563px;
         border: 1px solid rgb(219, 219, 219);
         position: relative;
-        z-index: 100;
+        z-index: 10;
+        overflow: hidden;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
@@ -135,7 +136,7 @@
         height: 573px;
         border: 1px solid #55b2da;
         box-shadow: 0 0 20px #55b2da;
-        z-index: 101;
+        z-index: 11;
     }
 
     .card {
