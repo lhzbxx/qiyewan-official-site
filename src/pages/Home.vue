@@ -680,7 +680,7 @@
         height: 400px;
         margin-bottom: 20px;
         background: url("http://ofw6tmkxn.bkt.clouddn.com/customer-voice-background.png") no-repeat;
-        background-size: 100%;
+        background-size: 171%;
         position: relative;
     }
 
@@ -688,7 +688,7 @@
         width: 100%;
         height: 400px;
         display: none;
-        animation: fadeIn 0.5s ease-in-out .2s ;
+        animation: fadeIn 0.5s;
     }
 
     @-webkit-keyframes fadeIn {
@@ -696,7 +696,7 @@
             opacity: 0;
         }
         50% {
-            opacity: .5;
+            opacity: .3;
         }
         100% {
             opacity: 1;
@@ -705,7 +705,7 @@
     .voice-control {
         width: 35px;
         height: 50px;
-        background-color: lightslategray;
+        background-color: #89998b;
         position: absolute;
         top: 65%;
         margin-top: -25px;
@@ -744,7 +744,7 @@
         height: 280px;
         width: 420px;
         margin-top: -100px;
-        padding-right: 130px;
+        padding-right: 100px;
         color: #e9e9e9;
         margin-left: 80px;
     }
@@ -752,6 +752,7 @@
         margin-top: 30px;
         margin-bottom: 20px;
         overflow: hidden;
+        font-weight: normal;
         line-height: 25px;
     }
     .voice-right-img .summary h2:first-letter{
@@ -773,6 +774,14 @@
         font-size: 28px;
         color: #d5d5d5;
 
+    }
+
+    .voice-control-con {
+        position: absolute;
+        height: 300px;
+        top: 0;
+        margin-left: -580px;
+        left: 50%;
     }
 
     #voice-control-right {
@@ -1038,7 +1047,7 @@
                  :class="{show: isVoiceBannerActive(index)}"
                  v-for="(voice,index) in customerVoices">
                 <div class="voice-left-img">
-                    <img src="../assets/img/customer1.png">
+                    <img :src="voice.headImg">
                 </div>
                 <div class="voice-right-img">
                    <div class="summary">
@@ -1049,11 +1058,7 @@
                    </div>
                 </div>
             </div>
-            <div class="container"
-                 style="position: absolute;
-                        height: 300px; top: 0;
-                        margin-left: -580px;
-                        left: 50%;">
+            <div class="container voice-control-con">
                 <div id="voice-control-left" v-on:click="setVoiceBanner(voiceBanner-1)" class="voice-control el-icon-arrow-left"></div>
                 <div id="voice-control-right" v-on:click="setVoiceBanner(voiceBanner+1)" class="voice-control  el-icon-arrow-right"></div>
             </div>
@@ -1104,7 +1109,7 @@
             </div>
         </div>
         <div class="promise">
-            <div class="pro_img"><img src="../assets/img/intru.jpg"></div>
+            <div class="pro_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/about-us-banner.png"></div>
             <ul>
                 <li>
                     <div class="pro_l l"><img src="../assets/img/pro_1.png"></div>
@@ -1259,7 +1264,7 @@
                         other: [
                             {
                                 title: "合同撰写与审查（定制）",
-                                summary: "专业律师帮您撰写与审查合同"
+                                summary: "专业律师撰写与审查合同"
                             },
                             {
                                 title: "法律咨询",
@@ -1635,7 +1640,7 @@
                             {
                                 img: '',
                                 title: '创业公司如何招聘？',
-                                summary: '在风风火火拿到融资以后，找人就成为了创业公司最大的事情。没有好的人和团队，是不会...',
+                                summary: '在风风火火拿到融资以后，找人就成为了创业公司最大的事情。没有好的...',
                                 tags: ['人事','招聘'],
                                 date: '2016年8月29日',
                                 views: 236
@@ -1643,7 +1648,7 @@
                             {
                                 img: '',
                                 title: '财务部非金钱激励员工的108种手段',
-                                summary: '在任何一个组织里，管理者都是下属的镜子。可以说，只要看一看这个组织的管理者....',
+                                summary: '在任何一个组织里，管理者都是下属的镜子。可以说，只要看....',
                                 tags: ['专利申请'],
                                 date: '2016年8月25日',
                                 views: 359
@@ -1651,7 +1656,7 @@
                             {
                                 img: '',
                                 title: '公司对于老东家的知识产权的法律风险防范',
-                                summary: '我们在第一讲就提到，在创业的过程中，您首先考虑是否侵犯了老东家的知识产权...',
+                                summary: '我们在第一讲就提到，在创业的过程中，您首先考虑是否侵犯了老东家的知识...',
                                 tags: ['知识产权','法律'],
                                 date: '2016年829日',
                                 views: 599
@@ -1667,7 +1672,7 @@
                             {
                                 img: '',
                                 title: '商标相关问答',
-                                summary: '商标的价值其实是眼睛看不到手却拿得到的财富，从我们的角度看，创业公司在创业的...',
+                                summary: '商标的价值其实是眼睛看不到手却拿得到的财富，从我们的角度看，创业公司...',
                                 tags: ['商标'],
                                 date: '2016年9月5日',
                                 views: 688
@@ -1679,31 +1684,31 @@
                         articles:[
                             {
                                 img: '',
-                                title: '营业执照上隐藏的那些秘密—— 企业类型之股份公司',
-                                summary: '讲完了个人独资企业与合伙企业这些非公司制企业之后，我们现在来看看大家耳熟能详的...',
+                                title: '企业类型之股份公司',
+                                summary: '讲完了个人独资企业与合伙企业这些非公司制企业之后，我们现在来看看大家...',
                                 tags: ['工商','营业执照'],
                                 date: '2016年9月12日',
                                 views: 289
                             },
                             {
                                 img: '',
-                                title: '别让人情拖垮你的公司！',
-                                summary: '中国是一个非常讲“人情”讲“关系”的国家，有时候靠人情刷脸，靠关系办事会...',
+                                title: '企业类型之个人独资企业！',
+                                summary: '怀揣着满满热情的创业者们,欢迎又来到了我们的财税微课堂啦,让我们继续挖掘...',
                                 tags: ['工商','营业执照'],
                                 date: '2016年9月12日',
                                 views: 289
                             },
                             {
                                 img: '',
-                                title: '作为公司老板，只有这20%工作是你需要亲自做的',
-                                summary: '作为公司老板，你只需专注那些能为公司带来最大利益的事情。通常说来，这些事情...',
+                                title: '注册资本1万亿 没钱也任性！',
+                                summary: '近两年设立公司的创业者都知道，现在开公司只需要在公司章程中写明...',
                                 tags: ['工商','营业执照'],
                                 date: '2016年9月12日',
                                 views: 289
                             },
                             {
                                 img: '',
-                                title: '你做了什么，可以多出四个工作日？',
+                                title: '企业名称',
                                 summary: '你说人生究竟什么最重要？听到这个问题，每个人第一反应一定是：“钱”。事实...',
                                 tags: ['工商','营业执照'],
                                 date: '2016年9月12日',
@@ -1712,7 +1717,7 @@
                             {
                                 img: '',
                                 title: '商标相关问答',
-                                summary: '商标的价值其实是眼睛看不到手却拿得到的财富，从我们的角度看，创业...',
+                                summary: '哈喽，各位亲爱的创业小伙伴咱们又见面啦在上一期的财税微课堂中束进老师...',
                                 tags: ['工商','营业执照'],
                                 date: '2016年9月12日',
                                 views: 289
@@ -1726,7 +1731,7 @@
                             {
                                 img: '',
                                 title: '个人股东占用公司资金也要交个人所得税',
-                                summary: '许多初创公司往往由创业者自身持有100%的股权或者绝大部分股权，这就给创业者造成...',
+                                summary: '许多初创公司往往由创业者自身持有100%的股权或者绝大部分股权，这...',
                                 tags: ['财税','税务'],
                                 date: '2016年9月13日',
                                 views: 453
@@ -1750,7 +1755,7 @@
                             {
                                 img: '',
                                 title: '小规模纳税人 OR 一般纳税人？',
-                                summary: '最近遇到好几个准备设立公司的创业者问我这样一个问题：“我该选择增值税一般纳税人还是...',
+                                summary: '最近遇到好几个准备设立公司的创业者问我这样一个问题：“我该选择...',
                                 tags: ['财税','税务'],
                                 date: '2016年9月17日',
                                 views: 459
@@ -1779,7 +1784,7 @@
                             {
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-2.png',
                                 title: '员工个人自行缴社保的书面承诺有效吗？ ',
-                                summary: '王某于2011年5月进入F公司设于宁波某商场的品牌专柜从事营业员工作。F公司与王某签订...',
+                                summary: '王某于2011年5月进入F公司设于宁波某商场的品牌专柜从事营业员工...',
                                 tags: ['法律','社保'],
                                 date: '2016年9月22日',
                                 views: 389
@@ -1803,7 +1808,7 @@
                             {
                                 img: '',
                                 title: '拟定合同过程中的关注点（一）',
-                                summary: '通常来讲，合同的主体不需要关注，因为大多数情况下，合同主体都不会出现问题。何时合同主体会带来致命的...',
+                                summary: '通常来讲，合同的主体不需要关注，因为大多数情况下，合同...',
                                 tags: ['法律','合同'],
                                 date: '2016年9月21日',
                                 views: 359
@@ -1841,7 +1846,7 @@
                             {
                                 img: '',
                                 title: '财务部非金钱激励员工的108种手段 ，你一定要懂！',
-                                summary: '在任何一个组织里，管理者都是下属的镜子。可以说，只要看一看这个组织的管理者是如何...',
+                                summary: '在任何一个组织里，管理者都是下属的镜子。可以说，只...',
                                 tags: ['人事'],
                                 date: '2016年9月28日',
                                 views: 369
@@ -1859,43 +1864,43 @@
                 ],
                 customerVoices:[
                     {
-                        headImg:"",
-                        content:"企业湾的增值服务特别适合像我们这样的创业型公司,服务专业，价格公道,适合创业公司在经费不宽裕的情况下把事情推行下去。我认为企业湾是一个一站式、超值，适合创业公司的合格的企业服务供应商。",
+                        headImg:"http://ofw6tmkxn.bkt.clouddn.com/customer1.png",
+                        content:"企业湾的增值服务特别适合像我们这样的创业型公司，服务专业，价格公道,适合创业公司在经费不宽裕的情况下把事情推行下去。我认为企业湾是一个一站式、超值，适合创业公司的合格的企业服务供应商。",
                         company:"成都天添益网络科技有限公司",
                         position:"COO",
                         name:""
                     },
                     {
-                        headImg:"",
-                        content:"平和温润、真诚无华为朴，知行合一、志坚质洁为正.正是这种相同的真挚的价值观让朴正教育咨询和企业湾相遇相知，并开始了旗下花田儿童教育项目的顺利筹建感谢企业湾专业细致的服务和支持，让我们不忘初心一起走下去！",
+                        headImg:"http://ofw6tmkxn.bkt.clouddn.com/customer2.png",
+                        content:"平和温润、真诚无华为朴，知行合一、志坚质洁为正，正是这种相同的真挚的价值观让朴正教育咨询和企业湾相遇相知，并开始了旗下花田儿童教育项目的顺利筹建感谢企业湾专业细致的服务和支持，让我们不忘初心一起走下去。",
                         company:"四川朴正教育咨询有限公司",
                         position:"花田教育",
                         name:""
                     },
                     {
-                        headImg:"",
-                        content:"企业湾为我们提供人事、法律、财务等相当专业的服务，他们以专业的水准、负责的态度服务于客户，提供全方位的咨询与服务，使我们无后顾之忧",
+                        headImg:"http://ofw6tmkxn.bkt.clouddn.com/customer3.png",
+                        content:"企业湾为我们提供人事、法律、财务等相当专业的服务，他们以专业的水准、负责的态度服务于客户，提供全方位的咨询与服务，使我们无后顾之忧。",
                         company:"镇江市红包兔信息技术有限公司",
                         position:"创始人兼CEO",
                         name:""
                     },
                     {
-                        headImg:"",
-                        content:"企业湾为我们解决了初创企业在财务、法律方面资源短缺、缺乏行业经验的老大难问题，让我们在创业的路上省了不少心。用优质贴心专业的服务，为中小型企业的创业之路保驾护航",
+                        headImg:"http://ofw6tmkxn.bkt.clouddn.com/customer4.png",
+                        content:"企业湾为我们解决了初创企业在财务、法律方面资源短缺、缺乏行业经验的老大难问题，让我们在创业的路上省了不少心。用优质贴心专业的服务，为中小型企业的创业之路保驾护航。",
                         company:"上海恩陶投资管理有限公司",
                         position:"公司负责人",
                         name:""
                     },
                     {
-                        headImg:"",
-                        content:"我们不仅是企业湾的客户，也是企业湾的战略合作伙伴。企业湾人诚恳的态度、专业的服务让我感动，作为创业企业，我们共同进步",
+                        headImg:"http://ofw6tmkxn.bkt.clouddn.com/customer5.png",
+                        content:"我们不仅是企业湾的客户，也是企业湾的战略合作伙伴。企业湾人诚恳的态度、专业的服务让我感动，作为创业企业，我们共同进步。",
                         company:"上海云简软件科技有限公司",
                         position:"创始人兼CEO",
                         name:""
                     },
                     {
-                        headImg:"",
-                        content:"响应迅速，帮我们节省了很多的时间，从工商，到人事、法律在企业湾一站式解决了，省时省事，是我们有更多的精力专业住本质工作",
+                        headImg:"http://ofw6tmkxn.bkt.clouddn.com/customer6.png",
+                        content:"响应迅速，帮我们节省了很多的时间，从工商，到人事、法律在企业湾一站式解决了，省时省事，是我们有更多的精力专业住本质工作。",
                         company:"南京贝贝帮教育咨询有限公司",
                         position:"创始人兼CEO",
                         name:""
