@@ -21,6 +21,7 @@ import Article from './pages/Article.vue'
 import NewsList from './pages/NewsList.vue'
 import AboutUs from './pages/AboutUs.vue'
 import Recruitment from './pages/Recruitment.vue'
+import NotFound from './pages/NotFound.vue'
 
 import TopBar from './components/TopBar.vue'
 import Footer from './components/Footer.vue'
@@ -55,7 +56,11 @@ Vue.component('lh-news', News)
 
 const routes = [
     { path: '/', component: Home },
-    { path: '/review', component: Review },
+    { path: '/review', component: Review,
+        beforeEnter: (to, from, next) => {
+
+        }
+    },
     { path: '/product/review', component: ProductReview },
     { path: '/product/list', component: ProductList },
     { path: '/product/review', component: ProductReview },
@@ -68,10 +73,12 @@ const routes = [
     { path: '/article', component: Article},
     { path: '/news', component: NewsList},
     { path: '/about-us', component: AboutUs},
-    { path: '/recruitment', component: Recruitment}
+    { path: '/recruitment', component: Recruitment},
+    { path: '*', component: NotFound }
 ]
 
 const router = new VueRouter({
+    mode: 'history',
     routes
 })
 
