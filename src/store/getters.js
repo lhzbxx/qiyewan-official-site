@@ -11,25 +11,21 @@ export const getRegions = () => {
 }
 
 export const getRegion = state => {
-    return dataApi.regions[state.region]
+    return dataApi.regions[state.global.region]
 }
 
 export const getRegionCode = state => {
-    return dataApi.regions[state.region].code
-}
-
-export const isLogin = state => {
-    return state.isLogin
-}
-
-export const getPhone = state => {
-    return state.user.phone
-}
-
-export const getProductDetail = state => {
-    return state.products.productDetail
+    return dataApi.regions[state.global.region].code
 }
 
 export const hotProducts = () => {
     return dataApi.hotProducts
+}
+
+export const isLogin = state => {
+    return state.auth.isLogin
+}
+
+export const getPhone = state => {
+    return state.auth.user.phone
 }

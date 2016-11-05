@@ -7,6 +7,10 @@
 
 import * as types from '../mutation-types'
 
+const state = {
+    region: 1
+}
+
 const mutations = {
     [types.CHANGE_REGION] (state, regionCode) {
         state.region = regionCode
@@ -14,5 +18,6 @@ const mutations = {
 }
 
 export default {
+    state,
     mutations
 }

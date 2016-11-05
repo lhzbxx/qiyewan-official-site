@@ -8,31 +8,19 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import * as getters from './getters'
 import * as actions from './actions'
-import articles from './module/articles'
 import auth from './module/auth'
 import carts from './module/carts'
-import index from './module/index'
-import products from './module/products'
+import global from './module/global'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-    state: {
-        region: 1,
-        isLogin: false,
-        user: {
-            phone: "",
-            token: ""
-        }
-    },
     getters,
     actions,
     modules: {
-        articles,
         auth,
         carts,
-        index,
-        products
+        global
     }
     // 注意：
     // 在发布时需要注释该行，以免影响性能！

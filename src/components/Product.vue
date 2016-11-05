@@ -11,7 +11,9 @@
 
 <template>
     <div>
-        <el-card id="product" :body-style="{ padding: '0px' }" style="margin:10px 20px 20px 0;">
+        <el-card id="product"
+                 :body-style="{ padding: '0px' }"
+                 style="margin:10px 20px 20px 0;">
             <img :src="img" class="image">
             <div style="padding: 14px;">
                 <p style="font-size: 16px; color: #333;">{{ title }}</p>
@@ -22,7 +24,6 @@
         </el-card>
     </div>
 </template>
-
 
 <script>
     export default {

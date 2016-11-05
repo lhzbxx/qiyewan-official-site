@@ -8,14 +8,3 @@
         <lh-cart style="min-height: 305px;"></lh-cart>
     </div>
 </template>
-
-<script>
-    export default {
-        data() {
-            return {
-            }
-        },
-        methods: {
-        }
-    }
-</script>

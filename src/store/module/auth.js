@@ -8,6 +8,14 @@
 import authApi from '../../api/auth'
 import * as types from '../mutation-types'
 
+const state = {
+    isLogin: false,
+    user: {
+        phone: "",
+        token: ""
+    }
+}
+
 const mutations = {
     [types.USER_LOGIN] (state, {phone, password}) {
         authApi.login(phone, password,
@@ -26,5 +34,6 @@ const mutations = {
 }
 
 export default {
+    state,
     mutations
 }

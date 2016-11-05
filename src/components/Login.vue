@@ -34,7 +34,7 @@
             },
             submit() {
                 this.isVisible = false
-                this.$store.commit("login", {
+                this.$store.commit("USER_LOGIN", {
                     phone: this.formStacked.phone,
                     password: this.formStacked.password
                 })

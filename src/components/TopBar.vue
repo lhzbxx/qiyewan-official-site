@@ -220,7 +220,7 @@
                 this.$refs.registerDialog.openDialog()
             },
             changeRegion(index) {
-                this.$store.commit("changeRegion", index)
+                this.$store.commit("CHANGE_REGION", index)
             }
         }
     }
