@@ -359,10 +359,15 @@
 
 <script>
     export default{
-        data(){
-            return {
-                hello: 'hello'
-            }
+        ready() {
+            this.fetchData();
         },
+        methods: {
+            fetchData () {
+                this.$store.commit("getProduct", {
+                    serialId: this.$route.params.serialId,
+                })
+            }
+        }
     }
 </script>
