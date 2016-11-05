@@ -1,7 +1,7 @@
 /**
  * Created by lhzbxx on 2016/11/5.
  *
- * index.js
+ * global.js
  * 管理全局的状态
  */
 
