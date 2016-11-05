@@ -4,21 +4,18 @@
  * actions.js
  */
 
-const regions = [
-    { name: "北京", code: 'BJBJ' },
-    { name: "上海", code: 'SHSH' }
-]
+import dataApi from '../api/data'
 
-export const getRegions = state => {
-    return regions
+export const getRegions = () => {
+    return dataApi.regions
 }
 
 export const getRegion = state => {
-    return regions[state.region]
+    return dataApi.regions[state.region]
 }
 
 export const getRegionCode = state => {
-    return regions[state.region].code
+    return dataApi.regions[state.region].code
 }
 
 export const isLogin = state => {
@@ -27,4 +24,12 @@ export const isLogin = state => {
 
 export const getPhone = state => {
     return state.user.phone
+}
+
+export const getProductDetail = state => {
+    return state.products.productDetail
+}
+
+export const hotProducts = () => {
+    return dataApi.hotProducts
 }
