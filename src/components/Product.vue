@@ -26,15 +26,6 @@
 
 <script>
     export default {
-        data () {
-            return {
-                product: {
-                    title: "经营地址变更（不跨区）",
-                    summary: "这个服务只会有助于您事半功倍！",
-                    price: 998
-                }
-            }
-        },
         methods: {},
         props: {
             title: String,
