@@ -4,14 +4,12 @@
  * mutations.js
  */
 
-import api from '../../api'
+import productApi from '../../api/product'
 import * as types from '../mutation-types'
 
-export const getProduct = function (state, payload) {
-}
 const mutations = {
     [types.GET_PRODUCT_DETAIL] (state, serialId) {
-        api.getProductDetail(serialId,
+        productApi.getProductDetail(serialId,
             product => {
                 console.log(product)
                 state.product = product

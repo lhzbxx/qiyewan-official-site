@@ -3,3 +3,9 @@
  *
  * actions.js
  */
+
+import * as types from './mutation-types'
+
+export const addToCart = ({ commit }, cart) => {
+    commit(types.ADD_TO_CART, cart)
+}

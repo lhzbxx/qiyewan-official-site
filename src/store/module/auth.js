@@ -5,11 +5,12 @@
  * 身份认证相关
  */
 
-import api from '../../api'
+import authApi from '../../api/auth'
+import * as types from '../mutation-types'
 
 const mutations = {
     [types.USER_LOGIN] (state, {phone, password}) {
-        api.login(phone, password,
+        authApi.login(phone, password,
             token => {
                 console.log(token)
                 if (token) {

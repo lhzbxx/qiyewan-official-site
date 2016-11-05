@@ -4,12 +4,12 @@
  * actions.js
  */
 
-export const regions = [
+const regions = [
     { name: "北京", code: 'BJBJ' },
     { name: "上海", code: 'SHSH' }
 ]
 
-export const getRegions = function () {
+export const getRegions = state => {
     return regions
 }
 
