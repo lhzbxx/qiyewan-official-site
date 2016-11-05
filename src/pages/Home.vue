@@ -428,23 +428,30 @@
 
     #timeline ul li.active:before {
         top: -1px;
-        border-left-width: 26px;
-        border-right-width: 26px;
+        border-left-width: 15px;
+        border-right-width: 15px;
         border-bottom-width: 25px;
         border-top-width: 25px;
         border-left-color: #139cd7;
         z-index: 10;
     }
-
+    #timeline ul li:last-child.active::before{
+        display: none!important;
+    }
+    #timeline ul li:last-child.active::after{
+         display: none!important;
+     }
     #timeline ul li.active {
         color: #139cd7;
         border-color: #139cd7;
-        /* box-shadow: 0 0 20px #139cd7; */
     }
 
     #timeline ul li.active:after {
         top: 0;
-        border-width: 24px;
+        border-left-width: 14px;
+        border-right-width: 14px;
+        border-bottom-width: 24px;
+        border-top-width: 24px;
         border-left-color: white;
         z-index: 10;
     }
@@ -539,7 +546,6 @@
         visibility: hidden;
         animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
     }
-
     .slide.active {
         visibility: visible;
         transform: translate3d(0, 0, 0);
@@ -798,9 +804,6 @@
         margin-top: 5px;
     }
 
-    #news-tabs {
-    }
-
     .news-tab {
         font-size: 16px;
         float: left;
@@ -810,18 +813,18 @@
         line-height: 50px;
         text-align: center;
         z-index: 5;
-        border: 1px solid #dcdcdc;
-        border-bottom: 2px solid #139cd7;
+        border: 1px solid rgb(225,225,225);
+        border-bottom: 1px solid #139cd7;
         cursor: pointer;
-        background-color: #eee;
+        background-color: rgb(248,248,248);
         transition: all 0.3s ease-in-out;
     }
 
     .news-tab.active {
         z-index: 10;
         border: 1px solid #139cd7;
-        border-top-width: 2px;
-        border-bottom: 2px solid transparent;
+        border-top-width: 1px;
+        border-bottom: 1px solid transparent;
         background-color: white;
         color: #139cd7;
     }
@@ -1174,7 +1177,7 @@
                 hotProducts: [
                     {
                     title: "工商服务",
-                    image: "http://ofw6tmkxn.bkt.clouddn.com/hot_1.png",
+                    Image: "http://ofw6tmkxn.bkt.clouddn.com/hot_1.png",
                         activeImage:"http://ofw6tmkxn.bkt.clouddn.com/ser_1.png",
                     summary: "工商，就这么简单…",
                     first: [
@@ -1211,7 +1214,7 @@
                 },
                     {
                         title: "财税服务",
-                        image: "http://ofw6tmkxn.bkt.clouddn.com/hot_2.png",
+                        Image: "http://ofw6tmkxn.bkt.clouddn.com/hot_2.png",
                         activeImage:"http://ofw6tmkxn.bkt.clouddn.com/ser_2.png",
                         summary: "财务清晰，纳税放心",
                         first: [
@@ -1247,7 +1250,7 @@
                     },
                     {
                         title: "法律服务",
-                        image: "http://ofw6tmkxn.bkt.clouddn.com/hot_3.png",
+                        Image: "http://ofw6tmkxn.bkt.clouddn.com/hot_3.png",
                         activeImage:"http://ofw6tmkxn.bkt.clouddn.com/ser_3.png",
                         summary: "您的私人法律顾问",
                         first: [
@@ -1283,7 +1286,7 @@
                     },
                     {
                         title: "人事服务",
-                        image: "http://ofw6tmkxn.bkt.clouddn.com/hot_4.png",
+                        Image: "http://ofw6tmkxn.bkt.clouddn.com/hot_4.png",
                         activeImage:"http://ofw6tmkxn.bkt.clouddn.com/ser_4.png",
                         summary: "创业不忘养老",
                         first: [
