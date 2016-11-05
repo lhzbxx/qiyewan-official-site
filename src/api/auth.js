@@ -10,6 +10,8 @@ export default {
         Vue.http.get("auth?phone=" + phone + "&password=" + password).then((response) => {
             if (response.body.error == 0) {
                 cb(response.body.detail);
+            } else {
+                errorCb(response.body);
             }
         }, (response) => {
             errorCb(response.body);

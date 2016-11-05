@@ -9,9 +9,11 @@
                     <el-input type="password" v-model="formStacked.password"></el-input>
                 </el-form-item>
             </el-form>
+            <p style="color: red; text-align: center;">{{ error }}</p>
             <el-button type="primary"
+                       :disabled="isLogging"
                        @click.native="submit"
-                       style="width: 100%">登 录</el-button>
+                       style="width: 100%">{{ isLogging ? "登录中..." : "登 录" }}</el-button>
         </el-dialog>
     </div>
 </template>
@@ -25,7 +27,9 @@
                 formStacked: {
                     phone: "",
                     password: ""
-                }
+                },
+                isLogging: false,
+                error: null
             }
         },
         methods: {
@@ -33,12 +37,22 @@
                 this.$refs.dialog.open()
             },
             submit() {
-                this.isVisible = false
-                this.$store.commit("USER_LOGIN", {
+                this.isLogging = true
+                let vm = this
+                this.$store.dispatch("userLogin", {
                     phone: this.formStacked.phone,
                     password: this.formStacked.password
+                }).then(() => {
+                    vm.isVisible = false
+                    vm.formStacked.password = ""
+                    vm.isLogging = false
+                }, (error) => {
+                    vm.formStacked.password = ""
+                    vm.isLogging = false
+                    if (error.detail == "Error.Auth.WRONG_PASSWORD") {
+                        vm.error = "密码不正确！"
+                    }
                 })
-                this.formStacked.password = ""
             }
         }
     }

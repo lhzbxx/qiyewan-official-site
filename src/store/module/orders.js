@@ -4,7 +4,6 @@
  * mutations.js
  */
 
-import productApi from '../../api/product'
 import * as types from '../mutation-types'
 
 const mutations = {

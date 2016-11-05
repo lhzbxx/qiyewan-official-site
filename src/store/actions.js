@@ -5,7 +5,22 @@
  */
 
 import * as types from './mutation-types'
+import authApi from '../api/auth'
 
-export const addToCart = ({ commit }, cart) => {
-    commit(types.ADD_TO_CART, cart)
+export const userLogin = ({commit}, {phone, password}) => {
+    return new Promise((resolve, reject) => {
+        authApi.login(phone, password,
+            token => {
+                console.log(token)
+                if (token) {
+                    commit(types.USER_LOGIN_SUCCESS, {phone, token})
+                    resolve()
+                }
+            },
+            error => {
+                console.log(error)
+                reject(error)
+            }
+        );
+    })
 }
