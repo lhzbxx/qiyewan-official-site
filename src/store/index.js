@@ -23,17 +23,17 @@ export default new Vuex.Store({
         user: {
             phone: "",
             token: ""
-        },
-        carts: [],
-        product: {}
+        }
     },
     getters,
     actions,
-    articles,
-    auth,
-    carts,
-    index,
-    products
+    modules: {
+        articles,
+        auth,
+        carts,
+        index,
+        products
+    }
     // 注意：
     // 在发布时需要注释该行，以免影响性能！
     // strict: true

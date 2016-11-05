@@ -35,6 +35,7 @@ import Order from './components/Order.vue'
 import HotProducts from './components/HotProducts.vue'
 import Header from './components/Header.vue'
 import News from './components/News.vue'
+import Loading from './components/Loading.vue'
 
 
 Vue.use(ElementUI)
@@ -54,6 +55,7 @@ Vue.component('lh-hot-products', HotProducts)
 Vue.component('lh-header', Header)
 Vue.component('lh-footer', Footer)
 Vue.component('lh-news', News)
+Vue.component('lh-loading', Loading)
 
 const routes = [
     {path: '/', component: Home},
@@ -67,7 +69,10 @@ const routes = [
         },
         component: Review
     },
-    {path: '/product/:category/list', component: ProductList},
+    {
+        path: '/product/:category/list',
+        component: ProductList
+    },
     {
         path: '/product/:serialId/detail',
         name: 'product-detail',
