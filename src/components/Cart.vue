@@ -1,8 +1,7 @@
 <template>
     <div>
         <el-table
-                :data="unpaidProducts"
-                selection-mode="multiple"
+                :data="carts[0].content"
                 style="width: 100%"
                 @selection-change="handleMultipleSelectionChange">
             <el-table-column
@@ -33,10 +32,10 @@
                                         vertical-align: middle;
                                         padding-left: 10px;">
                                 <p style="line-height: 16px; margin-bottom: 5px;">
-                                    {{ row.product.title }}
+                                    {{ row.product.name }}
                                 </p>
                                 <p style="font-size: 13px; line-height: 15px; color: #aaa;">
-                                    区域：{{ row.product.address }}
+                                    区域：{{ row.regionCode }}
                                 </p>
                             </div>
                         </el-col>
@@ -48,7 +47,7 @@
                     label="单价">
                 <div>&yen;
                     <span>
-                        {{ row.unitPrice }}
+                        {{ row.product.unitPrice }}
                     </span>
                 </div>
             </el-table-column>
@@ -70,7 +69,7 @@
                     label="小计">
                 <div style="color: red;">
                     &yen;
-                    <span>{{ row.totalPrice }}</span>
+                    <span>{{ row.product.unitPrice * row.amount }}</span>
                 </div>
             </el-table-column>
             <el-table-column
@@ -126,6 +125,7 @@
                     amount: 1,
                     totalPrice: 200
                 }],
+                carts: this.$store.getters.getCarts,
                 multipleSelection: []
             }
         },

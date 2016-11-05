@@ -29,3 +29,15 @@ export const isLogin = state => {
 export const getPhone = state => {
     return state.auth.user.phone
 }
+
+export const cartNum = state => {
+    var num = 0
+    for (var cart of state.carts.all) {
+        num += cart.totalElements
+    }
+    return num
+}
+
+export const getCarts = state => {
+    return state.carts.all
+}

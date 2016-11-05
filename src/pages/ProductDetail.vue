@@ -303,14 +303,15 @@
                     <el-button type="primary"
                                size="large"
                                style="width: 120px;
-                                 font-family:'Microsoft yahei';
-                                  margin-left: 10px;">
+                                      font-family:'Microsoft yahei';
+                                      margin-left: 10px;">
                         立即购买
                     </el-button>
                     <el-button size="large"
                                style="width: 120px;
-                                  margin-left: 10px;
-                                  font-family:'Microsoft yahei';">
+                                      margin-left: 10px;
+                                      font-family:'Microsoft yahei';"
+                               v-on:click="addToCart">
                         加入购物车
                     </el-button>
                     <p style="font-size: 13px;
@@ -543,6 +544,22 @@
                         }
                 )
                 this.loading = false
+            },
+            addToCart () {
+                var cart = {
+                    amount: 1,
+                    serialId: this.$route.params.serialId,
+                    regionCode: this.$store.getters.getRegion.code,
+                }
+                this.$store.dispatch("addToCart", cart)
+                        .then(() => {
+                            this.$message({
+                                message: '成功加入购物车~~',
+                                type: 'success'
+                            });
+                        }, () => {
+                            this.$message.error('加入购物车失败...');
+                        })
             }
         }
     }

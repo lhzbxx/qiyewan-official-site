@@ -6,19 +6,36 @@ Vue.use(VueResource)
 Vue.http.options.root = "http://127.0.0.1:8090";
 
 export default {
-    getProductDetail (serialId, cb, errorCb) {
-        Vue.http.get("products/" + serialId).then((response) => {
+    getCarts (token, cb, errorCb) {
+        Vue.http.headers.common['Authorization'] = token;
+        Vue.http.get("carts").then((response) => {
             cb(response.body)
         }, (response) => {
             errorCb(response.body);
         })
     },
-
-    getProductReviews (serialId, cb) {
-        Vue.http.get("products/" + serialId + "/reviews")
+    addCart (token, cart, cb, errorCb) {
+        Vue.http.headers.common['Authorization'] = token;
+        Vue.http.post("carts", cart).then((response) => {
+            cb(response.body)
+        }, (response) => {
+            errorCb(response.body);
+        })
     },
-
-    getProductFaqs (serialId, cb) {
-        Vue.http.get("products/" + serialId + "/faq")
+    updateCart (token, cartId, cb, errorCb) {
+        Vue.http.headers.common['Authorization'] = token;
+        Vue.http.get("carts/" + cartId).then((response) => {
+            cb(response.body)
+        }, (response) => {
+            errorCb(response.body);
+        })
+    },
+    removeCart (token, cartId, cb, errorCb) {
+        Vue.http.headers.common['Authorization'] = token;
+        Vue.http.get("carts/" + cartId).then((response) => {
+            cb(response.body)
+        }, (response) => {
+            errorCb(response.body);
+        })
     }
 }
