@@ -227,7 +227,7 @@
                          style="width: 100%;">
                 </el-col>
                 <el-col :span="10">
-                    <h3 style="margin:10px 0;font-size:20px;color:#383838">代办税务</h3>
+                    <h3 style="margin:10px 0;font-size:20px;color:#383838">{{product.name}}</h3>
                     <p style="font-size: 12px;
                           color: #dd2726;line-height:1.8em">
                         温馨提示：请选择服务区域、服务时长、购买数目；如有问题，请拨打售后服务热线：400-716-8896
@@ -239,12 +239,12 @@
                         <p style="font-size: 13px;
                               color: #aaa;
                               ">
-                            市场价格：&nbsp;&yen; {{ product.unitPrice * 5 }}
+                            市场价格：&nbsp;&yen; {{ product.unitPrice * 5,form.totalPrice = product.unitPrice }}
                         </p>
                         <p style="margin: 10px 0;">价 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：
                             <span style="font-size: 20px;
                                      color: red;">
-                            &yen; {{ product.unitPrice }}
+                            &yen; {{ product.unitPrice * form.period * form.amount }}
                         </span></p>
                         <p style="">用户评分：
                             <el-rate
@@ -263,33 +263,27 @@
                         <el-form-item label="服务区域">
                             <el-row>
                                 <el-col :span="8">
-                                    <el-select v-model="form.regionCity"
-                                               placeholder="">
-                                        <el-option label="上海" value="021"></el-option>
-                                        <el-option label="北京" value="010"></el-option>
+                                    <el-select v-model="form.regionCityCode" :placeholder="form.cityName" disabled>
+                                        <el-option label="" value=""></el-option>
                                     </el-select>
                                 </el-col>
                                 <el-col :span="8">
-                                    <el-select v-model="form.regionCountry"
-                                               placeholder="">
-                                        <el-option label="上海" value="021"></el-option>
-                                        <el-option label="北京" value="010"></el-option>
+                                    <el-select v-model="form.regionCountryCode" :placeholder="form.countryName" disabled>
+                                        <el-option label="" value=""></el-option>
                                     </el-select>
                                 </el-col>
                                 <el-col :span="8">
-                                    <el-select v-model="form.regionArea"
-                                               placeholder="">
-                                        <el-option label="上海" value="021"></el-option>
-                                        <el-option label="北京" value="010"></el-option>
+                                    <el-select v-model="form.regionArea" placeholder="">
+                                        <el-option v-for="area in form.regionAreas" :label="area.name" :value="area.name"></el-option>
                                     </el-select>
                                 </el-col>
                             </el-row>
                         </el-form-item>
                         <el-form-item label="购买时长" style="margin-bottom:8px">
                             <el-radio-group v-model="form.period">
-                                <el-radio-button label="一季度"></el-radio-button>
-                                <el-radio-button label="半年"></el-radio-button>
-                                <el-radio-button label="一年"></el-radio-button>
+                                <el-radio-button label="3">一季度</el-radio-button>
+                                <el-radio-button label="6">半年</el-radio-button>
+                                <el-radio-button label="12">一年</el-radio-button>
                             </el-radio-group>
                         </el-form-item>
                         <el-form-item label="活动形式" style="margin-bottom:8px">
@@ -497,8 +491,14 @@
                     }
                 ],
                 form: {
-                    period: "一年",
-                    amount: 1
+                    period: 3,
+                    amount: 1,
+                    totalPrice:0,
+                    regionCityCode:'',
+                    regionCountryCode:'',
+                    regionArea:'',
+                    cityName:'',
+                    countryName:'',
                 },
                 qa: [
                     {
@@ -516,11 +516,13 @@
                 ],
                 loading: false,
                 error: null,
-                product: null
+                product: null,
+                regionAreas:[],
             }
         },
         computed: mapGetters({
-            hotProducts: 'hotProducts'
+            hotProducts: 'hotProducts',
+            regions:'regions'
         }),
         created () {
             this.fetchData()
@@ -536,14 +538,38 @@
                 this.loading = true
                 productApi.getProductDetail(this.$route.params.serialId,
                         data => {
-                            this.product = data
-                        },
-                        error => {
-                            this.error = error
-                        }
-                )
+                    this.product = data;
+                this.setRegion();
+            },
+                error => {
+                    this.error = error
+                }
+            )
+
                 this.loading = false
-            }
+            },
+            setRegion () {
+                console.log(this.$route.params.name)
+                var currentNum = this.$route.params.serialId;
+                var currentCityCode = currentNum.substr(0, 2);
+                var currentCountryCode = currentNum.substr(2, 2);
+                for (var i = 0; i < this.regions.length; i++) {
+                    var provence = this.regions[i];
+                    if (provence.code == currentCityCode) {
+                        this.form.cityName = provence.name;
+                        this.form.regionCityCode =  provence.code;
+                        for (var j = 0; j < provence.cities.length; j++) {
+                            var city = provence.cities[j];
+                            if (city.code == currentCountryCode) {
+                                this.form.countryName = city.name;
+                                this.form.regionCountryCode = city.code;
+                                this.form.regionAreas = city.areas;
+                                return;
+                            }
+                        }
+                    }
+                }
+            },
         }
     }
 </script>

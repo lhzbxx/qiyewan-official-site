@@ -33,3 +33,7 @@ export const getProductDetail = state => {
 export const hotProducts = () => {
     return dataApi.hotProducts
 }
+
+export const regions = () => {
+    return dataApi.regions
+}
