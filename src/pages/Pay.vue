@@ -1,5 +1,4 @@
-<style scoped xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml"
-       xmlns:v-on="http://www.w3.org/1999/xhtml">
+<style scoped>
     .chosen {
         border: 1px solid #20A0FF !important;
     }

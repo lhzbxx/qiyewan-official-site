@@ -32,7 +32,7 @@ export default {
     },
     removeCart (token, cart, cb, errorCb) {
         Vue.http.headers.common['Authorization'] = token;
-        Vue.http.get("carts" + cart).then((response) => {
+        Vue.http.delete("carts", cart).then((response) => {
             cb(response.body)
         }, (response) => {
             errorCb(response.body);

@@ -47,16 +47,11 @@ export const getOrders = state => {
 }
 
 export const getOrder = ( state, serialId ) => {
-    // for (var page of state.orders.all) {
-    //     for (var order of page) {
-    //         if (order.serialId == serialId) {
-    //             return order
-    //         }
-    //     }
-    // }
-    for (let order of state.orders.all[state.orders.page]) {
-        if (order.serialId == serialId) {
-            return order
+    for (var page of state.orders.all) {
+        for (var order of page.content) {
+            if (order.serialId == serialId) {
+                return order
+            }
         }
     }
 }

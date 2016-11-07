@@ -1,7 +1,7 @@
 <template>
     <div>
         <el-table
-                :data="carts[0].content"
+                :data="carts.content"
                 style="width: 100%"
                 @selection-change="handleMultipleSelectionChange">
             <el-table-column
@@ -11,9 +11,9 @@
             <el-table-column
                     inline-template
                     label="商品信息"
-                    width="300">
+                    width="420">
                 <div>
-                    <el-row style="height: 62.5px;">
+                    <el-row style="height: 90px;">
                         <el-col :span="5" style="height: 100%; display: table;">
                             <div style="width: 100%;
                                         height: 100%;
@@ -35,7 +35,7 @@
                                     {{ row.product.name }}
                                 </p>
                                 <p style="font-size: 13px; line-height: 15px; color: #aaa;">
-                                    区域：{{ row.regionCode }}
+                                    区域：{{ row.region }}
                                 </p>
                             </div>
                         </el-col>
@@ -80,7 +80,7 @@
                     <el-button type="danger"
                                icon="delete"
                                size="small"
-                               @click.native="show">
+                               @click.native="deleteCart(row)">
                         删除
                     </el-button>
                 </div>
@@ -95,6 +95,7 @@
             </span>
             <el-button type="primary"
                        size="large"
+                       :disabled="amountOfSelection == 0"
                        style="border-radius: 0;">
                 去结算
             </el-button>
@@ -103,44 +104,33 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex'
     export default {
         data() {
             return {
-                unpaidProducts: [{
-                    product: {
-                        cover: "",
-                        title: "个人社保公积金账户代开户",
-                        address: "上海-上海市-松江区"
-                    },
-                    unitPrice: 200,
-                    amount: 1,
-                    totalPrice: 200
-                }, {
-                    product: {
-                        cover: "",
-                        title: "个人社保公积金账户代开户",
-                        address: "上海-上海市-松江区"
-                    },
-                    unitPrice: 200,
-                    amount: 1,
-                    totalPrice: 200
-                }],
-                carts: this.$store.getters.getCarts,
-                multipleSelection: []
+                multipleSelection: [],
+                carts: this.$store.getters.getCarts
             }
         },
         methods: {
             handleMultipleSelectionChange(val) {
                 this.multipleSelection = val;
             },
-            show() {
+            deleteCart(cart) {
                 this.$confirm('确认删除该商品吗？', '删除商品', {
                     type: 'warning'
                 }).then(() => {
-                    this.$message({
-                        type: 'success',
-                        message: '删除成功！'
-                    });
+                    this.dispatch("removeCart", cart).then(
+                            success => {
+                                this.$message({
+                                    type: 'success',
+                                    message: '删除成功！'
+                                });
+                            },
+                            fail => {
+                                this.$message.error("删除失败~")
+                            }
+                    )
                 }).catch(() => {
                 });
             },
@@ -156,7 +146,7 @@
             totalPrice() {
                 var r = 0;
                 for (var i of this.multipleSelection) {
-                    r = r + i.amount * i.unitPrice
+                    r = r + i.amount * i.product.unitPrice
                 }
                 return r
             }
