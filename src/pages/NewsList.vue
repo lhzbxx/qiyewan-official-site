@@ -230,7 +230,7 @@
                                     <p class="day">{{ article.day }}</p>
                                     <p class="year-month">{{ article.year_moth }}</p>
                                 </div>
-                                <p class="list-title display-block">{{ article.title }}</p>
+                                <p class="list-title display-block" v-on:click="nav2article(article.id)">{{ article.title }}</p>
                             </div>
                         </el-col>
                     </el-row>
@@ -282,6 +282,7 @@
         data(){
             return {
                 topNews: {
+                    id: 1,
                     cover: "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
                     title: "上海国际马拉松上海国",
                     imageURLs: [
@@ -291,85 +292,92 @@
                     ],
                     category: "创业资讯",
                     articles: [
-                        {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
-                        {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "11"},
-                        {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "12"},
-                        {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                        {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                        {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "11"},
+                        {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "12"},
+                        {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
                     ]
                 },
                 centerNewsList: [
                      {
+                        id: 1,
                         category: "创业资讯",
                         title: "热烈庆祝我公司成立两周年",
                         cover: "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
                         articles: [
-                            {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
-                            {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "11"},
-                            {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "12"},
-                            {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "11"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "12"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
                         ]
                     },
                     {
+                        id: 1,
                         category: "法律资讯",
                         title: "热烈庆祝我公司成立两周年",
                         cover: "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
                         articles: [
-                            {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
-                            {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "11"},
-                            {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "12"},
-                            {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "11"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "12"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
                         ]
                     }
                 ],
                 bottomNewsList: [
                     {
+                        id: 1,
                         category: "工商资讯",
                         title: "热烈庆祝我公司成立两周年",
                         cover: "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
                         articles: [
-                            {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
-                            {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "11"},
-                            {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "12"},
-                            {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "11"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "12"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
                         ]
                     },
                     {
+                        id: 1,
                         category: "财税资讯",
                         title: "热烈庆祝我公司成立两周年",
                         cover: "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
                         articles: [
-                            {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
-                            {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "11"},
-                            {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "12"},
-                            {title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "11"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "12"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
                         ]
                     },
                 ],
                 sideNewsList: [
                     {
+                        id: 1,
                         category: "精彩推荐",
                         title: "热烈庆祝我公司成立两周年",
                         cover: "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
                         articles: [
-                            {title: "上海国际马拉松上海国"},
-                            {title: "上海国际马拉松上海国"},
+                            {id: 1, title: "上海国际马拉松上海国"},
+                            {id: 1, title: "上海国际马拉松上海国"},
                         ]
                     },
                     {
+                        id: 1,
                         category: "精彩推荐",
                         title: "热烈庆祝我公司成立两周年",
                         cover: "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
                         articles: [
-                            {title: "上海国际马拉松上海国"},
-                            {title: "上海国际马拉松上海国"},
+                            {id: 1, title: "上海国际马拉松上海国"},
+                            {id: 1, title: "上海国际马拉松上海国"},
                         ]
                     },
                     {
+                        id: 1,
                         category: "每日必看",
                         title: "热烈庆祝我公司成立两周年",
                         cover: "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
                         articles: [
-                            {title: "上海国际马拉松上海国"},
+                            {id: 1, title: "上海国际马拉松上海国"},
                         ]
                     },
                 ]
@@ -381,6 +389,9 @@
         methods: {
            offset4Index: function(idx){
                 return idx % 2 == 0 ? 0 : 2;
+           },
+           nav2article: function(article_id){
+               location.href = '/#/article/' + article_id;
            }
         }
     }
