@@ -1,10 +1,10 @@
-<style>
+<style scoped>
     .el-tabs__content {
-        padding: 0 !important;
+        padding: 0px !important;
     }
 
     .detail_pic {
-        background: url(../assets/img/Product_2.png) no-repeat;
+        background: url(http://ofw6tmkxn.bkt.clouddn.com/produce_2.jpg) no-repeat;
         width: 100%;
         height: 350px;
         background-size: 108%;;
@@ -59,11 +59,11 @@
     }
 
     .Process {
-        background: url(../assets/img/progress.png) no-repeat;
+        background: url(http://ofw6tmkxn.bkt.clouddn.com/progress_.jpg) no-repeat;
         -webkit-background-size: 100%;
         background-size: 100%;
         width: 100%;
-        height: 305px;
+        height: 285px;
         margin-top: 30px;
         position: relative;
     }
@@ -77,8 +77,32 @@
         background-color: #fff;
         line-height: 42px;
         text-align: center;
+        border-radius: 5px;
     }
-
+    .el-tabs__item{
+        padding:0 25px;
+        border-top:2px solid transparent;
+        box-sizing: content-box;
+    }
+    .el-tabs__item.is-active{
+        border-top:2px solid rgb(32,160,255);
+        position: relative;
+    }
+    .el-tabs__item.is-active::before{
+        position: absolute;
+        content: '';
+        border:5px solid transparent;
+        border-top:5px solid rgb(32,160,255);
+        top:0;
+        left:50%;
+        transform: translate(-50%,0%);
+    }
+    .el-radio-button:not(:last-child){
+        margin-right:20px;
+    }
+    .el-radio-button__inner{
+        width:85px;
+    }
     .Process p {
         height: 30px;
     }
@@ -89,7 +113,7 @@
 
     .zhushi {
         position: absolute;
-        top: 80%;
+        top: 87%;
         text-align: center;
         width: 100%;
         font-size: 14px;
@@ -143,6 +167,8 @@
 
     .p_c {
         text-align: center;
+        color:#b1b1b1;
+        font-size:14px;
     }
 
     .internet {
@@ -163,6 +189,8 @@
         background-color: #fff;
         height: 170px;
         position: relative;
+        transition: all .2s linear;
+        cursor: pointer;
     }
 
     .internet ul li::after {
@@ -188,7 +216,7 @@
 
     .internet ul li p {
         font-size: 14px;
-        color: #616161;
+        color: #b1b1b1;
         line-height: 1.5em;
         margin: 10px 0;
     }
@@ -201,16 +229,32 @@
 
     .inter_bg {
         margin-top: 30px;
-        margin-left: -14px;
+        margin-left: -4px;
     }
 
     .inter_bg img {
-        width: 100%;
+        width: 101%;
     }
-
+    .internet ul li:hover{
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        transform: translate3d(0, -3px, 0);
+    }
     .padd {
         padding: 15px;
         margin-top: 30px;
+    }
+
+    .el-radio-button{
+        margin-right:20px;
+    }
+    .el-radio-button__inner{
+        border-radius: 4px;
+    }
+    .el-radio-button:first-child .el-radio-button__inner,.el-radio-button:last-child .el-radio-button__inner{
+        border-radius: 4px;
+    }
+    .advan_img img{
+        width:100%;
     }
 </style>
 <template>
@@ -262,17 +306,17 @@
                     <el-form :model="form" label-width="75px" style="text-align:left">
                         <el-form-item label="服务区域">
                             <el-row>
-                                <el-col :span="8">
+                                <el-col :span="5" style="margin-right: 20px">
                                     <el-select v-model="form.regionCityCode" :placeholder="form.cityName" disabled>
                                         <el-option label="" value=""></el-option>
                                     </el-select>
                                 </el-col>
-                                <el-col :span="8">
+                                <el-col :span="5" style="margin-right: 20px">
                                     <el-select v-model="form.regionCountryCode" :placeholder="form.countryName" disabled>
                                         <el-option label="" value=""></el-option>
                                     </el-select>
                                 </el-col>
-                                <el-col :span="8">
+                                <el-col :span="5" style="margin-right: 20px">
                                     <el-select v-model="form.regionArea" placeholder="">
                                         <el-option v-for="area in form.regionAreas" :label="area.name" :value="area.name"></el-option>
                                     </el-select>
@@ -406,6 +450,7 @@
                             </div>
                             <div class="advan">
                                 <div class="tit">我们的服务优势</div>
+                                <div class="advan_img"><img src="../assets/img/advan.png"></div>
                             </div>
                         </el-tab-pane>
                         <el-tab-pane label="用户评价（30）">
