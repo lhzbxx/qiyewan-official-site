@@ -20,19 +20,20 @@ const mutations = {
         state.isLogin = true
         state.user.phone = phone
         state.user.token = token
-        localStorage.user = state.user
-        localStorage.createAt = new Date()
+        localStorage.createAt = new Date().valueOf()
+        localStorage.setItem('user', JSON.stringify(state.user));
     },
     [types.USER_LOGOUT] (state) {
         state.isLogin = false
         state.user.phone = ""
         state.user.token = ""
-        localStorage.user = null
-        localStorage.createAt = null
+        localStorage.removeItem('createAt')
+        console.log(localStorage.createAt)
+        localStorage.removeItem('user')
     },
-    [types.GET_TOKEN_FROM_STORAGE] (state, user) {
+    [types.GET_TOKEN_FROM_STORAGE] (state) {
         state.isLogin = true
-        state.user = user
+        state.user = JSON.parse(localStorage.getItem('user'));
     }
 }
 

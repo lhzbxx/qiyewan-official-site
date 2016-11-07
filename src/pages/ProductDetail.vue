@@ -302,6 +302,7 @@
                     </el-form>
                     <el-button type="primary"
                                size="large"
+                               @click.native="directOrder"
                                style="width: 120px;
                                       font-family:'Microsoft yahei';
                                       margin-left: 10px;">
@@ -313,7 +314,7 @@
                                       font-family:'Microsoft yahei';"
                                :loading="isAdding"
                                v-on:click="addToCart">
-                        加入购物车
+                        {{ isAdding ? "加入中..." : "加入购物车" }}
                     </el-button>
                     <p style="font-size: 13px;
                           color: #aaa;
@@ -548,11 +549,16 @@
                 this.loading = false
             },
             addToCart () {
+                if ( ! this.$store.getters.isLogin) {
+                    this.$store.commit("REQUIRE_LOGIN")
+                    return
+                }
                 this.isAdding = true
                 var cart = {
                     amount: 1,
                     serialId: this.$route.params.serialId,
                     regionCode: this.$store.getters.getRegion.code,
+                    region: "XXXX"
                 }
                 this.$store.dispatch("addToCart", cart)
                         .then(() => {
@@ -564,6 +570,22 @@
                         }, () => {
                             this.$message.error('加入购物车失败...');
                             this.isAdding = false
+                        })
+            },
+            directOrder () {
+                if ( ! this.$store.getters.isLogin) {
+                    this.$store.commit("REQUIRE_LOGIN")
+                    return
+                }
+                var order = {
+                    amount: 1,
+                    serialId: this.$route.params.serialId,
+                    regionCode: this.$store.getters.getRegion.code,
+                    region: "XXXX"
+                }
+                this.$store.dispatch("addToOrder", order)
+                        .then(() => {
+                            this.$router.push({ name: "pay" })
                         })
             }
         }

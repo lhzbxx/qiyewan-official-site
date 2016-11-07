@@ -55,3 +55,7 @@ export const getOrder = ( state, serialId ) => {
         }
     }
 }
+
+export const needLogin = state => {
+    return state.global.needLogin
+}

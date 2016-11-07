@@ -9,6 +9,7 @@ import * as types from '../mutation-types'
 const state = {
     all: [],
     savedItems: [],
+    checkout: [],
     page: 0
 }
 

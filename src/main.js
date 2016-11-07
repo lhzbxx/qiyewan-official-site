@@ -58,14 +58,8 @@ Vue.component('lh-news', News)
 Vue.component('lh-loading', Loading)
 
 function requireAuth(to, from, next) {
-    if (localStorage.user) {
-        console.log(localStorage.user)
-        next({
-            path: '/',
-            query: {
-                redirect: to.fullPath
-            }
-        })
+    if ( ! store.getters.isLogin) {
+        store.commit("REQUIRE_LOGIN")
     } else {
         next()
     }
@@ -84,11 +78,11 @@ const routes = [
         component: Review
     },
     {
-        path: '/product/:category/list',
+        path: '/product/list/:category',
         component: ProductList
     },
     {
-        path: '/product/:serialId/detail',
+        path: '/product/detail/:serialId',
         name: 'product-detail',
         component: ProductDetail
     },
@@ -105,7 +99,7 @@ const routes = [
         component: MyCart
     },
     {
-        path: '/pay/:serialId',
+        path: '/pay',
         name: 'pay',
         beforeEnter: requireAuth,
         component: Pay
@@ -144,10 +138,7 @@ const routes = [
 
 const router = new VueRouter({
     // mode: 'history',
-    routes: routes,
-    created() {
-        this.dispatch("checkToken")
-    }
+    routes: routes
 })
 
 

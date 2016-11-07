@@ -219,7 +219,8 @@
             getRegions: 'getRegions',
             getRegion: 'getRegion',
             getRegionIndex: 'getRegionIndex',
-            cartNum: 'cartNum'
+            cartNum: 'cartNum',
+            needLogin: 'needLogin'
         }),
         methods: {
             openLoginDialog() {
@@ -235,10 +236,8 @@
                 this.$store.commit("USER_LOGOUT")
             }
         },
-        created () {
-            if (this.$router.query && this.$router.query.redirect) {
-                this.openLoginDialog()
-            }
+        watch: {
+            'needLogin': 'openLoginDialog'
         }
     }
 </script>

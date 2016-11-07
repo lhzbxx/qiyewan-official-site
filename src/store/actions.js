@@ -11,8 +11,8 @@ import orderApi from '../api/order'
 
 export const checkToken = ({ commit }) => {
     if (localStorage.createAt) {
-        if (new Date() - localStorage.createAt < 15 * 24 * 60 * 60 * 1000) {
-            commit(types.GET_TOKEN_FROM_STORAGE, localStorage.user)
+        if (new Date().valueOf() - localStorage.createAt < 15 * 24 * 60 * 60 * 1000) {
+            commit(types.GET_TOKEN_FROM_STORAGE)
         }
     }
 }
@@ -24,22 +24,6 @@ export const userLogin = ({ commit }, { phone, password }) => {
                 console.log(token)
                 if (token) {
                     commit(types.USER_LOGIN_SUCCESS, {phone, token})
-                    cartApi.getCarts(token,
-                        carts => {
-                            commit(types.RECEIVE_CART, carts)
-                        },
-                        error => {
-                            console.log(error)
-                        }
-                    )
-                    orderApi.getOrders(token,
-                        orders => {
-                            commit(types.RECEIVE_ORDER, orders)
-                        },
-                        error => {
-                            console.log(error)
-                        }
-                    )
                     resolve()
                 }
             },
@@ -49,6 +33,17 @@ export const userLogin = ({ commit }, { phone, password }) => {
             }
         );
     })
+}
+
+export const getCarts = ({ commit, state}) => {
+    cartApi.getCarts(state.auth.user.token,
+        carts => {
+            commit(types.RECEIVE_CART, carts)
+        },
+        error => {
+            console.log(error)
+        }
+    )
 }
 
 export const addToCart = ({ commit, state }, cart) => {
@@ -97,6 +92,17 @@ export const updateCart = ({ commit, state }, cart) => {
             }
         )
     })
+}
+
+export const getOrders = ({ commit, state}) => {
+    orderApi.getOrders(state.auth.user.token,
+        orders => {
+            commit(types.RECEIVE_ORDER, orders)
+        },
+        error => {
+            console.log(error)
+        }
+    )
 }
 
 export const addToOrder = ({ commit, state }, order) => {

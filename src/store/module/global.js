@@ -8,12 +8,16 @@
 import * as types from '../mutation-types'
 
 const state = {
-    region: 1
+    region: 1,
+    needLogin: 0
 }
 
 const mutations = {
     [types.CHANGE_REGION] (state, regionCode) {
         state.region = regionCode
+    },
+    [types.REQUIRE_LOGIN] (state) {
+        state.needLogin += 1
     }
 }
 
