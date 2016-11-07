@@ -1,4 +1,4 @@
-<style>
+<style scoped>
 
     .el-menu-item{
         height: 50px;

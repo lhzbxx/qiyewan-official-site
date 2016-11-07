@@ -1,4 +1,4 @@
-<style>
+<style scoped>
     .title b,button,i{
         color:#229dd5 !important;
     }
