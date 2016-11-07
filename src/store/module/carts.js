@@ -1,5 +1,5 @@
 /**
- * Created by lhzbxx on 2016/10/20.
+ * Created by lhzbxx on 2016/11/5.
  *
  * mutations.js
  */
@@ -8,7 +8,8 @@ import * as types from '../mutation-types'
 
 const state = {
     all: [],
-    savedItems: []
+    savedItems: [],
+    page: 0
 }
 
 const mutations = {

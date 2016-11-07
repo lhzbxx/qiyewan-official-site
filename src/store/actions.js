@@ -7,6 +7,7 @@
 import * as types from './mutation-types'
 import authApi from '../api/auth'
 import cartApi from '../api/cart'
+import orderApi from '../api/order'
 
 export const userLogin = ({ commit }, { phone, password }) => {
     return new Promise((resolve, reject) => {
@@ -38,6 +39,22 @@ export const addToCart = ({ commit, state }, cart) => {
                 console.log(response)
                 commit(types.ADD_TO_CART, response)
                 resolve(cart)
+            },
+            error => {
+                console.log(error)
+                reject(error)
+            }
+        )
+    })
+}
+
+export const addToOrder = ({ commit, state }, order) => {
+    return new Promise((resolve, reject) => {
+        orderApi.addOrder(state.auth.user.token, order,
+            response => {
+                console.log(response)
+                commit(types.ADD_TO_ORDER, response)
+                resolve(order)
             },
             error => {
                 console.log(error)

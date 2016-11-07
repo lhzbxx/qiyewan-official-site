@@ -22,17 +22,17 @@ export default {
             errorCb(response.body);
         })
     },
-    updateCart (token, cartId, cb, errorCb) {
+    updateCart (token, cart, cb, errorCb) {
         Vue.http.headers.common['Authorization'] = token;
-        Vue.http.get("carts/" + cartId).then((response) => {
+        Vue.http.get("carts", cart).then((response) => {
             cb(response.body)
         }, (response) => {
             errorCb(response.body);
         })
     },
-    removeCart (token, cartId, cb, errorCb) {
+    removeCart (token, cart, cb, errorCb) {
         Vue.http.headers.common['Authorization'] = token;
-        Vue.http.get("carts/" + cartId).then((response) => {
+        Vue.http.get("carts" + cart).then((response) => {
             cb(response.body)
         }, (response) => {
             errorCb(response.body);
