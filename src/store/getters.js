@@ -39,5 +39,9 @@ export const cartNum = state => {
 }
 
 export const getCarts = state => {
-    return state.carts.all
+    return state.carts.all[state.orders.page]
+}
+
+export const getOrders = state => {
+    return state.orders.all[state.orders.page]
 }

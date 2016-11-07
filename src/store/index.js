@@ -10,6 +10,7 @@ import * as getters from './getters'
 import * as actions from './actions'
 import auth from './module/auth'
 import carts from './module/carts'
+import orders from './module/orders'
 import global from './module/global'
 
 Vue.use(Vuex)
@@ -20,6 +21,7 @@ export default new Vuex.Store({
     modules: {
         auth,
         carts,
+        orders,
         global
     }
     // 注意：

@@ -87,7 +87,8 @@ const routes = [
         component: MyCart
     },
     {
-        path: '/pay',
+        path: '/pay/:serialId',
+        name: 'pay',
         component: Pay
     },
     {

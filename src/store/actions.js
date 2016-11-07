@@ -19,6 +19,17 @@ export const userLogin = ({ commit }, { phone, password }) => {
                     cartApi.getCarts(token,
                         carts => {
                             commit(types.RECEIVE_CART, carts)
+                        },
+                        error => {
+                            console.log(error)
+                        }
+                    )
+                    orderApi.getOrders(token,
+                        orders => {
+                            commit(types.RECEIVE_ORDER, orders)
+                        },
+                        error => {
+                            console.log(error)
                         }
                     )
                     resolve()

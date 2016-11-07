@@ -192,7 +192,7 @@
                         <a>登录</a>
                     </li>
                     <li v-if="isLogin">
-                        <router-link to="/orders">订单</router-link>
+                        <router-link to="/order">订单</router-link>
                     </li>
                     <li v-if="isLogin">
                         <router-link to="/profile">个人中心</router-link>
