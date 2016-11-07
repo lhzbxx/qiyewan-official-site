@@ -13,7 +13,7 @@ const state = {
 }
 
 const mutations = {
-    [types.RECIVE_ORDER] (state, orders) {
+    [types.RECEIVE_ORDER] (state, orders) {
         state.all.push(orders)
     },
     [types.ADD_TO_ORDER] (state, order) {

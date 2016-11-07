@@ -1,4 +1,4 @@
-<style>
+<style scoped>
     .el-table .cell{
         font-weight:normal;
     }

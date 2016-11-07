@@ -13,7 +13,7 @@ const state = {
 }
 
 const mutations = {
-    [types.RECIVE_CART] (state, carts) {
+    [types.RECEIVE_CART] (state, carts) {
         state.all.push(carts)
     },
     [types.ADD_TO_CART] (state, cart) {
