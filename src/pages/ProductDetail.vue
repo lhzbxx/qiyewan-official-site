@@ -1,4 +1,4 @@
-<style>
+<style scoped xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
     .el-tabs__content {
         padding: 0px !important;
     }
@@ -191,6 +191,8 @@
         background-color: #fff;
         height: 170px;
         position: relative;
+        transition: all .2s linear;
+        cursor: pointer;
     }
 
     .internet ul li::after {
@@ -229,13 +231,16 @@
 
     .inter_bg {
         margin-top: 30px;
-        margin-left: -14px;
+        margin-left: -4px;
     }
 
     .inter_bg img {
-        width: 100%;
+        width: 101%;
     }
-
+    .internet ul li:hover{
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        transform: translate3d(0, -3px, 0);
+    }
     .padd {
         padding: 15px;
         margin-top: 30px;

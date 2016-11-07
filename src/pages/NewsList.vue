@@ -320,7 +320,7 @@
             </el-col>
             <el-col :span="7" :offset="1">
                 <div class="right-item">
-                    <p class="right-title">&nbsp;分类标题</p>
+                    <p class="right-title">&nbsp; 分类标题</p>
                     <div class="img-news">
                         <img src="../assets/img/banner_2.png" class="right-news-img">
                         <p class="opt-news-title">上海国际马拉松上海国</p>
@@ -331,7 +331,7 @@
                     </ul>
                 </div>
                 <div class="right-item">
-                    <p class="right-title">&nbsp;分类标题</p>
+                    <p class="right-title">&nbsp; 分类标题</p>
                     <div class="img-news">
                         <img src="../assets/img/banner_2.png" class="right-news-img">
                         <p class="opt-news-title">上海国际马拉松上海国</p>
@@ -342,7 +342,7 @@
                     </ul>
                 </div>
                 <div class="right-item">
-                    <p class="right-title">&nbsp;分类标题</p>
+                    <p class="right-title">&nbsp; 分类标题</p>
                     <div class="img-news">
                         <img src="../assets/img/banner_2.png" class="right-news-img">
                         <p class="opt-news-title">上海国际马拉松上海国</p>
