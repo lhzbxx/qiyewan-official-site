@@ -5,7 +5,7 @@
 </style>
 
 <template>
-    <div class="container">
+    <div class="container" style="margin-top: 20px;">
         <div style="border: 1px solid #eee;
                     border-bottom: none;
                     padding: 20px;">
@@ -19,15 +19,11 @@
                                font-size: 16px;">
                         <p>
                             <i class="el-icon-circle-check"
-                               style="font-size: 25px;
-                                  color: #58B7FF;"></i>
-                            订单提交成功，请您尽快付款！
+                               style="font-size: 40px;
+                                      color: #58B7FF;
+                                      margin-right: 10px;"></i>
+                            订单提交成功！
                         </p>
-                        <p style="margin: 5px 0 10px 30px;">
-                            订单号：
-                            <span style="font-size: 15px;">
-                            1904u318941894
-                        </span>
                         </p>
                     </div>
                 </el-col>
@@ -41,22 +37,22 @@
                                font-size: 16px;">
                         应付金额
                         <span style="color: red; font-size: 24px;">
-                            400
+                            {{ totalPrice() }}
                         </span>元
                     </div>
                 </el-col>
             </el-row>
         </div>
         <el-table
-                :data="order.details"
+                :data="checkout"
                 selection-mode="multiple"
                 style="width: 100%">
             <el-table-column
                     inline-template
                     label="商品信息"
-                    width="300">
+                    width="420">
                 <div>
-                    <el-row style="height: 62.5px;">
+                    <el-row style="height: 90px;">
                         <el-col :span="5" style="height: 100%; display: table;">
                             <div style="width: 100%;
                                         height: 100%;
@@ -75,10 +71,10 @@
                                         vertical-align: middle;
                                         padding-left: 10px;">
                                 <p style="line-height: 16px; margin-bottom: 5px;">
-                                    {{ row.title }}
+                                    {{ row.product.name }}
                                 </p>
                                 <p style="font-size: 13px; line-height: 15px; color: #aaa;">
-                                    区域：{{ row.region }}
+                                    区域：{{ row.product.region }}
                                 </p>
                             </div>
                         </el-col>
@@ -87,33 +83,31 @@
             </el-table-column>
             <el-table-column
                     inline-template
-                    property="unitPrice"
                     label="单价">
                 <div>&yen;
                     <span>
-                        {{ row.unitPrice }}
+                        {{ row.product.unitPrice }}
                     </span>
                 </div>
             </el-table-column>
             <el-table-column
                     inline-template
-                    property="amount"
                     label="数量">
                 <div>
                     <span>
                         {{ row.amount }}
                     </span>
                     <span>
-                        {{ row.unit }}
+                        {{ row.product.unit }}
                     </span>
                 </div>
             </el-table-column>
             <el-table-column
                     inline-template
-                    property="serviceDetail"
+                    width="300"
                     label="服务详情">
                 <div style="line-height: normal;">
-                    <span>{{ row.summary }}</span>
+                    <span>{{ row.product.summary }}</span>
                 </div>
             </el-table-column>
             <el-table-column
@@ -122,7 +116,7 @@
                     label="小计">
                 <div style="color: red;">
                     &yen;
-                    <span>{{ row.amount * row.unitPrice }}</span>
+                    <span>{{ row.amount * row.product.unitPrice }}</span>
                 </div>
             </el-table-column>
         </el-table>
@@ -150,11 +144,12 @@
         <br>
         <el-button type="primary"
                    size="large"
-                   @click.native="jump(order.payUrl)"
+                   @click.native="addToOrder()"
+                   :loading="isOrdering"
                    style="border-radius: 3px;
                           margin-bottom: 12px;
                           float: right;">
-            立即支付
+            {{ isOrdering ? "支付中" : "立即支付" }}
         </el-button>
         <br>
         <br>
@@ -170,22 +165,50 @@
                 payments: [
                     {
                         name: "支付宝",
-                        cover: ""
+                        cover: "",
+                        code: "Alipay"
                     },
                     {
                         name: "网银",
-                        cover: ""
+                        cover: "",
+                        code: ""
                     }
                 ],
-                payment: 0
+                payment: 0,
+                isOrdering: false
             }
         },
         computed: mapGetters({
-            order: 'getOrder'
+            checkout: 'getCheckout'
         }),
-        method: {
-            jump(url) {
-                this.$router.push(url)
+//        created() {
+//            if ( ! this.checkout) {
+//                this.$router.replace({ name: "order" })
+//            }
+//        },
+        methods: {
+            addToOrder() {
+                this.isOrdering = true
+                let vm = this
+                this.$store.dispatch("addToOrder",
+                        this.checkout,
+                        this.payments[this.payment].code).then(
+                        order => {
+                            window.open(order.payUrl)
+                            vm.isOrdering = false
+                        },
+                        error => {
+                            console.log(error)
+                            vm.isOrdering = false
+                        }
+                )
+            },
+            totalPrice() {
+                var total = 0
+                for (let i of this.checkout) {
+                    total += i.amount * i.product.unitPrice
+                }
+                return total
             }
         }
     }

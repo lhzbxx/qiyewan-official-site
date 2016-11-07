@@ -45,3 +45,7 @@ export const orderNum = state => {
 export const needLogin = state => {
     return state.global.needLogin
 }
+
+export const getCheckout = state => {
+    return state.orders.checkout
+}

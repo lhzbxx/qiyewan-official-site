@@ -54,7 +54,7 @@ export const addToCart = ({commit, state}, cart) => {
     return new Promise((resolve, reject) => {
         cartApi.addCart(state.auth.user.token, cart,
             response => {
-                commit(types.ADD_TO_CART, response)
+                commit(types.ADD_TO_CART)
                 resolve(cart)
             },
             error => {
@@ -110,11 +110,11 @@ export const getOrders = ({commit, state}, page) => {
     })
 }
 
-export const addToOrder = ({commit, state}, order) => {
+export const addToOrder = ({commit, state}, carts, payment) => {
     return new Promise((resolve, reject) => {
-        orderApi.addOrder(state.auth.user.token, order,
-            response => {
-                commit(types.ADD_TO_ORDER, response)
+        orderApi.addOrder(state.auth.user.token, carts, payment,
+            order => {
+                commit(types.ADD_TO_ORDER)
                 resolve(order)
             },
             error => {

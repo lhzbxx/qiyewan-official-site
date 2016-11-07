@@ -96,6 +96,7 @@
             <el-button type="primary"
                        size="large"
                        :disabled="amountOfSelection == 0"
+                       @click.native="checkout"
                        style="border-radius: 0;">
                 去结算
             </el-button>
@@ -139,6 +140,10 @@
             },
             clearSelection() {
                 this.multipleSelection = []
+            },
+            checkout() {
+                this.$store.commit("CHECKOUT", this.multipleSelection)
+                this.$router.push({ name: "pay" })
             }
         },
         computed: {
