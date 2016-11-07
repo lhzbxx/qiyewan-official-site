@@ -6,9 +6,9 @@ Vue.use(VueResource)
 Vue.http.options.root = "http://127.0.0.1:8090";
 
 export default {
-    getCarts (token, cb, errorCb) {
+    getCarts (token, page, cb, errorCb) {
         Vue.http.headers.common['Authorization'] = token;
-        Vue.http.get("carts").then((response) => {
+        Vue.http.get("carts?page=" + (page - 1)).then((response) => {
             cb(response.body)
         }, (response) => {
             errorCb(response.body);

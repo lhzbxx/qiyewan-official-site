@@ -37,7 +37,7 @@
 <template>
     <div>
         <el-table
-                :data="orders.content"
+                :data="orders"
                 style="width: 100%">
             <el-table-column
                     inline-template
@@ -182,9 +182,8 @@
                 return "http://ofw6tmkxn.bkt.clouddn.com/" + url;
             }
         },
-        computed: mapGetters({
-            orders: 'getOrders'
-        }),
-        prop: {}
+        props: {
+            orders: Array
+        }
     }
 </script>

@@ -7,26 +7,26 @@
 import * as types from '../mutation-types'
 
 const state = {
-    all: [],
-    savedItems: [],
-    page: 0
+    info: {
+        total: 0,
+        page: 0
+    },
+    savedItems: []
 }
 
 const mutations = {
     [types.RECEIVE_CART] (state, carts) {
-        state.all.push(carts)
+        state.info.total = carts.totalElements
+        state.info.page = carts.totalPages
+        localStorage.setItem("cartInfo", JSON.stringify(state.info))
     },
-    [types.ADD_TO_CART] (state, cart) {
-        state.all[0].content.unshift(cart)
+    [types.ADD_TO_CART] (state) {
+        state.info.total += 1
+        localStorage.setItem("cartInfo", JSON.stringify(state.info))
     },
-    [types.REMOVE_CART] (state, cart) {
-        for (var page of state.all.content) {
-            let index = page.indexOf(cart)
-            if (index > -1) {
-                page.splice(index, 1)
-                return
-            }
-        }
+    [types.REMOVE_CART] (state) {
+        state.info.total -= 1
+        localStorage.setItem("cartInfo", JSON.stringify(state.info))
     }
 }
 

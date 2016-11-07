@@ -7,18 +7,23 @@
 import * as types from '../mutation-types'
 
 const state = {
-    all: [],
+    info: {
+        total: 0,
+        page: 0
+    },
     savedItems: [],
-    checkout: [],
-    page: 0
+    checkout: []
 }
 
 const mutations = {
     [types.RECEIVE_ORDER] (state, orders) {
-        state.all.push(orders)
+        state.info.total = orders.totalElements
+        state.info.page = orders.totalPages
+        localStorage.setItem("orderInfo", JSON.stringify(state.info))
     },
-    [types.ADD_TO_ORDER] (state, order) {
-        state.all[0].content.unshift(order)
+    [types.ADD_TO_ORDER] (state) {
+        state.info.total += 1
+        localStorage.setItem("orderInfo", JSON.stringify(state.info))
     }
 }
 

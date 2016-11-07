@@ -1,7 +1,7 @@
 <template>
     <div>
         <el-table
-                :data="carts.content"
+                :data="carts"
                 style="width: 100%"
                 @selection-change="handleMultipleSelectionChange">
             <el-table-column
@@ -108,8 +108,7 @@
     export default {
         data() {
             return {
-                multipleSelection: [],
-                carts: this.$store.getters.getCarts
+                multipleSelection: []
             }
         },
         methods: {
@@ -137,6 +136,9 @@
             handleAmountChange(item) {
                 console.log(item.amount);
                 item.totalPrice = item.unitPrice * item.amount;
+            },
+            clearSelection() {
+                this.multipleSelection = []
             }
         },
         computed: {
@@ -150,6 +152,13 @@
                 }
                 return r
             }
+        },
+        watch: {
+            'page': 'clearSelection'
+        },
+        props: {
+            carts: Array,
+            page: Number
         }
     }
 </script>

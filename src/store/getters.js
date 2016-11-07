@@ -30,30 +30,16 @@ export const getPhone = state => {
     return state.auth.user.phone
 }
 
+export const getToken = state => {
+    return state.auth.user.token
+}
+
 export const cartNum = state => {
-    var num = 0
-    for (var cart of state.carts.all) {
-        num += cart.totalElements
-    }
-    return num
+    return state.carts.info.total
 }
 
-export const getCarts = state => {
-    return state.carts.all[state.orders.page]
-}
-
-export const getOrders = state => {
-    return state.orders.all[state.orders.page]
-}
-
-export const getOrder = ( state, serialId ) => {
-    for (var page of state.orders.all) {
-        for (var order of page.content) {
-            if (order.serialId == serialId) {
-                return order
-            }
-        }
-    }
+export const orderNum = state => {
+    return state.orders.info.total
 }
 
 export const needLogin = state => {
