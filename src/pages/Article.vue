@@ -165,7 +165,7 @@
                         <span class="con_browse">{{ article.viewers }}</span>
                         <span class="con_department">发表于：{{ article.category }}</span>
                     </div>
-                    <div class="con_article">
+                    <div class="con_article" v-html="compiledMarkdown">
                         {{ article.content }}
                     </div>
                     <div class="share">
@@ -223,6 +223,7 @@
 </template>
 
 <script>
+    import marked from 'marked'
 
     export default {
         data() {
@@ -233,16 +234,21 @@
                     create_at: "2016-9-4 11:32:20",
                     viewers: 20,
                     category: "创业咨询",
-                    content: "母亲是老师反而会对孩子的学习成绩造成不利影响？能上网的家庭，孩子通常能取得较好的成绩？影响孩子成绩的最是母亲的学历？本文通过机器挖掘算法和中学真实的学生数据为您揭秘影响中学生学业的关键因素有哪些。母亲是老师反而会对孩子的学习成绩造成不利影响？能上网的家庭，孩子通常能取得较好的成绩？影响孩子成绩的最是母亲的学历？本文通过机器挖掘算法和中学真实的学生数据为您揭秘影响中学生学业的关键因素有哪些。母亲是老师反而会对孩子的学习成绩造成不利影响？能上网的家庭，孩子通常能取得较好的成绩？影响孩子成绩的最是母亲的学历？本文通过机器挖掘算法和中学真实的学生数据为您揭秘影响中学生学业的关键因素有哪些。母亲是老师反而会对孩子的学习成绩造成不利影响？能上网的家庭，孩子通常能取得较好的成绩？影响孩子成绩的最是母亲的学历？本文通过机器挖掘算法和中学真实的学生数据为您揭秘影响中学生学业的关键因素有哪些。母亲是老师反而会对孩子的学习成绩造成不利影响？能上网的家庭，孩子通常能取得较好的成绩？影响孩子成绩的最是母亲的学历？本文通过机器挖掘算法和中学真实的学生数据为您揭秘影响中学生学业的关键因素有哪些。母亲是老师反而会对孩子的学习成绩造成不利影响？能上网的家庭，孩子通常能取得较好的成绩？影响孩子成绩的最是母亲的学历？本文通过机器挖掘算法和中学真实的学生数据为您揭秘影响中学生学业的关键因素有哪些。母亲是老师反而会对孩子的学习成绩造成不利影响？能上网的家庭，孩子通常能取得较好的成绩？影响孩子成绩的最是母亲的学历？本文通过机器挖掘算法和中学真实的学生数据为您揭秘影响中学生学业的关键因素有哪些。",
+                    content: "i am a ~~tast~~ **test**.",
                     pre: {id: 2, title: "Python大法好"},
                     next: {id: 3, title: "CPP大法保平安"},
                 }
             }
         },
+        computed: {
+            compiledMarkdown: function () {
+                return marked(this.article.content, { sanitize: true })
+            }
+        },
         methods: {
             nav2article: function(article_id){
                 location.href = '/#/article/' + article_id;
-            }
+            },
         }
     }
 </script>
