@@ -234,6 +234,11 @@
             logout() {
                 this.$store.commit("USER_LOGOUT")
             }
+        },
+        created () {
+            if (this.$router.query && this.$router.query.redirect) {
+                this.openLoginDialog()
+            }
         }
     }
 </script>

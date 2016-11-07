@@ -9,6 +9,14 @@ import authApi from '../api/auth'
 import cartApi from '../api/cart'
 import orderApi from '../api/order'
 
+export const checkToken = ({ commit }) => {
+    if (localStorage.createAt) {
+        if (new Date() - localStorage.createAt < 15 * 24 * 60 * 60 * 1000) {
+            commit(types.GET_TOKEN_FROM_STORAGE, localStorage.user)
+        }
+    }
+}
+
 export const userLogin = ({ commit }, { phone, password }) => {
     return new Promise((resolve, reject) => {
         authApi.login(phone, password,

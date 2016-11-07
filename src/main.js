@@ -57,16 +57,30 @@ Vue.component('lh-footer', Footer)
 Vue.component('lh-news', News)
 Vue.component('lh-loading', Loading)
 
+function requireAuth(to, from, next) {
+    if (localStorage.user) {
+        console.log(localStorage.user)
+        next({
+            path: '/',
+            query: {
+                redirect: to.fullPath
+            }
+        })
+    } else {
+        next()
+    }
+}
+
 const routes = [
-    {path: '/', component: Home},
+    {
+        path: '/',
+        name: 'home',
+        component: Home
+    },
     {
         path: '/order/:orderSerialId/product/:productSerialId/review',
         name: 'review',
-        beforeEnter: (to, from, next) => {
-            if (this.store.state.isLogin) {
-                next(false)
-            }
-        },
+        beforeEnter: requireAuth,
         component: Review
     },
     {
@@ -80,23 +94,30 @@ const routes = [
     },
     {
         path: '/order',
+        name: 'order',
+        beforeEnter: requireAuth,
         component: OrderList
     },
     {
         path: '/cart',
+        name: 'cart',
+        beforeEnter: requireAuth,
         component: MyCart
     },
     {
         path: '/pay/:serialId',
         name: 'pay',
+        beforeEnter: requireAuth,
         component: Pay
     },
     {
         path: '/account',
+        beforeEnter: requireAuth,
         component: AccountProfile
     },
     {
         path: '/person',
+        beforeEnter: requireAuth,
         component: PersonalCenter
     },
     {
@@ -123,12 +144,16 @@ const routes = [
 
 const router = new VueRouter({
     // mode: 'history',
-    routes: routes
+    routes: routes,
+    created() {
+        this.dispatch("checkToken")
+    }
 })
+
 
 new Vue({
     router,
     store,
     el: '#app',
     render: h => h(App)
-}).$mount(App)
+})
