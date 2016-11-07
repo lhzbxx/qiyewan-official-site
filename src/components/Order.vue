@@ -113,7 +113,7 @@
                     <div v-if="row.orderState == 'Unpaid'">
                         <el-button type="primary"
                                    size="small"
-                                   @click.native="jumpToPay(row.serialId)">
+                                   @click.native="jumpToPay(row.payUrl)">
                             去付款
                         </el-button>
                         <br>
@@ -172,8 +172,8 @@
             }
         },
         methods: {
-            jumpToPay (serialId) {
-                this.$router.push({name: 'pay', params: {serialId: serialId}})
+            jumpToPay (url) {
+                window.open(url)
             },
             getLocalTime(nS) {
                 return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ');

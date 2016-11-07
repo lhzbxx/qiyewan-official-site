@@ -45,3 +45,18 @@ export const getCarts = state => {
 export const getOrders = state => {
     return state.orders.all[state.orders.page]
 }
+
+export const getOrder = ( state, serialId ) => {
+    // for (var page of state.orders.all) {
+    //     for (var order of page) {
+    //         if (order.serialId == serialId) {
+    //             return order
+    //         }
+    //     }
+    // }
+    for (let order of state.orders.all[state.orders.page]) {
+        if (order.serialId == serialId) {
+            return order
+        }
+    }
+}

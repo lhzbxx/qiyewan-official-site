@@ -49,7 +49,7 @@
             </el-row>
         </div>
         <el-table
-                :data="products"
+                :data="order.details"
                 selection-mode="multiple"
                 style="width: 100%">
             <el-table-column
@@ -76,10 +76,10 @@
                                         vertical-align: middle;
                                         padding-left: 10px;">
                                 <p style="line-height: 16px; margin-bottom: 5px;">
-                                    {{ row.product.title }}
+                                    {{ row.title }}
                                 </p>
                                 <p style="font-size: 13px; line-height: 15px; color: #aaa;">
-                                    区域：{{ row.product.address }}
+                                    区域：{{ row.region }}
                                 </p>
                             </div>
                         </el-col>
@@ -114,7 +114,7 @@
                     property="serviceDetail"
                     label="服务详情">
                 <div style="line-height: normal;">
-                    <span>{{ row.product.detail }}</span>
+                    <span>{{ row.summary }}</span>
                 </div>
             </el-table-column>
             <el-table-column
@@ -123,7 +123,7 @@
                     label="小计">
                 <div style="color: red;">
                     &yen;
-                    <span>{{ row.totalPrice }}</span>
+                    <span>{{ row.amount * row.unitPrice }}</span>
                 </div>
             </el-table-column>
         </el-table>
@@ -137,21 +137,23 @@
             </div>
             <el-row style="border: 1px solid #eee;">
                 <el-col :span="8"
-                        v-for="item in payments"
+                        v-for="(item, index) in payments"
                         style="text-align: center;">
                     <img src="../assets/logo.png"
                          style="margin: 10px;
                                 cursor: pointer;
                                 border: 1px solid #eee;"
-                         v-bind:class="{ chosen: item.isChosen }"
-                         v-on:click="choose(item)">
+                         v-bind:class="{ chosen: index == payment }"
+                         v-on:click="payment = index">
                 </el-col>
             </el-row>
         </div>
         <br>
         <el-button type="primary"
                    size="large"
-                   style="border-radius: 3px;margin-bottom: 12px;
+                   @click.native="jump(order.payUrl)"
+                   style="border-radius: 3px;
+                          margin-bottom: 12px;
                           float: right;">
             立即支付
         </el-button>
@@ -162,53 +164,29 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex'
     export default {
         data() {
             return {
-                products: [{
-                    product: {
-                        cover: "",
-                        title: "个人社保公积金账户代开户",
-                        address: "上海-上海市-松江区",
-                        detail: "办理工商变更，不包括股权转让协议撰写",
+                payments: [
+                    {
+                        name: "支付宝",
+                        cover: ""
                     },
-                    unitPrice: 200,
-                    amount: 1,
-                    unit: "年",
-                    totalPrice: 200
-                }, {
-                    product: {
-                        cover: "",
-                        title: "个人社保公积金账户代开户",
-                        address: "上海-上海市-松江区",
-                        detail: "办理工商变更，不包括股权转让协议撰写",
-                    },
-                    unitPrice: 200,
-                    amount: 1,
-                    unit: "年",
-                    totalPrice: 200
-                }],
-                payments: [{
-                    isChosen: true
-                }, {
-                    isChosen: false
-                }, {
-                    isChosen: false
-                }, {
-                    isChosen: false
-                }, {
-                    isChosen: false
-                }, {
-                    isChosen: false
-                }]
+                    {
+                        name: "网银",
+                        cover: ""
+                    }
+                ],
+                payment: 0
             }
         },
-        methods: {
-            choose($e) {
-                for (var item of this.payments) {
-                    item.isChosen = false
-                }
-                $e.isChosen = true;
+        computed: mapGetters({
+            order: 'getOrder'
+        }),
+        method: {
+            jump(url) {
+                this.$router.push(url)
             }
         }
     }

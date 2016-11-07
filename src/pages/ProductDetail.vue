@@ -311,6 +311,7 @@
                                style="width: 120px;
                                       margin-left: 10px;
                                       font-family:'Microsoft yahei';"
+                               :loading="isAdding"
                                v-on:click="addToCart">
                         加入购物车
                     </el-button>
@@ -517,7 +518,8 @@
                 ],
                 loading: false,
                 error: null,
-                product: null
+                product: null,
+                isAdding: false
             }
         },
         computed: mapGetters({
@@ -546,6 +548,7 @@
                 this.loading = false
             },
             addToCart () {
+                this.isAdding = true
                 var cart = {
                     amount: 1,
                     serialId: this.$route.params.serialId,
@@ -557,8 +560,10 @@
                                 message: '成功加入购物车~~',
                                 type: 'success'
                             });
+                            this.isAdding = false
                         }, () => {
                             this.$message.error('加入购物车失败...');
+                            this.isAdding = false
                         })
             }
         }

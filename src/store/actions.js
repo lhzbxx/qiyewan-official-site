@@ -59,6 +59,38 @@ export const addToCart = ({ commit, state }, cart) => {
     })
 }
 
+export const removeCart = ({ commit, state }, cart) => {
+    return new Promise((resolve, reject) => {
+        cartApi.removeCart(state.auth.user.token, cart,
+            response => {
+                console.log(response)
+                commit(types.REMOVE_CART, cart)
+                resolve(cart)
+            },
+            error => {
+                console.log(error)
+                reject(error)
+            }
+        )
+    })
+}
+
+export const updateCart = ({ commit, state }, cart) => {
+    return new Promise((resolve, reject) => {
+        cartApi.updateCart(state.auth.user.token, cart,
+            response => {
+                console.log(response)
+                commit(types.REMOVE_CART, cart)
+                resolve(cart)
+            },
+            error => {
+                console.log(error)
+                reject(error)
+            }
+        )
+    })
+}
+
 export const addToOrder = ({ commit, state }, order) => {
     return new Promise((resolve, reject) => {
         orderApi.addOrder(state.auth.user.token, order,
@@ -66,6 +98,22 @@ export const addToOrder = ({ commit, state }, order) => {
                 console.log(response)
                 commit(types.ADD_TO_ORDER, response)
                 resolve(order)
+            },
+            error => {
+                console.log(error)
+                reject(error)
+            }
+        )
+    })
+}
+
+export const cancelOrder = ({ commit, state }, serialId) => {
+    return new Promise((resolve, reject) => {
+        orderApi.removeOrder(state.auth.user.token, serialId,
+            response => {
+                console.log(response)
+                commit(types.REMOVE_ORDER, serialId)
+                resolve(serialId)
             },
             error => {
                 console.log(error)

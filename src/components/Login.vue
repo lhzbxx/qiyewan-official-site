@@ -11,9 +11,12 @@
             </el-form>
             <p style="color: red; text-align: center;">{{ error }}</p>
             <el-button type="primary"
-                       :disabled="isLogging"
                        @click.native="submit"
-                       style="width: 100%">{{ isLogging ? "登录中..." : "登 录" }}</el-button>
+                       :loading="isLogging"
+                       :disabled="formStacked.phone == '' || formStacked.password == ''"
+                       style="width: 100%">
+                {{ isLogging ? "登录中" : "登 录" }}
+            </el-button>
         </el-dialog>
     </div>
 </template>
