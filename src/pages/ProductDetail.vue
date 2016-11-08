@@ -1,4 +1,4 @@
-<style scoped>
+<style>
     .el-tabs__content {
         padding: 0px !important;
     }
@@ -13,6 +13,7 @@
 
     .detail_tit {
         width: 380px;
+        height: 253px;
         margin-left: 370px;
         padding-top: 65px;
         white-space: normal;
@@ -35,7 +36,7 @@
     .detail_pic h4 {
         color: #ffffff;
         font-size: 20px;
-        margin-top: 79px;
+        margin-top: 50px;
         text-align: center;
     }
 
@@ -131,7 +132,7 @@
         width: 180px;
         height: 52px;
         background-color: #fff;
-        font-size: 20px;
+        font-size: 18px;
         color: #049fe2;
         line-height: 52px;
         text-align: center;
@@ -278,7 +279,7 @@
             </el-breadcrumb>
             <el-row style="margin-top:20px">
                 <el-col :span="11" style="margin-right:30px">
-                    <img src="../assets/logo.png"
+                    <img :src="imageIp+product.cover"
                          style="width: 100%;">
                 </el-col>
                 <el-col :span="10">
@@ -318,12 +319,12 @@
                         <el-form-item label="服务区域">
                             <el-row>
                                 <el-col :span="5" style="margin-right: 20px">
-                                    <el-select v-model="form.regionCityCode" :placeholder="form.cityName" disabled>
+                                    <el-select v-model="form.regionCityCode" :placeholder="form.provenceName" disabled>
                                         <el-option label="" value=""></el-option>
                                     </el-select>
                                 </el-col>
                                 <el-col :span="5" style="margin-right: 20px">
-                                    <el-select v-model="form.regionCountryCode" :placeholder="form.countryName"
+                                    <el-select v-model="form.regionCityCode" :placeholder="form.cityName"
                                                disabled>
                                         <el-option label="" value=""></el-option>
                                     </el-select>
@@ -381,7 +382,8 @@
                                 :title="item.title"
                                 :summary="item.summary"
                                 :img="item.img"
-                                :price="item.price"></lh-product>
+                                :price="item.price"
+                                :url="getRegion.code+item.serialId"></lh-product>
                 </el-col>
                 <el-col :span="18">
                     <el-tabs type="border-card"
@@ -390,8 +392,8 @@
                             <div class="detail_bg">
                                 <div class="detail_pic">
                                     <div class="detail_tit">
-                                        <h3>代办税务</h3>
-                                        <p>多数主管税务机关要求企业提供软件著作权和软件登记检测报告，才可享受增值税即征即退，最多可退增值税</p>
+                                        <h3>{{ product.name }}</h3>
+                                        <p>{{ product.info }}</p>
                                     </div>
                                     <h4>为什么要代办税务／服务内容（服务能帮助您做什么）</h4>
                                 </div>
@@ -403,28 +405,26 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="Process">
-                                    <p></p>
-                                    <div class="btn">服务流程</div>
-                                    <ul>
-                                        <li>1 在线下单 <span><img src="../assets/img/border1.png"></span></li>
-                                        <li>2 提交材料 <span><img src="../assets/img/border1.png"></span></li>
-                                        <li>3 材料审核 <span><img src="../assets/img/border1.png"></span></li>
-                                        <li>4 支付费用 <span><img src="../assets/img/border1.png"></span></li>
-                                        <li>5 办理追踪 <span><img src="../assets/img/border1.png"></span></li>
-                                    </ul>
-                                    <div class="zhushi">注：由于地域、政策等因素不同，所需时间有差异</div>
 
-                                </div>
-                                <div class="provide">
-                                    <div class="tit">您需要提供</div>
-                                    <div class="pro_pic"><img src="../assets/img/provide.png" alt=""></div>
-                                </div>
 
+                            </div>
+                            <div class="provide">
+                                <div class="tit">您需要提供</div>
+                                <div class="pro_pic"><img :src="imageIp+product.whatNeed" alt=""></div>
+                            </div>
+                            <div class="Process">
+                                <p></p>
+                                <div class="btn">服务流程</div>
+                                <ul>
+                                    <li v-for="(item,index) in JSON.parse(product.process)">{{ index+1 }}、{{ item }}
+                                        <span><img src="../assets/img/border1.png"></span>
+                                    </li>
+                                </ul>
+                                <div class="zhushi">注：由于地域、政策等因素不同，所需时间有差异</div>
                             </div>
                             <div class="get">
                                 <div class="tit">您将得到</div>
-                                <div class="get_pic"><img src="../assets/img/provide.png"></div>
+                                <div class="get_pic"><img :src="imageIp+product.whatObtain"></div>
                             </div>
                             <div class="internet">
                                 <div class="tit" style="padding-top:30px;">网上预约流程</div>
@@ -559,7 +559,8 @@
                     regionCountryCode: '',
                     regionArea: '',
                     cityName: '',
-                    countryName: '',
+                    provenceName: '',
+                    regionAreas: [],
                 },
                 qa: [
                     {
@@ -579,14 +580,17 @@
                 error: null,
                 product: null,
                 isAdding: false,
-                regionAreas: [],
+                imageIp: "http://ofw6tmkxn.bkt.clouddn.com/"
+
             }
         },
         computed: mapGetters({
+            getRegion: 'getRegion',
             hotProducts: 'hotProducts',
             regions: 'regions'
         }),
         created () {
+
             this.fetchData()
         },
         watch: {
@@ -650,24 +654,14 @@
                         })
             },
             setRegion () {
-                console.log(this.$route.params.name)
                 var currentNum = this.$route.params.serialId;
-                var currentCityCode = currentNum.substr(0, 2);
-                var currentCountryCode = currentNum.substr(2, 2);
-                for (var i = 0; i < this.regions.length; i++) {
-                    var provence = this.regions[i];
-                    if (provence.code == currentCityCode) {
-                        this.form.cityName = provence.name;
-                        this.form.regionCityCode = provence.code;
-                        for (var j = 0; j < provence.cities.length; j++) {
-                            var city = provence.cities[j];
-                            if (city.code == currentCountryCode) {
-                                this.form.countryName = city.name;
-                                this.form.regionCountryCode = city.code;
-                                this.form.regionAreas = city.areas;
-                                return;
-                            }
-                        }
+                var currentCityCode = currentNum.substr(0, 4);
+                for (var region of this.regions) {
+                    if (region.code === currentCityCode) {
+                        this.form.provenceName = region.pName;
+                        this.form.cityName = region.name;
+                        this.form.regionAreas = region.areas;
+                        break;
                     }
                 }
             }
