@@ -3,6 +3,8 @@
         <el-table
                 :data="carts"
                 style="width: 100%"
+                @cell-mouse-enter="handleCellEnter"
+                @cell-mouse-leave="handleCellLeave"
                 @selection-change="handleMultipleSelectionChange">
             <el-table-column
                     type="selection"
@@ -56,8 +58,7 @@
                     label="数量"
                     width="210">
                 <div>
-                    <el-input-number @change="amountChanged"
-                                     :min="1"
+                    <el-input-number :min="1"
                                      size="small"
                                      v-model="row.amount">
                     </el-input-number>
@@ -109,7 +110,8 @@
     export default {
         data() {
             return {
-                multipleSelection: []
+                multipleSelection: [],
+                currentAmount: null
             }
         },
         methods: {
@@ -136,8 +138,18 @@
                 }).catch(() => {
                 });
             },
-            amountChanged(value) {
-                console.log(value)
+            handleCellEnter(row) {
+                this.currentAmount = row.amount
+            },
+            handleCellLeave(row) {
+                if (this.currentAmount != row.amount) {
+                    this.$store.dispatch("updateCart", row).then(
+                            () => {
+                            },
+                            () => {
+                            }
+                    )
+                }
             },
             updateCart(index) {
                 this.$store.dispatch("updateCart", this.carts[index])
@@ -155,7 +167,7 @@
             },
             checkout() {
                 this.$store.commit("CHECKOUT", this.multipleSelection)
-                this.$router.push({ name: "pay" })
+                this.$router.push({name: "pay"})
             }
         },
         computed: {

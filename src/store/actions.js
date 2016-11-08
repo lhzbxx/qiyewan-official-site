@@ -116,7 +116,6 @@ export const updateCart = ({commit, state}, cart) => {
     return new Promise((resolve, reject) => {
         cartApi.updateCart(state.auth.user.token, cart,
             cart => {
-                commit(types.REMOVE_CART, cart)
                 resolve(cart)
             },
             error => {
