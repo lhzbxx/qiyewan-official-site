@@ -35,6 +35,20 @@ export const userLogin = ({commit}, {phone, password}) => {
     })
 }
 
+export const requestCaptcha = ({commit}, {phone}) => {
+    return new Promise((resolve, reject) => {
+        authApi.requestCaptcha(phone,
+            token => {
+                resolve()
+            },
+            error => {
+                console.log(error)
+                reject(error)
+            }
+        )
+    })
+}
+
 export const userRegister = ({commit}, {phone, password, captcha}) => {
     return new Promise((resolve, reject) => {
         authApi.register(phone, password, captcha,

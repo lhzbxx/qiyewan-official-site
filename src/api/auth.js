@@ -19,6 +19,19 @@ export default {
             })
     },
 
+    requestCaptcha (phone, cb, errorCb) {
+        Vue.http.post("captcha/" + phone).then(
+            (response) => {
+                if (response.body.error == 0) {
+                    cb(response.body.detail);
+                } else {
+                    errorCb(response.body);
+                }
+            }, (response) => {
+                errorCb(response.body);
+            })
+    },
+
     register (phone, password, captcha, cb, errorCb) {
         Vue.http.post("auth", {
             phone: phone,
