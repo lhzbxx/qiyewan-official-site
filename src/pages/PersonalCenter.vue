@@ -1,15 +1,75 @@
+<style scoped>
+
+    .el-menu-item{
+        height: 50px;
+        padding-left: 25px;
+        border-left: 1px solid #e5e5e5 !important;
+        border-right: 1px solid #e5e5e5 !important;
+        border-top: 1px solid #e5e5e5 !important;
+    }
+    .el-submenu{
+        border: 1px solid #e5e5e5 !important;
+    }
+    .is-active{
+        padding-left: 20px;
+        border-left: 6px solid #0098db !important;
+        color: #0098db !important;
+    }
+    .cart{
+        background: url("../assets/img/icon-cart.png");
+    }
+    .is-active .cart{
+        background: url("../assets/img/icon-cart-active.png");
+    }
+    .home{
+        background: url("../assets/img/icon-home.png");
+    }
+    .is-active .home{
+        background: url("../assets/img/icon-home-active.png");
+    }
+    .order{
+        background: url("../assets/img/icon-order.png") no-repeat;
+    }
+    .is-opened .order{
+        background: url("../assets/img/icon-order-active.png");
+
+    }
+    .is-opened span{
+        color: #0098db !important;
+    }
+
+    .el-menu{
+        background-color: #fff !important;
+    }
+    #order .el-menu-item{
+        border-bottom: none !important;
+        border-top: none !important;
+    }
+
+    .left-nav span{
+        position: relative;
+        display: inline-block;
+        height: 17px;
+        width: 17px;
+        top: -2px;
+        vertical-align: middle;
+        margin-right: 10px;
+        margin-left: -10px;
+        overflow: hidden;
+    }
+</style>
 <template>
     <div>
         <div class="container">
             <el-row class="clearfix">
                 <el-col :span="4">
-                    <el-menu mode="vertical"
+                    <el-menu mode="vertical" class="left-nav"
                              default-active="1"
-                             style="margin: 10px 10px 10px 0;">
-                        <el-menu-item index="1"><i class="el-icon-menu"></i>首页</el-menu-item>
-                        <el-menu-item index="2"><i class="el-icon-message"></i>我的购物车</el-menu-item>
-                        <el-submenu index="3">
-                            <template slot="title"><i class="el-icon-date"></i>我的订单</template>
+                             style="margin: 10px 10px 10px 0;background-color: #fff">
+                        <el-menu-item index="1"><span class="home"></span>首页</el-menu-item>
+                        <el-menu-item index="2"><span class="cart"></span>我的购物车</el-menu-item>
+                        <el-submenu index="3" id="order">
+                            <template slot="title"><span class="order"></span>我的订单</template>
                             <el-menu-item index="3-1">待支付订单</el-menu-item>
                             <el-menu-item index="3-2">已支付订单</el-menu-item>
                             <el-menu-item index="3-3">待评价</el-menu-item>

@@ -1,10 +1,10 @@
 <style>
     .el-tabs__content {
-        padding: 0 !important;
+        padding: 0px !important;
     }
 
     .detail_pic {
-        background: url(../assets/img/Product_2.png) no-repeat;
+        background: url(http://ofw6tmkxn.bkt.clouddn.com/produce_2.jpg) no-repeat;
         width: 100%;
         height: 350px;
         background-size: 108%;;
@@ -59,11 +59,11 @@
     }
 
     .Process {
-        background: url(../assets/img/progress.png) no-repeat;
+        background: url(http://ofw6tmkxn.bkt.clouddn.com/progress_.jpg) no-repeat;
         -webkit-background-size: 100%;
         background-size: 100%;
         width: 100%;
-        height: 305px;
+        height: 285px;
         margin-top: 30px;
         position: relative;
     }
@@ -77,6 +77,36 @@
         background-color: #fff;
         line-height: 42px;
         text-align: center;
+        border-radius: 5px;
+    }
+
+    .el-tabs__item {
+        padding: 0 25px;
+        border-top: 2px solid transparent;
+        box-sizing: content-box;
+    }
+
+    .el-tabs__item.is-active {
+        border-top: 2px solid rgb(32, 160, 255);
+        position: relative;
+    }
+
+    .el-tabs__item.is-active::before {
+        position: absolute;
+        content: '';
+        border: 5px solid transparent;
+        border-top: 5px solid rgb(32, 160, 255);
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0%);
+    }
+
+    .el-radio-button:not(:last-child) {
+        margin-right: 20px;
+    }
+
+    .el-radio-button__inner {
+        width: 85px;
     }
 
     .Process p {
@@ -89,7 +119,7 @@
 
     .zhushi {
         position: absolute;
-        top: 80%;
+        top: 87%;
         text-align: center;
         width: 100%;
         font-size: 14px;
@@ -143,6 +173,8 @@
 
     .p_c {
         text-align: center;
+        color: #b1b1b1;
+        font-size: 14px;
     }
 
     .internet {
@@ -163,6 +195,8 @@
         background-color: #fff;
         height: 170px;
         position: relative;
+        transition: all .2s linear;
+        cursor: pointer;
     }
 
     .internet ul li::after {
@@ -188,7 +222,7 @@
 
     .internet ul li p {
         font-size: 14px;
-        color: #616161;
+        color: #b1b1b1;
         line-height: 1.5em;
         margin: 10px 0;
     }
@@ -201,16 +235,37 @@
 
     .inter_bg {
         margin-top: 30px;
-        margin-left: -14px;
+        margin-left: -4px;
     }
 
     .inter_bg img {
-        width: 100%;
+        width: 101%;
+    }
+
+    .internet ul li:hover {
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        transform: translate3d(0, -3px, 0);
     }
 
     .padd {
         padding: 15px;
         margin-top: 30px;
+    }
+
+    .el-radio-button {
+        margin-right: 20px;
+    }
+
+    .el-radio-button__inner {
+        border-radius: 4px;
+    }
+
+    .el-radio-button:first-child .el-radio-button__inner, .el-radio-button:last-child .el-radio-button__inner {
+        border-radius: 4px;
+    }
+
+    .advan_img img {
+        width: 100%;
     }
 </style>
 <template>
@@ -227,7 +282,7 @@
                          style="width: 100%;">
                 </el-col>
                 <el-col :span="10">
-                    <h3 style="margin:10px 0;font-size:20px;color:#383838">代办税务</h3>
+                    <h3 style="margin:10px 0;font-size:20px;color:#383838">{{product.name}}</h3>
                     <p style="font-size: 12px;
                           color: #dd2726;line-height:1.8em">
                         温馨提示：请选择服务区域、服务时长、购买数目；如有问题，请拨打售后服务热线：400-716-8896
@@ -239,12 +294,12 @@
                         <p style="font-size: 13px;
                               color: #aaa;
                               ">
-                            市场价格：&nbsp;&yen; {{ product.unitPrice * 5 }}
+                            市场价格：&nbsp;&yen; {{ product.unitPrice * 5,form.totalPrice = product.unitPrice }}
                         </p>
                         <p style="margin: 10px 0;">价 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：
                             <span style="font-size: 20px;
                                      color: red;">
-                            &yen; {{ product.unitPrice }}
+                            &yen; {{ product.unitPrice * form.period * form.amount }}
                         </span></p>
                         <p style="">用户评分：
                             <el-rate
@@ -262,34 +317,30 @@
                     <el-form :model="form" label-width="75px" style="text-align:left">
                         <el-form-item label="服务区域">
                             <el-row>
-                                <el-col :span="8">
-                                    <el-select v-model="form.regionCity"
-                                               placeholder="">
-                                        <el-option label="上海" value="021"></el-option>
-                                        <el-option label="北京" value="010"></el-option>
+                                <el-col :span="5" style="margin-right: 20px">
+                                    <el-select v-model="form.regionCityCode" :placeholder="form.cityName" disabled>
+                                        <el-option label="" value=""></el-option>
                                     </el-select>
                                 </el-col>
-                                <el-col :span="8">
-                                    <el-select v-model="form.regionCountry"
-                                               placeholder="">
-                                        <el-option label="上海" value="021"></el-option>
-                                        <el-option label="北京" value="010"></el-option>
+                                <el-col :span="5" style="margin-right: 20px">
+                                    <el-select v-model="form.regionCountryCode" :placeholder="form.countryName"
+                                               disabled>
+                                        <el-option label="" value=""></el-option>
                                     </el-select>
                                 </el-col>
-                                <el-col :span="8">
-                                    <el-select v-model="form.regionArea"
-                                               placeholder="">
-                                        <el-option label="上海" value="021"></el-option>
-                                        <el-option label="北京" value="010"></el-option>
+                                <el-col :span="5" style="margin-right: 20px">
+                                    <el-select v-model="form.regionArea" placeholder="">
+                                        <el-option v-for="area in form.regionAreas" :label="area.name"
+                                                   :value="area.name"></el-option>
                                     </el-select>
                                 </el-col>
                             </el-row>
                         </el-form-item>
                         <el-form-item label="购买时长" style="margin-bottom:8px">
                             <el-radio-group v-model="form.period">
-                                <el-radio-button label="一季度"></el-radio-button>
-                                <el-radio-button label="半年"></el-radio-button>
-                                <el-radio-button label="一年"></el-radio-button>
+                                <el-radio-button label="3">一季度</el-radio-button>
+                                <el-radio-button label="6">半年</el-radio-button>
+                                <el-radio-button label="12">一年</el-radio-button>
                             </el-radio-group>
                         </el-form-item>
                         <el-form-item label="活动形式" style="margin-bottom:8px">
@@ -415,6 +466,7 @@
                             </div>
                             <div class="advan">
                                 <div class="tit">我们的服务优势</div>
+                                <div class="advan_img"><img src="../assets/img/advan.png"></div>
                             </div>
                         </el-tab-pane>
                         <el-tab-pane label="用户评价（30）">
@@ -500,8 +552,14 @@
                     }
                 ],
                 form: {
-                    period: "一年",
-                    amount: 1
+                    period: 3,
+                    amount: 1,
+                    totalPrice: 0,
+                    regionCityCode: '',
+                    regionCountryCode: '',
+                    regionArea: '',
+                    cityName: '',
+                    countryName: '',
                 },
                 qa: [
                     {
@@ -520,11 +578,13 @@
                 loading: false,
                 error: null,
                 product: null,
-                isAdding: false
+                isAdding: false,
+                regionAreas: [],
             }
         },
         computed: mapGetters({
-            hotProducts: 'hotProducts'
+            hotProducts: 'hotProducts',
+            regions: 'regions'
         }),
         created () {
             this.fetchData()
@@ -540,7 +600,8 @@
                 this.loading = true
                 productApi.getProductDetail(this.$route.params.serialId,
                         data => {
-                            this.product = data
+                            this.product = data;
+                            this.setRegion();
                         },
                         error => {
                             this.error = error
@@ -549,7 +610,7 @@
                 this.loading = false
             },
             addToCart () {
-                if ( ! this.$store.getters.isLogin) {
+                if (!this.$store.getters.isLogin) {
                     this.$store.commit("REQUIRE_LOGIN")
                     return
                 }
@@ -573,7 +634,7 @@
                         })
             },
             directOrder () {
-                if ( ! this.$store.getters.isLogin) {
+                if (!this.$store.getters.isLogin) {
                     this.$store.commit("REQUIRE_LOGIN")
                     return
                 }
@@ -585,8 +646,30 @@
                 }
                 this.$store.dispatch("addToOrder", order)
                         .then(() => {
-                            this.$router.push({ name: "pay" })
+                            this.$router.push({name: "pay"})
                         })
+            },
+            setRegion () {
+                console.log(this.$route.params.name)
+                var currentNum = this.$route.params.serialId;
+                var currentCityCode = currentNum.substr(0, 2);
+                var currentCountryCode = currentNum.substr(2, 2);
+                for (var i = 0; i < this.regions.length; i++) {
+                    var provence = this.regions[i];
+                    if (provence.code == currentCityCode) {
+                        this.form.cityName = provence.name;
+                        this.form.regionCityCode = provence.code;
+                        for (var j = 0; j < provence.cities.length; j++) {
+                            var city = provence.cities[j];
+                            if (city.code == currentCountryCode) {
+                                this.form.countryName = city.name;
+                                this.form.regionCountryCode = city.code;
+                                this.form.regionAreas = city.areas;
+                                return;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

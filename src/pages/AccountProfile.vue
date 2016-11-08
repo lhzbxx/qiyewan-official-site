@@ -1,6 +1,16 @@
+<style scoped>
+    .title b,button,i{
+        color:#229dd5 !important;
+    }
+    .el-button--primary{
+        color: #fff !important;
+        background-color: #229dd5 !important;
+    }
+
+</style>
 <template>
     <div class="container">
-        <lh-table-header title="个人信息"></lh-table-header>
+        <lh-table-header class="title" title="个人信息"></lh-table-header>
         <div style="border: 1px solid #eee; padding: 10px 20px;">
             <table border="0">
                 <tr>
@@ -34,7 +44,7 @@
             </table>
         </div>
         <br>
-        <lh-table-header title="公司信息">
+        <lh-table-header class="title" title="公司信息">
         </lh-table-header>
         <el-button type="text"
                    style="position: relative;
@@ -112,7 +122,7 @@
                        style="margin-left: 125px; margin-top: 5px; margin-bottom: 5px;">确认修改</el-button>
         </div>
         <br>
-        <lh-table-header title="账户安全"></lh-table-header>
+        <lh-table-header class="title" title="账户安全"></lh-table-header>
         <div style="border: 1px solid #eee; border-bottom: none; padding: 20px 20px;">
             <div style="line-height: 50px;">
                 <i class="el-icon-circle-check"
@@ -126,7 +136,7 @@
             </div>
         </div>
         <div style="border: 1px solid #eee; padding: 10px 20px;">
-            <p style="font-size: 15px; color: #20A0FF; margin: 10px 0 20px 0;">登录历史记录</p>
+            <p style="font-size: 15px; color: #229dd5; margin: 10px 0 20px 0;">登录历史记录</p>
             <el-table :data="history"
                       style="width: 100%">
                 <el-table-column

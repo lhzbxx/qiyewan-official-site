@@ -428,23 +428,30 @@
 
     #timeline ul li.active:before {
         top: -1px;
-        border-left-width: 26px;
-        border-right-width: 26px;
+        border-left-width: 15px;
+        border-right-width: 15px;
         border-bottom-width: 25px;
         border-top-width: 25px;
         border-left-color: #139cd7;
         z-index: 10;
     }
-
+    #timeline ul li:last-child.active::before{
+        display: none!important;
+    }
+    #timeline ul li:last-child.active::after{
+        display: none!important;
+    }
     #timeline ul li.active {
         color: #139cd7;
         border-color: #139cd7;
-        /* box-shadow: 0 0 20px #139cd7; */
     }
 
     #timeline ul li.active:after {
         top: 0;
-        border-width: 24px;
+        border-left-width: 14px;
+        border-right-width: 14px;
+        border-bottom-width: 24px;
+        border-top-width: 24px;
         border-left-color: white;
         z-index: 10;
     }
@@ -526,7 +533,6 @@
         position: relative;
         height: 500px;
         overflow: hidden;
-        background: #139cd7;
     }
 
     .slide {
@@ -539,7 +545,6 @@
         visibility: hidden;
         animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
     }
-
     .slide.active {
         visibility: visible;
         transform: translate3d(0, 0, 0);
@@ -798,9 +803,6 @@
         margin-top: 5px;
     }
 
-    #news-tabs {
-    }
-
     .news-tab {
         font-size: 16px;
         float: left;
@@ -810,18 +812,18 @@
         line-height: 50px;
         text-align: center;
         z-index: 5;
-        border: 1px solid #dcdcdc;
-        border-bottom: 2px solid #139cd7;
+        border: 1px solid rgb(225,225,225);
+        border-bottom: 1px solid #139cd7;
         cursor: pointer;
-        background-color: #eee;
+        background-color: rgb(248,248,248);
         transition: all 0.3s ease-in-out;
     }
 
     .news-tab.active {
         z-index: 10;
         border: 1px solid #139cd7;
-        border-top-width: 2px;
-        border-bottom: 2px solid transparent;
+        border-top-width: 1px;
+        border-bottom: 1px solid transparent;
         background-color: white;
         color: #139cd7;
     }
@@ -886,8 +888,9 @@
         <div id="banner">
             <div class="slide"
                  :class="{active: isBannerActive(index)}"
-                 v-for="(item, index) in banners">
-                <div class="container" style="position: relative; height: 100%;">
+                :style="item.bgColor"
+                 v-for="(item, index) in banners" >
+                <div class="container" style="position: relative; height: 100%">
                     <div class="slide-left">
                         <h1>
                             <span class="big-title">{{ item.mainTitle }}</span>
@@ -950,7 +953,8 @@
                             <div class="content-info">
                                 <div class="content-info-detail">
                                     <div class="classification-icon">
-                                        <img  :src="hotProduct.activeImage">
+                                        <img v-show="!isHotActive(index)" :src="hotProduct.image">
+                                        <img v-show="isHotActive(index)" :src="hotProduct.activeImage">
                                     </div>
                                     <div class="classification-title">
                                         {{ hotProduct.title }}
@@ -1051,12 +1055,12 @@
                     <img :src="voice.headImg">
                 </div>
                 <div class="voice-right-img">
-                   <div class="summary">
-                       <h2>{{ voice.content}}</h2>
-                       <p>{{ voice.company}}</p>
-                       <p class="position">{{ voice.posion}}</p>
-                       <p class="name">{{ voice.name}}</p>
-                   </div>
+                    <div class="summary">
+                        <h2>{{ voice.content}}</h2>
+                        <p>{{ voice.company}}</p>
+                        <p class="position">{{ voice.posion}}</p>
+                        <p class="name">{{ voice.name}}</p>
+                    </div>
                 </div>
             </div>
             <div class="container voice-control-con">
@@ -1076,11 +1080,11 @@
             <div id="news" >
                 <lh-news v-for="article in news[newsTab].articles" style="margin-right: 8px;"
                          :img="article.img"
-                        :title="article.title"
-                        :summary="article.summary"
-                        :tags="article.tags"
-                        :date="article.date"
-                        :views="article.views"></lh-news>
+                         :title="article.title"
+                         :summary="article.summary"
+                         :tags="article.tags"
+                         :date="article.date"
+                         :views="article.views"></lh-news>
             </div>
         </div>
         <div class="clearfix"></div>
@@ -1173,42 +1177,42 @@
                 ],
                 hotProducts: [
                     {
-                    title: "工商服务",
-                    image: "http://ofw6tmkxn.bkt.clouddn.com/hot_1.png",
+                        title: "工商服务",
+                        image: "http://ofw6tmkxn.bkt.clouddn.com/hot_1.png",
                         activeImage:"http://ofw6tmkxn.bkt.clouddn.com/ser_1.png",
-                    summary: "工商，就这么简单…",
-                    first: [
-                        "公司注册",
-                        "1元注册+零申报记账",
-                        "公司名称变更",
-                        "经营范围变更",
-                        "法人代表变更",
-                        "三证合一"
+                        summary: "工商，就这么简单…",
+                        first: [
+                            "公司注册",
+                            "1元注册+零申报记账",
+                            "公司名称变更",
+                            "经营范围变更",
+                            "法人代表变更",
+                            "三证合一"
 
-                    ],
-                    main: {
-                        title: "公司注册",
-                        summary: "有限责任公司、分公司、合伙企业注册，三/五证合一营业执照全程无忧直通车",
+                        ],
+                        main: {
+                            title: "公司注册",
+                            summary: "有限责任公司、分公司、合伙企业注册，三/五证合一营业执照全程无忧直通车",
+                        },
+                        other: [
+                            {
+                                title: "1元注册+零申报记账",
+                                summary: "1年代账送1元公司注册"
+                            },
+                            {
+                                title: "公司名称变更",
+                                summary: "工商变更，章证照统一变更"
+                            },
+                            {
+                                title: "经营范围变更",
+                                summary: "工商变更，不包括税务变更"
+                            },
+                            {
+                                title: "法人代表变更",
+                                summary: "工商变更，证照变更"
+                            }
+                        ]
                     },
-                    other: [
-                        {
-                            title: "1元注册+零申报记账",
-                            summary: "1年代账送1元公司注册"
-                        },
-                        {
-                            title: "公司名称变更",
-                            summary: "工商变更，章证照统一变更"
-                        },
-                        {
-                            title: "经营范围变更",
-                            summary: "工商变更，不包括税务变更"
-                        },
-                        {
-                            title: "法人代表变更",
-                            summary: "工商变更，证照变更"
-                        }
-                    ]
-                },
                     {
                         title: "财税服务",
                         image: "http://ofw6tmkxn.bkt.clouddn.com/hot_2.png",
@@ -1599,7 +1603,8 @@
                         summary: "创业园区、孵化基地专业对接",
                         imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-1-top.png",
                         imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-1-middle.png",
-                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-1-bottom.png"
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-1-bottom.png",
+                        bgColor:"background-color: #2fa7f5;"
 
                     },
                     {
@@ -1608,30 +1613,34 @@
                         summary: "免费财税咨询，作账报税无忧",
                         imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-2-top.png",
                         imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-2-middle.png",
-                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-2-bottom.png"
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-2-bottom.png",
+                        bgColor:"background-color: #2ca8dc;"
                     },
                     {
                         mainTitle: "法律咨询",
                         subTitle: "全程陪同",
                         summary: "专业律师为企业保驾护航",
-                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-top.png",
-                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-middle.png",
-                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-bottom.png"
+                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-middle.png",
+                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-bottom.png",
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-top.png",
+                        bgColor:"background-color: #0daef2;"
                     },
                     {
                         mainTitle: "社保公积金缴纳",
                         subTitle: "",
                         summary: "缴纳社保公积金,养老无忧",
-                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-top.png",
+                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-bottom.png",
                         imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-middle.png",
-                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-bottom.png"
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-top.png",
+                        bgColor:"background-color: #0770cb;"
                     }, {
                         mainTitle: "公司注册",
                         subTitle: "快人一步",
                         summary: "创业园区、孵化基地专业对接",
                         imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-top.png",
-                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-middle.png",
-                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-bottom.png"
+                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-bottom.png",
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-middle.png",
+                        bgColor:"background-color: #2399f3;"
                     },
                 ],
                 news: [
@@ -1914,12 +1923,14 @@
                 state: 0,
                 stateType: 0,
                 newsTab: 0,
-                voiceBanner:0
+                voiceBanner:0,
+                hotActive:3,
             }
         },
         methods: {
             setActive(index) {
                 this.active = index;
+                this.hotActive = index;
             },
             isActive(index) {
                 return this.active == index;
@@ -1931,11 +1942,13 @@
             isBannerActive(index) {
                 return this.banner == index;
             },
+            isHotActive(index){
+                return this.hotActive == index;
+            },
             setVoiceBanner(index){
                 if(index < 0) index = 5;
                 if(index > 5) index = 0;
                 this.voiceBanner = index;
-                console.log(this.voiceBanner)
             },
             isVoiceBannerActive(index) {
                 return this.voiceBanner == index;

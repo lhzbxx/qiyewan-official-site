@@ -49,3 +49,7 @@ export const needLogin = state => {
 export const getCheckout = state => {
     return state.orders.checkout
 }
+
+export const regions = () => {
+    return dataApi.regions
+}
