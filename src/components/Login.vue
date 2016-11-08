@@ -49,7 +49,6 @@
                     vm.isVisible = false
                     vm.formStacked.password = ""
                     vm.isLogging = false
-                    this.$router.replace(this.$route.query.redirect || '/')
                 }, (error) => {
                     vm.formStacked.password = ""
                     vm.isLogging = false
