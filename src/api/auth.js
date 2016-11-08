@@ -19,6 +19,18 @@ export default {
             })
     },
 
+    getLoginHistory (token, cb, errorCb) {
+        Vue.http.headers.common['Authorization'] = token;
+        Vue.http.get("login-history").then(
+            (response) => {
+                cb(response.body.content)
+            }
+            , (response) => {
+                errorCb(response.body)
+            }
+        )
+    },
+
     getCompany (token, cb, errorCb) {
         Vue.http.headers.common['Authorization'] = token;
         Vue.http.get("company").then(

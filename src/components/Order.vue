@@ -83,7 +83,7 @@
                             class="order-detail">
                         <div class="order-detail-wrapper" style="padding-left: 0;">
                             <p class="order-detail-product-title">
-                                {{ item.amount }} * {{ item.unit }}
+                                <b>{{ item.amount }}</b> {{ item.unit }}
                             </p>
                         </div>
                     </el-col>
