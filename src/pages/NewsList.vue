@@ -384,6 +384,7 @@
             }
         },
         created() {
+            console.log(this.data);
 //            articleApi.getArticlesByCategory("cate_1");
         },
         methods: {

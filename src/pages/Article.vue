@@ -183,35 +183,19 @@
                 <div class="con_right r">
                     <div class="Author">
                         <div class="avatar"><img src="" alt=""></div>
-                        <div class="name">张三</div>
-                        <div class="intru">阿里巴巴首席产品经理兼UED经理</div>
+                        <div class="name">{{ article.author }}</div>
+                        <div class="intru">企业湾分析师</div>
                         <ul>
-                            <li class="art_num">12篇文章</li>
-                            <li>阅读量23458</li>
+                            <li class="art_num" id="art_num">0篇文章</li>
+                            <li>阅读量{{ article.viewers }}</li>
                         </ul>
                     </div>
-                    <div class="recommend">
+                    <div class="recommend" v-for="news in recommendNewsList">
                         <div class="rec_tit">
-                            热文推荐
+                            {{ news.category }}
                         </div>
                         <ul style="list-style:square;">
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
-                        </ul>
-                    </div>
-                    <div class="recommend">
-                        <div class="rec_tit">
-                            热度排行
-                        </div>
-                        <ul style="list-style:decimal;">
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
+                            <li v-for="article in news.articles" v-on:click="nav2article(article.id)">{{ article.title }}</li>
                         </ul>
                     </div>
                 </div>
@@ -224,6 +208,7 @@
 
 <script>
     import marked from 'marked'
+    import articleApi from '../api/article'
 
     export default {
         data() {
@@ -237,8 +222,45 @@
                     content: "i am a ~~tast~~ **test**.",
                     pre: {id: 2, title: "Python大法好"},
                     next: {id: 3, title: "CPP大法保平安"},
-                }
+                },
+                recommendNewsList: [
+                    {
+                        category: "热文推荐",
+                        articles: [
+                            {id: 1, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                            {id: 2, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                            {id: 3, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                            {id: 4, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                            {id: 5, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                        ]
+                    },
+                    {
+                        category: "热度排行",
+                        articles: [
+                            {id: 1, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                            {id: 2, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                            {id: 3, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                            {id: 4, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                            {id: 5, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                        ]
+                    }
+                ]
             }
+        },
+        created() {
+           var path = location.href.split('/');
+           articleApi.getArticleById(path[path.length - 1], response =>{
+               console.log(response.body);
+               articleApi.articlesCount(/*response.body.author*/'Cheyanne', response => {
+                   console.log(response.body.count);
+                   document.getElementById('art_num').innerHTML = response.body.count + '篇文章';
+               }, response => {
+                   console.log(response);
+               });
+           }, error => {
+               console.log(error)
+           });
+
         },
         computed: {
             compiledMarkdown: function () {

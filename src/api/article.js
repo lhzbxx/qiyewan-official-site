@@ -10,7 +10,11 @@ export default {
         Vue.http.get("articles?category=" + category);
     },
 
-    getNews(cb){
-        Vue.http.get("news");
+    getArticleById(id, cb, errorCb){
+        Vue.http.get("articles/" + id).then((response) => cb(response),(error) => errorCb(error));
+    },
+
+    articlesCount(author, success, error){
+        Vue.http.get("articles/count?author=" + author).then( response => success(response), response => error(response));
     }
 }
