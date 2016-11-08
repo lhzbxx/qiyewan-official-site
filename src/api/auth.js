@@ -19,6 +19,24 @@ export default {
             })
     },
 
+    register (phone, password, captcha, cb, errorCb) {
+        Vue.http.post("auth", {
+            phone: phone,
+            password: password,
+            captcha: captcha
+        }).then(
+            (response) => {
+                if (response.body.error == 0) {
+                    cb(response.body.detail);
+                } else {
+                    errorCb(response.body)
+                }
+            }, (response) => {
+                errorCb(response.body)
+            }
+        )
+    },
+
     getLoginHistory (token, cb, errorCb) {
         Vue.http.headers.common['Authorization'] = token;
         Vue.http.get("login-history").then(

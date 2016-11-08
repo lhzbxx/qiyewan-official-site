@@ -11,7 +11,7 @@
         margin-left: 30px;
     }
 
-    #nav ul li,#nav ul p{
+    #nav ul li, #nav ul p {
         float: left;
         height: 58px;
         padding-left: 40px;
@@ -20,6 +20,7 @@
         position: relative;
         border-bottom: 2px solid white;
     }
+
     #nav ul li:hover > a {
         border-bottom: 2px solid #0098db;
     }
@@ -48,8 +49,9 @@
     .nav-show-left {
         width: 64%;
     }
+
     .nav-show-right {
-        width:35%;
+        width: 35%;
     }
 
     .nav-show-content {
@@ -90,7 +92,7 @@
         transition: color 0.3s ease-in-out;
     }
 
-    #nav ul li > a,#nav ul p > a {
+    #nav ul li > a, #nav ul p > a {
         color: #282828;
         display: block;
         line-height: 65px;
@@ -111,16 +113,16 @@
                     <div class="show">
                         <div class="nav-show-left l">
                             <div class="nav-show-content">
-                                <router-link to="/product/list">
+                                <router-link :to="{ name: 'product-list', params: { category: item.l.title }}">
                                     <div class="registration">
                                         {{ item.l.title }}
                                     </div>
                                 </router-link>
-                                <router-link to="/product/detail">
-                                    <span v-for="i in item.l.list">
+                                <span v-for="i in item.l.list">
+                                    <router-link :to="{ name: 'product-detail', params: { serialId: i }}">
                                         {{ i }}
-                                    </span>
-                                </router-link>
+                                    </router-link>
+                                </span>
                             </div>
                         </div>
                         <div class="nav-show-right l">

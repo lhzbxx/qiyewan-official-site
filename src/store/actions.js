@@ -35,6 +35,24 @@ export const userLogin = ({commit}, {phone, password}) => {
     })
 }
 
+export const userRegister = ({commit}, {phone, password, captcha}) => {
+    return new Promise((resolve, reject) => {
+        authApi.register(phone, password, captcha,
+            token => {
+                console.log(token)
+                if (token) {
+                    commit(types.USER_LOGIN_SUCCESS, {phone, token})
+                    resolve()
+                }
+            },
+            error => {
+                console.log(error)
+                reject(error)
+            }
+        )
+    })
+}
+
 export const getCarts = ({commit, state}, page) => {
     return new Promise((resolve, reject) => {
         cartApi.getCarts(state.auth.user.token, page,
