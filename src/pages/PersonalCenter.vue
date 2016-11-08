@@ -187,16 +187,19 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex'
     export default {
         data() {
             return {
                 username: "Anna",
-                phoneNumber: "13843429302",
                 cartNum: 3,
                 unpaidNum: 2,
                 unreviewedNum: 3
             }
         },
+        computed: mapGetters({
+            phoneNumber: 'getPhone'
+        }),
         methods: {}
     }
 </script>

@@ -94,9 +94,9 @@
                     inline-template
                     label="数量">
                 <div>
-                    <span>
+                    <b>
                         {{ row.amount }}
-                    </span>
+                    </b>
                     <span>
                         {{ row.product.unit }}
                     </span>

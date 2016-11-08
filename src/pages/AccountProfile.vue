@@ -1,8 +1,9 @@
 <style scoped>
-    .title b,button,i{
-        color:#229dd5 !important;
+    .title b, button, i {
+        color: #229dd5 !important;
     }
-    .el-button--primary{
+
+    .el-button--primary {
         color: #fff !important;
         background-color: #229dd5 !important;
     }
@@ -10,6 +11,7 @@
 </style>
 <template>
     <div class="container">
+        <br>
         <lh-table-header class="title" title="个人信息"></lh-table-header>
         <div style="border: 1px solid #eee; padding: 10px 20px;">
             <table border="0">
@@ -59,21 +61,21 @@
         <div style="border: 1px solid #eee; padding: 10px 20px;">
             <table border="0" ref="companyInfoTable">
                 <tr>
-                    <td width="120" height="35" align="right">公司名称： </td>
+                    <td width="120" height="35" align="right">公司名称：</td>
                     <td>
                         <el-input v-model="companyInfo.name"
                                   v-if="isEditingCompanyInfo"></el-input>
                         <span v-else>{{ companyInfo.name }}</span></td>
                 </tr>
                 <tr>
-                    <td width="120" height="35" align="right">法人代表： </td>
+                    <td width="120" height="35" align="right">法人代表：</td>
                     <td>
                         <el-input v-model="companyInfo.legalRepresentative"
                                   v-if="isEditingCompanyInfo"></el-input>
                         <span v-else>{{ companyInfo.legalRepresentative }}</span></td>
                 </tr>
                 <tr>
-                    <td width="120" height="35" align="right">公司地址： </td>
+                    <td width="120" height="35" align="right">公司地址：</td>
                     <td>
                         <el-input v-model="companyInfo.address"
                                   v-if="isEditingCompanyInfo"></el-input>
@@ -81,35 +83,35 @@
                     </td>
                 </tr>
                 <tr>
-                    <td width="120" height="35" align="right">注册资本： </td>
+                    <td width="120" height="35" align="right">注册资本：</td>
                     <td>
                         <el-input v-model="companyInfo.registeredCapital"
                                   v-if="isEditingCompanyInfo"></el-input>
                         <span v-else>{{ companyInfo.registeredCapital }}</span></td>
                 </tr>
                 <tr>
-                    <td width="120" height="35" align="right">员工人数： </td>
+                    <td width="120" height="35" align="right">员工人数：</td>
                     <td>
                         <el-input v-model="companyInfo.staffNum"
                                   v-if="isEditingCompanyInfo"></el-input>
                         <span v-else>{{ companyInfo.staffNum }}</span></td>
                 </tr>
                 <tr>
-                    <td width="120" height="35" align="right">营业执照号： </td>
+                    <td width="120" height="35" align="right">营业执照号：</td>
                     <td>
                         <el-input v-model="companyInfo.businessLicense"
                                   v-if="isEditingCompanyInfo"></el-input>
                         <span v-else>{{ companyInfo.businessLicense }}</span></td>
                 </tr>
                 <tr>
-                    <td width="120" height="35" align="right">税务登记号： </td>
+                    <td width="120" height="35" align="right">税务登记号：</td>
                     <td>
                         <el-input v-model="companyInfo.taxRegistration"
                                   v-if="isEditingCompanyInfo"></el-input>
                         <span v-else>{{ companyInfo.taxRegistration }}</span></td>
                 </tr>
                 <tr>
-                    <td width="120" height="35" align="right">其它联系方式： </td>
+                    <td width="120" height="35" align="right">其它联系方式：</td>
                     <td>
                         <el-input v-model="companyInfo.contactNumber"
                                   v-if="isEditingCompanyInfo"></el-input>
@@ -119,7 +121,8 @@
             <el-button v-if="isEditingCompanyInfo"
                        @click.native="confirmCompanyInfo"
                        type="primary"
-                       style="margin-left: 125px; margin-top: 5px; margin-bottom: 5px;">确认修改</el-button>
+                       style="margin-left: 125px; margin-top: 5px; margin-bottom: 5px;">确认修改
+            </el-button>
         </div>
         <br>
         <lh-table-header class="title" title="账户安全"></lh-table-header>
@@ -131,7 +134,8 @@
                 登录密码建议您定期更换密码，且设置一个包含数字和字母，且长度6位以上的密码。
                 <div style="float: right;">
                     <el-button type="primary"
-                               @click.native="openDialog">修改</el-button>
+                               @click.native="openDialog">修改
+                    </el-button>
                 </div>
             </div>
         </div>
@@ -140,15 +144,16 @@
             <el-table :data="history"
                       style="width: 100%">
                 <el-table-column
-                        property="loginAt"
+                        inline-template
                         label="登录时间">
+                    <div>{{ getLocalTime(row.createAt) }}</div>
                 </el-table-column>
                 <el-table-column
                         property="address"
                         label="登录地点">
                 </el-table-column>
                 <el-table-column
-                        property="IP"
+                        property="ip"
                         label="IP地址">
                 </el-table-column>
                 <el-table-column
@@ -165,6 +170,9 @@
 </template>
 
 <script>
+    import authApi from '../api/auth'
+    import {mapGetters} from 'vuex'
+
     export default {
         data() {
             return {
@@ -172,16 +180,7 @@
                 username: "某某某",
                 phoneNumber: "132413423",
                 isEditingCompanyInfo: false,
-                companyInfo: {
-                    name: "企业湾",
-                    legalRepresentative: "企业湾",
-                    address: "公司地址",
-                    registeredCapital: "2000万元",
-                    staffNum: 2000,
-                    businessLicense: "218r4101141",
-                    taxRegistration: "jjds9230194321",
-                    contactNumber: "1321321"
-                },
+                companyInfo: null,
                 isVisible: true,
                 formStacked: {
                     phone: "",
@@ -189,76 +188,12 @@
                     password: "",
                     password2: ""
                 },
-                history: [
-                    {
-                        loginAt: "2016-10-16 13:06:53",
-                        address: "中国 上海 上海市",
-                        IP: "180.12.23.123",
-                        mode: "PC端登录"
-                    },
-                    {
-                        loginAt: "2016-10-16 13:06:53",
-                        address: "中国 上海 上海市",
-                        IP: "180.12.23.123",
-                        mode: "PC端登录"
-                    },
-                    {
-                        loginAt: "2016-10-16 13:06:53",
-                        address: "中国 上海 上海市",
-                        IP: "180.12.23.123",
-                        mode: "PC端登录"
-                    },
-                    {
-                        loginAt: "2016-10-16 13:06:53",
-                        address: "中国 上海 上海市",
-                        IP: "180.12.23.123",
-                        mode: "PC端登录"
-                    },
-                    {
-                        loginAt: "2016-10-16 13:06:53",
-                        address: "中国 上海 上海市",
-                        IP: "180.12.23.123",
-                        mode: "PC端登录"
-                    },
-                    {
-                        loginAt: "2016-10-16 13:06:53",
-                        address: "中国 上海 上海市",
-                        IP: "180.12.23.123",
-                        mode: "PC端登录"
-                    },
-                    {
-                        loginAt: "2016-10-16 13:06:53",
-                        address: "中国 上海 上海市",
-                        IP: "180.12.23.123",
-                        mode: "PC端登录"
-                    },
-                    {
-                        loginAt: "2016-10-16 13:06:53",
-                        address: "中国 上海 上海市",
-                        IP: "180.12.23.123",
-                        mode: "PC端登录"
-                    },
-                    {
-                        loginAt: "2016-10-16 13:06:53",
-                        address: "中国 上海 上海市",
-                        IP: "180.12.23.123",
-                        mode: "PC端登录"
-                    },
-                    {
-                        loginAt: "2016-10-16 13:06:53",
-                        address: "中国 上海 上海市",
-                        IP: "180.12.23.123",
-                        mode: "PC端登录"
-                    },
-                    {
-                        loginAt: "2016-10-16 13:06:53",
-                        address: "中国 上海 上海市",
-                        IP: "180.12.23.123",
-                        mode: "PC端登录"
-                    }
-                ]
+                history: []
             }
         },
+        computed: mapGetters({
+            token: 'getToken'
+        }),
         methods: {
             openDialog() {
                 this.$refs.dialog.openDialog()
@@ -268,7 +203,30 @@
             },
             confirmUsername() {
                 this.isEditingUsername = false
-            }
+            },
+            fetchData() {
+                let vm = this
+                authApi.getLoginHistory(this.token,
+                        data => {
+                    vm.history = data
+                },
+                        error => {
+
+                })
+                authApi.getCompany(this.token,
+                        data => {
+                    vm.companyInfo = data
+                },
+                        error => {
+
+                })
+            },
+            getLocalTime(nS) {
+                return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ');
+            },
+        },
+        created() {
+            this.fetchData()
         }
     }
 </script>

@@ -90,7 +90,7 @@
     #header-user-block {
         overflow: hidden;
     }
-    
+
     #header-user-block ul {
         display: inline-block;
         float: right;
@@ -195,12 +195,14 @@
                         <router-link to="/order">订单</router-link>
                     </li>
                     <li v-if="isLogin">
-                        <router-link to="/profile">个人中心</router-link>
+                        <router-link to="/account">个人中心</router-link>
                     </li>
-                    <li v-if="isLogin"><router-link to="/cart">购物车（{{ cartNum }}）</router-link></li>
+                    <li v-if="isLogin">
+                        <router-link to="/cart">购物车（{{ cartNum }}）</router-link>
+                    </li>
                 </ul>
                 <div id="tel" v-if="isLogin">
-                    <span>{{ getPhone }}</span>&nbsp;
+                    <span style="font-weight: bold;">{{ getPhone }}</span>&nbsp;
                     <a @click="logout">退出</a>
                 </div>
             </div>
@@ -234,6 +236,7 @@
             },
             logout() {
                 this.$store.commit("USER_LOGOUT")
+                this.$router.replace({name: "home"})
             }
         },
         watch: {
