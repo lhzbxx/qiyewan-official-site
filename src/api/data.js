@@ -1,28 +1,34 @@
 export default {
     hotProducts: [
         {
-            title: "123",
-            summary: "123",
+            title: "有限责任公司注册",
+            summary: "跨过创业的第一道门槛，帮您建造梦想的第一个港湾",
             img: "http://ofl0lw9er.bkt.clouddn.com/test.jpg",
-            price: 123
+            price: 1
         },
         {
-            title: "123",
-            summary: "123",
+            title: "企业社保，公积金代理",
+            summary: "养老无忧，住房不愁，剔除后顾之患，尽享优质生活",
             img: "http://ofl0lw9er.bkt.clouddn.com/test.jpg",
-            price: 123
+            price: 18.8
         },
         {
-            title: "123",
-            summary: "123",
+            title: "商标注册",
+            summary: "商标是企业的敲门砖，让专业律师帮您紧握手中",
             img: "http://ofl0lw9er.bkt.clouddn.com/test.jpg",
-            price: 123
+            price: 199
         },
         {
-            title: "123",
-            summary: "123",
+            title: "零申报代理记账",
+            summary: "在企业湾代理记账，放心无忧",
             img: "http://ofl0lw9er.bkt.clouddn.com/test.jpg",
-            price: 123
+            price: 98
+        },
+        {
+            title: "LOGO设计",
+            summary: "独特的LOGO是创业的门面，新颖的标志是企业的形象",
+            img: "http://ofl0lw9er.bkt.clouddn.com/test.jpg",
+            price: 488
         }
     ],
     regions: [
@@ -155,10 +161,6 @@ export default {
                     {name:"新津县"},
                 ]}
             ]},
-
-
-
-
     ]
 }
 

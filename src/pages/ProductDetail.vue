@@ -374,8 +374,8 @@
                             <div class="detail_bg">
                                 <div class="detail_pic">
                                     <div class="detail_tit">
-                                        <h3>代办税务</h3>
-                                        <p>多数主管税务机关要求企业提供软件著作权和软件登记检测报告，才可享受增值税即征即退，最多可退增值税</p>
+                                        <h3>{{ product.name }}</h3>
+                                        <p>{{ product.summary }}</p>
                                     </div>
                                     <h4>为什么要代办税务／服务内容（服务能帮助您做什么）</h4>
                                 </div>
@@ -386,6 +386,11 @@
                                             <p>让你知道什么人可以成为公司股东，参与股权分配。让你知道什么人可以成为公司股东，参与股权分配。</p>
                                         </li>
                                     </ul>
+                                </div>
+
+                                <div class="provide">
+                                    <div class="tit">您需要提供</div>
+                                    <div class="pro_pic"><img src="../assets/img/provide.png" alt=""></div>
                                 </div>
                                 <div class="Process">
                                     <p></p>
@@ -398,13 +403,7 @@
                                         <li>5 办理追踪 <span><img src="../assets/img/border1.png"></span></li>
                                     </ul>
                                     <div class="zhushi">注：由于地域、政策等因素不同，所需时间有差异</div>
-
                                 </div>
-                                <div class="provide">
-                                    <div class="tit">您需要提供</div>
-                                    <div class="pro_pic"><img src="../assets/img/provide.png" alt=""></div>
-                                </div>
-
                             </div>
                             <div class="get">
                                 <div class="tit">您将得到</div>
@@ -563,6 +562,7 @@
                 error: null,
                 product: null,
                 regionAreas:[],
+                process:'rrrr'
             }
         },
         computed: mapGetters({
@@ -594,7 +594,7 @@
                 this.loading = false
             },
             setRegion () {
-                console.log(this.$route.params.name)
+                console.log(JSON.stringify(this.$route.params)+'---Liucheng='+this.process)
                 var currentNum = this.$route.params.serialId;
                 var currentCityCode = currentNum.substr(0, 2);
                 var currentCountryCode = currentNum.substr(2, 2);

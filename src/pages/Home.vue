@@ -1351,34 +1351,35 @@
                 timelines: [
                     {
                         title: "种子萌芽",
+
                         types: [
                             {
                                 title: "创立公司",
                                 products: {
                                     left: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-1.png"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-1.png"
                                     },
                                     right: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-2.png"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-2.png"
                                     },
                                     one: [
                                         {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-3.png"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-3.png"
                                         },
                                         {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-4.png"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-4.png"
                                         },
                                         {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-5.png"
-                                        }],
-                                    rightBottom: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-6.png"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-5.png"
+                                        }], rightBottom: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-6.png"
                                     },
                                     bottomOne: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-7.png"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-7.png"
                                     }
 
                                 }
+
                             },
                             {
                                 title: "财税服务",
@@ -1436,12 +1437,42 @@
                                 }
                             }
                         ]
+
                     },
                     {
                         title: "茁壮成长",
                         types: [
                             {
                                 title: "工商服务",
+                                products: {
+                                    left: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-1.png"
+                                    },
+                                    right: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-2.png"
+                                    },
+                                    one: [
+                                        {
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-3.png"
+                                        },
+                                        {
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-4.png"
+                                        },
+                                        {
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-5.png"
+                                        }
+                                    ],
+                                    rightBottom: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-6.png"
+                                    },
+                                    bottomOne: {
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-7.png"
+                                    }
+                                }
+                            },
+                            {
+                                title: "财税法+",
+
                                 products: {
                                     left: {
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-1.png"
@@ -1462,33 +1493,6 @@
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-6.png"
                                     }, bottomOne: {
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-7.png"
-                                    }
-
-                                }
-                            },
-                            {
-                                title: "财税法+",
-                                products: {
-                                    left: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-1.png"
-                                    },
-                                    right: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-2.png"
-                                    },
-                                    one: [
-                                        {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-3.png"
-                                        },
-                                        {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-4.png"
-                                        },
-                                        {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-5.png"
-                                        }], rightBottom: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-6.png"
-                                    },
-                                    bottomOne: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-7.png"
                                     }
 
                                 }
@@ -1563,31 +1567,33 @@
                                 title: "注销公司",
                                 products: {
                                     left: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-1.png"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-1.png"
                                     },
                                     right: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-2.png"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-2.png"
                                     },
                                     one: [
                                         {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-3.png"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-3.png"
                                         },
                                         {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-4.png"
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-4.png"
                                         },
                                         {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-5.png"
-                                        }
-                                    ],
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-5.png"
+                                        }],
                                     rightBottom: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-6.png"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-6.png"
                                     },
                                     bottomOne: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-7.png"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-7.png"
                                     }
+
                                 }
+
                             }
                         ]
+
                     }
                 ],
                 dialogVisible: false,

@@ -10,11 +10,7 @@
     .el-submenu{
         border: 1px solid #e5e5e5 !important;
     }
-    .is-active{
-        padding-left: 20px;
-        border-left: 6px solid #0098db !important;
-        color: #0098db !important;
-    }
+
     .cart{
         background: url("../assets/img/icon-cart.png");
     }
@@ -38,9 +34,12 @@
         color: #0098db !important;
     }
 
-    .el-menu{
+    #order .el-menu-item{
         background-color: #fff !important;
+        border-left:1px solid #fff !important;
+        border-right:1px solid #fff !important;
     }
+
     #order .el-menu-item{
         border-bottom: none !important;
         border-top: none !important;
@@ -57,6 +56,15 @@
         margin-left: -10px;
         overflow: hidden;
     }
+    #order span {
+        left: 7px;
+        margin-right: 16px;
+    }
+    .el-menu-item.is-active{
+        padding-left: 20px;
+        border-left: 6px solid #0098db !important;
+        color: #0098db !important;
+    }
 </style>
 <template>
     <div>
@@ -68,7 +76,7 @@
                              style="margin: 10px 10px 10px 0;background-color: #fff">
                         <el-menu-item index="1"><span class="home"></span>首页</el-menu-item>
                         <el-menu-item index="2"><span class="cart"></span>我的购物车</el-menu-item>
-                        <el-submenu index="3" id="order">
+                        <el-submenu index="3" id="order" class="is-opened">
                             <template slot="title"><span class="order"></span>我的订单</template>
                             <el-menu-item index="3-1">待支付订单</el-menu-item>
                             <el-menu-item index="3-2">已支付订单</el-menu-item>
