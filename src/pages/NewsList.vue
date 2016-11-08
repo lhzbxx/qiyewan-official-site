@@ -1,4 +1,4 @@
-<style scoped>
+<style scoped xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
     .display-block {
         display: inline-block;
     }
@@ -209,160 +209,191 @@
         <el-row>
             <el-col :span="16">
                 <div>
-                    <p class="total-title">创业资讯</p>
+                    <p class="total-title">{{ topNews.category }}</p>
                     <el-row>
                         <el-col :span="12" class="business-left">
                             <div class="img-news">
-                                <img src="../assets/img/banner_2.png" class="big-news" alt="news-img">
-                                <p class="opt-news-title">上海国际马拉松上海国</p>
+                                <img v-bind:src="topNews.cover" class="big-news" alt="news-img">
+                                <p class="opt-news-title">{{ topNews.title }}</p>
                             </div>
                             <div>
                                 <span class="prev-news"></span>
-                                <img src="../assets/img/shangbiao.jpg" class="slider-news" alt="news-img"><img
-                                    src="../assets/img/shangbiao.jpg" class="slider-news" alt="news-img"><img
-                                    src="../assets/img/shangbiao.jpg" class="slider-news" alt="news-img">
+                                <span v-for="url in topNews.imageURLs">
+                                    <img v-bind:src="url" class="slider-news" alt="news-img" >
+                                </span>
                                 <span class="next-news"></span>
                             </div>
                         </el-col>
                         <el-col :span="12" class="business-right">
-                            <div class="bu-right-list">
+                            <div class="bu-right-list" v-for="article in topNews.articles">
                                 <div class="news-date display-block">
-                                    <p class="day">10</p>
-                                    <p class="year-month">2016/10</p>
+                                    <p class="day">{{ article.day }}</p>
+                                    <p class="year-month">{{ article.year_moth }}</p>
                                 </div>
-                                <p class="list-title display-block">我是新是新闻标题我是新闻标题</p>
-                            </div>
-                            <div class="bu-right-list">
-                                <div class="news-date display-block">
-                                    <p class="day">10</p>
-                                    <p class="year-month">2016/10</p>
-                                </div>
-                                <p class="list-title display-block">我是新是新闻标题我是新闻标题</p>
-                            </div>
-                            <div class="bu-right-list">
-                                <div class="news-date display-block">
-                                    <p class="day">10</p>
-                                    <p class="year-month">2016/10</p>
-                                </div>
-                                <p class="list-title display-block">我是新是新闻标题我是新闻标题</p>
-                            </div>
-                            <div class="bu-right-list">
-                                <div class="news-date display-block">
-                                    <p class="day">10</p>
-                                    <p class="year-month">2016/10</p>
-                                </div>
-                                <p class="list-title display-block">我是新是新闻标题我是新闻标题</p>
+                                <p class="list-title display-block" v-on:click="nav2article(article.id)">{{ article.title }}</p>
                             </div>
                         </el-col>
                     </el-row>
                 </div>
                 <el-row class="saas-news">
-                    <el-col :span="11">
-                        <p class="total-title">财税资讯</p>
+                    <el-col :span="11"  :offset="offset4Index(idx)" v-for="(news, idx) in centerNewsList">
+                        <p class="total-title">{{ news.category }}</p>
                         <div class="saas-img-news">
-                            <img src="../assets/img/banner_2.png" class="little-news-img" alt="">
-                            <p class="news-summary display-block">闻描述新述新闻描述闻描述新述新闻描述闻描述新述新闻描述闻描述新述新闻描述闻描述新述新闻描述</p>
+                            <img v-bind:src="news.cover" class="little-news-img" alt="">
+                            <p class="news-summary display-block">{{ news.title }}</p>
                         </div>
                         <ul class="r-i-list">
-                            <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                            <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                            <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                            <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                            <li>新闻标题</li>
-                        </ul>
-                    </el-col>
-                    <el-col :span="11" :offset="2">
-                        <p class="total-title">法律资讯</p>
-                        <div class="saas-img-news">
-                            <img src="../assets/img/banner_2.png" class="little-news-img" alt="">
-                            <p class="news-summary display-block">闻描述新述新闻描述闻描述新述新闻描述闻描述新述新闻描述闻描述新述新闻描述闻描述新述新闻描述</p>
-                        </div>
-                        <ul class="r-i-list">
-                            <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                            <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                            <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                            <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                            <li>新闻标题</li>
+                            <li v-for="article in news.articles">{{ article.title }}</li>
                         </ul>
                     </el-col>
                 </el-row>
                 <el-row class="saas-news">
-                    <el-col :span="11">
-                        <p class="total-title">财税资讯</p>
+                    <el-col :span="11"  :offset="offset4Index(idx)" v-for="(news, idx) in bottomNewsList">
+                        <p class="total-title">{{ news.category }}</p>
                         <div class="saas-img-news">
-                            <img src="../assets/img/banner_2.png" class="little-news-img" alt="">
-                            <p class="news-summary display-block">闻描述新述新闻描述闻描述新述新闻描述闻描述新述新闻描述闻描述新述新闻描述闻描述新述新闻描述</p>
+                            <img v-bind:src="news.cover" class="little-news-img" alt="">
+                            <p class="news-summary display-block">{{ news.title }}</p>
                         </div>
                         <ul class="r-i-list">
-                            <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                            <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                            <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                            <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                            <li>新闻标题</li>
-                        </ul>
-                    </el-col>
-                    <el-col :span="11" :offset="2">
-                        <p class="total-title">法律资讯</p>
-                        <div class="saas-img-news">
-                            <img src="../assets/img/banner_2.png" class="little-news-img" alt="">
-                            <p class="news-summary display-block">闻描述新述新闻描述闻描述新述新闻描述闻描述新述新闻描述闻描述新述新闻描述闻描述新述新闻描述</p>
-                        </div>
-                        <ul class="r-i-list">
-                            <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                            <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                            <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                            <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                            <li>新闻标题</li>
+                            <li v-for="article in news.articles">{{ article.title }}</li>
                         </ul>
                     </el-col>
                 </el-row>
-
             </el-col>
             <el-col :span="7" :offset="1">
-                <div class="right-item">
-                    <p class="right-title">&nbsp;分类标题</p>
+                <div class="right-item" v-for="news in sideNewsList">
+                    <p class="right-title">&nbsp;{{ news.category }}</p>
                     <div class="img-news">
-                        <img src="../assets/img/banner_2.png" class="right-news-img">
-                        <p class="opt-news-title">上海国际马拉松上海国</p>
+                        <img v-bind:src="news.cover" class="right-news-img">
+                        <p class="opt-news-title">{{ news.title }}</p>
                     </div>
                     <ul class="r-i-list">
-                        <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                        <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                    </ul>
-                </div>
-                <div class="right-item">
-                    <p class="right-title">&nbsp;分类标题</p>
-                    <div class="img-news">
-                        <img src="../assets/img/banner_2.png" class="right-news-img">
-                        <p class="opt-news-title">上海国际马拉松上海国</p>
-                    </div>
-                    <ul class="r-i-list">
-                        <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                        <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                    </ul>
-                </div>
-                <div class="right-item">
-                    <p class="right-title">&nbsp;分类标题</p>
-                    <div class="img-news">
-                        <img src="../assets/img/banner_2.png" class="right-news-img">
-                        <p class="opt-news-title">上海国际马拉松上海国</p>
-                    </div>
-                    <ul class="r-i-list">
-                        <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
-                        <li>新闻标题新闻标题新闻标题新闻标题新闻标</li>
+                        <li v-for="article in news.articles">{{ article.title }}</li>
                     </ul>
                 </div>
             </el-col>
         </el-row>
     </div>
 </template>
-
 <script>
+    import articleApi from '../api/article'
+
     export default{
         data(){
             return {
-                hello: 'hello'
+                topNews: {
+                    id: 1,
+                    cover: "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
+                    title: "上海国际马拉松上海国",
+                    imageURLs: [
+                        "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
+                        "http://localhost:8080/dist/shangbiao.jpg?cd1ecea95917b0511e48faf120d5d5e9",
+                        "http://localhost:8080/dist/shangbiao.jpg?cd1ecea95917b0511e48faf120d5d5e9",
+                    ],
+                    category: "创业资讯",
+                    articles: [
+                        {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                        {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "11"},
+                        {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "12"},
+                        {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                    ]
+                },
+                centerNewsList: [
+                     {
+                        id: 1,
+                        category: "创业资讯",
+                        title: "热烈庆祝我公司成立两周年",
+                        cover: "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
+                        articles: [
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "11"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "12"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                        ]
+                    },
+                    {
+                        id: 1,
+                        category: "法律资讯",
+                        title: "热烈庆祝我公司成立两周年",
+                        cover: "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
+                        articles: [
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "11"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "12"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                        ]
+                    }
+                ],
+                bottomNewsList: [
+                    {
+                        id: 1,
+                        category: "工商资讯",
+                        title: "热烈庆祝我公司成立两周年",
+                        cover: "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
+                        articles: [
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "11"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "12"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                        ]
+                    },
+                    {
+                        id: 1,
+                        category: "财税资讯",
+                        title: "热烈庆祝我公司成立两周年",
+                        cover: "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
+                        articles: [
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "11"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "12"},
+                            {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
+                        ]
+                    },
+                ],
+                sideNewsList: [
+                    {
+                        id: 1,
+                        category: "精彩推荐",
+                        title: "热烈庆祝我公司成立两周年",
+                        cover: "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
+                        articles: [
+                            {id: 1, title: "上海国际马拉松上海国"},
+                            {id: 1, title: "上海国际马拉松上海国"},
+                        ]
+                    },
+                    {
+                        id: 1,
+                        category: "精彩推荐",
+                        title: "热烈庆祝我公司成立两周年",
+                        cover: "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
+                        articles: [
+                            {id: 1, title: "上海国际马拉松上海国"},
+                            {id: 1, title: "上海国际马拉松上海国"},
+                        ]
+                    },
+                    {
+                        id: 1,
+                        category: "每日必看",
+                        title: "热烈庆祝我公司成立两周年",
+                        cover: "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
+                        articles: [
+                            {id: 1, title: "上海国际马拉松上海国"},
+                        ]
+                    },
+                ]
             }
         },
+        created() {
+            console.log(this.data);
+//            articleApi.getArticlesByCategory("cate_1");
+        },
+        methods: {
+           offset4Index: function(idx){
+                return idx % 2 == 0 ? 0 : 2;
+           },
+           nav2article: function(article_id){
+               location.href = '/#/article/' + article_id;
+           }
+        }
     }
 </script>
