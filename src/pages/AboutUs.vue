@@ -268,14 +268,14 @@
         margin: 40px 0 10px 0;
     }
 
-    .protocol p {
+    .protocol p{
         color: #616161;
         font-size: 16px;
         line-height: 1.8em;
         margin-top: 12px;
         font-family: "Microsoft YaHei";
     }
-
+    
     /*退款开始*/
     .refund {
         display: none;

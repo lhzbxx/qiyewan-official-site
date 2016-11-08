@@ -1,4 +1,4 @@
-<style scoped xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<style>
     .el-tabs__content {
         padding: 0px !important;
     }
@@ -96,8 +96,6 @@
         top:0;
         left:50%;
         transform: translate(-50%,0%);
-
-
     }
     .el-radio-button:not(:last-child){
         margin-right:20px;
@@ -245,6 +243,7 @@
         padding: 15px;
         margin-top: 30px;
     }
+
     .el-radio-button{
         margin-right:20px;
     }
