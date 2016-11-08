@@ -602,16 +602,17 @@
             },
             fetchData () {
                 this.loading = true
+                let vm = this
                 productApi.getProductDetail(this.$route.params.serialId,
                         data => {
-                            this.product = data;
-                            this.setRegion();
+                            vm.product = data;
+                            vm.loading = false
+                            vm.setRegion();
                         },
                         error => {
-                            this.error = error
+                            vm.error = error
                         }
                 )
-                this.loading = false
             },
             addToCart () {
                 if (!this.$store.getters.isLogin) {

@@ -1138,7 +1138,7 @@
             </div>
         </div>
         <div class="clearfix"></div>
-        <div id="tools">
+        <div id="tools" name="quick-entry">
             <div class="container">
                 <div class="title">
                     <h3>实用工具</h3>
