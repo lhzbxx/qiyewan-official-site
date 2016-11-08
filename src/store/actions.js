@@ -35,7 +35,7 @@ export const userLogin = ({commit}, {phone, password}) => {
     })
 }
 
-export const requestCaptcha = ({commit}, {phone}) => {
+export const requestCaptcha = ({commit}, phone) => {
     return new Promise((resolve, reject) => {
         authApi.requestCaptcha(phone,
             token => {
@@ -102,7 +102,7 @@ export const removeCart = ({commit, state}, cart) => {
         cartApi.removeCart(state.auth.user.token, cart,
             response => {
                 commit(types.REMOVE_CART, cart)
-                resolve(cart)
+                resolve(response)
             },
             error => {
                 console.log(error)
@@ -115,7 +115,7 @@ export const removeCart = ({commit, state}, cart) => {
 export const updateCart = ({commit, state}, cart) => {
     return new Promise((resolve, reject) => {
         cartApi.updateCart(state.auth.user.token, cart,
-            response => {
+            cart => {
                 commit(types.REMOVE_CART, cart)
                 resolve(cart)
             },
@@ -162,7 +162,7 @@ export const cancelOrder = ({commit, state}, serialId) => {
         orderApi.removeOrder(state.auth.user.token, serialId,
             response => {
                 commit(types.REMOVE_ORDER, serialId)
-                resolve(serialId)
+                resolve(response)
             },
             error => {
                 console.log(error)

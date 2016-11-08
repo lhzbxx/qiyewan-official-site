@@ -16,7 +16,7 @@
                               style="width: 50%; float:left; margin-right: 10px;"></el-input>
                     <el-button type="primary"
                                :disabled="isWaiting"
-                               @click.native="requestCaptcha"
+                               @click.native.prevent="requestCaptcha"
                                style="width: 46%">
                         {{ isWaiting ? timerShow : "点击获取" }}
                     </el-button>
@@ -43,6 +43,21 @@
 <script>
     export default {
         data() {
+            var validatePhone = (rule, value, cb) => {
+                let reg = /^1[3|4|5|7|8][0-9]{9}$/;
+                if ( ! reg.test(value)) {
+                    cb(new Error('请输入正确的手机号！'))
+                } else {
+                    cb()
+                }
+            }
+            var validatePassword2 = (rule, value, cb) => {
+                if (value !== this.formStacked.password) {
+                    cb(new Error('两次输入密码不一致！'))
+                } else {
+                    cb()
+                }
+            }
             return {
                 isVisible: false,
                 checked: false,
@@ -57,30 +72,36 @@
                 rules: {
                     phone: [
                         {
-                            require: true,
-                            message: '请输入正确的手机号',
+                            required: true,
+                            message: '请输入手机号',
                             trigger: 'change'
+                        },
+                        {
+                            validator: validatePhone
                         }
                     ],
                     captcha: [
                         {
-                            require: true,
-                            message: '请输入正确的手机号',
+                            required: true,
+                            message: '请输入验证码',
                             trigger: 'blur'
                         }
                     ],
                     password: [
                         {
-                            require: true,
-                            message: '请输入正确的手机号',
+                            required: true,
+                            message: '请输入密码',
                             trigger: 'blur'
                         }
                     ],
                     password2: [
                         {
-                            require: true,
-                            message: '请输入正确的手机号',
+                            required: true,
+                            message: '请再次输入密码',
                             trigger: 'blur'
+                        },
+                        {
+                            validator: validatePassword2
                         }
                     ]
                 }
@@ -91,14 +112,14 @@
                 this.$refs.dialog.open()
             },
             requestCaptcha() {
-                this.$refs.registerForm.validateField('phone',
-                        (valid) => {
-                            console.log(valid)
-                            if (valid) {
-                                this.dispatch("requestCaptcha")
-                                this.isWaiting = true
-                                this.timer = 60
-                                this.counterDown()
+                let vm = this
+                this.$refs.registerForm.validateField(['phone'],
+                        (error) => {
+                            if ( ! error) {
+                                vm.$store.dispatch("requestCaptcha", vm.formStacked.phone)
+                                vm.isWaiting = true
+                                vm.timer = 60
+                                vm.counterDown()
                             } else {
                                 return false
                             }
@@ -107,8 +128,8 @@
             counterDown() {
                 setTimeout(() => {
                     if (this.timer == 0) {
-                        this.isWaiting = 0
-                        return
+                        this.isWaiting = false
+                        return true
                     }
                     this.timer -= 1
                     this.counterDown()
@@ -116,7 +137,6 @@
             },
             submit(ev) {
                 this.$refs.registerForm.validate((valid) => {
-                    console.log(valid)
                     if (valid) {
                         this.isLogging = true
                         let vm = this
@@ -126,15 +146,20 @@
                             captcha: this.formStacked.captcha
                         }).then(() => {
                             vm.isVisible = false
+                            vm.formStacked.captcha = ""
                             vm.formStacked.password = ""
                             vm.formStacked.password2 = ""
                             vm.isLogging = false
                         }, (error) => {
+                            vm.formStacked.captcha = ""
                             vm.formStacked.password = ""
                             vm.formStacked.password2 = ""
                             vm.isLogging = false
                             if (error.detail == "Error.Action.WRONG_CAPTCHA") {
-                                vm.error = "验证码不正确！"
+                                vm.$message.error("验证码不正确");
+                            }
+                            if (error.detail == "Error.Duplicated.USER_EXISTS") {
+                                vm.$message.error("手机号已被注册");
                             }
                         })
                     } else {
