@@ -56,7 +56,7 @@
                     label="数量"
                     width="210">
                 <div>
-                    <el-input-number @change="handleAmountChange(row)"
+                    <el-input-number @change="amountChanged"
                                      :min="1"
                                      size="small"
                                      v-model="row.amount">
@@ -80,7 +80,7 @@
                     <el-button type="danger"
                                icon="delete"
                                size="small"
-                               @click.native="deleteCart(row)">
+                               @click.native="deleteCart($index)">
                         删除
                     </el-button>
                 </div>
@@ -116,27 +116,39 @@
             handleMultipleSelectionChange(val) {
                 this.multipleSelection = val;
             },
-            deleteCart(cart) {
+            deleteCart(index) {
+                let vm = this
                 this.$confirm('确认删除该商品吗？', '删除商品', {
                     type: 'warning'
                 }).then(() => {
-                    this.dispatch("removeCart", cart).then(
-                            success => {
-                                this.$message({
+                    vm.$store.dispatch("removeCart", vm.carts[index].id).then(
+                            () => {
+                                vm.carts.splice(index, 1)
+                                vm.$message({
                                     type: 'success',
                                     message: '删除成功！'
-                                });
+                                })
                             },
-                            fail => {
-                                this.$message.error("删除失败~")
+                            () => {
+                                vm.$message.error("删除失败~")
                             }
                     )
                 }).catch(() => {
                 });
             },
-            handleAmountChange(item) {
-                console.log(item.amount);
-                item.totalPrice = item.unitPrice * item.amount;
+            amountChanged(value) {
+                console.log(value)
+            },
+            updateCart(index) {
+                this.$store.dispatch("updateCart", this.carts[index])
+//                this.carts[index].amount = value
+//                console.log(this.carts[index])
+//                this.$store.dispatch("updateCart", this.carts[index]).then(
+//                        () => {
+//                        },
+//                        () => {
+//                        }
+//                )
             },
             clearSelection() {
                 this.multipleSelection = []

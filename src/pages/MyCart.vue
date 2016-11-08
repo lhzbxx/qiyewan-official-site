@@ -8,7 +8,8 @@
             <br>
             <lh-loading v-if="isLoading"></lh-loading>
             <div v-if="!isLoading">
-                <lh-cart :carts="data" :page="page"></lh-cart>
+                <lh-cart :carts="data"
+                         :page="page"></lh-cart>
                 <el-pagination
                         small
                         layout="prev, pager, next"

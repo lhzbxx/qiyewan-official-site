@@ -97,11 +97,11 @@ export const addToCart = ({commit, state}, cart) => {
     })
 }
 
-export const removeCart = ({commit, state}, cart) => {
+export const removeCart = ({commit, state}, cartId) => {
     return new Promise((resolve, reject) => {
-        cartApi.removeCart(state.auth.user.token, cart,
+        cartApi.removeCart(state.auth.user.token, cartId,
             response => {
-                commit(types.REMOVE_CART, cart)
+                commit(types.REMOVE_CART)
                 resolve(response)
             },
             error => {
