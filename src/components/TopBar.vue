@@ -166,15 +166,15 @@
         <div class="container">
             <div id="location" class="l">
                 <img src="../assets/img/icon_location.png">
-                <span>{{ $store.getters.getRegion.name }}</span>
+                <span>{{ getRegion.name }}</span>
                 <i class="ci-right">
                     <s>◇</s>
                 </i>
                 <div id="area">
                     <ul>
                         <p></p>
-                        <li v-for="(item, index) in $store.getters.getRegions"
-                            :class="{active: index == $store.state.region}"
+                        <li v-for="(item, index) in getRegions"
+                            :class="{active: index == getRegionIndex}"
                             v-on:click="changeRegion(index)">
                             {{ item.name }}
                         </li>
@@ -183,25 +183,25 @@
             </div>
             <div id="header-user-block" class="r">
                 <ul>
-                    <li v-if="!$store.getters.isLogin"
+                    <li v-if="!isLogin"
                         v-on:click="openRegisterDialog()">
                         <a>注册</a>
                     </li>
-                    <li v-if="!$store.getters.isLogin"
+                    <li v-if="!isLogin"
                         v-on:click="openLoginDialog()">
                         <a>登录</a>
                     </li>
-                    <li v-if="$store.getters.isLogin">
-                        <router-link to="/orders">订单</router-link>
+                    <li v-if="isLogin">
+                        <router-link to="/order">订单</router-link>
                     </li>
-                    <li v-if="$store.getters.isLogin">
+                    <li v-if="isLogin">
                         <router-link to="/profile">个人中心</router-link>
                     </li>
-                    <li v-if="$store.getters.isLogin"><a href="#">购物车（0）</a></li>
+                    <li v-if="isLogin"><router-link to="/cart">购物车（{{ cartNum }}）</router-link></li>
                 </ul>
-                <div id="tel" v-if="$store.getters.isLogin">
-                    <span>{{ $store.getters.getPhone }}</span>&nbsp;
-                    <a href="#">退出</a>
+                <div id="tel" v-if="isLogin">
+                    <span>{{ getPhone }}</span>&nbsp;
+                    <a @click="logout">退出</a>
                 </div>
             </div>
             <lh-login ref="loginDialog"></lh-login>
@@ -211,7 +211,17 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex'
     export default {
+        computed: mapGetters({
+            isLogin: 'isLogin',
+            getPhone: 'getPhone',
+            getRegions: 'getRegions',
+            getRegion: 'getRegion',
+            getRegionIndex: 'getRegionIndex',
+            cartNum: 'cartNum',
+            needLogin: 'needLogin'
+        }),
         methods: {
             openLoginDialog() {
                 this.$refs.loginDialog.openDialog()
@@ -220,8 +230,14 @@
                 this.$refs.registerDialog.openDialog()
             },
             changeRegion(index) {
-                this.$store.commit("changeRegion", index)
+                this.$store.commit("CHANGE_REGION", index)
+            },
+            logout() {
+                this.$store.commit("USER_LOGOUT")
             }
+        },
+        watch: {
+            'needLogin': 'openLoginDialog'
         }
     }
 </script>

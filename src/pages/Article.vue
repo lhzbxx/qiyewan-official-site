@@ -158,22 +158,15 @@
             <div class="clearfix"></div>
             <div class="content">
                 <div class="con_left l">
-                    <div class="con_title">【玩转数据系列七】</div>
+                    <div class="con_title">{{ article.title }}</div>
                     <div class="con_note">
-                        <span class="con_author">张三</span>
-                        <span class="con_time">2016-9-4 11:32:20</span>
-                        <span class="con_browse">浏览：20</span>
-                        <span class="con_department">发表于：企业湾创业咨询</span>
+                        <span class="con_author">作者：{{ article.author }}</span>
+                        <span class="con_time">{{ article.create_at }}</span>
+                        <span class="con_browse">{{ article.viewers }}</span>
+                        <span class="con_department">发表于：{{ article.category }}</span>
                     </div>
-                    <div class="con_article">
-                        母亲是老师反而会对孩子的学习成绩造成不利影响？能上网的家庭，孩子通常能取得较好的成绩？影响孩子成绩的最
-                        是母亲的学历？本文通过机器挖掘算法和中学真实的学生数据为您揭秘影响中学生学业的关键因素有哪些。母亲是老师反而会对孩子的学习成绩造成不利影响？能上网的家庭，孩子通常能取得较好的成绩？影响孩子成绩的最
-                        是母亲的学历？本文通过机器挖掘算法和中学真实的学生数据为您揭秘影响中学生学业的关键因素有哪些。母亲是老师反而会对孩子的学习成绩造成不利影响？能上网的家庭，孩子通常能取得较好的成绩？影响孩子成绩的最
-                        是母亲的学历？本文通过机器挖掘算法和中学真实的学生数据为您揭秘影响中学生学业的关键因素有哪些。母亲是老师反而会对孩子的学习成绩造成不利影响？能上网的家庭，孩子通常能取得较好的成绩？影响孩子成绩的最
-                        是母亲的学历？本文通过机器挖掘算法和中学真实的学生数据为您揭秘影响中学生学业的关键因素有哪些。母亲是老师反而会对孩子的学习成绩造成不利影响？能上网的家庭，孩子通常能取得较好的成绩？影响孩子成绩的最
-                        是母亲的学历？本文通过机器挖掘算法和中学真实的学生数据为您揭秘影响中学生学业的关键因素有哪些。母亲是老师反而会对孩子的学习成绩造成不利影响？能上网的家庭，孩子通常能取得较好的成绩？影响孩子成绩的最
-                        是母亲的学历？本文通过机器挖掘算法和中学真实的学生数据为您揭秘影响中学生学业的关键因素有哪些。母亲是老师反而会对孩子的学习成绩造成不利影响？能上网的家庭，孩子通常能取得较好的成绩？影响孩子成绩的最
-                        是母亲的学历？本文通过机器挖掘算法和中学真实的学生数据为您揭秘影响中学生学业的关键因素有哪些。
+                    <div class="con_article" v-html="compiledMarkdown">
+                        {{ article.content }}
                     </div>
                     <div class="share">
                         <i>分享到：</i>
@@ -183,43 +176,26 @@
                         <span class="weibo"></span>
                     </div>
                     <div class="art_before">
-                        <span class="l">上一篇：</span>
-                        <span class="r">下一篇：</span>
+                        <span class="l" v-on:click="nav2article(article.pre.id)" style="cursor: pointer">上一篇：{{ article.pre.title }}</span>
+                        <span class="r" v-on:click="nav2article(article.next.id)">下一篇：{{ article.next.title }}</span>
                     </div>
-                    
                 </div>
                 <div class="con_right r">
                     <div class="Author">
                         <div class="avatar"><img src="" alt=""></div>
-                        <div class="name">张三</div>
-                        <div class="intru">阿里巴巴首席产品经理兼UED经理</div>
+                        <div class="name">{{ article.author }}</div>
+                        <div class="intru">企业湾分析师</div>
                         <ul>
-                            <li class="art_num">12篇文章</li>
-                            <li>阅读量23458</li>
+                            <li class="art_num" id="art_num">0篇文章</li>
+                            <li>阅读量{{ article.viewers }}</li>
                         </ul>
                     </div>
-                    <div class="recommend">
+                    <div class="recommend" v-for="news in recommendNewsList">
                         <div class="rec_tit">
-                            热文推荐
+                            {{ news.category }}
                         </div>
                         <ul style="list-style:square;">
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
-                        </ul>
-                    </div>
-                    <div class="recommend">
-                        <div class="rec_tit">
-                            热度排行
-                        </div>
-                        <ul style="list-style:decimal;">
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
-                            <li>总理开辟上海自由港究竟和我们关系有多是</li>
+                            <li v-for="article in news.articles" v-on:click="nav2article(article.id)">{{ article.title }}</li>
                         </ul>
                     </div>
                 </div>
@@ -231,14 +207,70 @@
 </template>
 
 <script>
+    import marked from 'marked'
+    import articleApi from '../api/article'
 
     export default {
         data() {
             return {
+                article: {
+                    title: "【玩转数据系列七】",
+                    author: "张三",
+                    create_at: "2016-9-4 11:32:20",
+                    viewers: 20,
+                    category: "创业咨询",
+                    content: "i am a ~~tast~~ **test**.",
+                    pre: {id: 2, title: "Python大法好"},
+                    next: {id: 3, title: "CPP大法保平安"},
+                },
+                recommendNewsList: [
+                    {
+                        category: "热文推荐",
+                        articles: [
+                            {id: 1, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                            {id: 2, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                            {id: 3, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                            {id: 4, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                            {id: 5, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                        ]
+                    },
+                    {
+                        category: "热度排行",
+                        articles: [
+                            {id: 1, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                            {id: 2, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                            {id: 3, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                            {id: 4, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                            {id: 5, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                        ]
+                    }
+                ]
             }
         },
-        props: {
+        created() {
+           var path = location.href.split('/');
+           articleApi.getArticleById(path[path.length - 1], response =>{
+               console.log(response.body);
+               articleApi.articlesCount(/*response.body.author*/'Cheyanne', response => {
+                   console.log(response.body.count);
+                   document.getElementById('art_num').innerHTML = response.body.count + '篇文章';
+               }, response => {
+                   console.log(response);
+               });
+           }, error => {
+               console.log(error)
+           });
+
+        },
+        computed: {
+            compiledMarkdown: function () {
+                return marked(this.article.content, { sanitize: true })
+            }
+        },
+        methods: {
+            nav2article: function(article_id){
+                location.href = '/#/article/' + article_id;
+            },
         }
     }
-
 </script>

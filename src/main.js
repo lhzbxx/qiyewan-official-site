@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import store from './store'
-
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 
@@ -57,45 +56,62 @@ Vue.component('lh-footer', Footer)
 Vue.component('lh-news', News)
 Vue.component('lh-loading', Loading)
 
+function requireAuth(to, from, next) {
+    if ( ! store.getters.isLogin) {
+        store.commit("REQUIRE_LOGIN")
+    } else {
+        next()
+    }
+    next()
+}
+
 const routes = [
-    {path: '/', component: Home},
+    {
+        path: '/',
+        name: 'home',
+        component: Home
+    },
     {
         path: '/order/:orderSerialId/product/:productSerialId/review',
         name: 'review',
-        beforeEnter: (to, from, next) => {
-            if (this.store.state.isLogin) {
-                next(false)
-            }
-        },
+        beforeEnter: requireAuth,
         component: Review
     },
     {
-        path: '/product/:category/list',
+        path: '/product/list/:category',
         component: ProductList
     },
     {
-        path: '/product/:serialId/detail',
+        path: '/product/detail/:serialId',
         name: 'product-detail',
         component: ProductDetail
     },
     {
         path: '/order',
+        name: 'order',
+        beforeEnter: requireAuth,
         component: OrderList
     },
     {
         path: '/cart',
+        name: 'cart',
+        beforeEnter: requireAuth,
         component: MyCart
     },
     {
         path: '/pay',
+        name: 'pay',
+        beforeEnter: requireAuth,
         component: Pay
     },
     {
         path: '/account',
+        beforeEnter: requireAuth,
         component: AccountProfile
     },
     {
         path: '/person',
+        beforeEnter: requireAuth,
         component: PersonalCenter
     },
     {
@@ -125,9 +141,10 @@ const router = new VueRouter({
     routes: routes
 })
 
+
 new Vue({
     router,
     store,
     el: '#app',
     render: h => h(App)
-}).$mount(App)
+})

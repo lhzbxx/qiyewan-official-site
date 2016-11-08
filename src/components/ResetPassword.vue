@@ -48,7 +48,7 @@
                 isVisible: false,
                 checked: false,
                 formStacked: {
-                    phone: this.$store.state.user.phone,
+                    phone: "",
                     captcha: "",
                     password: "",
                     password2: ""
@@ -58,6 +58,11 @@
         methods: {
             openDialog() {
                 this.$refs.dialog.open()
+            }
+        },
+        created() {
+            if (this.$store.state.user) {
+                this.formStacked.phone = this.$store.state.user.phone
             }
         }
     }

@@ -79,30 +79,36 @@
         text-align: center;
         border-radius: 5px;
     }
-    .el-tabs__item{
-        padding:0 25px;
-        border-top:2px solid transparent;
+
+    .el-tabs__item {
+        padding: 0 25px;
+        border-top: 2px solid transparent;
         box-sizing: content-box;
     }
-    .el-tabs__item.is-active{
-        border-top:2px solid rgb(32,160,255);
+
+    .el-tabs__item.is-active {
+        border-top: 2px solid rgb(32, 160, 255);
         position: relative;
     }
-    .el-tabs__item.is-active::before{
+
+    .el-tabs__item.is-active::before {
         position: absolute;
         content: '';
-        border:5px solid transparent;
-        border-top:5px solid rgb(32,160,255);
-        top:0;
-        left:50%;
-        transform: translate(-50%,0%);
+        border: 5px solid transparent;
+        border-top: 5px solid rgb(32, 160, 255);
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0%);
     }
-    .el-radio-button:not(:last-child){
-        margin-right:20px;
+
+    .el-radio-button:not(:last-child) {
+        margin-right: 20px;
     }
-    .el-radio-button__inner{
-        width:85px;
+
+    .el-radio-button__inner {
+        width: 85px;
     }
+
     .Process p {
         height: 30px;
     }
@@ -167,8 +173,8 @@
 
     .p_c {
         text-align: center;
-        color:#b1b1b1;
-        font-size:14px;
+        color: #b1b1b1;
+        font-size: 14px;
     }
 
     .internet {
@@ -235,26 +241,31 @@
     .inter_bg img {
         width: 101%;
     }
-    .internet ul li:hover{
+
+    .internet ul li:hover {
         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         transform: translate3d(0, -3px, 0);
     }
+
     .padd {
         padding: 15px;
         margin-top: 30px;
     }
 
-    .el-radio-button{
-        margin-right:20px;
+    .el-radio-button {
+        margin-right: 20px;
     }
-    .el-radio-button__inner{
+
+    .el-radio-button__inner {
         border-radius: 4px;
     }
-    .el-radio-button:first-child .el-radio-button__inner,.el-radio-button:last-child .el-radio-button__inner{
+
+    .el-radio-button:first-child .el-radio-button__inner, .el-radio-button:last-child .el-radio-button__inner {
         border-radius: 4px;
     }
-    .advan_img img{
-        width:100%;
+
+    .advan_img img {
+        width: 100%;
     }
 </style>
 <template>
@@ -312,13 +323,15 @@
                                     </el-select>
                                 </el-col>
                                 <el-col :span="5" style="margin-right: 20px">
-                                    <el-select v-model="form.regionCountryCode" :placeholder="form.countryName" disabled>
+                                    <el-select v-model="form.regionCountryCode" :placeholder="form.countryName"
+                                               disabled>
                                         <el-option label="" value=""></el-option>
                                     </el-select>
                                 </el-col>
                                 <el-col :span="5" style="margin-right: 20px">
                                     <el-select v-model="form.regionArea" placeholder="">
-                                        <el-option v-for="area in form.regionAreas" :label="area.name" :value="area.name"></el-option>
+                                        <el-option v-for="area in form.regionAreas" :label="area.name"
+                                                   :value="area.name"></el-option>
                                     </el-select>
                                 </el-col>
                             </el-row>
@@ -340,16 +353,19 @@
                     </el-form>
                     <el-button type="primary"
                                size="large"
+                               @click.native="directOrder"
                                style="width: 120px;
-                                 font-family:'Microsoft yahei';
-                                  margin-left: 10px;">
+                                      font-family:'Microsoft yahei';
+                                      margin-left: 10px;">
                         立即购买
                     </el-button>
                     <el-button size="large"
                                style="width: 120px;
-                                  margin-left: 10px;
-                                  font-family:'Microsoft yahei';">
-                        加入购物车
+                                      margin-left: 10px;
+                                      font-family:'Microsoft yahei';"
+                               :loading="isAdding"
+                               v-on:click="addToCart">
+                        {{ isAdding ? "加入中..." : "加入购物车" }}
                     </el-button>
                     <p style="font-size: 13px;
                           color: #aaa;
@@ -374,8 +390,8 @@
                             <div class="detail_bg">
                                 <div class="detail_pic">
                                     <div class="detail_tit">
-                                        <h3>{{ product.name }}</h3>
-                                        <p>{{ product.summary }}</p>
+                                        <h3>代办税务</h3>
+                                        <p>多数主管税务机关要求企业提供软件著作权和软件登记检测报告，才可享受增值税即征即退，最多可退增值税</p>
                                     </div>
                                     <h4>为什么要代办税务／服务内容（服务能帮助您做什么）</h4>
                                 </div>
@@ -386,11 +402,6 @@
                                             <p>让你知道什么人可以成为公司股东，参与股权分配。让你知道什么人可以成为公司股东，参与股权分配。</p>
                                         </li>
                                     </ul>
-                                </div>
-
-                                <div class="provide">
-                                    <div class="tit">您需要提供</div>
-                                    <div class="pro_pic"><img src="../assets/img/provide.png" alt=""></div>
                                 </div>
                                 <div class="Process">
                                     <p></p>
@@ -403,7 +414,13 @@
                                         <li>5 办理追踪 <span><img src="../assets/img/border1.png"></span></li>
                                     </ul>
                                     <div class="zhushi">注：由于地域、政策等因素不同，所需时间有差异</div>
+
                                 </div>
+                                <div class="provide">
+                                    <div class="tit">您需要提供</div>
+                                    <div class="pro_pic"><img src="../assets/img/provide.png" alt=""></div>
+                                </div>
+
                             </div>
                             <div class="get">
                                 <div class="tit">您将得到</div>
@@ -537,12 +554,12 @@
                 form: {
                     period: 3,
                     amount: 1,
-                    totalPrice:0,
-                    regionCityCode:'',
-                    regionCountryCode:'',
-                    regionArea:'',
-                    cityName:'',
-                    countryName:'',
+                    totalPrice: 0,
+                    regionCityCode: '',
+                    regionCountryCode: '',
+                    regionArea: '',
+                    cityName: '',
+                    countryName: '',
                 },
                 qa: [
                     {
@@ -561,13 +578,13 @@
                 loading: false,
                 error: null,
                 product: null,
-                regionAreas:[],
-                process:'rrrr'
+                isAdding: false,
+                regionAreas: [],
             }
         },
         computed: mapGetters({
             hotProducts: 'hotProducts',
-            regions:'regions'
+            regions: 'regions'
         }),
         created () {
             this.fetchData()
@@ -583,18 +600,57 @@
                 this.loading = true
                 productApi.getProductDetail(this.$route.params.serialId,
                         data => {
-                    this.product = data;
-                this.setRegion();
-            },
-                error => {
-                    this.error = error
-                }
-            )
-
+                            this.product = data;
+                            this.setRegion();
+                        },
+                        error => {
+                            this.error = error
+                        }
+                )
                 this.loading = false
             },
+            addToCart () {
+                if (!this.$store.getters.isLogin) {
+                    this.$store.commit("REQUIRE_LOGIN")
+                    return
+                }
+                this.isAdding = true
+                var cart = {
+                    amount: 1,
+                    serialId: this.$route.params.serialId,
+                    regionCode: this.$store.getters.getRegion.code,
+                    region: "XXXX"
+                }
+                this.$store.dispatch("addToCart", cart)
+                        .then(() => {
+                            this.$message({
+                                message: '成功加入购物车~~',
+                                type: 'success'
+                            });
+                            this.isAdding = false
+                        }, () => {
+                            this.$message.error('加入购物车失败...');
+                            this.isAdding = false
+                        })
+            },
+            directOrder () {
+                if (!this.$store.getters.isLogin) {
+                    this.$store.commit("REQUIRE_LOGIN")
+                    return
+                }
+                var order = {
+                    amount: 1,
+                    serialId: this.$route.params.serialId,
+                    regionCode: this.$store.getters.getRegion.code,
+                    region: "XXXX"
+                }
+                this.$store.dispatch("addToOrder", order)
+                        .then(() => {
+                            this.$router.push({name: "pay"})
+                        })
+            },
             setRegion () {
-                console.log(JSON.stringify(this.$route.params)+'---Liucheng='+this.process)
+                console.log(this.$route.params.name)
                 var currentNum = this.$route.params.serialId;
                 var currentCityCode = currentNum.substr(0, 2);
                 var currentCountryCode = currentNum.substr(2, 2);
@@ -602,7 +658,7 @@
                     var provence = this.regions[i];
                     if (provence.code == currentCityCode) {
                         this.form.cityName = provence.name;
-                        this.form.regionCityCode =  provence.code;
+                        this.form.regionCityCode = provence.code;
                         for (var j = 0; j < provence.cities.length; j++) {
                             var city = provence.cities[j];
                             if (city.code == currentCountryCode) {
@@ -614,7 +670,7 @@
                         }
                     }
                 }
-            },
+            }
         }
     }
 </script>
