@@ -1,4 +1,4 @@
-<style scoped xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<style>
     #introduce {
         height: 127px;
         width: 100%;
@@ -108,10 +108,12 @@
         padding-top: 12px;
         letter-spacing: 1px;
     }
-    div.show{
+
+    div.show {
         display: block;
     }
-    div.hide{
+
+    div.hide {
         display: none;
     }
 
@@ -303,6 +305,14 @@
         color: white;
     }
 
+    .main-btn a {
+        color: #0098db !important;
+    }
+
+    .main-btn a:hover, .main-btn:hover a {
+        color: #fff !important;
+    }
+
     .other-product {
         width: 50%;
         margin-top: 25px;
@@ -435,12 +445,15 @@
         border-left-color: #139cd7;
         z-index: 10;
     }
-    #timeline ul li:last-child.active::before{
-        display: none!important;
+
+    #timeline ul li:last-child.active::before {
+        display: none !important;
     }
-    #timeline ul li:last-child.active::after{
-        display: none!important;
+
+    #timeline ul li:last-child.active::after {
+        display: none !important;
     }
+
     #timeline ul li.active {
         color: #139cd7;
         border-color: #139cd7;
@@ -535,6 +548,14 @@
         overflow: hidden;
     }
 
+    #banner a {
+        color: #fff !important;
+    }
+
+    #banner a:hover, #banner button:hover a {
+        color: #139cd7 !important;
+    }
+
     .slide {
         transform: translate3d(0, 100%, 0);
         position: absolute;
@@ -545,6 +566,7 @@
         visibility: hidden;
         animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
     }
+
     .slide.active {
         visibility: visible;
         transform: translate3d(0, 0, 0);
@@ -707,6 +729,7 @@
             opacity: 1;
         }
     }
+
     .voice-control {
         width: 35px;
         height: 50px;
@@ -745,7 +768,7 @@
         position: absolute;
         left: 0;
         top: 0;
-        bottom:0;
+        bottom: 0;
         margin: auto 0;
         height: 280px;
         width: 473px;
@@ -753,35 +776,41 @@
         color: #e9e9e9;
         margin-left: 40px;
     }
-    .voice-right-img .summary h2{
+
+    .voice-right-img .summary h2 {
         margin-top: 30px;
         margin-bottom: 20px;
         overflow: hidden;
         font-weight: normal;
         line-height: 2em;
     }
-    .voice-right-img .summary h2:first-letter{
+
+    .voice-right-img .summary h2:first-letter {
         margin-left: 20px;
     }
-    .voice-right-img .summary p{
+
+    .voice-right-img .summary p {
         text-align: right;
         font-size: 15px;
         line-height: 25px;
     }
-    .voice-right-img .summary .name{
+
+    .voice-right-img .summary .name {
         font-weight: 800;
     }
 
     #voice-control-left {
         left: 0;
         padding-top: 10px;
-        padding-left:2px;
+        padding-left: 2px;
         font-size: 28px;
         color: #d5d5d5;
     }
-    #voice-control-left:hover, #voice-control-right:hover{
-        background-color:rgba(108,108,108,0.4);
+
+    #voice-control-left:hover, #voice-control-right:hover {
+        background-color: rgba(108, 108, 108, 0.4);
     }
+
     .voice-control-con {
         position: absolute;
         height: 300px;
@@ -793,7 +822,7 @@
     #voice-control-right {
         right: 0;
         padding-top: 10px;
-        padding-left:5px;
+        padding-left: 5px;
         font-size: 28px;
         color: #d5d5d5;
     }
@@ -812,10 +841,10 @@
         line-height: 50px;
         text-align: center;
         z-index: 5;
-        border: 1px solid rgb(225,225,225);
+        border: 1px solid rgb(225, 225, 225);
         border-bottom: 1px solid #139cd7;
         cursor: pointer;
-        background-color: rgb(248,248,248);
+        background-color: rgb(248, 248, 248);
         transition: all 0.3s ease-in-out;
     }
 
@@ -888,8 +917,8 @@
         <div id="banner">
             <div class="slide"
                  :class="{active: isBannerActive(index)}"
-                :style="item.bgColor"
-                 v-for="(item, index) in banners" >
+                 :style="item.bgColor"
+                 v-for="(item, index) in banners">
                 <div class="container" style="position: relative; height: 100%">
                     <div class="slide-left">
                         <h1>
@@ -897,7 +926,12 @@
                             {{ item.subTitle }}
                         </h1>
                         <p>{{ item.summary }}</p>
-                        <button>了解详情</button>
+                        <button>
+                            <router-link
+                                    :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
+                                了解详情
+                            </router-link>
+                        </button>
                     </div>
                     <div class="slide-right"
                          onmouseleave="this.style.transform='rotateX(0deg) rotateY(0deg)'"
@@ -927,12 +961,14 @@
                 <ul>
                     <router-link to="/product/detail">
                         <li v-for="item in introduces">
-                            <div class="l">
-                                <h5>{{ item.title }}</h5>
-                                <p>{{ item.summary }}</p>
-                            </div>
-                            <div class="r introduce_img"
-                                 :class="item.image"></div>
+                            <router-link
+                                    :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
+                                <div class="l">
+                                    <h5>{{ item.title }}</h5>
+                                    <p>{{ item.summary }}</p>
+                                </div>
+                                <div class="r introduce_img" :class="item.image"></div>
+                            </router-link>
                         </li>
                     </router-link>
                 </ul>
@@ -979,7 +1015,9 @@
                                         {{ hotProduct.main.summary }}
                                     </div>
                                     <button class="main-btn">
-                                        立即购买
+                                        <router-link :to="{ name: 'product-detail', params: { serialId: getRegion.code+hotProduct.main.serialId }}">
+                                            立即购买
+                                        </router-link>
                                     </button>
                                 </div>
                                 <div class="l other-product"
@@ -990,7 +1028,10 @@
                                     <div class="other-product-summary">
                                         {{ item.summary }}
                                     </div>
-                                    <a href="">立即购买</a>
+                                    <router-link
+                                            :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
+                                        立即购买
+                                    </router-link>
                                 </div>
                             </div>
                         </div>
@@ -1024,17 +1065,24 @@
                     </div>
                     <div class="timeline-pic-right">
                         <div class="l timeline-pic-one timeline-pic">
-                            <img :src="timelines[state].types[stateType].products.right.url">
+                            <router-link :to="{ name: 'product-detail', params: { serialId: getRegion.code+timelines[state].types[stateType].products.right.serialId }}">
+                                <img :src="timelines[state].types[stateType].products.right.url">
+                            </router-link>
                         </div>
-                        <div class="l timeline-pic-two timeline-pic"
-                             v-for="item in timelines[state].types[stateType].products.one">
-                            <img :src="item.url">
+                        <div class="l timeline-pic-two timeline-pic" v-for="item in timelines[state].types[stateType].products.one">
+                            <router-link :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
+                                <img :src="item.url">
+                            </router-link>
                         </div>
                         <div class="l timeline-pic-one timeline-pic">
-                            <img :src="timelines[state].types[stateType].products.rightBottom.url">
+                            <router-link :to="{ name: 'product-detail', params: { serialId: getRegion.code+timelines[state].types[stateType].products.rightBottom.serialId }}">
+                                <img :src="timelines[state].types[stateType].products.rightBottom.url">
+                            </router-link>
                         </div>
                         <div class="l timeline-pic-two timeline-pic">
-                            <img :src="timelines[state].types[stateType].products.bottomOne.url">
+                            <router-link :to="{ name: 'product-detail', params: { serialId: getRegion.code+timelines[state].types[stateType].products.bottomOne.serialId }}">
+                                <img :src="timelines[state].types[stateType].products.bottomOne.url">
+                            </router-link>
                         </div>
                     </div>
                 </div>
@@ -1064,8 +1112,10 @@
                 </div>
             </div>
             <div class="container voice-control-con">
-                <div id="voice-control-left" v-on:click="setVoiceBanner(voiceBanner-1)" class="voice-control el-icon-arrow-left"></div>
-                <div id="voice-control-right" v-on:click="setVoiceBanner(voiceBanner+1)" class="voice-control  el-icon-arrow-right"></div>
+                <div id="voice-control-left" v-on:click="setVoiceBanner(voiceBanner-1)"
+                     class="voice-control el-icon-arrow-left"></div>
+                <div id="voice-control-right" v-on:click="setVoiceBanner(voiceBanner+1)"
+                     class="voice-control  el-icon-arrow-right"></div>
             </div>
         </div>
         <div class="container">
@@ -1077,7 +1127,7 @@
                     {{ item.title }}
                 </li>
             </ul>
-            <div id="news" >
+            <div id="news">
                 <lh-news v-for="article in news[newsTab].articles" style="margin-right: 8px;"
                          :img="article.img"
                          :title="article.title"
@@ -1150,26 +1200,34 @@
     </div>
 </template>
 <script>
+    import {mapGetters} from 'vuex'
     export default {
+        computed: mapGetters({
+            getRegion: 'getRegion',
+        }),
         data () {
             return {
                 introduces: [
                     {
+                        serialId: "PS0001",
                         "title": "注册财税一条龙",
                         "summary": "助您专注核心业务",
                         "image": "introduce_img1"
                     },
                     {
+                        serialId: "PS0002",
                         "title": "发财宝",
                         "summary": "法律、财务保驾护航",
                         "image": "introduce_img2"
                     },
                     {
+                        serialId: "PS0003",
                         "title": "商标宝",
                         "summary": "助您提升企业形象",
                         "image": "introduce_img3"
                     },
                     {
+                        serialId: "PS0004",
                         "title": "人事宝",
                         "summary": "社保全程无忧",
                         "image": "introduce_img4"
@@ -1179,7 +1237,7 @@
                     {
                         title: "工商服务",
                         image: "http://ofw6tmkxn.bkt.clouddn.com/hot_1.png",
-                        activeImage:"http://ofw6tmkxn.bkt.clouddn.com/ser_1.png",
+                        activeImage: "http://ofw6tmkxn.bkt.clouddn.com/ser_1.png",
                         summary: "工商，就这么简单…",
                         first: [
                             "公司注册",
@@ -1191,23 +1249,28 @@
 
                         ],
                         main: {
+                            serialId: "IC0001",
                             title: "公司注册",
                             summary: "有限责任公司、分公司、合伙企业注册，三/五证合一营业执照全程无忧直通车",
                         },
                         other: [
                             {
+                                serialId: "IC0003",
                                 title: "1元注册+零申报记账",
                                 summary: "1年代账送1元公司注册"
                             },
                             {
+                                serialId: "IC0004",
                                 title: "公司名称变更",
                                 summary: "工商变更，章证照统一变更"
                             },
                             {
+                                serialId: "IC0005",
                                 title: "经营范围变更",
                                 summary: "工商变更，不包括税务变更"
                             },
                             {
+                                serialId: "IC0006",
                                 title: "法人代表变更",
                                 summary: "工商变更，证照变更"
                             }
@@ -1216,7 +1279,7 @@
                     {
                         title: "财税服务",
                         image: "http://ofw6tmkxn.bkt.clouddn.com/hot_2.png",
-                        activeImage:"http://ofw6tmkxn.bkt.clouddn.com/ser_2.png",
+                        activeImage: "http://ofw6tmkxn.bkt.clouddn.com/ser_2.png",
                         summary: "财务清晰，纳税放心",
                         first: [
                             "零申报代理记账",
@@ -1227,23 +1290,28 @@
                             "人力资源管理",
                         ],
                         main: {
+                            serialId: "FC0001",
                             title: "零申报代理记账",
                             summary: "专业会计提供税务、财务咨询，为您做账、报税。零申报(无经济业务发生，申报数据为零)",
                         },
                         other: [
                             {
+                                serialId: "FC0002",
                                 title: "小规模纳税人代理记账",
                                 summary: "免费财税咨询，做账、报税"
                             },
                             {
+                                serialId: "FC0003",
                                 title: "一般纳税人代理记账",
                                 summary: "免费财税咨询，做账、报税"
                             },
                             {
+                                serialId: "FC0006",
                                 title: "税务报道，税种认证",
                                 summary: "报税、核税，购买CA证书等"
                             },
                             {
+                                serialId: "FC0008",
                                 title: "一般纳税人认定",
                                 summary: "报税、核税，购买CA证书等"
                             }
@@ -1252,7 +1320,7 @@
                     {
                         title: "法律服务",
                         image: "http://ofw6tmkxn.bkt.clouddn.com/hot_3.png",
-                        activeImage:"http://ofw6tmkxn.bkt.clouddn.com/ser_3.png",
+                        activeImage: "http://ofw6tmkxn.bkt.clouddn.com/ser_3.png",
                         summary: "您的私人法律顾问",
                         first: [
                             "商标注册",
@@ -1263,23 +1331,28 @@
                             "公司章程"
                         ],
                         main: {
+                            serialId: "LD0013",
                             title: "商标注册",
                             summary: "专业律师查询意向商标预，提交商标申请建议书，专人全程办理。",
                         },
                         other: [
                             {
+                                serialId: "LD0002",
                                 title: "合同撰写与审查（定制）",
                                 summary: "专业律师撰写与审查合同"
                             },
                             {
+                                serialId: "LD0006",
                                 title: "法律咨询",
                                 summary: "专业律师，一对一咨询"
                             },
                             {
+                                serialId: "LD0004",
                                 title: "股东，合伙协议",
                                 summary: "专业律师撰写股东合伙协议"
                             },
                             {
+                                serialId: "LD0011",
                                 title: "实用新型专利申请",
                                 summary: "专业律师制定知识产权战略"
                             }
@@ -1287,8 +1360,8 @@
                     },
                     {
                         title: "人事服务",
-                        image: "http://ofw6tmkxn.bkt.clouddn.com/hot_4.png",
-                        activeImage:"http://ofw6tmkxn.bkt.clouddn.com/ser_4.png",
+                        image: "http://ofw6tmkxn.bkt.clouddn.com/hot_5.png",
+                        activeImage: "http://ofw6tmkxn.bkt.clouddn.com/ser_5.png",
                         summary: "创业不忘养老",
                         first: [
                             "委托代缴社保公积金服务",
@@ -1299,24 +1372,29 @@
                             "人力资源基础文档"
                         ],
                         main: {
+                            serialId: "HR0003",
                             title: "委托代缴社保公积金服务",
                             summary: "办理员工用退工，社保、公积金增加减少以及缴费基数变更(服务费：3人及以下98.8元/月;从第四人开始，每增加一人，服务费多增加18.8元/月)",
                         },
                         other: [
                             {
+                                serialId: "HR0001",
                                 title: "企业社保账户开户",
                                 summary: "办理企业社保开户许可"
                             },
                             {
+                                serialId: "HR0002",
                                 title: "企业公积金账户开户",
                                 summary: "办理企业公积金开户许可"
                             },
                             {
+                                serialId: "HR0004",
                                 title: "个人社保开户",
                                 summary: "办理个人社保开户许可"
                             },
                             {
-                                title: "个人社保开户",
+                                serialId: "HR0005",
+                                title: "个人社保公积金代缴",
                                 summary: "社保交纳、基数变更"
                             }
                         ]
@@ -1356,29 +1434,36 @@
                                 title: "创立公司",
                                 products: {
                                     left: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-1.png"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-1.png"
                                     },
                                     right: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-2.png"
+                                        serialId: "IC0002",
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-2.png"
                                     },
                                     one: [
                                         {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-3.png"
+                                            serialId: "IC0012",
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-3.png"
                                         },
                                         {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-4.png"
+                                            serialId: "HR0003",
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-4.png"
                                         },
                                         {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-5.png"
-                                        }],
+                                            serialId: "HR0002",
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-5.png"
+                                        }
+                                    ],
                                     rightBottom: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-6.png"
+                                        serialId: "IT0001",
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-6.png"
                                     },
                                     bottomOne: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-7.png"
+                                        serialId: "HR0001",
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-7.png"
                                     }
-
                                 }
+
                             },
                             {
                                 title: "财税服务",
@@ -1387,25 +1472,31 @@
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-1.png"
                                     },
                                     right: {
+                                        serialId: "FC0003",
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-2.png"
                                     },
                                     one: [
                                         {
+                                            serialId: "FC0008",
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-3.png"
                                         },
                                         {
+                                            serialId: "IT0004",
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-4.png"
                                         },
                                         {
+                                            serialId: "IT0005",
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-5.png"
-                                        }],
+                                        }
+                                    ],
                                     rightBottom: {
+                                        serialId: "IT0003",
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-6.png"
                                     },
                                     bottomOne: {
+                                        serialId: "IT0002",
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-7.png"
                                     }
-
                                 }
                             },
                             {
@@ -1415,24 +1506,31 @@
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-1.png"
                                     },
                                     right: {
+                                        serialId: "LD0010",
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-2.png"
                                     },
                                     one: [
                                         {
+                                            serialId: "LD0011",
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-3.png"
                                         },
                                         {
+                                            serialId: "LD0012",
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-4.png"
                                         },
                                         {
+                                            serialId: "LD0014",
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-5.png"
-                                        }], rightBottom: {
+                                        }
+                                    ],
+                                    rightBottom: {
+                                        serialId: "LD0002",
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-6.png"
                                     },
                                     bottomOne: {
+                                        serialId: "LD0015",
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-7.png"
                                     }
-
                                 }
                             }
                         ]
@@ -1444,51 +1542,66 @@
                                 title: "工商服务",
                                 products: {
                                     left: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-1.png"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-1.png"
                                     },
                                     right: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-2.png"
+                                        serialId: "IC0009",
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-2.png"
                                     },
                                     one: [
                                         {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-3.png"
+                                            serialId: "IC0004",
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-3.png"
                                         },
                                         {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-4.png"
+                                            serialId: "IC0005",
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-4.png"
                                         },
                                         {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-5.png"
-                                        }], rightBottom: {
+                                            serialId: "IC0006",
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-5.png"
+                                        }
+                                    ],
+                                    rightBottom: {
+                                        serialId: "FC0001",
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-6.png"
-                                    }, bottomOne: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-7.png"
+                                    },
+                                    bottomOne: {
+                                        serialId: "IC0010",
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-7.png"
                                     }
-
                                 }
                             },
                             {
                                 title: "财税法+",
                                 products: {
                                     left: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-1.png"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-1.png"
                                     },
                                     right: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-2.png"
+                                        serialId: "FC0004",
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-2.png"
                                     },
                                     one: [
                                         {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-3.png"
+                                            serialId: "FC0005",
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-3.png"
                                         },
                                         {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-4.png"
+                                            serialId: "FC0006",
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-4.png"
                                         },
                                         {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-5.png"
-                                        }], rightBottom: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-6.png"
-                                    },
-                                    bottomOne: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-7.png"
+                                            serialId: "FC0007",
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-5.png"
+                                        }
+                                    ],
+                                    rightBottom: {
+                                        serialId:"FC0001",
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-6.png"
+                                    }, bottomOne: {
+                                        serialId:"FC0010",
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-7.png"
                                     }
 
                                 }
@@ -1505,21 +1618,27 @@
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-1.png"
                                     },
                                     right: {
+                                        serialId: "LD0004",
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-2.png"
                                     },
                                     one: [
                                         {
+                                            serialId: "LD0005",
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-3.png"
                                         },
                                         {
+                                            serialId: "LD0003",
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-4.png"
                                         },
                                         {
+                                            serialId: "LD0001",
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-5.png"
                                         }
                                     ], rightBottom: {
+                                        serialId: "LD0006",
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-6.png"
                                     }, bottomOne: {
+                                        serialId: "LD0013",
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-7.png"
                                     }
 
@@ -1532,26 +1651,31 @@
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-1.png"
                                     },
                                     right: {
+                                        serialId: "FC0002",
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-2.png"
                                     },
                                     one: [
                                         {
+                                            serialId: "FC0009",
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-3.png"
                                         },
                                         {
+                                            serialId: "LD0002",
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-4.png"
                                         },
                                         {
+                                            serialId: "LD0009",
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-5.png"
                                         }
                                     ],
                                     rightBottom: {
+                                        serialId: "IT0003",
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-6.png"
                                     },
                                     bottomOne: {
+                                        serialId: "HR0006",
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-7.png"
                                     }
-
                                 }
                             }
                         ]
@@ -1563,31 +1687,39 @@
                                 title: "注销公司",
                                 products: {
                                     left: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-1.png"
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-1.png"
                                     },
                                     right: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-2.png"
+                                        serialId:"IC0013",
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-2.png"
                                     },
                                     one: [
                                         {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-3.png"
+                                            serialId:"LD0006",
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-3.png"
                                         },
                                         {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-4.png"
+                                            serialId:"IC0013",
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-4.png"
                                         },
                                         {
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-5.png"
-                                        }
-                                    ],
+                                            serialId:"IC0010",
+                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-5.png"
+                                        }],
                                     rightBottom: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-6.png"
+                                        serialId:"LD0002",
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-6.png"
                                     },
                                     bottomOne: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-7.png"
+                                        serialId:"IC0013",
+                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-7.png"
                                     }
+
                                 }
+
                             }
                         ]
+
                     }
                 ],
                 dialogVisible: false,
@@ -1598,49 +1730,54 @@
                 },
                 banners: [
                     {
-                        mainTitle: "公司注册",
-                        subTitle: "快人一步",
-                        summary: "创业园区、孵化基地专业对接",
+                        serialId: "IC0001",
+                        mainTitle: "公司服务",
+                        subTitle: "想你所想",
+                        summary: "让您满意是我们不变的服务追求",
                         imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-1-top.png",
                         imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-1-middle.png",
                         imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-1-bottom.png",
-                        bgColor:"background-color: #2fa7f5;"
+                        bgColor: "background-color: #2fa7f5;"
 
                     },
                     {
+                        serialId: "FC0001",
                         mainTitle: "代理记账",
                         subTitle: "只需98元",
                         summary: "免费财税咨询，作账报税无忧",
                         imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-2-top.png",
                         imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-2-middle.png",
                         imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-2-bottom.png",
-                        bgColor:"background-color: #2ca8dc;"
+                        bgColor: "background-color: #2ca8dc;"
                     },
                     {
+                        serialId: "LD0001",
                         mainTitle: "法律咨询",
                         subTitle: "全程陪同",
                         summary: "专业律师为企业保驾护航",
                         imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-middle.png",
                         imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-bottom.png",
                         imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-top.png",
-                        bgColor:"background-color: #0daef2;"
+                        bgColor: "background-color: #0daef2;"
                     },
                     {
+                        serialId: "HR0001",
                         mainTitle: "社保公积金缴纳",
                         subTitle: "",
                         summary: "缴纳社保公积金,养老无忧",
                         imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-bottom.png",
                         imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-middle.png",
                         imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-top.png",
-                        bgColor:"background-color: #0770cb;"
+                        bgColor: "background-color: #0770cb;"
                     }, {
+                        serialId: "IC0001",
                         mainTitle: "公司注册",
                         subTitle: "快人一步",
                         summary: "创业园区、孵化基地专业对接",
                         imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-top.png",
                         imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-bottom.png",
                         imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-middle.png",
-                        bgColor:"background-color: #2399f3;"
+                        bgColor: "background-color: #2399f3;"
                     },
                 ],
                 news: [
@@ -1651,7 +1788,7 @@
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/startup_01.jpg',
                                 title: '创业公司如何招聘？',
                                 summary: '在风风火火拿到融资以后，找人就成为了创业公司最大的事情。没有好的...',
-                                tags: ['人事','招聘'],
+                                tags: ['人事', '招聘'],
                                 date: '2016年8月29日',
                                 views: 236
                             },
@@ -1667,7 +1804,7 @@
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/startup_03.jpg',
                                 title: '公司对于老东家的知识产权的法律风险防范',
                                 summary: '我们在第一讲就提到，在创业的过程中，您首先考虑是否侵犯了老东家的知识...',
-                                tags: ['知识产权','法律'],
+                                tags: ['知识产权', '法律'],
                                 date: '2016年829日',
                                 views: 599
                             },
@@ -1691,12 +1828,12 @@
                     },
                     {
                         title: "工商干货",
-                        articles:[
+                        articles: [
                             {
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_01.jpg',
                                 title: '企业类型之股份公司',
                                 summary: '讲完了个人独资企业与合伙企业这些非公司制企业之后，我们现在来看看大家...',
-                                tags: ['工商','营业执照'],
+                                tags: ['工商', '营业执照'],
                                 date: '2016年9月12日',
                                 views: 289
                             },
@@ -1704,7 +1841,7 @@
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_02.jpg',
                                 title: '企业类型之个人独资企业！',
                                 summary: '怀揣着满满热情的创业者们,欢迎又来到了我们的财税微课堂啦,让我们继续挖掘...',
-                                tags: ['工商','营业执照'],
+                                tags: ['工商', '营业执照'],
                                 date: '2016年9月12日',
                                 views: 289
                             },
@@ -1712,7 +1849,7 @@
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_03.jpg',
                                 title: '注册资本1万亿 没钱也任性！',
                                 summary: '近两年设立公司的创业者都知道，现在开公司只需要在公司章程中写明...',
-                                tags: ['工商','营业执照'],
+                                tags: ['工商', '营业执照'],
                                 date: '2016年9月12日',
                                 views: 289
                             },
@@ -1720,7 +1857,7 @@
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_04.jpg',
                                 title: '企业名称',
                                 summary: '你说人生究竟什么最重要？听到这个问题，每个人第一反应一定是：“钱”。事实...',
-                                tags: ['工商','营业执照'],
+                                tags: ['工商', '营业执照'],
                                 date: '2016年9月12日',
                                 views: 289
                             },
@@ -1728,7 +1865,7 @@
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_5.jpg',
                                 title: '商标相关问答',
                                 summary: '哈喽，各位亲爱的创业小伙伴咱们又见面啦在上一期的财税微课堂中束进老师...',
-                                tags: ['工商','营业执照'],
+                                tags: ['工商', '营业执照'],
                                 date: '2016年9月12日',
                                 views: 289
                             }
@@ -1742,7 +1879,7 @@
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_01.jpg',
                                 title: '个人股东占用公司资金也要交个人所得税',
                                 summary: '许多初创公司往往由创业者自身持有100%的股权或者绝大部分股权，这...',
-                                tags: ['财税','税务'],
+                                tags: ['财税', '税务'],
                                 date: '2016年9月13日',
                                 views: 453
                             },
@@ -1750,7 +1887,7 @@
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_02.jpg',
                                 title: '采购商品你真的会比价吗？',
                                 summary: '谈到采购商品的比价问题，站在消费者个人的角度来看，真的是一个...',
-                                tags: ['财税','采购'],
+                                tags: ['财税', '采购'],
                                 date: '2016年9月15日',
                                 views: 259
                             },
@@ -1758,7 +1895,7 @@
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_03.jpg',
                                 title: '公司采购业务中的这些税收风险你知道吗？',
                                 summary: '一项采购交易中，通常由买方直接取得卖方开具的销售发票，并且直接向卖方...',
-                                tags: ['财税','采购','税务'],
+                                tags: ['财税', '采购', '税务'],
                                 date: '2016年9月16日',
                                 views: 459
                             },
@@ -1766,7 +1903,7 @@
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_04.jpg',
                                 title: '小规模纳税人 OR 一般纳税人？',
                                 summary: '最近遇到好几个准备设立公司的创业者问我这样一个问题：“我该选择...',
-                                tags: ['财税','税务'],
+                                tags: ['财税', '税务'],
                                 date: '2016年9月17日',
                                 views: 459
                             },
@@ -1774,7 +1911,7 @@
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_05.jpg',
                                 title: '只有错买，没有错卖！企业湾教您如何收购股权',
                                 summary: '商业交易是由卖方提供商品或服务，因此卖方通常比买方更加熟知所销售的...',
-                                tags: ['财税','股权'],
+                                tags: ['财税', '股权'],
                                 date: '2016年9月19日',
                                 views: 429
                             },
@@ -1782,12 +1919,12 @@
                     },
                     {
                         title: "法律干货",
-                        articles:[
+                        articles: [
                             {
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/law_01.jpg',
                                 title: '买卖合同中涉及的问题',
                                 summary: '买卖合同看似很简单，只是买家和卖家交易某样东西，一手交钱一手交货。但...',
-                                tags: ['法律','合同'],
+                                tags: ['法律', '合同'],
                                 date: '2016年9月21日',
                                 views: 359
                             },
@@ -1795,7 +1932,7 @@
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/law_02.jpg',
                                 title: '员工个人自行缴社保的书面承诺有效吗？ ',
                                 summary: '王某于2011年5月进入F公司设于宁波某商场的品牌专柜从事营业员工...',
-                                tags: ['法律','社保'],
+                                tags: ['法律', '社保'],
                                 date: '2016年9月22日',
                                 views: 389
                             },
@@ -1803,7 +1940,7 @@
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/law_03.jpg',
                                 title: '公司知识产权',
                                 summary: '上周我们创业科普中一直都是在讲公司的控制权，似乎公司只有勾心斗角...',
-                                tags: ['法律','知识产权'],
+                                tags: ['法律', '知识产权'],
                                 date: '2016年8月23日',
                                 views: 233
                             },
@@ -1819,7 +1956,7 @@
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/law_05.jpg',
                                 title: '拟定合同过程中的关注点（一）',
                                 summary: '通常来讲，合同的主体不需要关注，因为大多数情况下，合同...',
-                                tags: ['法律','合同'],
+                                tags: ['法律', '合同'],
                                 date: '2016年9月21日',
                                 views: 359
                             }
@@ -1828,7 +1965,7 @@
                     },
                     {
                         title: "人事干货",
-                        articles:[
+                        articles: [
                             {
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/hr_01.jpg',
                                 title: '作为公司老板，只有这20%工作是你需要亲自做的',
@@ -1872,48 +2009,48 @@
                         ]
                     }
                 ],
-                customerVoices:[
+                customerVoices: [
                     {
-                        headImg:"http://ofw6tmkxn.bkt.clouddn.com/customer1.png",
-                        content:"企业湾的增值服务特别适合像我们这样的创业型公司，服务专业，价格公道,适合创业公司在经费不宽裕的情况下把事情推行下去。我认为企业湾是一个一站式、超值，适合创业公司的合格的企业服务供应商。",
-                        company:"成都天添益网络科技有限公司",
-                        position:"COO",
-                        name:""
+                        headImg: "http://ofw6tmkxn.bkt.clouddn.com/customer1.png",
+                        content: "企业湾的增值服务特别适合像我们这样的创业型公司，服务专业，价格公道,适合创业公司在经费不宽裕的情况下把事情推行下去。我认为企业湾是一个一站式、超值，适合创业公司的合格的企业服务供应商。",
+                        company: "成都天添益网络科技有限公司",
+                        position: "COO",
+                        name: ""
                     },
                     {
-                        headImg:"http://ofw6tmkxn.bkt.clouddn.com/customer2.png",
-                        content:"平和温润、真诚无华为朴，知行合一、志坚质洁为正，正是这种相同的真挚的价值观让朴正教育咨询和企业湾相遇相知，并开始了旗下花田儿童教育项目的顺利筹建感谢企业湾专业细致的服务和支持，让我们不忘初心一起走下去。",
-                        company:"四川朴正教育咨询有限公司",
-                        position:"花田教育",
-                        name:""
+                        headImg: "http://ofw6tmkxn.bkt.clouddn.com/customer2.png",
+                        content: "平和温润、真诚无华为朴，知行合一、志坚质洁为正，正是这种相同的真挚的价值观让朴正教育咨询和企业湾相遇相知，并开始了旗下花田儿童教育项目的顺利筹建感谢企业湾专业细致的服务和支持，让我们不忘初心一起走下去。",
+                        company: "四川朴正教育咨询有限公司",
+                        position: "花田教育",
+                        name: ""
                     },
                     {
-                        headImg:"http://ofw6tmkxn.bkt.clouddn.com/customer3.png",
-                        content:"企业湾为我们提供人事、法律、财务等相当专业的服务，他们以专业的水准、负责的态度服务于客户，提供全方位的咨询与服务，使我们无后顾之忧。",
-                        company:"镇江市红包兔信息技术有限公司",
-                        position:"创始人兼CEO",
-                        name:""
+                        headImg: "http://ofw6tmkxn.bkt.clouddn.com/customer3_1.png",
+                        content: "企业湾为我们提供人事、法律、财务等相当专业的服务，他们以专业的水准、负责的态度服务于客户，提供全方位的咨询与服务，使我们无后顾之忧。",
+                        company: "镇江市红包兔信息技术有限公司",
+                        position: "创始人兼CEO",
+                        name: ""
                     },
                     {
-                        headImg:"http://ofw6tmkxn.bkt.clouddn.com/customer4.png",
-                        content:"企业湾为我们解决了初创企业在财务、法律方面资源短缺、缺乏行业经验的老大难问题，让我们在创业的路上省了不少心。用优质贴心专业的服务，为中小型企业的创业之路保驾护航。",
-                        company:"上海恩陶投资管理有限公司",
-                        position:"公司负责人",
-                        name:""
+                        headImg: "http://ofw6tmkxn.bkt.clouddn.com/customer4.png",
+                        content: "企业湾为我们解决了初创企业在财务、法律方面资源短缺、缺乏行业经验的老大难问题，让我们在创业的路上省了不少心。用优质贴心专业的服务，为中小型企业的创业之路保驾护航。",
+                        company: "上海恩陶投资管理有限公司",
+                        position: "公司负责人",
+                        name: ""
                     },
                     {
-                        headImg:"http://ofw6tmkxn.bkt.clouddn.com/customer5.png",
-                        content:"我们不仅是企业湾的客户，也是企业湾的战略合作伙伴。企业湾人诚恳的态度、专业的服务让我感动，作为创业企业，我们共同进步。",
-                        company:"上海云简软件科技有限公司",
-                        position:"创始人兼CEO",
-                        name:""
+                        headImg: "http://ofw6tmkxn.bkt.clouddn.com/customer5.png",
+                        content: "我们不仅是企业湾的客户，也是企业湾的战略合作伙伴。企业湾人诚恳的态度、专业的服务让我感动，作为创业企业，我们共同进步。",
+                        company: "上海云简软件科技有限公司",
+                        position: "创始人兼CEO",
+                        name: ""
                     },
                     {
-                        headImg:"http://ofw6tmkxn.bkt.clouddn.com/customer6.png",
-                        content:"响应迅速，帮我们节省了很多的时间，从工商，到人事、法律在企业湾一站式解决了，省时省事，是我们有更多的精力专业住本质工作。",
-                        company:"南京贝贝帮教育咨询有限公司",
-                        position:"创始人兼CEO",
-                        name:""
+                        headImg: "http://ofw6tmkxn.bkt.clouddn.com/customer6_1.png",
+                        content: "响应迅速，帮我们节省了很多的时间，从工商，到人事、法律在企业湾一站式解决了，省时省事，是我们有更多的精力专业住本质工作。",
+                        company: "南京贝贝帮教育咨询有限公司",
+                        position: "创始人兼CEO",
+                        name: ""
                     },
 
                 ],
@@ -1923,8 +2060,8 @@
                 state: 0,
                 stateType: 0,
                 newsTab: 0,
-                voiceBanner:0,
-                hotActive:3,
+                voiceBanner: 0,
+                hotActive: 3,
             }
         },
         methods: {
@@ -1946,8 +2083,8 @@
                 return this.hotActive == index;
             },
             setVoiceBanner(index){
-                if(index < 0) index = 5;
-                if(index > 5) index = 0;
+                if (index < 0) index = 5;
+                if (index > 5) index = 0;
                 this.voiceBanner = index;
             },
             isVoiceBannerActive(index) {
