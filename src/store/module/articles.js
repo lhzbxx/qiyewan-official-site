@@ -9,6 +9,11 @@ import articleApi from '../../api/article'
 import * as types from '../mutation-types'
 
 const mutations = {
+    [types.GET_NEWS](state, cname){
+        console.log(state);
+        console.log(cname);
+        articleApi.getArticlesByCname();
+    }
 }
 
 export default {

@@ -55,7 +55,7 @@
         background: url("../assets/img/about_ban.jpg") no-repeat;
         -webkit-background-size: 100%;
         background-size: 100%;
-        height: 265px;
+        height: 311px;
         padding: 45px 0 15px 35px;
     }
 
@@ -75,7 +75,7 @@
     .about_intru p {
         width: 615px;
         padding-left: 20px;
-        margin-top: 30px;
+        margin-top: 16px;
         font-size: 16px;
         color: #595959;
         font-family: "Microsoft YaHei";
@@ -155,11 +155,11 @@
 
     .contact_con ul li {
         float: left;
-        width: 448px;
+        width: 480px;
         padding: 15px;
         border: 1px solid #e7e7e7;
         margin-top: 25px;
-        height: 180px;
+        height: 223px;
     }
 
     .contact_con ul li h5 {
@@ -176,13 +176,14 @@
         font-family: "Microsoft YaHei";
         letter-spacing: 1px;
         margin-bottom: 15px;
+        line-height: 27px;
     }
 
     .contact_con ul :first-child p {
         font-size: 16px;
         color: #595959;
         font-family: "Microsoft YaHei";
-        letter-spacing: 2px;
+        letter-spacing: 1px;
         line-height: 1.7em;
     }
 
@@ -194,13 +195,14 @@
         line-height: 2.4em;
     }
 
-    .contact_con ul li p span {
+    .contact_con ul li p .time {
         margin-left: 20px;
     }
 
     .li_ {
         margin-right: 20px;
     }
+
 
     /*联系我们结束*/
     /*索取发票开始*/
@@ -381,7 +383,7 @@
                 <div class="dream">
                     <h3 class="about_tit">企业湾展望</h3>
                     <div class="about_tit_b1"></div>
-                    <div class="advan_img"><img src="../assets/img/about_dream.jpg"></div>
+                    <div class="advan_img"><img src="../assets/img/about_dream.png"></div>
                 </div>
             </div>
             <!--联系我们开始   -->
