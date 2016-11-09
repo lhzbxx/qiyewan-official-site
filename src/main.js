@@ -139,7 +139,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-    mode: 'history',
+    mode: window.global_config.router_mode,
     routes: routes
 })
 

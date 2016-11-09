@@ -1,5 +1,7 @@
 window.global_config = {
-    remote_url: 'http://127.0.0.1:8090'
+    mode: 'dev',
+    remote_url: 'http://127.0.0.1:8081',
+    router_mode: 'hash'
 }
 
 require('./main.js');

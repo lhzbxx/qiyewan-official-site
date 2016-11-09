@@ -6,6 +6,7 @@
  */
 
 import * as types from '../mutation-types'
+import data from '../../api/data'
 
 const state = {
     region: 1,
@@ -13,8 +14,15 @@ const state = {
 }
 
 const mutations = {
-    [types.CHANGE_REGION] (state, regionCode) {
-        state.region = regionCode
+    [types.CHANGE_REGION] (state, regionIndex) {
+        if (!Number.isInteger(regionIndex)) {
+            for (let i of data.regions) {
+                if (i.code == regionIndex)
+                    state.region = data.regions.indexOf(i)
+            }
+        } else {
+            state.region = regionIndex
+        }
     },
     [types.REQUIRE_LOGIN] (state) {
         state.needLogin += 1

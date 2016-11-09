@@ -149,7 +149,7 @@
                    style="border-radius: 3px;
                           margin-bottom: 12px;
                           float: right;">
-            {{ isOrdering ? "支付中" : "立即支付" }}
+            {{ isOrdering ? "跳转中..." : "立即支付" }}
         </el-button>
         <br>
         <br>
@@ -195,7 +195,6 @@
                         this.payments[this.payment].code).then(
                         order => {
                             window.open(order.payUrl, "_self")
-                            vm.isOrdering = false
                         },
                         error => {
                             console.log(error)

@@ -6,6 +6,19 @@ Vue.use(VueResource)
 Vue.http.options.root = window.global_config.remote_url;
 
 export default {
+    getRegion (cb) {
+        if (window.global_config.mode == "dev") {
+            cb("SHSH")
+        } else {
+            Vue.http.get("region").then(
+                (response) => {
+                    cb(response.body)
+                },
+                () => {}
+            )
+        }
+    },
+
     login (phone, password, cb, errorCb) {
         Vue.http.get("auth?phone=" + phone + "&password=" + password).then(
             (response) => {

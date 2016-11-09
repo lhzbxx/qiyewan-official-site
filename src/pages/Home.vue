@@ -847,12 +847,15 @@
         background-color: rgb(248, 248, 248);
         transition: all 0.3s ease-in-out;
     }
-    .news-tab a{
+
+    .news-tab a {
         color: #444;
     }
-    .news-tab.active a{
+
+    .news-tab.active a {
         color: #0da3e5 !important;
     }
+
     .news-tab.active {
         z-index: 10;
         border: 1px solid #139cd7;
@@ -1213,6 +1216,7 @@
 </template>
 <script>
     import {mapGetters} from 'vuex'
+    import authApi from '../api/auth'
     export default {
         computed: mapGetters({
             getRegion: 'getRegion',
@@ -2133,6 +2137,12 @@
             isNewsTab(index) {
                 return this.newsTab == index;
             }
+        },
+        created() {
+            let vm = this
+            authApi.getRegion(function(region) {
+                vm.$store.commit("CHANGE_REGION", region)
+            })
         }
     }
 </script>
