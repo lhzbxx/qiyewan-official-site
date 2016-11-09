@@ -57,7 +57,9 @@
         cursor: pointer;
         height: 107px;
         width: 278px;
-        transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
     }
 
     #introduce ul li:hover {
@@ -66,7 +68,9 @@
 
     #introduce ul li:hover h5 {
         color: #0098db;
-        transition: color 0.3s ease-in-out;
+        -moz-transition: color 0.3s ease-in-out;
+        -webkit-transition: color 0.3s ease-in-out;
+        -o-transition: color 0.3s ease-in-out;
     }
 
     #introduce ul :last-child {
@@ -79,7 +83,9 @@
         font-weight: normal;
         margin-top: 7px;
         letter-spacing: 2px;
-        transition: color 0.3s ease-in-out;
+        -moz-transition: color 0.3s ease-in-out;
+        -webkit-transition: color 0.3s ease-in-out;
+        -o-transition: color 0.3s ease-in-out;
     }
 
     #introduce p {
@@ -130,7 +136,9 @@
         position: relative;
         z-index: 10;
         overflow: hidden;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .hot-product.active {
@@ -168,13 +176,17 @@
         width: 100%;
         z-index: 3;
         opacity: 1;
-        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+        -moz-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+        -webkit-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+        -o-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
     }
 
     .hot-product.active .content-first {
         z-index: 2;
         opacity: 0;
-        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+        -moz-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+        -webkit-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+        -o-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0s;
     }
 
     .content-second {
@@ -185,13 +197,17 @@
         background-color: #fff;
         height: 410px;
         padding-top: 15px;
-        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+        -moz-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+        -webkit-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+        -o-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0s;
     }
 
     .hot-product.active .content-second {
         z-index: 3;
         opacity: 1;
-        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+        -moz-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+        -webkit-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+        -o-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
     }
 
     .content-info {
@@ -204,7 +220,9 @@
         padding-top: 20px;
         text-align: center;
         position: absolute;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .hot-product.active .content-info {
@@ -227,7 +245,9 @@
         font-weight: bold;
         padding-top: 10px;
         padding-bottom: 6px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .hot-product.active .classification-title {
@@ -238,7 +258,9 @@
     .classification-summary {
         font-size: 12px;
         color: #9a9fa3;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .hot-product.active .classification-summary {
@@ -253,7 +275,9 @@
         position: relative;
         top: 159px;
         z-index: 3;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .hot-product.active .content-split-line {
@@ -297,7 +321,9 @@
         border: 1px solid rgb(34, 166, 224);
         color: #0098db;
         cursor: pointer;
-        transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        -moz-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        -webkit-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        -o-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
     }
 
     .main-btn:hover {
@@ -361,7 +387,9 @@
     .tool:hover .tool-underline {
         width: 100%;
         opacity: 1;
-        transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
     }
 
     .tool-underline {
@@ -369,7 +397,9 @@
         width: 0;
         opacity: 0;
         border-top: 3px solid #0098db;
-        transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
     }
 
     .tool:hover .tool-img-mask {
@@ -387,7 +417,9 @@
         border-radius: 10px;
         background-color: #0098db;
         opacity: 0;
-        transition: all 1s;
+        -moz-transition: all 1s;
+        -webkit-transition: all 1s;
+        -o-transition: all 1s;
     }
 
     .tool-img-mask img {
@@ -422,7 +454,9 @@
         font-size: 20px;
         position: relative;
         cursor: pointer;
-        transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
         margin-left: -1px;
     }
 
@@ -488,7 +522,9 @@
         line-height: 36px;
         text-align: center;
         cursor: pointer;
-        transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
     }
 
     .timeline-products span:hover {
@@ -515,7 +551,9 @@
     .timeline-pic img {
         width: 100%;
         height: 100%;
-        transition: all .2s linear;
+        -moz-transition: all .2s linear;
+        -webkit-transition: all .2s linear;
+        -o-transition: all .2s linear;
         cursor: pointer;
     }
 
@@ -564,12 +602,27 @@
         overflow: hidden;
         background: transparent;
         visibility: hidden;
-        animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        -moz-animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        -o-animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        -webkit-animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        -moz-animationation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        -o-animationation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        -webkit-animationation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        -moz-animationnimation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        -o-animationnimation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        -webkit-animationnimation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        -moz-animationion: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        -o-animationion: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        -webkit-animationion: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+
     }
 
     .slide.active {
         visibility: visible;
         transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
     }
 
     .slide .slide-left {
@@ -582,7 +635,9 @@
     }
 
     .slide.active .slide-left {
-        animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        -moz-animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        -o-animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        -webkit-animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
     }
 
     .slide .slide-right {
@@ -590,7 +645,9 @@
         height: 100%;
         position: absolute;
         right: 0;
-        transition: all 0.5s ease-out;
+        -moz-transition: all 0.5s ease-out;
+        -webkit-transition: all 0.5s ease-out;
+        -o-transition: all 0.5s ease-out;
         transform-style: preserve-3d;
     }
 
@@ -611,10 +668,32 @@
     }
 
     .slide.active img {
-        animation: re-banner-slide-80 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        -moz-animation: re-banner-slide-80 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        -o-animation: re-banner-slide-80 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        -webkit-animation: re-banner-slide-80 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
     }
 
-    @keyframes re-banner-slide-20 {
+    @-o-keyframes re-banner-slide-20 {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, 20px, 0);
+        }
+        100% {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+    @-webkit-keyframes re-banner-slide-20 {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, 20px, 0);
+        }
+        100% {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+    @-moz-keyframes re-banner-slide-20 {
         0% {
             opacity: 0;
             transform: translate3d(0, 20px, 0);
@@ -625,7 +704,27 @@
         }
     }
 
-    @keyframes re-banner-slide-80 {
+    @-moz-keyframes re-banner-slide-80 {
+        0% {
+            opacity: 0;
+            transform: translate3d(-50%, -40%, 0);
+        }
+        100% {
+            opacity: 1;
+            transform: translate3d(-50%, -50%, 0);
+        }
+    }
+    @-webkit-keyframes re-banner-slide-80 {
+        0% {
+            opacity: 0;
+            transform: translate3d(-50%, -40%, 0);
+        }
+        100% {
+            opacity: 1;
+            transform: translate3d(-50%, -50%, 0);
+        }
+    }
+    @-o-keyframes re-banner-slide-80 {
         0% {
             opacity: 0;
             transform: translate3d(-50%, -40%, 0);
@@ -651,7 +750,9 @@
         margin-top: 30px;
         cursor: pointer;
         outline: none;
-        transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
     }
 
     #banner button:hover {
@@ -691,7 +792,9 @@
         height: 4px;
         padding: 10px 3px;
         cursor: pointer;
-        transition: all 0.8s ease-out;
+        -moz-transition: all 0.8s ease-out;
+        -webkit-transition: all 0.8s ease-out;
+        -o-transition: all 0.8s ease-out;
         background-clip: content-box;
         box-sizing: content-box;
     }
@@ -706,7 +809,7 @@
         width: 100%;
         height: 400px;
         margin-bottom: 20px;
-        background: url("http://ofw6tmkxn.bkt.clouddn.com/customer-voice-background.png") no-repeat;
+        background: url("http://ofw6tmkxn.bkt.clouddn.com/voice-bg.png") no-repeat;
         background-size: 171%;
         position: relative;
     }
@@ -715,10 +818,34 @@
         width: 100%;
         height: 400px;
         display: none;
-        animation: fadeIn 0.5s;
+        -moz-animation: fadeIn 0.5s;
+        -o-animation: fadeIn 0.5s;
+        -webkit-animation: fadeIn 0.5s;
     }
 
     @-webkit-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: .3;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @-moz-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: .3;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @-o-keyframes fadeIn {
         0% {
             opacity: 0;
         }
@@ -845,7 +972,9 @@
         border-bottom: 1px solid #139cd7;
         cursor: pointer;
         background-color: rgb(248, 248, 248);
-        transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
     }
 
     .news-tab a {
@@ -1138,7 +1267,8 @@
                     v-for="(item, index) in news"
                     :class="{active: isNewsTab(index)}"
                     v-on:mouseover="setNewsTab(index),newsTab=index">
-                    <router-link to="/news">{{ item.title }}</router-link>
+                    {{ item.title }}
+                    <!--<router-link to="/news"></router-link>-->
                 </li>
             </ul>
             <div id="news">
@@ -1179,7 +1309,7 @@
             </div>
         </div>
         <div class="promise">
-            <div class="pro_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/about-us-banner.png"></div>
+            <div class="pro_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/about-us-banner1.png"></div>
             <ul>
                 <li>
                     <div class="pro_l l"><img src="../assets/img/pro_1.png"></div>
@@ -1757,6 +1887,16 @@
 
                     },
                     {
+                        serialId: "IC0001",
+                        mainTitle: "公司注册",
+                        subTitle: "快人一步",
+                        summary: "创业园区、孵化基地专业对接",
+                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-top-v1.png",
+                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-middle-v1.png",
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-bottom-v1.png",
+                        bgColor: "background-color: #2399f3;"
+                    },
+                    {
                         serialId: "FC0001",
                         mainTitle: "代理记账",
                         subTitle: "只需98元",
@@ -1778,22 +1918,13 @@
                     },
                     {
                         serialId: "HR0001",
-                        mainTitle: "社保公积金缴纳",
+                        mainTitle: "社保公积金",
                         subTitle: "",
                         summary: "缴纳社保公积金,养老无忧",
                         imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-bottom.png",
                         imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-middle.png",
                         imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-top.png",
                         bgColor: "background-color: #0770cb;"
-                    }, {
-                        serialId: "IC0001",
-                        mainTitle: "公司注册",
-                        subTitle: "快人一步",
-                        summary: "创业园区、孵化基地专业对接",
-                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-top.png",
-                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-middle.png",
-                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-bottom.png",
-                        bgColor: "background-color: #2399f3;"
                     },
                 ],
                 news: [
@@ -1889,9 +2020,9 @@
                             {
                                 articleId: "10",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_5.jpg',
-                                title: '商标相关问答',
-                                summary: '哈喽，各位亲爱的创业小伙伴咱们又见面啦在上一期的财税微课堂中束进老师...',
-                                tags: ['工商', '营业执照'],
+                                title: '税率宝典——终于抓住你这个磨人的小妖精！',
+                                summary: '财务们看过来！营改增后，增值税税率档次增加，大家是否为记不住税率发愁呢。不要担心，一财君送上“税率小宝典”，轻轻松...',
+                                tags: ['工商'],
                                 date: '2016年9月12日',
                                 views: 289
                             }
@@ -1952,10 +2083,10 @@
                         title: "法律干货",
                         articles: [
                             {
-                                articleId: "16",
+                                articleId: "17",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/law_01.jpg',
-                                title: '买卖合同中涉及的问题',
-                                summary: '买卖合同看似很简单，只是买家和卖家交易某样东西，一手交钱一手交货。但...',
+                                title: '合伙人股东之间的协议',
+                                summary: '今天我们重点讨论第一个问题：合伙人之间的股权协议需要注意什么。...',
                                 tags: ['法律', '合同'],
                                 date: '2016年9月21日',
                                 views: 359

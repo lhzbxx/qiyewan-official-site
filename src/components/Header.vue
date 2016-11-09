@@ -33,7 +33,7 @@
 
     .show {
         position: absolute;
-        width: 625px;
+        width: 700px;
         border: 1px solid #aaa;
         background-color: #FFF;
         margin-left: 36px;
@@ -66,11 +66,13 @@
     }
 
     .registration {
+        height: 34px;
+        line-height: 34px;
         text-align: center;
         font-size: 14px;
         font-weight: normal;
         color: #626262;
-        margin: 10px 0;
+        margin: 5px 0;
     }
 
     .registration:hover {
@@ -81,9 +83,9 @@
     .nav-show-content span {
         text-align: center;
         font-size: 12px;
-        width: 180px;
-        height: 24px;
-        line-height: 24px;
+        width: 200px;
+        height: 34px;
+        line-height: 34px;
         display: block;
         float: left;
         margin-bottom: 7px;
