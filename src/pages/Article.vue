@@ -115,6 +115,9 @@
     height:25px;
     display: inline-block;
 }
+.hide{
+    display: none;
+}
 .qq{
     background: url("../assets/img/share.png") no-repeat;
     background-position: -5px 0;
@@ -161,7 +164,7 @@
                     <div class="con_title">{{ article.title }}</div>
                     <div class="con_note">
                         <span class="con_author">作者：{{ article.author }}</span>
-                        <span class="con_time">{{ article.create_at }}</span>
+                        <span class="con_time">{{ getLocalTime(article.createAt) }}</span>
                         <span class="con_browse">{{ article.viewers }}</span>
                         <span class="con_department">发表于：{{ article.category }}</span>
                     </div>
@@ -250,6 +253,7 @@
         created() {
            var path = location.href.split('/');
            articleApi.getArticleById(path[path.length - 1], response =>{
+               this.article = response.body;
                console.log(response.body);
                articleApi.articlesCount(/*response.body.author*/'Cheyanne', response => {
                    console.log(response.body.count);
@@ -271,6 +275,9 @@
             nav2article: function(article_id){
                 location.href = '/#/article/' + article_id;
             },
+            getLocalTime:function(nS) {
+                return new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');
+            }
         }
     }
 </script>
