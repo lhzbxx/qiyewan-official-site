@@ -20,8 +20,16 @@ const mutations = {
         state.info.page = carts.totalPages
         localStorage.setItem("cartInfo", JSON.stringify(state.info))
     },
+    [types.ADD_TO_ORDER] (state, cartsNum) {
+        state.info.total -= cartsNum
+        localStorage.setItem("cartInfo", JSON.stringify(state.info))
+    },
     [types.ADD_TO_CART] (state) {
         state.info.total += 1
+        localStorage.setItem("cartInfo", JSON.stringify(state.info))
+    },
+    [types.REMOVE_CART] (state) {
+        state.info.total -= 1
         localStorage.setItem("cartInfo", JSON.stringify(state.info))
     },
     [types.REMOVE_CART] (state) {

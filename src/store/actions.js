@@ -35,6 +35,20 @@ export const userLogin = ({commit}, {phone, password}) => {
     })
 }
 
+export const requestCaptcha = ({commit}, phone) => {
+    return new Promise((resolve, reject) => {
+        authApi.requestCaptcha(phone,
+            token => {
+                resolve()
+            },
+            error => {
+                console.log(error)
+                reject(error)
+            }
+        )
+    })
+}
+
 export const userRegister = ({commit}, {phone, password, captcha}) => {
     return new Promise((resolve, reject) => {
         authApi.register(phone, password, captcha,
@@ -71,9 +85,9 @@ export const getCarts = ({commit, state}, page) => {
 export const addToCart = ({commit, state}, cart) => {
     return new Promise((resolve, reject) => {
         cartApi.addCart(state.auth.user.token, cart,
-            response => {
+            data => {
                 commit(types.ADD_TO_CART)
-                resolve(cart)
+                resolve(data)
             },
             error => {
                 console.log(error)
@@ -83,12 +97,12 @@ export const addToCart = ({commit, state}, cart) => {
     })
 }
 
-export const removeCart = ({commit, state}, cart) => {
+export const removeCart = ({commit, state}, cartId) => {
     return new Promise((resolve, reject) => {
-        cartApi.removeCart(state.auth.user.token, cart,
+        cartApi.removeCart(state.auth.user.token, cartId,
             response => {
-                commit(types.REMOVE_CART, cart)
-                resolve(cart)
+                commit(types.REMOVE_CART)
+                resolve(response)
             },
             error => {
                 console.log(error)
@@ -101,8 +115,7 @@ export const removeCart = ({commit, state}, cart) => {
 export const updateCart = ({commit, state}, cart) => {
     return new Promise((resolve, reject) => {
         cartApi.updateCart(state.auth.user.token, cart,
-            response => {
-                commit(types.REMOVE_CART, cart)
+            cart => {
                 resolve(cart)
             },
             error => {
@@ -132,7 +145,7 @@ export const addToOrder = ({commit, state}, carts, payment) => {
     return new Promise((resolve, reject) => {
         orderApi.addOrder(state.auth.user.token, carts, payment,
             order => {
-                commit(types.ADD_TO_ORDER)
+                commit(types.ADD_TO_ORDER, carts.length)
                 resolve(order)
             },
             error => {
@@ -148,7 +161,7 @@ export const cancelOrder = ({commit, state}, serialId) => {
         orderApi.removeOrder(state.auth.user.token, serialId,
             response => {
                 commit(types.REMOVE_ORDER, serialId)
-                resolve(serialId)
+                resolve(response)
             },
             error => {
                 console.log(error)

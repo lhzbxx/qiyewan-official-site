@@ -2,13 +2,14 @@
     <div>
         <div class="container">
             <el-breadcrumb separator=">" style="padding: 10px 0; border-bottom: 1px solid #eee">
-                <el-breadcrumb-item @click.native="backToHome()">首页</el-breadcrumb-item>
+                <el-breadcrumb-item><router-link to="/">首页</router-link></el-breadcrumb-item>
                 <el-breadcrumb-item>购物车</el-breadcrumb-item>
             </el-breadcrumb>
             <br>
             <lh-loading v-if="isLoading"></lh-loading>
             <div v-if="!isLoading">
-                <lh-cart :carts="data" :page="page"></lh-cart>
+                <lh-cart :carts="data"
+                         :page="page"></lh-cart>
                 <el-pagination
                         small
                         layout="prev, pager, next"
@@ -55,9 +56,6 @@
                             vm.isLoading = false
                         }
                 )
-            },
-            backToHome() {
-                this.$router.push({name: 'home'})
             }
         }
     }

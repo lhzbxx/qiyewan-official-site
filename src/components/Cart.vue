@@ -3,6 +3,8 @@
         <el-table
                 :data="carts"
                 style="width: 100%"
+                @cell-mouse-enter="handleCellEnter"
+                @cell-mouse-leave="handleCellLeave"
                 @selection-change="handleMultipleSelectionChange">
             <el-table-column
                     type="selection"
@@ -56,8 +58,7 @@
                     label="数量"
                     width="210">
                 <div>
-                    <el-input-number @change="handleAmountChange(row)"
-                                     :min="1"
+                    <el-input-number :min="1"
                                      size="small"
                                      v-model="row.amount">
                     </el-input-number>
@@ -65,11 +66,10 @@
             </el-table-column>
             <el-table-column
                     inline-template
-                    property="totalPrice"
                     label="小计">
                 <div style="color: red;">
                     &yen;
-                    <span>{{ row.product.unitPrice * row.amount }}</span>
+                    <span>{{ (row.product.unitPrice * row.amount).toFixed(2) }}</span>
                 </div>
             </el-table-column>
             <el-table-column
@@ -80,7 +80,7 @@
                     <el-button type="danger"
                                icon="delete"
                                size="small"
-                               @click.native="deleteCart(row)">
+                               @click.native="deleteCart($index)">
                         删除
                     </el-button>
                 </div>
@@ -109,41 +109,64 @@
     export default {
         data() {
             return {
-                multipleSelection: []
+                multipleSelection: [],
+                currentAmount: null
             }
         },
         methods: {
             handleMultipleSelectionChange(val) {
                 this.multipleSelection = val;
             },
-            deleteCart(cart) {
+            deleteCart(index) {
+                let vm = this
                 this.$confirm('确认删除该商品吗？', '删除商品', {
                     type: 'warning'
                 }).then(() => {
-                    this.dispatch("removeCart", cart).then(
-                            success => {
-                                this.$message({
+                    vm.$store.dispatch("removeCart", vm.carts[index].id).then(
+                            () => {
+                                vm.carts.splice(index, 1)
+                                vm.$message({
                                     type: 'success',
                                     message: '删除成功！'
-                                });
+                                })
                             },
-                            fail => {
-                                this.$message.error("删除失败~")
+                            () => {
+                                vm.$message.error("删除失败~")
                             }
                     )
                 }).catch(() => {
                 });
             },
-            handleAmountChange(item) {
-                console.log(item.amount);
-                item.totalPrice = item.unitPrice * item.amount;
+            handleCellEnter(row) {
+                this.currentAmount = row.amount
+            },
+            handleCellLeave(row) {
+                if (this.currentAmount != row.amount) {
+                    this.$store.dispatch("updateCart", row).then(
+                            () => {
+                            },
+                            () => {
+                            }
+                    )
+                }
+            },
+            updateCart(index) {
+                this.$store.dispatch("updateCart", this.carts[index])
+//                this.carts[index].amount = value
+//                console.log(this.carts[index])
+//                this.$store.dispatch("updateCart", this.carts[index]).then(
+//                        () => {
+//                        },
+//                        () => {
+//                        }
+//                )
             },
             clearSelection() {
                 this.multipleSelection = []
             },
             checkout() {
                 this.$store.commit("CHECKOUT", this.multipleSelection)
-                this.$router.push({ name: "pay" })
+                this.$router.push({name: "pay"})
             }
         },
         computed: {
@@ -155,7 +178,7 @@
                 for (var i of this.multipleSelection) {
                     r = r + i.amount * i.product.unitPrice
                 }
-                return r
+                return r.toFixed(2)
             }
         },
         watch: {

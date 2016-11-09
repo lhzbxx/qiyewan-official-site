@@ -1,4 +1,4 @@
-<style>
+<style scoped>
     .el-tabs__content {
         padding: 0px !important;
     }
@@ -274,7 +274,7 @@
         <lh-loading v-if="!product"></lh-loading>
         <div v-else>
             <el-breadcrumb separator=">" style="padding: 10px 0; border-bottom: 1px solid #eee">
-                <el-breadcrumb-item>首页</el-breadcrumb-item>
+                <el-breadcrumb-item><router-link to="/">首页</router-link></el-breadcrumb-item>
                 <el-breadcrumb-item>{{ product.classificationName }}</el-breadcrumb-item>
             </el-breadcrumb>
             <el-row style="margin-top:20px">
@@ -300,7 +300,7 @@
                         <p style="margin: 10px 0;">价 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：
                             <span style="font-size: 20px;
                                      color: red;">
-                            &yen; {{ product.unitPrice * form.period * form.amount }}
+                            &yen; {{ (product.unitPrice * form.period * form.amount).toFixed(2) }}
                         </span></p>
                         <p style="">用户评分：
                             <el-rate
@@ -363,7 +363,7 @@
                     <el-button size="large"
                                style="width: 120px;
                                       margin-left: 10px;
-                                      font-family:'Microsoft yahei';"
+                                      font-family:'Microsoft yahei';color:#279ad2"
                                :loading="isAdding"
                                v-on:click="addToCart">
                         {{ isAdding ? "加入中..." : "加入购物车" }}
@@ -381,7 +381,7 @@
                     <lh-product v-for="item in hotProducts"
                                 :title="item.title"
                                 :summary="item.summary"
-                                :img="item.img"
+                                :img="imageIp+item.img"
                                 :price="item.price"
                                 :url="getRegion.code+item.serialId"></lh-product>
                 </el-col>
@@ -393,7 +393,7 @@
                                 <div class="detail_pic">
                                     <div class="detail_tit">
                                         <h3>{{ product.name }}</h3>
-                                        <p>{{ product.info }}</p>
+                                        <p>{{ product.summary }}</p>
                                     </div>
                                     <h4>为什么要代办税务／服务内容（服务能帮助您做什么）</h4>
                                 </div>
@@ -401,15 +401,13 @@
                                     <ul>
                                         <li>
                                             <h5>1.参与</h5>
-                                            <p>让你知道什么人可以成为公司股东，参与股权分配。让你知道什么人可以成为公司股东，参与股权分配。</p>
+                                            <p>{{ product.info }}</p>
                                         </li>
                                     </ul>
                                 </div>
-
-
                             </div>
                             <div class="provide">
-                                <div class="tit">您需要提供</div>
+                               <!-- <div class="tit">您需要提供</div>-->
                                 <div class="pro_pic"><img :src="imageIp+product.whatNeed" alt=""></div>
                             </div>
                             <div class="Process">
@@ -423,7 +421,7 @@
                                 <div class="zhushi">注：由于地域、政策等因素不同，所需时间有差异</div>
                             </div>
                             <div class="get">
-                                <div class="tit">您将得到</div>
+                                <!--<div class="tit">您将得到</div>-->
                                 <div class="get_pic"><img :src="imageIp+product.whatObtain"></div>
                             </div>
                             <div class="internet">
@@ -537,7 +535,7 @@
     export default {
         data() {
             return {
-                reviews: [
+                reviews:null/* [
                     {
                         content: "专业的 服务也好 效率快 价格优惠推荐",
                         createAt: "2015年3月2日",
@@ -550,7 +548,7 @@
                         rate: 3.9,
                         username: "静静"
                     }
-                ],
+                ]*/,
                 form: {
                     period: 3,
                     amount: 1,
@@ -562,7 +560,7 @@
                     provenceName: '',
                     regionAreas: [],
                 },
-                qa: [
+                qa:/* [
                     {
                         q: "社保账户是强制开设的吗？",
                         a: "1、公司法定代表人签署的《公司变更登记申请书》（公司加盖公章）2、公司签署的《公司（企业）法定代表人登记表》（公司加盖公章）；3、《指定代表或者共同委托代理人的证明》（公司加盖公章）及指定代表或委托代理人身份证复印件（本人签字），应标明具体委托事项、被委托人的权限、委托期限；4、根据公司章程规定和程序提交原任法定代表人的免职证明、新任法定代表人的任职证明； 说明：有限责任公司提交股东会决议、董事会决议或者其他任免文件，股东会决议由全体股东签署（应当符合公司章程规定的表决方式，股东为自然人的由本人签字，自然人以外的股东加盖公章），董事会决议由公司董事签字；股份有限公司提交董事会决议或其他任免文件。董事会决议由公司董事签字；国有独资有限责任公司提交出资人或其授权部门的书面决定（加盖公章）、董事会决议（董事签字）或其他相关材料；一人有限责任公司提交股东的书面决定（股东为自然人的由本人签字，法人股东加盖公章）、董事会决议（由董事签字）或其他相关材料；5、法律、行政法规和国务院决定规定变更公司法定代表人必须报经批准的，提交有关部门的批准文件或者许可证书复印件；6、公司营业执照正、副本； 说明： 公司法定代表人姓名变更涉及公司董事调整的应按《公司董事、监事、经理备案提交材料规范》提交相应的备案材料，相同项目材料可以合并。"
@@ -575,19 +573,19 @@
                         q: "社保账户是强制开设的吗？",
                         a: "1、公司法定代表人签署的《公司变更登记申请书》（公司加盖公章）2、公司签署的《公司（企业）法定代表人登记表》（公司加盖公章）；3、《指定代表或者共同委托代理人的证明》（公司加盖公章）及指定代表或委托代理人身份证复印件（本人签字），应标明具体委托事项、被委托人的权限、委托期限；4、根据公司章程规定和程序提交原任法定代表人的免职证明、新任法定代表人的任职证明； 说明：有限责任公司提交股东会决议、董事会决议或者其他任免文件，股东会决议由全体股东签署（应当符合公司章程规定的表决方式，股东为自然人的由本人签字，自然人以外的股东加盖公章），董事会决议由公司董事签字；股份有限公司提交董事会决议或其他任免文件。董事会决议由公司董事签字；国有独资有限责任公司提交出资人或其授权部门的书面决定（加盖公章）、董事会决议（董事签字）或其他相关材料；一人有限责任公司提交股东的书面决定（股东为自然人的由本人签字，法人股东加盖公章）、董事会决议（由董事签字）或其他相关材料；5、法律、行政法规和国务院决定规定变更公司法定代表人必须报经批准的，提交有关部门的批准文件或者许可证书复印件；6、公司营业执照正、副本； 说明： 公司法定代表人姓名变更涉及公司董事调整的应按《公司董事、监事、经理备案提交材料规范》提交相应的备案材料，相同项目材料可以合并。"
                     }
-                ],
+                ]*/null,
                 loading: false,
                 error: null,
                 product: null,
                 isAdding: false,
                 imageIp: "http://ofw6tmkxn.bkt.clouddn.com/"
-
             }
         },
         computed: mapGetters({
             getRegion: 'getRegion',
             hotProducts: 'hotProducts',
-            regions: 'regions'
+            regions: 'regions',
+            isLogin: 'isLogin'
         }),
         created () {
 
@@ -602,16 +600,35 @@
             },
             fetchData () {
                 this.loading = true
+                let vm = this
                 productApi.getProductDetail(this.$route.params.serialId,
                         data => {
-                            this.product = data;
+                            vm.product = data;
+                            vm.loading = false
+                            vm.setRegion();
+                        },
+                        error => {
+                            vm.error = error
+                        }
+                )
+                productApi.getProductFaqs(this.$route.params.serialId,
+                        data => {
+                            this.qa = data;
                             this.setRegion();
                         },
                         error => {
                             this.error = error
                         }
                 )
-                this.loading = false
+                productApi.getProductReviews(this.$route.params.serialId,
+                        data => {
+                            this.reviews = data;
+                            this.setRegion();
+                        },
+                        error => {
+                            this.error = error
+                        }
+                )
             },
             addToCart () {
                 if (!this.$store.getters.isLogin) {
@@ -622,7 +639,7 @@
                 var cart = {
                     amount: 1,
                     serialId: this.$route.params.serialId,
-                    regionCode: this.$store.getters.getRegion.code,
+                    regionCode: this.getRegion.code,
                     region: "XXXX"
                 }
                 this.$store.dispatch("addToCart", cart)
@@ -638,19 +655,21 @@
                         })
             },
             directOrder () {
-                if (!this.$store.getters.isLogin) {
+                if (!this.isLogin) {
                     this.$store.commit("REQUIRE_LOGIN")
                     return
                 }
-                var order = {
+                var cart = {
                     amount: 1,
                     serialId: this.$route.params.serialId,
-                    regionCode: this.$store.getters.getRegion.code,
+                    regionCode: this.getRegion.code,
                     region: "XXXX"
                 }
-                this.$store.dispatch("addToOrder", order)
-                        .then(() => {
+                this.$store.dispatch("addToCart", cart)
+                        .then(data => {
+                            this.$store.commit("CHECKOUT", [data])
                             this.$router.push({name: "pay"})
+                        }, () => {
                         })
             },
             setRegion () {

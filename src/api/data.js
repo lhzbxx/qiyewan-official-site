@@ -4,35 +4,35 @@ export default {
             serialId:"IC0001",
             title: "公司注册",
             summary: "跨过创业的第一道门槛，帮您建造梦想的第一个港湾",
-            img: "http://ofl0lw9er.bkt.clouddn.com/test.jpg",
+            img: "product-SHSHIC0001-cover.jpg",
             price: 1
         },
         {
-            serialId:"HR0005",
-            title: "企业社保，公积金代缴",
+            serialId:"HR0003",
+            title: "委托代缴社保公积金服务",
             summary: "养老无忧，住房不愁，剔除后顾之患，尽享优质生活",
-            img: "http://ofl0lw9er.bkt.clouddn.com/test.jpg",
+            img: "product-SHSHHR0003-cover.jpg",
             price: 18.8
         },
         {
             serialId:"LD0013",
             title: "商标注册",
             summary: "商标是企业的敲门砖，让专业律师帮您紧握手中",
-            img: "http://ofl0lw9er.bkt.clouddn.com/test.jpg",
+            img: "product-SHSHLD0013-cover.jpg",
             price: 199
         },
         {
             serialId:"FC0001",
             title: "零申报代理记账",
             summary: "在企业湾代理记账，放心无忧",
-            img: "http://ofl0lw9er.bkt.clouddn.com/test.jpg",
+            img: "product-SHSHFC0001-cover.jpg",
             price: 98
         },
         {
             serialId:"IT0005",
             title: "LOGO设计",
             summary: "独特的LOGO是创业的门面，新颖的标志是企业的形象",
-            img: "http://ofl0lw9er.bkt.clouddn.com/test.jpg",
+            img: "product-SHSHIT0005-cover.jpg",
             price: 488
         }
     ],

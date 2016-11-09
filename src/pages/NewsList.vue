@@ -218,9 +218,9 @@
                             </div>
                             <div>
                                 <span class="prev-news"></span>
-                                <span v-for="url in topNews.imageURLs">
-                                    <img v-bind:src="url" class="slider-news" alt="news-img" >
-                                </span>
+                                <img src="../assets/img/newslist_1.png" class="slider-news" alt="news-img" >
+                                <img src="../assets/img/newslist_2.png" class="slider-news" alt="news-img" >
+                                <img src="../assets/img/newslist_3.png" class="slider-news" alt="news-img" >
                                 <span class="next-news"></span>
                             </div>
                         </el-col>
@@ -285,11 +285,6 @@
                     id: 1,
                     cover: "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
                     title: "上海国际马拉松上海国",
-                    imageURLs: [
-                        "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
-                        "http://localhost:8080/dist/shangbiao.jpg?cd1ecea95917b0511e48faf120d5d5e9",
-                        "http://localhost:8080/dist/shangbiao.jpg?cd1ecea95917b0511e48faf120d5d5e9",
-                    ],
                     category: "创业资讯",
                     articles: [
                         {id: 1, title: "上海国际马拉松上海国", year_moth: "2016/10", day: "10"},
@@ -301,7 +296,7 @@
                 centerNewsList: [
                      {
                         id: 1,
-                        category: "创业资讯",
+                        category: "人事资讯",
                         title: "热烈庆祝我公司成立两周年",
                         cover: "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
                         articles: [
@@ -392,7 +387,7 @@
                 return idx % 2 == 0 ? 0 : 2;
            },
            nav2article: function(article_id){
-               location.href = '/#/article/' + article_id;
+               location.href = '/#/article/' + article_id
            }
         }
     }

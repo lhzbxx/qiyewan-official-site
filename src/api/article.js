@@ -3,7 +3,7 @@ import VueResource from 'vue-resource'
 
 Vue.use(VueResource)
 
-Vue.http.options.root = "http://127.0.0.1:8090";
+Vue.http.options.root = window.global_config.remote_url;
 
 export default {
     getArticlesByCategory (category, cb){
