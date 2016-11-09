@@ -6,6 +6,7 @@
         overflow: hidden;
         position: relative;
         cursor: pointer;
+        margin-right:8px;
     }
 
     .new_pic {
@@ -29,7 +30,10 @@
         border-right-width: 40px;
         border-bottom-width: 40px;
     }
-
+    .everynew:hover h3{
+        color:#0da3e5;
+        text-decoration: underline;
+    }
     img {
         height: 45%;
         width: 100%;
