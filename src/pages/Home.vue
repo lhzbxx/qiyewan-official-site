@@ -409,7 +409,7 @@
 
     #timeline {
         width: 100%;
-        height: 820px;
+        height: 770px;
     }
 
     #timeline ul li {
@@ -482,8 +482,8 @@
         width: 140px;
         height: 36px !important;
         font-size: 14px;
-        color: #dcdcdc;
-        border: 1px solid #dcdcdc;
+        color: #d2d2d2;
+        border: 1px solid #d2d2d2;
         margin: 25px 25px 20px 0;
         line-height: 36px;
         text-align: center;
@@ -744,6 +744,7 @@
         width: 45%;
         height: 100%;
         position: relative;
+        margin-left:55px;
     }
 
     .voice-left-img img {
@@ -818,7 +819,6 @@
         margin-left: -580px;
         left: 50%;
     }
-
     #voice-control-right {
         right: 0;
         padding-top: 10px;
@@ -914,6 +914,13 @@
 
     .pro_img img {
         width: 100%;
+    }
+    .news_link{
+        display: inline-block;
+        margin-right:8px;
+    }
+    #news:last-child .news_link{
+        margin-right:0px;
     }
 </style>
 
@@ -1139,7 +1146,7 @@
                 </li>
             </ul>
             <div id="news">
-                <lh-news v-for="article in news[newsTab].articles" style="margin-right: 8px;"
+                <lh-news v-for="article in news[newsTab].articles" class="news_link""
                          :img="article.img"
                          :title="article.title"
                          :summary="article.summary"
