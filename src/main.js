@@ -57,7 +57,7 @@ Vue.component('lh-news', News)
 Vue.component('lh-loading', Loading)
 
 function requireAuth(to, from, next) {
-    if ( ! store.getters.isLogin) {
+    if (!store.getters.isLogin) {
         store.commit("REQUIRE_LOGIN")
     } else {
         next()
@@ -79,7 +79,7 @@ const routes = [
     },
     {
         path: '/product/list/:category',
-        name:'product-list',
+        name: 'product-list',
         component: ProductList
     },
     {
@@ -117,7 +117,7 @@ const routes = [
     },
     {
         path: '/article/:id',
-        name:'article',
+        name: 'article',
         component: Article
     },
     {
@@ -139,10 +139,9 @@ const routes = [
 ]
 
 const router = new VueRouter({
-    // mode: 'history',
+    mode: 'history',
     routes: routes
 })
-
 
 new Vue({
     router,

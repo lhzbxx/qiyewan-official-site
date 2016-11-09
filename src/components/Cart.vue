@@ -66,11 +66,10 @@
             </el-table-column>
             <el-table-column
                     inline-template
-                    property="totalPrice"
                     label="小计">
                 <div style="color: red;">
                     &yen;
-                    <span>{{ row.product.unitPrice * row.amount }}</span>
+                    <span>{{ (row.product.unitPrice * row.amount).toFixed(2) }}</span>
                 </div>
             </el-table-column>
             <el-table-column
@@ -179,7 +178,7 @@
                 for (var i of this.multipleSelection) {
                     r = r + i.amount * i.product.unitPrice
                 }
-                return r
+                return r.toFixed(2)
             }
         },
         watch: {

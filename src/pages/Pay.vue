@@ -181,11 +181,11 @@
         computed: mapGetters({
             checkout: 'getCheckout'
         }),
-//        created() {
-//            if ( ! this.checkout) {
-//                this.$router.replace({ name: "order" })
-//            }
-//        },
+        created() {
+            if (this.checkout.length == 0) {
+                this.$router.replace({ name: "order" })
+            }
+        },
         methods: {
             addToOrder() {
                 this.isOrdering = true
@@ -194,7 +194,7 @@
                         this.checkout,
                         this.payments[this.payment].code).then(
                         order => {
-                            window.open(order.payUrl)
+                            window.open(order.payUrl, "_self")
                             vm.isOrdering = false
                         },
                         error => {
