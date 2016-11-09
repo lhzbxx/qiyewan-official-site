@@ -301,7 +301,7 @@
                 centerNewsList: [
                      {
                         id: 1,
-                        category: "创业资讯",
+                        category: "人事资讯",
                         title: "热烈庆祝我公司成立两周年",
                         cover: "http://localhost:8080/dist/banner_2.png?27ce44020edf382f80b7e291952c27db",
                         articles: [

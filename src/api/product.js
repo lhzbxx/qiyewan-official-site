@@ -28,5 +28,5 @@ export default {
         }, (response) => {
             errorCb(response.body);
         })
-    }
+    },
 }

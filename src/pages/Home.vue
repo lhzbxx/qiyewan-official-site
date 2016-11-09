@@ -605,7 +605,7 @@
     .slide img {
         position: absolute;
         left: 50%;
-        top: 50%;
+        top: 46%;
         transform: translate3d(-50%, -50%, 0);
         width: 600px;
     }
@@ -847,7 +847,12 @@
         background-color: rgb(248, 248, 248);
         transition: all 0.3s ease-in-out;
     }
-
+    .news-tab a{
+        color: #444;
+    }
+    .news-tab.active a{
+        color: #0da3e5 !important;
+    }
     .news-tab.active {
         z-index: 10;
         border: 1px solid #139cd7;
@@ -1015,7 +1020,8 @@
                                         {{ hotProduct.main.summary }}
                                     </div>
                                     <button class="main-btn">
-                                        <router-link :to="{ name: 'product-detail', params: { serialId: getRegion.code+hotProduct.main.serialId }}">
+                                        <router-link
+                                                :to="{ name: 'product-detail', params: { serialId: getRegion.code+hotProduct.main.serialId }}">
                                             立即购买
                                         </router-link>
                                     </button>
@@ -1065,22 +1071,27 @@
                     </div>
                     <div class="timeline-pic-right">
                         <div class="l timeline-pic-one timeline-pic">
-                            <router-link :to="{ name: 'product-detail', params: { serialId: getRegion.code+timelines[state].types[stateType].products.right.serialId }}">
+                            <router-link
+                                    :to="{ name: 'product-detail', params: { serialId: getRegion.code+timelines[state].types[stateType].products.right.serialId }}">
                                 <img :src="timelines[state].types[stateType].products.right.url">
                             </router-link>
                         </div>
-                        <div class="l timeline-pic-two timeline-pic" v-for="item in timelines[state].types[stateType].products.one">
-                            <router-link :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
+                        <div class="l timeline-pic-two timeline-pic"
+                             v-for="item in timelines[state].types[stateType].products.one">
+                            <router-link
+                                    :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
                                 <img :src="item.url">
                             </router-link>
                         </div>
                         <div class="l timeline-pic-one timeline-pic">
-                            <router-link :to="{ name: 'product-detail', params: { serialId: getRegion.code+timelines[state].types[stateType].products.rightBottom.serialId }}">
+                            <router-link
+                                    :to="{ name: 'product-detail', params: { serialId: getRegion.code+timelines[state].types[stateType].products.rightBottom.serialId }}">
                                 <img :src="timelines[state].types[stateType].products.rightBottom.url">
                             </router-link>
                         </div>
                         <div class="l timeline-pic-two timeline-pic">
-                            <router-link :to="{ name: 'product-detail', params: { serialId: getRegion.code+timelines[state].types[stateType].products.bottomOne.serialId }}">
+                            <router-link
+                                    :to="{ name: 'product-detail', params: { serialId: getRegion.code+timelines[state].types[stateType].products.bottomOne.serialId }}">
                                 <img :src="timelines[state].types[stateType].products.bottomOne.url">
                             </router-link>
                         </div>
@@ -1123,8 +1134,8 @@
                 <li class="news-tab"
                     v-for="(item, index) in news"
                     :class="{active: isNewsTab(index)}"
-                    v-on:click="setNewsTab(index),newsTab=index">
-                    {{ item.title }}
+                    v-on:mouseover="setNewsTab(index),newsTab=index">
+                    <router-link to="/news">{{ item.title }}</router-link>
                 </li>
             </ul>
             <div id="news">
@@ -1134,7 +1145,8 @@
                          :summary="article.summary"
                          :tags="article.tags"
                          :date="article.date"
-                         :views="article.views"></lh-news>
+                         :views="article.views"
+                         :id="article.articleId"></lh-news>
             </div>
         </div>
         <div class="clearfix"></div>
@@ -1597,10 +1609,10 @@
                                         }
                                     ],
                                     rightBottom: {
-                                        serialId:"FC0001",
+                                        serialId: "FC0001",
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-6.png"
                                     }, bottomOne: {
-                                        serialId:"FC0010",
+                                        serialId: "FC0010",
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-7.png"
                                     }
 
@@ -1690,28 +1702,28 @@
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-1.png"
                                     },
                                     right: {
-                                        serialId:"IC0013",
+                                        serialId: "IC0013",
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-2.png"
                                     },
                                     one: [
                                         {
-                                            serialId:"LD0006",
+                                            serialId: "LD0006",
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-3.png"
                                         },
                                         {
-                                            serialId:"IC0013",
+                                            serialId: "IC0013",
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-4.png"
                                         },
                                         {
-                                            serialId:"IC0010",
+                                            serialId: "IC0010",
                                             url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-5.png"
                                         }],
                                     rightBottom: {
-                                        serialId:"LD0002",
+                                        serialId: "LD0002",
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-6.png"
                                     },
                                     bottomOne: {
-                                        serialId:"IC0013",
+                                        serialId: "IC0013",
                                         url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-7.png"
                                     }
 
@@ -1775,8 +1787,8 @@
                         subTitle: "快人一步",
                         summary: "创业园区、孵化基地专业对接",
                         imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-top.png",
-                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-bottom.png",
-                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-middle.png",
+                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-middle.png",
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-bottom.png",
                         bgColor: "background-color: #2399f3;"
                     },
                 ],
@@ -1785,6 +1797,7 @@
                         title: "创业资讯",
                         articles: [
                             {
+                                articleId: "1",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/startup_01.jpg',
                                 title: '创业公司如何招聘？',
                                 summary: '在风风火火拿到融资以后，找人就成为了创业公司最大的事情。没有好的...',
@@ -1793,6 +1806,7 @@
                                 views: 236
                             },
                             {
+                                articleId: "2",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/startup_02.jpg',
                                 title: '财务部非金钱激励员工的108种手段',
                                 summary: '在任何一个组织里，管理者都是下属的镜子。可以说，只要看....',
@@ -1801,6 +1815,7 @@
                                 views: 359
                             },
                             {
+                                articleId: "3",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/startup_03.jpg',
                                 title: '公司对于老东家的知识产权的法律风险防范',
                                 summary: '我们在第一讲就提到，在创业的过程中，您首先考虑是否侵犯了老东家的知识...',
@@ -1809,6 +1824,7 @@
                                 views: 599
                             },
                             {
+                                articleId: "4",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/startup_04.jpg',
                                 title: '老公司向新公司迁移时的用户迁移问题',
                                 summary: '老公司向新公司迁移的时候，还有员工的问题，这也是要考虑的。一方面要...',
@@ -1817,6 +1833,7 @@
                                 views: 366
                             },
                             {
+                                articleId: "5",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/startup_05.jpg',
                                 title: '商标相关问答',
                                 summary: '商标的价值其实是眼睛看不到手却拿得到的财富，从我们的角度看，创业公司...',
@@ -1830,6 +1847,7 @@
                         title: "工商干货",
                         articles: [
                             {
+                                articleId: "6",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_01.jpg',
                                 title: '企业类型之股份公司',
                                 summary: '讲完了个人独资企业与合伙企业这些非公司制企业之后，我们现在来看看大家...',
@@ -1838,6 +1856,7 @@
                                 views: 289
                             },
                             {
+                                articleId: "7",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_02.jpg',
                                 title: '企业类型之个人独资企业！',
                                 summary: '怀揣着满满热情的创业者们,欢迎又来到了我们的财税微课堂啦,让我们继续挖掘...',
@@ -1846,6 +1865,7 @@
                                 views: 289
                             },
                             {
+                                articleId: "8",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_03.jpg',
                                 title: '注册资本1万亿 没钱也任性！',
                                 summary: '近两年设立公司的创业者都知道，现在开公司只需要在公司章程中写明...',
@@ -1854,6 +1874,7 @@
                                 views: 289
                             },
                             {
+                                articleId: "9",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_04.jpg',
                                 title: '企业名称',
                                 summary: '你说人生究竟什么最重要？听到这个问题，每个人第一反应一定是：“钱”。事实...',
@@ -1862,6 +1883,7 @@
                                 views: 289
                             },
                             {
+                                articleId: "10",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_5.jpg',
                                 title: '商标相关问答',
                                 summary: '哈喽，各位亲爱的创业小伙伴咱们又见面啦在上一期的财税微课堂中束进老师...',
@@ -1876,6 +1898,7 @@
                         title: "财税干货",
                         articles: [
                             {
+                                articleId: "11",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_01.jpg',
                                 title: '个人股东占用公司资金也要交个人所得税',
                                 summary: '许多初创公司往往由创业者自身持有100%的股权或者绝大部分股权，这...',
@@ -1884,6 +1907,7 @@
                                 views: 453
                             },
                             {
+                                articleId: "12",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_02.jpg',
                                 title: '采购商品你真的会比价吗？',
                                 summary: '谈到采购商品的比价问题，站在消费者个人的角度来看，真的是一个...',
@@ -1892,6 +1916,7 @@
                                 views: 259
                             },
                             {
+                                articleId: "13",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_03.jpg',
                                 title: '公司采购业务中的这些税收风险你知道吗？',
                                 summary: '一项采购交易中，通常由买方直接取得卖方开具的销售发票，并且直接向卖方...',
@@ -1900,6 +1925,7 @@
                                 views: 459
                             },
                             {
+                                articleId: "14",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_04.jpg',
                                 title: '小规模纳税人 OR 一般纳税人？',
                                 summary: '最近遇到好几个准备设立公司的创业者问我这样一个问题：“我该选择...',
@@ -1908,6 +1934,7 @@
                                 views: 459
                             },
                             {
+                                articleId: "15",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_05.jpg',
                                 title: '只有错买，没有错卖！企业湾教您如何收购股权',
                                 summary: '商业交易是由卖方提供商品或服务，因此卖方通常比买方更加熟知所销售的...',
@@ -1921,6 +1948,7 @@
                         title: "法律干货",
                         articles: [
                             {
+                                articleId: "16",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/law_01.jpg',
                                 title: '买卖合同中涉及的问题',
                                 summary: '买卖合同看似很简单，只是买家和卖家交易某样东西，一手交钱一手交货。但...',
@@ -1929,6 +1957,7 @@
                                 views: 359
                             },
                             {
+                                articleId: "17",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/law_02.jpg',
                                 title: '员工个人自行缴社保的书面承诺有效吗？ ',
                                 summary: '王某于2011年5月进入F公司设于宁波某商场的品牌专柜从事营业员工...',
@@ -1937,6 +1966,7 @@
                                 views: 389
                             },
                             {
+                                articleId: "18",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/law_03.jpg',
                                 title: '公司知识产权',
                                 summary: '上周我们创业科普中一直都是在讲公司的控制权，似乎公司只有勾心斗角...',
@@ -1945,6 +1975,7 @@
                                 views: 233
                             },
                             {
+                                articleId: "19",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/law_04.jpg',
                                 title: 'APP可否申请专利的探讨(续)',
                                 summary: '跟着上期我们继续来讲APP可否申请专利。针对App申请发明专利....',
@@ -1953,6 +1984,7 @@
                                 views: 359
                             },
                             {
+                                articleId: "20",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/law_05.jpg',
                                 title: '拟定合同过程中的关注点（一）',
                                 summary: '通常来讲，合同的主体不需要关注，因为大多数情况下，合同...',
@@ -1967,6 +1999,7 @@
                         title: "人事干货",
                         articles: [
                             {
+                                articleId: "21",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/hr_01.jpg',
                                 title: '作为公司老板，只有这20%工作是你需要亲自做的',
                                 summary: '作为公司老板，你只需专注那些能为公司带来最大利益的事情。通常说来，这些事情...',
@@ -1975,6 +2008,7 @@
                                 views: 469
                             },
                             {
+                                articleId: "22",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/hr_02.jpg',
                                 title: '别让人情拖垮你的公司！',
                                 summary: '中国是一个非常讲“人情”讲“关系”的国家，有时候靠人情刷脸，靠关系办事会比...',
@@ -1983,6 +2017,7 @@
                                 views: 469
                             },
                             {
+                                articleId: "23",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/hr_03.jpg',
                                 title: '创业公司的员工激励怎么做？',
                                 summary: '当你费劲苦心，把员工招募进来后，怎么让他们死心塌地的和你一起拼命干就是...',
@@ -1991,6 +2026,7 @@
                                 views: 469
                             },
                             {
+                                articleId: "24",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/hr_04.jpg',
                                 title: '财务部非金钱激励员工的108种手段 ，你一定要懂！',
                                 summary: '在任何一个组织里，管理者都是下属的镜子。可以说，只...',
@@ -1999,6 +2035,7 @@
                                 views: 369
                             },
                             {
+                                articleId: "25",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/hr_05.jpg',
                                 title: '你做了什么，可以多出四个工作日？',
                                 summary: '你说人生究竟什么最重要？听到这个问题，每个人第一反应一定是...',
@@ -2032,7 +2069,7 @@
                         name: ""
                     },
                     {
-                        headImg: "http://ofw6tmkxn.bkt.clouddn.com/customer4.png",
+                        headImg: "http://ofw6tmkxn.bkt.clouddn.com/customer4_1.png",
                         content: "企业湾为我们解决了初创企业在财务、法律方面资源短缺、缺乏行业经验的老大难问题，让我们在创业的路上省了不少心。用优质贴心专业的服务，为中小型企业的创业之路保驾护航。",
                         company: "上海恩陶投资管理有限公司",
                         position: "公司负责人",
