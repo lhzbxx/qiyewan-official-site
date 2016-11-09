@@ -117,7 +117,8 @@
                             去付款
                         </el-button>
                         <br>
-                        <el-button type="text">
+                        <el-button type="text"
+                                   @click.native="cancelOrder($index, row.serialId)">
                             取消订单
                         </el-button>
                     </div>
@@ -180,6 +181,26 @@
             },
             addPrefix(url) {
                 return "http://ofw6tmkxn.bkt.clouddn.com/" + url;
+            },
+            cancelOrder(index, serialId) {
+                let vm = this
+                this.$confirm('确认取消该订单吗？', '取消订单', {
+                    type: 'warning'
+                }).then(() => {
+                    vm.$store.dispatch("cancelOrder", serialId).then(
+                            () => {
+                                vm.orders[index].orderState = "Canceled"
+                                vm.$message({
+                                    type: 'success',
+                                    message: '成功取消订单'
+                                })
+                            },
+                            () => {
+                                vm.$message.error("取消订单失败...")
+                            }
+                    )
+                }).catch(() => {
+                });
             }
         },
         props: {

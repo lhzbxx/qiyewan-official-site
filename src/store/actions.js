@@ -145,7 +145,7 @@ export const addToOrder = ({commit, state}, carts, payment) => {
     return new Promise((resolve, reject) => {
         orderApi.addOrder(state.auth.user.token, carts, payment,
             order => {
-                commit(types.ADD_TO_ORDER)
+                commit(types.ADD_TO_ORDER, carts.length)
                 resolve(order)
             },
             error => {

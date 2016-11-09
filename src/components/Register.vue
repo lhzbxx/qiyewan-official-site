@@ -34,7 +34,9 @@
             </el-form>
             <el-button type="primary"
                        @click.native="submit"
-                       style="width: 100%">注 册
+                       :loading="isRegistering"
+                       style="width: 100%">
+                {{ isRegistering ? "注册中" : "注 册" }}
             </el-button>
         </el-dialog>
     </div>
@@ -68,6 +70,7 @@
                     password2: ""
                 },
                 isWaiting: false,
+                isRegistering: false,
                 timer: 60,
                 rules: {
                     phone: [
@@ -138,7 +141,7 @@
             submit(ev) {
                 this.$refs.registerForm.validate((valid) => {
                     if (valid) {
-                        this.isLogging = true
+                        this.isRegistering = true
                         let vm = this
                         this.$store.dispatch("userRegister", {
                             phone: this.formStacked.phone,
@@ -149,12 +152,12 @@
                             vm.formStacked.captcha = ""
                             vm.formStacked.password = ""
                             vm.formStacked.password2 = ""
-                            vm.isLogging = false
+                            vm.isRegistering = false
                         }, (error) => {
                             vm.formStacked.captcha = ""
                             vm.formStacked.password = ""
                             vm.formStacked.password2 = ""
-                            vm.isLogging = false
+                            vm.isRegistering = false
                             if (error.detail == "Error.Action.WRONG_CAPTCHA") {
                                 vm.$message.error("验证码不正确");
                             }
