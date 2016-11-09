@@ -185,7 +185,7 @@
                 </div>
                 <div class="con_right r">
                     <div class="Author">
-                        <div class="avatar"><img src="" alt=""></div>
+                        <div class="avatar"><img src="../assets/img/logo_samll.png" alt=""></div>
                         <div class="name">{{ article.author }}</div>
                         <div class="intru">企业湾分析师</div>
                         <ul>
@@ -228,23 +228,24 @@
                 },
                 recommendNewsList: [
                     {
+
                         category: "热文推荐",
                         articles: [
-                            {id: 1, title: "总理开辟上海自由港究竟和我们关系有多是"},
-                            {id: 2, title: "总理开辟上海自由港究竟和我们关系有多是"},
-                            {id: 3, title: "总理开辟上海自由港究竟和我们关系有多是"},
-                            {id: 4, title: "总理开辟上海自由港究竟和我们关系有多是"},
-                            {id: 5, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                            {id: 1, title: "商标相关问答"},
+                            {id: 2, title: "创业公司如何招聘？"},
+                            {id: 3, title: "财务部非金钱激励员工的108种手段"},
+                            {id: 4, title: "公司对于老东家的知识产权的法律风险防范"},
+                            {id: 5, title: "老公司向新公司迁移时的用户迁移问题"},
                         ]
                     },
                     {
                         category: "热度排行",
                         articles: [
-                            {id: 1, title: "总理开辟上海自由港究竟和我们关系有多是"},
-                            {id: 2, title: "总理开辟上海自由港究竟和我们关系有多是"},
-                            {id: 3, title: "总理开辟上海自由港究竟和我们关系有多是"},
-                            {id: 4, title: "总理开辟上海自由港究竟和我们关系有多是"},
-                            {id: 5, title: "总理开辟上海自由港究竟和我们关系有多是"},
+                            {id: 6, title: "企业类型之股份公司"},
+                            {id: 7, title: "企业类型之个人独资企业！"},
+                            {id: 8, title: "注册资本1万亿 没钱也任性！"},
+                            {id: 9, title: "企业名称"},
+                            {id: 10, title: "税率宝典——终于抓住你这个磨人的小妖精！"},
                         ]
                     }
                 ]
@@ -274,6 +275,7 @@
         methods: {
             nav2article: function(article_id){
                 location.href = '/#/article/' + article_id;
+                location.reload();
             },
             getLocalTime:function(nS) {
                 return new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');

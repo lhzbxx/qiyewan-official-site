@@ -233,7 +233,9 @@
         white-space: normal;
         margin: 0 auto;
     }
-
+.hide{
+    display: none;
+}
     .inter_bg {
         margin-top: 30px;
         margin-left: -4px;
@@ -395,9 +397,9 @@
                                         <h3>{{ product.name }}</h3>
                                         <p>{{ product.summary }}</p>
                                     </div>
-                                    <h4>为什么要代办税务／服务内容（服务能帮助您做什么）</h4>
+                                    <h4 class="hide">为什么要代办税务／服务内容（服务能帮助您做什么）</h4>
                                 </div>
-                                <div class="step">
+                                <div class="step hide">
                                     <ul>
                                         <li>
                                             <h5>1.参与</h5>

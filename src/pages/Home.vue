@@ -809,7 +809,7 @@
         width: 100%;
         height: 400px;
         margin-bottom: 20px;
-        background: url("http://ofw6tmkxn.bkt.clouddn.com/customer-voice-background.png") no-repeat;
+        background: url("http://ofw6tmkxn.bkt.clouddn.com/voice-bg.png") no-repeat;
         background-size: 171%;
         position: relative;
     }
@@ -1264,7 +1264,8 @@
                     v-for="(item, index) in news"
                     :class="{active: isNewsTab(index)}"
                     v-on:mouseover="setNewsTab(index),newsTab=index">
-                    <router-link to="/news">{{ item.title }}</router-link>
+                    {{ item.title }}
+                    <!--<router-link to="/news"></router-link>-->
                 </li>
             </ul>
             <div id="news">
@@ -1305,7 +1306,7 @@
             </div>
         </div>
         <div class="promise">
-            <div class="pro_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/about-us-banner.png"></div>
+            <div class="pro_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/about-us-banner1.png"></div>
             <ul>
                 <li>
                     <div class="pro_l l"><img src="../assets/img/pro_1.png"></div>
@@ -1886,9 +1887,9 @@
                         mainTitle: "公司注册",
                         subTitle: "快人一步",
                         summary: "创业园区、孵化基地专业对接",
-                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-top.png",
-                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-middle.png",
-                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-bottom.png",
+                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-top-v1.png",
+                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-middle-v1.png",
+                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-bottom-v1.png",
                         bgColor: "background-color: #2399f3;"
                     },
                     {
@@ -2015,9 +2016,9 @@
                             {
                                 articleId: "10",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_5.jpg',
-                                title: '商标相关问答',
-                                summary: '哈喽，各位亲爱的创业小伙伴咱们又见面啦在上一期的财税微课堂中束进老师...',
-                                tags: ['工商', '营业执照'],
+                                title: '税率宝典——终于抓住你这个磨人的小妖精！',
+                                summary: '财务们看过来！营改增后，增值税税率档次增加，大家是否为记不住税率发愁呢。不要担心，一财君送上“税率小宝典”，轻轻松...',
+                                tags: ['工商'],
                                 date: '2016年9月12日',
                                 views: 289
                             }
@@ -2078,10 +2079,10 @@
                         title: "法律干货",
                         articles: [
                             {
-                                articleId: "16",
+                                articleId: "17",
                                 img: 'http://ofw6tmkxn.bkt.clouddn.com/law_01.jpg',
-                                title: '买卖合同中涉及的问题',
-                                summary: '买卖合同看似很简单，只是买家和卖家交易某样东西，一手交钱一手交货。但...',
+                                title: '合伙人股东之间的协议',
+                                summary: '今天我们重点讨论第一个问题：合伙人之间的股权协议需要注意什么。...',
                                 tags: ['法律', '合同'],
                                 date: '2016年9月21日',
                                 views: 359
