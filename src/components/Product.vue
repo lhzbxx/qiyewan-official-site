@@ -1,10 +1,18 @@
 <style scoped>
     .image {
-        width: 100%;
+        width: 268px;
+     /*   height: 273px;*/
+        overflow: hidden;
         display: block;
     }
-    a{
+
+    a {
         color: #888 !important;
+    }
+
+    .product-container {
+        display: inline-block;
+        background-color: #fff;
     }
 
     #product {
@@ -19,7 +27,7 @@
 </style>
 
 <template>
-    <div>
+    <div class="product-container">
         <el-card id="product"
                  :body-style="{ padding: '0px' }"
                  style="margin:10px 20px 20px 0;">
@@ -27,7 +35,7 @@
                 <img :src="img" class="image">
                 <div style="padding: 14px;">
                     <p style="font-size: 16px; color: #333;">{{ title }}</p>
-                    <p style="font-size: 13px; color: #aaa;">{{ summary }}</p>
+                    <p style="font-size: 13px; color: #aaa; width: 240px;height: 40px;overflow: hidden;">{{ summary }}</p>
                     <br>
                     <p>价格：&nbsp;<span style="color: red;font-size: 16px">&yen;{{ price }}</span></p>
                 </div>

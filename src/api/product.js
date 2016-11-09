@@ -29,4 +29,12 @@ export default {
             errorCb(response.body);
         })
     },
+
+    getProductList (category, cb, errorCb) {
+        Vue.http.get("products/?classificationName=" + category).then((response) => {
+            cb(response.body)
+        }, (response) => {
+            errorCb(response.body);
+        })
+    },
 }

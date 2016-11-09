@@ -120,7 +120,7 @@
                     <div class="show">
                         <div class="nav-show-left l">
                             <div class="nav-show-content">
-                                <router-link :to="{ name: 'product-list', params: { category: item.l.category }}">
+                                <router-link :to="{ name: 'product-list', params: { category: item.l.title }}">
                                     <div class="registration">
                                         {{ item.l.title }}
                                     </div>
@@ -135,7 +135,7 @@
                         </div>
                         <div class="nav-show-right l">
                             <div class="nav-show-content">
-                                <router-link :to="{ name: 'product-list', params: { category: item.r.category }}">
+                                <router-link :to="{ name: 'product-list', params: { category: item.r.title }}">
                                     <div class="registration">{{ item.r.title }}</div>
                                 </router-link>
                                 <span v-for="i in item.r.list">
@@ -176,7 +176,6 @@
                         title: "工商服务",
                         l: {
                             title: "工商变更",
-                            category: "IC",
                             list: [
                                 {name: "公司注册(园区)", serialId: "IC0001"},
                                 {name: "公司注册(非园区)", serialId: "IC0002"},
@@ -194,7 +193,6 @@
                         },
                         r: {
                             title: "工商注销",
-                            category: "IC",
                             list: [
                                 {name: "内资企业注销", serialId: "IC0013"},
                                 {name: "1元补差产品", serialId: "IC0014"},
@@ -205,7 +203,6 @@
                         title: "财税服务",
                         l: {
                             title: "财务服务",
-                            category: "FC",
                             list: [
                                 {name: "零申报代理记账", serialId: "FC0001"},
                                 {name: "小规模纳税人代理记账", serialId: "FC0002"},
@@ -216,7 +213,6 @@
                         },
                         r: {
                             title: "税务服务",
-                            category: "FC",
                             list: [
                                 {name: "税务报道,税种认定", serialId: "FC0006"},
                                 {name: "代领CA证书", serialId: "FC0007"},
@@ -230,7 +226,6 @@
                         title: "法律服务",
                         l: {
                             title: "法律服务",
-                            category: "LD",
                             list: [
                                 {name: "合同撰写与审查（普通）", serialId: "LD0001"},
                                 {name: "合同撰写与审查（定制）", serialId: "LD0002"},
@@ -246,7 +241,6 @@
                         },
                         r: {
                             title: "知识产权",
-                            category: "LD",
                             list: [
                                 {name: "实用新型专利申请", serialId: "LD0011"},
                                 {name: "发明专利申请", serialId: "LD0012"},
@@ -260,7 +254,6 @@
                         title: "人事服务",
                         l: {
                             title: "社保",
-                            category: "HR",
                             list: [
                                 {name: "企业社保账户开户", serialId: "HR0001"},
                                 {name: "企业公积金账户开户", serialId: "HR0002"},
@@ -271,7 +264,6 @@
                         },
                         r: {
                             title: "公司人事",
-                            category: "HR",
                             list: [
                                 {name: "人力资源基础文档", serialId: "HR0006"}
                             ]
@@ -281,7 +273,6 @@
                         title: "IT&设计服务",
                         l: {
                             title: "网站设计",
-                            category: "IT",
                             list: [
                                 {name: "标准网站", serialId: "IT0001"},
                                 {name: "定制网站", serialId: "IT0002"},
@@ -290,7 +281,6 @@
                         },
                         r: {
                             title: "LOGO设计",
-                            category: "IT",
                             list: [
                                 {name: "VI设计", serialId: "IT0004"},
                                 {name: "LOGO设计(一个方案)", serialId: "IT0005"},
