@@ -512,13 +512,13 @@
                                   font-size: 16px;
                                   margin: 10px 0;
                                   white-space: normal">
-                                    {{ item.q }}
+                                    {{ item.question }}
                                 </p>
                                 <div style="color: #333;
                                   font-size: 14px;
                                   white-space: normal;
                                   line-height: 1.5em;">
-                                    {{ item.a }}
+                                    {{ item.answer }}
                                 </div>
                             </div>
                         </el-tab-pane>
@@ -532,6 +532,7 @@
 <script>
     import productApi from '../api/product'
     import {mapGetters} from 'vuex'
+
     export default {
         data() {
             return {
@@ -613,7 +614,7 @@
                 )
                 productApi.getProductFaqs(this.$route.params.serialId,
                         data => {
-                            this.qa = data;
+                            this.qa = data.content;
                             this.setRegion();
                         },
                         error => {
