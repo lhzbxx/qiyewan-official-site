@@ -42,7 +42,6 @@
     #area {
         position: absolute;
         width: 192px;
-        height: 90px;
         background-color: #fff;
         top: 33px;
         left: -1px;

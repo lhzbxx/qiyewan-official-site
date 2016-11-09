@@ -14,11 +14,19 @@ export default {
         })
     },
 
-    getProductReviews (serialId, cb) {
-        Vue.http.get("products/" + serialId + "/reviews")
+    getProductReviews (serialId, cb,errorCb) {
+        Vue.http.get("products/" + serialId + "/reviews").then((response) => {
+            cb(response.body)
+        }, (response) => {
+            errorCb(response.body);
+        })
     },
 
-    getProductFaqs (serialId, cb) {
-        Vue.http.get("products/" + serialId + "/faq")
+    getProductFaqs (serialId, cb,errorCb) {
+        Vue.http.get("products/" + serialId + "/faq").then((response) => {
+            cb(response.body)
+        }, (response) => {
+            errorCb(response.body);
+        })
     }
 }

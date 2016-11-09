@@ -18,40 +18,60 @@
     }
     #detail {
         margin: 0 auto;
-        width: 80%;
+        width: 200px;
         height: 50%;
         padding-top: 5px;
     }
     h3 {
-        height: 60px;
-        line-height: 30px;
+        padding:10px 0;
+        line-height: 1.5em;
         color: #444;
     }
     p {
-        height: 52px;
-        margin-bottom: 15px;
+        letter-spacing:1px;
         color: #666;
         overflow: hidden;
     }
-    #tags {
+    .tag{
         position: relative;
-        bottom: 5px;
-        margin-left: 0;
+        margin-right: 15px;
+        border: 1px solid #dcdcdc;
+        float: left;
+        padding: 3px 2px 3px 5px;
+        margin-left: 5px;
+    }
+    .tag:after,
+    .tag:before {
+        border: 12px solid transparent;
+        border-left: 9px solid #fff;
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: -1px;
+        right: -21px;
+        content: ' ';
+    }
+    .tag:before {
+        border-left-color: #dcdcdc;
+        right: -22px;
+    }
+
+
+    #tags{
+        position: absolute;
+        top:275px;
+
     }
     .tag:first-child {
         margin-left: 0;
     }
-    .tag {
-        border: 1px solid #dcdcdc;
-        float: left;
-        padding: 3px 5px;
-        margin-left: 5px;
-    }
+
     #time {
         position: absolute;
-        left: 20px;
+        left: 12px;
         bottom: 10px;
         color: #888;
+        font-size:12px;
     }
     #views {
         position: absolute;
