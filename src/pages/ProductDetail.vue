@@ -274,7 +274,7 @@
         <lh-loading v-if="!product"></lh-loading>
         <div v-else>
             <el-breadcrumb separator=">" style="padding: 10px 0; border-bottom: 1px solid #eee">
-                <el-breadcrumb-item>首页</el-breadcrumb-item>
+                <el-breadcrumb-item><router-link to="/">首页</router-link></el-breadcrumb-item>
                 <el-breadcrumb-item>{{ product.classificationName }}</el-breadcrumb-item>
             </el-breadcrumb>
             <el-row style="margin-top:20px">
@@ -587,7 +587,8 @@
         computed: mapGetters({
             getRegion: 'getRegion',
             hotProducts: 'hotProducts',
-            regions: 'regions'
+            regions: 'regions',
+            isLogin: 'isLogin'
         }),
         created () {
 
@@ -623,7 +624,7 @@
                 var cart = {
                     amount: 1,
                     serialId: this.$route.params.serialId,
-                    regionCode: this.$store.getters.getRegion.code,
+                    regionCode: this.getRegion.code,
                     region: "XXXX"
                 }
                 this.$store.dispatch("addToCart", cart)
@@ -639,19 +640,21 @@
                         })
             },
             directOrder () {
-                if (!this.$store.getters.isLogin) {
+                if (!this.isLogin) {
                     this.$store.commit("REQUIRE_LOGIN")
                     return
                 }
-                var order = {
+                var cart = {
                     amount: 1,
                     serialId: this.$route.params.serialId,
-                    regionCode: this.$store.getters.getRegion.code,
+                    regionCode: this.getRegion.code,
                     region: "XXXX"
                 }
-                this.$store.dispatch("addToOrder", order)
-                        .then(() => {
+                this.$store.dispatch("addToCart", cart)
+                        .then(data => {
+                            this.$store.commit("CHECKOUT", [data])
                             this.$router.push({name: "pay"})
+                        }, () => {
                         })
             },
             setRegion () {

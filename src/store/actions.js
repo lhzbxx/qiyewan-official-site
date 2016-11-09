@@ -85,9 +85,9 @@ export const getCarts = ({commit, state}, page) => {
 export const addToCart = ({commit, state}, cart) => {
     return new Promise((resolve, reject) => {
         cartApi.addCart(state.auth.user.token, cart,
-            response => {
+            data => {
                 commit(types.ADD_TO_CART)
-                resolve(cart)
+                resolve(data)
             },
             error => {
                 console.log(error)

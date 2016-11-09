@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <el-breadcrumb separator=">" style="padding: 10px 0; border-bottom: 1px solid #eee">
-            <el-breadcrumb-item>首页</el-breadcrumb-item>
+            <el-breadcrumb-item><router-link to="/">首页</router-link></el-breadcrumb-item>
             <el-breadcrumb-item>工商服务</el-breadcrumb-item>
         </el-breadcrumb>
         <el-row>
