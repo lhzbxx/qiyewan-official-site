@@ -79,6 +79,7 @@ const routes = [
     },
     {
         path: '/product/list/:category',
+        name:'product-list',
         component: ProductList
     },
     {
@@ -116,6 +117,7 @@ const routes = [
     },
     {
         path: '/article/:id',
+        name:'article',
         component: Article
     },
     {

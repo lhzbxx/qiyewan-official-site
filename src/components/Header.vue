@@ -135,7 +135,9 @@
                         </div>
                         <div class="nav-show-right l">
                             <div class="nav-show-content">
-                                <div class="registration">{{ item.r.title }}</div>
+                                <router-link :to="{ name: 'product-list', params: { category: item.r.title }}">
+                                    <div class="registration">{{ item.r.title }}</div>
+                                </router-link>
                                 <span v-for="i in item.r.list">
                                      <router-link
                                              :to="{ name: 'product-detail', params: { serialId: getRegion.code+i.serialId }}">
