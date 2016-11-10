@@ -12,7 +12,7 @@ import orderApi from '../api/order'
 export const checkToken = ({commit}) => {
     if (localStorage.createAt) {
         if (new Date().valueOf() - localStorage.createAt < 15 * 24 * 60 * 60 * 1000) {
-            commit(types.GET_TOKEN_FROM_STORAGE)
+            commit(types.GET_DATA_FROM_STORAGE)
         }
     }
 }
@@ -86,7 +86,7 @@ export const addToCart = ({commit, state}, cart) => {
     return new Promise((resolve, reject) => {
         cartApi.addCart(state.auth.user.token, cart,
             data => {
-                commit(types.ADD_TO_CART)
+                commit(types.ADD_TO_CART, data)
                 resolve(data)
             },
             error => {

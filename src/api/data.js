@@ -1,35 +1,35 @@
 export default {
     hotProducts: [
         {
-            serialId:"IC0001",
+            serialId: "IC0001",
             title: "公司注册",
             summary: "跨过创业的第一道门槛，帮您建造梦想的第一个港湾",
             img: "product-SHSHIC0001-cover.jpg",
             price: 1
         },
         {
-            serialId:"HR0003",
+            serialId: "HR0003",
             title: "委托代缴社保公积金服务",
             summary: "养老无忧，住房不愁，剔除后顾之患，尽享优质生活",
             img: "product-SHSHHR0003-cover.jpg",
             price: 18.8
         },
         {
-            serialId:"LD0013",
+            serialId: "LD0013",
             title: "商标注册",
             summary: "商标是企业的敲门砖，让专业律师帮您紧握手中",
             img: "product-SHSHLD0013-cover.jpg",
             price: 199
         },
         {
-            serialId:"FC0001",
+            serialId: "FC0001",
             title: "零申报代理记账",
             summary: "在企业湾代理记账，放心无忧",
             img: "product-SHSHFC0001-cover.jpg",
             price: 98
         },
         {
-            serialId:"IT0005",
+            serialId: "IT0005",
             title: "LOGO设计",
             summary: "独特的LOGO是创业的门面，新颖的标志是企业的形象",
             img: "product-SHSHIT0005-cover.jpg",
@@ -148,7 +148,6 @@ export default {
         {
             name: "成都", code: 'SCCD', pName: "四川",
             areas: [
-                {name: ""},
                 {name: "青羊区"},
                 {name: "锦江区"},
                 {name: "金牛区"},
