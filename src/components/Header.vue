@@ -40,7 +40,7 @@
         transform: translate(-50%, 0%);
         opacity: 0;
         z-index: -1;
-        top: 70px;
+        top: 67px;
         transition: all 0.3s ease-in-out;
         padding-bottom: 20px;
     }
@@ -151,10 +151,10 @@
                     </div>
                 </li>
                 <li>
-                    <a href="">套餐服务</a>
+                    <a>套餐服务</a>
                 </li>
                 <p>
-                    <a href="">快捷入口</a>
+                    <a>快捷入口</a>
                 </p>
                 <p>
                     <a>400-716-8896</a>

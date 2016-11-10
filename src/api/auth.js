@@ -3,11 +3,37 @@ import VueResource from 'vue-resource'
 
 Vue.use(VueResource)
 
-Vue.http.options.root = "http://127.0.0.1:8090";
+Vue.http.options.root = window.global_config.remote_url;
 
 export default {
+    getRegion (cb) {
+        if (window.global_config.mode == "dev") {
+            cb("SHSH")
+        } else {
+            Vue.http.get("region").then(
+                (response) => {
+                    cb(response.body)
+                },
+                () => {}
+            )
+        }
+    },
+
     login (phone, password, cb, errorCb) {
         Vue.http.get("auth?phone=" + phone + "&password=" + password).then(
+            (response) => {
+                if (response.body.error == 0) {
+                    cb(response.body.detail);
+                } else {
+                    errorCb(response.body);
+                }
+            }, (response) => {
+                errorCb(response.body);
+            })
+    },
+
+    requestCaptcha (phone, cb, errorCb) {
+        Vue.http.post("captcha/" + phone).then(
             (response) => {
                 if (response.body.error == 0) {
                     cb(response.body.detail);

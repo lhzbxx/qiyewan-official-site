@@ -7,7 +7,8 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
     "start": "http-server -a 192.168.1.4 -p 8000",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "deploy": "cross-env NODE_ENV=production webpack --progress --hide-modules && scp -r dist/ root@115.28.71.169:/home/www/qiyewan"
+    "deploy": "cross-env NODE_ENV=production webpack --progress --hide-modules && scp -r dist/ root@106.75.11.210:/home/www/official-site",
+    "deploy-test": "cross-env NODE_ENV=production webpack --progress --hide-modules && scp -r dist/ root@115.28.71.169:/home/www/qiyewan"
   },
   "dependencies": {
     "element-ui": "^1.0.0-rc.4",
