@@ -224,6 +224,7 @@
         padding: 15px;
         margin-top: 30px;
     }
+
     .advan_img img {
         width: 100%;
     }
@@ -267,13 +268,14 @@
                             <el-rate
                                     v-model="product.rate"
                                     disabled
-                                    show-text
                                     :colors="['#99A9BF', '#F7BA2A', '#FF9900']"
-                                    text-color="#ff9900"
-                                    text-template="{value}"
                                     style="display: inline-flex;">
                             </el-rate>
-                            <span>（<b style="color:#f57c43"> {{ product.purchaseNumber }} </b>位用户参与评分）</span>
+                            <span style="color: #ff9900; font-size: 17px;">{{ product.rate.toFixed(1) }}</span>
+                            <span style="color: #aaa">
+                                （<b> {{ product.purchaseNumber }} </b>
+                                位用户参与评分）
+                            </span>
                         </p>
                     </div>
                     <el-form :model="form" label-width="75px" style="text-align:left">
@@ -306,7 +308,7 @@
                                 <el-radio-button label="12">一年</el-radio-button>
                             </el-radio-group>
                         </el-form-item>
-                        <el-form-item label="参与人数" style="margin-bottom: 8px" v-if="!product.isInstant">
+                        <el-form-item label="参与人数" style="margin-bottom: 8px" v-if="isSpecial()">
                             <el-input-number :min="1"
                                              size="small"
                                              v-model="form.member">
@@ -454,7 +456,6 @@
                                             <el-rate
                                                     v-model="item.rate"
                                                     disabled
-                                                    show-text
                                                     :colors="['#99A9BF', '#F7BA2A', '#FF9900']"
                                                     text-color="#ff9900"
                                                     text-template="{value}">
@@ -512,6 +513,7 @@
                 isAdding: false,
                 form: {
                     amount: 1,
+                    member: 1,
                     serialId: null,
                     regionCode: null,
                     region: null
@@ -531,7 +533,6 @@
             cdnPrefix: 'cdnPrefix'
         }),
         created () {
-            this.refreshForm()
             this.fetchData()
         },
         watch: {
@@ -544,8 +545,9 @@
                 productApi.getProductDetail(this.$route.params.serialId,
                         data => {
                             vm.product = data
-                            vm.product.rate = vm.product.rate.toFixed(1)
+                            vm.product.rate = Math.round(vm.product.rate * 10) / 10
                             vm.loading = false
+                            vm.refreshForm()
                         },
                         error => {
                             vm.error = error
@@ -599,7 +601,7 @@
                         })
             },
             getTotalPrice () {
-                if (this.$route.params.serialId.substr(4) === 'HR0003') {
+                if (this.isSpecial()) {
                     return amount > 3 ? (98.8 + 18.8 * (amount - 3) * this.form.amount).toFixed(2) : (98.8).toFixed(2)
                 } else {
                     return (this.form.amount * this.product.unitPrice).toFixed(2)
@@ -613,7 +615,14 @@
                 this.form.regionCode = this.getRegion.code
                 this.form.region = this.address.province + "-" + this.address.city + "-" + this.address.district
                 this.form.serialId = this.$route.params.serialId
-                this.form.amount = 1
+                if (this.product.isInstant) {
+                    this.form.amount = 1
+                } else {
+                    this.form.amount = 3
+                }
+            },
+            isSpecial() {
+                return this.$route.params.serialId.substr(4) === 'HR0003'
             }
         }
     }
