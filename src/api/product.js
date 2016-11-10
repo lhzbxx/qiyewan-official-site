@@ -30,11 +30,18 @@ export default {
         })
     },
 
-    getProductList (category, cb, errorCb) {
-        Vue.http.get("products/?classificationName=" + category).then((response) => {
+    getProductList (regionCode,category,cb, errorCb) {
+        Vue.http.get("products/?regionCode=" + regionCode + "&classificationName=" + category).then((response) => {
             cb(response.body)
         }, (response) => {
-            errorCb(response.body);
+            errorCb(response.body)
         })
     },
+    getNavList (regionCode, cb, errorCb){
+        Vue.http.get("products/?regionCode=" + regionCode).then((response) => {
+            cb(response.body)
+        }, (response) => {
+            errorCb(response.body)
+        })
+    }
 }

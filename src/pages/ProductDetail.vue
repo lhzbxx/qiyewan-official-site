@@ -233,9 +233,11 @@
         white-space: normal;
         margin: 0 auto;
     }
-.hide{
-    display: none;
-}
+
+    .hide {
+        display: none;
+    }
+
     .inter_bg {
         margin-top: 30px;
         margin-left: -4px;
@@ -255,11 +257,12 @@
         margin-top: 30px;
     }
 
+
     .el-radio-button {
         margin-right: 20px;
     }
-
     .el-radio-button__inner {
+        width: 85px;
         border-radius: 4px;
     }
 
@@ -271,12 +274,15 @@
         width: 100%;
     }
 </style>
+
 <template>
     <div class="container">
         <lh-loading v-if="!product"></lh-loading>
         <div v-else>
             <el-breadcrumb separator=">" style="padding: 10px 0; border-bottom: 1px solid #eee">
-                <el-breadcrumb-item><router-link to="/">首页</router-link></el-breadcrumb-item>
+                <el-breadcrumb-item>
+                    <router-link to="/">首页</router-link>
+                </el-breadcrumb-item>
                 <el-breadcrumb-item>{{ product.classificationName }}</el-breadcrumb-item>
             </el-breadcrumb>
             <el-row style="margin-top:20px">
@@ -409,7 +415,7 @@
                                 </div>
                             </div>
                             <div class="provide">
-                               <!-- <div class="tit">您需要提供</div>-->
+                                <!-- <div class="tit">您需要提供</div>-->
                                 <div class="pro_pic"><img :src="imageIp+product.whatNeed" alt=""></div>
                             </div>
                             <div class="Process">
@@ -537,24 +543,11 @@
     export default {
         data() {
             return {
-                reviews:null/* [
-                    {
-                        content: "专业的 服务也好 效率快 价格优惠推荐",
-                        createAt: "2015年3月2日",
-                        rate: 4.7,
-                        username: "刘德华"
-                    },
-                    {
-                        content: "高效率 服务态度挺好的 价格也还实惠值得推荐",
-                        createAt: "2015年4月1日",
-                        rate: 3.9,
-                        username: "静静"
-                    }
-                ]*/,
+                reviews: null,
                 form: {
                     period: 1,
                     amount: 1,
-                    unitPrice:0,
+                    unitPrice: 0,
                     totalPrice: 0,
                     regionCityCode: '',
                     regionCountryCode: '',
@@ -563,20 +556,7 @@
                     provenceName: '',
                     regionAreas: [],
                 },
-                qa:null,/* [
-                    {
-                        q: "社保账户是强制开设的吗？",
-                        a: "1、公司法定代表人签署的《公司变更登记申请书》（公司加盖公章）2、公司签署的《公司（企业）法定代表人登记表》（公司加盖公章）；3、《指定代表或者共同委托代理人的证明》（公司加盖公章）及指定代表或委托代理人身份证复印件（本人签字），应标明具体委托事项、被委托人的权限、委托期限；4、根据公司章程规定和程序提交原任法定代表人的免职证明、新任法定代表人的任职证明； 说明：有限责任公司提交股东会决议、董事会决议或者其他任免文件，股东会决议由全体股东签署（应当符合公司章程规定的表决方式，股东为自然人的由本人签字，自然人以外的股东加盖公章），董事会决议由公司董事签字；股份有限公司提交董事会决议或其他任免文件。董事会决议由公司董事签字；国有独资有限责任公司提交出资人或其授权部门的书面决定（加盖公章）、董事会决议（董事签字）或其他相关材料；一人有限责任公司提交股东的书面决定（股东为自然人的由本人签字，法人股东加盖公章）、董事会决议（由董事签字）或其他相关材料；5、法律、行政法规和国务院决定规定变更公司法定代表人必须报经批准的，提交有关部门的批准文件或者许可证书复印件；6、公司营业执照正、副本； 说明： 公司法定代表人姓名变更涉及公司董事调整的应按《公司董事、监事、经理备案提交材料规范》提交相应的备案材料，相同项目材料可以合并。"
-                    },
-                    {
-                        q: "社保账户是强制开设的吗？",
-                        a: "1、公司法定代表人签署的《公司变更登记申请书》（公司加盖公章）2、公司签署的《公司（企业）法定代表人登记表》（公司加盖公章）；3、《指定代表或者共同委托代理人的证明》（公司加盖公章）及指定代表或委托代理人身份证复印件（本人签字），应标明具体委托事项、被委托人的权限、委托期限；4、根据公司章程规定和程序提交原任法定代表人的免职证明、新任法定代表人的任职证明； 说明：有限责任公司提交股东会决议、董事会决议或者其他任免文件，股东会决议由全体股东签署（应当符合公司章程规定的表决方式，股东为自然人的由本人签字，自然人以外的股东加盖公章），董事会决议由公司董事签字；股份有限公司提交董事会决议或其他任免文件。董事会决议由公司董事签字；国有独资有限责任公司提交出资人或其授权部门的书面决定（加盖公章）、董事会决议（董事签字）或其他相关材料；一人有限责任公司提交股东的书面决定（股东为自然人的由本人签字，法人股东加盖公章）、董事会决议（由董事签字）或其他相关材料；5、法律、行政法规和国务院决定规定变更公司法定代表人必须报经批准的，提交有关部门的批准文件或者许可证书复印件；6、公司营业执照正、副本； 说明： 公司法定代表人姓名变更涉及公司董事调整的应按《公司董事、监事、经理备案提交材料规范》提交相应的备案材料，相同项目材料可以合并。"
-                    },
-                    {
-                        q: "社保账户是强制开设的吗？",
-                        a: "1、公司法定代表人签署的《公司变更登记申请书》（公司加盖公章）2、公司签署的《公司（企业）法定代表人登记表》（公司加盖公章）；3、《指定代表或者共同委托代理人的证明》（公司加盖公章）及指定代表或委托代理人身份证复印件（本人签字），应标明具体委托事项、被委托人的权限、委托期限；4、根据公司章程规定和程序提交原任法定代表人的免职证明、新任法定代表人的任职证明； 说明：有限责任公司提交股东会决议、董事会决议或者其他任免文件，股东会决议由全体股东签署（应当符合公司章程规定的表决方式，股东为自然人的由本人签字，自然人以外的股东加盖公章），董事会决议由公司董事签字；股份有限公司提交董事会决议或其他任免文件。董事会决议由公司董事签字；国有独资有限责任公司提交出资人或其授权部门的书面决定（加盖公章）、董事会决议（董事签字）或其他相关材料；一人有限责任公司提交股东的书面决定（股东为自然人的由本人签字，法人股东加盖公章）、董事会决议（由董事签字）或其他相关材料；5、法律、行政法规和国务院决定规定变更公司法定代表人必须报经批准的，提交有关部门的批准文件或者许可证书复印件；6、公司营业执照正、副本； 说明： 公司法定代表人姓名变更涉及公司董事调整的应按《公司董事、监事、经理备案提交材料规范》提交相应的备案材料，相同项目材料可以合并。"
-                    }
-                ]*/
+                qa: null,
                 loading: false,
                 error: null,
                 product: null,
@@ -612,7 +592,7 @@
                         data => {
                             vm.product = data;
                             vm.form.totalPrice = vm.product.unitPrice
-                                    vm.loading = false
+                            vm.loading = false
                             vm.setRegion();
                         },
                         error => {
@@ -696,9 +676,9 @@
                 var amount = this.form.amount
                 var period = this.form.period
                 var unitPrice = this.form.unitPrice;
-                if(productNum === 'HR0003'){
-                    amount > 3 ? unitPrice = (98.8 + 18.8 * (amount-3) * period).toFixed(2) : unitPrice = (98.8 * period).toFixed(2)
-                }else {
+                if (productNum === 'HR0003') {
+                    amount > 3 ? unitPrice = (98.8 + 18.8 * (amount - 3) * period).toFixed(2) : unitPrice = (98.8 * period).toFixed(2)
+                } else {
                     unitPrice = (unitPrice * period * amount).toFixed(2)
                 }
                 this.form.totalPrice = unitPrice
