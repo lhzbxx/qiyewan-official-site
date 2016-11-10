@@ -1,4 +1,5 @@
 export default {
+    cdnPrefix: 'http://ofw6tmkxn.bkt.clouddn.com/',
     hotProducts: [
         {
             serialId: "IC0001",
