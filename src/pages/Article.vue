@@ -277,9 +277,9 @@
                 location.href = '/#/article/' + article_id;
                 location.reload();
             },
-            getLocalTime:function(nS) {
-                return new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');
-            }
+            getLocalTime(nS) {
+                return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ');
+            },
         }
     }
 </script>
