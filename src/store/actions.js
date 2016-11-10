@@ -127,7 +127,6 @@ export const updateCart = ({commit, state}, cart) => {
 }
 
 export const getOrders = ({commit, state}, {page, orderState}) => {
-    console.log(orderState)
     return new Promise((resolve, reject) => {
         orderApi.getOrders(state.auth.user.token, page, orderState,
             orders => {
@@ -143,7 +142,6 @@ export const getOrders = ({commit, state}, {page, orderState}) => {
 }
 
 export const addToOrder = ({commit, state}, {carts, payment}) => {
-    console.log(payment)
     return new Promise((resolve, reject) => {
         orderApi.addOrder(state.auth.user.token, carts, payment,
             order => {

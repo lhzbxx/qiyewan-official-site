@@ -43,6 +43,7 @@
         },
         methods: {
             fetchData (page) {
+                if (page < 1) return
                 this.page = page
                 this.loading = false
                 let vm = this

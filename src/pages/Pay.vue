@@ -190,14 +190,14 @@
             addToOrder() {
                 this.isOrdering = true
                 let vm = this
-                let checkout = this.checkout
-                let paymentCode = this.payments[this.payment].code
-                this.$store.dispatch("addToOrder", {checkout, paymentCode}).then(
+                this.$store.dispatch("addToOrder", {
+                    carts: this.checkout,
+                    payment: this.payments[this.payment].code
+                }).then(
                         function (order) {
                             window.open(order.payUrl, "_self")
                         },
                         function (error) {
-                            console.log(error)
                             vm.isOrdering = false
                         }
                 )

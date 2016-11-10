@@ -7,10 +7,10 @@
                 </el-breadcrumb-item>
                 <el-breadcrumb-item>订单</el-breadcrumb-item>
             </el-breadcrumb>
-            <el-tabs>
-                <el-tab-pane label="全部订单" @tab-click="changeOrderState('All')"></el-tab-pane>
-                <el-tab-pane label="未付款" @tab-click="changeOrderState('Unpaid')"></el-tab-pane>
-                <el-tab-pane label="已付款" @tab-click="changeOrderState('Paid')"></el-tab-pane>
+            <el-tabs @tab-click="changeOrderState">
+                <el-tab-pane label="全部订单"></el-tab-pane>
+                <el-tab-pane label="未付款"></el-tab-pane>
+                <el-tab-pane label="已付款"></el-tab-pane>
             </el-tabs>
             <lh-loading v-if="isLoading"></lh-loading>
             <div v-if="!isLoading">
@@ -35,7 +35,8 @@
                 isLoading: true,
                 error: null,
                 data: [],
-                page: 1
+                page: 1,
+                orderState: 'All'
             }
         },
         computed: mapGetters({
@@ -43,14 +44,17 @@
             totalNum: 'orderNum'
         }),
         created() {
-            this.fetchData(1, "All")
+            this.fetchData(1)
         },
         methods: {
-            fetchData (page, orderState) {
-                this.page = page
+            fetchData (page) {
+                if (page < 1) return
                 this.loading = true
                 let vm = this
-                this.$store.dispatch("getOrders", {page, orderState}).then(
+                this.$store.dispatch("getOrders", {
+                    page: this.page,
+                    orderState: this.orderState
+                }).then(
                         function (data) {
                             vm.data = data.content
                             vm.isLoading = false
@@ -61,8 +65,19 @@
                         }
                 )
             },
-            changeOrderState(orderState) {
-                this.fetchData(1, orderState)
+            changeOrderState(tab) {
+                switch (tab.index) {
+                    case "1":
+                        this.orderState = 'All'
+                        break
+                    case "2":
+                        this.orderState = 'Unpaid'
+                        break
+                    case "3":
+                        this.orderState = 'Paid'
+                        break
+                }
+                this.fetchData(1)
             }
         }
     }
