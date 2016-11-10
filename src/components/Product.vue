@@ -1,7 +1,6 @@
 <style scoped>
     .image {
         width: 268px;
-     /*   height: 273px;*/
         overflow: hidden;
         display: block;
     }
@@ -12,7 +11,6 @@
 
     .product-container {
         display: inline-block;
-        background-color: #fff;
     }
 
     #product {

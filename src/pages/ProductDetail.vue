@@ -1,8 +1,4 @@
 <style scoped>
-    .el-tabs__content {
-        padding: 0px !important;
-    }
-
     .detail_pic {
         background: url(http://ofw6tmkxn.bkt.clouddn.com/produce_2.jpg) no-repeat;
         width: 100%;
@@ -79,35 +75,6 @@
         line-height: 42px;
         text-align: center;
         border-radius: 5px;
-    }
-
-    .el-tabs__item {
-        padding: 0 25px;
-        border-top: 2px solid transparent;
-        box-sizing: content-box;
-    }
-
-    .el-tabs__item.is-active {
-        border-top: 2px solid rgb(32, 160, 255);
-        position: relative;
-    }
-
-    .el-tabs__item.is-active::before {
-        position: absolute;
-        content: '';
-        border: 5px solid transparent;
-        border-top: 5px solid rgb(32, 160, 255);
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, 0%);
-    }
-
-    .el-radio-button:not(:last-child) {
-        margin-right: 20px;
-    }
-
-    .el-radio-button__inner {
-        width: 85px;
     }
 
     .Process p {
@@ -258,18 +225,6 @@
         margin-top: 30px;
     }
 
-    .el-radio-button {
-        margin-right: 20px;
-    }
-
-    .el-radio-button__inner {
-        border-radius: 4px;
-    }
-
-    .el-radio-button:first-child .el-radio-button__inner, .el-radio-button:last-child .el-radio-button__inner {
-        border-radius: 4px;
-    }
-
     .advan_img img {
         width: 100%;
     }
@@ -323,17 +278,17 @@
                             <el-row>
                                 <el-col :span="5" style="margin-right: 15px">
                                     <el-select v-model="form.regionCityCode"
-                                               :placeholder="form.province"
+                                               :placeholder="address.province"
                                                disabled>
                                     </el-select>
                                 </el-col>
                                 <el-col :span="5" style="margin-right: 15px">
                                     <el-select v-model="form.regionCityCode"
-                                               :placeholder="form.city"
+                                               :placeholder="address.city"
                                                disabled>
                                     </el-select>
                                 </el-col>
-                                <el-col :span="5" style="margin-right: 15px">
+                                <el-col :span="6" style="margin-right: 15px">
                                     <el-select v-model="address.district" :placeholder="address.district">
                                         <el-option v-for="area in address.districts"
                                                    :value="area.name"></el-option>
@@ -342,13 +297,19 @@
                             </el-row>
                         </el-form-item>
                         <el-form-item label="购买时长" style="margin-bottom: 8px" v-if="!product.isInstant">
-                            <el-radio-group v-model="form.period">
+                            <el-radio-group v-model="form.amount">
                                 <el-radio-button label="3">一季度</el-radio-button>
                                 <el-radio-button label="6">半年</el-radio-button>
                                 <el-radio-button label="12">一年</el-radio-button>
                             </el-radio-group>
                         </el-form-item>
-                        <el-form-item label="购买数量" style="margin-bottom: 8px">
+                        <el-form-item label="参与人数" style="margin-bottom: 8px" v-if="!product.isInstant">
+                            <el-input-number :min="1"
+                                             size="small"
+                                             v-model="form.member">
+                            </el-input-number>
+                        </el-form-item>
+                        <el-form-item label="购买数量" style="margin-bottom: 8px" v-if="product.isInstant">
                             <el-input-number :min="1"
                                              size="small"
                                              v-model="form.amount">
@@ -359,14 +320,12 @@
                                size="large"
                                @click.native="directOrder"
                                style="width: 120px;
-                                      font-family:'Microsoft yahei';
                                       margin-left: 10px;">
                         立即购买
                     </el-button>
                     <el-button size="large"
                                style="width: 120px;
                                       margin-left: 10px;
-                                      font-family:'Microsoft yahei';
                                       color:#279ad2"
                                :loading="isAdding"
                                v-on:click="addToCart">
@@ -549,7 +508,7 @@
                 isAdding: false,
                 form: {
                     amount: 1,
-                    serialId: this.$route.params.serialId,
+                    serialId: null,
                     regionCode: null,
                     region: null
                 },
@@ -568,6 +527,7 @@
             cdnPrefix: 'cdnPrefix'
         }),
         created () {
+            this.refreshForm()
             this.fetchData()
         },
         watch: {
@@ -579,10 +539,9 @@
                 let vm = this
                 productApi.getProductDetail(this.$route.params.serialId,
                         data => {
-                            data.rate = data.rate.toFixed(1)
                             vm.product = data;
+                            vm.product.rate = vm.product.rate.toFixed(1)
                             vm.loading = false
-                            vm.setAddress()
                         },
                         error => {
                             vm.error = error
@@ -642,12 +601,15 @@
                     return (this.form.amount * this.product.unitPrice).toFixed(2)
                 }
             },
-            getAddress () {
+            refreshForm () {
                 this.address.province = this.getRegion.pName
                 this.address.city = this.getRegion.name
-                this.address.district = this.getRegion.areas[0]
+                this.address.district = this.getRegion.areas[0].name
                 this.address.districts = this.getRegion.areas
-                this.form.region = this.address.province + this.address.city + this.address.district
+                this.form.regionCode = this.getRegion.code
+                this.form.region = this.address.province + "-" + this.address.city + "-" + this.address.district
+                this.form.serialId = this.$route.params.serialId
+                this.form.amount = 1
             }
         }
     }
