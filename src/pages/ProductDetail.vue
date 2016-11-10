@@ -297,12 +297,12 @@
                         <p style="font-size: 13px;
                               color: #aaa;
                               ">
-                            市场价格：&nbsp;&yen; {{ product.unitPrice * 5,form.totalPrice = product.unitPrice }}
+                            市场价格：&nbsp;&yen; {{ product.unitPrice * 5,form.unitPrice = product.unitPrice }}
                         </p>
                         <p style="margin: 10px 0;">价 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：
                             <span style="font-size: 20px;
                                      color: red;">
-                            &yen; {{ (product.unitPrice * form.period * form.amount).toFixed(2) }}
+                            &yen; {{ form.totalPrice }}
                         </span></p>
                         <p style="">用户评分：
                             <el-rate
@@ -339,14 +339,14 @@
                                 </el-col>
                             </el-row>
                         </el-form-item>
-                        <el-form-item label="购买时长" style="margin-bottom:8px">
+                        <el-form-item label="购买时长" style="margin-bottom:8px" v-if="!product.isInstant">
                             <el-radio-group v-model="form.period">
                                 <el-radio-button label="3">一季度</el-radio-button>
                                 <el-radio-button label="6">半年</el-radio-button>
                                 <el-radio-button label="12">一年</el-radio-button>
                             </el-radio-group>
                         </el-form-item>
-                        <el-form-item label="活动形式" style="margin-bottom:8px">
+                        <el-form-item label="购买数量" style="margin-bottom:8px">
                             <el-input-number @change="handleAmountChange"
                                              :min="1"
                                              size="small"
@@ -553,8 +553,9 @@
                     }
                 ]*/,
                 form: {
-                    period: 3,
+                    period: 1,
                     amount: 1,
+                    unitPrice:0,
                     totalPrice: 0,
                     regionCityCode: '',
                     regionCountryCode: '',
@@ -563,7 +564,7 @@
                     provenceName: '',
                     regionAreas: [],
                 },
-                qa:/* [
+                qa:null,/* [
                     {
                         q: "社保账户是强制开设的吗？",
                         a: "1、公司法定代表人签署的《公司变更登记申请书》（公司加盖公章）2、公司签署的《公司（企业）法定代表人登记表》（公司加盖公章）；3、《指定代表或者共同委托代理人的证明》（公司加盖公章）及指定代表或委托代理人身份证复印件（本人签字），应标明具体委托事项、被委托人的权限、委托期限；4、根据公司章程规定和程序提交原任法定代表人的免职证明、新任法定代表人的任职证明； 说明：有限责任公司提交股东会决议、董事会决议或者其他任免文件，股东会决议由全体股东签署（应当符合公司章程规定的表决方式，股东为自然人的由本人签字，自然人以外的股东加盖公章），董事会决议由公司董事签字；股份有限公司提交董事会决议或其他任免文件。董事会决议由公司董事签字；国有独资有限责任公司提交出资人或其授权部门的书面决定（加盖公章）、董事会决议（董事签字）或其他相关材料；一人有限责任公司提交股东的书面决定（股东为自然人的由本人签字，法人股东加盖公章）、董事会决议（由董事签字）或其他相关材料；5、法律、行政法规和国务院决定规定变更公司法定代表人必须报经批准的，提交有关部门的批准文件或者许可证书复印件；6、公司营业执照正、副本； 说明： 公司法定代表人姓名变更涉及公司董事调整的应按《公司董事、监事、经理备案提交材料规范》提交相应的备案材料，相同项目材料可以合并。"
@@ -576,7 +577,7 @@
                         q: "社保账户是强制开设的吗？",
                         a: "1、公司法定代表人签署的《公司变更登记申请书》（公司加盖公章）2、公司签署的《公司（企业）法定代表人登记表》（公司加盖公章）；3、《指定代表或者共同委托代理人的证明》（公司加盖公章）及指定代表或委托代理人身份证复印件（本人签字），应标明具体委托事项、被委托人的权限、委托期限；4、根据公司章程规定和程序提交原任法定代表人的免职证明、新任法定代表人的任职证明； 说明：有限责任公司提交股东会决议、董事会决议或者其他任免文件，股东会决议由全体股东签署（应当符合公司章程规定的表决方式，股东为自然人的由本人签字，自然人以外的股东加盖公章），董事会决议由公司董事签字；股份有限公司提交董事会决议或其他任免文件。董事会决议由公司董事签字；国有独资有限责任公司提交出资人或其授权部门的书面决定（加盖公章）、董事会决议（董事签字）或其他相关材料；一人有限责任公司提交股东的书面决定（股东为自然人的由本人签字，法人股东加盖公章）、董事会决议（由董事签字）或其他相关材料；5、法律、行政法规和国务院决定规定变更公司法定代表人必须报经批准的，提交有关部门的批准文件或者许可证书复印件；6、公司营业执照正、副本； 说明： 公司法定代表人姓名变更涉及公司董事调整的应按《公司董事、监事、经理备案提交材料规范》提交相应的备案材料，相同项目材料可以合并。"
                     }
-                ]*/null,
+                ]*/
                 loading: false,
                 error: null,
                 product: null,
@@ -595,7 +596,9 @@
             this.fetchData()
         },
         watch: {
-            '$route': 'fetchData'
+            '$route': 'fetchData',
+            'form.period': 'getTotalPrice',
+            'form.amount': 'getTotalPrice'
         },
         methods: {
             handleAmountChange() {
@@ -604,10 +607,13 @@
             fetchData () {
                 this.loading = true
                 let vm = this
+                vm.form.period = 1
+                vm.form.amount = 1
                 productApi.getProductDetail(this.$route.params.serialId,
                         data => {
                             vm.product = data;
-                            vm.loading = false
+                            vm.form.totalPrice = vm.product.unitPrice
+                                    vm.loading = false
                             vm.setRegion();
                         },
                         error => {
@@ -616,8 +622,8 @@
                 )
                 productApi.getProductFaqs(this.$route.params.serialId,
                         data => {
-                            this.qa = data.content;
-                            this.setRegion();
+                            this.qa = data.content
+                            this.setRegion()
                         },
                         error => {
                             this.error = error
@@ -625,8 +631,7 @@
                 )
                 productApi.getProductReviews(this.$route.params.serialId,
                         data => {
-                            this.reviews = data;
-                            this.setRegion();
+                            this.reviews = data
                         },
                         error => {
                             this.error = error
@@ -686,6 +691,19 @@
                         break;
                     }
                 }
+            },
+            //委托代缴社保公积金服务价格计算
+            getTotalPrice(){
+                var productNum = this.$route.params.serialId.substr(4)
+                var amount = this.form.amount
+                var period = this.form.period
+                var unitPrice = this.form.unitPrice;
+                if(productNum === 'HR0003'){
+                    amount > 3 ? unitPrice = (98.8 + 18.8 * (amount-3) * period).toFixed(2) : unitPrice = (98.8 * period).toFixed(2)
+                }else {
+                    unitPrice = (unitPrice * period * amount).toFixed(2)
+                }
+                this.form.totalPrice = unitPrice
             }
         }
     }

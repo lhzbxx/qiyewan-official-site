@@ -120,6 +120,7 @@
             </table>
             <el-button v-if="isEditingCompanyInfo"
                        @click.native="confirmCompanyInfo"
+                       @click="updateCompany()"
                        type="primary"
                        style="margin-left: 125px; margin-top: 5px; margin-bottom: 5px;">确认修改
             </el-button>
@@ -195,6 +196,14 @@
             token: 'getToken'
         }),
         methods: {
+            updateCompany(){
+                authApi.updateCompany(this.token,
+                        data => {
+                            vm.companyInfo = data
+                        },
+                        error => {
+                        })
+            },
             openDialog() {
                 this.$refs.dialog.openDialog()
             },
@@ -205,21 +214,21 @@
                 this.isEditingUsername = false
             },
             fetchData() {
+                this.loading = true
                 let vm = this
                 authApi.getLoginHistory(this.token,
                         data => {
-                    vm.history = data
-                },
+                            vm.history = data
+                        },
                         error => {
-
-                })
+                        })
                 authApi.getCompany(this.token,
                         data => {
-                    vm.companyInfo = data
-                },
+                            vm.companyInfo = data
+                        },
                         error => {
-
-                })
+                        })
+                this.loading = false
             },
             getLocalTime(nS) {
                 return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ');
