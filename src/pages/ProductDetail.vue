@@ -1,4 +1,4 @@
-<style scoped>
+<style scope>
     .el-tabs__content {
         padding: 0px !important;
     }
@@ -79,35 +79,6 @@
         line-height: 42px;
         text-align: center;
         border-radius: 5px;
-    }
-
-    .el-tabs__item {
-        padding: 0 25px;
-        border-top: 2px solid transparent;
-        box-sizing: content-box;
-    }
-
-    .el-tabs__item.is-active {
-        border-top: 2px solid rgb(32, 160, 255);
-        position: relative;
-    }
-
-    .el-tabs__item.is-active::before {
-        position: absolute;
-        content: '';
-        border: 5px solid transparent;
-        border-top: 5px solid rgb(32, 160, 255);
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, 0%);
-    }
-
-    .el-radio-button:not(:last-child) {
-        margin-right: 20px;
-    }
-
-    .el-radio-button__inner {
-        width: 85px;
     }
 
     .Process p {
@@ -256,25 +227,53 @@
         padding: 15px;
         margin-top: 30px;
     }
+    .advan_img img {
+        width: 100%;
+    }
 
+</style>
 
-    .el-radio-button {
+<style>
+    .pro_right .el-radio-button {
         margin-right: 20px;
     }
-    .el-radio-button__inner {
+    .pro_right .el-radio-button__inner {
         width: 85px;
         border-radius: 4px;
     }
 
-    .el-radio-button:first-child .el-radio-button__inner, .el-radio-button:last-child .el-radio-button__inner {
+    .pro_right .el-radio-button:first-child .el-radio-button__inner, .el-radio-button:last-child .el-radio-button__inner {
         border-radius: 4px;
     }
+    .detail_tab .el-tabs__item {
+        padding: 0 25px;
+        border-top: 2px solid transparent;
+        box-sizing: content-box;
+    }
 
-    .advan_img img {
-        width: 100%;
+    .detail_tab .el-tabs__item.is-active {
+        border-top: 2px solid rgb(32, 160, 255);
+        position: relative;
+    }
+
+    .detail_tab .el-tabs__item.is-active::before {
+        position: absolute;
+        content: '';
+        border: 5px solid transparent;
+        border-top: 5px solid rgb(32, 160, 255);
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0%);
+    }
+
+    .detail_tab .el-radio-button:not(:last-child) {
+        margin-right: 20px;
+    }
+
+    .detail_tab .el-radio-button__inner {
+        width: 85px;
     }
 </style>
-
 <template>
     <div class="container">
         <lh-loading v-if="!product"></lh-loading>
@@ -290,7 +289,7 @@
                     <img :src="imageIp+product.cover"
                          style="width: 100%;">
                 </el-col>
-                <el-col :span="10">
+                <el-col :span="10" class="pro_right">
                     <h3 style="margin:10px 0;font-size:20px;color:#383838">{{product.name}}</h3>
                     <p style="font-size: 12px;
                           color: #dd2726;line-height:1.8em">
@@ -393,7 +392,7 @@
                                 :price="item.price"
                                 :url="getRegion.code+item.serialId"></lh-product>
                 </el-col>
-                <el-col :span="18">
+                <el-col :span="18" class="detail_tab">
                     <el-tabs type="border-card"
                              style="width: 100%;padding: 0;">
                         <el-tab-pane label="服务详情">
@@ -571,7 +570,6 @@
             isLogin: 'isLogin'
         }),
         created () {
-
             this.fetchData()
         },
         watch: {
@@ -677,7 +675,7 @@
                 var period = this.form.period
                 var unitPrice = this.form.unitPrice;
                 if (productNum === 'HR0003') {
-                    amount > 3 ? unitPrice = (98.8 + 18.8 * (amount - 3) * period).toFixed(2) : unitPrice = (98.8 * period).toFixed(2)
+                    amount > 3 ? unitPrice = ((98.8 + 18.8 * (amount - 3)) * period).toFixed(2) : unitPrice = (98.8 * period).toFixed(2)
                 } else {
                     unitPrice = (unitPrice * period * amount).toFixed(2)
                 }
