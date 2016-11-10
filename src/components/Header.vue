@@ -122,14 +122,11 @@
                     <div class="show">
                         <div class="nav-show-left l">
                             <div class="nav-show-content">
-                                <router-link :to="{ name: 'product-list', params: { category: item.l.title }}">
-                                    <div class="registration">
-                                        {{ item.l.title }}
-                                    </div>
+                                <router-link :to="{ name: 'product-list', params: { regionCode: getRegion.code,category: item.l.title }}">
+                                    <div class="registration">{{ item.l.title }}</div>
                                 </router-link>
                                 <span v-for="i in item.l.list">
-                                    <router-link
-                                            :to="{ name: 'product-detail', params: { serialId: getRegion.code+i.serialId }}">
+                                    <router-link :to="{ name: 'product-detail', params: { serialId: i.serialId }}">
                                         {{ i.name }}
                                     </router-link>
                                 </span>
@@ -137,12 +134,11 @@
                         </div>
                         <div class="nav-show-right l">
                             <div class="nav-show-content">
-                                <router-link :to="{ name: 'product-list', params: { category: item.r.title }}">
+                                <router-link :to="{ name: 'product-list', params: { regionCode: getRegion.code,category: item.r.title }}">
                                     <div class="registration">{{ item.r.title }}</div>
                                 </router-link>
                                 <span v-for="i in item.r.list">
-                                     <router-link
-                                             :to="{ name: 'product-detail', params: { serialId: getRegion.code+i.serialId }}">
+                                     <router-link :to="{ name: 'product-detail', params: { serialId: getRegion.code+i.serialId }}">
                                         {{ i.name }}
                                     </router-link>
                                 </span>
@@ -150,9 +146,9 @@
                         </div>
                     </div>
                 </li>
-                <li>
+            <!--    <li>
                     <a>套餐服务</a>
-                </li>
+                </li>-->
                 <p>
                     <a>快捷入口</a>
                 </p>
@@ -166,11 +162,10 @@
 </template>
 
 <script>
+    import productApi from '../api/product'
     import {mapGetters} from 'vuex'
     export default {
-        computed: mapGetters({
-            getRegion: 'getRegion',
-        }),
+
         data() {
             return {
                 navigators: [
@@ -178,120 +173,121 @@
                         title: "工商服务",
                         l: {
                             title: "工商变更",
-                            list: [
-                                {name: "公司注册(园区)", serialId: "IC0001"},
-                                {name: "公司注册(非园区)", serialId: "IC0002"},
-                                {name: "1元注册(园区)+零申报记账(1年)", serialId: "IC0003"},
-                                {name: "公司名称变更", serialId: "IC0004"},
-                                {name: "经营范围变更", serialId: "IC0005"},
-                                {name: "法人代表变更", serialId: "IC0006"},
-                                {name: "经营地址变更(不跨区)", serialId: "IC0007"},
-                                {name: "经营地址变更(跨区)", serialId: "IC0008"},
-                                {name: "注册资本变更", serialId: "IC0009"},
-                                {name: "股东,股权变更", serialId: "IC0010"},
-                                {name: "公司高管变更", serialId: "IC0011"},
-                                {name: "三证/五证合一", serialId: "IC0012"},
-                            ]
+                            list: []
                         },
                         r: {
                             title: "工商注销",
-                            list: [
-                                {name: "内资企业注销", serialId: "IC0013"},
-                                {name: "1元补差产品", serialId: "IC0014"},
-                            ]
+                            list: []
                         }
                     },
                     {
                         title: "财税服务",
                         l: {
                             title: "财务服务",
-                            list: [
-                                {name: "零申报代理记账", serialId: "FC0001"},
-                                {name: "小规模纳税人代理记账", serialId: "FC0002"},
-                                {name: "一般纳税人代理记账", serialId: "FC0003"},
-                                {name: "企业基本户开户", serialId: "FC0004"},
-                                {name: "企业一般户开户", serialId: "FC0005"},
-                            ]
+                            list: []
                         },
                         r: {
                             title: "税务服务",
-                            list: [
-                                {name: "税务报道,税种认定", serialId: "FC0006"},
-                                {name: "代领CA证书", serialId: "FC0007"},
-                                {name: "一般纳税人认定", serialId: "FC0008"},
-                                {name: "税务登记信息变更", serialId: "FC0009"},
-                                {name: "代开发票服务", serialId: "FC0010"},
-                            ]
+                            list: []
                         }
                     },
                     {
                         title: "法律服务",
                         l: {
                             title: "法律服务",
-                            list: [
-                                {name: "合同撰写与审查（普通）", serialId: "LD0001"},
-                                {name: "合同撰写与审查（定制）", serialId: "LD0002"},
-                                {name: "公司章程", serialId: "LD0003"},
-                                {name: "股东，合伙协议", serialId: "LD0004"},
-                                {name: "股权激励协议", serialId: "LD0005"},
-                                {name: "法律咨询", serialId: "LD0006"},
-                                {name: "法律咨询(包月)", serialId: "LD0007"},
-                                {name: "法律包服务(三个月)", serialId: "LD0008"},
-                                {name: "法律包服务(半年)", serialId: "LD0009"},
-                                {name: "法律包服务(一年)", serialId: "LD0010"},
-                            ]
+                            list: []
                         },
                         r: {
                             title: "知识产权",
-                            list: [
-                                {name: "实用新型专利申请", serialId: "LD0011"},
-                                {name: "发明专利申请", serialId: "LD0012"},
-                                {name: "商标注册", serialId: "LD0013"},
-                                {name: "计算机软件著作权", serialId: "LD0014"},
-                                {name: "文字或美术著作权", serialId: "LD0015"},
-                            ]
+                            list: []
                         }
                     },
                     {
                         title: "人事服务",
                         l: {
                             title: "社保",
-                            list: [
-                                {name: "企业社保账户开户", serialId: "HR0001"},
-                                {name: "企业公积金账户开户", serialId: "HR0002"},
-                                {name: "委托代缴社保公积金服务", serialId: "HR0003"},
-                                {name: "个人社保开户", serialId: "HR0004"},
-                                {name: "个人社保公积金代缴", serialId: "HR0005"},
-                            ]
+                            list: []
                         },
                         r: {
                             title: "公司人事",
-                            list: [
-                                {name: "人力资源基础文档", serialId: "HR0006"}
-                            ]
+                            list: []
                         }
                     },
                     {
                         title: "IT&设计服务",
                         l: {
                             title: "网站设计",
-                            list: [
-                                {name: "标准网站", serialId: "IT0001"},
-                                {name: "定制网站", serialId: "IT0002"},
-                                {name: "费用管理平台服务(SaaS)", serialId: "IT0003"},
-                            ]
+                            list: []
                         },
                         r: {
                             title: "LOGO设计",
-                            list: [
-                                {name: "VI设计", serialId: "IT0004"},
-                                {name: "LOGO设计(一个方案)", serialId: "IT0005"},
-                                {name: "LOGO设计(三个方案)", serialId: "IT0006"}
-                            ]
+                            list: []
+                        }
+                    },
+                    {
+                        title: "套餐服务",
+                        l: {
+                            title: "套餐",
+                            list: []
+                        },
+                        r: {
+                            title: "套餐",
+                            list: []
                         }
                     }
                 ]
             }
         },
+        computed: mapGetters({
+            getRegion: 'getRegion'
+        }),
+        created () {
+            this.fetchData()
+        },
+        methods: {
+            fetchData () {
+                productApi.getNavList(this.getRegion.code,
+                        data => {
+                            this.dealNavData(data)
+                        },
+                        error => {
+                            this.error = error
+                        }
+                )
+            },
+            dealNavData(navList){
+                for(var navItem of navList){
+                    switch (navItem.classificationCode){
+                        case 'IC':
+                            this.setNavItem(navItem.classificationName,0,navItem.name,navItem.serialId)
+                            break;
+                        case 'FC':
+                            this.setNavItem(navItem.classificationName,1,navItem.name,navItem.serialId)
+                            break;
+                        case 'LD':
+                            this.setNavItem(navItem.classificationName,2,navItem.name,navItem.serialId)
+                            break;
+                        case 'HR':
+                            this.setNavItem(navItem.classificationName,3,navItem.name,navItem.serialId)
+                            break;
+                        case 'IT':
+                            this.setNavItem(navItem.classificationName,4,navItem.name,navItem.serialId)
+                            break;
+                        case 'PS':
+                            this.setNavItem(navItem.classificationName,5,navItem.name,navItem.serialId)
+                            break;
+                    }
+                }
+            },
+
+            setNavItem(classificationName,idx,productName,productSerialId){
+                var navClass = this.navigators[idx]
+                if(classificationName === navClass.l.title){
+                    this.navigators[idx].l.list.push({name: productName, serialId: productSerialId})
+                }else if(classificationName ===  navClass.r.title){
+                    this.navigators[idx].r.list.push({name: productName, serialId: productSerialId})
+                }
+            }
+        }
     }
 </script>

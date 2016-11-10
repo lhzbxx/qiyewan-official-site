@@ -224,6 +224,9 @@
         padding: 15px;
         margin-top: 30px;
     }
+    .advan_img img {
+        width: 100%;
+    }
 
     .advan_img img {
         width: 100%;
@@ -244,7 +247,7 @@
                     <img :src="cdnPrefix+product.cover"
                          style="width: 100%;">
                 </el-col>
-                <el-col :span="10">
+                <el-col :span="10" class="pro_right">
                     <h3 style="margin:10px 0;font-size:20px;color:#383838">{{product.name}}</h3>
                     <p style="font-size: 12px;
                           color: #dd2726;line-height:1.8em">
@@ -348,7 +351,7 @@
                                 :price="item.price"
                                 :url="getRegion.code+item.serialId"></lh-product>
                 </el-col>
-                <el-col :span="18">
+                <el-col :span="18" class="detail_tab">
                     <el-tabs type="border-card"
                              style="width: 100%;padding: 0;">
                         <el-tab-pane label="服务详情">
@@ -370,7 +373,8 @@
                                 </div>
                             </div>
                             <div class="provide">
-                                <div class="pro_pic"><img style="width: 100%" :src="cdnPrefix+product.whatNeed" alt="">
+                                <div class="pro_pic">
+                                    <img style="width: 100%" :src="cdnPrefix+product.whatNeed" alt="">
                                 </div>
                             </div>
                             <div class="Process">
@@ -539,7 +543,7 @@
                 let vm = this
                 productApi.getProductDetail(this.$route.params.serialId,
                         data => {
-                            vm.product = data;
+                            vm.product = data
                             vm.product.rate = vm.product.rate.toFixed(1)
                             vm.loading = false
                         },

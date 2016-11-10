@@ -78,7 +78,7 @@ const routes = [
         component: Review
     },
     {
-        path: '/product/list/:category',
+        path: '/product/list/:regionCode/:category',
         name: 'product-list',
         component: ProductList
     },
