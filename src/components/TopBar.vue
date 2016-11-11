@@ -42,6 +42,7 @@
     #area {
         position: absolute;
         width: 192px;
+        height: 131px;
         background-color: #fff;
         top: 33px;
         left: -1px;
@@ -232,6 +233,7 @@
             },
             changeRegion(index) {
                 this.$store.commit("CHANGE_REGION", index)
+                this.$router.replace("/")
             },
             logout() {
                 this.$store.commit("USER_LOGOUT")

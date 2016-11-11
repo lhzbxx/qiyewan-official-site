@@ -118,12 +118,15 @@
             </div>
             <ul>
                 <li v-for="item in navigators">
-                    <a href="">{{ item.title }}</a>
+                    <router-link
+                            :to="{ name: 'product-list', params: { regionCode: getRegion.code, category: item.code }}">
+                        {{ item.title }}
+                    </router-link>
                     <div class="show">
                         <div class="nav-show-left l">
                             <div class="nav-show-content" v-if="item.l.title">
                                 <router-link
-                                        :to="{ name: 'product-list', params: { regionCode: getRegion.code,category: item.l.title }}">
+                                        :to="{ name: 'product-list', params: { regionCode: getRegion.code, category: item.l.title }}">
                                     <div class="registration">{{ item.l.title }}</div>
                                 </router-link>
                                 <span v-for="i in item.l.list">
@@ -143,7 +146,7 @@
                                 </router-link>
                                 <span v-for="i in item.r.list">
                                      <router-link
-                                             :to="{ name: 'product-detail', params: { serialId: getRegion.code+i.serialId }}">
+                                             :to="{ name: 'product-detail', params: { serialId: i.serialId }}">
                                         {{ i.name }}
                                     </router-link>
                                 </span>
@@ -173,6 +176,7 @@
                 navigators: [
                     {
                         title: "工商服务",
+                        code: "IC",
                         l: {
                             title: "工商变更",
                             list: []
@@ -184,6 +188,7 @@
                     },
                     {
                         title: "财税服务",
+                        code: "FC",
                         l: {
                             title: "财务服务",
                             list: []
@@ -195,6 +200,7 @@
                     },
                     {
                         title: "法律服务",
+                        code: "LD",
                         l: {
                             title: "法律服务",
                             list: []
@@ -206,6 +212,7 @@
                     },
                     {
                         title: "人事服务",
+                        code: "HR",
                         l: {
                             title: "社保",
                             list: []
@@ -217,6 +224,7 @@
                     },
                     {
                         title: "IT&设计服务",
+                        code: "IT",
                         l: {
                             title: "网站设计",
                             list: []
@@ -228,6 +236,7 @@
                     },
                     {
                         title: "套餐服务",
+                        code: "PS",
                         l: {
                             title: "",
                             list: []
@@ -242,10 +251,10 @@
         },
         computed: mapGetters({
             getRegion: 'getRegion',
-
+            getRegionIndex: 'getRegionIndex'
         }),
         watch: {
-            'getRegion': 'fetchData()'
+            getRegionIndex: 'fetchData'
         },
         created () {
             this.fetchData()

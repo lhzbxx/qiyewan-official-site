@@ -57,9 +57,7 @@
         cursor: pointer;
         height: 107px;
         width: 278px;
-        -moz-transition: all 0.3s ease-in-out;
-        -webkit-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
     }
 
     #introduce ul li:hover {
@@ -68,9 +66,7 @@
 
     #introduce ul li:hover h5 {
         color: #0098db;
-        -moz-transition: color 0.3s ease-in-out;
-        -webkit-transition: color 0.3s ease-in-out;
-        -o-transition: color 0.3s ease-in-out;
+        transition: color 0.3s ease-in-out;
     }
 
     #introduce ul :last-child {
@@ -83,9 +79,7 @@
         font-weight: normal;
         margin-top: 7px;
         letter-spacing: 2px;
-        -moz-transition: color 0.3s ease-in-out;
-        -webkit-transition: color 0.3s ease-in-out;
-        -o-transition: color 0.3s ease-in-out;
+        transition: color 0.3s ease-in-out;
     }
 
     #introduce p {
@@ -136,9 +130,7 @@
         position: relative;
         z-index: 10;
         overflow: hidden;
-        -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
-        -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
-        -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .hot-product.active {
@@ -176,17 +168,13 @@
         width: 100%;
         z-index: 3;
         opacity: 1;
-        -moz-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
-        -webkit-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
-        -o-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
     }
 
     .hot-product.active .content-first {
         z-index: 2;
         opacity: 0;
-        -moz-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-        -webkit-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-        -o-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0s;
     }
 
     .content-second {
@@ -197,17 +185,13 @@
         background-color: #fff;
         height: 410px;
         padding-top: 15px;
-        -moz-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-        -webkit-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-        -o-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0s;
     }
 
     .hot-product.active .content-second {
         z-index: 3;
         opacity: 1;
-        -moz-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
-        -webkit-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
-        -o-transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+        transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
     }
 
     .content-info {
@@ -220,9 +204,7 @@
         padding-top: 20px;
         text-align: center;
         position: absolute;
-        -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
-        -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
-        -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .hot-product.active .content-info {
@@ -245,9 +227,7 @@
         font-weight: bold;
         padding-top: 10px;
         padding-bottom: 6px;
-        -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
-        -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
-        -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .hot-product.active .classification-title {
@@ -258,9 +238,7 @@
     .classification-summary {
         font-size: 12px;
         color: #9a9fa3;
-        -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
-        -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
-        -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .hot-product.active .classification-summary {
@@ -275,9 +253,7 @@
         position: relative;
         top: 159px;
         z-index: 3;
-        -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
-        -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
-        -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.12s;
     }
 
     .hot-product.active .content-split-line {
@@ -321,9 +297,7 @@
         border: 1px solid rgb(34, 166, 224);
         color: #0098db;
         cursor: pointer;
-        -moz-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
-        -webkit-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
-        -o-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
     }
 
     .main-btn:hover {
@@ -387,9 +361,7 @@
     .tool:hover .tool-underline {
         width: 100%;
         opacity: 1;
-        -moz-transition: all 0.3s ease-in-out;
-        -webkit-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
     }
 
     .tool-underline {
@@ -397,9 +369,7 @@
         width: 0;
         opacity: 0;
         border-top: 3px solid #0098db;
-        -moz-transition: all 0.3s ease-in-out;
-        -webkit-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
     }
 
     .tool:hover .tool-img-mask {
@@ -412,14 +382,10 @@
         left: 0;
         width: 188px;
         height: 113px;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
         border-radius: 10px;
         background-color: #0098db;
         opacity: 0;
-        -moz-transition: all 1s;
-        -webkit-transition: all 1s;
-        -o-transition: all 1s;
+        transition: all 1s;
     }
 
     .tool-img-mask img {
@@ -472,11 +438,10 @@
 
     #timeline ul li.active:before {
         top: -1px;
-        border-left-width: 15px;
+        border-top-width: 25px;
         border-right-width: 15px;
         border-bottom-width: 25px;
-        border-top-width: 25px;
-        border-left-color: #139cd7;
+        border-left: 15px #139cd7;
         z-index: 10;
     }
 
@@ -495,11 +460,10 @@
 
     #timeline ul li.active:after {
         top: 0;
-        border-left-width: 14px;
+        border-top-width: 24px;
         border-right-width: 14px;
         border-bottom-width: 24px;
-        border-top-width: 24px;
-        border-left-color: white;
+        border-left: 14px white;
         z-index: 10;
     }
 
@@ -522,9 +486,7 @@
         line-height: 36px;
         text-align: center;
         cursor: pointer;
-        -moz-transition: all 0.3s ease-in-out;
-        -webkit-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
     }
 
     .timeline-products span:hover {
@@ -551,9 +513,7 @@
     .timeline-pic img {
         width: 100%;
         height: 100%;
-        -moz-transition: all .2s linear;
-        -webkit-transition: all .2s linear;
-        -o-transition: all .2s linear;
+        transition: all .2s linear;
         cursor: pointer;
     }
 
@@ -602,27 +562,12 @@
         overflow: hidden;
         background: transparent;
         visibility: hidden;
-        -moz-animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
-        -o-animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
-        -webkit-animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
-        -moz-animationation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
-        -o-animationation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
-        -webkit-animationation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
-        -moz-animationnimation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
-        -o-animationnimation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
-        -webkit-animationnimation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
-        -moz-animationion: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
-        -o-animationion: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
-        -webkit-animationion: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
-
+        animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
     }
 
     .slide.active {
         visibility: visible;
         transform: translate3d(0, 0, 0);
-        -moz-transform: translate3d(0, 0, 0);
-        -webkit-transform: translate3d(0, 0, 0);
-        -o-transform: translate3d(0, 0, 0);
     }
 
     .slide .slide-left {
@@ -635,9 +580,7 @@
     }
 
     .slide.active .slide-left {
-        -moz-animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
-        -o-animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
-        -webkit-animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        animation: re-banner-slide-20 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
     }
 
     .slide .slide-right {
@@ -645,9 +588,7 @@
         height: 100%;
         position: absolute;
         right: 0;
-        -moz-transition: all 0.5s ease-out;
-        -webkit-transition: all 0.5s ease-out;
-        -o-transition: all 0.5s ease-out;
+        transition: all 0.5s ease-out;
         transform-style: preserve-3d;
     }
 
@@ -668,32 +609,10 @@
     }
 
     .slide.active img {
-        -moz-animation: re-banner-slide-80 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
-        -o-animation: re-banner-slide-80 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
-        -webkit-animation: re-banner-slide-80 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
+        animation: re-banner-slide-80 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0s 1;
     }
 
-    @-o-keyframes re-banner-slide-20 {
-        0% {
-            opacity: 0;
-            transform: translate3d(0, 20px, 0);
-        }
-        100% {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
-        }
-    }
-    @-webkit-keyframes re-banner-slide-20 {
-        0% {
-            opacity: 0;
-            transform: translate3d(0, 20px, 0);
-        }
-        100% {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
-        }
-    }
-    @-moz-keyframes re-banner-slide-20 {
+    @keyframes re-banner-slide-20 {
         0% {
             opacity: 0;
             transform: translate3d(0, 20px, 0);
@@ -704,27 +623,7 @@
         }
     }
 
-    @-moz-keyframes re-banner-slide-80 {
-        0% {
-            opacity: 0;
-            transform: translate3d(-50%, -40%, 0);
-        }
-        100% {
-            opacity: 1;
-            transform: translate3d(-50%, -50%, 0);
-        }
-    }
-    @-webkit-keyframes re-banner-slide-80 {
-        0% {
-            opacity: 0;
-            transform: translate3d(-50%, -40%, 0);
-        }
-        100% {
-            opacity: 1;
-            transform: translate3d(-50%, -50%, 0);
-        }
-    }
-    @-o-keyframes re-banner-slide-80 {
+    @keyframes re-banner-slide-80 {
         0% {
             opacity: 0;
             transform: translate3d(-50%, -40%, 0);
@@ -750,9 +649,7 @@
         margin-top: 30px;
         cursor: pointer;
         outline: none;
-        -moz-transition: all 0.3s ease-in-out;
-        -webkit-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
     }
 
     #banner button:hover {
@@ -792,9 +689,7 @@
         height: 4px;
         padding: 10px 3px;
         cursor: pointer;
-        -moz-transition: all 0.8s ease-out;
-        -webkit-transition: all 0.8s ease-out;
-        -o-transition: all 0.8s ease-out;
+        transition: all 0.8s ease-out;
         background-clip: content-box;
         box-sizing: content-box;
     }
@@ -810,7 +705,6 @@
         height: 400px;
         margin-bottom: 20px;
         background: url("http://ofw6tmkxn.bkt.clouddn.com/voice-bg.png") no-repeat;
-        background-size: 171%;
         position: relative;
     }
 
@@ -818,39 +712,12 @@
         width: 100%;
         height: 400px;
         display: none;
-        -moz-animation: fadeIn 0.5s;
-        -o-animation: fadeIn 0.5s;
-        -webkit-animation: fadeIn 0.5s;
+        animation: fadeIn 0.5s;
     }
 
-    @-webkit-keyframes fadeIn {
+    @keyframes fadeIn {
         0% {
             opacity: 0;
-        }
-        50% {
-            opacity: .3;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
-    @-moz-keyframes fadeIn {
-        0% {
-            opacity: 0;
-        }
-        50% {
-            opacity: .3;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
-    @-o-keyframes fadeIn {
-        0% {
-            opacity: 0;
-        }
-        50% {
-            opacity: .3;
         }
         100% {
             opacity: 1;
@@ -871,7 +738,7 @@
         width: 45%;
         height: 100%;
         position: relative;
-        margin-left:55px;
+        margin-left: 55px;
     }
 
     .voice-left-img img {
@@ -946,6 +813,7 @@
         margin-left: -580px;
         left: 50%;
     }
+
     #voice-control-right {
         right: 0;
         padding-top: 10px;
@@ -972,9 +840,7 @@
         border-bottom: 1px solid #139cd7;
         cursor: pointer;
         background-color: rgb(248, 248, 248);
-        -moz-transition: all 0.3s ease-in-out;
-        -webkit-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
     }
 
     .news-tab a {
@@ -1047,12 +913,14 @@
     .pro_img img {
         width: 100%;
     }
-    .news_link{
+
+    .news_link {
         display: inline-block;
-        margin-right:8px;
+        margin-right: 8px;
     }
-    #news:last-child .news_link{
-        margin-right:0px;
+
+    #news:last-child .news_link {
+        margin-right: 0px;
     }
 </style>
 
@@ -1103,18 +971,16 @@
         <div id="introduce">
             <div class="container">
                 <ul>
-                    <router-link to="/product/detail">
-                        <li v-for="item in introduces">
-                            <router-link
-                                    :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
-                                <div class="l">
-                                    <h5>{{ item.title }}</h5>
-                                    <p>{{ item.summary }}</p>
-                                </div>
-                                <div class="r introduce_img" :class="item.image"></div>
-                            </router-link>
-                        </li>
-                    </router-link>
+                    <li v-for="item in introduces" v-if="getRegion.code+item.serialId != 'SCCDPS0004'">
+                        <router-link
+                                :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
+                            <div class="l">
+                                <h5>{{ getRegion.code+item.serialId == 'BJBJPS0004' ? '注册宝' : item.title }}</h5>
+                                <p>{{ item.summary }}</p>
+                            </div>
+                            <div class="r introduce_img" :class="item.image"></div>
+                        </router-link>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -1279,7 +1145,7 @@
                 </li>
             </ul>
             <div id="news">
-                <lh-news v-for="article in news[newsTab].articles" class="news_link""
+                <lh-news v-for="article in news[newsTab].articles" class="news_link"
                          :img="article.img"
                          :title="article.title"
                          :summary="article.summary"
@@ -1369,7 +1235,7 @@
                     },
                     {
                         serialId: "PS0002",
-                        "title": "发财宝",
+                        "title": "法财宝",
                         "summary": "法律、财务保驾护航",
                         "image": "introduce_img2"
                     },
@@ -2278,7 +2144,7 @@
         },
         created() {
             let vm = this
-            authApi.getRegion(function(region) {
+            authApi.getRegion(function (region) {
                 vm.$store.commit("CHANGE_REGION", region)
             })
         }

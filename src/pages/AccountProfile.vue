@@ -19,7 +19,7 @@
                     <td width="100">会员名</td>
                     <td width="150">
                         <el-input v-model="username" v-if="isEditingUsername"></el-input>
-                        <span v-else>{{ username }}</span>
+                        <span v-else>{{ user.nickname }}</span>
                     </td>
                     <td>
                         <el-button type="text"
@@ -36,7 +36,7 @@
                 </tr>
                 <tr>
                     <td>绑定手机</td>
-                    <td>13868237889</td>
+                    <td>{{ phone }}</td>
                     <td>
                         <el-button type="text">
                             修改
@@ -178,22 +178,18 @@
         data() {
             return {
                 isEditingUsername: false,
-                username: "某某某",
-                phoneNumber: "132413423",
+                user: {
+                    nickname: null
+                },
                 isEditingCompanyInfo: false,
                 companyInfo: null,
                 isVisible: true,
-                formStacked: {
-                    phone: "",
-                    captcha: "",
-                    password: "",
-                    password2: ""
-                },
                 history: []
             }
         },
         computed: mapGetters({
-            token: 'getToken'
+            token: 'getToken',
+            phone: 'getPhone'
         }),
         methods: {
             updateCompany(){
@@ -216,17 +212,23 @@
             fetchData() {
                 this.loading = true
                 let vm = this
+                authApi.getUser(this.token,
+                        function (data) {
+                            vm.user = data
+                        },
+                        function (error) {
+                        })
                 authApi.getLoginHistory(this.token,
-                        data => {
+                        function (data) {
                             vm.history = data
                         },
-                        error => {
+                        function (error) {
                         })
                 authApi.getCompany(this.token,
-                        data => {
+                        function (data) {
                             vm.companyInfo = data
                         },
-                        error => {
+                        function (error) {
                         })
                 this.loading = false
             },

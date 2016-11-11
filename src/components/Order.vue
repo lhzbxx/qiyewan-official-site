@@ -54,7 +54,7 @@
                                         height: 100%;
                                         display: table-cell;
                                         vertical-align: middle;">
-                                <img :src="addPrefix(item.cover)"
+                                <img :src="cdnPrefix + item.cover"
                                      style="width: 100%;
                                             display: table-cell;
                                             vertical-align: middle;">
@@ -64,7 +64,9 @@
                                 class="order-detail">
                             <div class="order-detail-wrapper">
                                 <p class="order-detail-product-title">
-                                    {{ item.name }}
+                                    <router-link :to="{ name: 'product-detail', params: { serialId: item.productSerialId } }">
+                                        {{ item.name }}
+                                    </router-link>
                                 </p>
                                 <p class="order-detail-product-region">
                                     区域：{{ item.region }}
@@ -95,7 +97,7 @@
                     label="金额">
                 <div style="color: red;">
                     &yen;
-                    <span>{{ row.totalPrice }}</span>
+                    <span>{{ row.totalPrice.toFixed(2) }}</span>
                 </div>
             </el-table-column>
             <el-table-column
@@ -198,15 +200,15 @@
                 }
             }
         },
+        computed: mapGetters({
+            cdnPrefix: 'cdnPrefix'
+        }),
         methods: {
             jumpToPay (url) {
                 window.open(url)
             },
             getLocalTime(nS) {
                 return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ');
-            },
-            addPrefix(url) {
-                return "http://ofw6tmkxn.bkt.clouddn.com/" + url;
             },
             goToReview(row, item) {
                 this.$router.push({

@@ -222,7 +222,6 @@
 
     .padd {
         padding: 15px;
-        margin-top: 30px;
     }
 
     .advan_img img {
@@ -449,12 +448,12 @@
                                             </p>
                                             <p style="font-size: 13px;
                                               color: #aaa;">
-                                                {{ item.createAt }}
+                                                {{ getLocalTime(item.createAt) }}
                                             </p>
                                         </el-col>
                                         <el-col :span="6">
                                             <el-rate
-                                                    v-model="item.rate"
+                                                    v-model="item.star"
                                                     disabled
                                                     :colors="['#99A9BF', '#F7BA2A', '#FF9900']"
                                                     text-color="#ff9900"
@@ -499,6 +498,7 @@
 </template>
 
 <script>
+    import dataApi from '../api/data'
     import productApi from '../api/product'
     import {mapGetters} from 'vuex'
 
@@ -514,6 +514,7 @@
                 form: {
                     amount: 1,
                     member: 1,
+                    product: null,
                     serialId: null,
                     regionCode: null,
                     region: null
@@ -546,6 +547,7 @@
                         data => {
                             vm.product = data
                             vm.product.rate = Math.round(vm.product.rate * 10) / 10
+                            vm.form.product = data
                             vm.loading = false
                             vm.refreshForm()
                         },
@@ -563,7 +565,7 @@
                 )
                 productApi.getProductReviews(vm.$route.params.serialId,
                         data => {
-                            vm.reviews = data
+                            vm.reviews = data.content
                         },
                         error => {
                             vm.error = error
@@ -601,11 +603,7 @@
                         })
             },
             getTotalPrice () {
-                if (this.isSpecial()) {
-                    return amount > 3 ? (98.8 + 18.8 * (amount - 3) * this.form.amount).toFixed(2) : (98.8).toFixed(2)
-                } else {
-                    return (this.form.amount * this.product.unitPrice).toFixed(2)
-                }
+                return dataApi.totalPrice(this.form)
             },
             refreshForm () {
                 this.address.province = this.getRegion.pName
@@ -621,8 +619,11 @@
                     this.form.amount = 3
                 }
             },
+            getLocalTime(nS) {
+                return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ');
+            },
             isSpecial() {
-                return this.$route.params.serialId.substr(4) === 'HR0003'
+                return dataApi.isSpecial(this.product)
             }
         }
     }

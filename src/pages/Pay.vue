@@ -2,6 +2,12 @@
     .chosen {
         border: 1px solid #20A0FF !important;
     }
+
+    .pay-button {
+        border-radius: 3px;
+        margin-bottom: 12px;
+        float: right;
+    }
 </style>
 
 <template>
@@ -58,7 +64,7 @@
                                         height: 100%;
                                         display: table-cell;
                                         vertical-align: middle;">
-                                <img src="../assets/logo.png"
+                                <img :src="cdnPrefix + row.product.cover"
                                      style="width: 100%;
                                             display: table-cell;
                                             vertical-align: middle;">
@@ -74,7 +80,7 @@
                                     {{ row.product.name }}
                                 </p>
                                 <p style="font-size: 13px; line-height: 15px; color: #aaa;">
-                                    区域：{{ row.product.region }}
+                                    区域：{{ row.region }}
                                 </p>
                             </div>
                         </el-col>
@@ -116,7 +122,7 @@
                     label="小计">
                 <div style="color: red;">
                     &yen;
-                    <span>{{ row.amount * row.product.unitPrice }}</span>
+                    <span>{{ getTotalPrice(row) }}</span>
                 </div>
             </el-table-column>
         </el-table>
@@ -132,8 +138,9 @@
                 <el-col :span="8"
                         v-for="(item, index) in payments"
                         style="text-align: center;">
-                    <img src="../assets/logo.png"
+                    <img src="../assets/img/alipay.png"
                          style="margin: 10px;
+                                width: 100%;
                                 cursor: pointer;
                                 border: 1px solid #eee;"
                          v-bind:class="{ chosen: index == payment }"
@@ -142,13 +149,23 @@
             </el-row>
         </div>
         <br>
+        <el-tooltip effect="dark"
+                    content="支付金额不能为￥0"
+                    placement="top-end"
+                    v-if="totalPrice() <= 0"
+                    class="pay-button">
+            <el-button type="primary"
+                       size="large"
+                       disabled>
+                无法支付
+            </el-button>
+        </el-tooltip>
         <el-button type="primary"
                    size="large"
+                   class="pay-button"
                    @click.native="addToOrder()"
-                   :loading="isOrdering"
-                   style="border-radius: 3px;
-                          margin-bottom: 12px;
-                          float: right;">
+                   v-else
+                   :loading="isOrdering">
             {{ isOrdering ? "跳转中..." : "立即支付" }}
         </el-button>
         <br>
@@ -159,19 +176,15 @@
 
 <script>
     import {mapGetters} from 'vuex'
+    import dataApi from '../api/data'
+
     export default {
         data() {
             return {
                 payments: [
                     {
                         name: "支付宝",
-                        cover: "",
                         code: "Alipay"
-                    },
-                    {
-                        name: "网银",
-                        cover: "",
-                        code: ""
                     }
                 ],
                 payment: 0,
@@ -179,7 +192,8 @@
             }
         },
         computed: mapGetters({
-            checkout: 'getCheckout'
+            checkout: 'getCheckout',
+            cdnPrefix: 'cdnPrefix'
         }),
         created() {
             if (this.checkout.length == 0) {
@@ -205,9 +219,12 @@
             totalPrice() {
                 var total = 0
                 for (let i of this.checkout) {
-                    total += i.amount * i.product.unitPrice
+                    total += Number(dataApi.totalPrice(i))
                 }
-                return total
+                return total.toFixed(2)
+            },
+            getTotalPrice(row) {
+                return dataApi.totalPrice(row)
             }
         }
     }
