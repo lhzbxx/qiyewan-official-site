@@ -222,7 +222,6 @@
 
     .padd {
         padding: 15px;
-        margin-top: 30px;
     }
 
     .advan_img img {
@@ -449,12 +448,12 @@
                                             </p>
                                             <p style="font-size: 13px;
                                               color: #aaa;">
-                                                {{ item.createAt }}
+                                                {{ getLocalTime(item.createAt) }}
                                             </p>
                                         </el-col>
                                         <el-col :span="6">
                                             <el-rate
-                                                    v-model="item.rate"
+                                                    v-model="item.star"
                                                     disabled
                                                     :colors="['#99A9BF', '#F7BA2A', '#FF9900']"
                                                     text-color="#ff9900"
@@ -563,7 +562,7 @@
                 )
                 productApi.getProductReviews(vm.$route.params.serialId,
                         data => {
-                            vm.reviews = data
+                            vm.reviews = data.content
                         },
                         error => {
                             vm.error = error
@@ -620,6 +619,9 @@
                 } else {
                     this.form.amount = 3
                 }
+            },
+            getLocalTime(nS) {
+                return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ');
             },
             isSpecial() {
                 return this.$route.params.serialId.substr(4) === 'HR0003'

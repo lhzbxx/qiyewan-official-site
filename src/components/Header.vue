@@ -118,12 +118,15 @@
             </div>
             <ul>
                 <li v-for="item in navigators">
-                    <a href="">{{ item.title }}</a>
+                    <router-link
+                            :to="{ name: 'product-list', params: { regionCode: getRegion.code, category: item.title }}">
+                        {{ item.title }}
+                    </router-link>
                     <div class="show">
                         <div class="nav-show-left l">
                             <div class="nav-show-content" v-if="item.l.title">
                                 <router-link
-                                        :to="{ name: 'product-list', params: { regionCode: getRegion.code,category: item.l.title }}">
+                                        :to="{ name: 'product-list', params: { regionCode: getRegion.code, category: item.l.title }}">
                                     <div class="registration">{{ item.l.title }}</div>
                                 </router-link>
                                 <span v-for="i in item.l.list">

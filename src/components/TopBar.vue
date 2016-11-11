@@ -233,6 +233,7 @@
             },
             changeRegion(index) {
                 this.$store.commit("CHANGE_REGION", index)
+                this.$router.replace("/")
             },
             logout() {
                 this.$store.commit("USER_LOGOUT")

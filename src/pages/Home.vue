@@ -738,7 +738,7 @@
         width: 45%;
         height: 100%;
         position: relative;
-        margin-left:55px;
+        margin-left: 55px;
     }
 
     .voice-left-img img {
@@ -813,6 +813,7 @@
         margin-left: -580px;
         left: 50%;
     }
+
     #voice-control-right {
         right: 0;
         padding-top: 10px;
@@ -912,12 +913,14 @@
     .pro_img img {
         width: 100%;
     }
-    .news_link{
+
+    .news_link {
         display: inline-block;
-        margin-right:8px;
+        margin-right: 8px;
     }
-    #news:last-child .news_link{
-        margin-right:0px;
+
+    #news:last-child .news_link {
+        margin-right: 0px;
     }
 </style>
 
@@ -968,18 +971,16 @@
         <div id="introduce">
             <div class="container">
                 <ul>
-                    <router-link to="/product/detail">
-                        <li v-for="item in introduces">
-                            <router-link
-                                    :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
-                                <div class="l">
-                                    <h5>{{ item.title }}</h5>
-                                    <p>{{ item.summary }}</p>
-                                </div>
-                                <div class="r introduce_img" :class="item.image"></div>
-                            </router-link>
-                        </li>
-                    </router-link>
+                    <li v-for="item in introduces" v-if="getRegion.code+item.serialId != 'SCCDPS0004'">
+                        <router-link
+                                :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
+                            <div class="l">
+                                <h5>{{ getRegion.code+item.serialId == 'BJBJPS0004' ? '注册宝' : item.title }}</h5>
+                                <p>{{ item.summary }}</p>
+                            </div>
+                            <div class="r introduce_img" :class="item.image"></div>
+                        </router-link>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -1144,14 +1145,15 @@
                 </li>
             </ul>
             <div id="news">
-                <lh-news v-for="article in news[newsTab].articles" class="news_link""
-                         :img="article.img"
-                         :title="article.title"
-                         :summary="article.summary"
-                         :tags="article.tags"
-                         :date="article.date"
-                         :views="article.views"
-                         :id="article.articleId"></lh-news>
+                <lh-news v-for="article in news[newsTab].articles" class="news_link"
+                "
+                :img="article.img"
+                :title="article.title"
+                :summary="article.summary"
+                :tags="article.tags"
+                :date="article.date"
+                :views="article.views"
+                :id="article.articleId"></lh-news>
             </div>
         </div>
         <div class="clearfix"></div>
@@ -1234,7 +1236,7 @@
                     },
                     {
                         serialId: "PS0002",
-                        "title": "发财宝",
+                        "title": "法财宝",
                         "summary": "法律、财务保驾护航",
                         "image": "introduce_img2"
                     },
@@ -2143,7 +2145,7 @@
         },
         created() {
             let vm = this
-            authApi.getRegion(function(region) {
+            authApi.getRegion(function (region) {
                 vm.$store.commit("CHANGE_REGION", region)
             })
         }

@@ -96,14 +96,14 @@
                         function (data) {
                             vm.$alert('评论提交成功！', '提交成功', {
                                 callback: action => {
-                                    vm.$router.replace({name: "order-list"})
+                                    vm.$router.replace({name: "order"})
                                 }
                             })
                         },
                         function (error) {
                             vm.$alert('评论提交失败...可能已经评价过了...', '提交失败', {
                                 callback: action => {
-                                    vm.$router.replace({name: "order-list"})
+                                    vm.$router.replace({name: "order"})
                                 }
                             })
                         })
