@@ -1,5 +1,17 @@
 export default {
     cdnPrefix: 'http://ofw6tmkxn.bkt.clouddn.com/',
+    totalPrice: (checkout) => {
+        let amount = checkout.amount
+        let member = checkout.member
+        if (checkout.product.serialId.substr(4) === 'HR0003') {
+            return member > 3 ? ((98.8 + 18.8 * (member - 3)) * amount).toFixed(2) : (98.8 * amount).toFixed(2)
+        } else {
+            return (amount * checkout.product.unitPrice).toFixed(2)
+        }
+    },
+    isSpecial: (product) => {
+        return product.serialId.substr(4) === 'HR0003'
+    },
     hotProducts: [
         {
             serialId: "IC0001",

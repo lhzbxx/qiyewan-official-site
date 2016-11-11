@@ -498,6 +498,7 @@
 </template>
 
 <script>
+    import dataApi from '../api/data'
     import productApi from '../api/product'
     import {mapGetters} from 'vuex'
 
@@ -513,6 +514,7 @@
                 form: {
                     amount: 1,
                     member: 1,
+                    product: null,
                     serialId: null,
                     regionCode: null,
                     region: null
@@ -545,6 +547,7 @@
                         data => {
                             vm.product = data
                             vm.product.rate = Math.round(vm.product.rate * 10) / 10
+                            vm.form.product = data
                             vm.loading = false
                             vm.refreshForm()
                         },
@@ -600,11 +603,7 @@
                         })
             },
             getTotalPrice () {
-                if (this.isSpecial()) {
-                    return amount > 3 ? (98.8 + 18.8 * (amount - 3) * this.form.amount).toFixed(2) : (98.8).toFixed(2)
-                } else {
-                    return (this.form.amount * this.product.unitPrice).toFixed(2)
-                }
+                return dataApi.totalPrice(this.form)
             },
             refreshForm () {
                 this.address.province = this.getRegion.pName
@@ -624,7 +623,7 @@
                 return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ');
             },
             isSpecial() {
-                return this.$route.params.serialId.substr(4) === 'HR0003'
+                return dataApi.isSpecial(this.product)
             }
         }
     }

@@ -97,7 +97,7 @@
                     label="金额">
                 <div style="color: red;">
                     &yen;
-                    <span>{{ row.totalPrice }}</span>
+                    <span>{{ row.totalPrice.toFixed(2) }}</span>
                 </div>
             </el-table-column>
             <el-table-column

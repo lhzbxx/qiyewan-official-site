@@ -122,7 +122,7 @@
                     label="小计">
                 <div style="color: red;">
                     &yen;
-                    <span>{{ row.amount * row.product.unitPrice }}</span>
+                    <span>{{ getTotalPrice(row) }}</span>
                 </div>
             </el-table-column>
         </el-table>
@@ -175,6 +175,8 @@
 
 <script>
     import {mapGetters} from 'vuex'
+    import dataApi from '../api/data'
+
     export default {
         data() {
             return {
@@ -221,9 +223,12 @@
             totalPrice() {
                 var total = 0
                 for (let i of this.checkout) {
-                    total += i.amount * i.product.unitPrice
+                    total += Number(dataApi.totalPrice(i))
                 }
-                return total
+                return total.toFixed(2)
+            },
+            getTotalPrice(row) {
+                return dataApi.totalPrice(row)
             }
         }
     }
