@@ -10,7 +10,7 @@
                         <lh-product
                                 :title="item.title"
                                 :summary="item.summary"
-                                :img="item.img"
+                                :img="cdnPrefix+item.img"
                                 :price="item.price"
                                 :url="getRegion.code+item.serialId"></lh-product>
                     </el-col>
@@ -25,7 +25,8 @@
     export default {
         computed: mapGetters({
             hotProducts: 'hotProducts',
-            getRegion: 'getRegion'
+            getRegion: 'getRegion',
+            cdnPrefix: 'cdnPrefix'
         })
     }
 </script>
