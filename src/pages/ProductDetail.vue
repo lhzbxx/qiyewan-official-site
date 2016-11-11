@@ -331,15 +331,13 @@
                                     </el-select>
                                 </el-col>
                                 <el-col :span="5" style="margin-right: 20px">
-                                    <el-select v-model="form.regionCityCode" :placeholder="form.cityName"
-                                               disabled>
+                                    <el-select v-model="form.regionCityCode" :placeholder="form.cityName" disabled>
                                         <el-option label="" value=""></el-option>
                                     </el-select>
                                 </el-col>
                                 <el-col :span="5" style="margin-right: 20px">
                                     <el-select v-model="form.regionArea" placeholder="">
-                                        <el-option v-for="area in form.regionAreas" :label="area.name"
-                                                   :value="area.name"></el-option>
+                                        <el-option v-for="area in form.regionAreas" :label="area.name" :value="area.name"></el-option>
                                     </el-select>
                                 </el-col>
                             </el-row>
@@ -510,7 +508,6 @@
                                         </el-col>
                                     </el-row>
                                 </div>
-
                             </div>
                         </el-tab-pane>
                         <el-tab-pane label="常见问题">

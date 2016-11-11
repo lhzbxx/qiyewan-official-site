@@ -165,7 +165,6 @@
     import productApi from '../api/product'
     import {mapGetters} from 'vuex'
     export default {
-
         data() {
             return {
                 navigators: [
