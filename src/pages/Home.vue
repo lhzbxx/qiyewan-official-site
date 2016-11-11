@@ -1141,7 +1141,6 @@
                     :class="{active: isNewsTab(index)}"
                     v-on:mouseover="setNewsTab(index),newsTab=index">
                     {{ item.title }}
-                    <!--<router-link to="/news"></router-link>-->
                 </li>
             </ul>
             <div id="news">

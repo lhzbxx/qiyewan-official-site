@@ -339,7 +339,6 @@
             </ul>
         </div>
         <div class="con_r">
-            <!--关于企业湾-->
             <div class="about-con"  :class="{show: isShow('about'),hide: !isShow('about')}" >
                 <div class="about_intru">
                     <h3 class="about_tit">企业介绍</h3>
@@ -386,7 +385,6 @@
                     <div class="advan_img"><img src="../assets/img/about_dream.png"></div>
                 </div>
             </div>
-            <!--联系我们开始   -->
             <div class="contact_con" :class="{show: isShow('contact'),hide: !isShow('contact')}" >
                 <div class="contact_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/contact-us-banner-2.jpg"></div>
                 <ul>
@@ -405,44 +403,43 @@
                     </li>
                     <li class="li_">
                         <h5>南京分公司</h5>
-                        <div class="add">地址：江苏省南京市鼓楼区先锋广场831室</div>
+                        <div class="add">地址：玄武区玄武大道699-1号徐庄软件管委会607室</div>
                         <p>电话：025-68022609</p>
                         <p>公司网址：www.qiyewan.com</p>
                     </li>
                     <li>
                         <h5>镇江分公司</h5>
-                        <div class="add">地址：江苏省镇江市京口区解放路18号创业园5101室</div>
+                        <div class="add">地址：润州区黄山南路66号中浩国际广场A座1201</div>
                         <p>电话：0511-88076713</p>
                         <p>公司网址：www.qiyewan.com</p>
                     </li>
 
                     <li class="li_">
                         <h5>苏州分公司</h5>
-                        <div class="add">地址：江苏省苏州市姑苏区阊胥路483号工投创业园66号楼1楼</div>
+                        <div class="add">地址：姑苏区阊胥路726号南新园3305</div>
                         <p>电话：17186396121</p>
                         <p>公司网址：www.qiyewan.com</p>
                     </li>
                     <li>
                         <h5>北京分公司</h5>
-                        <div class="add">地址：北京市海淀区中关村创业大街昊海楼三楼</div>
+                        <div class="add">地址：海淀区中关村创业大街六号楼4层企业湾</div>
                         <p>电话：15712846498</p>
                         <p>公司网址：www.qiyewan.com</p>
                     </li>
                     <li class="li_">
                         <h5>深圳分公司</h5>
-                        <div class="add">地址：广东省深圳市南山区科文路一号华富洋大厦4层思微SimplyWork</div>
+                        <div class="add">地址：宝安区新湖路华侨新村西提一巷金华大厦12层1216</div>
                         <p>电话：0755-36301780</p>
                         <p>公司网址：www.qiyewan.com</p>
                     </li>
                     <li>
                         <h5>成都分公司</h5>
-                        <div class="add">地址：四川省成都市高新区天府五街200号菁蓉国际广场6栋a座1-2楼</div>
+                        <div class="add">地址：成都市高新益州大道1800号，移动互联创业大厦G1,201</div>
                         <p>电话：13518211800</p>
                         <p>公司网址：www.qiyewan.com</p>
                     </li>
                 </ul>
             </div>
-            <!--索取发票-->
             <div class="receipt"  :class="{show: isShow('invoice'),hide: !isShow('invoice')}">
                 <div class="receipt_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/ask-for-invoice-banner-1.jpg"></div>
                 <h4>索取发票</h4>
@@ -451,7 +448,6 @@
                 <p>3.在服务办结之日起10个工作日内，可通过与售前人员联系开具本次服务费发票（不含工本费）。</p>
                 <p class="last_p">4.发票一旦开具，就无法更改发票内容，请申请开具发票的用户务必准确填写开具发票所需信息和详细联系方式。</p>
             </div>
-            <!--支付方式-->
             <div class="pay" :class="{show: isShow('pay'),hide: !isShow('pay')}">
                 <div class="pay_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/method-of-payment-banner-3.jpg"></div>
                 <h4>支付方式</h4>
@@ -459,7 +455,6 @@
                 <p>2、如您通过网银接口付款，有可能存在跨行结算的情况，企业湾需要1-2个工作日来确认收款。</p>
                 <p class="last_p">3、为保证业务快速进行，推荐使用第1种网上支付方式。</p>
             </div>
-            <!--退款说明-->
             <div class="refund"  :class="{show: isShow('refund'),hide: !isShow('refund')}" >
                 <div class="refund_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/refund-instructions-banner-4.jpg"></div>
                 <h4>退款说明</h4>
@@ -521,7 +516,6 @@
                     的公司账户中，给您带来的不便请您谅解。</p>
                 <p class="last_p">3、因银行系统升级，退银行卡服务不支持信用卡退款。</p>
             </div>
-            <!--用户协议-->
             <div class="protocol" :class="{show: isShow('protocol'),hide: isShow('protocol')}">
                 <div class="protocol_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/user-agreement-banner-5.jpg"></div>
                 <h4>企业湾用户服务协议</h4>
