@@ -64,7 +64,7 @@
                                         height: 100%;
                                         display: table-cell;
                                         vertical-align: middle;">
-                                <img src="../assets/logo.png"
+                                <img :src="cdnPrefix + row.product.cover"
                                      style="width: 100%;
                                             display: table-cell;
                                             vertical-align: middle;">
@@ -80,7 +80,7 @@
                                     {{ row.product.name }}
                                 </p>
                                 <p style="font-size: 13px; line-height: 15px; color: #aaa;">
-                                    区域：{{ row.product.region }}
+                                    区域：{{ row.region }}
                                 </p>
                             </div>
                         </el-col>
@@ -138,8 +138,9 @@
                 <el-col :span="8"
                         v-for="(item, index) in payments"
                         style="text-align: center;">
-                    <img src="../assets/logo.png"
+                    <img src="../assets/img/alipay.png"
                          style="margin: 10px;
+                                width: 100%;
                                 cursor: pointer;
                                 border: 1px solid #eee;"
                          v-bind:class="{ chosen: index == payment }"
@@ -183,13 +184,7 @@
                 payments: [
                     {
                         name: "支付宝",
-                        cover: "",
                         code: "Alipay"
-                    },
-                    {
-                        name: "网银",
-                        cover: "",
-                        code: ""
                     }
                 ],
                 payment: 0,
@@ -197,7 +192,8 @@
             }
         },
         computed: mapGetters({
-            checkout: 'getCheckout'
+            checkout: 'getCheckout',
+            cdnPrefix: 'cdnPrefix'
         }),
         created() {
             if (this.checkout.length == 0) {
