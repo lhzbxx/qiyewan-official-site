@@ -1146,14 +1146,13 @@
             </ul>
             <div id="news">
                 <lh-news v-for="article in news[newsTab].articles" class="news_link"
-                "
-                :img="article.img"
-                :title="article.title"
-                :summary="article.summary"
-                :tags="article.tags"
-                :date="article.date"
-                :views="article.views"
-                :id="article.articleId"></lh-news>
+                         :img="article.img"
+                         :title="article.title"
+                         :summary="article.summary"
+                         :tags="article.tags"
+                         :date="article.date"
+                         :views="article.views"
+                         :id="article.articleId"></lh-news>
             </div>
         </div>
         <div class="clearfix"></div>
