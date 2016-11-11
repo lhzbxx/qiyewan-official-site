@@ -121,19 +121,19 @@
                 <li>
                     <div class="footer_div">
                         <h3>企业动态</h3>
-                        <p><a href="">关于我们</a></p>
-                        <p><a href="">加入我们</a></p>
+                        <p><router-link to="/about-us" target="_blank" >关于我们</router-link></p>
+                        <p><router-link to="/recruitment" target="_blank" >加入我们</router-link></p>
                     </div>
                     <div class="footer_div">
                         <h3>订单服务</h3>
-                        <p><a href="">索取发票</a></p>
-                        <p><a href="">退款说明</a></p>
-                        <p><a href="">支付方式</a></p>
+                        <p><router-link to="/about-us" target="_blank" >索取发票</router-link></p>
+                        <p><router-link to="/about-us" target="_blank" >退款说明</router-link></p>
+                        <p><router-link to="/about-us" target="_blank" >支付方式</router-link></p>
                     </div>
                     <div class="footer_div">
                         <h3>售后服务</h3>
-                        <p><a href="">联系我们</a></p>
-                        <p><a href="">用户协议</a></p>
+                        <p><router-link to="/about-us" target="_blank" >联系我们</router-link></p>
+                        <p><router-link to="/about-us" target="_blank" >用户协议</router-link></p>
                     </div>
 
                 </li>
