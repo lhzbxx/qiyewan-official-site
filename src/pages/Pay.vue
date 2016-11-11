@@ -183,21 +183,21 @@
         }),
         created() {
             if (this.checkout.length == 0) {
-                this.$router.replace({ name: "order" })
+                this.$router.replace({name: "order"})
             }
         },
         methods: {
             addToOrder() {
                 this.isOrdering = true
                 let vm = this
-                this.$store.dispatch("addToOrder",
-                        this.checkout,
-                        this.payments[this.payment].code).then(
-                        order => {
+                this.$store.dispatch("addToOrder", {
+                    carts: this.checkout,
+                    payment: this.payments[this.payment].code
+                }).then(
+                        function (order) {
                             window.open(order.payUrl, "_self")
                         },
-                        error => {
-                            console.log(error)
+                        function (error) {
                             vm.isOrdering = false
                         }
                 )

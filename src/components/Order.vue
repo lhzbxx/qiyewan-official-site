@@ -95,7 +95,7 @@
                     label="金额">
                 <div style="color: red;">
                     &yen;
-                    <span>{{ row.totalPrice.toFixed(2) }}</span>
+                    <span>{{ row.totalPrice }}</span>
                 </div>
             </el-table-column>
             <el-table-column
@@ -123,18 +123,44 @@
                         </el-button>
                     </div>
                     <div v-if="row.orderState == 'Paid'">
-                        <el-button type="primary"
-                                   icon="edit"
-                                   size="small">
-                            去评价
-                        </el-button>
+                        <el-row style="height: 90px; padding-top: 42px;" v-for="item in row.details">
+                            <el-col :span="24"
+                                    class="order-detail">
+                                <div class="order-detail-wrapper" style="padding-left: 0;">
+                                    <p class="order-detail-product-title">
+                                        <el-button type="text"
+                                                   :disabled="true"
+                                                   v-if="item.isReviewed"
+                                                   size="small">
+                                            已评价
+                                        </el-button>
+                                        <el-button type="primary"
+                                                   icon="edit"
+                                                   v-else
+                                                   @click.native="goToReview(row, item)"
+                                                   size="small">
+                                            去评价
+                                        </el-button>
+                                    </p>
+                                </div>
+                            </el-col>
+                        </el-row>
                     </div>
                     <div v-if="row.orderState == 'Reviewed'">
-                        <el-button type="text"
-                                   :disabled="true"
-                                   size="small">
-                            已评价
-                        </el-button>
+                        <el-row style="height: 90px; padding-top: 42px;" v-for="item in row.details">
+                            <el-col :span="24"
+                                    class="order-detail">
+                                <div class="order-detail-wrapper" style="padding-left: 0;">
+                                    <p class="order-detail-product-title">
+                                        <el-button type="text"
+                                                   :disabled="true"
+                                                   size="small">
+                                            已评价
+                                        </el-button>
+                                    </p>
+                                </div>
+                            </el-col>
+                        </el-row>
                     </div>
                     <div v-if="row.orderState == 'Timeout' || row.orderState == 'Canceled'">
                         <el-button type="text"
@@ -182,25 +208,32 @@
             addPrefix(url) {
                 return "http://ofw6tmkxn.bkt.clouddn.com/" + url;
             },
+            goToReview(row, item) {
+                this.$router.push({
+                    name: 'review',
+                    params: {orderSerialId: row.serialId, productSerialId: item.productSerialId}
+                })
+            },
             cancelOrder(index, serialId) {
                 let vm = this
                 this.$confirm('确认取消该订单吗？', '取消订单', {
                     type: 'warning'
-                }).then(() => {
+                }).then(function () {
                     vm.$store.dispatch("cancelOrder", serialId).then(
-                            () => {
+                            function () {
                                 vm.orders[index].orderState = "Canceled"
                                 vm.$message({
                                     type: 'success',
                                     message: '成功取消订单'
                                 })
                             },
-                            () => {
+                            function () {
                                 vm.$message.error("取消订单失败...")
                             }
                     )
-                }).catch(() => {
-                });
+                }).catch(function () {
+                        }
+                );
             }
         },
         props: {

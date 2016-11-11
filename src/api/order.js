@@ -6,9 +6,21 @@ Vue.use(VueResource)
 Vue.http.options.root = window.global_config.remote_url;
 
 export default {
-    getOrders (token, page, cb, errorCb) {
+    getOrder (token, serialId, cb, errorCb) {
         Vue.http.headers.common['Authorization'] = token;
-        Vue.http.get("orders?page=" + (page-1)).then((response) => {
+        Vue.http.get("orders/" + serialId).then((response) => {
+            cb(response.body)
+        }, (response) => {
+            errorCb(response.body)
+        })
+    },
+    getOrders (token, page, orderState, cb, errorCb) {
+        Vue.http.headers.common['Authorization'] = token;
+        var state = ""
+        if (orderState != "All") {
+            state = "&state=" + orderState
+        }
+        Vue.http.get("orders?page=" + (page-1) + state).then((response) => {
             cb(response.body)
         }, (response) => {
             errorCb(response.body);

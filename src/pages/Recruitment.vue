@@ -154,8 +154,7 @@
                             </p>
                             <h5>任职要求</h5>
                             <p>1. 本科及以上，计算机相关专业。 <br>
-                                2.
-                                年以上的Java开发实践经验，熟练Java语言，掌握主流web开发框架struts，spring，hibernate，springmvc，mybatis并熟悉其原理。<br>
+                                2. 年以上的Java开发实践经验，熟练Java语言，掌握主流web开发框架struts，spring，hibernate，springmvc，mybatis并熟悉其原理。<br>
                                 3. 熟练JavaScript脚本，熟悉HTML,CSS等相关知识。<br>
                                 4. 掌握数据库的相关知识，熟练Mysql，Oracal等SQL数据库，熟悉Moogodb，Redis等NoSQL数据库。<br>
                                 5. 掌握常用的Linux命令，具备服务器的部署配置能力。<br>
