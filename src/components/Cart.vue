@@ -21,7 +21,7 @@
                                         height: 100%;
                                         display: table-cell;
                                         vertical-align: middle;">
-                                <img src="../assets/logo.png"
+                                <img :src="cdnPrefix+row.product.cover"
                                      style="width: 100%;
                                             display: table-cell;
                                             vertical-align: middle;">
@@ -88,14 +88,14 @@
         </el-table>
         <div style="border: 1px solid #e0e6ed; border-top: none; width: 100%; text-align: right;">
             <span style="font-size: 13px; margin-right: 30px;">
-                已选择{{ amountOfSelection }}件商品，合计：
+                已选择{{ amountOfSelection() }}件商品，合计：
                 <span style="color: red; font-size: 20px;">
                     &yen;{{ totalPrice() }}
                 </span>
             </span>
             <el-button type="primary"
                        size="large"
-                       :disabled="amountOfSelection == 0"
+                       :disabled="amountOfSelection() == 0"
                        @click.native="checkout"
                        style="border-radius: 0;">
                 去结算
@@ -171,13 +171,14 @@
                     r = r + Number(dataApi.totalPrice(i))
                 }
                 return r.toFixed(2)
-            }
-        },
-        computed: {
+            },
             amountOfSelection() {
                 return this.multipleSelection.length
             }
         },
+        computed: mapGetters({
+            cdnPrefix: 'cdnPrefix'
+        }),
         watch: {
             'page': 'clearSelection'
         },
