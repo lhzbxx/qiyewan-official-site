@@ -143,7 +143,7 @@
                                 </router-link>
                                 <span v-for="i in item.r.list">
                                      <router-link
-                                             :to="{ name: 'product-detail', params: { serialId: getRegion.code+i.serialId }}">
+                                             :to="{ name: 'product-detail', params: { serialId: i.serialId }}">
                                         {{ i.name }}
                                     </router-link>
                                 </span>
@@ -242,10 +242,10 @@
         },
         computed: mapGetters({
             getRegion: 'getRegion',
-
+            getRegionIndex: 'getRegionIndex'
         }),
         watch: {
-            'getRegion': 'fetchData()'
+            getRegionIndex: 'fetchData'
         },
         created () {
             this.fetchData()

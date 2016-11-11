@@ -3,14 +3,14 @@ import VueResource from 'vue-resource'
 
 Vue.use(VueResource)
 
-Vue.http.options.root = window.global_config.remote_url;
+Vue.http.options.root = window.global_config.remote_url
 
 export default {
     getProductDetail (serialId, cb, errorCb) {
         Vue.http.get("products/" + serialId).then((response) => {
             cb(response.body)
         }, (response) => {
-            errorCb(response.body);
+            errorCb(response.body)
         })
     },
 
@@ -18,7 +18,7 @@ export default {
         Vue.http.get("products/" + serialId + "/reviews").then((response) => {
             cb(response.body)
         }, (response) => {
-            errorCb(response.body);
+            errorCb(response.body)
         })
     },
 
@@ -26,7 +26,7 @@ export default {
         Vue.http.get("products/" + serialId + "/faq").then((response) => {
             cb(response.body)
         }, (response) => {
-            errorCb(response.body);
+            errorCb(response.body)
         })
     },
 
@@ -40,6 +40,15 @@ export default {
 
     getNavList (regionCode, cb, errorCb){
         Vue.http.get("products?regionCode=" + regionCode).then((response) => {
+            cb(response.body)
+        }, (response) => {
+            errorCb(response.body)
+        })
+    },
+
+    sendReview (token, review, cb, errorCb) {
+        Vue.http.headers.common['Authorization'] = token;
+        Vue.http.post("reviews/", review).then((response) => {
             cb(response.body)
         }, (response) => {
             errorCb(response.body)

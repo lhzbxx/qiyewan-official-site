@@ -29,7 +29,7 @@
                         <p style="color: gray; font-size: 14px;">
                             服务数量：
                             <span>
-                                {{ order.amount }} {{ product.unit }}
+                                {{ amount }} {{ product.unit }}
                             </span>
                         </p>
                     </div>
@@ -43,17 +43,24 @@
                             style="margin: 30px 20px;">
                         <el-form-item label="商品满意度" style="color:#464646;font-size:14px">
                             <el-rate
-                                    v-model="rateToast"
+                                    v-model="form.rate"
                                     show-text
                                     :texts="['极差', '失望', '一般', '满意', '非常满意']"
-                                    :colors="['#99A9BF', '#F7BA2A', '#FF9900']">
+                                    :colors="['#99A9BF', '#F7BA2A', '#FF9900']"
+                                    style="display: inline-flex;">
                             </el-rate>
                         </el-form-item>
                         <el-form-item label="评价" style="color:#464646;font-size:14px">
-                            <el-input type="textarea" v-model="form.desc"></el-input>
+                            <el-input type="textarea"
+                                      v-model="form.content"
+                                      :rows=5></el-input>
                         </el-form-item>
                         <el-form-item>
-                            <el-button type="primary" style="padding: 10px 25px;">提交评价</el-button>
+                            <el-button @click.native="onSubmit"
+                                       type="primary"
+                                       style="padding: 10px 25px;">
+                                提交评价
+                            </el-button>
                         </el-form-item>
                     </el-form>
                 </el-col>
@@ -70,24 +77,36 @@
         data() {
             return {
                 form: {
-                    name: '',
-                    region: '',
-                    date1: '',
-                    date2: '',
-                    delivery: false,
-                    type: [],
-                    resource: '',
-                    desc: ''
+                    rate: 5,
+                    content: '',
+                    productSerialId: null,
+                    serialId: null
                 },
                 rateToast: 5,
                 order: null,
                 product: null,
-                isLoading: true
+                isLoading: true,
+                amount: 0
             }
         },
         methods: {
             onSubmit() {
-                console.log('submit!');
+                let vm = this
+                productApi.sendReview(this.$store.getters.getToken, this.form,
+                        function (data) {
+                            vm.$alert('评论提交成功！', '提交成功', {
+                                callback: action => {
+                                    vm.$router.replace({name: "order-list"})
+                                }
+                            })
+                        },
+                        function (error) {
+                            vm.$alert('评论提交失败...可能已经评价过了...', '提交失败', {
+                                callback: action => {
+                                    vm.$router.replace({name: "order-list"})
+                                }
+                            })
+                        })
             },
             getLocalTime(nS) {
                 return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ');
@@ -98,15 +117,26 @@
             orderApi.getOrder(this.$store.getters.getToken, this.$route.params.orderSerialId,
                     function (data) {
                         vm.order = data
-                        productApi.getProductDetail()(vm.$store.getters.getToke, vm.$route.params.productSerialId,
+                        productApi.getProductDetail(vm.$route.params.productSerialId,
                                 function (data) {
                                     vm.product = data
                                     vm.isLoading = false
+                                    vm.form.productSerialId = vm.product.serialId
+                                    vm.form.serialId = vm.order.serialId
+                                    if (vm.order.details.some(item => item.productSerialId == vm.product.serialId)) {
+                                        for (let i of vm.order.details) {
+                                            if (i.productSerialId == vm.product.serialId)
+                                                vm.amount = i.amount
+                                        }
+                                    } else {
+                                        vm.$router.replace({name: 'home'})
+                                    }
                                 }, function (data) {
                                     console.log(data)
                                 })
                     }, function (data) {
                         console.log(data)
+                        vm.$router.replace({name: 'home'})
                     })
         }
     }

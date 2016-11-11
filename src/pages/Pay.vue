@@ -2,6 +2,12 @@
     .chosen {
         border: 1px solid #20A0FF !important;
     }
+
+    .pay-button {
+        border-radius: 3px;
+        margin-bottom: 12px;
+        float: right;
+    }
 </style>
 
 <template>
@@ -142,13 +148,23 @@
             </el-row>
         </div>
         <br>
+        <el-tooltip effect="dark"
+                    content="支付金额不能为￥0"
+                    placement="top-end"
+                    v-if="totalPrice() <= 0"
+                    class="pay-button">
+            <el-button type="primary"
+                       size="large"
+                       disabled>
+                无法支付
+            </el-button>
+        </el-tooltip>
         <el-button type="primary"
                    size="large"
+                   class="pay-button"
                    @click.native="addToOrder()"
-                   :loading="isOrdering"
-                   style="border-radius: 3px;
-                          margin-bottom: 12px;
-                          float: right;">
+                   v-else
+                   :loading="isOrdering">
             {{ isOrdering ? "跳转中..." : "立即支付" }}
         </el-button>
         <br>
