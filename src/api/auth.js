@@ -75,6 +75,18 @@ export default {
         )
     },
 
+    getUser (token, cb, errorCb) {
+        Vue.http.headers.common['Authorization'] = token;
+        Vue.http.get("users").then(
+            (response) => {
+                cb(response.body)
+            }
+            , (response) => {
+                errorCb(response.body)
+            }
+        )
+    },
+
     getCompany (token, cb, errorCb) {
         Vue.http.headers.common['Authorization'] = token;
         Vue.http.get("company").then(
