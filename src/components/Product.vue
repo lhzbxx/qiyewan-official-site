@@ -3,6 +3,7 @@
         width: 268px;
         overflow: hidden;
         display: block;
+        height: 210px;
     }
 
     a {
@@ -33,7 +34,7 @@
                 <img :src="img" class="image">
                 <div style="padding: 14px;">
                     <p style="font-size: 16px; color: #333;width: 240px;height: 40px;overflow: hidden;">{{ title }}</p>
-                    <p style="font-size: 13px; color: #aaa; width: 240px;height: 50px;overflow: hidden;">{{ summary }}</p>
+                    <p style="font-size: 13px; color: #aaa; width: 240px; height: 60px;overflow: hidden;">{{ summary }}</p>
                     <br>
                     <p>价格：&nbsp;<span style="color: red;font-size: 16px">&yen;{{ price }}</span></p>
                 </div>

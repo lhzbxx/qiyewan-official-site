@@ -119,7 +119,7 @@
             <ul>
                 <li v-for="item in navigators">
                     <router-link
-                            :to="{ name: 'product-list', params: { regionCode: getRegion.code, category: item.title }}">
+                            :to="{ name: 'product-list', params: { regionCode: getRegion.code, category: item.code }}">
                         {{ item.title }}
                     </router-link>
                     <div class="show">
@@ -176,6 +176,7 @@
                 navigators: [
                     {
                         title: "工商服务",
+                        code: "IC",
                         l: {
                             title: "工商变更",
                             list: []
@@ -187,6 +188,7 @@
                     },
                     {
                         title: "财税服务",
+                        code: "FC",
                         l: {
                             title: "财务服务",
                             list: []
@@ -198,6 +200,7 @@
                     },
                     {
                         title: "法律服务",
+                        code: "LD",
                         l: {
                             title: "法律服务",
                             list: []
@@ -209,6 +212,7 @@
                     },
                     {
                         title: "人事服务",
+                        code: "HR",
                         l: {
                             title: "社保",
                             list: []
@@ -220,6 +224,7 @@
                     },
                     {
                         title: "IT&设计服务",
+                        code: "IT",
                         l: {
                             title: "网站设计",
                             list: []
@@ -231,6 +236,7 @@
                     },
                     {
                         title: "套餐服务",
+                        code: "PS",
                         l: {
                             title: "",
                             list: []
