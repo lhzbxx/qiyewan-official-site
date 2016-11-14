@@ -420,9 +420,7 @@
         font-size: 20px;
         position: relative;
         cursor: pointer;
-        -moz-transition: all 0.3s ease-in-out;
-        -webkit-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
         margin-left: -1px;
     }
 
@@ -434,15 +432,6 @@
         top: 0;
         position: absolute;
         width: 0;
-    }
-
-    #timeline ul li.active:before {
-        top: -1px;
-        border-top-width: 25px;
-        border-right-width: 15px;
-        border-bottom-width: 25px;
-        border-left: 15px #139cd7;
-        z-index: 10;
     }
 
     #timeline ul li:last-child.active::before {
@@ -458,12 +447,19 @@
         border-color: #139cd7;
     }
 
+    #timeline ul li.active:before {
+        top: -1px;
+        border-top: 25px solid transparent;
+        border-left: 15px solid #139cd7;
+        border-bottom: 25px solid transparent;
+        z-index: 10;
+    }
+
     #timeline ul li.active:after {
         top: 0;
-        border-top-width: 24px;
-        border-right-width: 14px;
-        border-bottom-width: 24px;
-        border-left: 14px white;
+        border-top: 24px solid transparent;
+        border-left: 14px solid white;
+        border-bottom: 24px solid transparent;
         z-index: 10;
     }
 
