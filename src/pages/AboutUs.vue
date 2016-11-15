@@ -403,44 +403,44 @@
                         <h5>上海分公司</h5>
                         <div class="add">地址：上海市闵行区剑川路951号零号湾全球创新创业聚集区1号楼南楼508室</div>
                         <p>电话：021-54706618</p>
-                        <p>公司网址：www.qiyewan.com</p>
+
                     </li>
                     <li class="li_">
                         <h5>南京分公司</h5>
                         <div class="add">地址：南京市玄武区玄武大道699-1号徐庄软件管委会607室</div>
                         <p>电话：025-68022609</p>
-                        <p>公司网址：www.qiyewan.com</p>
+
                     </li>
                     <li>
                         <h5>镇江分公司</h5>
                         <div class="add">地址：镇江市润州区黄山南路66号中浩国际广场A座1201</div>
                         <p>电话：0511-88076713</p>
-                        <p>公司网址：www.qiyewan.com</p>
+
                     </li>
 
                     <li class="li_">
                         <h5>苏州分公司</h5>
                         <div class="add">地址：苏州市姑苏区阊胥路726号南新园3305</div>
                         <p>电话：17186396121</p>
-                        <p>公司网址：www.qiyewan.com</p>
+
                     </li>
                     <li>
                         <h5>北京分公司</h5>
                         <div class="add">地址：北京市海淀区中关村创业大街六号楼4层企业湾</div>
                         <p>电话：15712846498</p>
-                        <p>公司网址：www.qiyewan.com</p>
+
                     </li>
                     <li class="li_">
                         <h5>深圳分公司</h5>
                         <div class="add">地址：深圳市宝安区新湖路华侨新村西提一巷金华大厦12层1216</div>
                         <p>电话：0755-36301780</p>
-                        <p>公司网址：www.qiyewan.com</p>
+
                     </li>
                     <li>
                         <h5>成都分公司</h5>
                         <div class="add">地址：成都市高新益州大道1800号移动互联创业大厦G1，201</div>
                         <p>电话：13518211800</p>
-                        <p>公司网址：www.qiyewan.com</p>
+
                     </li>
                 </ul>
             </div>
