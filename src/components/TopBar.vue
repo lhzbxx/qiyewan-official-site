@@ -188,6 +188,10 @@
                         <a>注册</a>
                     </li>
                     <li v-if="!isLogin"
+                        v-on:click="openResetPasswordDialog()">
+                        <a>忘记密码</a>
+                    </li>
+                    <li v-if="!isLogin"
                         v-on:click="openLoginDialog()">
                         <a>登录</a>
                     </li>
@@ -207,6 +211,7 @@
                 </div>
             </div>
             <lh-login ref="loginDialog"></lh-login>
+            <lh-reset-password ref="resetPasswordDialog"></lh-reset-password>
             <lh-register ref="registerDialog"></lh-register>
         </div>
     </div>
@@ -227,6 +232,9 @@
         methods: {
             openLoginDialog() {
                 this.$refs.loginDialog.openDialog()
+            },
+            openResetPasswordDialog() {
+                this.$refs.resetPasswordDialog.openDialog()
             },
             openRegisterDialog() {
                 this.$refs.registerDialog.openDialog()
