@@ -1067,7 +1067,7 @@
                     </span>
                 </div>
                 <div class="timeline-pics">
-                    <div class="timeline-pic-left timeline-pic">
+                    <div class="timeline-pic-left">
                         <img :src="timelines[state].types[stateType].products.left.url">
                     </div>
                     <div class="timeline-pic-right">

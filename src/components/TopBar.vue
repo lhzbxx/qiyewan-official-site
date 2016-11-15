@@ -232,8 +232,13 @@
                 this.$refs.registerDialog.openDialog()
             },
             changeRegion(index) {
+                let vm = this
                 this.$store.commit("CHANGE_REGION", index)
                 this.$router.replace("/")
+                this.$message({
+                    message: '已经切换到地区：' + vm.getRegion.name,
+                    type: 'success'
+                });
             },
             logout() {
                 this.$store.commit("USER_LOGOUT")
