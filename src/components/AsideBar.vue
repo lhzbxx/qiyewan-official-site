@@ -46,11 +46,12 @@
     }
     .erwerma{
         position: absolute;
-        top:0px;
+        top:70px;
         left:0px;
         height:0px;
         width:0px;
         transition: 1s;
+        overflow: hidden;
     }
     .erwerma img{
         width:100%;
@@ -76,6 +77,9 @@
     .totop:hover{
         background: white url(http://ofw6tmkxn.bkt.clouddn.com/totop1.png) no-repeat;
         background-position: -4px -5px;
+    }
+    #to_top{
+        display:none;
     }
 </style>
 <script>
