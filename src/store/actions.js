@@ -17,6 +17,20 @@ export const checkToken = ({commit}) => {
     }
 }
 
+export const requestCaptcha = ({commit}, phone) => {
+    return new Promise((resolve, reject) => {
+        authApi.requestCaptcha(phone,
+            token => {
+                resolve()
+            },
+            error => {
+                console.log(error)
+                reject(error)
+            }
+        )
+    })
+}
+
 export const userLogin = ({commit}, {phone, password}) => {
     return new Promise((resolve, reject) => {
         authApi.login(phone, password,
@@ -35,17 +49,21 @@ export const userLogin = ({commit}, {phone, password}) => {
     })
 }
 
-export const requestCaptcha = ({commit}, phone) => {
+export const userResetPassword = ({commit}, {phone, password, captcha}) => {
     return new Promise((resolve, reject) => {
-        authApi.requestCaptcha(phone,
+        authApi.resetPassword(phone, password, captcha,
             token => {
-                resolve()
+                console.log(token)
+                if (token) {
+                    commit(types.USER_LOGIN_SUCCESS, {phone, token})
+                    resolve()
+                }
             },
             error => {
                 console.log(error)
                 reject(error)
             }
-        )
+        );
     })
 }
 
