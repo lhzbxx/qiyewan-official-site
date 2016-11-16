@@ -2142,6 +2142,23 @@
             authApi.getRegion(function (region) {
                 vm.$store.commit("CHANGE_REGION", region)
             })
+        },
+        mounted() {
+            let vm = this
+            setInterval(function () {
+                if (vm.banner === (vm.banners.length - 1)) {
+                    vm.banner = 0
+                } else {
+                    vm.banner += 1
+                }
+            }, 5000)
+            setInterval(function () {
+                if (vm.voiceBanner === (vm.customerVoices.length - 1)) {
+                    vm.voiceBanner = 0
+                } else {
+                    vm.voiceBanner += 1
+                }
+            }, 5000)
         }
     }
 </script>
