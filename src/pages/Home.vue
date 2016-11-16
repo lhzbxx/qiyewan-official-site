@@ -1231,7 +1231,7 @@
                     {
                         serialId: "PS0002",
                         "title": "法财宝",
-                        "summary": "法律、财务保驾护航",
+                        "summary": "为您法律财务保驾护航",
                         "image": "introduce_img2"
                     },
                     {
@@ -1265,7 +1265,7 @@
                         main: {
                             serialId: "IC0001",
                             title: "公司注册",
-                            summary: "有限责任公司、分公司、合伙企业注册，三/五证合一营业执照全程无忧直通车",
+                            summary: "有限责任公司、分公司、合伙企业注册，三/五证合一营业执照全程无忧",
                         },
                         other: [
                             {
@@ -1347,7 +1347,7 @@
                         main: {
                             serialId: "LD0013",
                             title: "商标注册",
-                            summary: "专业律师查询意向商标预，提交商标申请建议书，专人全程办理。",
+                            summary: "专业律师查询意向商标，提交商标申请建议书，专人全程办理。",
                         },
                         other: [
                             {
@@ -1768,7 +1768,7 @@
                         serialId: "FC0001",
                         mainTitle: "代理记账",
                         subTitle: "只需98元",
-                        summary: "免费财税咨询，作账报税无忧",
+                        summary: "免费财税咨询，创业财税无忧",
                         imgTopUrl: "http://cdn.qiyewan.com/banner-2-top.png",
                         imgMiddleUrl: "http://cdn.qiyewan.com/banner-2-middle.png",
                         imgBottomUrl: "http://cdn.qiyewan.com/banner-2-bottom.png",
@@ -2052,21 +2052,21 @@
                 customerVoices: [
                     {
                         headImg: "http://cdn.qiyewan.com/customer1.png",
-                        content: "企业湾的增值服务特别适合像我们这样的创业型公司，服务专业，价格公道,适合创业公司在经费不宽裕的情况下把事情推行下去。我认为企业湾是一个一站式、超值，适合创业公司的合格的企业服务供应商。",
+                        content: "企业湾的增值服务特别适合像我们这样的创业型公司。服务专业，价格公道,适合创业公司在经费不宽裕的情况下满足企业刚需。我认为企业湾是一个一站式、超值，适合初创公司的企业服务提供商。",
                         company: "成都天添益网络科技有限公司",
                         position: "COO",
                         name: ""
                     },
                     {
                         headImg: "http://cdn.qiyewan.com/customer2.png",
-                        content: "平和温润、真诚无华为朴，知行合一、志坚质洁为正，正是这种相同的真挚的价值观让朴正教育咨询和企业湾相遇相知，并开始了旗下花田儿童教育项目的顺利筹建感谢企业湾专业细致的服务和支持，让我们不忘初心一起走下去。",
+                        content: "平和温润、真诚无华为朴；知行合一、志坚质洁为正。正是这种相同的真挚价值观让朴正教育咨询和企业湾相遇相知，并开始了旗下花田儿童教育项目。项目的顺利筹建离不开企业湾专业细致的服务和支持，让我们不忘初心一起走下去。",
                         company: "四川朴正教育咨询有限公司",
                         position: "花田教育",
                         name: ""
                     },
                     {
                         headImg: "http://cdn.qiyewan.com/customer3_1.png",
-                        content: "企业湾为我们提供人事、法律、财务等相当专业的服务，他们以专业的水准、负责的态度服务于客户，提供全方位的咨询与服务，使我们无后顾之忧。",
+                        content: "企业湾为我们提供人事、法律、财务等专业服务，他们以专业的水准、负责的态度服务客户，提供全方位的咨询与帮助，使我们没有后顾之忧。",
                         company: "镇江市红包兔信息技术有限公司",
                         position: "创始人兼CEO",
                         name: ""
@@ -2087,7 +2087,7 @@
                     },
                     {
                         headImg: "http://cdn.qiyewan.com/customer6_1.png",
-                        content: "响应迅速，帮我们节省了很多的时间，从工商，到人事、法律在企业湾一站式解决了，省时省事，是我们有更多的精力专业住本质工作。",
+                        content: "企业湾响应迅速，帮我们节省了很多的时间，从工商到人事法律，在企业湾都得到了一站式的解决，省时省事，使我们有更多的精力专注在本质工作。",
                         company: "南京贝贝帮教育咨询有限公司",
                         position: "创始人兼CEO",
                         name: ""
