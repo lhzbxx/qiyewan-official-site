@@ -244,7 +244,7 @@
             </el-breadcrumb>
             <el-row style="margin-top:20px">
                 <el-col :span="11" style="margin-right:30px">
-                    <img :src="imageIp+product.cover"
+                    <img :src="cdnPrefix+product.cover"
                          style="width: 100%; height: 381px;">
                 </el-col>
                 <el-col :span="10" class="pro_right">

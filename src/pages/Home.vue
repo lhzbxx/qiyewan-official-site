@@ -1419,25 +1419,25 @@
                         department: "中国商标网【商标局】",
                         service: "商标查询",
                         url: "http://sbj.saic.gov.cn/sbcx/",
-                        cover: "http://ofl0lw9er.bkt.clouddn.com/tool1.png"
+                        cover: "http://cdn.qiyewan.com/tool1.png"
                     },
                     {
                         department: "全国企业信用信息公示系统",
                         service: "工商查询",
                         url: "http://gsxt.saic.gov.cn/",
-                        cover: "http://ofl0lw9er.bkt.clouddn.com/tool2.png"
+                        cover: "http://cdn.qiyewan.com/tool2.png"
                     },
                     {
                         department: "国际知识产权局",
                         service: "专利查询",
                         url: "http://cpquery.sipo.gov.cn/",
-                        cover: "http://ofl0lw9er.bkt.clouddn.com/tool3.png"
+                        cover: "http://cdn.qiyewan.com/tool3.png"
                     },
                     {
                         department: "中国版权保护中心",
                         service: "软件著作权查询",
                         url: "http://www.ccopyright.com.cn/cpcc/RRegisterAction.do?method=list&no=fck",
-                        cover: "http://ofl0lw9er.bkt.clouddn.com/tool4.png"
+                        cover: "http://cdn.qiyewan.com/tool4.png"
                     }
                 ],
                 timelines: [
