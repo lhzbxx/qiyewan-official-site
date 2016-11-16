@@ -1,6 +1,6 @@
 <style scoped>
     .detail_pic {
-        background: url(http://ofw6tmkxn.bkt.clouddn.com/produce_2.jpg) no-repeat;
+        background: url(http://cdn.qiyewan.com/produce_2.jpg) no-repeat;
         width: 100%;
         height: 350px;
         background-size: 108%;
@@ -56,7 +56,7 @@
     }
 
     .Process {
-        background: url(http://ofw6tmkxn.bkt.clouddn.com/progress_.jpg) no-repeat;
+        background: url(http://cdn.qiyewan.com/progress_.jpg) no-repeat;
         -webkit-background-size: 100%;
         background-size: 100%;
         width: 100%;
