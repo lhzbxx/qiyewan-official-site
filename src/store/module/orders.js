@@ -31,6 +31,9 @@ const mutations = {
     },
     [types.CHECKOUT] (state, carts) {
         state.checkout = carts
+    },
+    [types.GET_DATA_FROM_STORAGE] (state) {
+        state.info = JSON.parse(localStorage.getItem('orderInfo'));
     }
 }
 

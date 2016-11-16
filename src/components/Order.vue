@@ -54,7 +54,7 @@
                                         height: 100%;
                                         display: table-cell;
                                         vertical-align: middle;">
-                                <img :src="addPrefix(item.cover)"
+                                <img :src="cdnPrefix + item.cover"
                                      style="width: 100%;
                                             display: table-cell;
                                             vertical-align: middle;">
@@ -64,7 +64,9 @@
                                 class="order-detail">
                             <div class="order-detail-wrapper">
                                 <p class="order-detail-product-title">
-                                    {{ item.name }}
+                                    <router-link :to="{ name: 'product-detail', params: { serialId: item.productSerialId } }">
+                                        {{ item.name }}
+                                    </router-link>
                                 </p>
                                 <p class="order-detail-product-region">
                                     区域：{{ item.region }}
@@ -123,18 +125,44 @@
                         </el-button>
                     </div>
                     <div v-if="row.orderState == 'Paid'">
-                        <el-button type="primary"
-                                   icon="edit"
-                                   size="small">
-                            去评价
-                        </el-button>
+                        <el-row style="height: 90px; padding-top: 42px;" v-for="item in row.details">
+                            <el-col :span="24"
+                                    class="order-detail">
+                                <div class="order-detail-wrapper" style="padding-left: 0;">
+                                    <p class="order-detail-product-title">
+                                        <el-button type="text"
+                                                   :disabled="true"
+                                                   v-if="item.isReviewed"
+                                                   size="small">
+                                            已评价
+                                        </el-button>
+                                        <el-button type="primary"
+                                                   icon="edit"
+                                                   v-else
+                                                   @click.native="goToReview(row, item)"
+                                                   size="small">
+                                            去评价
+                                        </el-button>
+                                    </p>
+                                </div>
+                            </el-col>
+                        </el-row>
                     </div>
                     <div v-if="row.orderState == 'Reviewed'">
-                        <el-button type="text"
-                                   :disabled="true"
-                                   size="small">
-                            已评价
-                        </el-button>
+                        <el-row style="height: 90px; padding-top: 42px;" v-for="item in row.details">
+                            <el-col :span="24"
+                                    class="order-detail">
+                                <div class="order-detail-wrapper" style="padding-left: 0;">
+                                    <p class="order-detail-product-title">
+                                        <el-button type="text"
+                                                   :disabled="true"
+                                                   size="small">
+                                            已评价
+                                        </el-button>
+                                    </p>
+                                </div>
+                            </el-col>
+                        </el-row>
                     </div>
                     <div v-if="row.orderState == 'Timeout' || row.orderState == 'Canceled'">
                         <el-button type="text"
@@ -172,6 +200,9 @@
                 }
             }
         },
+        computed: mapGetters({
+            cdnPrefix: 'cdnPrefix'
+        }),
         methods: {
             jumpToPay (url) {
                 window.open(url)
@@ -179,28 +210,32 @@
             getLocalTime(nS) {
                 return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ');
             },
-            addPrefix(url) {
-                return "http://ofw6tmkxn.bkt.clouddn.com/" + url;
+            goToReview(row, item) {
+                this.$router.push({
+                    name: 'review',
+                    params: {orderSerialId: row.serialId, productSerialId: item.productSerialId}
+                })
             },
             cancelOrder(index, serialId) {
                 let vm = this
                 this.$confirm('确认取消该订单吗？', '取消订单', {
                     type: 'warning'
-                }).then(() => {
+                }).then(function () {
                     vm.$store.dispatch("cancelOrder", serialId).then(
-                            () => {
+                            function () {
                                 vm.orders[index].orderState = "Canceled"
                                 vm.$message({
                                     type: 'success',
                                     message: '成功取消订单'
                                 })
                             },
-                            () => {
+                            function () {
                                 vm.$message.error("取消订单失败...")
                             }
                     )
-                }).catch(() => {
-                });
+                }).catch(function () {
+                        }
+                );
             }
         },
         props: {

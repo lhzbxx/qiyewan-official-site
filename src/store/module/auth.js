@@ -31,11 +31,9 @@ const mutations = {
         console.log(localStorage.createAt)
         localStorage.removeItem('user')
     },
-    [types.GET_TOKEN_FROM_STORAGE] (state) {
+    [types.GET_DATA_FROM_STORAGE] (state) {
         state.isLogin = true
         state.user = JSON.parse(localStorage.getItem('user'));
-        state.cartInfo = JSON.parse(localStorage.getItem('cartInfo'));
-        state.orderInfo = JSON.parse(localStorage.getItem('orderInfo'));
     }
 }
 

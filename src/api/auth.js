@@ -19,6 +19,19 @@ export default {
         }
     },
 
+    requestCaptcha (phone, cb, errorCb) {
+        Vue.http.post("captcha/" + phone).then(
+            (response) => {
+                if (response.body.error == 0) {
+                    cb(response.body.detail);
+                } else {
+                    errorCb(response.body);
+                }
+            }, (response) => {
+                errorCb(response.body);
+            })
+    },
+
     login (phone, password, cb, errorCb) {
         Vue.http.get("auth?phone=" + phone + "&password=" + password).then(
             (response) => {
@@ -32,17 +45,22 @@ export default {
             })
     },
 
-    requestCaptcha (phone, cb, errorCb) {
-        Vue.http.post("captcha/" + phone).then(
+    resetPassword (phone, password, captcha, cb, errorCb) {
+        Vue.http.patch("auth", {
+            phone: phone,
+            password: password,
+            captcha: captcha
+        }).then(
             (response) => {
                 if (response.body.error == 0) {
-                    cb(response.body.detail);
+                    cb(response.body.detail)
                 } else {
                     errorCb(response.body);
                 }
             }, (response) => {
-                errorCb(response.body);
-            })
+                errorCb(response.body)
+            }
+        )
     },
 
     register (phone, password, captcha, cb, errorCb) {
@@ -68,6 +86,18 @@ export default {
         Vue.http.get("login-history").then(
             (response) => {
                 cb(response.body.content)
+            }
+            , (response) => {
+                errorCb(response.body)
+            }
+        )
+    },
+
+    getUser (token, cb, errorCb) {
+        Vue.http.headers.common['Authorization'] = token;
+        Vue.http.get("users").then(
+            (response) => {
+                cb(response.body)
             }
             , (response) => {
                 errorCb(response.body)

@@ -93,6 +93,7 @@
         color: #5e5e5e;
         background-color: #eee;
         transition: color 0.3s ease-in-out;
+        overflow: hidden;
     }
 
     .nav-show-left span:hover, .nav-show-right span:hover {
@@ -118,39 +119,47 @@
             </div>
             <ul>
                 <li v-for="item in navigators">
-                    <a href="">{{ item.title }}</a>
+                    <router-link
+                            :to="{ name: 'product-list', params: { regionCode: getRegion.code, category: item.code }}">
+                        {{ item.title }}
+                    </router-link>
                     <div class="show">
                         <div class="nav-show-left l">
-                            <div class="nav-show-content">
-                                <router-link :to="{ name: 'product-list', params: { regionCode: getRegion.code,category: item.l.title }}">
+                            <div class="nav-show-content" v-if="item.l.title">
+                                <router-link
+                                        :to="{ name: 'product-list', params: { regionCode: getRegion.code, category: item.l.title }}">
                                     <div class="registration">{{ item.l.title }}</div>
                                 </router-link>
-                                <span v-for="i in item.l.list">
-                                    <router-link :to="{ name: 'product-detail', params: { serialId: i.serialId }}">
-                                        {{ i.name }}
-                                    </router-link>
-                                </span>
+                                <router-link
+                                        :to="{ name: 'product-detail', params: { serialId: i.serialId }}"
+                                        v-for="i in item.l.list">
+                                    <span>
+                                            {{ i.name }}
+                                    </span>
+                                </router-link>
                             </div>
                         </div>
                         <div class="nav-show-right l">
                             <div class="nav-show-content">
-                                <router-link :to="{ name: 'product-list', params: { regionCode: getRegion.code,category: item.r.title }}">
-                                    <div class="registration">{{ item.r.title }}</div>
+                                <router-link
+                                        :to="{ name: 'product-list', params: { regionCode: getRegion.code, category: item.r.title }}">
+                                    <div class="registration">
+                                        {{ item.r.title }}
+                                    </div>
                                 </router-link>
-                                <span v-for="i in item.r.list">
-                                     <router-link :to="{ name: 'product-detail', params: { serialId: getRegion.code+i.serialId }}">
+                                <router-link
+                                        :to="{ name: 'product-detail', params: { serialId: i.serialId }}"
+                                        v-for="i in item.r.list">
+                                    <span>
                                         {{ i.name }}
-                                    </router-link>
-                                </span>
+                                    </span>
+                                </router-link>
                             </div>
                         </div>
                     </div>
                 </li>
-            <!--    <li>
-                    <a>套餐服务</a>
-                </li>-->
                 <p>
-                    <a>快捷入口</a>
+                    <a href="https://123.59.50.191:8443/dashboard">财税平台</a>
                 </p>
                 <p>
                     <a>400-716-8896</a>
@@ -164,13 +173,14 @@
 <script>
     import productApi from '../api/product'
     import {mapGetters} from 'vuex'
-    export default {
 
+    export default {
         data() {
             return {
                 navigators: [
                     {
                         title: "工商服务",
+                        code: "IC",
                         l: {
                             title: "工商变更",
                             list: []
@@ -182,6 +192,7 @@
                     },
                     {
                         title: "财税服务",
+                        code: "FC",
                         l: {
                             title: "财务服务",
                             list: []
@@ -193,6 +204,7 @@
                     },
                     {
                         title: "法律服务",
+                        code: "LD",
                         l: {
                             title: "法律服务",
                             list: []
@@ -204,6 +216,7 @@
                     },
                     {
                         title: "人事服务",
+                        code: "HR",
                         l: {
                             title: "社保",
                             list: []
@@ -215,6 +228,7 @@
                     },
                     {
                         title: "IT&设计服务",
+                        code: "IT",
                         l: {
                             title: "网站设计",
                             list: []
@@ -226,8 +240,9 @@
                     },
                     {
                         title: "套餐服务",
+                        code: "PS",
                         l: {
-                            title: "套餐",
+                            title: "",
                             list: []
                         },
                         r: {
@@ -239,53 +254,31 @@
             }
         },
         computed: mapGetters({
-            getRegion: 'getRegion'
+            getRegion: 'getRegion',
+            getRegionIndex: 'getRegionIndex'
         }),
+        watch: {
+            getRegionIndex: 'fetchData'
+        },
         created () {
             this.fetchData()
         },
         methods: {
             fetchData () {
+                let vm = this
                 productApi.getNavList(this.getRegion.code,
-                        data => {
-                            this.dealNavData(data)
+                        function (data) {
+                            vm.handleNavData(data)
                         },
-                        error => {
-                            this.error = error
+                        function (error) {
+                            vm.error = error
                         }
                 )
             },
-            dealNavData(navList){
-                for(var navItem of navList){
-                    switch (navItem.classificationCode){
-                        case 'IC':
-                            this.setNavItem(navItem.classificationName,0,navItem.name,navItem.serialId)
-                            break;
-                        case 'FC':
-                            this.setNavItem(navItem.classificationName,1,navItem.name,navItem.serialId)
-                            break;
-                        case 'LD':
-                            this.setNavItem(navItem.classificationName,2,navItem.name,navItem.serialId)
-                            break;
-                        case 'HR':
-                            this.setNavItem(navItem.classificationName,3,navItem.name,navItem.serialId)
-                            break;
-                        case 'IT':
-                            this.setNavItem(navItem.classificationName,4,navItem.name,navItem.serialId)
-                            break;
-                        case 'PS':
-                            this.setNavItem(navItem.classificationName,5,navItem.name,navItem.serialId)
-                            break;
-                    }
-                }
-            },
-
-            setNavItem(classificationName,idx,productName,productSerialId){
-                var navClass = this.navigators[idx]
-                if(classificationName === navClass.l.title){
-                    this.navigators[idx].l.list.push({name: productName, serialId: productSerialId})
-                }else if(classificationName ===  navClass.r.title){
-                    this.navigators[idx].r.list.push({name: productName, serialId: productSerialId})
+            handleNavData(data) {
+                for (var i of this.navigators) {
+                    i.l.list = data.filter(item => i.l.title == item.classificationName)
+                    i.r.list = data.filter(item => i.r.title == item.classificationName)
                 }
             }
         }

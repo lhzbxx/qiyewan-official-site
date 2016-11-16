@@ -21,7 +21,7 @@
                                         height: 100%;
                                         display: table-cell;
                                         vertical-align: middle;">
-                                <img src="../assets/logo.png"
+                                <img :src="cdnPrefix+row.product.cover"
                                      style="width: 100%;
                                             display: table-cell;
                                             vertical-align: middle;">
@@ -69,7 +69,7 @@
                     label="小计">
                 <div style="color: red;">
                     &yen;
-                    <span>{{ (row.product.unitPrice * row.amount).toFixed(2) }}</span>
+                    <span>{{ getTotalPrice(row) }}</span>
                 </div>
             </el-table-column>
             <el-table-column
@@ -88,14 +88,14 @@
         </el-table>
         <div style="border: 1px solid #e0e6ed; border-top: none; width: 100%; text-align: right;">
             <span style="font-size: 13px; margin-right: 30px;">
-                已选择{{ amountOfSelection }}件商品，合计：
+                已选择{{ amountOfSelection() }}件商品，合计：
                 <span style="color: red; font-size: 20px;">
-                    &yen;{{ totalPrice }}
+                    &yen;{{ totalPrice() }}
                 </span>
             </span>
             <el-button type="primary"
                        size="large"
-                       :disabled="amountOfSelection == 0"
+                       :disabled="amountOfSelection() == 0"
                        @click.native="checkout"
                        style="border-radius: 0;">
                 去结算
@@ -105,7 +105,9 @@
 </template>
 
 <script>
+    import dataApi from '../api/data'
     import {mapGetters} from 'vuex'
+
     export default {
         data() {
             return {
@@ -152,14 +154,6 @@
             },
             updateCart(index) {
                 this.$store.dispatch("updateCart", this.carts[index])
-//                this.carts[index].amount = value
-//                console.log(this.carts[index])
-//                this.$store.dispatch("updateCart", this.carts[index]).then(
-//                        () => {
-//                        },
-//                        () => {
-//                        }
-//                )
             },
             clearSelection() {
                 this.multipleSelection = []
@@ -167,20 +161,24 @@
             checkout() {
                 this.$store.commit("CHECKOUT", this.multipleSelection)
                 this.$router.push({name: "pay"})
-            }
-        },
-        computed: {
-            amountOfSelection() {
-                return this.multipleSelection.length
+            },
+            getTotalPrice(row) {
+                return dataApi.totalPrice(row)
             },
             totalPrice() {
                 var r = 0;
                 for (var i of this.multipleSelection) {
-                    r = r + i.amount * i.product.unitPrice
+                    r = r + Number(dataApi.totalPrice(i))
                 }
                 return r.toFixed(2)
+            },
+            amountOfSelection() {
+                return this.multipleSelection.length
             }
         },
+        computed: mapGetters({
+            cdnPrefix: 'cdnPrefix'
+        }),
         watch: {
             'page': 'clearSelection'
         },

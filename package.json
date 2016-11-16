@@ -1,5 +1,6 @@
 {
-  "name": "qiyewan-site",
+  "name": "qiyewan-site-desktop",
+  "version": "1.0.0",
   "description": "",
   "author": "lhzbxx@gmail.com",
   "private": true,

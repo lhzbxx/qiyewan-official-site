@@ -47,8 +47,27 @@
         data() {
             var validatePhone = (rule, value, cb) => {
                 let reg = /^1[3|4|5|7|8][0-9]{9}$/;
-                if ( ! reg.test(value)) {
+                if (!reg.test(value)) {
                     cb(new Error('请输入正确的手机号！'))
+                } else {
+                    cb()
+                }
+            }
+            var validatePassword = (rule, value, cb) => {
+                var pwdRank = function(w) {
+                    var l = w.length,
+                            f = function (x, s) {
+                                return ((eval('/' + x + '/').test(s)) ? 1 : 0)
+                            },
+                            z = f('[0-9]', w) + f('[a-z]', w) + f('[A-Z]', w) + f('[\\W_]', w),
+                            r = (l > 10 && z == 1) ? z + 1 : z;
+                    if (r > 1 && f('^(?:(\\w+)\\1+)+$|(\\w)\\2{2,}', w))r--;
+                    if ((l > 11 && z > 1) || (l > 12 && z == 1))r++;
+                    if (l > 13 && r < 5)r++;
+                    return r;
+                }
+                if (pwdRank(value) <= 3) {
+                    cb(new Error('密码强度低，请使用大写字母、小写字母和数字。'))
                 } else {
                     cb()
                 }
@@ -95,6 +114,9 @@
                             required: true,
                             message: '请输入密码',
                             trigger: 'blur'
+                        },
+                        {
+                            validator: validatePassword
                         }
                     ],
                     password2: [
@@ -118,7 +140,7 @@
                 let vm = this
                 this.$refs.registerForm.validateField(['phone'],
                         (error) => {
-                            if ( ! error) {
+                            if (!error) {
                                 vm.$store.dispatch("requestCaptcha", vm.formStacked.phone)
                                 vm.isWaiting = true
                                 vm.timer = 60

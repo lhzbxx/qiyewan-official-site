@@ -42,6 +42,7 @@
     #area {
         position: absolute;
         width: 192px;
+        height: 131px;
         background-color: #fff;
         top: 33px;
         left: -1px;
@@ -187,6 +188,10 @@
                         <a>注册</a>
                     </li>
                     <li v-if="!isLogin"
+                        v-on:click="openResetPasswordDialog()">
+                        <a>忘记密码</a>
+                    </li>
+                    <li v-if="!isLogin"
                         v-on:click="openLoginDialog()">
                         <a>登录</a>
                     </li>
@@ -206,6 +211,7 @@
                 </div>
             </div>
             <lh-login ref="loginDialog"></lh-login>
+            <lh-reset-password ref="resetPasswordDialog"></lh-reset-password>
             <lh-register ref="registerDialog"></lh-register>
         </div>
     </div>
@@ -227,11 +233,20 @@
             openLoginDialog() {
                 this.$refs.loginDialog.openDialog()
             },
+            openResetPasswordDialog() {
+                this.$refs.resetPasswordDialog.openDialog()
+            },
             openRegisterDialog() {
                 this.$refs.registerDialog.openDialog()
             },
             changeRegion(index) {
+                let vm = this
                 this.$store.commit("CHANGE_REGION", index)
+                this.$router.replace("/")
+                this.$message({
+                    message: '已经切换到地区：' + vm.getRegion.name,
+                    type: 'success'
+                });
             },
             logout() {
                 this.$store.commit("USER_LOGOUT")
