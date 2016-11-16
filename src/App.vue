@@ -24,6 +24,7 @@
         <div id="footer">
             <lh-footer></lh-footer>
         </div>
+        <lh-side-bar></lh-side-bar>
     </div>
 </template>
 

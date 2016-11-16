@@ -35,6 +35,7 @@ import HotProducts from './components/HotProducts.vue'
 import Header from './components/Header.vue'
 import News from './components/News.vue'
 import Loading from './components/Loading.vue'
+import SideBar from './components/SideBar.vue'
 
 
 Vue.use(ElementUI)
@@ -55,6 +56,8 @@ Vue.component('lh-header', Header)
 Vue.component('lh-footer', Footer)
 Vue.component('lh-news', News)
 Vue.component('lh-loading', Loading)
+Vue.component('lh-side-bar', SideBar)
+
 
 function requireAuth(to, from, next) {
     if (!store.getters.isLogin) {
