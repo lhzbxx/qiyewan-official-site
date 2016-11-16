@@ -78,7 +78,7 @@ const routes = [
         component: Review
     },
     {
-        path: '/product/list/:regionCode/:category',
+        path: '/product/list/:category',
         name: 'product-list',
         component: ProductList
     },
@@ -139,7 +139,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-    mode: window.global_config.router_mode,
+    // mode: 'history',
     routes: routes
 })
 
