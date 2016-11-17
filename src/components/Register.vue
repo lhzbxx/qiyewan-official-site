@@ -66,7 +66,7 @@
                     if (l > 13 && r < 5)r++;
                     return r;
                 }
-                if (pwdRank(value) <= 2) {
+                if (pwdRank(value) <= 1) {
                     cb(new Error('密码强度低，请使用大写字母、小写字母和数字。'))
                 } else {
                     cb()

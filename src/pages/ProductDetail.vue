@@ -305,7 +305,6 @@
                         </el-form-item>
                         <el-form-item label="购买时长" style="margin-bottom: 8px" v-if="!product.isInstant">
                             <el-radio-group v-model="form.amount">
-                                <el-radio-button label="3">一季度</el-radio-button>
                                 <el-radio-button label="6">半年</el-radio-button>
                                 <el-radio-button label="12">一年</el-radio-button>
                             </el-radio-group>
@@ -619,7 +618,7 @@
                 if (this.product.isInstant) {
                     this.form.amount = 1
                 } else {
-                    this.form.amount = 3
+                    this.form.amount = 6
                 }
             },
             getLocalTime(nS) {
