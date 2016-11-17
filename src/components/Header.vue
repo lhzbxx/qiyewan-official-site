@@ -114,10 +114,11 @@
         <div class="container">
             <div class="logo l">
                 <router-link to="/">
-                    <img src="../assets/img/logo.png" alt="">
+                    <img style="height: 44px; margin-top: 10px; margin-left: 10px;"
+                         src="http://cdn.qiyewan.com/logo.png" alt="">
                 </router-link>
             </div>
-            <ul>
+            <ul style="margin-left: 0;">
                 <li v-for="item in navigators">
                     <router-link
                             :to="{ name: 'product-list', params: { regionCode: getRegion.code, category: item.code }}">
