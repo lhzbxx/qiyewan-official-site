@@ -83,14 +83,14 @@
                 this.$refs.dialog.open()
             },
             submit() {
+                let vm = this
                 this.$refs.loginForm.validate(function (valid) {
                     console.log(valid)
                     if (valid) {
-                        this.isLogging = true
-                        let vm = this
-                        this.$store.dispatch("userLogin", {
-                            phone: this.formStacked.phone,
-                            password: this.formStacked.password
+                        vm.isLogging = true
+                        vm.$store.dispatch("userLogin", {
+                            phone: vm.formStacked.phone,
+                            password: vm.formStacked.password
                         }).then(function () {
                             vm.isVisible = false
                             vm.formStacked.password = ""
