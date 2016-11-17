@@ -10,8 +10,8 @@
     .detail_tit {
         width: 380px;
         height: 253px;
-        margin-left: 370px;
-        padding-top: 65px;
+        margin-left: 337px;
+        padding-top: 40px;
         white-space: normal;
     }
 
