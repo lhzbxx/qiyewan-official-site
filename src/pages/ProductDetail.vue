@@ -1,6 +1,6 @@
 <style scoped>
     .detail_pic {
-        background: url(http://ofw6tmkxn.bkt.clouddn.com/produce_2.jpg) no-repeat;
+        background: url(http://cdn.qiyewan.com/produce_2.jpg) no-repeat;
         width: 100%;
         height: 350px;
         background-size: 108%;
@@ -56,7 +56,7 @@
     }
 
     .Process {
-        background: url(http://ofw6tmkxn.bkt.clouddn.com/progress_.jpg) no-repeat;
+        background: url(http://cdn.qiyewan.com/progress_.jpg) no-repeat;
         -webkit-background-size: 100%;
         background-size: 100%;
         width: 100%;
@@ -245,7 +245,7 @@
             <el-row style="margin-top:20px">
                 <el-col :span="11" style="margin-right:30px">
                     <img :src="cdnPrefix+product.cover"
-                         style="width: 100%;">
+                         style="width: 100%; height: 381px;">
                 </el-col>
                 <el-col :span="10" class="pro_right">
                     <h3 style="margin:10px 0;font-size:20px;color:#383838">{{product.name}}</h3>

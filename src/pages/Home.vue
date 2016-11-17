@@ -420,9 +420,7 @@
         font-size: 20px;
         position: relative;
         cursor: pointer;
-        -moz-transition: all 0.3s ease-in-out;
-        -webkit-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
         margin-left: -1px;
     }
 
@@ -436,6 +434,7 @@
         width: 0;
     }
 
+<<<<<<< HEAD
     #timeline ul li.active:before {
         top: -1px;
         border-left-width: 15px;
@@ -446,6 +445,8 @@
         z-index: 10;
     }
 
+=======
+>>>>>>> 0d901ff57c3205ed4fe3ff77bb83ea70a26161c1
     #timeline ul li:last-child.active::before {
         display: none !important;
     }
@@ -459,13 +460,27 @@
         border-color: #139cd7;
     }
 
+    #timeline ul li.active:before {
+        top: -1px;
+        border-top: 25px solid transparent;
+        border-left: 15px solid #139cd7;
+        border-bottom: 25px solid transparent;
+        z-index: 10;
+    }
+
     #timeline ul li.active:after {
         top: 0;
+<<<<<<< HEAD
         border-left-width: 14px;
         border-right-width: 14px;
         border-bottom-width: 24px;
         border-top-width: 24px;
         border-left-color: white;
+=======
+        border-top: 24px solid transparent;
+        border-left: 14px solid white;
+        border-bottom: 24px solid transparent;
+>>>>>>> 0d901ff57c3205ed4fe3ff77bb83ea70a26161c1
         z-index: 10;
     }
 
@@ -706,7 +721,7 @@
         width: 100%;
         height: 400px;
         margin-bottom: 20px;
-        background: url("http://ofw6tmkxn.bkt.clouddn.com/voice-bg.png") no-repeat;
+        background: url("http://cdn.qiyewan.com/voice-bg.png") no-repeat;
         position: relative;
     }
 
@@ -1073,7 +1088,7 @@
                     </span>
                 </div>
                 <div class="timeline-pics">
-                    <div class="timeline-pic-left timeline-pic">
+                    <div class="timeline-pic-left">
                         <img :src="timelines[state].types[stateType].products.left.url">
                     </div>
                     <div class="timeline-pic-right">
@@ -1183,7 +1198,7 @@
             </div>
         </div>
         <div class="promise">
-            <div class="pro_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/about-us-banner1.png"></div>
+            <div class="pro_img"><img src="http://cdn.qiyewan.com/about-us-banner1.png"></div>
             <ul>
                 <li>
                     <div class="pro_l l"><img src="../assets/img/pro_1.png"></div>
@@ -1237,7 +1252,7 @@
                     {
                         serialId: "PS0002",
                         "title": "法财宝",
-                        "summary": "法律、财务保驾护航",
+                        "summary": "为您法律财务保驾护航",
                         "image": "introduce_img2"
                     },
                     {
@@ -1256,8 +1271,8 @@
                 hotProducts: [
                     {
                         title: "工商服务",
-                        image: "http://ofw6tmkxn.bkt.clouddn.com/hot_1.png",
-                        activeImage: "http://ofw6tmkxn.bkt.clouddn.com/ser_1.png",
+                        image: "http://cdn.qiyewan.com/hot_1.png",
+                        activeImage: "http://cdn.qiyewan.com/ser_1.png",
                         summary: "工商，就这么简单…",
                         first: [
                             "公司注册",
@@ -1271,7 +1286,7 @@
                         main: {
                             serialId: "IC0001",
                             title: "公司注册",
-                            summary: "有限责任公司、分公司、合伙企业注册，三/五证合一营业执照全程无忧直通车",
+                            summary: "有限责任公司、分公司、合伙企业注册，三/五证合一营业执照全程无忧",
                         },
                         other: [
                             {
@@ -1298,8 +1313,8 @@
                     },
                     {
                         title: "财税服务",
-                        image: "http://ofw6tmkxn.bkt.clouddn.com/hot_2.png",
-                        activeImage: "http://ofw6tmkxn.bkt.clouddn.com/ser_2.png",
+                        image: "http://cdn.qiyewan.com/hot_2.png",
+                        activeImage: "http://cdn.qiyewan.com/ser_2.png",
                         summary: "财务清晰，纳税放心",
                         first: [
                             "零申报代理记账",
@@ -1339,8 +1354,8 @@
                     },
                     {
                         title: "法律服务",
-                        image: "http://ofw6tmkxn.bkt.clouddn.com/hot_3.png",
-                        activeImage: "http://ofw6tmkxn.bkt.clouddn.com/ser_3.png",
+                        image: "http://cdn.qiyewan.com/hot_3.png",
+                        activeImage: "http://cdn.qiyewan.com/ser_3.png",
                         summary: "您的私人法律顾问",
                         first: [
                             "商标注册",
@@ -1353,7 +1368,7 @@
                         main: {
                             serialId: "LD0013",
                             title: "商标注册",
-                            summary: "专业律师查询意向商标预，提交商标申请建议书，专人全程办理。",
+                            summary: "专业律师查询意向商标，提交商标申请建议书，专人全程办理。",
                         },
                         other: [
                             {
@@ -1380,8 +1395,8 @@
                     },
                     {
                         title: "人事服务",
-                        image: "http://ofw6tmkxn.bkt.clouddn.com/hot_5.png",
-                        activeImage: "http://ofw6tmkxn.bkt.clouddn.com/ser_5.png",
+                        image: "http://cdn.qiyewan.com/hot_5.png",
+                        activeImage: "http://cdn.qiyewan.com/ser_5.png",
                         summary: "创业不忘养老",
                         first: [
                             "委托代缴社保公积金服务",
@@ -1425,25 +1440,25 @@
                         department: "中国商标网【商标局】",
                         service: "商标查询",
                         url: "http://sbj.saic.gov.cn/sbcx/",
-                        cover: "http://ofl0lw9er.bkt.clouddn.com/tool1.png"
+                        cover: "http://cdn.qiyewan.com/tool1.png"
                     },
                     {
                         department: "全国企业信用信息公示系统",
                         service: "工商查询",
                         url: "http://gsxt.saic.gov.cn/",
-                        cover: "http://ofl0lw9er.bkt.clouddn.com/tool2.png"
+                        cover: "http://cdn.qiyewan.com/tool2.png"
                     },
                     {
                         department: "国际知识产权局",
                         service: "专利查询",
                         url: "http://cpquery.sipo.gov.cn/",
-                        cover: "http://ofl0lw9er.bkt.clouddn.com/tool3.png"
+                        cover: "http://cdn.qiyewan.com/tool3.png"
                     },
                     {
                         department: "中国版权保护中心",
                         service: "软件著作权查询",
                         url: "http://www.ccopyright.com.cn/cpcc/RRegisterAction.do?method=list&no=fck",
-                        cover: "http://ofl0lw9er.bkt.clouddn.com/tool4.png"
+                        cover: "http://cdn.qiyewan.com/tool4.png"
                     }
                 ],
                 timelines: [
@@ -1454,33 +1469,33 @@
                                 title: "创立公司",
                                 products: {
                                     left: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-1.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-5-1.png"
                                     },
                                     right: {
                                         serialId: "IC0002",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-2.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-5-2.png"
                                     },
                                     one: [
                                         {
                                             serialId: "IC0012",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-3.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-5-3.png"
                                         },
                                         {
                                             serialId: "HR0003",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-4.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-5-4.png"
                                         },
                                         {
                                             serialId: "HR0002",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-5.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-5-5.png"
                                         }
                                     ],
                                     rightBottom: {
                                         serialId: "IT0001",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-6.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-5-6.png"
                                     },
                                     bottomOne: {
                                         serialId: "HR0001",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-5-7.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-5-7.png"
                                     }
                                 }
 
@@ -1489,33 +1504,33 @@
                                 title: "财税服务",
                                 products: {
                                     left: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-1.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-3-1.png"
                                     },
                                     right: {
                                         serialId: "FC0003",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-2.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-3-2.png"
                                     },
                                     one: [
                                         {
                                             serialId: "FC0008",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-3.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-3-3.png"
                                         },
                                         {
                                             serialId: "IT0004",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-4.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-3-4.png"
                                         },
                                         {
                                             serialId: "IT0005",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-5.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-3-5.png"
                                         }
                                     ],
                                     rightBottom: {
                                         serialId: "IT0003",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-6.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-3-6.png"
                                     },
                                     bottomOne: {
                                         serialId: "IT0002",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-3-7.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-3-7.png"
                                     }
                                 }
                             },
@@ -1523,33 +1538,33 @@
                                 title: "法律服务",
                                 products: {
                                     left: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-1.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-2-1.png"
                                     },
                                     right: {
                                         serialId: "LD0010",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-2.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-2-2.png"
                                     },
                                     one: [
                                         {
                                             serialId: "LD0011",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-3.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-2-3.png"
                                         },
                                         {
                                             serialId: "LD0012",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-4.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-2-4.png"
                                         },
                                         {
                                             serialId: "LD0014",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-5.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-2-5.png"
                                         }
                                     ],
                                     rightBottom: {
                                         serialId: "LD0002",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-6.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-2-6.png"
                                     },
                                     bottomOne: {
                                         serialId: "LD0015",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-2-7.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-2-7.png"
                                     }
                                 }
                             }
@@ -1562,33 +1577,33 @@
                                 title: "工商服务",
                                 products: {
                                     left: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-1.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-8-1.png"
                                     },
                                     right: {
                                         serialId: "IC0009",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-2.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-8-2.png"
                                     },
                                     one: [
                                         {
                                             serialId: "IC0004",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-3.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-8-3.png"
                                         },
                                         {
                                             serialId: "IC0005",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-4.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-8-4.png"
                                         },
                                         {
                                             serialId: "IC0006",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-5.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-8-5.png"
                                         }
                                     ],
                                     rightBottom: {
                                         serialId: "FC0001",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-6.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-4-6.png"
                                     },
                                     bottomOne: {
                                         serialId: "IC0010",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-8-7.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-8-7.png"
                                     }
                                 }
                             },
@@ -1596,32 +1611,32 @@
                                 title: "财税法+",
                                 products: {
                                     left: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-1.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-4-1.png"
                                     },
                                     right: {
                                         serialId: "FC0004",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-2.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-4-2.png"
                                     },
                                     one: [
                                         {
                                             serialId: "FC0005",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-3.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-4-3.png"
                                         },
                                         {
                                             serialId: "FC0006",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-4.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-4-4.png"
                                         },
                                         {
                                             serialId: "FC0007",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-5.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-4-5.png"
                                         }
                                     ],
                                     rightBottom: {
                                         serialId: "FC0001",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-6.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-4-6.png"
                                     }, bottomOne: {
                                         serialId: "FC0010",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-4-7.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-4-7.png"
                                     }
 
                                 }
@@ -1635,31 +1650,31 @@
                                 title: "法律服务",
                                 products: {
                                     left: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-1.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-6-1.png"
                                     },
                                     right: {
                                         serialId: "LD0004",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-2.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-6-2.png"
                                     },
                                     one: [
                                         {
                                             serialId: "LD0005",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-3.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-6-3.png"
                                         },
                                         {
                                             serialId: "LD0003",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-4.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-6-4.png"
                                         },
                                         {
                                             serialId: "LD0001",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-5.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-6-5.png"
                                         }
                                     ], rightBottom: {
                                         serialId: "LD0006",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-6.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-6-6.png"
                                     }, bottomOne: {
                                         serialId: "LD0013",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-6-7.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-6-7.png"
                                     }
 
                                 }
@@ -1668,33 +1683,33 @@
                                 title: "增值服务",
                                 products: {
                                     left: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-1.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-7-1.png"
                                     },
                                     right: {
                                         serialId: "FC0002",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-2.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-7-2.png"
                                     },
                                     one: [
                                         {
                                             serialId: "FC0009",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-3.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-7-3.png"
                                         },
                                         {
                                             serialId: "LD0002",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-4.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-7-4.png"
                                         },
                                         {
                                             serialId: "LD0009",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-5.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-7-5.png"
                                         }
                                     ],
                                     rightBottom: {
                                         serialId: "IT0003",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-6.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-7-6.png"
                                     },
                                     bottomOne: {
                                         serialId: "HR0006",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-7-7.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-7-7.png"
                                     }
                                 }
                             }
@@ -1707,32 +1722,32 @@
                                 title: "注销公司",
                                 products: {
                                     left: {
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-1.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-1-1.png"
                                     },
                                     right: {
                                         serialId: "IC0013",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-2.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-1-2.png"
                                     },
                                     one: [
                                         {
                                             serialId: "LD0006",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-3.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-1-3.png"
                                         },
                                         {
                                             serialId: "IC0013",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-4.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-1-4.png"
                                         },
                                         {
                                             serialId: "IC0010",
-                                            url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-5.png"
+                                            url: "http://cdn.qiyewan.com/timeline1-1-5.png"
                                         }],
                                     rightBottom: {
                                         serialId: "LD0002",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-6.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-1-6.png"
                                     },
                                     bottomOne: {
                                         serialId: "IC0013",
-                                        url: "http://ofw6tmkxn.bkt.clouddn.com/timeline1-1-7.png"
+                                        url: "http://cdn.qiyewan.com/timeline1-1-7.png"
                                     }
 
                                 }
@@ -1754,9 +1769,9 @@
                         mainTitle: "公司服务",
                         subTitle: "想你所想",
                         summary: "让您满意是我们不变的服务追求",
-                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-1-top.png",
-                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-1-middle.png",
-                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-1-bottom.png",
+                        imgTopUrl: "http://cdn.qiyewan.com/banner-1-top.png",
+                        imgMiddleUrl: "http://cdn.qiyewan.com/banner-1-middle.png",
+                        imgBottomUrl: "http://cdn.qiyewan.com/banner-1-bottom.png",
                         bgColor: "background-color: #2fa7f5;"
 
                     },
@@ -1765,19 +1780,19 @@
                         mainTitle: "公司注册",
                         subTitle: "快人一步",
                         summary: "创业园区、孵化基地专业对接",
-                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-top-v1.png",
-                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-middle-v1.png",
-                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-5-bottom-v1.png",
+                        imgTopUrl: "http://cdn.qiyewan.com/banner-5-top-v1.png",
+                        imgMiddleUrl: "http://cdn.qiyewan.com/banner-5-middle-v1.png",
+                        imgBottomUrl: "http://cdn.qiyewan.com/banner-5-bottom-v1.png",
                         bgColor: "background-color: #2399f3;"
                     },
                     {
                         serialId: "FC0001",
                         mainTitle: "代理记账",
                         subTitle: "只需98元",
-                        summary: "免费财税咨询，作账报税无忧",
-                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-2-top.png",
-                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-2-middle.png",
-                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-2-bottom.png",
+                        summary: "免费财税咨询，创业财税无忧",
+                        imgTopUrl: "http://cdn.qiyewan.com/banner-2-top.png",
+                        imgMiddleUrl: "http://cdn.qiyewan.com/banner-2-middle.png",
+                        imgBottomUrl: "http://cdn.qiyewan.com/banner-2-bottom.png",
                         bgColor: "background-color: #2ca8dc;"
                     },
                     {
@@ -1785,9 +1800,9 @@
                         mainTitle: "法律咨询",
                         subTitle: "全程陪同",
                         summary: "专业律师为企业保驾护航",
-                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-middle.png",
-                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-bottom.png",
-                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-3-top.png",
+                        imgTopUrl: "http://cdn.qiyewan.com/banner-3-middle.png",
+                        imgMiddleUrl: "http://cdn.qiyewan.com/banner-3-bottom.png",
+                        imgBottomUrl: "http://cdn.qiyewan.com/banner-3-top.png",
                         bgColor: "background-color: #0daef2;"
                     },
                     {
@@ -1795,9 +1810,9 @@
                         mainTitle: "社保公积金",
                         subTitle: "",
                         summary: "缴纳社保公积金,养老无忧",
-                        imgTopUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-bottom.png",
-                        imgMiddleUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-middle.png",
-                        imgBottomUrl: "http://ofw6tmkxn.bkt.clouddn.com/banner-4-top.png",
+                        imgTopUrl: "http://cdn.qiyewan.com/banner-4-bottom.png",
+                        imgMiddleUrl: "http://cdn.qiyewan.com/banner-4-middle.png",
+                        imgBottomUrl: "http://cdn.qiyewan.com/banner-4-top.png",
                         bgColor: "background-color: #0770cb;"
                     },
                 ],
@@ -1807,7 +1822,7 @@
                         articles: [
                             {
                                 articleId: "1",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/startup_01.jpg',
+                                img: 'http://cdn.qiyewan.com/startup_01.jpg',
                                 title: '创业公司如何招聘？',
                                 summary: '在风风火火拿到融资以后，找人就成为了创业公司最大的事情。没有好的...',
                                 tags: ['人事', '招聘'],
@@ -1816,7 +1831,7 @@
                             },
                             {
                                 articleId: "2",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/startup_02.jpg',
+                                img: 'http://cdn.qiyewan.com/startup_02.jpg',
                                 title: '财务部非金钱激励员工的108种手段',
                                 summary: '在任何一个组织里，管理者都是下属的镜子。可以说，只要看....',
                                 tags: ['专利申请'],
@@ -1825,7 +1840,7 @@
                             },
                             {
                                 articleId: "3",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/startup_03.jpg',
+                                img: 'http://cdn.qiyewan.com/startup_03.jpg',
                                 title: '公司对于老东家的知识产权的法律风险防范',
                                 summary: '我们在第一讲就提到，在创业的过程中，您首先考虑是否侵犯了老东家的知识...',
                                 tags: ['知识产权', '法律'],
@@ -1834,7 +1849,7 @@
                             },
                             {
                                 articleId: "4",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/startup_04.jpg',
+                                img: 'http://cdn.qiyewan.com/startup_04.jpg',
                                 title: '老公司向新公司迁移时的用户迁移问题',
                                 summary: '老公司向新公司迁移的时候，还有员工的问题，这也是要考虑的。一方面要...',
                                 tags: ['公司变更'],
@@ -1843,7 +1858,7 @@
                             },
                             {
                                 articleId: "5",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/startup_05.jpg',
+                                img: 'http://cdn.qiyewan.com/startup_05.jpg',
                                 title: '商标相关问答',
                                 summary: '商标的价值其实是眼睛看不到手却拿得到的财富，从我们的角度看，创业公司...',
                                 tags: ['商标'],
@@ -1857,7 +1872,7 @@
                         articles: [
                             {
                                 articleId: "6",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_01.jpg',
+                                img: 'http://cdn.qiyewan.com/industry_01.jpg',
                                 title: '企业类型之股份公司',
                                 summary: '讲完了个人独资企业与合伙企业这些非公司制企业之后，我们现在来看看大家...',
                                 tags: ['工商', '营业执照'],
@@ -1866,7 +1881,7 @@
                             },
                             {
                                 articleId: "7",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_02.jpg',
+                                img: 'http://cdn.qiyewan.com/industry_02.jpg',
                                 title: '企业类型之个人独资企业！',
                                 summary: '怀揣着满满热情的创业者们,欢迎又来到了我们的财税微课堂啦,让我们继续挖掘...',
                                 tags: ['工商', '营业执照'],
@@ -1875,7 +1890,7 @@
                             },
                             {
                                 articleId: "8",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_03.jpg',
+                                img: 'http://cdn.qiyewan.com/industry_03.jpg',
                                 title: '注册资本1万亿 没钱也任性！',
                                 summary: '近两年设立公司的创业者都知道，现在开公司只需要在公司章程中写明...',
                                 tags: ['工商', '营业执照'],
@@ -1884,7 +1899,7 @@
                             },
                             {
                                 articleId: "9",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_04.jpg',
+                                img: 'http://cdn.qiyewan.com/industry_04.jpg',
                                 title: '企业名称',
                                 summary: '你说人生究竟什么最重要？听到这个问题，每个人第一反应一定是：“钱”。事实...',
                                 tags: ['工商', '营业执照'],
@@ -1893,7 +1908,7 @@
                             },
                             {
                                 articleId: "10",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/industry_5.jpg',
+                                img: 'http://cdn.qiyewan.com/industry_5.jpg',
                                 title: '税率宝典——终于抓住你这个磨人的小妖精！',
                                 summary: '财务们看过来！营改增后，增值税税率档次增加，大家是否为记不住税率发愁呢。不要担心，一财君送上“税率小宝典”，轻轻松...',
                                 tags: ['工商'],
@@ -1908,7 +1923,7 @@
                         articles: [
                             {
                                 articleId: "11",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_01.jpg',
+                                img: 'http://cdn.qiyewan.com/finance_01.jpg',
                                 title: '个人股东占用公司资金也要交个人所得税',
                                 summary: '许多初创公司往往由创业者自身持有100%的股权或者绝大部分股权，这...',
                                 tags: ['财税', '税务'],
@@ -1917,7 +1932,7 @@
                             },
                             {
                                 articleId: "12",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_02.jpg',
+                                img: 'http://cdn.qiyewan.com/finance_02.jpg',
                                 title: '采购商品你真的会比价吗？',
                                 summary: '谈到采购商品的比价问题，站在消费者个人的角度来看，真的是一个...',
                                 tags: ['财税', '采购'],
@@ -1926,7 +1941,7 @@
                             },
                             {
                                 articleId: "13",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_03.jpg',
+                                img: 'http://cdn.qiyewan.com/finance_03.jpg',
                                 title: '公司采购业务中的这些税收风险你知道吗？',
                                 summary: '一项采购交易中，通常由买方直接取得卖方开具的销售发票，并且直接向卖方...',
                                 tags: ['财税', '采购', '税务'],
@@ -1935,7 +1950,7 @@
                             },
                             {
                                 articleId: "14",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_04.jpg',
+                                img: 'http://cdn.qiyewan.com/finance_04.jpg',
                                 title: '小规模纳税人 OR 一般纳税人？',
                                 summary: '最近遇到好几个准备设立公司的创业者问我这样一个问题：“我该选择...',
                                 tags: ['财税', '税务'],
@@ -1944,7 +1959,7 @@
                             },
                             {
                                 articleId: "15",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/finance_05.jpg',
+                                img: 'http://cdn.qiyewan.com/finance_05.jpg',
                                 title: '只有错买，没有错卖！企业湾教您如何收购股权',
                                 summary: '商业交易是由卖方提供商品或服务，因此卖方通常比买方更加熟知所销售的...',
                                 tags: ['财税', '股权'],
@@ -1958,7 +1973,7 @@
                         articles: [
                             {
                                 articleId: "17",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/law_01.jpg',
+                                img: 'http://cdn.qiyewan.com/law_01.jpg',
                                 title: '合伙人股东之间的协议',
                                 summary: '今天我们重点讨论第一个问题：合伙人之间的股权协议需要注意什么。...',
                                 tags: ['法律', '合同'],
@@ -1967,7 +1982,7 @@
                             },
                             {
                                 articleId: "17",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/law_02.jpg',
+                                img: 'http://cdn.qiyewan.com/law_02.jpg',
                                 title: '员工个人自行缴社保的书面承诺有效吗？ ',
                                 summary: '王某于2011年5月进入F公司设于宁波某商场的品牌专柜从事营业员工...',
                                 tags: ['法律', '社保'],
@@ -1976,7 +1991,7 @@
                             },
                             {
                                 articleId: "18",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/law_03.jpg',
+                                img: 'http://cdn.qiyewan.com/law_03.jpg',
                                 title: '公司知识产权',
                                 summary: '上周我们创业科普中一直都是在讲公司的控制权，似乎公司只有勾心斗角...',
                                 tags: ['法律', '知识产权'],
@@ -1985,7 +2000,7 @@
                             },
                             {
                                 articleId: "19",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/law_04.jpg',
+                                img: 'http://cdn.qiyewan.com/law_04.jpg',
                                 title: 'APP可否申请专利的探讨(续)',
                                 summary: '跟着上期我们继续来讲APP可否申请专利。针对App申请发明专利....',
                                 tags: ['专利申请'],
@@ -1994,7 +2009,7 @@
                             },
                             {
                                 articleId: "20",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/law_05.jpg',
+                                img: 'http://cdn.qiyewan.com/law_05.jpg',
                                 title: '拟定合同过程中的关注点（一）',
                                 summary: '通常来讲，合同的主体不需要关注，因为大多数情况下，合同...',
                                 tags: ['法律', '合同'],
@@ -2009,7 +2024,7 @@
                         articles: [
                             {
                                 articleId: "21",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/hr_01.jpg',
+                                img: 'http://cdn.qiyewan.com/hr_01.jpg',
                                 title: '作为公司老板，只有这20%工作是你需要亲自做的',
                                 summary: '作为公司老板，你只需专注那些能为公司带来最大利益的事情。通常说来，这些事情...',
                                 tags: ['人事'],
@@ -2018,7 +2033,7 @@
                             },
                             {
                                 articleId: "22",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/hr_02.jpg',
+                                img: 'http://cdn.qiyewan.com/hr_02.jpg',
                                 title: '别让人情拖垮你的公司！',
                                 summary: '中国是一个非常讲“人情”讲“关系”的国家，有时候靠人情刷脸，靠关系办事会比...',
                                 tags: ['人事'],
@@ -2027,7 +2042,7 @@
                             },
                             {
                                 articleId: "23",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/hr_03.jpg',
+                                img: 'http://cdn.qiyewan.com/hr_03.jpg',
                                 title: '创业公司的员工激励怎么做？',
                                 summary: '当你费劲苦心，把员工招募进来后，怎么让他们死心塌地的和你一起拼命干就是...',
                                 tags: ['人事'],
@@ -2036,7 +2051,7 @@
                             },
                             {
                                 articleId: "24",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/hr_04.jpg',
+                                img: 'http://cdn.qiyewan.com/hr_04.jpg',
                                 title: '财务部非金钱激励员工的108种手段 ，你一定要懂！',
                                 summary: '在任何一个组织里，管理者都是下属的镜子。可以说，只...',
                                 tags: ['人事'],
@@ -2045,7 +2060,7 @@
                             },
                             {
                                 articleId: "25",
-                                img: 'http://ofw6tmkxn.bkt.clouddn.com/hr_05.jpg',
+                                img: 'http://cdn.qiyewan.com/hr_05.jpg',
                                 title: '你做了什么，可以多出四个工作日？',
                                 summary: '你说人生究竟什么最重要？听到这个问题，每个人第一反应一定是...',
                                 tags: ['人事'],
@@ -2057,43 +2072,43 @@
                 ],
                 customerVoices: [
                     {
-                        headImg: "http://ofw6tmkxn.bkt.clouddn.com/customer1.png",
-                        content: "企业湾的增值服务特别适合像我们这样的创业型公司，服务专业，价格公道,适合创业公司在经费不宽裕的情况下把事情推行下去。我认为企业湾是一个一站式、超值，适合创业公司的合格的企业服务供应商。",
+                        headImg: "http://cdn.qiyewan.com/customer1.png",
+                        content: "企业湾的增值服务特别适合像我们这样的创业型公司。服务专业，价格公道,适合创业公司在经费不宽裕的情况下满足企业刚需。我认为企业湾是一个一站式、超值，适合初创公司的企业服务提供商。",
                         company: "成都天添益网络科技有限公司",
                         position: "COO",
                         name: ""
                     },
                     {
-                        headImg: "http://ofw6tmkxn.bkt.clouddn.com/customer2.png",
-                        content: "平和温润、真诚无华为朴，知行合一、志坚质洁为正，正是这种相同的真挚的价值观让朴正教育咨询和企业湾相遇相知，并开始了旗下花田儿童教育项目的顺利筹建感谢企业湾专业细致的服务和支持，让我们不忘初心一起走下去。",
+                        headImg: "http://cdn.qiyewan.com/customer2.png",
+                        content: "平和温润、真诚无华为朴；知行合一、志坚质洁为正。正是这种相同的真挚价值观让朴正教育咨询和企业湾相遇相知，并开始了旗下花田儿童教育项目。项目的顺利筹建离不开企业湾专业细致的服务和支持，让我们不忘初心一起走下去。",
                         company: "四川朴正教育咨询有限公司",
                         position: "花田教育",
                         name: ""
                     },
                     {
-                        headImg: "http://ofw6tmkxn.bkt.clouddn.com/customer3_1.png",
-                        content: "企业湾为我们提供人事、法律、财务等相当专业的服务，他们以专业的水准、负责的态度服务于客户，提供全方位的咨询与服务，使我们无后顾之忧。",
+                        headImg: "http://cdn.qiyewan.com/customer3_1.png",
+                        content: "企业湾为我们提供人事、法律、财务等专业服务，他们以专业的水准、负责的态度服务客户，提供全方位的咨询与帮助，使我们没有后顾之忧。",
                         company: "镇江市红包兔信息技术有限公司",
                         position: "创始人兼CEO",
                         name: ""
                     },
                     {
-                        headImg: "http://ofw6tmkxn.bkt.clouddn.com/customer4_1.png",
+                        headImg: "http://cdn.qiyewan.com/customer4_1.png",
                         content: "企业湾为我们解决了初创企业在财务、法律方面资源短缺、缺乏行业经验的老大难问题，让我们在创业的路上省了不少心。用优质贴心专业的服务，为中小型企业的创业之路保驾护航。",
                         company: "上海恩陶投资管理有限公司",
                         position: "公司负责人",
                         name: ""
                     },
                     {
-                        headImg: "http://ofw6tmkxn.bkt.clouddn.com/customer5.png",
+                        headImg: "http://cdn.qiyewan.com/customer5.png",
                         content: "我们不仅是企业湾的客户，也是企业湾的战略合作伙伴。企业湾人诚恳的态度、专业的服务让我感动，作为创业企业，我们共同进步。",
                         company: "上海云简软件科技有限公司",
                         position: "创始人兼CEO",
                         name: ""
                     },
                     {
-                        headImg: "http://ofw6tmkxn.bkt.clouddn.com/customer6_1.png",
-                        content: "响应迅速，帮我们节省了很多的时间，从工商，到人事、法律在企业湾一站式解决了，省时省事，是我们有更多的精力专业住本质工作。",
+                        headImg: "http://cdn.qiyewan.com/customer6_1.png",
+                        content: "企业湾响应迅速，帮我们节省了很多的时间，从工商到人事法律，在企业湾都得到了一站式的解决，省时省事，使我们有更多的精力专注在本质工作。",
                         company: "南京贝贝帮教育咨询有限公司",
                         position: "创始人兼CEO",
                         name: ""

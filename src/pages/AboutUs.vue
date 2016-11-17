@@ -54,8 +54,9 @@
     .about_intru {
         background: url("../assets/img/about_ban.jpg") no-repeat;
         -webkit-background-size: 100%;
-        background-size: 100%;
-        height: 311px;
+        background-size: 110%;
+        background-position: -93px 0;
+        height: 343px;
         padding: 45px 0 15px 35px;
     }
 
@@ -344,7 +345,8 @@
                     <h3 class="about_tit">企业介绍</h3>
                     <div class="about_tit_b"></div>
                     <p>
-                        企业湾成立于2015年，由上市公司高管以及国内知名互联网企业的精英组成,由伯藜基金、哈佛校友投资创建,汇聚中国广大的优秀大学生和专业的退休人员,整合业内优秀的财务、法务、人事、IT技术等资源,通过线上线下的服务方式，优化服务流程，降低服务成本,为中国千万中小企业、创新创业者提供一站超值的服务。</p>
+                        企业湾（www.qiyewan.com）是国内领先的专注于中小企业服务的一站式综合服务体。由伯藜基金、哈佛校友投资创建，通过整合业内优秀的财务、法务、人事、IT技术等资源，汇聚中国广大的优秀大学生和专业的退休人员；利用移动互联网和云端技术，通过线下线下的服务方式，优化服务流程，降低服务成本。为中国千万中小企业、创新创业者提供一站超值的服务。核心团队主要由上市公司高管，资深财务、法务、人力资源负责人以及国内知名互联网企业的精英组成。
+                    </p>
                 </div>
 
                 <div class="culture">
@@ -353,23 +355,23 @@
                     <ul>
                         <li>
                             <img src="../assets/img/cuture_1.jpg">
-                            <h4>宗旨</h4>
-                            <p>富有责任感，员工对企业讲责，企业对员工和企业对员工和社会社会讲责任。工会社会讲责任。工作负责就</p>
+                            <h4>企业湾的愿景</h4>
+                            <p>成为从业人员最多、最具有活力的专业服务机构。</p>
                         </li>
                         <li>
                             <img src="../assets/img/cuture_1.jpg">
                             <h4>使命</h4>
-                            <p>重塑中国企业服务和专业高等教育实践的生态</p>
+                            <p>重塑中国企业服务和专业高等教育实践的生态。</p>
                         </li>
                         <li>
                             <img src="../assets/img/cuture_1.jpg">
-                            <h4>企业精神</h4>
-                            <p>公司崇尚团队作战，个人的成功只有在团队的成功中才能得到体现，团队的失败就是个人的失败。</p>
+                            <h4>企业湾的战略</h4>
+                            <p>聚焦小微企业的需求，借助高校相关资源，弘扬企业家精神，强大的过程能力保证绩效和扩张。</p>
                         </li>
                         <li>
                             <img src="../assets/img/cuture_1.jpg">
-                            <h4>经营理念</h4>
-                            <p>对企业负责就是忠诚，对客户和合作者负责就是守信。对企业负责就是忠诚，对客户和合作者负责就是守信。</p>
+                            <h4>企业湾的服务承诺</h4>
+                            <p>一站、超值、快速响应</p>
                         </li>
                     </ul>
                 </div>
@@ -386,7 +388,7 @@
                 </div>
             </div>
             <div class="contact_con" :class="{show: isShow('contact'),hide: !isShow('contact')}" >
-                <div class="contact_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/contact-us-banner-2.jpg"></div>
+                <div class="contact_img"><img src="http://cdn.qiyewan.com/contact-us-banner-2.jpg"></div>
                 <ul>
                     <li class="li_">
                         <h5>企业湾总部</h5>
@@ -399,49 +401,41 @@
                         <h5>上海分公司</h5>
                         <div class="add">地址：上海市闵行区剑川路951号零号湾全球创新创业聚集区1号楼南楼508室</div>
                         <p>电话：021-54706618</p>
-                        <p>公司网址：www.qiyewan.com</p>
                     </li>
                     <li class="li_">
                         <h5>南京分公司</h5>
-                        <div class="add">地址：玄武区玄武大道699-1号徐庄软件管委会607室</div>
+                        <div class="add">地址：南京市玄武区玄武大道699-1号徐庄软件管委会607室</div>
                         <p>电话：025-68022609</p>
-                        <p>公司网址：www.qiyewan.com</p>
                     </li>
                     <li>
                         <h5>镇江分公司</h5>
-                        <div class="add">地址：润州区黄山南路66号中浩国际广场A座1201</div>
+                        <div class="add">地址：镇江市润州区黄山南路66号中浩国际广场A座1201</div>
                         <p>电话：0511-88076713</p>
-                        <p>公司网址：www.qiyewan.com</p>
                     </li>
-
                     <li class="li_">
                         <h5>苏州分公司</h5>
-                        <div class="add">地址：姑苏区阊胥路726号南新园3305</div>
+                        <div class="add">地址：苏州市姑苏区阊胥路726号南新园3305</div>
                         <p>电话：17186396121</p>
-                        <p>公司网址：www.qiyewan.com</p>
                     </li>
                     <li>
                         <h5>北京分公司</h5>
-                        <div class="add">地址：海淀区中关村创业大街六号楼4层企业湾</div>
+                        <div class="add">地址：北京市海淀区中关村创业大街六号楼4层企业湾</div>
                         <p>电话：15712846498</p>
-                        <p>公司网址：www.qiyewan.com</p>
                     </li>
                     <li class="li_">
                         <h5>深圳分公司</h5>
-                        <div class="add">地址：宝安区新湖路华侨新村西提一巷金华大厦12层1216</div>
+                        <div class="add">地址：深圳市宝安区新湖路华侨新村西提一巷金华大厦12层1216</div>
                         <p>电话：0755-36301780</p>
-                        <p>公司网址：www.qiyewan.com</p>
                     </li>
                     <li>
                         <h5>成都分公司</h5>
-                        <div class="add">地址：成都市高新益州大道1800号，移动互联创业大厦G1,201</div>
+                        <div class="add">地址：成都市高新益州大道1800号移动互联创业大厦G1，201</div>
                         <p>电话：13518211800</p>
-                        <p>公司网址：www.qiyewan.com</p>
                     </li>
                 </ul>
             </div>
             <div class="receipt"  :class="{show: isShow('invoice'),hide: !isShow('invoice')}">
-                <div class="receipt_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/ask-for-invoice-banner-1.jpg"></div>
+                <div class="receipt_img"><img src="http://cdn.qiyewan.com/ask-for-invoice-banner-1.jpg"></div>
                 <h4>索取发票</h4>
                 <p>1.本规则适用于在企业湾网站上进行的所有的订单服务。</p>
                 <p>2.企业湾提供的收费服务，用户均可申请开具发票。为了保证发票开具的准确性，收票方必须先行提交填写发票所需的准确信息。</p>
@@ -449,14 +443,14 @@
                 <p class="last_p">4.发票一旦开具，就无法更改发票内容，请申请开具发票的用户务必准确填写开具发票所需信息和详细联系方式。</p>
             </div>
             <div class="pay" :class="{show: isShow('pay'),hide: !isShow('pay')}">
-                <div class="pay_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/method-of-payment-banner-3.jpg"></div>
+                <div class="pay_img"><img src="http://cdn.qiyewan.com/method-of-payment-banner-3.jpg"></div>
                 <h4>支付方式</h4>
                 <p>1、企业湾提供网上支付方式。如您在结算时使用支付宝在线付款，企业湾可实时确认收款，快速进入操作阶段。</p>
                 <p>2、如您通过网银接口付款，有可能存在跨行结算的情况，企业湾需要1-2个工作日来确认收款。</p>
                 <p class="last_p">3、为保证业务快速进行，推荐使用第1种网上支付方式。</p>
             </div>
             <div class="refund"  :class="{show: isShow('refund'),hide: !isShow('refund')}" >
-                <div class="refund_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/refund-instructions-banner-4.jpg"></div>
+                <div class="refund_img"><img src="http://cdn.qiyewan.com/refund-instructions-banner-4.jpg"></div>
                 <h4>退款说明</h4>
                 <table width="100%" border="1">
                     <tr height="65px">
@@ -517,7 +511,7 @@
                 <p class="last_p">3、因银行系统升级，退银行卡服务不支持信用卡退款。</p>
             </div>
             <div class="protocol" :class="{show: isShow('protocol'),hide: isShow('protocol')}">
-                <div class="protocol_img"><img src="http://ofw6tmkxn.bkt.clouddn.com/user-agreement-banner-5.jpg"></div>
+                <div class="protocol_img"><img src="http://cdn.qiyewan.com/user-agreement-banner-5.jpg"></div>
                 <h4>企业湾用户服务协议</h4>
                 <p>
                     您与企业湾所有者上海知加信息科技有限公司(以下简称为“本公司”)之间就金贝壳服务等相关事宜所订立的契约，请您仔细阅读本注册协议，同意本协议并接受全部条款下注册成为会员，本协议具有合同效力。您点击“立即注册”按钮后，本协议即构成对双方有约束力的法律文件。</p>

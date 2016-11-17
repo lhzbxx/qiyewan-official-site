@@ -93,6 +93,7 @@
         color: #5e5e5e;
         background-color: #eee;
         transition: color 0.3s ease-in-out;
+        overflow: hidden;
     }
 
     .nav-show-left span:hover, .nav-show-right span:hover {
@@ -129,11 +130,13 @@
                                         :to="{ name: 'product-list', params: { regionCode: getRegion.code, category: item.l.title }}">
                                     <div class="registration">{{ item.l.title }}</div>
                                 </router-link>
-                                <span v-for="i in item.l.list">
-                                    <router-link :to="{ name: 'product-detail', params: { serialId: i.serialId }}">
-                                        {{ i.name }}
-                                    </router-link>
-                                </span>
+                                <router-link
+                                        :to="{ name: 'product-detail', params: { serialId: i.serialId }}"
+                                        v-for="i in item.l.list">
+                                    <span>
+                                            {{ i.name }}
+                                    </span>
+                                </router-link>
                             </div>
                         </div>
                         <div class="nav-show-right l">
@@ -144,12 +147,13 @@
                                         {{ item.r.title }}
                                     </div>
                                 </router-link>
-                                <span v-for="i in item.r.list">
-                                     <router-link
-                                             :to="{ name: 'product-detail', params: { serialId: i.serialId }}">
+                                <router-link
+                                        :to="{ name: 'product-detail', params: { serialId: i.serialId }}"
+                                        v-for="i in item.r.list">
+                                    <span>
                                         {{ i.name }}
-                                    </router-link>
-                                </span>
+                                    </span>
+                                </router-link>
                             </div>
                         </div>
                     </div>
