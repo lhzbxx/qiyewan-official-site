@@ -299,6 +299,9 @@
                                     </el-select>
                                 </el-col>
                             </el-row>
+                            <p style="font-size: 12px; color: #dd2726; line-height:1.8em">
+                                温馨提示：请在页面左上角切换服务区域。
+                            </p>
                         </el-form-item>
                         <el-form-item label="购买时长" style="margin-bottom: 8px" v-if="!product.isInstant">
                             <el-radio-group v-model="form.amount">
