@@ -644,6 +644,16 @@
                 liName: 'about'
             }
         },
+        watch: {
+            '$route': {
+                handler(){
+                    this.liName = this.$route.params.liName;
+                }
+            }
+        },
+        created () {
+            this.liName = this.$route.params.liName;
+        },
         methods: {
             setLiName(liName) {
                 this.liName = liName;

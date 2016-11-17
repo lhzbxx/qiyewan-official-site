@@ -125,7 +125,8 @@ const routes = [
         component: NewsList
     },
     {
-        path: '/about-us',
+        path: '/about-us/:liName',
+        name:'about-us',
         component: AboutUs
     },
     {

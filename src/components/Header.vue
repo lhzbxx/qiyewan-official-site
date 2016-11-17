@@ -113,7 +113,7 @@
         <div class="container">
             <div class="logo l">
                 <router-link to="/">
-                    <img src="../assets/img/logo.png" alt="">
+                    <img src="../assets/img/logo.png" style="width: 146px;height: 66px;overflow: hidden" alt="">
                 </router-link>
             </div>
             <ul>

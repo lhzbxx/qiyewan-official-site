@@ -438,10 +438,11 @@
 
     #timeline ul li.active:before {
         top: -1px;
-        border-top-width: 25px;
+        border-left-width: 15px;
         border-right-width: 15px;
         border-bottom-width: 25px;
-        border-left: 15px #139cd7;
+        border-top-width: 25px;
+        border-left-color: #139cd7;
         z-index: 10;
     }
 
@@ -460,10 +461,11 @@
 
     #timeline ul li.active:after {
         top: 0;
-        border-top-width: 24px;
+        border-left-width: 14px;
         border-right-width: 14px;
         border-bottom-width: 24px;
-        border-left: 14px white;
+        border-top-width: 24px;
+        border-left-color: white;
         z-index: 10;
     }
 
