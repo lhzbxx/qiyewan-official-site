@@ -78,7 +78,6 @@
     width:280px;
 }
 .recommend{
-    height:300px;
     background-color:#f9f9f9;
     padding:20px;
     margin-top:30px;
@@ -92,8 +91,12 @@
    font-size:12px;
    color:#666666;
 }
-.recommend ul li:hover{
-   color:#09acf4;
+.recommend ul li a{
+    color:#666666 !important;
+}
+.recommend ul li:hover,
+.recommend ul li a:hover{
+   color:#09acf4 !important;
    cursor: pointer;
 }
 .rec_tit{
@@ -164,9 +167,8 @@
                     <div class="con_title">{{ article.title }}</div>
                     <div class="con_note">
                         <span class="con_author">作者：{{ article.author }}</span>
-                        <span class="con_time">{{ getLocalTime(article.createAt) }}</span>
-                        <span class="con_browse">{{ article.viewers }}</span>
-                        <span class="con_department">发表于：{{ article.category }}</span>
+                        <span class="con_time">{{ article.created_at }}</span>
+                        <span class="con_department">发表于：{{ article.from }}</span>
                     </div>
                     <div class="con_article" v-html="compiledMarkdown">
                         {{ article.content }}
@@ -190,15 +192,18 @@
                         <div class="intru">企业湾分析师</div>
                         <ul>
                             <li class="art_num" id="art_num">0篇文章</li>
-                            <li>阅读量{{ article.viewers }}</li>
+                            <li>阅读量{{ article.view_count }}</li>
                         </ul>
                     </div>
-                    <div class="recommend" v-for="news in recommendNewsList">
+                    <div class="recommend">
                         <div class="rec_tit">
-                            {{ news.category }}
+                            热文推荐
                         </div>
                         <ul style="list-style:square;">
-                            <li v-for="article in news.articles" v-on:click="nav2article(article.id)">{{ article.title }}</li>
+                            <li v-for="item in recommendNewsList">
+                                <router-link :to="{ name: 'article', params: { id: item.id }}">{{ item.title }}
+                                </router-link>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -216,56 +221,15 @@
     export default {
         data() {
             return {
-                article: {
-                    title: "【玩转数据系列七】",
-                    author: "张三",
-                    create_at: "2016-9-4 11:32:20",
-                    viewers: 20,
-                    category: "创业咨询",
-                    content: "i am a ~~tast~~ **test**.",
-                    pre: {id: 2, title: "Python大法好"},
-                    next: {id: 3, title: "CPP大法保平安"},
-                },
-                recommendNewsList: [
-                    {
-
-                        category: "热文推荐",
-                        articles: [
-                            {id: 1, title: "商标相关问答"},
-                            {id: 2, title: "创业公司如何招聘？"},
-                            {id: 3, title: "财务部非金钱激励员工的108种手段"},
-                            {id: 4, title: "公司对于老东家的知识产权的法律风险防范"},
-                            {id: 5, title: "老公司向新公司迁移时的用户迁移问题"},
-                        ]
-                    },
-                    {
-                        category: "热度排行",
-                        articles: [
-                            {id: 6, title: "企业类型之股份公司"},
-                            {id: 7, title: "企业类型之个人独资企业！"},
-                            {id: 8, title: "注册资本1万亿 没钱也任性！"},
-                            {id: 9, title: "企业名称"},
-                            {id: 10, title: "税率宝典——终于抓住你这个磨人的小妖精！"},
-                        ]
-                    }
-                ]
+                article:[],
+                recommendNewsList:null
             }
         },
+        watch: {
+            '$route': 'fetchData'
+        },
         created() {
-           var path = location.href.split('/');
-           articleApi.getArticleById(path[path.length - 1], response =>{
-               this.article = response.body;
-               console.log(response.body);
-               articleApi.articlesCount(/*response.body.author*/'Cheyanne', response => {
-                   console.log(response.body.count);
-                   document.getElementById('art_num').innerHTML = response.body.count + '篇文章';
-               }, response => {
-                   console.log(response);
-               });
-           }, error => {
-               console.log(error)
-           });
-
+            this.fetchData();
         },
         computed: {
             compiledMarkdown: function () {
@@ -277,9 +241,20 @@
                 location.href = '/#/article/' + article_id;
                 location.reload();
             },
-            getLocalTime(nS) {
-                return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ');
-            },
+            fetchData () {
+                let vm = this;
+                articleApi.getArticle(vm.$route.params.id,data => {
+                    vm.article = data.data[0];
+                    },error => {
+                    vm.error = error
+                });
+
+                articleApi.getRecommendNews(data => {
+                    vm.recommendNewsList = data.data;
+                    },error => {
+                    vm.error = error
+                });
+            }
         }
     }
 </script>

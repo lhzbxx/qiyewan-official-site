@@ -119,9 +119,9 @@
             </div>
             <div id="detail">
                 <h3>{{ title }}</h3>
-                <p>{{ summary }}</p>
+                <p>{{ summary.length > 30 ? summary.substr(0,30)+'...' : summary }}</p>
                 <ul id="tags">
-                    <li class="tag" v-for="item in tags">{{ item }}</li>
+                    <li class="tag" v-for="item in tags.split(',')">{{ item }}</li>
                 </ul>
                 <div class="clearfix"></div>
                 <div style="width: 100%;">
@@ -143,9 +143,7 @@
             id: String,
             title: String,
             summary: String,
-            tags: {
-                type: Array
-            },
+            tags: String,
             date: String,
             views: Number
         }
