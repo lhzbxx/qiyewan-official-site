@@ -434,19 +434,6 @@
         width: 0;
     }
 
-<<<<<<< HEAD
-    #timeline ul li.active:before {
-        top: -1px;
-        border-left-width: 15px;
-        border-right-width: 15px;
-        border-bottom-width: 25px;
-        border-top-width: 25px;
-        border-left-color: #139cd7;
-        z-index: 10;
-    }
-
-=======
->>>>>>> 0d901ff57c3205ed4fe3ff77bb83ea70a26161c1
     #timeline ul li:last-child.active::before {
         display: none !important;
     }
@@ -470,17 +457,11 @@
 
     #timeline ul li.active:after {
         top: 0;
-<<<<<<< HEAD
         border-left-width: 14px;
         border-right-width: 14px;
         border-bottom-width: 24px;
         border-top-width: 24px;
         border-left-color: white;
-=======
-        border-top: 24px solid transparent;
-        border-left: 14px solid white;
-        border-bottom: 24px solid transparent;
->>>>>>> 0d901ff57c3205ed4fe3ff77bb83ea70a26161c1
         z-index: 10;
     }
 
@@ -1157,18 +1138,18 @@
                     v-for="(item, index) in news"
                     :class="{active: isNewsTab(index)}"
                     v-on:mouseover="setNewsTab(index),newsTab=index">
-                    {{ item.title }}
+                    {{ item.category }}
                 </li>
             </ul>
             <div id="news">
-                <lh-news v-for="article in news[newsTab].articles" class="news_link"
-                         :img="article.img"
+                <lh-news v-for="article in news[newsTab].articles.data" class="news_link"
+                         :img="article.thumb"
                          :title="article.title"
-                         :summary="article.summary"
+                         :summary="article.desc"
                          :tags="article.tags"
-                         :date="article.date"
-                         :views="article.views"
-                         :id="article.articleId"></lh-news>
+                         :date="article.updated_at"
+                         :views="article.view_count"
+                         :id="article.id+''"></lh-news>
             </div>
         </div>
         <div class="clearfix"></div>
@@ -1236,6 +1217,7 @@
 <script>
     import {mapGetters} from 'vuex'
     import authApi from '../api/auth'
+    import articleApi from '../api/article'
     export default {
         computed: mapGetters({
             getRegion: 'getRegion',
@@ -1816,260 +1798,7 @@
                         bgColor: "background-color: #0770cb;"
                     },
                 ],
-                news: [
-                    {
-                        title: "创业资讯",
-                        articles: [
-                            {
-                                articleId: "1",
-                                img: 'http://cdn.qiyewan.com/startup_01.jpg',
-                                title: '创业公司如何招聘？',
-                                summary: '在风风火火拿到融资以后，找人就成为了创业公司最大的事情。没有好的...',
-                                tags: ['人事', '招聘'],
-                                date: '2016年8月29日',
-                                views: 236
-                            },
-                            {
-                                articleId: "2",
-                                img: 'http://cdn.qiyewan.com/startup_02.jpg',
-                                title: '财务部非金钱激励员工的108种手段',
-                                summary: '在任何一个组织里，管理者都是下属的镜子。可以说，只要看....',
-                                tags: ['专利申请'],
-                                date: '2016年8月25日',
-                                views: 359
-                            },
-                            {
-                                articleId: "3",
-                                img: 'http://cdn.qiyewan.com/startup_03.jpg',
-                                title: '公司对于老东家的知识产权的法律风险防范',
-                                summary: '我们在第一讲就提到，在创业的过程中，您首先考虑是否侵犯了老东家的知识...',
-                                tags: ['知识产权', '法律'],
-                                date: '2016年829日',
-                                views: 599
-                            },
-                            {
-                                articleId: "4",
-                                img: 'http://cdn.qiyewan.com/startup_04.jpg',
-                                title: '老公司向新公司迁移时的用户迁移问题',
-                                summary: '老公司向新公司迁移的时候，还有员工的问题，这也是要考虑的。一方面要...',
-                                tags: ['公司变更'],
-                                date: '2016年9月3日',
-                                views: 366
-                            },
-                            {
-                                articleId: "5",
-                                img: 'http://cdn.qiyewan.com/startup_05.jpg',
-                                title: '商标相关问答',
-                                summary: '商标的价值其实是眼睛看不到手却拿得到的财富，从我们的角度看，创业公司...',
-                                tags: ['商标'],
-                                date: '2016年9月5日',
-                                views: 688
-                            }
-                        ]
-                    },
-                    {
-                        title: "工商干货",
-                        articles: [
-                            {
-                                articleId: "6",
-                                img: 'http://cdn.qiyewan.com/industry_01.jpg',
-                                title: '企业类型之股份公司',
-                                summary: '讲完了个人独资企业与合伙企业这些非公司制企业之后，我们现在来看看大家...',
-                                tags: ['工商', '营业执照'],
-                                date: '2016年9月12日',
-                                views: 289
-                            },
-                            {
-                                articleId: "7",
-                                img: 'http://cdn.qiyewan.com/industry_02.jpg',
-                                title: '企业类型之个人独资企业！',
-                                summary: '怀揣着满满热情的创业者们,欢迎又来到了我们的财税微课堂啦,让我们继续挖掘...',
-                                tags: ['工商', '营业执照'],
-                                date: '2016年9月12日',
-                                views: 289
-                            },
-                            {
-                                articleId: "8",
-                                img: 'http://cdn.qiyewan.com/industry_03.jpg',
-                                title: '注册资本1万亿 没钱也任性！',
-                                summary: '近两年设立公司的创业者都知道，现在开公司只需要在公司章程中写明...',
-                                tags: ['工商', '营业执照'],
-                                date: '2016年9月12日',
-                                views: 289
-                            },
-                            {
-                                articleId: "9",
-                                img: 'http://cdn.qiyewan.com/industry_04.jpg',
-                                title: '企业名称',
-                                summary: '你说人生究竟什么最重要？听到这个问题，每个人第一反应一定是：“钱”。事实...',
-                                tags: ['工商', '营业执照'],
-                                date: '2016年9月12日',
-                                views: 289
-                            },
-                            {
-                                articleId: "10",
-                                img: 'http://cdn.qiyewan.com/industry_5.jpg',
-                                title: '税率宝典——终于抓住你这个磨人的小妖精！',
-                                summary: '财务们看过来！营改增后，增值税税率档次增加，大家是否为记不住税率发愁呢。不要担心，一财君送上“税率小宝典”，轻轻松...',
-                                tags: ['工商'],
-                                date: '2016年9月12日',
-                                views: 289
-                            }
-                        ]
-
-                    },
-                    {
-                        title: "财税干货",
-                        articles: [
-                            {
-                                articleId: "11",
-                                img: 'http://cdn.qiyewan.com/finance_01.jpg',
-                                title: '个人股东占用公司资金也要交个人所得税',
-                                summary: '许多初创公司往往由创业者自身持有100%的股权或者绝大部分股权，这...',
-                                tags: ['财税', '税务'],
-                                date: '2016年9月13日',
-                                views: 453
-                            },
-                            {
-                                articleId: "12",
-                                img: 'http://cdn.qiyewan.com/finance_02.jpg',
-                                title: '采购商品你真的会比价吗？',
-                                summary: '谈到采购商品的比价问题，站在消费者个人的角度来看，真的是一个...',
-                                tags: ['财税', '采购'],
-                                date: '2016年9月15日',
-                                views: 259
-                            },
-                            {
-                                articleId: "13",
-                                img: 'http://cdn.qiyewan.com/finance_03.jpg',
-                                title: '公司采购业务中的这些税收风险你知道吗？',
-                                summary: '一项采购交易中，通常由买方直接取得卖方开具的销售发票，并且直接向卖方...',
-                                tags: ['财税', '采购', '税务'],
-                                date: '2016年9月16日',
-                                views: 459
-                            },
-                            {
-                                articleId: "14",
-                                img: 'http://cdn.qiyewan.com/finance_04.jpg',
-                                title: '小规模纳税人 OR 一般纳税人？',
-                                summary: '最近遇到好几个准备设立公司的创业者问我这样一个问题：“我该选择...',
-                                tags: ['财税', '税务'],
-                                date: '2016年9月17日',
-                                views: 459
-                            },
-                            {
-                                articleId: "15",
-                                img: 'http://cdn.qiyewan.com/finance_05.jpg',
-                                title: '只有错买，没有错卖！企业湾教您如何收购股权',
-                                summary: '商业交易是由卖方提供商品或服务，因此卖方通常比买方更加熟知所销售的...',
-                                tags: ['财税', '股权'],
-                                date: '2016年9月19日',
-                                views: 429
-                            },
-                        ]
-                    },
-                    {
-                        title: "法律干货",
-                        articles: [
-                            {
-                                articleId: "17",
-                                img: 'http://cdn.qiyewan.com/law_01.jpg',
-                                title: '合伙人股东之间的协议',
-                                summary: '今天我们重点讨论第一个问题：合伙人之间的股权协议需要注意什么。...',
-                                tags: ['法律', '合同'],
-                                date: '2016年9月21日',
-                                views: 359
-                            },
-                            {
-                                articleId: "17",
-                                img: 'http://cdn.qiyewan.com/law_02.jpg',
-                                title: '员工个人自行缴社保的书面承诺有效吗？ ',
-                                summary: '王某于2011年5月进入F公司设于宁波某商场的品牌专柜从事营业员工...',
-                                tags: ['法律', '社保'],
-                                date: '2016年9月22日',
-                                views: 389
-                            },
-                            {
-                                articleId: "18",
-                                img: 'http://cdn.qiyewan.com/law_03.jpg',
-                                title: '公司知识产权',
-                                summary: '上周我们创业科普中一直都是在讲公司的控制权，似乎公司只有勾心斗角...',
-                                tags: ['法律', '知识产权'],
-                                date: '2016年8月23日',
-                                views: 233
-                            },
-                            {
-                                articleId: "19",
-                                img: 'http://cdn.qiyewan.com/law_04.jpg',
-                                title: 'APP可否申请专利的探讨(续)',
-                                summary: '跟着上期我们继续来讲APP可否申请专利。针对App申请发明专利....',
-                                tags: ['专利申请'],
-                                date: '2016年8月25日',
-                                views: 359
-                            },
-                            {
-                                articleId: "20",
-                                img: 'http://cdn.qiyewan.com/law_05.jpg',
-                                title: '拟定合同过程中的关注点（一）',
-                                summary: '通常来讲，合同的主体不需要关注，因为大多数情况下，合同...',
-                                tags: ['法律', '合同'],
-                                date: '2016年9月21日',
-                                views: 359
-                            }
-                        ]
-
-                    },
-                    {
-                        title: "人事干货",
-                        articles: [
-                            {
-                                articleId: "21",
-                                img: 'http://cdn.qiyewan.com/hr_01.jpg',
-                                title: '作为公司老板，只有这20%工作是你需要亲自做的',
-                                summary: '作为公司老板，你只需专注那些能为公司带来最大利益的事情。通常说来，这些事情...',
-                                tags: ['人事'],
-                                date: '2016年9月20日',
-                                views: 469
-                            },
-                            {
-                                articleId: "22",
-                                img: 'http://cdn.qiyewan.com/hr_02.jpg',
-                                title: '别让人情拖垮你的公司！',
-                                summary: '中国是一个非常讲“人情”讲“关系”的国家，有时候靠人情刷脸，靠关系办事会比...',
-                                tags: ['人事'],
-                                date: '2016年9月23日',
-                                views: 469
-                            },
-                            {
-                                articleId: "23",
-                                img: 'http://cdn.qiyewan.com/hr_03.jpg',
-                                title: '创业公司的员工激励怎么做？',
-                                summary: '当你费劲苦心，把员工招募进来后，怎么让他们死心塌地的和你一起拼命干就是...',
-                                tags: ['人事'],
-                                date: '2016年9月25日',
-                                views: 469
-                            },
-                            {
-                                articleId: "24",
-                                img: 'http://cdn.qiyewan.com/hr_04.jpg',
-                                title: '财务部非金钱激励员工的108种手段 ，你一定要懂！',
-                                summary: '在任何一个组织里，管理者都是下属的镜子。可以说，只...',
-                                tags: ['人事'],
-                                date: '2016年9月28日',
-                                views: 369
-                            },
-                            {
-                                articleId: "25",
-                                img: 'http://cdn.qiyewan.com/hr_05.jpg',
-                                title: '你做了什么，可以多出四个工作日？',
-                                summary: '你说人生究竟什么最重要？听到这个问题，每个人第一反应一定是...',
-                                tags: ['人事'],
-                                date: '2016年10月8日',
-                                views: 469
-                            }
-                        ]
-                    }
-                ],
+                news:[],
                 customerVoices: [
                     {
                         headImg: "http://cdn.qiyewan.com/customer1.png",
@@ -2117,6 +1846,7 @@
                 ],
                 currentDate: "2016年10月13日",
                 banner: 0,
+                error:null,
                 active: 3,
                 state: 0,
                 stateType: 0,
@@ -2163,6 +1893,12 @@
             authApi.getRegion(function (region) {
                 vm.$store.commit("CHANGE_REGION", region)
             })
+            articleApi.getHomeNews( data => {
+                        vm.news = data.data;
+                    },
+                    error => {
+                        vm.error = error
+                    });
         }
     }
 </script>
