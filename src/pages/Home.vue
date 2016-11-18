@@ -1893,6 +1893,7 @@
             authApi.getRegion(function (region) {
                 vm.$store.commit("CHANGE_REGION", region)
             })
+
             articleApi.getHomeNews( data => {
                         vm.news = data.data;
                     },
