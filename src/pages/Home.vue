@@ -872,8 +872,9 @@
     }
 
     .promise {
-        height: 436px;
+        height: 420px;
         background-color: #f6f6f6;
+        border:1px solid #d2d2d2;
     }
 
     @media screen and (min-width: 1400px) {

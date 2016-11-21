@@ -1,12 +1,12 @@
 <style scoped>
     #news {
         border: 1px solid #dcdcdc;
-        width: 224px;
+        width: 212px;
         height: 335px;
         overflow: hidden;
         position: relative;
         cursor: pointer;
-        margin-right:8px;
+        margin-right:20px;
     }
 
     .new_pic {
