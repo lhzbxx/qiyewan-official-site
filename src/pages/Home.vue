@@ -872,8 +872,9 @@
     }
 
     .promise {
-        height: 436px;
+        height: 420px;
         background-color: #f6f6f6;
+        border:1px solid #d2d2d2;
     }
 
     @media screen and (min-width: 1400px) {
@@ -1800,7 +1801,7 @@
                         summary: "缴纳社保公积金,养老无忧",
                         imgTopUrl: "http://cdn.qiyewan.com/banner-4-bottom.png",
                         imgMiddleUrl: "http://cdn.qiyewan.com/banner-4-middle.png",
-                        imgBottomUrl: "http://cdn.qiyewan.com/banner-4-top.png",
+                        imgBottomUrl: "http://cdn.qiyewan.com/banner-4-top-1.png",
                         bgColor: "background-color: #0770cb;"
                     },
                 ],
