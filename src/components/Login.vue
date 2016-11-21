@@ -15,6 +15,20 @@
                     <el-input type="password" v-model="formStacked.password"></el-input>
                 </el-form-item>
             </el-form>
+            <div class="clearfix"></div>
+            <div style="width: 100%; margin-top: -10px;">
+                <el-button type="text"
+                           @click.native="jumpToRegister"
+                           style="float: left; text-decoration: underline;">
+                    快速注册
+                </el-button>
+                <el-button type="text"
+                           @click.natvie="jumpToResetPassword"
+                           style="float: right; text-decoration: underline;">
+                    忘记密码
+                </el-button>
+            </div>
+            <div class="clearfix"></div>
             <el-button type="primary"
                        @click.native="submit"
                        :loading="isLogging"
@@ -56,24 +70,32 @@
             }
         },
         methods: {
+            jumpToRegister() {
+                this.$emit('register');
+                this.isVisible = false
+            },
+            jumpToResetPassword() {
+                this.$emit('reset-password');
+                this.isVisible = false
+            },
             openDialog() {
                 this.error = ""
                 this.$refs.dialog.open()
             },
             submit() {
-                this.$refs.loginForm.validate((valid) => {
+                let vm = this
+                this.$refs.loginForm.validate(function (valid) {
                     console.log(valid)
                     if (valid) {
-                        this.isLogging = true
-                        let vm = this
-                        this.$store.dispatch("userLogin", {
-                            phone: this.formStacked.phone,
-                            password: this.formStacked.password
-                        }).then(() => {
+                        vm.isLogging = true
+                        vm.$store.dispatch("userLogin", {
+                            phone: vm.formStacked.phone,
+                            password: vm.formStacked.password
+                        }).then(function () {
                             vm.isVisible = false
                             vm.formStacked.password = ""
                             vm.isLogging = false
-                        }, (error) => {
+                        }, function (error) {
                             vm.formStacked.password = ""
                             vm.isLogging = false
                             if (error.detail == "Error.Auth.WRONG_PASSWORD") {

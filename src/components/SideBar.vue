@@ -107,7 +107,6 @@
                         clearInterval(timer);
                     }
                 }, 10)
-
             },
             handleScroll() {
                 this.toTop = document.body.scrollTop || document.documentElement.scrollTop;

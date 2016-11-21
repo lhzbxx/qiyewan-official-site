@@ -102,7 +102,14 @@
         color: #5d5d5d;
     }
 
-    .title .prompt {
+    .title1 h3 {
+        font-size: 24px;
+        padding-top: 27px;
+        letter-spacing: 3px;
+        color: #5d5d5d;
+    }
+
+    .title .prompt, .title1 .prompt {
         font-size: 14px;
         color: #646464;
         padding-top: 12px;
@@ -117,7 +124,7 @@
         display: none;
     }
 
-    .title {
+    .title, .title1 {
         text-align: center;
         padding-bottom: 40px;
     }
@@ -517,8 +524,14 @@
 
     .timeline-pic-left {
         width: 20%;
-        height: 487px;
+        height: 475px;
         float: left;
+        padding-top: 10px;
+    }
+
+    .timeline-pic-left img {
+        height: 100%;
+        width: 96%;
     }
 
     .timeline-pic-right {
@@ -700,7 +713,7 @@
 
     #voices {
         width: 100%;
-        height: 400px;
+        height: 440px;
         margin-bottom: 20px;
         background: url("http://cdn.qiyewan.com/voice-bg.png") no-repeat;
         position: relative;
@@ -859,7 +872,7 @@
     }
 
     .promise {
-        height: 410px;
+        height: 436px;
         background-color: #f6f6f6;
     }
 
@@ -876,10 +889,11 @@
     }
 
     .promise ul li {
-        width: 236px;
+        width: 225px;
+        height: 77px;
         float: left;
-        border-right: 1px solid rgb(224, 224, 224);
-        margin-left: 17px;
+        border-right: 1px solid #d2d2d2;
+        margin-left: 33px;
     }
 
     .promise ul :first-child {
@@ -910,15 +924,6 @@
 
     .pro_img img {
         width: 100%;
-    }
-
-    .news_link {
-        display: inline-block;
-        margin-right: 8px;
-    }
-
-    #news:last-child .news_link {
-        margin-right: 0px;
     }
 </style>
 
@@ -1104,7 +1109,7 @@
         </div>
         <div class="clearfix"></div>
         <div class="container" style="height: 100%;">
-            <div class="title">
+            <div class="title1">
                 <h3>客户声音</h3>
                 <div class="prompt">您的声音，是我们前进的动力</div>
             </div>
@@ -1149,7 +1154,8 @@
                          :tags="article.tags"
                          :date="article.updated_at"
                          :views="article.view_count"
-                         :id="article.id+''"></lh-news>
+                         :id="article.id+''">
+                </lh-news>
             </div>
         </div>
         <div class="clearfix"></div>
@@ -1798,7 +1804,7 @@
                         bgColor: "background-color: #0770cb;"
                     },
                 ],
-                news:[],
+                news: [],
                 customerVoices: [
                     {
                         headImg: "http://cdn.qiyewan.com/customer1.png",
@@ -1846,7 +1852,7 @@
                 ],
                 currentDate: "2016年10月13日",
                 banner: 0,
-                error:null,
+                error: null,
                 active: 3,
                 state: 0,
                 stateType: 0,
@@ -1890,16 +1896,31 @@
         },
         created() {
             let vm = this
-            authApi.getRegion(function (region) {
+            authApi.getRegion(region => {
                 vm.$store.commit("CHANGE_REGION", region)
             })
-
-            articleApi.getHomeNews( data => {
-                        vm.news = data.data;
-                    },
-                    error => {
-                        vm.error = error
-                    });
+            articleApi.getHomeNews(data => {
+                vm.news = data.data
+            }, error => {
+                vm.error = error
+            })
+        },
+        mounted() {
+            let vm = this
+            setInterval(function () {
+                if (vm.banner === (vm.banners.length - 1)) {
+                    vm.banner = 0
+                } else {
+                    vm.banner += 1
+                }
+            }, 5000)
+            setInterval(function () {
+                if (vm.voiceBanner === (vm.customerVoices.length - 1)) {
+                    vm.voiceBanner = 0
+                } else {
+                    vm.voiceBanner += 1
+                }
+            }, 5000)
         }
     }
 </script>

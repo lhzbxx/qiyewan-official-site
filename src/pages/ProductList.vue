@@ -52,6 +52,40 @@
                         function (data) {
                             vm.products = data
                             vm.categoryName = category
+                            let classifications = [
+                                {
+                                    title: "工商服务",
+                                    code: "IC"
+                                },
+                                {
+                                    title: "财税服务",
+                                    code: "FC"
+                                },
+                                {
+                                    title: "法律服务",
+                                    code: "LD"
+                                },
+                                {
+                                    title: "人事服务",
+                                    code: "HR"
+                                },
+                                {
+                                    title: "IT&设计服务",
+                                    code: "IT"
+                                },
+                                {
+                                    title: "套餐服务",
+                                    code: "PS"
+                                }
+                            ]
+                            let index = classifications.findIndex(function (item) {
+                                return item.code == category
+                            })
+                            if (index >= 0) {
+                                vm.categoryName = classifications[index].title
+                            } else {
+                                vm.categoryName = category
+                            }
                         },
                         function (error) {
                             vm.error = error
