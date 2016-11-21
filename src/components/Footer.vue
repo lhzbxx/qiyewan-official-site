@@ -121,21 +121,20 @@
                 <li>
                     <div class="footer_div">
                         <h3>企业动态</h3>
-                        <p><router-link to="/about-us">关于我们</router-link></p>
-                        <p><router-link to="/recruitment">加入我们</router-link></p>
+                        <p><router-link :to="{ name: 'about-us', params: { liName: 'about' }}" target="_blank" >关于我们</router-link></p>
+                        <p><router-link to="/recruitment" target="_blank" >加入我们</router-link></p>
                     </div>
                     <div class="footer_div">
                         <h3>订单服务</h3>
-                        <p><router-link to="/about-us">索取发票</router-link></p>
-                        <p><router-link to="/about-us">退款说明</router-link></p>
-                        <p><router-link to="/about-us">支付方式</router-link></p>
+                        <p><router-link :to="{ name: 'about-us', params: { liName: 'invoice' }}" target="_blank" >索取发票</router-link></p>
+                        <p><router-link :to="{ name: 'about-us', params: { liName: 'refund' }}" target="_blank" >退款说明</router-link></p>
+                        <p><router-link :to="{ name: 'about-us', params: { liName: 'pay' }}" target="_blank" >支付方式</router-link></p>
                     </div>
                     <div class="footer_div">
                         <h3>售后服务</h3>
-                        <p><router-link to="/about-us">联系我们</router-link></p>
-                        <p><router-link to="/about-us">用户协议</router-link></p>
+                        <p><router-link :to="{ name: 'about-us', params: { liName: 'contact' }}" target="_blank" >联系我们</router-link></p>
+                        <p><router-link :to="{ name: 'about-us', params: { liName: 'protocol' }}" target="_blank" >用户协议</router-link></p>
                     </div>
-
                 </li>
                 <li class="footer_ul_2">
                     <img src="../assets/img/foo_1.png">

@@ -166,7 +166,7 @@
         <div class="container">
             <div id="location" class="l">
                 <img src="../assets/img/icon_location.png">
-                <span>{{ getRegion.name }}</span>
+                <span style="color: #0ca6ea;">{{ getRegion.name }}</span>
                 <i class="ci-right">
                     <s>◇</s>
                 </i>
@@ -187,10 +187,10 @@
                         v-on:click="openRegisterDialog()">
                         <a>注册</a>
                     </li>
-                    <li v-if="!isLogin"
-                        v-on:click="openResetPasswordDialog()">
-                        <a>忘记密码</a>
-                    </li>
+                    <!--<li v-if="!isLogin"-->
+                        <!--v-on:click="openResetPasswordDialog()">-->
+                        <!--<a>忘记密码</a>-->
+                    <!--</li>-->
                     <li v-if="!isLogin"
                         v-on:click="openLoginDialog()">
                         <a>登录</a>
@@ -210,7 +210,11 @@
                     <a @click="logout">退出</a>
                 </div>
             </div>
-            <lh-login ref="loginDialog"></lh-login>
+            <lh-login
+                    @register="handleLoginToRegister"
+                    @reset-password="handleLoginToResetPassword"
+                    ref="loginDialog">
+            </lh-login>
             <lh-reset-password ref="resetPasswordDialog"></lh-reset-password>
             <lh-register ref="registerDialog"></lh-register>
         </div>
@@ -230,6 +234,12 @@
             needLogin: 'needLogin'
         }),
         methods: {
+            handleLoginToRegister() {
+                this.openRegisterDialog()
+            },
+            handleLoginToResetPassword() {
+                this.openResetPasswordDialog()
+            },
             openLoginDialog() {
                 this.$refs.loginDialog.openDialog()
             },

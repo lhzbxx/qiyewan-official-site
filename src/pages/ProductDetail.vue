@@ -244,7 +244,7 @@
             </el-breadcrumb>
             <el-row style="margin-top:20px">
                 <el-col :span="11" style="margin-right:30px">
-                    <img :src="imageIp+product.cover"
+                    <img :src="cdnPrefix+product.cover"
                          style="width: 100%; height: 381px;">
                 </el-col>
                 <el-col :span="10" class="pro_right">
@@ -299,10 +299,12 @@
                                     </el-select>
                                 </el-col>
                             </el-row>
+                            <p style="font-size: 12px; color: #dd2726; line-height:1.8em">
+                                温馨提示：请在页面左上角切换服务区域。
+                            </p>
                         </el-form-item>
                         <el-form-item label="购买时长" style="margin-bottom: 8px" v-if="!product.isInstant">
                             <el-radio-group v-model="form.amount">
-                                <el-radio-button label="3">一季度</el-radio-button>
                                 <el-radio-button label="6">半年</el-radio-button>
                                 <el-radio-button label="12">一年</el-radio-button>
                             </el-radio-group>
@@ -616,7 +618,7 @@
                 if (this.product.isInstant) {
                     this.form.amount = 1
                 } else {
-                    this.form.amount = 3
+                    this.form.amount = 6
                 }
             },
             getLocalTime(nS) {
