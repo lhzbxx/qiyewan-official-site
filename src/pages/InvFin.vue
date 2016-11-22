@@ -178,8 +178,8 @@
                         <el-form-item label="企业名称" prop="companyName">
                             <el-input v-model="formStacked.companyName"></el-input>
                         </el-form-item>
-                        <el-form-item label="手机号" prop="phone">
-                            <el-input v-model="formStacked.phone"></el-input>
+                        <el-form-item label="手机号" prop="mobile">
+                            <el-input v-model="formStacked.mobile"></el-input>
                         </el-form-item>
                         <el-form-item label="校验码" prop="captcha">
                             <el-input v-model="formStacked.captcha"
@@ -191,28 +191,28 @@
                                 {{ isWaiting ? timerShow : "点击获取" }}
                             </el-button>
                             <div v-show="showInv == 1 ">
-                                <el-form-item label="投资领域" prop="invField">
-                                    <el-input v-model="formStacked.invField"></el-input>
+                                <el-form-item label="投资领域" prop="direction">
+                                    <el-input v-model="formStacked.direction"></el-input>
                                 </el-form-item>
-                                <el-form-item label="投资期限" prop="deadLine">
-                                    <el-input v-model="formStacked.deadLine"></el-input>
-                                </el-form-item>
-                            </div>
-                            <div v-show="showInv == 0 ">
-                                <el-form-item label="融资领域" prop="invField">
-                                    <el-input v-model="formStacked.invField"></el-input>
-                                </el-form-item>
-                                <el-form-item label="融资期限" prop="deadLine">
-                                    <el-input v-model="formStacked.deadLine"></el-input>
+                                <el-form-item label="投资期限" prop="period">
+                                    <el-input v-model="formStacked.period"></el-input>
                                 </el-form-item>
                             </div>
+                         <!--   <div v-show="showInv == 0 ">
+                                <el-form-item label="融资领域" prop="direction">
+                                    <el-input v-model="formStacked.direction"></el-input>
+                                </el-form-item>
+                                <el-form-item label="融资期限" prop="period">
+                                    <el-input v-model="formStacked.period"></el-input>
+                                </el-form-item>
+                            </div>-->
                             <el-form-item label="地区" prop="area">
                                 <el-input v-model="formStacked.area"></el-input>
                             </el-form-item>
                         </el-form-item>
                     </el-form>
                     <el-button type="primary"
-                               @c-lick.native="submit"
+                               @click="submit"
                                :loading="isSubmitting"
                                style="width: 100%">
                         {{ isSubmitting ? "提交中" : "提 交" }}
@@ -225,6 +225,7 @@
 </template>
 
 <script>
+    import articleApi from '../api/article'
     export default {
         data() {
             var validatePhone = (rule, value, cb) => {
@@ -240,10 +241,10 @@
                 formStacked: {
                     name: "",
                     companyName: "",
-                    phone: "",
+                    mobile: "",
                     captcha: "",
-                    invField: "",
-                    deadLine: "",
+                    direction: "",
+                    period: "",
                     area: ""
                 },
                 isWaiting: false,
@@ -264,7 +265,7 @@
                             trigger: 'blur'
                         }
                     ],
-                    phone: [
+                    mobile: [
                         {
                             required: true,
                             message: '请输入手机号',
@@ -281,14 +282,14 @@
                             trigger: 'blur'
                         }
                     ],
-                    invField: [
+                    direction: [
                         {
                             required: true,
                             message: '请输入投融资方向',
                             trigger: 'blur'
                         }
                     ],
-                    deadLine: [
+                    period: [
                         {
                             required: true,
                             message: '请输入投融资期限',
@@ -311,10 +312,10 @@
             },
             requestCaptcha() {
                 let vm = this
-                this.$refs.invForm.validateField(['phone'],
+                this.$refs.invForm.validateField(['mobile'],
                         (error) => {
                             if (!error) {
-                                vm.$store.dispatch("requestCaptcha", vm.formStacked.phone)
+                                articleApi.getInvCaptcha(vm.formStacked.mobile,data => {}, error => {})
                                 vm.isWaiting = true
                                 vm.timer = 60
                                 vm.counterDown()
@@ -336,37 +337,28 @@
             submit() {
                 this.$refs.invForm.validate((valid) => {
                     if (valid) {
-                        this.isSubmitting = true
                         let vm = this
-                        this.$store.dispatch("submitInvFinDataRouter", {
-                            name: this.formStacked.name,
-                            companyName: this.formStacked.companyName,
-                            phone: this.formStacked.phone,
-                            captcha: this.formStacked.captcha,
-                            invField: this.formStacked.invField,
-                            deadLine: this.formStacked.deadLine,
-                            area: this.formStacked.area
-                        }).then(() => {
-                            vm.formStacked.name = ""
-                            vm.formStacked.companyName = ""
-                            vm.formStacked.captcha = ""
-                            vm.formStacked.invField = ""
-                            vm.formStacked.deadLine = ""
-                            vm.formStacked.area = ""
-                            vm.isRegistering = false
+                        let formStacked = JSON.parse(JSON.stringify(vm.formStacked));
+                        this.isSubmitting = true
+                        vm.$http.post("http://123.59.50.191/investments", formStacked).then(() => {
+                            vm.resetForm()
                         }, () => {
-                            vm.formStacked.name = ""
-                            vm.formStacked.companyName = ""
-                            vm.formStacked.captcha = ""
-                            vm.formStacked.invField = ""
-                            vm.formStacked.deadLine = ""
-                            vm.formStacked.area = ""
-                            vm.isRegistering = false
+                            vm.resetForm()
                         })
                     } else {
                         return false;
                     }
                 });
+            },
+            resetForm(){
+                let vm = this
+                vm.formStacked.name = ""
+                vm.formStacked.companyName = ""
+                vm.formStacked.captcha = ""
+                vm.formStacked.direction = ""
+                vm.formStacked.period = ""
+                vm.formStacked.area = ""
+                vm.isRegistering = false
             }
         },
         computed: {
