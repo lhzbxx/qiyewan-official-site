@@ -33,7 +33,7 @@
                 </el-form-item>
             </el-form>
             <el-button type="primary"
-                       @click.native="submit"
+                       @c-lick.native="submit"
                        :loading="isRegistering"
                        style="width: 100%">
                 {{ isRegistering ? "注册中" : "注 册" }}

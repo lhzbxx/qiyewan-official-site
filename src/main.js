@@ -21,6 +21,7 @@ import NewsList from './pages/NewsList.vue'
 import AboutUs from './pages/AboutUs.vue'
 import Recruitment from './pages/Recruitment.vue'
 import NotFound from './pages/NotFound.vue'
+import InvFin from './pages/InvFin.vue'
 
 import TopBar from './components/TopBar.vue'
 import Footer from './components/Footer.vue'
@@ -135,6 +136,10 @@ const routes = [
     {
         path: '/recruitment',
         component: Recruitment
+    },
+    {
+        path: '/inv',
+        component: InvFin
     },
     {
         path: '*',
