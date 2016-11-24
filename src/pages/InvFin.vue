@@ -340,7 +340,7 @@
                         let vm = this
                         let formStacked = JSON.parse(JSON.stringify(vm.formStacked));
                         this.isSubmitting = true
-                        vm.$http.post("http://123.59.50.191:3005/investments", formStacked).then(() => {
+                        vm.$http.post("http://123.59.50.191:3005/investments?captcha=" + vm.formStacked.captcha, formStacked).then(() => {
                             vm.resetForm()
                         }, () => {
                             vm.resetForm()
