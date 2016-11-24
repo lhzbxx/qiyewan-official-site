@@ -24,5 +24,8 @@ export default {
     },
     postInvestments(formStacked, success, error){
         Vue.http.post(invHost + "/investments", formStacked).then(response => success(response), response => error(response));
+    },
+    postFinances(formStacked, success, error){
+        Vue.http.post(invHost + "/finances", formStacked).then(response => success(response), response => error(response));
     }
 }

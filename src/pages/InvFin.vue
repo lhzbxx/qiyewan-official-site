@@ -190,7 +190,7 @@
                                        style="width: 46%">
                                 {{ isWaiting ? timerShow : "点击获取" }}
                             </el-button>
-                            <div v-show="showInv == 1 ">
+                            <div v-if="showInv == 1 ">
                                 <el-form-item label="投资领域" prop="direction">
                                     <el-input v-model="formStacked.direction"></el-input>
                                 </el-form-item>
@@ -198,9 +198,9 @@
                                     <el-input v-model="formStacked.period"></el-input>
                                 </el-form-item>
                             </div>
-                            <div v-show="showInv == 0 ">
-                                <el-form-item label="融资领域" prop="direction">
-                                    <el-input v-model="formStacked.direction"></el-input>
+                            <div v-if="showInv == 0 ">
+                                <el-form-item label="BP" prop="bp">
+                                    <el-input v-model="formStacked.bp"></el-input>
                                 </el-form-item>
                                 <el-form-item label="融资期限" prop="period">
                                     <el-input v-model="formStacked.period"></el-input>
@@ -243,7 +243,8 @@
                     companyName: "",
                     mobile: "",
                     captcha: "",
-                    direction: "",
+                    direction:"",
+                    bp: "",
                     period: "",
                     area: ""
                 },
@@ -282,10 +283,17 @@
                             trigger: 'blur'
                         }
                     ],
-                    direction: [
+                    direction:[
                         {
                             required: true,
-                            message: '请输入投融资方向',
+                            message: '请输入投资方向',
+                            trigger: 'blur'
+                        }
+                    ],
+                    bp: [
+                        {
+                            required: true,
+                            message: '请输入融资方向',
                             trigger: 'blur'
                         }
                     ],
@@ -340,27 +348,33 @@
                         let vm = this
                         let formStacked = JSON.parse(JSON.stringify(vm.formStacked));
                         this.isSubmitting = true;
-                        articleApi.postInvestments(formStacked,response => {
-                            vm.resetForm();
-                            if(response.body.success){
-                                vm.$message({
-                                    message: '提交成功',
-                                    type: 'success'
-                                });
-                            }else{
-                               vm.$message({
-                                   message: '验证码错误',
-                                   type: 'error'
-                               });
-                            }
-                        });
+                        if(vm.showInv){
+                            articleApi.postInvestments(formStacked,response => {
+                                vm.resetForm(response.body.success);
+                            });
+                        }else{
+                            articleApi.postFinances(formStacked,response => {
+                                vm.resetForm(response.body.success);
+                            });
+                        }
                     } else {
                         return false;
                     }
                 });
             },
-            resetForm(){
+            resetForm(success){
                 let vm = this
+                if(success){
+                    vm.$message({
+                        message: '提交成功',
+                        type: 'success'
+                    });
+                }else{
+                    vm.$message({
+                        message: '验证码错误',
+                        type: 'error'
+                    });
+                }
                 vm.formStacked.name = ""
                 vm.formStacked.companyName = ""
                 vm.formStacked.captcha = ""
