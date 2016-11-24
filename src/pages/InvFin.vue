@@ -168,7 +168,7 @@
             </ul>
             <el-row>
                 <el-col :span="10" :offset="7">
-                    <el-form label-position="top"
+                    <el-form label-position="top" style="padding-top: 30px"
                              :model="formStacked"
                              :rules="rules"
                              ref="invForm">
@@ -198,14 +198,14 @@
                                     <el-input v-model="formStacked.period"></el-input>
                                 </el-form-item>
                             </div>
-                         <!--   <div v-show="showInv == 0 ">
+                            <div v-show="showInv == 0 ">
                                 <el-form-item label="融资领域" prop="direction">
                                     <el-input v-model="formStacked.direction"></el-input>
                                 </el-form-item>
                                 <el-form-item label="融资期限" prop="period">
                                     <el-input v-model="formStacked.period"></el-input>
                                 </el-form-item>
-                            </div>-->
+                            </div>
                             <el-form-item label="地区" prop="area">
                                 <el-input v-model="formStacked.area"></el-input>
                             </el-form-item>
@@ -214,7 +214,7 @@
                     <el-button type="primary"
                                @click="submit"
                                :loading="isSubmitting"
-                               style="width: 100%">
+                               style="width: 100%;margin-bottom: 30px">
                         {{ isSubmitting ? "提交中" : "提 交" }}
                     </el-button>
                 </el-col>
@@ -339,12 +339,21 @@
                     if (valid) {
                         let vm = this
                         let formStacked = JSON.parse(JSON.stringify(vm.formStacked));
-                        this.isSubmitting = true
-                        vm.$http.post("http://123.59.50.191:3005/investments?captcha=" + vm.formStacked.captcha, formStacked).then(() => {
-                            vm.resetForm()
-                        }, () => {
-                            vm.resetForm()
-                        })
+                        this.isSubmitting = true;
+                        articleApi.postInvestments(formStacked,response => {
+                            vm.resetForm();
+                            if(response.body.success){
+                                vm.$message({
+                                    message: '提交成功',
+                                    type: 'success'
+                                });
+                            }else{
+                               vm.$message({
+                                   message: '验证码错误',
+                                   type: 'error'
+                               });
+                            }
+                        });
                     } else {
                         return false;
                     }
@@ -358,7 +367,7 @@
                 vm.formStacked.direction = ""
                 vm.formStacked.period = ""
                 vm.formStacked.area = ""
-                vm.isRegistering = false
+                vm.isSubmitting = false
             }
         },
         computed: {
