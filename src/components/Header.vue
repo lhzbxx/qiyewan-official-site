@@ -160,7 +160,7 @@
                     </div>
                 </li>
                 <p>
-                    <router-link to="">投融资</router-link>
+                    <router-link to="/inv">投融资</router-link>
                 </p>
                 <p>
                     <a href="https://123.59.50.191:8443/dashboard">财税平台</a>
