@@ -464,7 +464,7 @@
                                         </el-col>
                                         <el-col :span="6"
                                                 style="text-align: center;">
-                                            <img src="../assets/logo.png"
+                                            <img src="../assets/img/logo_samll.png"
                                                  style="width: 60px;
                                                 border-radius: 50%;">
                                             <p>
