@@ -3,19 +3,23 @@
         <div id="search">
             <p id="title">免费查询商标</p>
             <div id="search-box">
-                <input id="search-input" autofocus placeholder="请输入 商标名 或 注册号 或 申请人 关键词">
+                <input id="search-input"
+                       v-model="query"
+                       autofocus
+                       placeholder="请输入 商标名 或 注册号 或 申请人 关键词">
                 <div id="search-button">
                     <img src="../assets/search-button.png"
+                         v-on:click="search(1)"
                          alt="搜索">
                 </div>
-                <p id="count">已累计为1000+家客户服务</p>
             </div>
+            <p id="count">已累计为1000+家客户服务</p>
         </div>
         <lh-loading v-if="isSearching"></lh-loading>
         <div id="results"
-             v-if="results.length > 0"
+             v-if="result"
              class="container">
-            <p id="result">搜到 “” 相关的结果，共50条：</p>
+            <p id="result">搜到 “” 相关的结果，共{{ result.allRecords }}条：</p>
             <lh-brand :tmImg="item.tmImg"
                       :tmName="item.tmName"
                       :currentStatus="item.currentStatus"
@@ -27,6 +31,7 @@
             <el-pagination
                     large
                     layout="prev, pager, next"
+                    :page-size="30"
                     @current-change="fetchData"
                     :total="results.length">
             </el-pagination>
@@ -35,11 +40,34 @@
 </template>
 
 <script>
+    import brandApi from '../api/brand'
+    import {mapGetters} from 'vuex'
+
     export default {
         data() {
             return {
+                query: '',
                 isSearching: false,
-                results: []
+                result: null
+            }
+        },
+        computed: mapGetters({
+            token: 'getToken',
+            isLogin: 'isLogin',
+        }),
+        methods: {
+            search(page) {
+                if (!this.isLogin) {
+                    this.$store.commit("REQUIRE_LOGIN")
+                    return
+                }
+                if (this.query != '') {
+                    brandApi.fuzzyQuery(this.token, this.query, page, data => {
+                        this.result = data
+                    }, error => {
+                        console.log(error)
+                    })
+                }
             }
         }
     }
@@ -50,6 +78,7 @@
         height: 234px;
         padding-top: 40px;
         background-image: url("../assets/search-banner.png");
+        text-align: center;
     }
 
     #search-button {
@@ -59,15 +88,15 @@
         text-align: center;
         padding-top: 7px;
         cursor: pointer;
-        margin-right: 15px;
+        margin-right: 16px;
     }
 
     #count {
         font-size: 16px;
-        position: relative;
-        top: 10px;
-        left: 0;
         color: #aaa;
+        width: 700px;
+        text-align: left;
+        margin: -10px auto 0;
     }
 
     #search-box {

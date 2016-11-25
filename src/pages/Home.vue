@@ -872,16 +872,9 @@
     }
 
     .promise {
-        height: 420px;
+        height: 530px;
         background-color: #f6f6f6;
         border:1px solid #d2d2d2;
-    }
-
-    @media screen and (min-width: 1400px) {
-        .promise {
-            height: 530px;
-            background-color: #f6f6f6;
-        }
     }
 
     .promise ul {
@@ -923,8 +916,12 @@
         color: rgb(103, 102, 101);
     }
 
-    .pro_img img {
-        width: 100%;
+    .pro_img {
+        height: 390px;
+        background: url(http://cdn.qiyewan.com/about-us-banner1.png);
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: center;
     }
 </style>
 
@@ -1186,7 +1183,7 @@
             </div>
         </div>
         <div class="promise">
-            <div class="pro_img"><img src="http://cdn.qiyewan.com/about-us-banner1.png"></div>
+            <div class="pro_img"></div>
             <ul>
                 <li>
                     <div class="pro_l l"><img src="../assets/img/pro_1.png"></div>
@@ -1428,7 +1425,7 @@
                     {
                         department: "中国商标网【商标局】",
                         service: "商标查询",
-                        url: "http://sbj.saic.gov.cn/sbcx/",
+                        url: "/brand",
                         cover: "http://cdn.qiyewan.com/tool1.png"
                     },
                     {
