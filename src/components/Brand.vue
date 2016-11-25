@@ -8,7 +8,7 @@
             <div id="info">
                 <span class="block"><span class="label">申请日期：</span>{{ appDate }}</span>
                 <span class="block"><span class="label">类别：</span>{{ intCls }}</span>
-                <span class="block" style="width: 35%;"><span class="label">申请人：</span>{{ agent }}</span>
+                <span class="block" style="width: 35%;"><span class="label">申请人：</span>{{ applicantCn }}</span>
                 <span class="block"><span class="label">注册号：</span>{{ regNo }}</span>
             </div>
         </div>

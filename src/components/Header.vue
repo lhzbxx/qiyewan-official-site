@@ -107,6 +107,14 @@
         display: block;
         line-height: 65px;
     }
+
+    #hot-icon {
+        position: relative;
+        top: -10px;
+        color: red;
+        font-size: 12px;
+        font-weight: bold;
+    }
 </style>
 
 <template>
@@ -159,6 +167,9 @@
                         </div>
                     </div>
                 </li>
+                <p>
+                    <router-link to="/brand">免费商标查询<span id="hot-icon">hot</span></router-link>
+                </p>
                 <p>
                     <router-link to="/inv">投融资</router-link>
                 </p>
@@ -236,18 +247,6 @@
                         },
                         r: {
                             title: "LOGO设计",
-                            list: []
-                        }
-                    },
-                    {
-                        title: "套餐服务",
-                        code: "PS",
-                        l: {
-                            title: "",
-                            list: []
-                        },
-                        r: {
-                            title: "套餐",
                             list: []
                         }
                     }

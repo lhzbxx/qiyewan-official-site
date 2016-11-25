@@ -19,21 +19,21 @@
         <div id="results"
              v-if="result"
              class="container">
-            <p id="result">搜到 “” 相关的结果，共{{ result.allRecords }}条：</p>
+            <p id="result">搜到 “{{ query2 }}” 相关的结果，共{{ result.allRecords }}条：</p>
             <lh-brand :tmImg="item.tmImg"
                       :tmName="item.tmName"
                       :currentStatus="item.currentStatus"
                       :regNo="item.regNo"
-                      :agent="item.agent"
+                      :applicantCn="item.applicantCn"
                       :intCls="item.intCls"
                       :appDate="item.appDate"
-                      v-for="item in results"></lh-brand>
+                      v-for="item in JSON.parse(result.results)"></lh-brand>
             <el-pagination
                     large
                     layout="prev, pager, next"
                     :page-size="30"
-                    @current-change="fetchData"
-                    :total="results.length">
+                    @current-change="search"
+                    :total="result.allRecords">
             </el-pagination>
         </div>
     </div>
@@ -47,6 +47,7 @@
         data() {
             return {
                 query: '',
+                query2: '',
                 isSearching: false,
                 result: null
             }
@@ -61,9 +62,17 @@
                     this.$store.commit("REQUIRE_LOGIN")
                     return
                 }
+                this.result = null
+                this.query2 = this.query
+                if (this.isSearching) {
+                    return
+                }
+                this.isSearching = true
+                let vm = this
                 if (this.query != '') {
                     brandApi.fuzzyQuery(this.token, this.query, page, data => {
-                        this.result = data
+                        vm.result = data
+                        vm.isSearching = false
                     }, error => {
                         console.log(error)
                     })

@@ -1425,7 +1425,7 @@
                     {
                         department: "中国商标网【商标局】",
                         service: "商标查询",
-                        url: "/brand",
+                        url: "http://sbj.saic.gov.cn/sbcx/",
                         cover: "http://cdn.qiyewan.com/tool1.png"
                     },
                     {
@@ -1800,7 +1800,7 @@
                         imgMiddleUrl: "http://cdn.qiyewan.com/banner-4-middle.png",
                         imgBottomUrl: "http://cdn.qiyewan.com/banner-4-top-1.png",
                         bgColor: "background-color: #0770cb;"
-                    },
+                    }
                 ],
                 news: [],
                 customerVoices: [
