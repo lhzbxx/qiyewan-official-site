@@ -22,6 +22,7 @@ import AboutUs from './pages/AboutUs.vue'
 import Recruitment from './pages/Recruitment.vue'
 import NotFound from './pages/NotFound.vue'
 import InvFin from './pages/InvFin.vue'
+import BrandQuery from './pages/BrandQuery.vue'
 
 import TopBar from './components/TopBar.vue'
 import Footer from './components/Footer.vue'
@@ -37,6 +38,7 @@ import Header from './components/Header.vue'
 import News from './components/News.vue'
 import Loading from './components/Loading.vue'
 import SideBar from './components/SideBar.vue'
+import Brand from './components/Brand.vue'
 
 
 Vue.use(ElementUI)
@@ -58,6 +60,7 @@ Vue.component('lh-footer', Footer)
 Vue.component('lh-news', News)
 Vue.component('lh-loading', Loading)
 Vue.component('lh-side-bar', SideBar)
+Vue.component('lh-brand', Brand)
 
 
 function requireAuth(to, from, next) {
@@ -140,6 +143,11 @@ const routes = [
     {
         path: '/inv',
         component: InvFin
+    },
+    {
+        path: '/brand',
+        name: 'brand-query',
+        component: BrandQuery
     },
     {
         path: '*',
