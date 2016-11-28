@@ -141,10 +141,18 @@
                 this.$refs.resetPasswordForm.validateField(['phone'],
                         (error) => {
                             if (!error) {
-                                vm.$store.dispatch("requestCaptcha", vm.formStacked.phone)
-                                vm.isWaiting = true
-                                vm.timer = 60
-                                vm.counterDown()
+                                vm.$store.dispatch("isRegistered", vm.formStacked.phone).then(
+                                        data => {
+                                            if (data) {
+                                                vm.$store.dispatch("requestCaptcha", vm.formStacked.phone)
+                                                vm.isWaiting = true
+                                                vm.timer = 60
+                                                vm.counterDown()
+                                            } else {
+                                                return false
+                                            }
+                                        }
+                                )
                             } else {
                                 return false
                             }

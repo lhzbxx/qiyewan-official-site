@@ -141,10 +141,20 @@
                 this.$refs.registerForm.validateField(['phone'],
                         (error) => {
                             if (!error) {
-                                vm.$store.dispatch("requestCaptcha", vm.formStacked.phone)
-                                vm.isWaiting = true
-                                vm.timer = 60
-                                vm.counterDown()
+
+                    vm.$store.dispatch("isRegistered", vm.formStacked.phone).then(
+                            data => {
+                        if (!data) {
+                            vm.$store.dispatch("requestCaptcha", vm.formStacked.phone)
+                            vm.isWaiting = true
+                            vm.timer = 60
+                            vm.counterDown()
+                        } else {
+                        vm.$message.error("手机号已被注册");
+                            return false
+                        }
+                    }
+                )
                             } else {
                                 return false
                             }

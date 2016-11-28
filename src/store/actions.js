@@ -17,6 +17,16 @@ export const checkToken = ({commit}) => {
     }
 }
 
+export const isRegistered = ({}, phone) => {
+    return new Promise((resolve, reject) => {
+        authApi.isRegistered(phone,
+            data => {
+                resolve(data)
+            }
+        )
+    })
+}
+
 export const requestCaptcha = ({commit}, phone) => {
     return new Promise((resolve, reject) => {
         authApi.requestCaptcha(phone,
