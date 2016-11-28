@@ -23,7 +23,7 @@
                     快速注册
                 </el-button>
                 <el-button type="text"
-                           @click.natvie="jumpToResetPassword"
+                           @click.native="jumpToResetPassword"
                            style="float: right; text-decoration: underline;">
                     忘记密码
                 </el-button>

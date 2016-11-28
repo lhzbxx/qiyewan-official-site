@@ -1135,7 +1135,7 @@
                      class="voice-control  el-icon-arrow-right"></div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" v-if="news.length > 0">
             <ul id="news-tabs">
                 <li class="news-tab"
                     v-for="(item, index) in news"
@@ -1425,7 +1425,7 @@
                     {
                         department: "中国商标网【商标局】",
                         service: "商标查询",
-                        url: "http://sbj.saic.gov.cn/sbcx/",
+                        url: "#/brand",
                         cover: "http://cdn.qiyewan.com/tool1.png"
                     },
                     {

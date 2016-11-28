@@ -211,8 +211,8 @@
                 </div>
             </div>
             <lh-login
-                    @register="handleLoginToRegister"
-                    @reset-password="handleLoginToResetPassword"
+                    v-on:register="handleLoginToRegister"
+                    v-on:reset-password="handleLoginToResetPassword"
                     ref="loginDialog">
             </lh-login>
             <lh-reset-password ref="resetPasswordDialog"></lh-reset-password>
