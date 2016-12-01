@@ -22,7 +22,7 @@ export default {
     isRegistered(phone, cb) {
         Vue.http.get("auth/" + phone).then(
             (response) => {
-                cb(response)
+                cb(response.body)
             },
             () => {}
         )
