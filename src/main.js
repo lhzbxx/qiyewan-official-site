@@ -62,6 +62,7 @@ Vue.component('lh-loading', Loading)
 Vue.component('lh-side-bar', SideBar)
 Vue.component('lh-brand', Brand)
 
+store.dispatch('checkToken')
 
 function requireAuth(to, from, next) {
     if (!store.getters.isLogin) {

@@ -40,6 +40,12 @@ const mutations = {
     },
     [types.GET_DATA_FROM_STORAGE] (state) {
         state.info = JSON.parse(localStorage.getItem('cartInfo'));
+        if (state.info == null) {
+            state.info = {
+                total: 0,
+                page: 0
+            }
+        }
     }
 }
 

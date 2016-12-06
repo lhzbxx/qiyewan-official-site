@@ -9,12 +9,22 @@ import authApi from '../api/auth'
 import cartApi from '../api/cart'
 import orderApi from '../api/order'
 
-export const checkToken = ({commit}) => {
+export const checkToken = ({commit, state}) => {
     if (localStorage.createAt) {
         if (new Date().valueOf() - localStorage.createAt < 15 * 24 * 60 * 60 * 1000) {
             commit(types.GET_DATA_FROM_STORAGE)
         }
     }
+    authApi.getUser(state.auth.user.token,
+        data => {
+            if (data.detail == "Error.Auth.INVALID_TOKEN") {
+                localStorage.clear()
+                state.auth.isLogin = false
+            } else {
+                commit('RECEIVE_USER_INFO', result)
+            }
+        }
+    )
 }
 
 export const isRegistered = ({}, phone) => {

@@ -27,11 +27,3 @@
         <lh-side-bar></lh-side-bar>
     </div>
 </template>
-
-<script>
-    export default {
-        created() {
-            this.$store.dispatch("checkToken")
-        }
-    }
-</script>
