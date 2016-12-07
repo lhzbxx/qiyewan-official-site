@@ -13,7 +13,7 @@
                          alt="搜索">
                 </div>
             </div>
-            <p id="count">已累计为1000+家客户服务</p>
+            <p id="count">已累计为5000+家客户服务</p>
         </div>
         <lh-loading v-if="isSearching"></lh-loading>
         <div id="results"
