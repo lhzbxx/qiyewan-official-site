@@ -1,20 +1,29 @@
+<style scoped>
+  #app {
+    height: 100%;
+  }
+  #main {
+    padding-bottom: 190px;
+    overflow: hidden;
+    min-height: 100%;
+  }
+  #footer {
+    margin-top: -205px;
+  }
+</style>
+
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <lh-hello></lh-hello>
+    <div id="main">
+      <lh-top-bar></lh-top-bar>
+      <lh-header></lh-header>
+      <transition name="fade">
+        <router-view></router-view>
+      </transition>
+    </div>
+    <div id="footer">
+      <lh-footer></lh-footer>
+    </div>
+    <lh-side-bar></lh-side-bar>
   </div>
 </template>
-
-<script>
-import Hello from './components/Hello'
-
-export default {
-  name: 'app',
-  components: {
-    'lh-hello': Hello
-  }
-}
-</script>
-
-<style>
-</style>

@@ -9,7 +9,7 @@ import 'element-ui/lib/theme-default/index.css'
 import App from './App.vue'
 import Home from './pages/Home.vue'
 import Review from './pages/Review.vue'
-import ProductList from './pages/ProductList.vue'
+import ProductClassification from './pages/ProductClassification.vue'
 import ProductDetail from './pages/ProductDetail.vue'
 import OrderList from './pages/OrderList.vue'
 import MyCart from './pages/MyCart.vue'
@@ -64,9 +64,9 @@ Vue.component('lh-brand', Brand)
 
 store.dispatch('checkToken')
 
-function requireAuth(to, from, next) {
+function requireAuth (to, from, next) {
     if (!store.getters.isLogin) {
-        store.commit("REQUIRE_LOGIN")
+        store.commit('REQUIRE_LOGIN')
     } else {
         next()
     }
@@ -80,15 +80,15 @@ const routes = [
         component: Home
     },
     {
-        path: '/order/:orderSerialId/product/:productSerialId/review',
+        path: '/review',
         name: 'review',
         beforeEnter: requireAuth,
         component: Review
     },
     {
-        path: '/product/list/:category',
-        name: 'product-list',
-        component: ProductList
+        path: '/product/list/:classificationCode',
+        name: 'product-classification',
+        component: ProductClassification
     },
     {
         path: '/product/detail/:serialId',
@@ -113,6 +113,12 @@ const routes = [
         beforeEnter: requireAuth,
         component: Pay
     },
+    // {
+    //     path: '/checkout',
+    //     name: 'checkout',
+    //     beforeEnter: requireAuth,
+    //     component: Checkout
+    // },
     {
         path: '/account',
         beforeEnter: requireAuth,
