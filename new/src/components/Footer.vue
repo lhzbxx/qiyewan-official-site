@@ -75,7 +75,7 @@
   }
 
   .weibo {
-    background-image: url('../assets/img/foo_3.png');
+    background-image: url('../assets/foo_3.png');
     height: 67px;
     width: 67px;
     margin: 24px 24px 0 0;
@@ -83,18 +83,18 @@
   }
 
   .wechat {
-    background-image: url('../assets/img/foo_2.png');
+    background-image: url('../assets/foo_2.png');
     height: 67px;
     width: 67px;
     margin-top: 24px;
   }
 
   .weibo:hover {
-    background-image: url('../assets/img/foo_3_active.png');
+    background-image: url('../assets/foo_3_active.png');
   }
 
   .wechat:hover {
-    background-image: url('../assets/img/foo_2_active.png');
+    background-image: url('../assets/foo_2_active.png');
     cursor: pointer;
   }
 
@@ -151,7 +151,7 @@
           </div>
         </li>
         <li class="footer_ul_2">
-          <img src="../assets/img/foo_1.png">
+          <img src="../assets/foo_1.png">
           <p>400-716-8896</p>
         </li>
         <li class="footer_ul_3">

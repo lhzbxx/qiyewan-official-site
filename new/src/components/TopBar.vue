@@ -165,7 +165,7 @@
   <div id="top-bar">
     <div class="container">
       <div id="location" class="l">
-        <img src="../assets/img/icon_location.png">
+        <img src="../assets/icon_location.png">
         <span style="color: #0ca6ea;">{{ getRegion.name }}</span>
         <i class="ci-right">
           <s>◇</s>

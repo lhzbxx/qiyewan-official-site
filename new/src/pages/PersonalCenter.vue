@@ -13,27 +13,27 @@
   }
 
   .cart {
-    background: url("../assets/img/icon-cart.png");
+    background: url("../assets/icon-cart.png");
   }
 
   .is-active .cart {
-    background: url("../assets/img/icon-cart-active.png");
+    background: url("../assets/icon-cart-active.png");
   }
 
   .home {
-    background: url("../assets/img/icon-home.png");
+    background: url("../assets/icon-home.png");
   }
 
   .is-active .home {
-    background: url("../assets/img/icon-home-active.png");
+    background: url("../assets/icon-home-active.png");
   }
 
   .order {
-    background: url("../assets/img/icon-order.png") no-repeat;
+    background: url("../assets/icon-order.png") no-repeat;
   }
 
   .is-opened .order {
-    background: url("../assets/img/icon-order-active.png");
+    background: url("../assets/icon-order-active.png");
 
   }
 

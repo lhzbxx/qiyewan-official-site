@@ -916,7 +916,7 @@
         color: rgb(103, 102, 101);
     }
 
-    .pro_img {
+    .promise-image {
         height: 390px;
         background: url(http://cdn.qiyewan.com/about-us-banner1.png);
         background-size: auto 100%;

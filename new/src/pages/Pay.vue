@@ -1,24 +1,5 @@
-<style scoped>
-  .chosen {
-    border: 1px solid #20A0FF !important;
-  }
-
-  .pay-button {
-    border-radius: 3px;
-    margin-bottom: 12px;
-    float: right;
-  }
-
-  .payment {
-    margin: 10px;
-    width: 100%;
-    cursor: pointer;
-    border: 1px solid #eee;
-  }
-</style>
-
 <template>
-  <div class="container" style="margin-top: 20px;">
+  <div id="pay" class="container">
     <div style="border: 1px solid #eee;
                     border-bottom: none;
                     padding: 20px;">
@@ -129,19 +110,16 @@
     </el-table>
     <br>
     <div>
-      <div style="background-color: #EFF2F7;
-                        height: 40px;
-                        border: 1px solid #eee;
-                        border-bottom: none;">
+      <div id="choose-payment">
         <span style="line-height: 40px; margin-left: 20px;">支付方式</span>
       </div>
       <el-row style="border: 1px solid #eee;">
         <el-col :span="8"
                 v-for="(item, index) in payments"
                 style="text-align: center;">
-          <img src="../assets/img/alipay.png"
+          <img :src="item.url | cdn-filter"
                class="payment"
-               v-bind:class="{ chosen: index == payment }"
+               v-bind:class="{chosen: index == payment}"
                v-on:click="payment = index">
         </el-col>
       </el-row>
@@ -171,7 +149,6 @@
     <br>
   </div>
 </template>
-
 <script>
   import {mapGetters} from 'vuex'
   export default {
@@ -179,8 +156,14 @@
       return {
         payments: [
           {
-            name: "支付宝",
-            code: "AliPay"
+            name: '支付宝',
+            code: 'ALIPAY',
+            url: 'AliPay-banner.png'
+          },
+          {
+            name: '微信支付',
+            code: 'WXPAY',
+            url: 'WxPay-banner.png'
           }
         ],
         payment: 0,
@@ -194,19 +177,19 @@
     },
     created() {
       if (this.checkout.length == 0) {
-        this.$router.replace({name: "order"})
+        this.$router.replace({name: 'order'})
       }
     },
     methods: {
       addToOrder() {
         this.isOrdering = true
         let vm = this
-        this.$store.dispatch("addToOrder", {
+        this.$store.dispatch('addToOrder', {
           carts: this.checkout,
           payment: this.payments[this.payment].code
         }).then(
           function (order) {
-            window.open(order.payUrl, "_self")
+            window.open(order.payUrl, '_self')
           },
           function (error) {
             vm.isOrdering = false
@@ -226,3 +209,32 @@
     }
   }
 </script>
+<style scoped>
+  #pay {
+    margin-top: 20px;
+  }
+
+  .chosen {
+    border: 1px solid #20A0FF !important;
+  }
+
+  .pay-button {
+    border-radius: 3px;
+    margin-bottom: 12px;
+    float: right;
+  }
+
+  .payment {
+    margin: 10px;
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid #eee;
+  }
+
+  #choose-payment {
+    background-color: #EFF2F7;
+    height: 40px;
+    border: 1px solid #eee;
+    border-bottom: none;
+  }
+</style>

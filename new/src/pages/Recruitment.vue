@@ -27,7 +27,7 @@
     margin-right: 35px;
     width: 280px;
     height: 280px;
-    background: url("../assets/img/rec_bg.png") #48d684;
+    background: url("../assets/rec_bg.png") #48d684;
     background-position-x: -16px;
     background-position-y: -28px;
     text-align: center;
@@ -130,7 +130,7 @@
   <div>
     <div class="banner">
       <div class="rec_word">
-        <img src="../assets/img/recruitment_1.png">
+        <img src="../assets/recruitment_1.png">
       </div>
       <ul class="department">
         <li v-on:click="setLiName('it')">技术部 <span
@@ -367,7 +367,7 @@
 
       <div class="clearfix"></div>
     </div>
-    <div class="recruitment_2"><img src="../assets/img/recruitment_2.jpg"></div>
+    <div class="recruitment_2"><img src="../assets/recruitment_2.jpg"></div>
   </div>
 </template>
 

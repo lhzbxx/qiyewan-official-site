@@ -1,11 +1,11 @@
-<style scoped>
+<style scoped xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml"
+       xmlns:v-on="http://www.w3.org/1999/xhtml">
   /*新页面开始*/
   /*content左边*/
   .con_l {
     width: 180px;
     margin-top: 26px;
   }
-
   .con_l ul li, .con_l ul p {
     width: 158px;
     height: 40px;
@@ -17,64 +17,53 @@
     margin-bottom: 10px;
     font-family: "Microsoft YaHei";
   }
-
   .con_r img {
     width: 100%;
   }
-
   .con_l ul li:hover, .con_l ul p:hover {
     color: #0da3e5;
     border: 1px solid #0da3e5;
     cursor: pointer;
   }
-
   .active {
     background-color: #0da3e5;
     color: white !important;;
   }
-
   .con_r .show {
     display: block;
   }
-
   .hide {
     display: none;
   }
-
   /*content右边*/
   .con_r {
     width: 980px;
     float: right;
     margin-top: -58px;
   }
-
   /*关于我们*/
   .about-con {
     height: 1960px;
   }
-
   .about_intru {
-    background: url("../assets/img/about_ban.jpg") no-repeat;
+    background: url("../assets/about_ban.jpg") no-repeat;
     -webkit-background-size: 100%;
     background-size: 110%;
     background-position: -93px 0;
     height: 343px;
     padding: 45px 0 15px 35px;
   }
-
   .about_tit {
     font-size: 24px;
     color: #0da3e5;
     font-family: "Microsoft YaHei";
     font-weight: 600;
   }
-
   .about_tit_b {
     border-bottom: 3px solid #0da3e5;
     width: 95px;
     margin-top: 15px;
   }
-
   .about_intru p {
     width: 615px;
     padding-left: 20px;
@@ -85,11 +74,9 @@
     line-height: 2em;
     text-indent: 2em;
   }
-
   .culture {
     margin-top: 55px;
   }
-
   .culture ul li {
     float: left;
     width: 220px;
@@ -97,15 +84,12 @@
     border: 1px solid rgb(229, 229, 229);
     height: 285px;
   }
-
   .culture ul :last-child {
     margin-right: 0px;
   }
-
   .culture ul {
     margin-top: 20px;
   }
-
   .culture ul li h4 {
     text-align: center;
     color: #373737;
@@ -114,7 +98,6 @@
     font-weight: normal;
     margin: 10px 0;
   }
-
   .culture ul li p {
     font-size: 14px;
     color: #9a9a9a;
@@ -122,40 +105,32 @@
     padding: 0 14px;
     letter-spacing: 2px;
   }
-
   .clear {
     height: 55px;
   }
-
   .advan_img {
     margin-top: 20px;
   }
-
   .about_tit_b1 {
     border-bottom: 3px solid #0da3e5;
     width: 118px;
     margin-top: 15px;
   }
-
   .dream {
     margin-top: 55px;
   }
-
   /*关于我们结束*/
   /*联系我们开始*/
   .contact_con {
     display: none;
   }
-
   .contact_img {
     border-top: 1px solid #dadada;
     border-right: 1px solid #dadada;
   }
-
   .contact_img img {
     width: 100%;
   }
-
   .contact_con ul li {
     float: left;
     width: 480px;
@@ -164,7 +139,6 @@
     margin-top: 25px;
     height: 223px;
   }
-
   .contact_con ul li h5 {
     font-size: 24px;
     color: #f08200;
@@ -172,7 +146,6 @@
     margin-bottom: 15px;
     letter-spacing: 2px;
   }
-
   .contact_con ul li .add {
     font-size: 16px;
     color: #595959;
@@ -181,7 +154,6 @@
     margin-bottom: 15px;
     line-height: 27px;
   }
-
   .contact_con ul :first-child p {
     font-size: 16px;
     color: #595959;
@@ -189,7 +161,6 @@
     letter-spacing: 1px;
     line-height: 1.7em;
   }
-
   .contact_con ul li p {
     font-size: 16px;
     color: #595959;
@@ -197,70 +168,58 @@
     letter-spacing: 3px;
     line-height: 2.4em;
   }
-
   .contact_con ul li p .time {
     margin-left: 20px;
   }
-
   .li_ {
     margin-right: 20px;
   }
-
   /*联系我们结束*/
   /*索取发票开始*/
   .receipt {
     display: none;
   }
-
   .receipt h4 {
     font-size: 24px;
     color: #666666;
     margin-top: 25px;
     margin-bottom: 15px;
   }
-
   .receipt p {
     font-size: 16px;
     color: #575757;
     line-height: 2.8em;
     font-family: "Microsoft YaHei";
   }
-
   .last_p {
     margin-bottom: 70px;
   }
-
   /*支付方式*/
   .pay {
     display: none;
   }
-
   .pay h4 {
     font-size: 24px;
     color: #666666;
     margin-top: 25px;
     margin-bottom: 15px;
   }
-
   .pay p {
     font-size: 16px;
     color: #575757;
     line-height: 2.8em;
     font-family: "Microsoft YaHei";
   }
-
   /*用户协议开始*/
   .protocol {
     display: none;
   }
-
   .protocol h4 {
     font-size: 24px;
     color: #666666;
     margin-top: 25px;
     margin-bottom: 15px;
   }
-
   .summary {
     display: inline-block;
     padding: 5px 20px;
@@ -271,7 +230,6 @@
     font-family: "Microsoft YaHei";
     margin: 40px 0 10px 0;
   }
-
   .protocol p {
     color: #616161;
     font-size: 16px;
@@ -279,12 +237,10 @@
     margin-top: 12px;
     font-family: "Microsoft YaHei";
   }
-
   /*退款开始*/
   .refund {
     display: none;
   }
-
   .refund table td {
     border: 1px solid black;
     color: #616161;
@@ -293,28 +249,23 @@
     font-family: "Microsoft YaHei";
     padding: 15px;
   }
-
   .refund_img {
     margin-bottom: 40px;
   }
-
   .td_l {
     text-align: left !important;
   }
-
   .refund table {
     border-collapse: collapse;
     border-spacing: 0;
     margin-bottom: 20px;
   }
-
   .refund h4 {
     font-size: 24px;
     color: #666666;
     margin-top: 25px;
     margin-bottom: 15px;
   }
-
   .refund p {
     color: #616161;
     font-size: 16px;
@@ -322,7 +273,6 @@
     margin-top: 12px;
     font-family: "Microsoft YaHei";
   }
-
   .refund_blue {
     color: #1897e0 !important;
   }
@@ -341,7 +291,7 @@
       </ul>
     </div>
     <div class="con_r">
-      <div class="about-con" :class="{show: isShow('about'),hide: !isShow('about')}">
+      <div class="about-con" :class="{show: isShow('about'), hide: !isShow('about')}">
         <div class="about_intru">
           <h3 class="about_tit">企业介绍</h3>
           <div class="about_tit_b"></div>
@@ -349,28 +299,27 @@
             企业湾（www.qiyewan.com）是国内领先的专注于中小企业服务的一站式综合服务体。由伯藜基金、哈佛校友投资创建，通过整合业内优秀的财务、法务、人事、IT技术等资源，汇聚中国广大的优秀大学生和专业的退休人员；利用移动互联网和云端技术，通过线下线下的服务方式，优化服务流程，降低服务成本。为中国千万中小企业、创新创业者提供一站超值的服务。核心团队主要由上市公司高管，资深财务、法务、人力资源负责人以及国内知名互联网企业的精英组成。
           </p>
         </div>
-
         <div class="culture">
           <h3 class="about_tit">企业文化</h3>
           <div class="about_tit_b"></div>
           <ul>
             <li>
-              <img src="../assets/img/cuture_1.jpg">
+              <img src="../assets/cuture_1.jpg">
               <h4>愿景</h4>
               <p>成为从业人员最多、最具有活力的专业服务机构。</p>
             </li>
             <li>
-              <img src="../assets/img/cuture_1.jpg">
+              <img src="../assets/cuture_1.jpg">
               <h4>使命</h4>
               <p>重塑中国企业服务和专业高等教育实践的生态。</p>
             </li>
             <li>
-              <img src="../assets/img/cuture_1.jpg">
+              <img src="../assets/cuture_1.jpg">
               <h4>战略</h4>
               <p>聚焦小微企业的需求，借助高校相关资源，弘扬企业家精神，强大的过程能力保证绩效和扩张。</p>
             </li>
             <li>
-              <img src="../assets/img/cuture_1.jpg">
+              <img src="../assets/cuture_1.jpg">
               <h4>服务承诺</h4>
               <p>一站、超值、快速响应</p>
             </li>
@@ -380,12 +329,12 @@
         <div class="advantage">
           <h3 class="about_tit">企业湾优势</h3>
           <div class="about_tit_b1"></div>
-          <div class="advan_img"><img src="../assets/img/about_advan.jpg"></div>
+          <div class="advan_img"><img src="../assets/about_advan.jpg"></div>
         </div>
         <div class="dream">
           <h3 class="about_tit">企业湾展望</h3>
           <div class="about_tit_b1"></div>
-          <div class="advan_img"><img src="../assets/img/about_dream.png"></div>
+          <div class="advan_img"><img src="../assets/about_dream.png"></div>
         </div>
       </div>
       <div class="contact_con" :class="{show: isShow('contact'),hide: !isShow('contact')}">
@@ -398,7 +347,6 @@
             <p>邮箱：qiyewan@qiyewan.com</p>
             <p>公司网址：www.qiyewan.com</p>
           </li>
-
           <li>
             <h5>南京分公司</h5>
             <div class="add">地址：南京市玄武区玄武大道699-1号徐庄软件管委会607室</div>
@@ -519,7 +467,6 @@
         <p>3.您承诺接受并遵守本协议的约定。如果您违反本协议约定的内容，您应立即停止注册程序或停止使用企业湾服务。</p>
         <p>
           4.企业湾有权根据需要不时地制订、修改本协议及各类规则，并以网站公示的方式进行公告，不再另行通知。变更后的协议和规则一经在网站公布后，立即自动生效。如您不同意相关变更内容，应当提出并立即停止使用企业湾服务。您继续使用企业湾服务的，即表示您对修改的协议无异议并接受。</p>
-
         <span class="summary">二、用户注册 </span>
         <p>1.注册者资格：<br>在您完成注册程序或以其他本公司允许的方式实际使用企业湾服务时，您应当是具备完全民事权利能力和完全民事行为能力的自然人、法人或其他组织。若您不具备前述主体资格，则您及您的监护人应承担因此而导致的一切后果，且本公司有权注销(永久冻结)您的企业湾账户，并向您及您的监护人索偿。
         </p>
@@ -531,12 +478,10 @@
           编码等联系方式，以便本公司或其他会员与您进行有效联系，因通过这些联系方式无法与您取得联系，导致您在使用企业湾服务过程中产生任何损失或增加费用的， 应由您完全独自承担。
           您在使用企业湾服务过程中，所产生的应纳税赋，以及一切硬件、软件、服务及其它方面的费用，均由您独自承担。</p>
 
-
         <span class="summary">三、 本公司服务</span>
         <p>1.通过本公司及其合作公司或个人提供的服务，会员可在企业湾上获得双软高新、管理体系认证、公司注册/变更/年报、知识产权、财会税务、法律服务、行业资质许可等方面的信息服务及技术服务支持。</p>
         <p>2.您了解并同意，本公司有权应政府部门(包括司法及行政部门)的要求，向其提供您在企业湾填写的注册信息和交易记录等必要信息。如您涉嫌侵犯他人人身权
           益或者危害公共利益及国家安全，则本公司亦有权在初步判断涉嫌侵权行为存在的情况下，向权利人或司法机关提供您必要的身份信息。</p>
-
         <span class="summary">四、服务使用规范</span>
         <p>1.在企业湾上使用本公司服务过程中，您承诺遵守以下约定：<br>
           a) 在使用企业湾服务过程中实施的所有行为均遵守国家法律、法规等规范性文件及企业湾各项规则的规定和要求，不违背社会公共利益或公共道德，不损害他人的合法
@@ -554,7 +499,6 @@
           e) 对于您涉嫌违反承诺的行为对任意第三方造成损害的，您均应当以自己的名义独立承担所有的法律责任，并应确保本公司免于因此产生损失或增加费用。<br>
           f) 如您涉嫌违反有关法律或者本协议之规定，使本公司遭受任何损失，或受到任何第三方的索赔，或受到任何行政管理部门的处罚，您应当赔偿本公司因此造成的损失及(或)发生的费用，包括合理的律师费用。
         </p>
-
         <span class="summary">五、 特别授权</span>
         <p>您完全理解并不可撤销地授予本公司及其合作公司下列权利：<br>
           1.一旦您向本公司及(或)其合作公司或个人作出任何形式的承诺，且相关公司已确认您违反了该承诺，则本公司有权立即按您的承诺或
@@ -622,7 +566,6 @@
           例和(或)行业惯例。</p>
         <p>2.因本协议产生之争议，应依照中华人民共和国法律予以处理，并以上海知加信息科技有限公司注册地法院为第一审管辖法院。
           注：以工商核对为准，填写的信息真实可靠。</p>
-
       </div>
     </div>
     <div class="clearfix"></div>

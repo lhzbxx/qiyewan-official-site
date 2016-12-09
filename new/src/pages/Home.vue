@@ -1,4 +1,999 @@
-<style>
+<template>
+  <div>
+    <div id="banner">
+      <div class="slide"
+           :class="{active: isBannerActive(index)}"
+           :style="item.backgroundColor"
+           v-for="(item, index) in banners">
+        <div class="container" style="position: relative; height: 100%">
+          <div class="slide-left">
+            <h1>
+              <span class="big-title">{{ item.mainTitle }}</span>
+              {{ item.subTitle }}
+            </h1>
+            <p>{{ item.summary }}</p>
+            <button>
+              <router-link
+                :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
+                了解详情
+              </router-link>
+            </button>
+          </div>
+          <div class="slide-right"
+               onmouseleave="this.style.transform='rotateX(0deg) rotateY(0deg)'"
+               onmousemove="x = event.clientY + document.body.scrollTop - 108;
+                          y = (event.clientX + document.body.scrollLeft - 360 - (window.screen.width - 1160) / 2);
+                          this.style.transform='rotateX(' + 15 * (x - 250) / 500 + 'deg) rotateY(' + 15 * (400 - y) / 800 + 'deg)'">
+            <div class="right-image" data-zindex="50" style="transform: translateZ(50px);">
+              <img :src="item.imageBottomUrl" alt="">
+            </div>
+            <div class="right-image" data-zindex="100" style="transform: translateZ(100px);">
+              <img :src="item.imageMiddleUrl" alt="">
+            </div>
+            <div class="right-image" data-zindex="150" style="transform: translateZ(150px);">
+              <img :src="item.imageTopUrl" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul id="banner-tab">
+        <li v-for="n in banners.length"
+            v-on:click="setBannerActive(n-1)"
+            :class="{active: isBannerActive(n-1)}"></li>
+      </ul>
+    </div>
+    <div id="introduce">
+      <div class="container">
+        <ul>
+          <li v-for="item in introduces" v-if="getRegion.code+item.serialId != 'SCCDPS0004'">
+            <router-link
+              :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
+              <div class="l">
+                <h5>{{ getRegion.code+item.serialId == 'BJBJPS0004' ? '注册宝' : item.title }}</h5>
+                <p>{{ item.summary }}</p>
+              </div>
+              <div class="r introduce_img" :class="item.image"></div>
+            </router-link>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="hot-products">
+      <div class="container">
+        <div class="title">
+          <h3>大热门服务</h3>
+          <div class="prompt">聚焦企业服务需求，一站式全方位服务</div>
+        </div>
+        <ul>
+          <li class="hot-product"
+              v-for="(hotProduct, index) in hotProducts"
+              :class="{active: isActive(index)}"
+              v-on:mouseover="setActive(index)">
+            <div class="card">
+              <div class="content-info">
+                <div class="content-info-detail">
+                  <div class="classification-icon">
+                    <img v-show="!isHotActive(index)" :src="hotProduct.image">
+                    <img v-show="isHotActive(index)" :src="hotProduct.activeImage">
+                  </div>
+                  <div class="classification-title">
+                    {{ hotProduct.title }}
+                  </div>
+                  <div class="classification-summary">
+                    {{ hotProduct.summary }}
+                  </div>
+                </div>
+              </div>
+              <div class="content-split-line"></div>
+              <div class="hot-product-content content-first">
+                <p></p>
+                <p v-for="item in hotProduct.first">{{ item }}</p>
+                <p></p>
+              </div>
+              <div class="hot-product-content content-second">
+                <div class="main-product">
+                  <h5>
+                    {{ hotProduct.main.title }}
+                  </h5>
+                  <div class="main-product-summary">
+                    {{ hotProduct.main.summary }}
+                  </div>
+                  <button class="main-btn">
+                    <router-link
+                      :to="{ name: 'product-detail', params: { serialId: getRegion.code+hotProduct.main.serialId }}">
+                      立即购买
+                    </router-link>
+                  </button>
+                </div>
+                <div class="l other-product"
+                     v-for="item in hotProduct.other">
+                  <h6>
+                    {{ item.title }}
+                  </h6>
+                  <div class="other-product-summary">
+                    {{ item.summary }}
+                  </div>
+                  <router-link
+                    :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
+                    立即购买
+                  </router-link>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="timeline">
+      <div class="container">
+        <div class="title">
+          <h3>企业树发展史</h3>
+          <div class="prompt">不同阶段,企业树需要不同的浇灌</div>
+        </div>
+        <ul>
+          <li v-for="(item, index) in timelines"
+              v-on:mouseover="state=index, stateType=0"
+              :class="{active: state == index}">
+            {{ item.title }}
+          </li>
+        </ul>
+        <div class="timeline-products">
+                    <span v-for="(item, index) in timelines[state].types"
+                          v-on:click="stateType=index"
+                          :class="{active: stateType == index}">
+                        {{ item.title }}
+                    </span>
+        </div>
+        <div class="timeline-pics">
+          <div class="timeline-pic-left">
+            <img :src="timelines[state].types[stateType].products.left.url">
+          </div>
+          <div class="timeline-pic-right">
+            <div class="l timeline-pic-one timeline-pic">
+              <router-link
+                :to="{ name: 'product-detail', params: { serialId: getRegion.code+timelines[state].types[stateType].products.right.serialId }}">
+                <img :src="timelines[state].types[stateType].products.right.url">
+              </router-link>
+            </div>
+            <div class="l timeline-pic-two timeline-pic"
+                 v-for="item in timelines[state].types[stateType].products.one">
+              <router-link
+                :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
+                <img :src="item.url">
+              </router-link>
+            </div>
+            <div class="l timeline-pic-one timeline-pic">
+              <router-link
+                :to="{ name: 'product-detail', params: { serialId: getRegion.code+timelines[state].types[stateType].products.rightBottom.serialId }}">
+                <img :src="timelines[state].types[stateType].products.rightBottom.url">
+              </router-link>
+            </div>
+            <div class="l timeline-pic-two timeline-pic">
+              <router-link
+                :to="{ name: 'product-detail', params: { serialId: getRegion.code+timelines[state].types[stateType].products.bottomOne.serialId }}">
+                <img :src="timelines[state].types[stateType].products.bottomOne.url">
+              </router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="container" style="height: 100%;">
+      <div class="title1">
+        <h3>客户声音</h3>
+        <div class="prompt">您的声音，是我们前进的动力</div>
+      </div>
+    </div>
+    <div id="voices">
+      <div class="voice"
+           :class="{show: isVoiceBannerActive(index)}"
+           v-for="(voice,index) in customerVoices">
+        <div class="voice-left-img">
+          <img :src="voice.headImg">
+        </div>
+        <div class="voice-right-img">
+          <div class="summary">
+            <h2>{{ voice.content}}</h2>
+            <p>{{ voice.company}}</p>
+            <p class="position">{{ voice.posion}}</p>
+            <p class="name">{{ voice.name}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="container voice-control-con">
+        <div id="voice-control-left" v-on:click="setVoiceBanner(voiceBanner-1)"
+             class="voice-control el-icon-arrow-left"></div>
+        <div id="voice-control-right" v-on:click="setVoiceBanner(voiceBanner+1)"
+             class="voice-control  el-icon-arrow-right"></div>
+      </div>
+    </div>
+    <div class="container" v-if="news.length > 0">
+      <ul id="news-tabs">
+        <li class="news-tab"
+            v-for="(item, index) in news"
+            :class="{active: isNewsTab(index)}"
+            v-on:mouseover="setNewsTab(index),newsTab=index">
+          {{ item.category }}
+        </li>
+      </ul>
+      <div id="news">
+        <lh-news v-for="article in news[newsTab].articles.data" class="news_link"
+                 :img="article.thumb"
+                 :title="article.title"
+                 :summary="article.desc"
+                 :tags="article.tags"
+                 :date="article.updated_at"
+                 :views="article.view_count"
+                 :id="article.id+''">
+        </lh-news>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="tools">
+      <div class="container">
+        <div class="title">
+          <h3>实用工具</h3>
+          <div class="prompt">
+            工商、商标等查询，为您创业开启便捷之路
+          </div>
+        </div>
+        <ul>
+          <li class="tool" v-for="item in tools">
+            <a :href="item.url" target="_blank">
+              <div class="tool-img">
+                <img :src="item.cover" alt="">
+              </div>
+              <div class="tool-img-mask">
+                <img src="../assets/sousuo.png" alt="">
+              </div>
+              <p>{{ item.department }}</p>
+              <h5>{{ item.service }}</h5>
+              <div class="tool-underline"></div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="promise">
+      <div class="promise-image"></div>
+      <ul>
+        <li>
+          <div class="l"><img src="../assets/pro_1.png"></div>
+          <div class="l promise-right">
+            <h5>资质认证</h5>
+            <p>专业资质及实名服务</p>
+          </div>
+        </li>
+        <li>
+          <div class="l"><img src="../assets/pro_2.png"></div>
+          <div class="l promise-right">
+            <h5>支付安全</h5>
+            <p>明码标价及赔付机制</p>
+          </div>
+        </li>
+        <li>
+          <div class="l"><img src="../assets/pro_3.png"></div>
+          <div class="l promise-right">
+            <h5>高效优质</h5>
+            <p>专业人员对口接待</p>
+          </div>
+        </li>
+        <li>
+          <div class="l"><img src="../assets/pro_1.png"></div>
+          <div class="l promise-right">
+            <h5>全程无忧</h5>
+            <p>服务进度实时反馈</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</template>
+<script>
+  import {mapGetters} from 'vuex'
+  import authApi from '../api/auth'
+  import articleApi from '../api/article'
+  export default {
+    computed: mapGetters({
+      getRegion: 'getRegion'
+    }),
+    data () {
+      return {
+        introduces: [
+          {
+            serialId: 'PS0001',
+            'title': '注册财税一条龙',
+            'summary': '助您专注核心业务',
+            'image': 'introduce_img1'
+          },
+          {
+            serialId: 'PS0002',
+            'title': '法财宝',
+            'summary': '为您法律财务保驾护航',
+            'image': 'introduce_img2'
+          },
+          {
+            serialId: 'PS0003',
+            'title': '商标宝',
+            'summary': '助您提升企业形象',
+            'image': 'introduce_img3'
+          },
+          {
+            serialId: 'PS0004',
+            'title': '人事宝',
+            'summary': '社保全程无忧',
+            'image': 'introduce_img4'
+          }
+        ],
+        hotProducts: [
+          {
+            title: '工商服务',
+            image: 'http://cdn.qiyewan.com/hot_1.png',
+            activeImage: 'http://cdn.qiyewan.com/ser_1.png',
+            summary: '工商，就这么简单…',
+            first: [
+              '公司注册',
+              '1元注册+零申报记账',
+              '公司名称变更',
+              '经营范围变更',
+              '法人代表变更',
+              '三证合一'
+
+            ],
+            main: {
+              serialId: 'IC0001',
+              title: '公司注册',
+              summary: '有限责任公司、分公司、合伙企业注册，三/五证合一营业执照全程无忧'
+            },
+            other: [
+              {
+                serialId: 'IC0003',
+                title: '1元注册+零申报记账',
+                summary: '1年代账送1元公司注册'
+              },
+              {
+                serialId: 'IC0004',
+                title: '公司名称变更',
+                summary: '工商变更，章证照统一变更'
+              },
+              {
+                serialId: 'IC0005',
+                title: '经营范围变更',
+                summary: '工商变更，不包括税务变更'
+              },
+              {
+                serialId: 'IC0006',
+                title: '法人代表变更',
+                summary: '工商变更，证照变更'
+              }
+            ]
+          },
+          {
+            title: '财税服务',
+            image: 'http://cdn.qiyewan.com/hot_2.png',
+            activeImage: 'http://cdn.qiyewan.com/ser_2.png',
+            summary: '财务清晰，纳税放心',
+            first: [
+              '零申报代理记账',
+              '小规模纳税人代理记账',
+              '一般纳税人代理记账',
+              '税务报道，税种认证',
+              '一般纳税人认定',
+              '人力资源管理'
+            ],
+            main: {
+              serialId: 'FC0001',
+              title: '零申报代理记账',
+              summary: '专业会计提供税务、财务咨询，为您做账、报税。零申报(无经济业务发生，申报数据为零)'
+            },
+            other: [
+              {
+                serialId: 'FC0002',
+                title: '小规模纳税人代理记账',
+                summary: '免费财税咨询，做账、报税'
+              },
+              {
+                serialId: 'FC0003',
+                title: '一般纳税人代理记账',
+                summary: '免费财税咨询，做账、报税'
+              },
+              {
+                serialId: 'FC0006',
+                title: '税务报道，税种认证',
+                summary: '报税、核税，购买CA证书等'
+              },
+              {
+                serialId: 'FC0008',
+                title: '一般纳税人认定',
+                summary: '报税、核税，购买CA证书等'
+              }
+            ]
+          },
+          {
+            title: '法律服务',
+            image: 'http://cdn.qiyewan.com/hot_3.png',
+            activeImage: 'http://cdn.qiyewan.com/ser_3.png',
+            summary: '您的私人法律顾问',
+            first: [
+              '商标注册',
+              '合同撰写与审查（定制）',
+              '法律咨询',
+              '股东，合伙协议',
+              '实用新型专利申请',
+              '公司章程'
+            ],
+            main: {
+              serialId: 'LD0013',
+              title: '商标注册',
+              summary: '专业律师查询意向商标，提交商标申请建议书，专人全程办理。'
+            },
+            other: [
+              {
+                serialId: 'LD0002',
+                title: '合同撰写与审查（定制）',
+                summary: '专业律师撰写与审查合同'
+              },
+              {
+                serialId: 'LD0006',
+                title: '法律咨询',
+                summary: '专业律师，一对一咨询'
+              },
+              {
+                serialId: 'LD0004',
+                title: '股东，合伙协议',
+                summary: '专业律师撰写股东合伙协议'
+              },
+              {
+                serialId: 'LD0011',
+                title: '实用新型专利申请',
+                summary: '专业律师制定知识产权战略'
+              }
+            ]
+          },
+          {
+            title: '人事服务',
+            image: 'http://cdn.qiyewan.com/hot_5.png',
+            activeImage: 'http://cdn.qiyewan.com/ser_5.png',
+            summary: '创业不忘养老',
+            first: [
+              '委托代缴社保公积金服务',
+              '企业社保账户开户',
+              '企业公积金账户开户',
+              '个人社保开户',
+              '个人社保公积金代缴',
+              '人力资源基础文档'
+            ],
+            main: {
+              serialId: 'HR0003',
+              title: '委托代缴社保公积金服务',
+              summary: '办理员工用退工，社保、公积金增加减少以及缴费基数变更(服务费：3人及以下98.8元/月;从第四人开始，每增加一人，服务费多增加18.8元/月)'
+            },
+            other: [
+              {
+                serialId: 'HR0001',
+                title: '企业社保账户开户',
+                summary: '办理企业社保开户许可'
+              },
+              {
+                serialId: 'HR0002',
+                title: '企业公积金账户开户',
+                summary: '办理企业公积金开户许可'
+              },
+              {
+                serialId: 'HR0004',
+                title: '个人社保开户',
+                summary: '办理个人社保开户许可'
+              },
+              {
+                serialId: 'HR0005',
+                title: '个人社保公积金代缴',
+                summary: '社保交纳、基数变更'
+              }
+            ]
+          }
+        ],
+        tools: [
+          {
+            department: '中国商标网【商标局】',
+            service: '商标查询',
+            url: '#/brand',
+            cover: 'http://cdn.qiyewan.com/tool1.png'
+          },
+          {
+            department: '全国企业信用信息公示系统',
+            service: '工商查询',
+            url: 'http://gsxt.saic.gov.cn/',
+            cover: 'http://cdn.qiyewan.com/tool2.png'
+          },
+          {
+            department: '国际知识产权局',
+            service: '专利查询',
+            url: 'http://cpquery.sipo.gov.cn/',
+            cover: 'http://cdn.qiyewan.com/tool3.png'
+          },
+          {
+            department: '中国版权保护中心',
+            service: '软件著作权查询',
+            url: 'http://www.ccopyright.com.cn/cpcc/RRegisterAction.do?method=list&no=fck',
+            cover: 'http://cdn.qiyewan.com/tool4.png'
+          }
+        ],
+        timelines: [
+          {
+            title: '种子萌芽',
+            types: [
+              {
+                title: '创立公司',
+                products: {
+                  left: {
+                    url: 'http://cdn.qiyewan.com/timeline1-5-1.png'
+                  },
+                  right: {
+                    serialId: 'IC0002',
+                    url: 'http://cdn.qiyewan.com/timeline1-5-2.png'
+                  },
+                  one: [
+                    {
+                      serialId: 'IC0012',
+                      url: 'http://cdn.qiyewan.com/timeline1-5-3.png'
+                    },
+                    {
+                      serialId: 'HR0003',
+                      url: 'http://cdn.qiyewan.com/timeline1-5-4.png'
+                    },
+                    {
+                      serialId: 'HR0002',
+                      url: 'http://cdn.qiyewan.com/timeline1-5-5.png'
+                    }
+                  ],
+                  rightBottom: {
+                    serialId: 'IT0001',
+                    url: 'http://cdn.qiyewan.com/timeline1-5-6.png'
+                  },
+                  bottomOne: {
+                    serialId: 'HR0001',
+                    url: 'http://cdn.qiyewan.com/timeline1-5-7.png'
+                  }
+                }
+
+              },
+              {
+                title: '财税服务',
+                products: {
+                  left: {
+                    url: 'http://cdn.qiyewan.com/timeline1-3-1.png'
+                  },
+                  right: {
+                    serialId: 'FC0003',
+                    url: 'http://cdn.qiyewan.com/timeline1-3-2.png'
+                  },
+                  one: [
+                    {
+                      serialId: 'FC0008',
+                      url: 'http://cdn.qiyewan.com/timeline1-3-3.png'
+                    },
+                    {
+                      serialId: 'IT0004',
+                      url: 'http://cdn.qiyewan.com/timeline1-3-4.png'
+                    },
+                    {
+                      serialId: 'IT0005',
+                      url: 'http://cdn.qiyewan.com/timeline1-3-5.png'
+                    }
+                  ],
+                  rightBottom: {
+                    serialId: 'IT0003',
+                    url: 'http://cdn.qiyewan.com/timeline1-3-6.png'
+                  },
+                  bottomOne: {
+                    serialId: 'IT0002',
+                    url: 'http://cdn.qiyewan.com/timeline1-3-7.png'
+                  }
+                }
+              },
+              {
+                title: '法律服务',
+                products: {
+                  left: {
+                    url: 'http://cdn.qiyewan.com/timeline1-2-1.png'
+                  },
+                  right: {
+                    serialId: 'LD0010',
+                    url: 'http://cdn.qiyewan.com/timeline1-2-2.png'
+                  },
+                  one: [
+                    {
+                      serialId: 'LD0011',
+                      url: 'http://cdn.qiyewan.com/timeline1-2-3.png'
+                    },
+                    {
+                      serialId: 'LD0012',
+                      url: 'http://cdn.qiyewan.com/timeline1-2-4.png'
+                    },
+                    {
+                      serialId: 'LD0014',
+                      url: 'http://cdn.qiyewan.com/timeline1-2-5.png'
+                    }
+                  ],
+                  rightBottom: {
+                    serialId: 'LD0002',
+                    url: 'http://cdn.qiyewan.com/timeline1-2-6.png'
+                  },
+                  bottomOne: {
+                    serialId: 'LD0015',
+                    url: 'http://cdn.qiyewan.com/timeline1-2-7.png'
+                  }
+                }
+              }
+            ]
+          },
+          {
+            title: '茁壮成长',
+            types: [
+              {
+                title: '工商服务',
+                products: {
+                  left: {
+                    url: 'http://cdn.qiyewan.com/timeline1-8-1.png'
+                  },
+                  right: {
+                    serialId: 'IC0009',
+                    url: 'http://cdn.qiyewan.com/timeline1-8-2.png'
+                  },
+                  one: [
+                    {
+                      serialId: 'IC0004',
+                      url: 'http://cdn.qiyewan.com/timeline1-8-3.png'
+                    },
+                    {
+                      serialId: 'IC0005',
+                      url: 'http://cdn.qiyewan.com/timeline1-8-4.png'
+                    },
+                    {
+                      serialId: 'IC0006',
+                      url: 'http://cdn.qiyewan.com/timeline1-8-5.png'
+                    }
+                  ],
+                  rightBottom: {
+                    serialId: 'FC0001',
+                    url: 'http://cdn.qiyewan.com/timeline1-4-6.png'
+                  },
+                  bottomOne: {
+                    serialId: 'IC0010',
+                    url: 'http://cdn.qiyewan.com/timeline1-8-7.png'
+                  }
+                }
+              },
+              {
+                title: '财税法+',
+                products: {
+                  left: {
+                    url: 'http://cdn.qiyewan.com/timeline1-4-1.png'
+                  },
+                  right: {
+                    serialId: 'FC0004',
+                    url: 'http://cdn.qiyewan.com/timeline1-4-2.png'
+                  },
+                  one: [
+                    {
+                      serialId: 'FC0005',
+                      url: 'http://cdn.qiyewan.com/timeline1-4-3.png'
+                    },
+                    {
+                      serialId: 'FC0006',
+                      url: 'http://cdn.qiyewan.com/timeline1-4-4.png'
+                    },
+                    {
+                      serialId: 'FC0007',
+                      url: 'http://cdn.qiyewan.com/timeline1-4-5.png'
+                    }
+                  ],
+                  rightBottom: {
+                    serialId: 'FC0001',
+                    url: 'http://cdn.qiyewan.com/timeline1-4-6.png'
+                  }, bottomOne: {
+                    serialId: 'FC0010',
+                    url: 'http://cdn.qiyewan.com/timeline1-4-7.png'
+                  }
+
+                }
+              }
+            ]
+          },
+          {
+            title: '枝繁叶茂',
+            types: [
+              {
+                title: '法律服务',
+                products: {
+                  left: {
+                    url: 'http://cdn.qiyewan.com/timeline1-6-1.png'
+                  },
+                  right: {
+                    serialId: 'LD0004',
+                    url: 'http://cdn.qiyewan.com/timeline1-6-2.png'
+                  },
+                  one: [
+                    {
+                      serialId: 'LD0005',
+                      url: 'http://cdn.qiyewan.com/timeline1-6-3.png'
+                    },
+                    {
+                      serialId: 'LD0003',
+                      url: 'http://cdn.qiyewan.com/timeline1-6-4.png'
+                    },
+                    {
+                      serialId: 'LD0001',
+                      url: 'http://cdn.qiyewan.com/timeline1-6-5.png'
+                    }
+                  ], rightBottom: {
+                    serialId: 'LD0006',
+                    url: 'http://cdn.qiyewan.com/timeline1-6-6.png'
+                  }, bottomOne: {
+                    serialId: 'LD0013',
+                    url: 'http://cdn.qiyewan.com/timeline1-6-7.png'
+                  }
+
+                }
+              },
+              {
+                title: '增值服务',
+                products: {
+                  left: {
+                    url: 'http://cdn.qiyewan.com/timeline1-7-1.png'
+                  },
+                  right: {
+                    serialId: 'FC0002',
+                    url: 'http://cdn.qiyewan.com/timeline1-7-2.png'
+                  },
+                  one: [
+                    {
+                      serialId: 'FC0009',
+                      url: 'http://cdn.qiyewan.com/timeline1-7-3.png'
+                    },
+                    {
+                      serialId: 'LD0002',
+                      url: 'http://cdn.qiyewan.com/timeline1-7-4.png'
+                    },
+                    {
+                      serialId: 'LD0009',
+                      url: 'http://cdn.qiyewan.com/timeline1-7-5.png'
+                    }
+                  ],
+                  rightBottom: {
+                    serialId: 'IT0003',
+                    url: 'http://cdn.qiyewan.com/timeline1-7-6.png'
+                  },
+                  bottomOne: {
+                    serialId: 'HR0006',
+                    url: 'http://cdn.qiyewan.com/timeline1-7-7.png'
+                  }
+                }
+              }
+            ]
+          },
+          {
+            title: '落叶归根',
+            types: [
+              {
+                title: '注销公司',
+                products: {
+                  left: {
+                    url: 'http://cdn.qiyewan.com/timeline1-1-1.png'
+                  },
+                  right: {
+                    serialId: 'IC0013',
+                    url: 'http://cdn.qiyewan.com/timeline1-1-2.png'
+                  },
+                  one: [
+                    {
+                      serialId: 'LD0006',
+                      url: 'http://cdn.qiyewan.com/timeline1-1-3.png'
+                    },
+                    {
+                      serialId: 'IC0013',
+                      url: 'http://cdn.qiyewan.com/timeline1-1-4.png'
+                    },
+                    {
+                      serialId: 'IC0010',
+                      url: 'http://cdn.qiyewan.com/timeline1-1-5.png'
+                    }],
+                  rightBottom: {
+                    serialId: 'LD0002',
+                    url: 'http://cdn.qiyewan.com/timeline1-1-6.png'
+                  },
+                  bottomOne: {
+                    serialId: 'IC0013',
+                    url: 'http://cdn.qiyewan.com/timeline1-1-7.png'
+                  }
+
+                }
+
+              }
+            ]
+
+          }
+        ],
+        dialogVisible: false,
+        formStacked: {
+          name: '',
+          region: '',
+          type: ''
+        },
+        banners: [
+          {
+            serialId: 'IC0001',
+            mainTitle: '公司服务',
+            subTitle: '想你所想',
+            summary: '让您满意是我们不变的服务追求',
+            imageTopUrl: 'http://cdn.qiyewan.com/banner-1-top.png',
+            imageMiddleUrl: 'http://cdn.qiyewan.com/banner-1-middle.png',
+            imageBottomUrl: 'http://cdn.qiyewan.com/banner-1-bottom.png',
+            backgroundColor: 'background-color: #2fa7f5;'
+
+          },
+          {
+            serialId: 'IC0001',
+            mainTitle: '公司注册',
+            subTitle: '快人一步',
+            summary: '创业园区、孵化基地专业对接',
+            imageTopUrl: 'http://cdn.qiyewan.com/banner-5-top-v1.png',
+            imageMiddleUrl: 'http://cdn.qiyewan.com/banner-5-middle-v1.png',
+            imageBottomUrl: 'http://cdn.qiyewan.com/banner-5-bottom-v1.png',
+            backgroundColor: 'background-color: #2399f3;'
+          },
+          {
+            serialId: 'FC0001',
+            mainTitle: '代理记账',
+            subTitle: '只需98元',
+            summary: '免费财税咨询，创业财税无忧',
+            imageTopUrl: 'http://cdn.qiyewan.com/banner-2-top.png',
+            imageMiddleUrl: 'http://cdn.qiyewan.com/banner-2-middle.png',
+            imageBottomUrl: 'http://cdn.qiyewan.com/banner-2-bottom.png',
+            backgroundColor: 'background-color: #2ca8dc;'
+          },
+          {
+            serialId: 'LD0001',
+            mainTitle: '法律咨询',
+            subTitle: '全程陪同',
+            summary: '专业律师为企业保驾护航',
+            imageTopUrl: 'http://cdn.qiyewan.com/banner-3-middle.png',
+            imageMiddleUrl: 'http://cdn.qiyewan.com/banner-3-bottom.png',
+            imageBottomUrl: 'http://cdn.qiyewan.com/banner-3-top.png',
+            backgroundColor: 'background-color: #0daef2;'
+          },
+          {
+            serialId: 'HR0001',
+            mainTitle: '社保公积金',
+            subTitle: '',
+            summary: '缴纳社保公积金,养老无忧',
+            imageTopUrl: 'http://cdn.qiyewan.com/banner-4-bottom.png',
+            imageMiddleUrl: 'http://cdn.qiyewan.com/banner-4-middle.png',
+            imageBottomUrl: 'http://cdn.qiyewan.com/banner-4-top-1.png',
+            backgroundColor: 'background-color: #0770cb;'
+          }
+        ],
+        news: [],
+        customerVoices: [
+          {
+            headImg: 'http://cdn.qiyewan.com/customer1.png',
+            content: '企业湾的增值服务特别适合像我们这样的创业型公司。服务专业，价格公道,适合创业公司在经费不宽裕的情况下满足企业刚需。我认为企业湾是一个一站式、超值，适合初创公司的企业服务提供商。',
+            company: '成都天添益网络科技有限公司',
+            position: 'COO',
+            name: ''
+          },
+          {
+            headImg: 'http://cdn.qiyewan.com/customer2.png',
+            content: '平和温润、真诚无华为朴；知行合一、志坚质洁为正。正是这种相同的真挚价值观让朴正教育咨询和企业湾相遇相知，并开始了旗下花田儿童教育项目。项目的顺利筹建离不开企业湾专业细致的服务和支持，让我们不忘初心一起走下去。',
+            company: '四川朴正教育咨询有限公司',
+            position: '花田教育',
+            name: ''
+          },
+          {
+            headImg: 'http://cdn.qiyewan.com/customer3_1.png',
+            content: '企业湾为我们提供人事、法律、财务等专业服务，他们以专业的水准、负责的态度服务客户，提供全方位的咨询与帮助，使我们没有后顾之忧。',
+            company: '镇江市红包兔信息技术有限公司',
+            position: '创始人兼CEO',
+            name: ''
+          },
+          {
+            headImg: 'http://cdn.qiyewan.com/customer4_1.png',
+            content: '企业湾为我们解决了初创企业在财务、法律方面资源短缺、缺乏行业经验的老大难问题，让我们在创业的路上省了不少心。用优质贴心专业的服务，为中小型企业的创业之路保驾护航。',
+            company: '上海恩陶投资管理有限公司',
+            position: '公司负责人',
+            name: ''
+          },
+          {
+            headImg: 'http://cdn.qiyewan.com/customer5.png',
+            content: '我们不仅是企业湾的客户，也是企业湾的战略合作伙伴。企业湾人诚恳的态度、专业的服务让我感动，作为创业企业，我们共同进步。',
+            company: '上海云简软件科技有限公司',
+            position: '创始人兼CEO',
+            name: ''
+          },
+          {
+            headImg: 'http://cdn.qiyewan.com/customer6_1.png',
+            content: '企业湾响应迅速，帮我们节省了很多的时间，从工商到人事法律，在企业湾都得到了一站式的解决，省时省事，使我们有更多的精力专注在本质工作。',
+            company: '南京贝贝帮教育咨询有限公司',
+            position: '创始人兼CEO',
+            name: ''
+          }
+        ],
+        currentDate: "2016年10月13日",
+        banner: 0,
+        error: null,
+        active: 3,
+        state: 0,
+        stateType: 0,
+        newsTab: 0,
+        voiceBanner: 0,
+        hotActive: 3
+      }
+    },
+    methods: {
+      setActive(index) {
+        this.active = index;
+        this.hotActive = index;
+      },
+      isActive(index) {
+        return this.active == index;
+      },
+      setBannerActive(index) {
+        this.banner = index;
+      },
+      isBannerActive(index) {
+        return this.banner == index;
+      },
+      isHotActive(index){
+        return this.hotActive == index;
+      },
+      setVoiceBanner(index){
+        if (index < 0) index = 5;
+        if (index > 5) index = 0;
+        this.voiceBanner = index;
+      },
+      isVoiceBannerActive(index) {
+        return this.voiceBanner == index;
+      },
+      setNewsTab(index) {
+        this.newsTab = index;
+      },
+      isNewsTab(index) {
+        return this.newsTab == index;
+      }
+    },
+    created() {
+//      let vm = this
+//      authApi.getRegion(region => {
+//        vm.$store.commit('CHANGE_REGION', region)
+//      })
+//      articleApi.getHomeNews(data => {
+//        vm.news = data.data
+//      }, error => {
+//        vm.error = error
+//      })
+    },
+    mounted() {
+      let vm = this
+      setInterval(function () {
+        if (vm.banner === (vm.banners.length - 1)) {
+          vm.banner = 0
+        } else {
+          vm.banner += 1
+        }
+      }, 5000)
+      setInterval(function () {
+        if (vm.voiceBanner === (vm.customerVoices.length - 1)) {
+          vm.voiceBanner = 0
+        } else {
+          vm.voiceBanner += 1
+        }
+      }, 5000)
+    }
+  }
+</script>
+<style scoped>
   #introduce {
     height: 127px;
     width: 100%;
@@ -8,41 +1003,41 @@
   .introduce_img1 {
     width: 77px;
     height: 80px;
-    background: url("../assets/img/intro_1.png") no-repeat;
+    background: url("../assets/intro_1.png") no-repeat;
   }
 
   #introduce ul li:hover .introduce_img1 {
-    background: url("../assets/img/intro_5.png") no-repeat;
+    background: url("../assets/intro_5.png") no-repeat;
   }
 
   .introduce_img2 {
     width: 77px;
     height: 80px;
-    background: url("../assets/img/intro_2.png") no-repeat;
+    background: url("../assets/intro_2.png") no-repeat;
   }
 
   #introduce ul li:hover .introduce_img2 {
-    background: url("../assets/img/intro_6.png") no-repeat;
+    background: url("../assets/intro_6.png") no-repeat;
   }
 
   .introduce_img3 {
     width: 89px;
     height: 80px;
-    background: url("../assets/img/intro_3.png") no-repeat;
+    background: url("../assets/intro_3.png") no-repeat;
   }
 
   #introduce ul li:hover .introduce_img3 {
-    background: url("../assets/img/intro_7.png") no-repeat;
+    background: url("../assets/intro_7.png") no-repeat;
   }
 
   .introduce_img4 {
     width: 77px;
     height: 80px;
-    background: url("../assets/img/intro_4.png") no-repeat;
+    background: url("../assets/intro_4.png") no-repeat;
   }
 
   #introduce ul li:hover .introduce_img4 {
-    background: url("../assets/img/intro_8.png") no-repeat;
+    background: url("../assets/intro_8.png") no-repeat;
   }
 
   #introduce ul {
@@ -865,8 +1860,7 @@
   .news-tab.active {
     z-index: 10;
     border: 1px solid #139cd7;
-    border-top-width: 1px;
-    border-bottom: 1px solid transparent;
+    border-bottom-color: transparent;
     background-color: white;
     color: #139cd7;
   }
@@ -891,32 +1885,32 @@
   }
 
   .promise ul :first-child {
-    margin-left: 0px;
+    margin-left: 0;
   }
 
   .promise ul :last-child {
     border-right: none;
   }
 
-  .pro_r {
+  .promise-right {
     margin-left: 10px;
   }
 
-  .pro_r h5 {
+  .promise-right h5 {
     font-weight: normal;
     font-size: 17px;
     margin-top: 12px;
     letter-spacing: 3px;
   }
 
-  .pro_r p {
+  .promise-right p {
     font-size: 12px;
     margin-top: 8px;
     letter-spacing: 1px;
     color: rgb(103, 102, 101);
   }
 
-  .pro_img {
+  .promise-image {
     height: 390px;
     background: url(http://cdn.qiyewan.com/about-us-banner1.png);
     background-size: auto 100%;
@@ -924,999 +1918,3 @@
     background-position: center;
   }
 </style>
-
-<template>
-  <div>
-    <div id="banner">
-      <div class="slide"
-           :class="{active: isBannerActive(index)}"
-           :style="item.bgColor"
-           v-for="(item, index) in banners">
-        <div class="container" style="position: relative; height: 100%">
-          <div class="slide-left">
-            <h1>
-              <span class="big-title">{{ item.mainTitle }}</span>
-              {{ item.subTitle }}
-            </h1>
-            <p>{{ item.summary }}</p>
-            <button>
-              <router-link
-                :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
-                了解详情
-              </router-link>
-            </button>
-          </div>
-          <div class="slide-right"
-               onmouseleave="this.style.transform='rotateX(0deg) rotateY(0deg)'"
-               onmousemove="x = event.clientY + document.body.scrollTop - 108;
-                          y = (event.clientX + document.body.scrollLeft - 360 - (window.screen.width - 1160) / 2);
-                          this.style.transform='rotateX(' + 15 * (x - 250) / 500 + 'deg) rotateY(' + 15 * (400 - y) / 800 + 'deg)'">
-            <div class="right-image" data-zindex="50" style="transform: translateZ(50px);">
-              <img :src="item.imgBottomUrl" alt="">
-            </div>
-            <div class="right-image" data-zindex="100" style="transform: translateZ(100px);">
-              <img :src="item.imgMiddleUrl" alt="">
-            </div>
-            <div class="right-image" data-zindex="150" style="transform: translateZ(150px);">
-              <img :src="item.imgTopUrl" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-      <ul id="banner-tab">
-        <li v-for="n in banners.length"
-            v-on:click="setBannerActive(n-1)"
-            :class="{active: isBannerActive(n-1)}"></li>
-      </ul>
-    </div>
-    <div id="introduce">
-      <div class="container">
-        <ul>
-          <li v-for="item in introduces" v-if="getRegion.code+item.serialId != 'SCCDPS0004'">
-            <router-link
-              :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
-              <div class="l">
-                <h5>{{ getRegion.code+item.serialId == 'BJBJPS0004' ? '注册宝' : item.title }}</h5>
-                <p>{{ item.summary }}</p>
-              </div>
-              <div class="r introduce_img" :class="item.image"></div>
-            </router-link>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div id="hot-products">
-      <div class="container">
-        <div class="title">
-          <h3>大热门服务</h3>
-          <div class="prompt">聚焦企业服务需求，一站式全方位服务</div>
-        </div>
-        <ul>
-          <li class="hot-product"
-              v-for="(hotProduct, index) in hotProducts"
-              :class="{active: isActive(index)}"
-              v-on:mouseover="setActive(index)">
-            <div class="card">
-              <div class="content-info">
-                <div class="content-info-detail">
-                  <div class="classification-icon">
-                    <img v-show="!isHotActive(index)" :src="hotProduct.image">
-                    <img v-show="isHotActive(index)" :src="hotProduct.activeImage">
-                  </div>
-                  <div class="classification-title">
-                    {{ hotProduct.title }}
-                  </div>
-                  <div class="classification-summary">
-                    {{ hotProduct.summary }}
-                  </div>
-                </div>
-              </div>
-              <div class="content-split-line"></div>
-              <div class="hot-product-content content-first">
-                <p></p>
-                <p v-for="item in hotProduct.first">{{ item }}</p>
-                <p></p>
-              </div>
-              <div class="hot-product-content content-second">
-                <div class="main-product">
-                  <h5>
-                    {{ hotProduct.main.title }}
-                  </h5>
-                  <div class="main-product-summary">
-                    {{ hotProduct.main.summary }}
-                  </div>
-                  <button class="main-btn">
-                    <router-link
-                      :to="{ name: 'product-detail', params: { serialId: getRegion.code+hotProduct.main.serialId }}">
-                      立即购买
-                    </router-link>
-                  </button>
-                </div>
-                <div class="l other-product"
-                     v-for="item in hotProduct.other">
-                  <h6>
-                    {{ item.title }}
-                  </h6>
-                  <div class="other-product-summary">
-                    {{ item.summary }}
-                  </div>
-                  <router-link
-                    :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
-                    立即购买
-                  </router-link>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div id="timeline">
-      <div class="container">
-        <div class="title">
-          <h3>企业树发展史</h3>
-          <div class="prompt">不同阶段,企业树需要不同的浇灌</div>
-        </div>
-        <ul>
-          <li v-for="(item, index) in timelines"
-              v-on:mouseover="state=index, stateType=0"
-              :class="{active: state == index}">
-            {{ item.title }}
-          </li>
-        </ul>
-        <div class="timeline-products">
-                    <span v-for="(item, index) in timelines[state].types"
-                          v-on:click="stateType=index"
-                          :class="{active: stateType == index}">
-                        {{ item.title }}
-                    </span>
-        </div>
-        <div class="timeline-pics">
-          <div class="timeline-pic-left">
-            <img :src="timelines[state].types[stateType].products.left.url">
-          </div>
-          <div class="timeline-pic-right">
-            <div class="l timeline-pic-one timeline-pic">
-              <router-link
-                :to="{ name: 'product-detail', params: { serialId: getRegion.code+timelines[state].types[stateType].products.right.serialId }}">
-                <img :src="timelines[state].types[stateType].products.right.url">
-              </router-link>
-            </div>
-            <div class="l timeline-pic-two timeline-pic"
-                 v-for="item in timelines[state].types[stateType].products.one">
-              <router-link
-                :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
-                <img :src="item.url">
-              </router-link>
-            </div>
-            <div class="l timeline-pic-one timeline-pic">
-              <router-link
-                :to="{ name: 'product-detail', params: { serialId: getRegion.code+timelines[state].types[stateType].products.rightBottom.serialId }}">
-                <img :src="timelines[state].types[stateType].products.rightBottom.url">
-              </router-link>
-            </div>
-            <div class="l timeline-pic-two timeline-pic">
-              <router-link
-                :to="{ name: 'product-detail', params: { serialId: getRegion.code+timelines[state].types[stateType].products.bottomOne.serialId }}">
-                <img :src="timelines[state].types[stateType].products.bottomOne.url">
-              </router-link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="clearfix"></div>
-    <div class="container" style="height: 100%;">
-      <div class="title1">
-        <h3>客户声音</h3>
-        <div class="prompt">您的声音，是我们前进的动力</div>
-      </div>
-    </div>
-    <div id="voices">
-      <div class="voice"
-           :class="{show: isVoiceBannerActive(index)}"
-           v-for="(voice,index) in customerVoices">
-        <div class="voice-left-img">
-          <img :src="voice.headImg">
-        </div>
-        <div class="voice-right-img">
-          <div class="summary">
-            <h2>{{ voice.content}}</h2>
-            <p>{{ voice.company}}</p>
-            <p class="position">{{ voice.posion}}</p>
-            <p class="name">{{ voice.name}}</p>
-          </div>
-        </div>
-      </div>
-      <div class="container voice-control-con">
-        <div id="voice-control-left" v-on:click="setVoiceBanner(voiceBanner-1)"
-             class="voice-control el-icon-arrow-left"></div>
-        <div id="voice-control-right" v-on:click="setVoiceBanner(voiceBanner+1)"
-             class="voice-control  el-icon-arrow-right"></div>
-      </div>
-    </div>
-    <div class="container" v-if="news.length > 0">
-      <ul id="news-tabs">
-        <li class="news-tab"
-            v-for="(item, index) in news"
-            :class="{active: isNewsTab(index)}"
-            v-on:mouseover="setNewsTab(index),newsTab=index">
-          {{ item.category }}
-        </li>
-      </ul>
-      <div id="news">
-        <lh-news v-for="article in news[newsTab].articles.data" class="news_link"
-                 :img="article.thumb"
-                 :title="article.title"
-                 :summary="article.desc"
-                 :tags="article.tags"
-                 :date="article.updated_at"
-                 :views="article.view_count"
-                 :id="article.id+''">
-        </lh-news>
-      </div>
-    </div>
-    <div class="clearfix"></div>
-    <div id="tools" name="quick-entry">
-      <div class="container">
-        <div class="title">
-          <h3>实用工具</h3>
-          <div class="prompt">
-            工商、商标等查询，为您创业开启便捷之路
-          </div>
-        </div>
-        <ul>
-          <li class="tool" v-for="item in tools">
-            <a :href="item.url" target="_blank">
-              <div class="tool-img">
-                <img :src="item.cover" alt="">
-              </div>
-              <div class="tool-img-mask">
-                <img src="../assets/img/sousuo.png" alt="">
-              </div>
-              <p>{{ item.department }}</p>
-              <h5>{{ item.service }}</h5>
-              <div class="tool-underline"></div>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="promise">
-      <div class="pro_img"></div>
-      <ul>
-        <li>
-          <div class="pro_l l"><img src="../assets/img/pro_1.png"></div>
-          <div class="l pro_r">
-            <h5>资质认证</h5>
-            <p>专业资质及实名服务</p>
-          </div>
-        </li>
-        <li>
-          <div class="pro_l l"><img src="../assets/img/pro_2.png"></div>
-          <div class="l pro_r">
-            <h5>支付安全</h5>
-            <p>明码标价及赔付机制</p>
-          </div>
-        </li>
-        <li>
-          <div class="pro_l l"><img src="../assets/img/pro_3.png"></div>
-          <div class="l pro_r">
-            <h5>高效优质</h5>
-            <p>专业人员对口接待</p>
-          </div>
-        </li>
-        <li>
-          <div class="pro_l l"><img src="../assets/img/pro_1.png"></div>
-          <div class="l pro_r">
-            <h5>全程无忧</h5>
-            <p>服务进度实时反馈</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="clearfix"></div>
-  </div>
-</template>
-<script>
-  import {mapGetters} from 'vuex'
-  import authApi from '../api/auth'
-  import articleApi from '../api/article'
-  export default {
-    computed: mapGetters({
-      getRegion: 'getRegion'
-    }),
-    data () {
-      return {
-        introduces: [
-          {
-            serialId: 'PS0001',
-            'title': '注册财税一条龙',
-            'summary': '助您专注核心业务',
-            'image': 'introduce_img1'
-          },
-          {
-            serialId: 'PS0002',
-            'title': '法财宝',
-            'summary': '为您法律财务保驾护航',
-            'image': 'introduce_img2'
-          },
-          {
-            serialId: 'PS0003',
-            'title': '商标宝',
-            'summary': '助您提升企业形象',
-            'image': 'introduce_img3'
-          },
-          {
-            serialId: 'PS0004',
-            'title': '人事宝',
-            'summary': '社保全程无忧',
-            'image': 'introduce_img4'
-          }
-        ],
-        hotProducts: [
-          {
-            title: '工商服务',
-            image: 'http://cdn.qiyewan.com/hot_1.png',
-            activeImage: 'http://cdn.qiyewan.com/ser_1.png',
-            summary: '工商，就这么简单…',
-            first: [
-              '公司注册',
-              '1元注册+零申报记账',
-              '公司名称变更',
-              '经营范围变更',
-              '法人代表变更',
-              '三证合一'
-
-            ],
-            main: {
-              serialId: 'IC0001',
-              title: '公司注册',
-              summary: '有限责任公司、分公司、合伙企业注册，三/五证合一营业执照全程无忧'
-            },
-            other: [
-              {
-                serialId: 'IC0003',
-                title: '1元注册+零申报记账',
-                summary: '1年代账送1元公司注册'
-              },
-              {
-                serialId: 'IC0004',
-                title: '公司名称变更',
-                summary: '工商变更，章证照统一变更'
-              },
-              {
-                serialId: 'IC0005',
-                title: '经营范围变更',
-                summary: '工商变更，不包括税务变更'
-              },
-              {
-                serialId: 'IC0006',
-                title: '法人代表变更',
-                summary: '工商变更，证照变更'
-              }
-            ]
-          },
-          {
-            title: '财税服务',
-            image: 'http://cdn.qiyewan.com/hot_2.png',
-            activeImage: 'http://cdn.qiyewan.com/ser_2.png',
-            summary: '财务清晰，纳税放心',
-            first: [
-              '零申报代理记账',
-              '小规模纳税人代理记账',
-              '一般纳税人代理记账',
-              '税务报道，税种认证',
-              '一般纳税人认定',
-              '人力资源管理'
-            ],
-            main: {
-              serialId: 'FC0001',
-              title: '零申报代理记账',
-              summary: '专业会计提供税务、财务咨询，为您做账、报税。零申报(无经济业务发生，申报数据为零)'
-            },
-            other: [
-              {
-                serialId: 'FC0002',
-                title: '小规模纳税人代理记账',
-                summary: '免费财税咨询，做账、报税'
-              },
-              {
-                serialId: 'FC0003',
-                title: '一般纳税人代理记账',
-                summary: '免费财税咨询，做账、报税'
-              },
-              {
-                serialId: 'FC0006',
-                title: '税务报道，税种认证',
-                summary: '报税、核税，购买CA证书等'
-              },
-              {
-                serialId: 'FC0008',
-                title: '一般纳税人认定',
-                summary: '报税、核税，购买CA证书等'
-              }
-            ]
-          },
-          {
-            title: '法律服务',
-            image: 'http://cdn.qiyewan.com/hot_3.png',
-            activeImage: 'http://cdn.qiyewan.com/ser_3.png',
-            summary: '您的私人法律顾问',
-            first: [
-              '商标注册',
-              '合同撰写与审查（定制）',
-              '法律咨询',
-              '股东，合伙协议',
-              '实用新型专利申请',
-              '公司章程'
-            ],
-            main: {
-              serialId: 'LD0013',
-              title: '商标注册',
-              summary: '专业律师查询意向商标，提交商标申请建议书，专人全程办理。'
-            },
-            other: [
-              {
-                serialId: 'LD0002',
-                title: '合同撰写与审查（定制）',
-                summary: '专业律师撰写与审查合同'
-              },
-              {
-                serialId: 'LD0006',
-                title: '法律咨询',
-                summary: '专业律师，一对一咨询'
-              },
-              {
-                serialId: 'LD0004',
-                title: '股东，合伙协议',
-                summary: '专业律师撰写股东合伙协议'
-              },
-              {
-                serialId: 'LD0011',
-                title: '实用新型专利申请',
-                summary: '专业律师制定知识产权战略'
-              }
-            ]
-          },
-          {
-            title: '人事服务',
-            image: 'http://cdn.qiyewan.com/hot_5.png',
-            activeImage: 'http://cdn.qiyewan.com/ser_5.png',
-            summary: '创业不忘养老',
-            first: [
-              '委托代缴社保公积金服务',
-              '企业社保账户开户',
-              '企业公积金账户开户',
-              '个人社保开户',
-              '个人社保公积金代缴',
-              '人力资源基础文档'
-            ],
-            main: {
-              serialId: 'HR0003',
-              title: '委托代缴社保公积金服务',
-              summary: '办理员工用退工，社保、公积金增加减少以及缴费基数变更(服务费：3人及以下98.8元/月;从第四人开始，每增加一人，服务费多增加18.8元/月)'
-            },
-            other: [
-              {
-                serialId: 'HR0001',
-                title: '企业社保账户开户',
-                summary: '办理企业社保开户许可'
-              },
-              {
-                serialId: 'HR0002',
-                title: '企业公积金账户开户',
-                summary: '办理企业公积金开户许可'
-              },
-              {
-                serialId: 'HR0004',
-                title: '个人社保开户',
-                summary: '办理个人社保开户许可'
-              },
-              {
-                serialId: 'HR0005',
-                title: '个人社保公积金代缴',
-                summary: '社保交纳、基数变更'
-              }
-            ]
-          }
-        ],
-        tools: [
-          {
-            department: '中国商标网【商标局】',
-            service: '商标查询',
-            url: '#/brand',
-            cover: 'http://cdn.qiyewan.com/tool1.png'
-          },
-          {
-            department: '全国企业信用信息公示系统',
-            service: '工商查询',
-            url: 'http://gsxt.saic.gov.cn/',
-            cover: 'http://cdn.qiyewan.com/tool2.png'
-          },
-          {
-            department: '国际知识产权局',
-            service: '专利查询',
-            url: 'http://cpquery.sipo.gov.cn/',
-            cover: 'http://cdn.qiyewan.com/tool3.png'
-          },
-          {
-            department: '中国版权保护中心',
-            service: '软件著作权查询',
-            url: 'http://www.ccopyright.com.cn/cpcc/RRegisterAction.do?method=list&no=fck',
-            cover: 'http://cdn.qiyewan.com/tool4.png'
-          }
-        ],
-        timelines: [
-          {
-            title: '种子萌芽',
-            types: [
-              {
-                title: '创立公司',
-                products: {
-                  left: {
-                    url: 'http://cdn.qiyewan.com/timeline1-5-1.png'
-                  },
-                  right: {
-                    serialId: 'IC0002',
-                    url: 'http://cdn.qiyewan.com/timeline1-5-2.png'
-                  },
-                  one: [
-                    {
-                      serialId: 'IC0012',
-                      url: 'http://cdn.qiyewan.com/timeline1-5-3.png'
-                    },
-                    {
-                      serialId: 'HR0003',
-                      url: 'http://cdn.qiyewan.com/timeline1-5-4.png'
-                    },
-                    {
-                      serialId: 'HR0002',
-                      url: 'http://cdn.qiyewan.com/timeline1-5-5.png'
-                    }
-                  ],
-                  rightBottom: {
-                    serialId: 'IT0001',
-                    url: 'http://cdn.qiyewan.com/timeline1-5-6.png'
-                  },
-                  bottomOne: {
-                    serialId: 'HR0001',
-                    url: 'http://cdn.qiyewan.com/timeline1-5-7.png'
-                  }
-                }
-
-              },
-              {
-                title: '财税服务',
-                products: {
-                  left: {
-                    url: 'http://cdn.qiyewan.com/timeline1-3-1.png'
-                  },
-                  right: {
-                    serialId: 'FC0003',
-                    url: 'http://cdn.qiyewan.com/timeline1-3-2.png'
-                  },
-                  one: [
-                    {
-                      serialId: 'FC0008',
-                      url: 'http://cdn.qiyewan.com/timeline1-3-3.png'
-                    },
-                    {
-                      serialId: 'IT0004',
-                      url: 'http://cdn.qiyewan.com/timeline1-3-4.png'
-                    },
-                    {
-                      serialId: 'IT0005',
-                      url: 'http://cdn.qiyewan.com/timeline1-3-5.png'
-                    }
-                  ],
-                  rightBottom: {
-                    serialId: 'IT0003',
-                    url: 'http://cdn.qiyewan.com/timeline1-3-6.png'
-                  },
-                  bottomOne: {
-                    serialId: 'IT0002',
-                    url: 'http://cdn.qiyewan.com/timeline1-3-7.png'
-                  }
-                }
-              },
-              {
-                title: '法律服务',
-                products: {
-                  left: {
-                    url: 'http://cdn.qiyewan.com/timeline1-2-1.png'
-                  },
-                  right: {
-                    serialId: 'LD0010',
-                    url: 'http://cdn.qiyewan.com/timeline1-2-2.png'
-                  },
-                  one: [
-                    {
-                      serialId: 'LD0011',
-                      url: 'http://cdn.qiyewan.com/timeline1-2-3.png'
-                    },
-                    {
-                      serialId: 'LD0012',
-                      url: 'http://cdn.qiyewan.com/timeline1-2-4.png'
-                    },
-                    {
-                      serialId: 'LD0014',
-                      url: 'http://cdn.qiyewan.com/timeline1-2-5.png'
-                    }
-                  ],
-                  rightBottom: {
-                    serialId: 'LD0002',
-                    url: 'http://cdn.qiyewan.com/timeline1-2-6.png'
-                  },
-                  bottomOne: {
-                    serialId: 'LD0015',
-                    url: 'http://cdn.qiyewan.com/timeline1-2-7.png'
-                  }
-                }
-              }
-            ]
-          },
-          {
-            title: '茁壮成长',
-            types: [
-              {
-                title: '工商服务',
-                products: {
-                  left: {
-                    url: 'http://cdn.qiyewan.com/timeline1-8-1.png'
-                  },
-                  right: {
-                    serialId: 'IC0009',
-                    url: 'http://cdn.qiyewan.com/timeline1-8-2.png'
-                  },
-                  one: [
-                    {
-                      serialId: 'IC0004',
-                      url: 'http://cdn.qiyewan.com/timeline1-8-3.png'
-                    },
-                    {
-                      serialId: 'IC0005',
-                      url: 'http://cdn.qiyewan.com/timeline1-8-4.png'
-                    },
-                    {
-                      serialId: 'IC0006',
-                      url: 'http://cdn.qiyewan.com/timeline1-8-5.png'
-                    }
-                  ],
-                  rightBottom: {
-                    serialId: 'FC0001',
-                    url: 'http://cdn.qiyewan.com/timeline1-4-6.png'
-                  },
-                  bottomOne: {
-                    serialId: 'IC0010',
-                    url: 'http://cdn.qiyewan.com/timeline1-8-7.png'
-                  }
-                }
-              },
-              {
-                title: '财税法+',
-                products: {
-                  left: {
-                    url: 'http://cdn.qiyewan.com/timeline1-4-1.png'
-                  },
-                  right: {
-                    serialId: 'FC0004',
-                    url: 'http://cdn.qiyewan.com/timeline1-4-2.png'
-                  },
-                  one: [
-                    {
-                      serialId: 'FC0005',
-                      url: 'http://cdn.qiyewan.com/timeline1-4-3.png'
-                    },
-                    {
-                      serialId: 'FC0006',
-                      url: 'http://cdn.qiyewan.com/timeline1-4-4.png'
-                    },
-                    {
-                      serialId: 'FC0007',
-                      url: 'http://cdn.qiyewan.com/timeline1-4-5.png'
-                    }
-                  ],
-                  rightBottom: {
-                    serialId: 'FC0001',
-                    url: 'http://cdn.qiyewan.com/timeline1-4-6.png'
-                  }, bottomOne: {
-                    serialId: 'FC0010',
-                    url: 'http://cdn.qiyewan.com/timeline1-4-7.png'
-                  }
-
-                }
-              }
-            ]
-          },
-          {
-            title: '枝繁叶茂',
-            types: [
-              {
-                title: '法律服务',
-                products: {
-                  left: {
-                    url: 'http://cdn.qiyewan.com/timeline1-6-1.png'
-                  },
-                  right: {
-                    serialId: 'LD0004',
-                    url: 'http://cdn.qiyewan.com/timeline1-6-2.png'
-                  },
-                  one: [
-                    {
-                      serialId: 'LD0005',
-                      url: 'http://cdn.qiyewan.com/timeline1-6-3.png'
-                    },
-                    {
-                      serialId: 'LD0003',
-                      url: 'http://cdn.qiyewan.com/timeline1-6-4.png'
-                    },
-                    {
-                      serialId: 'LD0001',
-                      url: 'http://cdn.qiyewan.com/timeline1-6-5.png'
-                    }
-                  ], rightBottom: {
-                    serialId: 'LD0006',
-                    url: 'http://cdn.qiyewan.com/timeline1-6-6.png'
-                  }, bottomOne: {
-                    serialId: 'LD0013',
-                    url: 'http://cdn.qiyewan.com/timeline1-6-7.png'
-                  }
-
-                }
-              },
-              {
-                title: '增值服务',
-                products: {
-                  left: {
-                    url: 'http://cdn.qiyewan.com/timeline1-7-1.png'
-                  },
-                  right: {
-                    serialId: 'FC0002',
-                    url: 'http://cdn.qiyewan.com/timeline1-7-2.png'
-                  },
-                  one: [
-                    {
-                      serialId: 'FC0009',
-                      url: 'http://cdn.qiyewan.com/timeline1-7-3.png'
-                    },
-                    {
-                      serialId: 'LD0002',
-                      url: 'http://cdn.qiyewan.com/timeline1-7-4.png'
-                    },
-                    {
-                      serialId: 'LD0009',
-                      url: 'http://cdn.qiyewan.com/timeline1-7-5.png'
-                    }
-                  ],
-                  rightBottom: {
-                    serialId: 'IT0003',
-                    url: 'http://cdn.qiyewan.com/timeline1-7-6.png'
-                  },
-                  bottomOne: {
-                    serialId: 'HR0006',
-                    url: 'http://cdn.qiyewan.com/timeline1-7-7.png'
-                  }
-                }
-              }
-            ]
-          },
-          {
-            title: '落叶归根',
-            types: [
-              {
-                title: '注销公司',
-                products: {
-                  left: {
-                    url: 'http://cdn.qiyewan.com/timeline1-1-1.png'
-                  },
-                  right: {
-                    serialId: 'IC0013',
-                    url: 'http://cdn.qiyewan.com/timeline1-1-2.png'
-                  },
-                  one: [
-                    {
-                      serialId: 'LD0006',
-                      url: 'http://cdn.qiyewan.com/timeline1-1-3.png'
-                    },
-                    {
-                      serialId: 'IC0013',
-                      url: 'http://cdn.qiyewan.com/timeline1-1-4.png'
-                    },
-                    {
-                      serialId: 'IC0010',
-                      url: 'http://cdn.qiyewan.com/timeline1-1-5.png'
-                    }],
-                  rightBottom: {
-                    serialId: 'LD0002',
-                    url: 'http://cdn.qiyewan.com/timeline1-1-6.png'
-                  },
-                  bottomOne: {
-                    serialId: 'IC0013',
-                    url: 'http://cdn.qiyewan.com/timeline1-1-7.png'
-                  }
-
-                }
-
-              }
-            ]
-
-          }
-        ],
-        dialogVisible: false,
-        formStacked: {
-          name: '',
-          region: '',
-          type: ''
-        },
-        banners: [
-          {
-            serialId: 'IC0001',
-            mainTitle: '公司服务',
-            subTitle: '想你所想',
-            summary: '让您满意是我们不变的服务追求',
-            imgTopUrl: 'http://cdn.qiyewan.com/banner-1-top.png',
-            imgMiddleUrl: 'http://cdn.qiyewan.com/banner-1-middle.png',
-            imgBottomUrl: 'http://cdn.qiyewan.com/banner-1-bottom.png',
-            bgColor: 'background-color: #2fa7f5;'
-
-          },
-          {
-            serialId: 'IC0001',
-            mainTitle: '公司注册',
-            subTitle: '快人一步',
-            summary: '创业园区、孵化基地专业对接',
-            imgTopUrl: 'http://cdn.qiyewan.com/banner-5-top-v1.png',
-            imgMiddleUrl: 'http://cdn.qiyewan.com/banner-5-middle-v1.png',
-            imgBottomUrl: 'http://cdn.qiyewan.com/banner-5-bottom-v1.png',
-            bgColor: 'background-color: #2399f3;'
-          },
-          {
-            serialId: 'FC0001',
-            mainTitle: '代理记账',
-            subTitle: '只需98元',
-            summary: '免费财税咨询，创业财税无忧',
-            imgTopUrl: 'http://cdn.qiyewan.com/banner-2-top.png',
-            imgMiddleUrl: 'http://cdn.qiyewan.com/banner-2-middle.png',
-            imgBottomUrl: 'http://cdn.qiyewan.com/banner-2-bottom.png',
-            bgColor: 'background-color: #2ca8dc;'
-          },
-          {
-            serialId: 'LD0001',
-            mainTitle: '法律咨询',
-            subTitle: '全程陪同',
-            summary: '专业律师为企业保驾护航',
-            imgTopUrl: 'http://cdn.qiyewan.com/banner-3-middle.png',
-            imgMiddleUrl: 'http://cdn.qiyewan.com/banner-3-bottom.png',
-            imgBottomUrl: 'http://cdn.qiyewan.com/banner-3-top.png',
-            bgColor: 'background-color: #0daef2;'
-          },
-          {
-            serialId: 'HR0001',
-            mainTitle: '社保公积金',
-            subTitle: '',
-            summary: '缴纳社保公积金,养老无忧',
-            imgTopUrl: 'http://cdn.qiyewan.com/banner-4-bottom.png',
-            imgMiddleUrl: 'http://cdn.qiyewan.com/banner-4-middle.png',
-            imgBottomUrl: 'http://cdn.qiyewan.com/banner-4-top-1.png',
-            bgColor: 'background-color: #0770cb;'
-          }
-        ],
-        news: [],
-        customerVoices: [
-          {
-            headImg: 'http://cdn.qiyewan.com/customer1.png',
-            content: '企业湾的增值服务特别适合像我们这样的创业型公司。服务专业，价格公道,适合创业公司在经费不宽裕的情况下满足企业刚需。我认为企业湾是一个一站式、超值，适合初创公司的企业服务提供商。',
-            company: '成都天添益网络科技有限公司',
-            position: 'COO',
-            name: ''
-          },
-          {
-            headImg: 'http://cdn.qiyewan.com/customer2.png',
-            content: '平和温润、真诚无华为朴；知行合一、志坚质洁为正。正是这种相同的真挚价值观让朴正教育咨询和企业湾相遇相知，并开始了旗下花田儿童教育项目。项目的顺利筹建离不开企业湾专业细致的服务和支持，让我们不忘初心一起走下去。',
-            company: '四川朴正教育咨询有限公司',
-            position: '花田教育',
-            name: ''
-          },
-          {
-            headImg: 'http://cdn.qiyewan.com/customer3_1.png',
-            content: '企业湾为我们提供人事、法律、财务等专业服务，他们以专业的水准、负责的态度服务客户，提供全方位的咨询与帮助，使我们没有后顾之忧。',
-            company: '镇江市红包兔信息技术有限公司',
-            position: '创始人兼CEO',
-            name: ''
-          },
-          {
-            headImg: 'http://cdn.qiyewan.com/customer4_1.png',
-            content: '企业湾为我们解决了初创企业在财务、法律方面资源短缺、缺乏行业经验的老大难问题，让我们在创业的路上省了不少心。用优质贴心专业的服务，为中小型企业的创业之路保驾护航。',
-            company: '上海恩陶投资管理有限公司',
-            position: '公司负责人',
-            name: ''
-          },
-          {
-            headImg: 'http://cdn.qiyewan.com/customer5.png',
-            content: '我们不仅是企业湾的客户，也是企业湾的战略合作伙伴。企业湾人诚恳的态度、专业的服务让我感动，作为创业企业，我们共同进步。',
-            company: '上海云简软件科技有限公司',
-            position: '创始人兼CEO',
-            name: ''
-          },
-          {
-            headImg: 'http://cdn.qiyewan.com/customer6_1.png',
-            content: '企业湾响应迅速，帮我们节省了很多的时间，从工商到人事法律，在企业湾都得到了一站式的解决，省时省事，使我们有更多的精力专注在本质工作。',
-            company: '南京贝贝帮教育咨询有限公司',
-            position: '创始人兼CEO',
-            name: ''
-          }
-        ],
-        currentDate: "2016年10月13日",
-        banner: 0,
-        error: null,
-        active: 3,
-        state: 0,
-        stateType: 0,
-        newsTab: 0,
-        voiceBanner: 0,
-        hotActive: 3
-      }
-    },
-    methods: {
-      setActive(index) {
-        this.active = index;
-        this.hotActive = index;
-      },
-      isActive(index) {
-        return this.active == index;
-      },
-      setBannerActive(index) {
-        this.banner = index;
-      },
-      isBannerActive(index) {
-        return this.banner == index;
-      },
-      isHotActive(index){
-        return this.hotActive == index;
-      },
-      setVoiceBanner(index){
-        if (index < 0) index = 5;
-        if (index > 5) index = 0;
-        this.voiceBanner = index;
-      },
-      isVoiceBannerActive(index) {
-        return this.voiceBanner == index;
-      },
-      setNewsTab(index) {
-        this.newsTab = index;
-      },
-      isNewsTab(index) {
-        return this.newsTab == index;
-      }
-    },
-    created() {
-//      let vm = this
-//      authApi.getRegion(region => {
-//        vm.$store.commit('CHANGE_REGION', region)
-//      })
-//      articleApi.getHomeNews(data => {
-//        vm.news = data.data
-//      }, error => {
-//        vm.error = error
-//      })
-    },
-    mounted() {
-      let vm = this
-      setInterval(function () {
-        if (vm.banner === (vm.banners.length - 1)) {
-          vm.banner = 0
-        } else {
-          vm.banner += 1
-        }
-      }, 5000)
-      setInterval(function () {
-        if (vm.voiceBanner === (vm.customerVoices.length - 1)) {
-          vm.voiceBanner = 0
-        } else {
-          vm.voiceBanner += 1
-        }
-      }, 5000)
-    }
-  }
-</script>

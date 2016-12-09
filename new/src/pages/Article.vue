@@ -149,22 +149,22 @@
   }
 
   .qq {
-    background: url("../assets/img/share.png") no-repeat;
+    background: url("../assets/share.png") no-repeat;
     background-position: -5px 0;
   }
 
   .qzone {
-    background: url("../assets/img/share.png") no-repeat;
+    background: url("../assets/share.png") no-repeat;
     background-position: -40px 0;
   }
 
   .wechat {
-    background: url("../assets/img/share.png") no-repeat;
+    background: url("../assets/share.png") no-repeat;
     background-position: -77px -1px;
   }
 
   .weibo {
-    background: url("../assets/img/share.png") no-repeat;
+    background: url("../assets/share.png") no-repeat;
     background-position: -137px -1px;
   }
 
@@ -219,7 +219,7 @@
         </div>
         <div class="con_right r">
           <div class="Author">
-            <div class="avatar"><img src="../assets/img/logo_samll.png" alt=""></div>
+            <div class="avatar"><img src="../assets/logo_samll.png" alt=""></div>
             <div class="name">{{ article.author }}</div>
             <div class="intru">企业湾分析师</div>
             <ul>

@@ -156,7 +156,7 @@
         <div class="tit">
           <h5>投融资流程</h5>
         </div>
-        <img src="../assets/img/inv_fin_banner.jpg" alt="">
+        <img src="../assets/inv_fin_banner.jpg" alt="">
       </div>
       <div class="tishi">
         为了保障您的账户安全需要进行手机验证（为必填项）。我们会对您的个人信息严格保密。

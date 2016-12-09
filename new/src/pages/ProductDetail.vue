@@ -385,7 +385,7 @@
                 <div class="btn">服务流程</div>
                 <ul>
                   <li v-for="(item,index) in JSON.parse(product.process)">{{ index+1 }}、{{ item }}
-                    <span><img src="../assets/img/border1.png"></span>
+                    <span><img src="../assets/border1.png"></span>
                   </li>
                 </ul>
                 <div class="zhushi">注：由于地域、政策等因素不同，所需时间有差异</div>
@@ -403,39 +403,39 @@
                     <h5>在线下单</h5>
                     <div class="li_con">
                       <p>在线直接下单，安全便捷</p>
-                      <img src="../assets/img/internet_1.png">
+                      <img src="../assets/internet_1.png">
                     </div>
                   </li>
                   <li>
                     <h5>即时响应</h5>
                     <div class="li_con">
                       <p>服务专员快速联系，4小时响应</p>
-                      <img src="../assets/img/internet_2.png">
+                      <img src="../assets/internet_2.png">
                     </div>
                   </li>
                   <li>
                     <h5>快速交付</h5>
                     <div class="li_con">
                       <p>定制专业、简约流程，不走弯路</p>
-                      <img src="../assets/img/internet_3.png">
+                      <img src="../assets/internet_3.png">
                     </div>
                   </li>
                   <li>
                     <h5>满意为止</h5>
                     <div class="li_con">
                       <p>全程专业人员服务，满意为止</p>
-                      <img src="../assets/img/internet_4.png">
+                      <img src="../assets/internet_4.png">
                     </div>
                   </li>
                 </ul>
                 <div class="clearfix"></div>
                 <div class="inter_bg">
-                  <img src="../assets/img/internet_bg.png">
+                  <img src="../assets/internet_bg.png">
                 </div>
               </div>
               <div class="advan">
                 <div class="tit">我们的服务优势</div>
-                <div class="advan_img"><img src="../assets/img/advan.png"></div>
+                <div class="advan_img"><img src="../assets/advan.png"></div>
               </div>
             </el-tab-pane>
             <el-tab-pane :label="'用户评价（' + product.purchaseNumber + '）'">
@@ -464,7 +464,7 @@
                     </el-col>
                     <el-col :span="6"
                             style="text-align: center;">
-                      <img src="../assets/img/logo_samll.png"
+                      <img src="../assets/logo_samll.png"
                            style="width: 60px;
                                                 border-radius: 50%;">
                       <p>

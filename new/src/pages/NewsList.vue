@@ -69,12 +69,12 @@
   }
 
   .prev-news {
-    background: url("../assets/img/icon_prev_news.png");
+    background: url("../assets/icon_prev_news.png");
     margin-right: 2px;
   }
 
   .next-news {
-    background: url("../assets/img/icon_next_news.png");
+    background: url("../assets/icon_next_news.png");
     margin-left: 6px;
   }
 
@@ -222,9 +222,9 @@
               </div>
               <div>
                 <span class="prev-news"></span>
-                <img src="../assets/img/newslist_1.png" class="slider-news" alt="news-img">
-                <img src="../assets/img/newslist_2.png" class="slider-news" alt="news-img">
-                <img src="../assets/img/newslist_3.png" class="slider-news" alt="news-img">
+                <img src="../assets/newslist_1.png" class="slider-news" alt="news-img">
+                <img src="../assets/newslist_2.png" class="slider-news" alt="news-img">
+                <img src="../assets/newslist_3.png" class="slider-news" alt="news-img">
                 <span class="next-news"></span>
               </div>
             </el-col>
