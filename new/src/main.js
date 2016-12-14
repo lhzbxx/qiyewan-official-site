@@ -33,9 +33,9 @@ import BrandQuery from './pages/BrandQuery.vue'
 
 // store.dispatch('init')
 
-function requireAuth(to, from, next) {
+function requireAuth (to, from, next) {
   if (!store.getters.isLogin) {
-    store.commit("REQUIRE_LOGIN")
+    store.commit('REQUIRE_LOGIN')
   } else {
     next()
   }

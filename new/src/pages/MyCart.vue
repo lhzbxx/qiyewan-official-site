@@ -49,7 +49,7 @@
         this.page = page
         this.loading = false
         let vm = this
-        this.$store.dispatch("getCarts", page).then(
+        this.$store.dispatch('getCarts', page).then(
           data => {
             vm.data = data.content
             vm.isLoading = false

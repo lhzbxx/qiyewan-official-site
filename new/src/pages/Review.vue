@@ -95,21 +95,21 @@
           function (data) {
             vm.$alert('评论提交成功！', '提交成功', {
               callback: action => {
-                vm.$router.replace({name: "order"})
+                vm.$router.replace({name: 'order'})
               }
             })
           },
-          function (error) {
+          function () {
             vm.$alert('评论提交失败...可能已经评价过了...', '提交失败', {
               callback: action => {
-                vm.$router.replace({name: "order"})
+                vm.$router.replace({name: 'order'})
               }
             })
           })
       },
       getLocalTime (nS) {
-        return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ');
-      },
+        return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ')
+      }
     },
     created () {
       let vm = this
@@ -122,10 +122,11 @@
               vm.isLoading = false
               vm.form.productSerialId = vm.product.serialId
               vm.form.serialId = vm.order.serialId
-              if (vm.order.details.some(item => item.productSerialId == vm.product.serialId)) {
+              if (vm.order.details.some(item => item.productSerialId === vm.product.serialId)) {
                 for (let i of vm.order.details) {
-                  if (i.productSerialId == vm.product.serialId)
+                  if (i.productSerialId === vm.product.serialId) {
                     vm.amount = i.amount
+                  }
                 }
               } else {
                 vm.$router.replace({name: 'home'})

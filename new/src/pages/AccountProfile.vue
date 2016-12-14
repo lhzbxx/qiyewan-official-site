@@ -217,25 +217,25 @@
           function (data) {
             vm.user = data
           },
-          function (error) {
+          function () {
           })
         authApi.getLoginHistory(this.token,
           function (data) {
             vm.history = data
           },
-          function (error) {
+          function () {
           })
         authApi.getCompany(this.token,
           function (data) {
             vm.companyInfo = data
           },
-          function (error) {
+          function () {
           })
         this.loading = false
       },
       getLocalTime (nS) {
-        return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ');
-      },
+        return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ')
+      }
     },
     created () {
       this.fetchData()

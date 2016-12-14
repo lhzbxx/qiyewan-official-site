@@ -505,7 +505,7 @@
   import {mapGetters} from 'vuex'
 
   export default {
-    data() {
+    data () {
       return {
         reviews: null,
         faq: null,
@@ -585,10 +585,10 @@
             this.$message({
               message: '成功加入购物车~~',
               type: 'success'
-            });
+            })
             this.isAdding = false
           }, () => {
-            this.$message.error('加入购物车失败...');
+            this.$message.error('加入购物车失败...')
             this.isAdding = false
           })
       },
@@ -621,10 +621,10 @@
           this.form.amount = 6
         }
       },
-      getLocalTime(nS) {
-        return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ');
+      getLocalTime (nS) {
+        return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ')
       },
-      isSpecial() {
+      isSpecial () {
         return dataApi.isSpecial(this.product)
       }
     }

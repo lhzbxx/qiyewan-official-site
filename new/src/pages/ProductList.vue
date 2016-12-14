@@ -86,7 +86,7 @@
               }
             ]
             let index = classifications.findIndex(function (item) {
-              return item.code == category
+              return item.code === category
             })
             if (index >= 0) {
               vm.categoryName = classifications[index].title

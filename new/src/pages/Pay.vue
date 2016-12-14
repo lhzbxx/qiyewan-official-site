@@ -150,9 +150,10 @@
   </div>
 </template>
 <script>
+  import dataApi from '../api/data'
   import {mapGetters} from 'vuex'
   export default {
-    data() {
+    data () {
       return {
         payments: [
           {
@@ -175,13 +176,13 @@
         checkout: 'getCheckout'
       })
     },
-    created() {
-      if (this.checkout.length == 0) {
+    created () {
+      if (this.checkout.length === 0) {
         this.$router.replace({name: 'order'})
       }
     },
     methods: {
-      addToOrder() {
+      addToOrder () {
         this.isOrdering = true
         let vm = this
         this.$store.dispatch('addToOrder', {
@@ -191,19 +192,19 @@
           function (order) {
             window.open(order.payUrl, '_self')
           },
-          function (error) {
+          function () {
             vm.isOrdering = false
           }
         )
       },
-      totalPrice() {
+      totalPrice () {
         var total = 0
         for (let i of this.checkout) {
           total += Number(dataApi.totalPrice(i))
         }
         return total.toFixed(2)
       },
-      getTotalPrice(row) {
+      getTotalPrice (row) {
         return dataApi.totalPrice(row)
       }
     }

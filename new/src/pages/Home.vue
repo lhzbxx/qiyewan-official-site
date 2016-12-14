@@ -49,7 +49,7 @@
             <router-link
               :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
               <div class="l">
-                <h5>{{ getRegion.code+item.serialId == 'BJBJPS0004' ? '注册宝' : item.title }}</h5>
+                <h5>{{ getRegion.code+item.serialId === 'BJBJPS0004' ? '注册宝' : item.title }}</h5>
                 <p>{{ item.summary }}</p>
               </div>
               <div class="r introduce_img" :class="item.image"></div>
@@ -133,14 +133,14 @@
         <ul>
           <li v-for="(item, index) in timelines"
               v-on:mouseover="state=index, stateType=0"
-              :class="{active: state == index}">
+              :class="{active: state === index}">
             {{ item.title }}
           </li>
         </ul>
         <div class="timeline-products">
                     <span v-for="(item, index) in timelines[state].types"
                           v-on:click="stateType=index"
-                          :class="{active: stateType == index}">
+                          :class="{active: stateType === index}">
                         {{ item.title }}
                     </span>
         </div>
@@ -293,8 +293,8 @@
 </template>
 <script>
   import {mapGetters} from 'vuex'
-  import authApi from '../api/auth'
-  import articleApi from '../api/article'
+//  import authApi from '../api/auth'
+//  import articleApi from '../api/article'
   export default {
     computed: mapGetters({
       getRegion: 'getRegion'
@@ -693,7 +693,8 @@
                   rightBottom: {
                     serialId: 'FC0001',
                     url: 'http://cdn.qiyewan.com/timeline1-4-6.png'
-                  }, bottomOne: {
+                  },
+                  bottomOne: {
                     serialId: 'FC0010',
                     url: 'http://cdn.qiyewan.com/timeline1-4-7.png'
                   }
@@ -728,10 +729,12 @@
                       serialId: 'LD0001',
                       url: 'http://cdn.qiyewan.com/timeline1-6-5.png'
                     }
-                  ], rightBottom: {
+                  ],
+                  rightBottom: {
                     serialId: 'LD0006',
                     url: 'http://cdn.qiyewan.com/timeline1-6-6.png'
-                  }, bottomOne: {
+                  },
+                  bottomOne: {
                     serialId: 'LD0013',
                     url: 'http://cdn.qiyewan.com/timeline1-6-7.png'
                   }
@@ -799,7 +802,8 @@
                     {
                       serialId: 'IC0010',
                       url: 'http://cdn.qiyewan.com/timeline1-1-5.png'
-                    }],
+                    }
+                  ],
                   rightBottom: {
                     serialId: 'LD0002',
                     url: 'http://cdn.qiyewan.com/timeline1-1-6.png'
@@ -920,7 +924,7 @@
             name: ''
           }
         ],
-        currentDate: "2016年10月13日",
+        currentDate: '2016年10月13日',
         banner: 0,
         error: null,
         active: 3,
@@ -932,38 +936,38 @@
       }
     },
     methods: {
-      setActive(index) {
-        this.active = index;
-        this.hotActive = index;
+      setActive (index) {
+        this.active = index
+        this.hotActive = index
       },
-      isActive(index) {
-        return this.active == index;
+      isActive (index) {
+        return this.active === index
       },
-      setBannerActive(index) {
-        this.banner = index;
+      setBannerActive (index) {
+        this.banner = index
       },
-      isBannerActive(index) {
-        return this.banner == index;
+      isBannerActive (index) {
+        return this.banner === index
       },
-      isHotActive(index){
-        return this.hotActive == index;
+      isHotActive (index) {
+        return this.hotActive === index
       },
-      setVoiceBanner(index){
-        if (index < 0) index = 5;
-        if (index > 5) index = 0;
-        this.voiceBanner = index;
+      setVoiceBanner (index) {
+        if (index < 0) index = 5
+        if (index > 5) index = 0
+        this.voiceBanner = index
       },
-      isVoiceBannerActive(index) {
-        return this.voiceBanner == index;
+      isVoiceBannerActive (index) {
+        return this.voiceBanner === index
       },
-      setNewsTab(index) {
-        this.newsTab = index;
+      setNewsTab (index) {
+        this.newsTab = index
       },
-      isNewsTab(index) {
-        return this.newsTab == index;
+      isNewsTab (index) {
+        return this.newsTab === index
       }
     },
-    created() {
+    created () {
 //      let vm = this
 //      authApi.getRegion(region => {
 //        vm.$store.commit('CHANGE_REGION', region)
@@ -974,7 +978,7 @@
 //        vm.error = error
 //      })
     },
-    mounted() {
+    mounted () {
       let vm = this
       setInterval(function () {
         if (vm.banner === (vm.banners.length - 1)) {

@@ -31,7 +31,7 @@
   import {mapGetters} from 'vuex'
 
   export default {
-    data() {
+    data () {
       return {
         isLoading: true,
         error: null,
@@ -44,7 +44,7 @@
       token: 'getToken',
       totalNum: 'orderNum'
     }),
-    created() {
+    created () {
       this.fetchData(1)
     },
     methods: {
@@ -52,7 +52,7 @@
         if (page < 1) return
         this.loading = true
         let vm = this
-        this.$store.dispatch("getOrders", {
+        this.$store.dispatch('getOrders', {
           page: this.page,
           orderState: this.orderState
         }).then(
@@ -66,15 +66,15 @@
           }
         )
       },
-      changeOrderState(tab) {
+      changeOrderState (tab) {
         switch (tab.index) {
-          case "1":
+          case '1':
             this.orderState = 'All'
             break
-          case "2":
+          case '2':
             this.orderState = 'Unpaid'
             break
-          case "3":
+          case '3':
             this.orderState = 'Paid'
             break
         }
