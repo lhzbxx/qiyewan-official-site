@@ -576,11 +576,11 @@
       },
       addToCart () {
         if (!this.isLogin) {
-          this.$store.commit("REQUIRE_LOGIN")
+          this.$store.commit('REQUIRE_LOGIN')
           return
         }
         this.isAdding = true
-        this.$store.dispatch("addToCart", this.form)
+        this.$store.dispatch('addToCart', this.form)
           .then(() => {
             this.$message({
               message: '成功加入购物车~~',
@@ -594,13 +594,13 @@
       },
       directOrder () {
         if (!this.isLogin) {
-          this.$store.commit("REQUIRE_LOGIN")
+          this.$store.commit('REQUIRE_LOGIN')
           return
         }
-        this.$store.dispatch("addToCart", this.form)
+        this.$store.dispatch('addToCart', this.form)
           .then(data => {
-            this.$store.commit("CHECKOUT", [data])
-            this.$router.push({name: "pay"})
+            this.$store.commit('CHECKOUT', [data])
+            this.$router.push({name: 'pay'})
           }, () => {
           })
       },
@@ -613,7 +613,7 @@
         this.address.district = this.getRegion.areas[0].name
         this.address.districts = this.getRegion.areas
         this.form.regionCode = this.getRegion.code
-        this.form.region = this.address.province + "-" + this.address.city + "-" + this.address.district
+        this.form.region = this.address.province + '-' + this.address.city + '-' + this.address.district
         this.form.serialId = this.$route.params.serialId
         if (this.product.isInstant) {
           this.form.amount = 1

@@ -73,7 +73,7 @@
   import productApi from '../api/product'
 
   export default {
-    data() {
+    data () {
       return {
         form: {
           rate: 5,
@@ -89,7 +89,7 @@
       }
     },
     methods: {
-      onSubmit() {
+      onSubmit () {
         let vm = this
         productApi.sendReview(this.$store.getters.getToken, this.form,
           function (data) {
@@ -107,11 +107,11 @@
             })
           })
       },
-      getLocalTime(nS) {
+      getLocalTime (nS) {
         return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ');
       },
     },
-    created() {
+    created () {
       let vm = this
       orderApi.getOrder(this.$store.getters.getToken, this.$route.params.orderSerialId,
         function (data) {

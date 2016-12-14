@@ -28,7 +28,7 @@
 <script>
   import {mapGetters} from 'vuex'
   export default {
-    data() {
+    data () {
       return {
         isLoading: true,
         error: null,
@@ -40,7 +40,7 @@
       token: 'getToken',
       totalNum: 'cartNum'
     }),
-    created() {
+    created () {
       this.fetchData(1)
     },
     methods: {

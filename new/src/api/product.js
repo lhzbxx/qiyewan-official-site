@@ -7,7 +7,7 @@ Vue.http.options.root = window.global_config.remote_url
 
 export default {
   getProductDetail (serialId, cb, errorCb) {
-    Vue.http.get("products/" + serialId).then((response) => {
+    Vue.http.get('products/' + serialId).then((response) => {
       cb(response.body)
     }, (response) => {
       errorCb(response.body)
@@ -15,7 +15,7 @@ export default {
   },
 
   getProductReviews (serialId, cb, errorCb) {
-    Vue.http.get("products/" + serialId + "/reviews").then((response) => {
+    Vue.http.get('products/' + serialId + '/reviews').then((response) => {
       cb(response.body)
     }, (response) => {
       errorCb(response.body)
@@ -23,7 +23,7 @@ export default {
   },
 
   getProductFaqs (serialId, cb, errorCb) {
-    Vue.http.get("products/" + serialId + "/faq").then((response) => {
+    Vue.http.get('products/' + serialId + '/faq').then((response) => {
       cb(response.body)
     }, (response) => {
       errorCb(response.body)
@@ -31,15 +31,15 @@ export default {
   },
 
   getProductList (regionCode, category, cb, errorCb) {
-    Vue.http.get("products?regionCode=" + regionCode + "&classificationName=" + category).then((response) => {
+    Vue.http.get('products?regionCode=' + regionCode + '&classificationName=' + category).then((response) => {
       cb(response.body)
     }, (response) => {
       errorCb(response.body)
     })
   },
 
-  getNavList (regionCode, cb, errorCb){
-    Vue.http.get("products?regionCode=" + regionCode).then((response) => {
+  getNavList (regionCode, cb, errorCb) {
+    Vue.http.get('products?regionCode=' + regionCode).then((response) => {
       cb(response.body)
     }, (response) => {
       errorCb(response.body)
@@ -47,8 +47,8 @@ export default {
   },
 
   sendReview (token, review, cb, errorCb) {
-    Vue.http.headers.common['Authorization'] = token;
-    Vue.http.post("reviews/", review).then((response) => {
+    Vue.http.headers.common['Authorization'] = token
+    Vue.http.post('reviews/', review).then((response) => {
       cb(response.body)
     }, (response) => {
       errorCb(response.body)

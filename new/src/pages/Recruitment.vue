@@ -373,14 +373,14 @@
 
 <script>
   export default {
-    data() {
+    data () {
       return {
         currentLi: 'it',
         currentSubLi: 'it-java'
       }
     },
     methods: {
-      setLiName(liName) {
+      setLiName (liName) {
         this.currentLi = liName;
         switch (liName) {
           case 'it':
@@ -394,13 +394,13 @@
             break;
         }
       },
-      getLiName(){
+      getLiName (){
         return this.currentLi;
       },
-      setSubLiName(currentSubLi) {
+      setSubLiName (currentSubLi) {
         this.currentSubLi = currentSubLi;
       },
-      getSubLiName(){
+      getSubLiName (){
         return this.currentSubLi;
       },
     }

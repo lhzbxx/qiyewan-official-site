@@ -44,7 +44,7 @@
   import {mapGetters} from 'vuex'
 
   export default {
-    data() {
+    data () {
       return {
         query: '',
         query2: '',
@@ -54,12 +54,12 @@
     },
     computed: mapGetters({
       token: 'getToken',
-      isLogin: 'isLogin',
+      isLogin: 'isLogin'
     }),
     methods: {
-      search(page) {
+      search (page) {
         if (!this.isLogin) {
-          this.$store.commit("REQUIRE_LOGIN")
+          this.$store.commit('REQUIRE_LOGIN')
           return
         }
         this.result = null
@@ -69,7 +69,7 @@
         }
         this.isSearching = true
         let vm = this
-        if (this.query != '') {
+        if (this.query !== '') {
           brandApi.fuzzyQuery(this.token, this.query, page, data => {
             vm.result = data
             vm.isSearching = false

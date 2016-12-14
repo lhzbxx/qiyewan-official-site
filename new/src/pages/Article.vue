@@ -251,7 +251,7 @@
   import articleApi from '../api/article'
 
   export default {
-    data() {
+    data () {
       return {
         article: [],
         recommendNewsList: null
@@ -260,7 +260,7 @@
     watch: {
       '$route': 'fetchData'
     },
-    created() {
+    created () {
       this.fetchData();
     },
     computed: {

@@ -198,9 +198,9 @@
 <script>
   import {mapGetters} from 'vuex'
   export default {
-    data() {
+    data () {
       return {
-        username: "Anna",
+        username: 'Anna',
         cartNum: 3,
         unpaidNum: 2,
         unreviewedNum: 3

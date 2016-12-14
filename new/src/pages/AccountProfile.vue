@@ -175,7 +175,7 @@
   import {mapGetters} from 'vuex'
 
   export default {
-    data() {
+    data () {
       return {
         isEditingUsername: false,
         user: {
@@ -192,24 +192,25 @@
       phone: 'getPhone'
     }),
     methods: {
-      updateCompany(){
+      updateCompany () {
+        let vm = this
         authApi.updateCompany(this.token,
           data => {
             vm.companyInfo = data
           },
-          error => {
+          () => {
           })
       },
-      openDialog() {
+      openDialog () {
         this.$refs.dialog.openDialog()
       },
-      confirmCompanyInfo() {
+      confirmCompanyInfo () {
         this.isEditingCompanyInfo = false
       },
-      confirmUsername() {
+      confirmUsername () {
         this.isEditingUsername = false
       },
-      fetchData() {
+      fetchData () {
         this.loading = true
         let vm = this
         authApi.getUser(this.token,
@@ -232,11 +233,11 @@
           })
         this.loading = false
       },
-      getLocalTime(nS) {
+      getLocalTime (nS) {
         return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ');
       },
     },
-    created() {
+    created () {
       this.fetchData()
     }
   }
