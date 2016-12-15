@@ -44,9 +44,9 @@
 
 <script>
   export default {
-    data() {
+    data () {
       var validatePhone = (rule, value, cb) => {
-        let reg = /^1[3|4|5|7|8][0-9]{9}$/;
+        let reg = /^1[3|4|5|7|8][0-9]{9}$/
         if (!reg.test(value)) {
           cb(new Error('请输入正确的手机号！'))
         } else {
@@ -55,16 +55,16 @@
       }
       var validatePassword = (rule, value, cb) => {
         var pwdRank = function (w) {
-          var l = w.length,
-            f = function (x, s) {
-              return ((eval('/' + x + '/').test(s)) ? 1 : 0)
-            },
-            z = f('[0-9]', w) + f('[a-z]', w) + f('[A-Z]', w) + f('[\\W_]', w),
-            r = (l > 10 && z == 1) ? z + 1 : z;
-          if (r > 1 && f('^(?:(\\w+)\\1+)+$|(\\w)\\2{2,}', w))r--;
-          if ((l > 11 && z > 1) || (l > 12 && z == 1))r++;
-          if (l > 13 && r < 5)r++;
-          return r;
+          var l = w.length
+          var f = function (x, s) {
+            return ((eval('/' + x + '/').test(s)) ? 1 : 0)
+          }
+          var z = f('[0-9]', w) + f('[a-z]', w) + f('[A-Z]', w) + f('[\\W_]', w)
+          var r = (l > 10 && z === 1) ? z + 1 : z
+          if (r > 1 && f('^(?:(\\w+)\\1+)+$|(\\w)\\2{2,}', w))r--
+          if ((l > 11 && z > 1) || (l > 12 && z === 1))r++
+          if (l > 13 && r < 5)r++
+          return r
         }
         if (pwdRank(value) <= 1) {
           cb(new Error('密码强度低，请使用大写字母、小写字母和数字。'))
@@ -83,10 +83,10 @@
         isVisible: false,
         checked: false,
         formStacked: {
-          phone: "",
-          captcha: "",
-          password: "",
-          password2: ""
+          phone: '',
+          captcha: '',
+          password: '',
+          password2: ''
         },
         isWaiting: false,
         isRegistering: false,
@@ -133,24 +133,23 @@
       }
     },
     methods: {
-      openDialog() {
+      openDialog () {
         this.$refs.dialog.open()
       },
-      requestCaptcha() {
+      requestCaptcha () {
         let vm = this
         this.$refs.registerForm.validateField(['phone'],
           (error) => {
             if (!error) {
-
-              vm.$store.dispatch("isRegistered", vm.formStacked.phone).then(
+              vm.$store.dispatch('isRegistered', vm.formStacked.phone).then(
                 data => {
                   if (!data) {
-                    vm.$store.dispatch("requestCaptcha", vm.formStacked.phone)
+                    vm.$store.dispatch('requestCaptcha', vm.formStacked.phone)
                     vm.isWaiting = true
                     vm.timer = 60
                     vm.counterDown()
                   } else {
-                    vm.$message.error("手机号已被注册");
+                    vm.$message.error('手机号已被注册')
                     return false
                   }
                 }
@@ -160,9 +159,9 @@
             }
           })
       },
-      counterDown() {
+      counterDown () {
         setTimeout(() => {
-          if (this.timer == 0) {
+          if (this.timer === 0) {
             this.isWaiting = false
             return true
           }
@@ -170,42 +169,42 @@
           this.counterDown()
         }, 1000)
       },
-      submit(ev) {
+      submit (ev) {
         this.$refs.registerForm.validate((valid) => {
           if (valid) {
             this.isRegistering = true
             let vm = this
-            this.$store.dispatch("userRegister", {
+            this.$store.dispatch('userRegister', {
               phone: this.formStacked.phone,
               password: this.formStacked.password,
               captcha: this.formStacked.captcha
             }).then(() => {
               vm.isVisible = false
-              vm.formStacked.captcha = ""
-              vm.formStacked.password = ""
-              vm.formStacked.password2 = ""
+              vm.formStacked.captcha = ''
+              vm.formStacked.password = ''
+              vm.formStacked.password2 = ''
               vm.isRegistering = false
             }, (error) => {
-              vm.formStacked.captcha = ""
-              vm.formStacked.password = ""
-              vm.formStacked.password2 = ""
+              vm.formStacked.captcha = ''
+              vm.formStacked.password = ''
+              vm.formStacked.password2 = ''
               vm.isRegistering = false
-              if (error.detail == "Error.Action.WRONG_CAPTCHA") {
-                vm.$message.error("验证码不正确");
+              if (error.detail === 'Error.Action.WRONG_CAPTCHA') {
+                vm.$message.error('验证码不正确')
               }
-              if (error.detail == "Error.Duplicated.USER_EXISTS") {
-                vm.$message.error("手机号已被注册");
+              if (error.detail === 'Error.Duplicated.USER_EXISTS') {
+                vm.$message.error('手机号已被注册')
               }
             })
           } else {
-            return false;
+            return false
           }
-        });
+        })
       }
     },
     computed: {
-      timerShow() {
-        return this.timer + "秒"
+      timerShow () {
+        return this.timer + '秒'
       }
     }
   }

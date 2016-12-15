@@ -32,7 +32,7 @@
       tmName: String
     },
     computed: {
-      imgUrl() {
+      imgUrl () {
         return 'http://pic.tmkoo.com/pic.php?s=1&zch=' + this.tmImg
       }
     }

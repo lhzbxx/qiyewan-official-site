@@ -109,22 +109,22 @@
   import {mapGetters} from 'vuex'
 
   export default {
-    data() {
+    data () {
       return {
         multipleSelection: [],
         currentAmount: null
       }
     },
     methods: {
-      handleSelectionChange(val) {
-        this.multipleSelection = val;
+      handleSelectionChange (val) {
+        this.multipleSelection = val
       },
-      deleteCart(index) {
+      deleteCart (index) {
         let vm = this
         this.$confirm('确认删除该商品吗？', '删除商品', {
           type: 'warning'
         }).then(() => {
-          vm.$store.dispatch("removeCart", vm.carts[index].id).then(
+          vm.$store.dispatch('removeCart', vm.carts[index].id).then(
             () => {
               vm.carts.splice(index, 1)
               vm.$message({
@@ -133,18 +133,18 @@
               })
             },
             () => {
-              vm.$message.error("删除失败~")
+              vm.$message.error('删除失败~')
             }
           )
         }).catch(() => {
-        });
+        })
       },
-      handleCellEnter(row) {
+      handleCellEnter (row) {
         this.currentAmount = row.amount
       },
-      handleCellLeave(row) {
-        if (this.currentAmount != row.amount) {
-          this.$store.dispatch("updateCart", row).then(
+      handleCellLeave (row) {
+        if (this.currentAmount !== row.amount) {
+          this.$store.dispatch('updateCart', row).then(
             () => {
             },
             () => {
@@ -152,27 +152,27 @@
           )
         }
       },
-      updateCart(index) {
-        this.$store.dispatch("updateCart", this.carts[index])
+      updateCart (index) {
+        this.$store.dispatch('updateCart', this.carts[index])
       },
-      clearSelection() {
+      clearSelection () {
         this.multipleSelection = []
       },
-      checkout() {
-        this.$store.commit("CHECKOUT", this.multipleSelection)
-        this.$router.push({name: "pay"})
+      checkout () {
+        this.$store.commit('CHECKOUT', this.multipleSelection)
+        this.$router.push({name: 'pay'})
       },
-      getTotalPrice(row) {
+      getTotalPrice (row) {
         return dataApi.totalPrice(row)
       },
-      totalPrice() {
-        var r = 0;
+      totalPrice () {
+        var r = 0
         for (var i of this.multipleSelection) {
           r = r + Number(dataApi.totalPrice(i))
         }
         return r.toFixed(2)
       },
-      amountOfSelection() {
+      amountOfSelection () {
         return this.multipleSelection.length
       }
     },

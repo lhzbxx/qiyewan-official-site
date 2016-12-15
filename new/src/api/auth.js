@@ -3,7 +3,7 @@ import VueResource from 'vue-resource'
 
 Vue.use(VueResource)
 
-Vue.http.options.root = window.global_config.remote_url
+Vue.http.options.root = process.env.API
 
 export default {
   getRegion (cb) {
@@ -23,8 +23,7 @@ export default {
       (response) => {
         cb(response.body)
       },
-      () => {
-      }
+      () => {}
     )
   },
   requestCaptcha (phone, cb, errorCb) {

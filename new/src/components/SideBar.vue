@@ -90,7 +90,7 @@
 </template>
 <script>
   export default{
-    data() {
+    data () {
       return {
         isTop: true,
         toTop: 0,
@@ -98,22 +98,22 @@
       }
     },
     methods: {
-      handleScrollToTop() {
+      handleScrollToTop () {
         let vm = this
         var timer = setInterval(function () {
           let speed = Math.ceil(vm.toTop / 15)
           document.documentElement.scrollTop = document.body.scrollTop = vm.toTop - speed
-          if (vm.toTop == 0) {
-            clearInterval(timer);
+          if (vm.toTop === 0) {
+            clearInterval(timer)
           }
         }, 10)
       },
-      handleScroll() {
-        this.toTop = document.body.scrollTop || document.documentElement.scrollTop;
+      handleScroll () {
+        this.toTop = document.body.scrollTop || document.documentElement.scrollTop
         this.isTop = this.toTop < this.winHeight
       }
     },
-    mounted() {
+    mounted () {
       window.addEventListener('scroll', this.handleScroll)
     }
   }

@@ -41,13 +41,13 @@
 
 <script>
   export default {
-    data() {
+    data () {
       return {
         isVisible: false,
         checked: false,
         formStacked: {
-          phone: "",
-          password: ""
+          phone: '',
+          password: ''
         },
         isLogging: false,
         error: null,
@@ -70,39 +70,39 @@
       }
     },
     methods: {
-      jumpToRegister() {
-        this.$emit('register');
+      jumpToRegister () {
+        this.$emit('register')
         this.isVisible = false
       },
-      jumpToResetPassword() {
-        this.$emit('reset-password');
+      jumpToResetPassword () {
+        this.$emit('reset-password')
         this.isVisible = false
       },
-      openDialog() {
-        this.error = ""
+      openDialog () {
+        this.error = ''
         this.$refs.dialog.open()
       },
-      submit() {
+      submit () {
         let vm = this
         this.$refs.loginForm.validate(function (valid) {
           console.log(valid)
           if (valid) {
             vm.isLogging = true
-            vm.$store.dispatch("userLogin", {
+            vm.$store.dispatch('userLogin', {
               phone: vm.formStacked.phone,
               password: vm.formStacked.password
             }).then(function () {
               vm.isVisible = false
-              vm.formStacked.password = ""
+              vm.formStacked.password = ''
               vm.isLogging = false
             }, function (error) {
-              vm.formStacked.password = ""
+              vm.formStacked.password = ''
               vm.isLogging = false
-              if (error.detail == "Error.Auth.WRONG_PASSWORD") {
-                vm.$message.error("密码不正确！");
+              if (error.detail === 'Error.Auth.WRONG_PASSWORD') {
+                vm.$message.error('密码不正确！')
               }
-              if (error.detail == "Error.Auth.USER_NOT_EXISTS") {
-                vm.$message.error("用户不存在！");
+              if (error.detail === 'Error.Auth.USER_NOT_EXISTS') {
+                vm.$message.error('用户不存在！')
               }
             })
           } else {

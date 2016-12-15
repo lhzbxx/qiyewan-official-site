@@ -180,22 +180,22 @@
 <script>
   import {mapGetters} from 'vuex'
   export default {
-    data() {
+    data () {
       return {
-        orderState(state) {
+        orderState (state) {
           switch (state) {
             case 'Unpaid':
-              return "未付款"
+              return '未付款'
             case 'Paid':
-              return "待评价"
+              return '待评价'
             case 'Reviewed':
-              return "交易完成"
+              return '交易完成'
             case 'Timeout':
-              return "交易超时"
+              return '交易超时'
             case 'Canceled':
-              return "已取消"
+              return '已取消'
             default:
-              return "未知"
+              return '未知'
           }
         }
       }
@@ -207,35 +207,34 @@
       jumpToPay (url) {
         window.open(url)
       },
-      getLocalTime(nS) {
-        return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ');
+      getLocalTime (nS) {
+        return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ')
       },
-      goToReview(row, item) {
+      goToReview (row, item) {
         this.$router.push({
           name: 'review',
           params: {orderSerialId: row.serialId, productSerialId: item.productSerialId}
         })
       },
-      cancelOrder(index, serialId) {
+      cancelOrder (index, serialId) {
         let vm = this
         this.$confirm('确认取消该订单吗？', '取消订单', {
           type: 'warning'
         }).then(function () {
-          vm.$store.dispatch("cancelOrder", serialId).then(
+          vm.$store.dispatch('cancelOrder', serialId).then(
             function () {
-              vm.orders[index].orderState = "Canceled"
+              vm.orders[index].orderState = 'Canceled'
               vm.$message({
                 type: 'success',
                 message: '成功取消订单'
               })
             },
             function () {
-              vm.$message.error("取消订单失败...")
+              vm.$message.error('取消订单失败...')
             }
           )
-        }).catch(function () {
-          }
-        );
+        }).catch(function () {}
+        )
       }
     },
     props: {

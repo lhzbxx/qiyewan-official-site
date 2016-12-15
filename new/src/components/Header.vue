@@ -187,66 +187,66 @@
   import {mapGetters} from 'vuex'
 
   export default {
-    data() {
+    data () {
       return {
         navigators: [
           {
-            title: "工商服务",
-            code: "IC",
+            title: '工商服务',
+            code: 'IC',
             l: {
-              title: "工商变更",
+              title: '工商变更',
               list: []
             },
             r: {
-              title: "工商注销",
+              title: '工商注销',
               list: []
             }
           },
           {
-            title: "财税服务",
-            code: "FC",
+            title: '财税服务',
+            code: 'FC',
             l: {
-              title: "财务服务",
+              title: '财务服务',
               list: []
             },
             r: {
-              title: "税务服务",
+              title: '税务服务',
               list: []
             }
           },
           {
-            title: "法律服务",
-            code: "LD",
+            title: '法律服务',
+            code: 'LD',
             l: {
-              title: "法律服务",
+              title: '法律服务',
               list: []
             },
             r: {
-              title: "知识产权",
+              title: '知识产权',
               list: []
             }
           },
           {
-            title: "人事服务",
-            code: "HR",
+            title: '人事服务',
+            code: 'HR',
             l: {
-              title: "社保",
+              title: '社保',
               list: []
             },
             r: {
-              title: "公司人事",
+              title: '公司人事',
               list: []
             }
           },
           {
-            title: "IT&设计服务",
-            code: "IT",
+            title: 'IT&设计服务',
+            code: 'IT',
             l: {
-              title: "网站设计",
+              title: '网站设计',
               list: []
             },
             r: {
-              title: "LOGO设计",
+              title: 'LOGO设计',
               list: []
             }
           }
@@ -275,10 +275,10 @@
           }
         )
       },
-      handleNavData(data) {
+      handleNavData (data) {
         for (var i of this.navigators) {
-          i.l.list = data.filter(item => i.l.title == item.classificationName)
-          i.r.list = data.filter(item => i.r.title == item.classificationName)
+          i.l.list = data.filter(item => i.l.title === item.classificationName)
+          i.r.list = data.filter(item => i.r.title === item.classificationName)
         }
       }
     }

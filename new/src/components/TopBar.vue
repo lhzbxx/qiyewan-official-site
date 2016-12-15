@@ -234,33 +234,33 @@
       needLogin: 'needLogin'
     }),
     methods: {
-      handleLoginToRegister() {
+      handleLoginToRegister () {
         this.openRegisterDialog()
       },
-      handleLoginToResetPassword() {
+      handleLoginToResetPassword () {
         this.openResetPasswordDialog()
       },
-      openLoginDialog() {
+      openLoginDialog () {
         this.$refs.loginDialog.openDialog()
       },
-      openResetPasswordDialog() {
+      openResetPasswordDialog () {
         this.$refs.resetPasswordDialog.openDialog()
       },
-      openRegisterDialog() {
+      openRegisterDialog () {
         this.$refs.registerDialog.openDialog()
       },
-      changeRegion(index) {
+      changeRegion (index) {
         let vm = this
-        this.$store.commit("CHANGE_REGION", index)
-        this.$router.replace("/")
+        this.$store.commit('CHANGE_REGION', index)
+        this.$router.replace('/')
         this.$message({
           message: '已经切换到地区：' + vm.getRegion.name,
           type: 'success'
-        });
+        })
       },
-      logout() {
-        this.$store.commit("USER_LOGOUT")
-        this.$router.replace({name: "home"})
+      logout () {
+        this.$store.commit('USER_LOGOUT')
+        this.$router.replace({name: 'home'})
       }
     },
     watch: {
