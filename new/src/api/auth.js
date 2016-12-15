@@ -10,16 +10,14 @@ export default {
     if (window.global_config.mode === 'dev') {
       cb('SHSH')
     } else {
-      Vue.http.get('region').then(
+      Vue.http.get('locate.do').then(
         (response) => {
           cb(response.body)
         },
-        () => {
-        }
+        () => {}
       )
     }
   },
-
   isRegistered (phone, cb) {
     Vue.http.get('auth/' + phone).then(
       (response) => {
@@ -29,7 +27,6 @@ export default {
       }
     )
   },
-
   requestCaptcha (phone, cb, errorCb) {
     Vue.http.post('captcha/' + phone).then(
       (response) => {
@@ -43,7 +40,6 @@ export default {
         errorCb(response.body)
       })
   },
-
   login (phone, password, cb, errorCb) {
     Vue.http.get('auth?phone=' + phone + '&password=' + password).then(
       (response) => {
@@ -57,7 +53,6 @@ export default {
         errorCb(response.body)
       })
   },
-
   resetPassword (phone, password, captcha, cb, errorCb) {
     Vue.http.patch('auth', {
       phone: phone,
@@ -76,7 +71,6 @@ export default {
       }
     )
   },
-
   register (phone, password, captcha, cb, errorCb) {
     Vue.http.post('auth', {
       phone: phone,
@@ -95,7 +89,6 @@ export default {
       }
     )
   },
-
   getLoginHistory (token, cb, errorCb) {
     Vue.http.headers.common['Authorization'] = token
     Vue.http.get('login-history').then(
@@ -107,7 +100,6 @@ export default {
       }
     )
   },
-
   getUser (token, cb, errorCb) {
     Vue.http.headers.common['Authorization'] = token
     Vue.http.get('users').then(
@@ -119,7 +111,6 @@ export default {
       }
     )
   },
-
   getCompany (token, cb, errorCb) {
     Vue.http.headers.common['Authorization'] = token
     Vue.http.get('company').then(
@@ -131,7 +122,6 @@ export default {
       }
     )
   },
-
   updateCompany (token, company, cb, errorCb) {
     Vue.http.headers.common['Authorization'] = token
     Vue.http.put('company', company).then(
