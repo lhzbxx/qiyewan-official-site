@@ -21,93 +21,95 @@ import NotFound from '../pages/NotFound.vue'
 // import InvFin from '../pages/InvFin.vue'
 import BrandQuery from '../pages/BrandQuery.vue'
 
+const route = [
+  {
+    path: '/',
+    name: 'home',
+    component: Home
+  },
+  {
+    path: '/order/:orderSerialId/product/:productSerialId/review',
+    name: 'review',
+    beforeEnter: requireAuth,
+    component: Review
+  },
+  {
+    path: '/product/list/:category',
+    name: 'product-list',
+    component: ProductList
+  },
+  {
+    path: '/product/detail/:serialId',
+    name: 'product-detail',
+    component: ProductDetail
+  },
+  {
+    path: '/order',
+    name: 'order',
+    beforeEnter: requireAuth,
+    component: OrderList
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    beforeEnter: requireAuth,
+    component: MyCart
+  },
+  {
+    path: '/pay',
+    name: 'pay',
+    beforeEnter: requireAuth,
+    component: Pay
+  },
+  {
+    path: '/account',
+    name: 'account',
+    beforeEnter: requireAuth,
+    component: AccountProfile
+  },
+  {
+    path: '/person',
+    name: 'person',
+    beforeEnter: requireAuth,
+    component: PersonalCenter
+  },
+  // {
+  //   path: '/article/:id',
+  //   name: 'article',
+  //   component: Article
+  // },
+  // {
+  //   path: '/news',
+  //   component: NewsList
+  // },
+  // {
+  //   path: '/about-us/:liName',
+  //   name: 'about-us',
+  //   component: AboutUs
+  // },
+  // {
+  //   path: '/recruitment',
+  //   component: Recruitment
+  // },
+  // {
+  //   path: '/inv',
+  //   component: InvFin
+  // },
+  {
+    path: '/brand',
+    name: 'brand-query',
+    component: BrandQuery
+  },
+  {
+    path: '*',
+    component: NotFound
+  }
+]
+
 export default new VueRouter({
   mode: 'history',
   scrollBehavior: () => ({ y: 0 }),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/order/:orderSerialId/product/:productSerialId/review',
-      name: 'review',
-      beforeEnter: requireAuth,
-      component: Review
-    },
-    {
-      path: '/product/list/:category',
-      name: 'product-list',
-      component: ProductList
-    },
-    {
-      path: '/product/detail/:serialId',
-      name: 'product-detail',
-      component: ProductDetail
-    },
-    {
-      path: '/order',
-      name: 'order',
-      beforeEnter: requireAuth,
-      component: OrderList
-    },
-    {
-      path: '/cart',
-      name: 'cart',
-      beforeEnter: requireAuth,
-      component: MyCart
-    },
-    {
-      path: '/pay',
-      name: 'pay',
-      beforeEnter: requireAuth,
-      component: Pay
-    },
-    {
-      path: '/account',
-      name: 'account',
-      beforeEnter: requireAuth,
-      component: AccountProfile
-    },
-    {
-      path: '/person',
-      name: 'person',
-      beforeEnter: requireAuth,
-      component: PersonalCenter
-    },
-    // {
-    //   path: '/article/:id',
-    //   name: 'article',
-    //   component: Article
-    // },
-    // {
-    //   path: '/news',
-    //   component: NewsList
-    // },
-    // {
-    //   path: '/about-us/:liName',
-    //   name: 'about-us',
-    //   component: AboutUs
-    // },
-    // {
-    //   path: '/recruitment',
-    //   component: Recruitment
-    // },
-    // {
-    //   path: '/inv',
-    //   component: InvFin
-    // },
-    {
-      path: '/brand',
-      name: 'brand-query',
-      component: BrandQuery
-    },
-    {
-      path: '*',
-      component: NotFound
-    }
-  ]
+  routes: route
 })
 
 function requireAuth (to, from, next) {

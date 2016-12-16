@@ -1,9 +1,3 @@
-/**
- * Created by lhzbxx on 2016/10/20.
- *
- * actions.js
- */
-
 import * as types from './mutation-types'
 import authApi from '../api/auth'
 import cartApi from '../api/cart'

@@ -1,9 +1,3 @@
-/**
- * Created by lhzbxx on 2016/10/20.
- *
- * index.js
- */
-
 import Vue from 'vue'
 import Vuex from 'vuex'
 import * as getters from './getters'

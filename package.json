@@ -1,12 +1,13 @@
 {
   "name": "qiyewan-site-desktop",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "",
   "author": "lhzbxx <lhzbxx@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
+    "deploy": "node build/build.js && scp -r dist/ root@106.75.11.210:/home/www/official-site && curl 'https://hook.bearychat.com/=bw9xW/incoming/95746d8576bd052772277a977c1c432a' -X POST -d 'payload={\"text\": \"官网已更新！\"}'",
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {

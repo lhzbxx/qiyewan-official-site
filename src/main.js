@@ -2,16 +2,16 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import VueResource from 'vue-resource'
-import store from './store'
 import router from './router'
-import * as filters from './filters'
+import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
+import * as filters from './filters'
 
 Vue.use(ElementUI)
 Vue.use(VueResource)
 
-import App from './App'
+import App from './App.vue'
 
 import TopBar from './components/TopBar.vue'
 import Footer from './components/Footer.vue'
@@ -47,14 +47,15 @@ Vue.component('lh-brand', Brand)
 
 // store.dispatch('init')
 
-Object.keys(filters).forEach(key => {
-  Vue.filter(key, filters[key])
-})
+Vue.filter('cdn-filter', filters.cdnPrefix)
+Vue.filter('sub-total-price-filter', filters.totalPrice)
+Vue.filter('date-filter', filters.dateFormat)
 
 /* eslint-disable no-new */
 new Vue({
   router,
   store,
   el: '#app',
-  render: h => h(App)
+  template: '<App/>',
+  components: {App}
 })

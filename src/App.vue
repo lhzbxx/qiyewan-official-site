@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<style scoped>
+<style>
   #app {
     height: 100%;
   }
