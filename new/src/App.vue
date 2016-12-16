@@ -1,17 +1,3 @@
-<style scoped>
-  #app {
-    height: 100%;
-  }
-  #main {
-    padding-bottom: 190px;
-    overflow: hidden;
-    min-height: 100%;
-  }
-  #footer {
-    margin-top: -205px;
-  }
-</style>
-
 <template>
   <div id="app">
     <div id="main">
@@ -27,3 +13,17 @@
     <lh-side-bar></lh-side-bar>
   </div>
 </template>
+
+<style scoped>
+  #app {
+    height: 100%;
+  }
+  #main {
+    padding-bottom: 190px;
+    overflow: hidden;
+    min-height: 100%;
+  }
+  #footer {
+    margin-top: -205px;
+  }
+</style>

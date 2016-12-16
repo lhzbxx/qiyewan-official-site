@@ -66,11 +66,13 @@ export default new VueRouter({
     },
     {
       path: '/account',
+      name: 'account',
       beforeEnter: requireAuth,
       component: AccountProfile
     },
     {
       path: '/person',
+      name: 'person',
       beforeEnter: requireAuth,
       component: PersonalCenter
     },

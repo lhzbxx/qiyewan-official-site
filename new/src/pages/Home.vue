@@ -340,7 +340,6 @@
               '经营范围变更',
               '法人代表变更',
               '三证合一'
-
             ],
             main: {
               serialId: 'IC0001',
@@ -1463,11 +1462,10 @@
 
   #timeline ul li.active:after {
     top: 0;
-    border-left-width: 14px;
+    border-top-width: 24px;
     border-right-width: 14px;
     border-bottom-width: 24px;
-    border-top-width: 24px;
-    border-left-color: white;
+    border-left: 14px white;
     z-index: 10;
   }
 

@@ -54,19 +54,7 @@
         }
       }
       var validatePassword = (rule, value, cb) => {
-        var pwdRank = function (w) {
-          var l = w.length
-          var f = function (x, s) {
-            return ((eval('/' + x + '/').test(s)) ? 1 : 0)
-          }
-          var z = f('[0-9]', w) + f('[a-z]', w) + f('[A-Z]', w) + f('[\\W_]', w)
-          var r = (l > 10 && z === 1) ? z + 1 : z
-          if (r > 1 && f('^(?:(\\w+)\\1+)+$|(\\w)\\2{2,}', w))r--
-          if ((l > 11 && z > 1) || (l > 12 && z === 1))r++
-          if (l > 13 && r < 5)r++
-          return r
-        }
-        if (pwdRank(value) <= 1) {
+        if (value.length < 6) {
           cb(new Error('密码强度低，请使用大写字母、小写字母和数字。'))
         } else {
           cb()
