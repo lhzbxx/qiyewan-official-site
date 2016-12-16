@@ -188,6 +188,15 @@ export default {
         '鹤山镇',
         '新津县'
       ]
+    },
+    {
+      name: '合肥',
+      code: 'AHHF',
+      pName: '安徽',
+      areas: [
+        '高新区',
+        '天府新区'
+      ]
     }
   ]
 }
