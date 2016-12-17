@@ -227,9 +227,9 @@
 <script>
   import articleApi from '../api/article'
   export default {
-    data() {
+    data () {
       var validatePhone = (rule, value, cb) => {
-        let reg = /^1[3|4|5|7|8][0-9]{9}$/;
+        let reg = /^1[3|4|5|7|8][0-9]{9}$/
         if (!reg.test(value)) {
           cb(new Error('请输入正确的手机号！'))
         } else {
@@ -239,14 +239,14 @@
       return {
         showInv: 1,
         formStacked: {
-          name: "",
-          companyName: "",
-          mobile: "",
-          captcha: "",
-          direction: "",
-          bp: "",
-          period: "",
-          area: ""
+          name: '',
+          companyName: '',
+          mobile: '',
+          captcha: '',
+          direction: '',
+          bp: '',
+          period: '',
+          area: ''
         },
         isWaiting: false,
         isSubmitting: false,
@@ -310,22 +310,22 @@
               message: '请输入地区',
               trigger: 'blur'
             }
-          ],
+          ]
         }
       }
     },
     methods: {
-      setInvShow(show){
-        this.showInv = show;
+      setInvShow (show) {
+        this.showInv = show
       },
-      requestCaptcha() {
+      requestCaptch () {
         let vm = this
         this.$refs.invForm.validateField(['mobile'],
           (error) => {
             if (!error) {
-              articleApi.getInvCaptcha(vm.formStacked.mobile, data => {
-              }, error => {
-              })
+              articleApi.getInvCaptcha(vm.formStacked.mobile,
+                data => {},
+                () => {})
               vm.isWaiting = true
               vm.timer = 60
               vm.counterDown()
@@ -334,9 +334,9 @@
             }
           })
       },
-      counterDown() {
+      counterDown () {
         setTimeout(() => {
-          if (this.timer == 0) {
+          if (this.timer === 0) {
             this.isWaiting = false
             return true
           }
@@ -344,51 +344,51 @@
           this.counterDown()
         }, 1000)
       },
-      submit() {
+      submit () {
         this.$refs.invForm.validate((valid) => {
           if (valid) {
             let vm = this
-            let formStacked = JSON.parse(JSON.stringify(vm.formStacked));
-            this.isSubmitting = true;
+            let formStacked = JSON.parse(JSON.stringify(vm.formStacked))
+            this.isSubmitting = true
             if (vm.showInv) {
               articleApi.postInvestments(formStacked, response => {
-                vm.resetForm(response.body.success);
-              });
+                vm.resetForm(response.body.success)
+              })
             } else {
               articleApi.postFinances(formStacked, response => {
-                vm.resetForm(response.body.success);
-              });
+                vm.resetForm(response.body.success)
+              })
             }
           } else {
-            return false;
+            return false
           }
-        });
+        })
       },
-      resetForm(success){
+      resetForm (success) {
         let vm = this
         if (success) {
           vm.$message({
             message: '提交成功',
             type: 'success'
-          });
+          })
         } else {
           vm.$message({
             message: '验证码错误',
             type: 'error'
-          });
+          })
         }
-        vm.formStacked.name = ""
-        vm.formStacked.companyName = ""
-        vm.formStacked.captcha = ""
-        vm.formStacked.direction = ""
-        vm.formStacked.period = ""
-        vm.formStacked.area = ""
+        vm.formStacked.name = ''
+        vm.formStacked.companyName = ''
+        vm.formStacked.captcha = ''
+        vm.formStacked.direction = ''
+        vm.formStacked.period = ''
+        vm.formStacked.area = ''
         vm.isSubmitting = false
       }
     },
     computed: {
-      timerShow() {
-        return this.timer + "秒后重新获取"
+      timerShow () {
+        return this.timer + '秒后重新获取'
       }
     }
   }

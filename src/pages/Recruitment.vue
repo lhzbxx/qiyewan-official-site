@@ -381,28 +381,28 @@
     },
     methods: {
       setLiName (liName) {
-        this.currentLi = liName;
+        this.currentLi = liName
         switch (liName) {
           case 'it':
-            this.currentSubLi = 'it-java';
-            break;
+            this.currentSubLi = 'it-java'
+            break
           case 'operation':
-            this.currentSubLi = 'opt-manager';
-            break;
+            this.currentSubLi = 'opt-manager'
+            break
           case 'commerce':
-            this.currentSubLi = 'com-customer';
-            break;
+            this.currentSubLi = 'com-customer'
+            break
         }
       },
-      getLiName (){
-        return this.currentLi;
+      getLiName () {
+        return this.currentLi
       },
       setSubLiName (currentSubLi) {
-        this.currentSubLi = currentSubLi;
+        this.currentSubLi = currentSubLi
       },
-      getSubLiName (){
-        return this.currentSubLi;
-      },
+      getSubLiName () {
+        return this.currentSubLi
+      }
     }
   }
 

@@ -573,30 +573,30 @@
 </template>
 <script>
   export default {
-    data() {
+    data () {
       return {
         liName: 'about'
       }
     },
     watch: {
       '$route': {
-        handler(){
-          this.liName = this.$route.params.liName;
+        handler () {
+          this.liName = this.$route.params.liName
         }
       }
     },
     created () {
-      this.liName = this.$route.params.liName;
+      this.liName = this.$route.params.liName
     },
     methods: {
-      setLiName(liName) {
-        this.liName = liName;
+      setLiName (liName) {
+        this.liName = liName
       },
-      getLiName(){
-        return this.liName;
+      getLiName () {
+        return this.liName
       },
-      isShow(liName){
-        return liName == this.liName;
+      isShow (liName) {
+        return liName === this.liName
       }
     }
   }

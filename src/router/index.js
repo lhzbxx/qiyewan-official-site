@@ -13,12 +13,12 @@ import MyCart from '../pages/MyCart.vue'
 import Pay from '../pages/Pay.vue'
 import AccountProfile from '../pages/AccountProfile.vue'
 import PersonalCenter from '../pages/PersonalCenter.vue'
-// import Article from '../pages/Article.vue'
-// import NewsList from '../pages/NewsList.vue'
-// import AboutUs from '../pages/AboutUs.vue'
-// import Recruitment from '../pages/Recruitment.vue'
+import Article from '../pages/Article.vue'
+import NewsList from '../pages/NewsList.vue'
+import AboutUs from '../pages/AboutUs.vue'
+import Recruitment from '../pages/Recruitment.vue'
 import NotFound from '../pages/NotFound.vue'
-// import InvFin from '../pages/InvFin.vue'
+import InvFin from '../pages/InvFin.vue'
 import BrandQuery from '../pages/BrandQuery.vue'
 
 const route = [
@@ -73,28 +73,28 @@ const route = [
     beforeEnter: requireAuth,
     component: PersonalCenter
   },
-  // {
-  //   path: '/article/:id',
-  //   name: 'article',
-  //   component: Article
-  // },
-  // {
-  //   path: '/news',
-  //   component: NewsList
-  // },
-  // {
-  //   path: '/about-us/:liName',
-  //   name: 'about-us',
-  //   component: AboutUs
-  // },
-  // {
-  //   path: '/recruitment',
-  //   component: Recruitment
-  // },
-  // {
-  //   path: '/inv',
-  //   component: InvFin
-  // },
+  {
+    path: '/article/:id',
+    name: 'article',
+    component: Article
+  },
+  {
+    path: '/news',
+    component: NewsList
+  },
+  {
+    path: '/about-us/:liName',
+    name: 'about-us',
+    component: AboutUs
+  },
+  {
+    path: '/recruitment',
+    component: Recruitment
+  },
+  {
+    path: '/inv',
+    component: InvFin
+  },
   {
     path: '/brand',
     name: 'brand-query',

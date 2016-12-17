@@ -261,7 +261,7 @@
       '$route': 'fetchData'
     },
     created () {
-      this.fetchData();
+      this.fetchData()
     },
     computed: {
       compiledMarkdown: function () {
@@ -269,23 +269,21 @@
       }
     },
     methods: {
-      nav2article: function (article_id) {
-        location.href = '/#/article/' + article_id;
-        location.reload();
+      nav2article: function (articleId) {
+        this.$router.push({name: 'article', params: {id: articleId}})
       },
       fetchData () {
-        let vm = this;
+        let vm = this
         articleApi.getArticle(vm.$route.params.id, data => {
-          vm.article = data.data[0];
+          vm.article = data.data[0]
         }, error => {
           vm.error = error
-        });
-
+        })
         articleApi.getRecommendNews(data => {
-          vm.recommendNewsList = data.data;
+          vm.recommendNewsList = data.data
         }, error => {
           vm.error = error
-        });
+        })
       }
     }
   }
