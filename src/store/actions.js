@@ -3,7 +3,7 @@ import authApi from '../api/auth'
 import cartApi from '../api/cart'
 import orderApi from '../api/order'
 
-export const checkToken = ({commit, state}) => {
+export const init = ({commit, state}) => {
   if (window.localStorage.createAt) {
     if (new Date().valueOf() - window.localStorage.createAt < 15 * 24 * 60 * 60 * 1000) {
       commit(types.GET_DATA_FROM_STORAGE)

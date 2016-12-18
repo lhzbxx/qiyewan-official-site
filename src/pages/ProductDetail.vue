@@ -244,7 +244,7 @@
       </el-breadcrumb>
       <el-row style="margin-top:20px">
         <el-col :span="11" style="margin-right:30px">
-          <img :src="cdnPrefix+product.cover"
+          <img :src="product.cover | cdn-filter"
                style="width: 100%; height: 381px;">
         </el-col>
         <el-col :span="10" class="pro_right">
@@ -261,7 +261,7 @@
             <p style="margin: 10px 0;">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：
               <span style="font-size: 20px;
                                      color: red;">
-                            &yen; {{ getTotalPrice() }}
+                            &yen; {{ form | sub-total-price-filter }}
                         </span></p>
             <p style="">用户评分：
               <el-rate
@@ -295,7 +295,7 @@
                 <el-col :span="6" style="margin-right: 15px">
                   <el-select v-model="address.district" :placeholder="address.district">
                     <el-option v-for="area in address.districts"
-                               :value="area.name"></el-option>
+                               :value="area"></el-option>
                   </el-select>
                 </el-col>
               </el-row>
@@ -309,7 +309,7 @@
                 <el-radio-button label="12">一年</el-radio-button>
               </el-radio-group>
             </el-form-item>
-            <el-form-item label="参与人数" style="margin-bottom: 8px" v-if="isSpecial()">
+            <el-form-item label="参与人数" style="margin-bottom: 8px" v-if="product.serialId.substr(4) === 'HR0003'">
               <el-input-number :min="1"
                                size="small"
                                v-model="form.member">
@@ -350,7 +350,7 @@
           <lh-product v-for="item in hotProducts"
                       :title="item.title"
                       :summary="item.summary"
-                      :img="cdnPrefix+item.img"
+                      :img="item.img | cdn-filter"
                       :price="item.price"
                       :url="getRegion.code+item.serialId"></lh-product>
         </el-col>
@@ -377,7 +377,7 @@
               </div>
               <div class="provide">
                 <div class="pro_pic">
-                  <img style="width: 100%" :src="cdnPrefix+product.whatNeed" alt="">
+                  <img style="width: 100%" :src="product.whatNeed | cdn-filter" alt="">
                 </div>
               </div>
               <div class="Process">
@@ -392,7 +392,7 @@
               </div>
               <div class="get">
                 <div class="get_pic">
-                  <img style="width: 100%" :src="cdnPrefix+product.whatObtain">
+                  <img style="width: 100%" :src="product.whatObtain | cdn-filter">
                 </div>
               </div>
               <div class="internet">
@@ -500,7 +500,6 @@
 </template>
 
 <script>
-  import dataApi from '../api/data'
   import productApi from '../api/product'
   import {mapGetters} from 'vuex'
 
@@ -532,8 +531,7 @@
     computed: mapGetters({
       getRegion: 'getRegion',
       hotProducts: 'hotProducts',
-      isLogin: 'isLogin',
-      cdnPrefix: 'cdnPrefix'
+      isLogin: 'isLogin'
     }),
     created () {
       this.fetchData()
@@ -604,13 +602,10 @@
           }, () => {
           })
       },
-      getTotalPrice () {
-        return dataApi.totalPrice(this.form)
-      },
       refreshForm () {
         this.address.province = this.getRegion.pName
         this.address.city = this.getRegion.name
-        this.address.district = this.getRegion.areas[0].name
+        this.address.district = this.getRegion.areas[0]
         this.address.districts = this.getRegion.areas
         this.form.regionCode = this.getRegion.code
         this.form.region = this.address.province + '-' + this.address.city + '-' + this.address.district
@@ -623,9 +618,6 @@
       },
       getLocalTime (nS) {
         return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ')
-      },
-      isSpecial () {
-        return dataApi.isSpecial(this.product)
       }
     }
   }

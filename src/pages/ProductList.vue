@@ -21,7 +21,7 @@
         <lh-product v-for="item in products"
                     :title="item.name"
                     :summary="item.summary"
-                    :img="cdnPrefix+item.cover"
+                    :img="item.cover | cdn-filter"
                     :price="item.price"
                     :url="item.serialId"></lh-product>
       </el-col>
@@ -31,7 +31,6 @@
 
 <script>
   import productApi from '../api/product'
-  import {mapGetters} from 'vuex'
 
   export default {
     data () {
@@ -46,9 +45,6 @@
     watch: {
       '$route': 'fetchData'
     },
-    computed: mapGetters({
-      cdnPrefix: 'cdnPrefix'
-    }),
     methods: {
       fetchData () {
         let category = this.$route.params.category

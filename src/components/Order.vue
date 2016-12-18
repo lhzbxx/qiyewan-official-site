@@ -54,7 +54,7 @@
                                         height: 100%;
                                         display: table-cell;
                                         vertical-align: middle;">
-                <img :src="cdnPrefix + item.cover"
+                <img :src="item.cover | cdn-filter"
                      style="width: 100%;
                                             display: table-cell;
                                             vertical-align: middle;">
@@ -178,7 +178,6 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
   export default {
     data () {
       return {
@@ -200,9 +199,6 @@
         }
       }
     },
-    computed: mapGetters({
-      cdnPrefix: 'cdnPrefix'
-    }),
     methods: {
       jumpToPay (url) {
         window.open(url)

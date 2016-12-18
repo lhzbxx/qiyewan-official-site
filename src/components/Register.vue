@@ -177,12 +177,7 @@
               vm.formStacked.password = ''
               vm.formStacked.password2 = ''
               vm.isRegistering = false
-              if (error.detail === 'Error.Action.WRONG_CAPTCHA') {
-                vm.$message.error('验证码不正确')
-              }
-              if (error.detail === 'Error.Duplicated.USER_EXISTS') {
-                vm.$message.error('手机号已被注册')
-              }
+              vm.$message.error(error.message)
             })
           } else {
             return false

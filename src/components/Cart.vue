@@ -21,7 +21,7 @@
                                         height: 100%;
                                         display: table-cell;
                                         vertical-align: middle;">
-                <img :src="cdnPrefix+row.product.cover"
+                <img :src="row.product.cover | cdn-filter"
                      style="width: 100%;
                                             display: table-cell;
                                             vertical-align: middle;">
@@ -48,9 +48,7 @@
         inline-template
         label="单价">
         <div>&yen;
-          <span>
-                        {{ row.product.unitPrice }}
-                    </span>
+          <span>{{ row.product.unitPrice }}</span>
         </div>
       </el-table-column>
       <el-table-column
@@ -106,7 +104,6 @@
 
 <script>
   import dataApi from '../api/data'
-  import {mapGetters} from 'vuex'
 
   export default {
     data () {
@@ -160,7 +157,7 @@
       },
       checkout () {
         this.$store.commit('CHECKOUT', this.multipleSelection)
-        this.$router.push({name: 'pay'})
+        this.$router.push({name: 'checkout'})
       },
       getTotalPrice (row) {
         return dataApi.totalPrice(row)
@@ -176,9 +173,6 @@
         return this.multipleSelection.length
       }
     },
-    computed: mapGetters({
-      cdnPrefix: 'cdnPrefix'
-    }),
     watch: {
       'page': 'clearSelection'
     },

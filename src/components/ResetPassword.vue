@@ -126,7 +126,7 @@
       },
       requestCaptcha () {
         let vm = this
-        this.$refs.resetPasswordForm.validateField(['phone'],
+        this.$refs.resetPasswordForm.validateField('phone',
           (error) => {
             if (!error) {
               vm.$store.dispatch('isRegistered', vm.formStacked.phone).then(
@@ -171,20 +171,13 @@
               vm.formStacked.password = ''
               vm.formStacked.password2 = ''
               vm.isRegistering = false
+              vm.$message('重置密码成功，已自动登录。')
             }, (error) => {
               vm.formStacked.captcha = ''
               vm.formStacked.password = ''
               vm.formStacked.password2 = ''
               vm.isRegistering = false
-              if (error.detail === 'Error.Action.WRONG_CAPTCHA') {
-                vm.$message.error('验证码不正确')
-              }
-              if (error.detail === 'Error.Duplicated.USER_EXISTS') {
-                vm.$message.error('手机号已被注册')
-              }
-              if (error.detail === 'Error.Auth.USER_NOT_EXISTS') {
-                vm.$message.error('手机号不存在，请先注册！')
-              }
+              vm.$message.error(error.message)
             })
           } else {
             return false

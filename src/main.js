@@ -45,7 +45,7 @@ Vue.component('lh-loading', Loading)
 Vue.component('lh-side-bar', SideBar)
 Vue.component('lh-brand', Brand)
 
-// store.dispatch('init')
+store.dispatch('init')
 
 Vue.filter('cdn-filter', filters.cdnPrefix)
 Vue.filter('sub-total-price-filter', filters.totalPrice)

@@ -10,7 +10,7 @@ import ProductList from '../pages/ProductList.vue'
 import ProductDetail from '../pages/ProductDetail.vue'
 import OrderList from '../pages/OrderList.vue'
 import MyCart from '../pages/MyCart.vue'
-import Pay from '../pages/Pay.vue'
+import Checkout from '../pages/Checkout.vue'
 import AccountProfile from '../pages/AccountProfile.vue'
 import PersonalCenter from '../pages/PersonalCenter.vue'
 import Article from '../pages/Article.vue'
@@ -56,10 +56,10 @@ const route = [
     component: MyCart
   },
   {
-    path: '/pay',
-    name: 'pay',
+    path: '/checkout',
+    name: 'checkout',
     beforeEnter: requireAuth,
-    component: Pay
+    component: Checkout
   },
   {
     path: '/account',

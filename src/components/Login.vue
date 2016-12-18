@@ -98,12 +98,7 @@
             }, function (error) {
               vm.formStacked.password = ''
               vm.isLogging = false
-              if (error.detail === 'Error.Auth.WRONG_PASSWORD') {
-                vm.$message.error('密码不正确！')
-              }
-              if (error.detail === 'Error.Auth.USER_NOT_EXISTS') {
-                vm.$message.error('用户不存在！')
-              }
+              vm.$message.error(error.message)
             })
           } else {
             return false

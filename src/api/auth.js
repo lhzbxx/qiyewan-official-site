@@ -19,7 +19,7 @@ export default {
     }
   },
   isRegistered (phone, cb) {
-    Vue.http.get('auth/' + phone).then(
+    Vue.http.get('check-phone.do?phone=' + phone).then(
       (response) => {
         cb(response.body)
       },
@@ -27,10 +27,10 @@ export default {
     )
   },
   requestCaptcha (phone, cb, errorCb) {
-    Vue.http.post('captcha/' + phone).then(
+    Vue.http.post('captcha.do?phone=' + phone).then(
       (response) => {
         if (response.body.error === 0) {
-          cb(response.body.detail)
+          cb(response.body)
         } else {
           errorCb(response.body)
         }
@@ -40,13 +40,9 @@ export default {
       })
   },
   login (phone, password, cb, errorCb) {
-    Vue.http.get('auth?phone=' + phone + '&password=' + password).then(
+    Vue.http.get('auth?mode=WEB_PC&phone=' + phone + '&password=' + password).then(
       (response) => {
-        if (response.body.error === 0) {
-          cb(response.body.detail)
-        } else {
-          errorCb(response.body)
-        }
+        cb(response.body.token)
       },
       (response) => {
         errorCb(response.body)
@@ -59,11 +55,7 @@ export default {
       captcha: captcha
     }).then(
       (response) => {
-        if (response.body.error === 0) {
-          cb(response.body.detail)
-        } else {
-          errorCb(response.body)
-        }
+        cb(response.body.token)
       },
       (response) => {
         errorCb(response.body)
@@ -77,11 +69,7 @@ export default {
       captcha: captcha
     }).then(
       (response) => {
-        if (response.body.error === 0) {
-          cb(response.body.detail)
-        } else {
-          errorCb(response.body)
-        }
+        cb(response.body.token)
       },
       (response) => {
         errorCb(response.body)

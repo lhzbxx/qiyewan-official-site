@@ -1,5 +1,5 @@
 <template>
-  <div id="pay" class="container">
+  <div id="checkout" class="container">
     <div style="border: 1px solid #eee;
                     border-bottom: none;
                     padding: 20px;">
@@ -30,9 +30,7 @@
                                vertical-align: middle;
                                font-size: 16px;">
             应付金额
-            <span style="color: red; font-size: 24px;">
-                            {{ totalPrice() }}
-                        </span>元
+            <span style="color: red; font-size: 24px;">{{ totalPrice() }}</span>元
           </div>
         </el-col>
       </el-row>
@@ -52,7 +50,7 @@
                                         height: 100%;
                                         display: table-cell;
                                         vertical-align: middle;">
-                <img :src="cdnPrefix + row.product.cover"
+                <img :src="row.product.cover | cdn-filter"
                      style="width: 100%;
                                             display: table-cell;
                                             vertical-align: middle;">
@@ -104,7 +102,7 @@
         label="小计">
         <div style="color: red;">
           &yen;
-          <span>{{ getTotalPrice(row) }}</span>
+          <span>{{ row | sub-total-price-filter }}</span>
         </div>
       </el-table-column>
     </el-table>
@@ -116,7 +114,7 @@
       <el-row style="border: 1px solid #eee;">
         <el-col :span="8"
                 v-for="(item, index) in payments"
-                style="text-align: center;">
+                class="payment-wrapper">
           <img :src="item.url | cdn-filter"
                class="payment"
                v-bind:class="{chosen: index == payment}"
@@ -150,7 +148,7 @@
   </div>
 </template>
 <script>
-  import dataApi from '../api/data'
+  import pingpp from 'pingpp-js'
   import {mapGetters} from 'vuex'
   export default {
     data () {
@@ -190,7 +188,15 @@
           payment: this.payments[this.payment].code
         }).then(
           function (order) {
-            window.open(order.payUrl, '_self')
+            pingpp.createPayment(order.charge, function (result, err) {
+              if (result === 'success') {
+                // 只有微信公众账号 wx_pub 支付成功的结果会在这里返回，其他的支付结果都会跳转到 extra 中对应的 URL。
+              } else if (result === 'fail') {
+                // charge 不正确或者微信公众账号支付失败时会在此处返回
+              } else if (result === 'cancel') {
+                // 微信公众账号支付取消支付
+              }
+            })
           },
           function () {
             vm.isOrdering = false
@@ -198,20 +204,23 @@
         )
       },
       totalPrice () {
-        var total = 0
+        var result = 0
         for (let i of this.checkout) {
-          total += Number(dataApi.totalPrice(i))
+          let amount = i.amount
+          let member = i.member
+          if (i.product.serialId.substr(4) === 'HR0003') {
+            result += member > 3 ? ((98.8 + 18.8 * (member - 3)) * amount) : (98.8 * amount)
+          } else {
+            result += (amount * i.product.unitPrice)
+          }
         }
-        return total.toFixed(2)
-      },
-      getTotalPrice (row) {
-        return dataApi.totalPrice(row)
+        return result.toFixed(2)
       }
     }
   }
 </script>
 <style scoped>
-  #pay {
+  #checkout {
     margin-top: 20px;
   }
 
@@ -225,8 +234,15 @@
     float: right;
   }
 
+  .payment-wrapper {
+    text-align: center;
+    padding: 20px;
+    height: 200px;
+    vertical-align: middle;
+  }
+
   .payment {
-    margin: 10px;
+    padding: 30px;
     width: 100%;
     cursor: pointer;
     border: 1px solid #eee;
