@@ -14,8 +14,6 @@ export const init = ({commit, state}) => {
       if (data.detail === 'Error.Auth.INVALID_TOKEN') {
         window.localStorage.clear()
         state.auth.isLogin = false
-      } else {
-        commit('RECEIVE_USER_INFO', data)
       }
     }
   )

@@ -28,6 +28,7 @@ import News from './components/News.vue'
 import Loading from './components/Loading.vue'
 import SideBar from './components/SideBar.vue'
 import Brand from './components/Brand.vue'
+import WxPay from './components/WxPay.vue'
 
 Vue.component('lh-top-bar', TopBar)
 Vue.component('lh-product', Product)
@@ -44,6 +45,7 @@ Vue.component('lh-news', News)
 Vue.component('lh-loading', Loading)
 Vue.component('lh-side-bar', SideBar)
 Vue.component('lh-brand', Brand)
+Vue.component('lh-wxpay', WxPay)
 
 store.dispatch('init')
 
