@@ -104,7 +104,7 @@
         inline-template
         label="交易状态">
         <div>
-          {{ orderState(row.orderState) }}
+          {{ orderStage(row.orderStage) }}
         </div>
       </el-table-column>
       <el-table-column
@@ -112,7 +112,7 @@
         align="center"
         label="操作">
         <div>
-          <div v-if="row.orderState == 'Unpaid'">
+          <div v-if="row.orderStage == 'UNPAID'">
             <el-button type="primary"
                        size="small"
                        @click.native="jumpToPay(row.payUrl)">
@@ -124,7 +124,7 @@
               取消订单
             </el-button>
           </div>
-          <div v-if="row.orderState == 'Paid'">
+          <div v-if="row.orderStage == 'PAID'">
             <el-row style="height: 90px; padding-top: 42px;" v-for="item in row.details">
               <el-col :span="24"
                       class="order-detail">
@@ -148,7 +148,7 @@
               </el-col>
             </el-row>
           </div>
-          <div v-if="row.orderState == 'Reviewed'">
+          <div v-if="row.orderStage == 'REVIEWED'">
             <el-row style="height: 90px; padding-top: 42px;" v-for="item in row.details">
               <el-col :span="24"
                       class="order-detail">
@@ -164,7 +164,7 @@
               </el-col>
             </el-row>
           </div>
-          <div v-if="row.orderState == 'Timeout' || row.orderState == 'Canceled'">
+          <div v-if="row.orderStage == 'TIMEOUT' || row.orderStage == 'CANCELED'">
             <el-button type="text"
                        :disabled="true"
                        size="small">
@@ -181,17 +181,17 @@
   export default {
     data () {
       return {
-        orderState (state) {
+        orderStage (state) {
           switch (state) {
-            case 'Unpaid':
+            case 'UNPAID':
               return '未付款'
-            case 'Paid':
+            case 'PAID':
               return '待评价'
-            case 'Reviewed':
+            case 'REVIEWED':
               return '交易完成'
-            case 'Timeout':
+            case 'TIMEOUT':
               return '交易超时'
-            case 'Canceled':
+            case 'CANCELED':
               return '已取消'
             default:
               return '未知'
@@ -219,7 +219,7 @@
         }).then(function () {
           vm.$store.dispatch('cancelOrder', serialId).then(
             function () {
-              vm.orders[index].orderState = 'Canceled'
+              vm.orders[index].orderStage = 'Canceled'
               vm.$message({
                 type: 'success',
                 message: '成功取消订单'

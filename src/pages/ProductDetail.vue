@@ -325,8 +325,7 @@
           <el-button type="primary"
                      size="large"
                      @click.native="directOrder"
-                     style="width: 120px;
-                                      margin-left: 10px;">
+                     style="width: 120px; margin-left: 10px;">
             立即购买
           </el-button>
           <el-button size="large"
@@ -598,7 +597,7 @@
         this.$store.dispatch('addToCart', this.form)
           .then(data => {
             this.$store.commit('CHECKOUT', [data])
-            this.$router.push({name: 'pay'})
+            this.$router.push({name: 'checkout'})
           }, () => {
           })
       },
