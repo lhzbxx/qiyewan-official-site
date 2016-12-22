@@ -204,7 +204,7 @@
     methods: {
       jumpToPay (row) {
         if (row.payment.substr(-3) === 'WAP') {
-          this.$message({
+          return this.$message({
             type: 'warning',
             message: '请在官网的移动端进行支付！'
           })
