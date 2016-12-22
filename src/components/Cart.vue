@@ -67,7 +67,7 @@
         label="小计">
         <div style="color: red;">
           &yen;
-          <span>{{ getTotalPrice(row) }}</span>
+          <span>{{ row | sub-total-price-filter }}</span>
         </div>
       </el-table-column>
       <el-table-column
@@ -103,8 +103,6 @@
 </template>
 
 <script>
-  import dataApi from '../api/data'
-
   export default {
     data () {
       return {
@@ -159,13 +157,16 @@
         this.$store.commit('CHECKOUT', this.multipleSelection)
         this.$router.push({name: 'checkout'})
       },
-      getTotalPrice (row) {
-        return dataApi.totalPrice(row)
-      },
       totalPrice () {
         var r = 0
         for (var i of this.multipleSelection) {
-          r = r + Number(dataApi.totalPrice(i))
+          let amount = i.amount
+          let member = i.member
+          if (i.product.serialId.substr(4) === 'HR0003') {
+            r += member > 3 ? ((98.8 + 18.8 * (member - 3)) * amount) : (98.8 * amount)
+          } else {
+            r += (amount * i.product.unitPrice)
+          }
         }
         return r.toFixed(2)
       },
