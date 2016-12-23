@@ -612,7 +612,7 @@
         if (this.product.isInstant) {
           this.form.amount = 1
         } else {
-          this.form.amount = 6
+          this.form.amount = '6'
         }
       },
       getLocalTime (nS) {
