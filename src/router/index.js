@@ -20,6 +20,7 @@ import Recruitment from '../pages/Recruitment.vue'
 import NotFound from '../pages/NotFound.vue'
 import InvFin from '../pages/InvFin.vue'
 import BrandQuery from '../pages/BrandQuery.vue'
+import Success from '../pages/Success.vue'
 
 const route = [
   {
@@ -99,6 +100,11 @@ const route = [
     path: '/brand',
     name: 'brand-query',
     component: BrandQuery
+  },
+  {
+    path: '/success',
+    name: 'success',
+    component: Success
   },
   {
     path: '*',
