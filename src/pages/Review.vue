@@ -16,7 +16,7 @@
                     margin-top: 30px;
                     margin-bottom: 30px;">
           <div style="position: relative; width: 200px; margin: auto;">
-            <img src="../assets/logo.png">
+            <img :src="product.cover | cdn-filter" style="width: 100%;">
             <p style="position: relative; margin: auto; width: 150px;">
               {{ product.summary }}
             </p>
@@ -27,9 +27,7 @@
             <br>
             <p style="color: gray; font-size: 14px;">
               服务数量：
-              <span>
-                                {{ amount }} {{ product.unit }}
-                            </span>
+              <span>{{ amount }} {{ product.unit }}</span>
             </p>
           </div>
         </el-col>
