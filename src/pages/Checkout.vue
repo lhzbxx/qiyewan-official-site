@@ -158,12 +158,12 @@
           {
             name: '支付宝',
             code: 'ALIPAY',
-            url: 'AliPay-banner.png'
+            url: 'AliPay-banner-2.png'
           },
           {
             name: '微信支付',
             code: 'WXPAY',
-            url: 'WxPay-banner.png'
+            url: 'WxPay-banner-2.png'
           }
         ],
         payment: 0,

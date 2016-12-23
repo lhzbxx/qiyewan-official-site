@@ -72,10 +72,10 @@
             this.orderState = 'All'
             break
           case '2':
-            this.orderState = 'Unpaid'
+            this.orderState = 'UNPAID'
             break
           case '3':
-            this.orderState = 'Paid'
+            this.orderState = 'PAID'
             break
         }
         this.fetchData(1)
