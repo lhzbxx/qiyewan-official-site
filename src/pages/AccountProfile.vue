@@ -58,7 +58,8 @@
                v-if="!isEditingCompanyInfo">
       修改
     </el-button>
-    <div style="border: 1px solid #eee; padding: 10px 20px;">
+    <div style="border: 1px solid #eee; padding: 10px 20px;"
+         v-if="companyInfo">
       <table border="0" ref="companyInfoTable">
         <tr>
           <td width="120" height="35" align="right">公司名称：</td>
