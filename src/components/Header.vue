@@ -261,15 +261,16 @@
     }),
     watch: {
       getRegionIndex: 'fetchData',
-      route: 'fetchData'
+      $route () {
+        this.isHovering = false
+        this.fetchData()
+      }
     },
-    created () {
+    mounted () {
       this.fetchData()
     },
     methods: {
       fetchData () {
-        console.log('123')
-        this.isHovering = false
         let vm = this
         productApi.getNavList(this.getRegion.code,
           function (data) {
