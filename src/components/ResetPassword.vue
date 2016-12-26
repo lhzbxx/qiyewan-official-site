@@ -131,7 +131,7 @@
             if (!error) {
               vm.$store.dispatch('isRegistered', vm.formStacked.phone).then(
                 data => {
-                  if (data) {
+                  if (data.registered) {
                     vm.$store.dispatch('requestCaptcha', vm.formStacked.phone)
                     vm.isWaiting = true
                     vm.timer = 60
