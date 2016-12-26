@@ -49,8 +49,7 @@
             <router-link
               :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
               <div class="l">
-                <h5>{{ getRegion.code+item.serialId === 'BJBJPS0002' ? '注册宝' :
-                  (getRegion.code+item.serialId === 'BJBJPS0004' ? '商标宝' : item.title) }}</h5>
+                <h5>{{ getRegion.code+item.serialId === 'BJBJPS0004' ? '注册宝' : item.title }}</h5>
                 <p>{{ item.summary }}</p>
               </div>
               <div class="r introduce_img" :class="item.image"></div>
