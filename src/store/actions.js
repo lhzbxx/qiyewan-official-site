@@ -112,9 +112,9 @@ export const getCarts = ({commit, state}, page) => {
   })
 }
 
-export const addToCart = ({commit, state}, cart) => {
+export const addToCart = ({commit, state}, {cart, isOverride}) => {
   return new Promise((resolve, reject) => {
-    cartApi.addCart(state.auth.user.token, cart,
+    cartApi.addCart(state.auth.user.token, cart, isOverride,
       data => {
         commit(types.ADD_TO_CART, data)
         resolve(data)

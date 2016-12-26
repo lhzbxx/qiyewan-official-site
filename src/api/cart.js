@@ -14,9 +14,9 @@ export default {
       errorCb(response.body)
     })
   },
-  addCart (token, cart, cb, errorCb) {
+  addCart (token, cart, isOverride, cb, errorCb) {
     Vue.http.headers.common['Authorization'] = token
-    Vue.http.post('carts', cart).then((response) => {
+    Vue.http.post('carts?isOverride=' + isOverride, cart).then((response) => {
       cb(response.body)
     }, (response) => {
       errorCb(response.body)

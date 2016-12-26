@@ -577,7 +577,10 @@
           return
         }
         this.isAdding = true
-        this.$store.dispatch('addToCart', this.form)
+        this.$store.dispatch('addToCart', {
+          cart: this.form,
+          isOverride: true
+        })
           .then(() => {
             this.$message({
               message: '成功加入购物车~~',
@@ -594,7 +597,10 @@
           this.$store.commit('REQUIRE_LOGIN')
           return
         }
-        this.$store.dispatch('addToCart', this.form)
+        this.$store.dispatch('addToCart', {
+          cart: this.form,
+          isOverride: false
+        })
           .then(data => {
             this.$store.commit('CHECKOUT', [data])
             this.$router.push({name: 'checkout'})
