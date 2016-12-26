@@ -126,7 +126,7 @@
       },
       requestCaptcha () {
         let vm = this
-        this.$refs.registerForm.validateField(['phone'],
+        this.$refs.registerForm.validateField('phone',
           (error) => {
             if (!error) {
               vm.$store.dispatch('isRegistered', vm.formStacked.phone).then(

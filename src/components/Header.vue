@@ -31,6 +31,11 @@
     transition: all 0.3s ease-in-out;
   }
 
+  .init {
+    opacity: 0 !important;
+    z-index: -1 !important;
+  }
+
   .show {
     position: absolute;
     width: 700px;
@@ -127,12 +132,14 @@
         </router-link>
       </div>
       <ul style="margin-left: 0;">
-        <li v-for="item in navigators">
+        <li v-for="item in navigators"
+            v-on:mouseenter="isHovering = true">
           <router-link
             :to="{ name: 'product-list', params: { regionCode: getRegion.code, category: item.code }}">
             {{ item.title }}
           </router-link>
-          <div class="show">
+          <div class="show"
+               v-bind:class="{'init': !isHovering}">
             <div class="nav-show-left l">
               <div class="nav-show-content" v-if="item.l.title">
                 <router-link
@@ -141,10 +148,7 @@
                 </router-link>
                 <router-link
                   :to="{ name: 'product-detail', params: { serialId: i.serialId }}"
-                  v-for="i in item.l.list">
-                                    <span>
-                                            {{ i.name }}
-                                    </span>
+                  v-for="i in item.l.list"><span>{{ i.name }}</span>
                 </router-link>
               </div>
             </div>
@@ -158,10 +162,7 @@
                 </router-link>
                 <router-link
                   :to="{ name: 'product-detail', params: { serialId: i.serialId }}"
-                  v-for="i in item.r.list">
-                                    <span>
-                                        {{ i.name }}
-                                    </span>
+                  v-for="i in item.r.list"><span>{{ i.name }}</span>
                 </router-link>
               </div>
             </div>
@@ -189,6 +190,7 @@
   export default {
     data () {
       return {
+        isHovering: false,
         navigators: [
           {
             title: '工商服务',
@@ -258,13 +260,16 @@
       getRegionIndex: 'getRegionIndex'
     }),
     watch: {
-      getRegionIndex: 'fetchData'
+      getRegionIndex: 'fetchData',
+      route: 'fetchData'
     },
     created () {
       this.fetchData()
     },
     methods: {
       fetchData () {
+        console.log('123')
+        this.isHovering = false
         let vm = this
         productApi.getNavList(this.getRegion.code,
           function (data) {

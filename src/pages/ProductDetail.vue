@@ -260,9 +260,7 @@
                             padding: 10px 20px 20px;">
             <p style="margin: 10px 0;">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：
               <span style="font-size: 20px;
-                                     color: red;">
-                            &yen; {{ form | sub-total-price-filter }}
-                        </span></p>
+                                     color: red;">&yen; {{ form | sub-total-price-filter }}</span></p>
             <p style="">用户评分：
               <el-rate
                 v-model="product.rate"
@@ -434,7 +432,7 @@
               </div>
               <div class="advan">
                 <div class="tit">我们的服务优势</div>
-                <div class="advan_img"><img src="../assets/advan.png"></div>
+                <div class="advan_img"><img :src="'advan.png' | cdn-filter"></div>
               </div>
             </el-tab-pane>
             <el-tab-pane :label="'用户评价（' + product.purchaseNumber + '）'">
@@ -442,9 +440,7 @@
                 <div v-for="item in reviews">
                   <el-row style="margin: 10px 0;">
                     <el-col :span="12">
-                      <p style="font-size: 15px;
-                                              color: #333;
-                                              white-space: normal; margin-bottom: 5px;">
+                      <p style="font-size: 15px; color: #333; white-space: normal; margin-bottom: 5px;">
                         {{ item.content }}
                       </p>
                       <p style="font-size: 13px;
