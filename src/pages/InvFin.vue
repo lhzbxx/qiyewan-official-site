@@ -318,7 +318,7 @@
       setInvShow (show) {
         this.showInv = show
       },
-      requestCaptch () {
+      requestCaptcha () {
         let vm = this
         this.$refs.invForm.validateField(['mobile'],
           (error) => {
