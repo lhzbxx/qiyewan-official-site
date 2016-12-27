@@ -320,7 +320,7 @@
       },
       requestCaptcha () {
         let vm = this
-        this.$refs.invForm.validateField(['mobile'],
+        this.$refs.invForm.validateField('mobile',
           (error) => {
             if (!error) {
               articleApi.getInvCaptcha(vm.formStacked.mobile,
