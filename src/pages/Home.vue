@@ -497,7 +497,7 @@
           {
             department: '中国商标网【商标局】',
             service: '商标查询',
-            url: '#/brand',
+            url: '/brand',
             cover: 'http://cdn.qiyewan.com/tool1.png'
           },
           {
@@ -515,7 +515,7 @@
           {
             department: '中国版权保护中心',
             service: '软件著作权查询',
-            url: 'http://www.ccopyright.com.cn/cpcc/RRegisterAction.do?method=list&no=fck',
+            url: 'http://sbcx.saic.gov.cn:9080/tmois/wsjscx_getJscx.xhtml',
             cover: 'http://cdn.qiyewan.com/tool4.png'
           }
         ],
