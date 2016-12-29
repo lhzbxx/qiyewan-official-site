@@ -199,7 +199,7 @@
             <router-link to="/order">订单</router-link>
           </li>
           <li v-if="isLogin">
-            <router-link to="/account">个人中心</router-link>
+            <router-link to="/person">个人中心</router-link>
           </li>
           <li v-if="isLogin">
             <router-link to="/cart">购物车（{{ cartNum }}）</router-link>
