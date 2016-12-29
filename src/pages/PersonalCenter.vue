@@ -47,6 +47,24 @@
               <img src="../assets/collapse-white.png" class="collapse-icon">
             </p>
           </div>
+          <div class="product-title">
+            <p class="flex-2">服务详情</p>
+            <p class="flex-1">数量</p>
+            <p class="flex-1">金额</p>
+            <p class="flex-1">服务单</p>
+          </div>
+          <div class="product">
+            <div class="flex-2 product-info">
+              <img :src="'product-SHSHLD0001-cover-1.jpg' | cdn-filter" style="height: 60px;">
+              <div class="product-info-name">
+                <p>公司注册</p><br>
+                <p>区域：上海</p>
+              </div>
+            </div>
+            <div class="flex-1">&times;1</div>
+            <p class="flex-1">￥200</p>
+            <p class="flex-1">8321y3298h</p>
+          </div>
           <div class="separator">
             <p>服务节点</p>
             <img src="../assets/collapse.png" class="collapse-icon">
@@ -54,9 +72,60 @@
           <div class="service-nodes">
             <div class="service-node">
               <div class="node-date">
-                <p>2016</p><br>
-                <p>12-26</p>
+                <p class="node-date-year">2016</p><br>
+                <p class="node-date-month-and-day">12-26</p>
               </div>
+              <div class="node-separator"></div>
+              <div style="text-align: center; width: 20px;">
+                <div class="vertical-line"></div>
+                <div class="node-circle active"></div>
+                <div class="vertical-line"></div>
+              </div>
+              <div style="flex-grow: 1;">
+                <div class="node-name active">
+                  公司核名
+                </div>
+              </div>
+              <b class="node-status">已完成</b>
+              <div class="node-status-icon"></div>
+            </div>
+            <div class="service-node">
+              <div class="node-date">
+                <p class="node-date-year">2016</p><br>
+                <p class="node-date-month-and-day">12-26</p>
+              </div>
+              <div class="node-separator"></div>
+              <div style="text-align: center; width: 20px;">
+                <div class="vertical-line"></div>
+                <div class="node-circle"></div>
+                <div class="vertical-line"></div>
+              </div>
+              <div style="flex-grow: 1;">
+                <div class="node-name">
+                  公司核名
+                </div>
+              </div>
+              <b class="node-status">已完成</b>
+              <div class="node-status-icon"></div>
+            </div>
+            <div class="service-node">
+              <div class="node-date">
+                <p class="node-date-year">2016</p><br>
+                <p class="node-date-month-and-day">12-26</p>
+              </div>
+              <div class="node-separator"></div>
+              <div style="text-align: center; width: 20px;">
+                <div class="vertical-line"></div>
+                <div class="node-circle"></div>
+                <div class="vertical-line"></div>
+              </div>
+              <div style="flex-grow: 1;">
+                <div class="node-name">
+                  公司核名
+                </div>
+              </div>
+              <b class="node-status">已完成</b>
+              <div class="node-status-icon active"></div>
             </div>
           </div>
         </div>
@@ -111,7 +180,7 @@
 
   .company-detail-button {
     float: right;
-    margin-right: 30px;
+    margin-right: 20px;
     cursor: pointer;
     padding: 0 20px;
     border: 1px solid #00a0ea;
@@ -178,7 +247,7 @@
   }
 
   .company-detail {
-    right: 49px;
+    right: 39px;
     position: absolute;
     border: 1px solid #eee;
     height: 145px;
@@ -190,6 +259,7 @@
     border-top: none;
     color: black;
     padding: 10px;
+    z-index: 3;
   }
 
   .company-details {
@@ -216,12 +286,30 @@
     float: right;
     position: relative;
     top: 9px;
-    margin-right:20px;
+    margin-right: 20px;
     background: #00a0ea;
     vertical-align: middle;
     text-align: center;
     cursor: pointer;
     line-height: 20px;
+  }
+
+  .product-title {
+    display: flex;
+    align-items: center;
+    height: 39px;
+    color: #546b79;
+    background: #f9f9f9;
+    border: 1px solid #eee;
+    text-align: center;
+  }
+
+  .product {
+    display: flex;
+    align-items: center;
+    border: 1px solid #eee;
+    height: 80px;
+    text-align: center;
   }
 
   .separator {
@@ -238,9 +326,119 @@
 
   .service-nodes {
     padding: 20px;
+    border: 1px solid #eee;
   }
 
   .service-node {
+    height: 100px;
+    display: flex;
+    align-items: center;
+  }
 
+  .node-date {
+    width: 60px;
+    text-align: right;
+  }
+
+  .node-date-month-and-day {
+    font-size: 16px;
+    color: #00a0ea;
+    line-height: 22px;
+  }
+
+  .node-separator {
+    border: 1px solid #eee;
+    width: 40px;
+    margin: 0 20px;
+  }
+
+  .vertical-line {
+    height: 30px;
+    width: 0;
+    border: 1px solid #333;
+  }
+
+  .node-circle {
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    border: 2px solid gray;
+    margin: 15px 0 15px -4px;
+  }
+
+  .node-circle.active {
+    width: 20px;
+    height: 20px;
+    margin: 10px 0 10px -9px;
+    background: #e6f7ff;
+    border: 2px solid #00a0ea;
+  }
+
+  .node-name {
+    border: 1px solid #eee;
+    background: #e6f7ff;
+    color: #00a0ea;
+    padding: 10px 30px;
+    font-size: 16px;
+    margin-left: 25px;
+    display: inline-block;
+  }
+
+  .node-name.active {
+    background: #83d8ff;
+  }
+
+  .node-name.inactive {
+    color: gray;
+  }
+
+  .node-status {
+    font-size: 16px;
+    color: #00a0ea;
+    width: 80px;
+    text-align: center;
+  }
+
+  .node-status.inactive {
+    color: gray;
+  }
+
+  .node-status-icon {
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    border: 2px solid #00a0ea;
+    margin: 0 29px;
+  }
+
+  .node-status-icon.active {
+    background-color: #00a0ea;
+    border: 8px solid #83d8ff;
+    width: 32px;
+    height: 32px;
+    margin: 0 20px;
+  }
+
+  .node-status-icon.inactive {
+    border-color: gray;
+  }
+
+  .flex-1 {
+    flex: 1;
+  }
+
+  .flex-2 {
+    flex: 2;
+  }
+
+  .product-info-name {
+    text-align: left;
+    margin-left: 8px;
+  }
+
+  .product-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 </style>
