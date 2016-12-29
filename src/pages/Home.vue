@@ -515,7 +515,7 @@
           {
             department: '中国版权保护中心',
             service: '软件著作权查询',
-            url: 'http://sbcx.saic.gov.cn:9080/tmois/wsjscx_getJscx.xhtml',
+            url: 'http://sbj.saic.gov.cn/sbcx/',
             cover: 'http://cdn.qiyewan.com/tool4.png'
           }
         ],
