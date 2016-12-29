@@ -3,7 +3,7 @@ import VueResource from 'vue-resource'
 
 Vue.use(VueResource)
 
-Vue.http.options.root = process.env.API
+Vue.http.options.root = process.env.API2
 
 export default {
   getCustomers (phone, cb, errorCb) {

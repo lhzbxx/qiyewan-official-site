@@ -1,138 +1,140 @@
 <template>
   <div id="personal-center" class="container">
     <div id="personal-center-main">
-      <div class="title">
-        <p style="margin-left: 20px;">客户名称：侯桂勇</p>
-        <div class="company-detail-button">
-          <p>企业详情
-            <i class="ci-right">
-              <s>◇</s>
-            </i>
-          </p>
-          <table class="company-detail">
-            <tr>
-              <td>公司名称：</td>
-              <td class="company-details">暂无</td>
-              <td>法人代表：</td>
-              <td class="company-details">暂无</td>
-            </tr>
-            <tr>
-              <td>公司地址：</td>
-              <td class="company-details">暂无</td>
-              <td>注册资本：</td>
-              <td class="company-details">暂无</td>
-            </tr>
-            <tr>
-              <td>员工人数：</td>
-              <td class="company-details">暂无</td>
-              <td>营业执照：</td>
-              <td class="company-details">暂无</td>
-            </tr>
-            <tr>
-              <td>纳税登记号：</td>
-              <td class="company-details">暂无</td>
-              <td>联系地址：</td>
-              <td class="company-details">暂无</td>
-            </tr>
-          </table>
-        </div>
-        <p style="float: right; margin-right: 30px;">类型：企业</p>
-      </div>
-      <div class="contracts">
-        <div class="contract">
-          <div class="contract-title">
-            <b style="margin-left: 20px;">2016-12-26</b>
-            <p style="margin-left: 20px;">订单编号：</p>
-            <p class="contract-collapse">
-              <img src="../assets/collapse-white.png" class="collapse-icon">
+      <div class="customer" v-for="customer in customers">
+        <div class="title">
+          <p style="margin-left: 20px;">客户名称：{{customer.name}}</p>
+          <div class="company-detail-button">
+            <p>企业详情
+              <i class="ci-right">
+                <s>◇</s>
+              </i>
             </p>
+            <table class="company-detail">
+              <tr>
+                <td>公司名称：</td>
+                <td class="company-details">暂无</td>
+                <td>法人代表：</td>
+                <td class="company-details">暂无</td>
+              </tr>
+              <tr>
+                <td>公司地址：</td>
+                <td class="company-details">暂无</td>
+                <td>注册资本：</td>
+                <td class="company-details">暂无</td>
+              </tr>
+              <tr>
+                <td>员工人数：</td>
+                <td class="company-details">暂无</td>
+                <td>营业执照：</td>
+                <td class="company-details">暂无</td>
+              </tr>
+              <tr>
+                <td>纳税登记号：</td>
+                <td class="company-details">暂无</td>
+                <td>联系地址：</td>
+                <td class="company-details">暂无</td>
+              </tr>
+            </table>
           </div>
-          <div class="product-title">
-            <p class="flex-2">服务详情</p>
-            <p class="flex-1">数量</p>
-            <p class="flex-1">金额</p>
-            <p class="flex-1">服务单</p>
-          </div>
-          <div class="product">
-            <div class="flex-2 product-info">
-              <img :src="'product-SHSHLD0001-cover-1.jpg' | cdn-filter" style="height: 60px;">
-              <div class="product-info-name">
-                <p>公司注册</p><br>
-                <p>区域：上海</p>
-              </div>
+          <p style="float: right; margin-right: 30px;">类型：企业</p>
+        </div>
+        <div class="contracts">
+          <div class="contract">
+            <div class="contract-title">
+              <b style="margin-left: 20px;">2016-12-26</b>
+              <p style="margin-left: 20px;">订单编号：</p>
+              <p class="contract-collapse">
+                <img src="../assets/collapse-white.png" class="collapse-icon">
+              </p>
             </div>
-            <div class="flex-1">&times;1</div>
-            <p class="flex-1">￥200</p>
-            <p class="flex-1">8321y3298h</p>
-          </div>
-          <div class="separator">
-            <p>服务节点</p>
-            <img src="../assets/collapse.png" class="collapse-icon">
-          </div>
-          <div class="service-nodes">
-            <div class="service-node">
-              <div class="node-date">
-                <p class="node-date-year">2016</p><br>
-                <p class="node-date-month-and-day">12-26</p>
-              </div>
-              <div class="node-separator"></div>
-              <div style="text-align: center; width: 20px;">
-                <div class="vertical-line"></div>
-                <div class="node-circle active"></div>
-                <div class="vertical-line"></div>
-              </div>
-              <div style="flex-grow: 1;">
-                <div class="node-name active">
-                  公司核名
+            <div class="product-title">
+              <p class="flex-2">服务详情</p>
+              <p class="flex-1">数量</p>
+              <p class="flex-1">金额</p>
+              <p class="flex-1">服务单</p>
+            </div>
+            <div class="product">
+              <div class="flex-2 product-info">
+                <img :src="'product-SHSHLD0001-cover-1.jpg' | cdn-filter" style="height: 60px;">
+                <div class="product-info-name">
+                  <p>公司注册</p><br>
+                  <p>区域：上海</p>
                 </div>
               </div>
-              <b class="node-status">已完成</b>
-              <div class="node-status-icon"></div>
+              <div class="flex-1">&times;1</div>
+              <p class="flex-1">￥200</p>
+              <p class="flex-1">8321y3298h</p>
             </div>
-            <div class="service-node">
-              <div class="node-date">
-                <p class="node-date-year">2016</p><br>
-                <p class="node-date-month-and-day">12-26</p>
-              </div>
-              <div class="node-separator"></div>
-              <div style="text-align: center; width: 20px;">
-                <div class="vertical-line"></div>
-                <div class="node-circle"></div>
-                <div class="vertical-line"></div>
-              </div>
-              <div style="flex-grow: 1;">
-                <div class="node-name">
-                  公司核名
-                </div>
-              </div>
-              <b class="node-status">已完成</b>
-              <div class="node-status-icon"></div>
+            <div class="separator">
+              <p>服务节点</p>
+              <img src="../assets/collapse.png" class="collapse-icon">
             </div>
-            <div class="service-node">
-              <div class="node-date">
-                <p class="node-date-year">2016</p><br>
-                <p class="node-date-month-and-day">12-26</p>
-              </div>
-              <div class="node-separator"></div>
-              <div style="text-align: center; width: 20px;">
-                <div class="vertical-line"></div>
-                <div class="node-circle"></div>
-                <div class="vertical-line"></div>
-              </div>
-              <div style="flex-grow: 1;">
-                <div class="node-name">
-                  公司核名
+            <div class="service-nodes">
+              <div class="service-node">
+                <div class="node-date">
+                  <p class="node-date-year">2016</p><br>
+                  <p class="node-date-month-and-day">12-26</p>
                 </div>
+                <div class="node-separator"></div>
+                <div style="text-align: center; width: 20px;">
+                  <div class="vertical-line"></div>
+                  <div class="node-circle active"></div>
+                  <div class="vertical-line"></div>
+                </div>
+                <div style="flex-grow: 1;">
+                  <div class="node-name active">
+                    公司核名
+                  </div>
+                </div>
+                <b class="node-status">已完成</b>
+                <div class="node-status-icon"></div>
               </div>
-              <b class="node-status">已完成</b>
-              <div class="node-status-icon active"></div>
+              <div class="service-node">
+                <div class="node-date">
+                  <p class="node-date-year">2016</p><br>
+                  <p class="node-date-month-and-day">12-26</p>
+                </div>
+                <div class="node-separator"></div>
+                <div style="text-align: center; width: 20px;">
+                  <div class="vertical-line"></div>
+                  <div class="node-circle"></div>
+                  <div class="vertical-line"></div>
+                </div>
+                <div style="flex-grow: 1;">
+                  <div class="node-name">
+                    公司核名
+                  </div>
+                </div>
+                <b class="node-status">已完成</b>
+                <div class="node-status-icon"></div>
+              </div>
+              <div class="service-node">
+                <div class="node-date">
+                  <p class="node-date-year">2016</p><br>
+                  <p class="node-date-month-and-day">12-26</p>
+                </div>
+                <div class="node-separator"></div>
+                <div style="text-align: center; width: 20px;">
+                  <div class="vertical-line"></div>
+                  <div class="node-circle"></div>
+                  <div class="vertical-line"></div>
+                </div>
+                <div style="flex-grow: 1;">
+                  <div class="node-name">
+                    公司核名
+                  </div>
+                </div>
+                <b class="node-status">已完成</b>
+                <div class="node-status-icon active"></div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="collapse">
-        <img src="../assets/collapse.png" class="collapse-icon">
-        <span class="helper"></span>
+        <div class="collapse">
+          <img src="../assets/collapse.png" class="collapse-icon">
+          <span class="helper"></span>
+        </div>
       </div>
     </div>
     <div id="personal-center-history"></div>
@@ -140,9 +142,26 @@
 </template>
 
 <script>
+  import crmApi from '../api/crm'
+  import {mapGetters} from 'vuex'
   export default {
     data () {
-      return {}
+      return {
+        customers: []
+      }
+    },
+    computed: {
+      ...mapGetters([
+        'getPhone'
+      ])
+    },
+    created () {
+      let vm = this
+      crmApi.getCustomers(this.getPhone,
+        customers => {
+          vm.customers = customers
+        }
+      )
     }
   }
 </script>
