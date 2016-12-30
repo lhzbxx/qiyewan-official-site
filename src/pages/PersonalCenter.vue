@@ -104,8 +104,11 @@
             </div>
           </div>
         </div>
-        <div class="collapse" v-on:click="collapseCustomer(customer, customerIndex)">
-          <img src="../assets/collapse.png" class="collapse-icon">
+        <div class="collapse"
+             v-on:click="collapseCustomer(customer, customerIndex)">
+          <img src="../assets/collapse.png"
+               class="collapse-icon"
+               v-bind:class="{active: isCustomerOpen(customerIndex)}">
           <span class="helper"></span>
         </div>
       </div>
@@ -285,6 +288,14 @@
 
   .collapse:hover {
     background: #d3d3d3;
+  }
+
+  .collapse-icon {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .collapse-icon.active {
+    transform: rotate(180deg);
   }
 
   .helper {

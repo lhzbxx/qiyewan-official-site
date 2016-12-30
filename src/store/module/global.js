@@ -10,7 +10,8 @@ import data from '../../api/data'
 
 const state = {
   region: 1,
-  needLogin: 0
+  needLogin: 0,
+  history: []
 }
 
 const mutations = {
@@ -27,6 +28,13 @@ const mutations = {
   },
   [types.REQUIRE_LOGIN] (state) {
     state.needLogin += 1
+  },
+  [types.BROWSE_PRODUCT] (state, product) {
+    state.history.push(product)
+    // 最多保持6条记录。
+    if (state.history.length > 6) {
+      state.history.pop()
+    }
   }
 }
 

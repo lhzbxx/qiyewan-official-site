@@ -545,6 +545,7 @@
             vm.form.product = data
             vm.loading = false
             vm.refreshForm()
+            vm.$store.commit('BROWSE_PRODUCT', data)
           },
           error => {
             vm.error = error
