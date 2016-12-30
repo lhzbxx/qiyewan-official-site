@@ -3,7 +3,7 @@
     <div id="personal-center-main">
       <div class="customer" v-for="(customer, customerIndex) in customers">
         <div class="title">
-          <p style="margin-left: 20px;">客户名称：{{customer.name}}</p>
+          <p style="margin-left: 20px;">客户名称：{{customer.contactName}}</p>
           <div class="company-detail-button">
             <p>企业详情
               <i class="ci-right">
@@ -78,6 +78,7 @@
                 <img src="../assets/collapse.png" class="collapse-icon">
               </div>
               <div class="service-nodes" v-for="service in contractDetail.services">
+                <div class="service-title">{{service.productSeries}}</div>
                 <div class="service-node" v-for="(serviceDetail, serviceDetailIndex) in service.details">
                   <div class="node-date">
                     <p class="node-date-year">{{serviceDetail.updDate.substr(0, 4)}}</p><br>
@@ -92,15 +93,15 @@
                   </div>
                   <div style="flex-grow: 1;">
                     <div class="node-name"
-                         v-bind:class="{inactive: serviceDetail.status === '0'}">
+                         v-bind:class="{inactive: serviceDetail.status === '1'}">
                       {{serviceDetail.productServiceName}}
                     </div>
                   </div>
                   <b class="node-status"
-                     v-bind:class="{active: serviceDetail.status === '1'}">{{serviceDetail.status === '1' ? '已完成' :
-                    '未完成'}}</b>
+                     v-bind:class="{active: serviceDetail.status === '3', inactive: serviceDetail.status === '1'}">
+                    {{statusFormat(serviceDetail.status)}}</b>
                   <div class="node-status-icon"
-                       v-bind:class="{active: serviceDetail.status === '1'}"></div>
+                       v-bind:class="{active: serviceDetail.status === '3', inactive: serviceDetail.status === '1'}"></div>
                 </div>
               </div>
             </div>
@@ -235,6 +236,16 @@
       isServiceOpen (customerIndex, contractIndex, serviceIndex) {
         let record = customerIndex + '-' + contractIndex + '-' + serviceIndex
         return this.openingCustomer.findIndex(item => item === record) > -1
+      },
+      statusFormat (status) {
+        switch (status) {
+          case '1':
+            return '未开始'
+          case '2':
+            return '进行中'
+          case '3':
+            return '已完成'
+        }
       }
     }
   }
@@ -456,6 +467,14 @@
   .node-date {
     width: 60px;
     text-align: right;
+  }
+
+  .service-title {
+    width: 283px;
+    text-align: center;
+    font-size: 16px;
+    color: #00a0ea;
+    margin-bottom: 15px;
   }
 
   .node-date-month-and-day {
