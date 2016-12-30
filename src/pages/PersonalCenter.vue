@@ -53,7 +53,7 @@
             </div>
             <!--v-show="isContractOpen(customerIndex, contractIndex)"-->
             <div
-                 v-for="(contractDetail, contractDetailIndex) in contract.details">
+              v-for="(contractDetail, contractDetailIndex) in contract.details">
               <div class="product-title">
                 <p class="flex-2">服务详情</p>
                 <p class="flex-1">数量</p>
@@ -78,7 +78,7 @@
                 <img src="../assets/collapse.png" class="collapse-icon">
               </div>
               <div class="service-nodes" v-for="service in contractDetail.services">
-                <div class="service-node" v-for="serviceDetail in service.details">
+                <div class="service-node" v-for="(serviceDetail, serviceDetailIndex) in service.details">
                   <div class="node-date">
                     <p class="node-date-year">{{serviceDetail.creDate.substr(0, 4)}}</p><br>
                     <p class="node-date-month-and-day">{{serviceDetail.creDate.substr(5, 5)}}</p>
@@ -86,7 +86,8 @@
                   <div class="node-separator"></div>
                   <div style="text-align: center; width: 20px;">
                     <div class="vertical-line"></div>
-                    <div class="node-circle"></div>
+                    <div class="node-circle"
+                         v-bind:class="{active: serviceDetailIndex === service.details.length - 1}"></div>
                     <div class="vertical-line"></div>
                   </div>
                   <div style="flex-grow: 1;">
@@ -96,7 +97,8 @@
                     </div>
                   </div>
                   <b class="node-status"
-                     v-bind:class="{active: serviceDetail.status === '1'}">{{serviceDetail.status === '1' ? '已完成' : '未完成'}}</b>
+                     v-bind:class="{active: serviceDetail.status === '1'}">{{serviceDetail.status === '1' ? '已完成' :
+                    '未完成'}}</b>
                   <div class="node-status-icon"
                        v-bind:class="{active: serviceDetail.status === '1'}"></div>
                 </div>
@@ -113,7 +115,19 @@
         </div>
       </div>
     </div>
-    <div id="personal-center-history"></div>
+    <div id="personal-center-history">
+      <div
+        style="width: 100%; border: 1px solid #eee; margin-bottom: -1px; font-size: 15px; line-height: 30px; padding-left: 14px;">
+        足迹
+      </div>
+      <div class="history"
+           v-for="item in getHistory">
+        <img :src="item.cover | cdn-filter">
+        <router-link :to="'/product/detail/' + item.serialId">{{item.name}}</router-link>
+        <br>
+      </div>
+    </div>
+    <div class="clearfix"></div>
   </div>
 </template>
 
@@ -132,7 +146,8 @@
     },
     computed: {
       ...mapGetters([
-        'getPhone'
+        'getPhone',
+        'getHistory'
       ])
     },
     created () {
@@ -226,19 +241,34 @@
 </script>
 
 <style scoped>
+  .history {
+    display: flex;
+    border: 1px solid #eee;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .history img {
+    width: 120px;
+    height: 80px;
+  }
+
+  .history a {
+    width: 100px;
+    text-align: center;
+  }
+
   #personal-center-main {
     width: 75%;
     position: relative;
-    height: 100px;
     float: left;
     padding: 20px;
   }
 
   #personal-center-history {
     width: 25%;
-    background: red;
     position: relative;
-    height: 100px;
     float: left;
     padding: 20px;
   }

@@ -52,10 +52,6 @@ export const getCheckout = state => {
   return state.orders.checkout
 }
 
-export const regions = () => {
-  return dataApi.regions
-}
-
-export const cdnPrefix = () => {
-  return dataApi.cdnPrefix
+export const getHistory = state => {
+  return state.global.history
 }
