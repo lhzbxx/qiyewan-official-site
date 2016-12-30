@@ -80,8 +80,8 @@
               <div class="service-nodes" v-for="service in contractDetail.services">
                 <div class="service-node" v-for="(serviceDetail, serviceDetailIndex) in service.details">
                   <div class="node-date">
-                    <p class="node-date-year">{{serviceDetail.creDate.substr(0, 4)}}</p><br>
-                    <p class="node-date-month-and-day">{{serviceDetail.creDate.substr(5, 5)}}</p>
+                    <p class="node-date-year">{{serviceDetail.updDate.substr(0, 4)}}</p><br>
+                    <p class="node-date-month-and-day">{{serviceDetail.updDate.substr(5, 5)}}</p>
                   </div>
                   <div class="node-separator"></div>
                   <div style="text-align: center; width: 20px;">
