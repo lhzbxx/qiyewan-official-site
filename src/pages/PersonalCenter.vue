@@ -1,7 +1,7 @@
 <template>
   <div id="personal-center" class="container">
     <div id="personal-center-main">
-      <div class="customer" v-for="customer in customers">
+      <div class="customer" v-for="(customer, customerIndex) in customers">
         <div class="title">
           <p style="margin-left: 20px;">客户名称：{{customer.name}}</p>
           <div class="company-detail-button">
@@ -13,125 +13,97 @@
             <table class="company-detail">
               <tr>
                 <td>公司名称：</td>
-                <td class="company-details">暂无</td>
+                <td class="company-details">{{customer.name || '暂无'}}</td>
                 <td>法人代表：</td>
-                <td class="company-details">暂无</td>
+                <td class="company-details">{{customer.legalPerson || '暂无'}}</td>
               </tr>
               <tr>
                 <td>公司地址：</td>
-                <td class="company-details">暂无</td>
+                <td class="company-details">{{customer.companyAddress || '暂无'}}</td>
                 <td>注册资本：</td>
-                <td class="company-details">暂无</td>
+                <td class="company-details">{{customer.registeredCapital || '暂无'}}</td>
               </tr>
               <tr>
                 <td>员工人数：</td>
-                <td class="company-details">暂无</td>
+                <td class="company-details">{{customer.employees || '暂无'}}</td>
                 <td>营业执照：</td>
-                <td class="company-details">暂无</td>
+                <td class="company-details">{{customer.businessLicense || '暂无'}}</td>
               </tr>
               <tr>
                 <td>纳税登记号：</td>
-                <td class="company-details">暂无</td>
+                <td class="company-details">{{customer.xxx || '暂无'}}</td>
                 <td>联系地址：</td>
-                <td class="company-details">暂无</td>
+                <td class="company-details">{{customer.xxx || '暂无'}}</td>
               </tr>
             </table>
           </div>
-          <p style="float: right; margin-right: 30px;">类型：企业</p>
+          <p style="float: right; margin-right: 30px;">类型：{{customer.type === '1' ? '企业' : '个人'}}</p>
         </div>
         <div class="contracts">
-          <div class="contract">
+          <div class="contract"
+               v-show="isCustomerOpen(customerIndex)"
+               v-for="(contract, contractIndex) in customer.contracts">
             <div class="contract-title">
-              <b style="margin-left: 20px;">2016-12-26</b>
-              <p style="margin-left: 20px;">订单编号：</p>
-              <p class="contract-collapse">
+              <b style="margin-left: 20px;">{{contract.contractDate.substr(0, 10)}}</b>
+              <p style="margin-left: 20px;">订单编号：{{contract.contractSno}}</p>
+              <p class="contract-collapse"
+                 v-on:click="collapseContract(contract, customerIndex, contractIndex)">
                 <img src="../assets/collapse-white.png" class="collapse-icon">
               </p>
             </div>
-            <div class="product-title">
-              <p class="flex-2">服务详情</p>
-              <p class="flex-1">数量</p>
-              <p class="flex-1">金额</p>
-              <p class="flex-1">服务单</p>
-            </div>
-            <div class="product">
-              <div class="flex-2 product-info">
-                <img :src="'product-SHSHLD0001-cover-1.jpg' | cdn-filter" style="height: 60px;">
-                <div class="product-info-name">
-                  <p>公司注册</p><br>
-                  <p>区域：上海</p>
-                </div>
+            <div v-show="isContractOpen(customerIndex, contractIndex)"
+                 v-for="(contractDetail, contractDetailIndex) in contract.details">
+              <div class="product-title">
+                <p class="flex-2">服务详情</p>
+                <p class="flex-1">数量</p>
+                <p class="flex-1">金额</p>
+                <p class="flex-1">服务单</p>
               </div>
-              <div class="flex-1">&times;1</div>
-              <p class="flex-1">￥200</p>
-              <p class="flex-1">8321y3298h</p>
-            </div>
-            <div class="separator">
-              <p>服务节点</p>
-              <img src="../assets/collapse.png" class="collapse-icon">
-            </div>
-            <div class="service-nodes">
-              <div class="service-node">
-                <div class="node-date">
-                  <p class="node-date-year">2016</p><br>
-                  <p class="node-date-month-and-day">12-26</p>
-                </div>
-                <div class="node-separator"></div>
-                <div style="text-align: center; width: 20px;">
-                  <div class="vertical-line"></div>
-                  <div class="node-circle active"></div>
-                  <div class="vertical-line"></div>
-                </div>
-                <div style="flex-grow: 1;">
-                  <div class="node-name active">
-                    公司核名
+              <div class="product">
+                <div class="flex-2 product-info">
+                  <img :src="'product-' + contractDetail.product + '-cover-1.jpg' | cdn-filter" style="height: 60px;">
+                  <div class="product-info-name">
+                    <p>{{contractDetail.product}}</p><br>
+                    <p>区域：{{contract.area | region-filter}}</p>
                   </div>
                 </div>
-                <b class="node-status">已完成</b>
-                <div class="node-status-icon"></div>
+                <div class="flex-1">&times;{{contractDetail.number || 1}}</div>
+                <p class="flex-1">￥{{contractDetail.totalPrice}}</p>
+                <p class="flex-1">{{contractDetail.contractSno}}</p>
               </div>
-              <div class="service-node">
-                <div class="node-date">
-                  <p class="node-date-year">2016</p><br>
-                  <p class="node-date-month-and-day">12-26</p>
-                </div>
-                <div class="node-separator"></div>
-                <div style="text-align: center; width: 20px;">
-                  <div class="vertical-line"></div>
-                  <div class="node-circle"></div>
-                  <div class="vertical-line"></div>
-                </div>
-                <div style="flex-grow: 1;">
-                  <div class="node-name">
-                    公司核名
-                  </div>
-                </div>
-                <b class="node-status">已完成</b>
-                <div class="node-status-icon"></div>
+              <div class="separator"
+                   v-on:click="collapseServices(contractDetail, customerIndex, contractIndex, contractDetailIndex)">
+                <p>服务节点</p>
+                <img src="../assets/collapse.png" class="collapse-icon">
               </div>
-              <div class="service-node">
-                <div class="node-date">
-                  <p class="node-date-year">2016</p><br>
-                  <p class="node-date-month-and-day">12-26</p>
-                </div>
-                <div class="node-separator"></div>
-                <div style="text-align: center; width: 20px;">
-                  <div class="vertical-line"></div>
-                  <div class="node-circle"></div>
-                  <div class="vertical-line"></div>
-                </div>
-                <div style="flex-grow: 1;">
-                  <div class="node-name">
-                    公司核名
+              <div class="service-nodes" v-for="service in detail.services">
+                <div class="service-node" v-for="serviceDetail in service.details">
+                  <div class="node-date">
+                    <p class="node-date-year">{{serviceDetail.creDate.substr(0, 4)}}</p><br>
+                    <p class="node-date-month-and-day">{{serviceDetail.creDate.substr(5, 5)}}</p>
                   </div>
+                  <div class="node-separator"></div>
+                  <div style="text-align: center; width: 20px;">
+                    <div class="vertical-line"></div>
+                    <div class="node-circle"></div>
+                    <div class="vertical-line"></div>
+                  </div>
+                  <div style="flex-grow: 1;">
+                    <div class="node-name"
+                         v-bind:class="{inactive: serviceDetail.status === '0'}">
+                      {{serviceDetail.productServiceName}}
+                    </div>
+                  </div>
+                  <b class="node-status"
+                     v-bind:class="{active: serviceDetail.status === '1'}">{{serviceDetail.status === '1' ? '已完成' : '未完成'}}</b>
+                  <div class="node-status-icon"
+                       v-bind:class="{active: serviceDetail.status === '1'}"></div>
                 </div>
-                <b class="node-status">已完成</b>
-                <div class="node-status-icon active"></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="collapse">
+        <div class="collapse" v-on:click="collapseCustomer(customer, customerIndex)">
           <img src="../assets/collapse.png" class="collapse-icon">
           <span class="helper"></span>
         </div>
@@ -142,12 +114,16 @@
 </template>
 
 <script>
+  import Vue from 'vue'
   import crmApi from '../api/crm'
   import {mapGetters} from 'vuex'
   export default {
     data () {
       return {
-        customers: []
+        customers: [],
+        openingCustomer: [],
+        openingContract: [],
+        openingService: []
       }
     },
     computed: {
@@ -162,6 +138,83 @@
           vm.customers = customers
         }
       )
+    },
+    methods: {
+      getContracts (customer, customerIndex) {
+        if (customer.contracts) return
+        crmApi.getContracts(customer.id,
+          contracts => {
+            customer.contracts = contracts
+            Vue.set(this.customers, customerIndex, this.customers[customerIndex])
+          }
+        )
+      },
+      collapseCustomer (customer, customerIndex) {
+        this.getContracts(customer, customerIndex)
+        let index = this.openingCustomer.findIndex(item => item === customerIndex)
+        if (index > -1) {
+          this.openingCustomer.splice(index)
+        } else {
+          this.openingCustomer.push(customerIndex)
+        }
+      },
+      isCustomerOpen (index) {
+        return this.openingCustomer.findIndex(item => item === index) > -1
+      },
+      getContractDetails (contract, customerIndex) {
+        if (contract.details) return
+        crmApi.getContractDetails(contract.contractSno,
+          contractDetails => {
+            contract.details = contractDetails
+            Vue.set(this.customers, customerIndex, this.customers[customerIndex])
+          }
+        )
+      },
+      collapseContract (contract, customerIndex, contractIndex) {
+        this.getContractDetails(contract, customerIndex)
+        let record = customerIndex + '-' + contractIndex
+        let index = this.openingContract.findIndex(item => item === record)
+        if (index > -1) {
+          this.openingContract.splice(index)
+        } else {
+          this.openingContract.push(record)
+        }
+      },
+      isContractOpen (customerIndex, contractIndex) {
+        let record = customerIndex + '-' + contractIndex
+        return this.openingCustomer.findIndex(item => item === record) > -1
+      },
+      getServices (detail, customerIndex) {
+        if (detail.services) return
+        let vm = this
+        crmApi.getContractServices(detail.contractSno,
+          services => {
+            detail.services = services
+            for (let i of detail.services) {
+              crmApi.getContractServiceDetails(i.sno,
+                details => {
+                  i.details = details
+                  Vue.set(vm.customers, customerIndex, vm.customers[customerIndex])
+                }
+              )
+            }
+          }
+        )
+      },
+      collapseService (contract, customerIndex, contractIndex, serviceIndex) {
+        this.getContractDetails(contract, customerIndex)
+        let record = customerIndex + '-' + contractIndex + '-' + serviceIndex
+        let index = this.openingService.findIndex(item => item === record)
+        if (index > -1) {
+          this.openingService.splice(index)
+        } else {
+          this.openingService.push(record)
+        }
+      },
+      isServiceOpen (customerIndex, contractIndex, serviceIndex) {
+        let record = customerIndex + '-' + contractIndex + '-' + serviceIndex
+        return this.openingCustomer.findIndex(item => item === record) > -1
+      }
     }
   }
 </script>
@@ -191,6 +244,7 @@
     line-height: 47px;
     color: white;
     font-size: 16px;
+    position: relative;
   }
 
   p {
@@ -266,11 +320,11 @@
   }
 
   .company-detail {
-    right: 39px;
+    right: 20px;
     position: absolute;
     border: 1px solid #eee;
     height: 145px;
-    top: 67px;
+    top: 47px;
     display: none;
     cursor: default;
     font-size: 13px;
@@ -459,5 +513,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .customer {
+    margin-bottom: 20px;
   }
 </style>
