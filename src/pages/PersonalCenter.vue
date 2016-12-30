@@ -51,7 +51,8 @@
                 <img src="../assets/collapse-white.png" class="collapse-icon">
               </p>
             </div>
-            <div v-show="isContractOpen(customerIndex, contractIndex)"
+            <!--v-show="isContractOpen(customerIndex, contractIndex)"-->
+            <div
                  v-for="(contractDetail, contractDetailIndex) in contract.details">
               <div class="product-title">
                 <p class="flex-2">服务详情</p>
@@ -76,7 +77,7 @@
                 <p>服务节点</p>
                 <img src="../assets/collapse.png" class="collapse-icon">
               </div>
-              <div class="service-nodes" v-for="service in detail.services">
+              <div class="service-nodes" v-for="service in contractDetail.services">
                 <div class="service-node" v-for="serviceDetail in service.details">
                   <div class="node-date">
                     <p class="node-date-year">{{serviceDetail.creDate.substr(0, 4)}}</p><br>
@@ -142,10 +143,11 @@
     methods: {
       getContracts (customer, customerIndex) {
         if (customer.contracts) return
+        let vm = this
         crmApi.getContracts(customer.id,
           contracts => {
             customer.contracts = contracts
-            Vue.set(this.customers, customerIndex, this.customers[customerIndex])
+            Vue.set(vm.customers, customerIndex, vm.customers[customerIndex])
           }
         )
       },
@@ -163,10 +165,11 @@
       },
       getContractDetails (contract, customerIndex) {
         if (contract.details) return
+        let vm = this
         crmApi.getContractDetails(contract.contractSno,
           contractDetails => {
             contract.details = contractDetails
-            Vue.set(this.customers, customerIndex, this.customers[customerIndex])
+            Vue.set(vm.customers, customerIndex, vm.customers[customerIndex])
           }
         )
       },
@@ -201,8 +204,8 @@
           }
         )
       },
-      collapseService (contract, customerIndex, contractIndex, serviceIndex) {
-        this.getContractDetails(contract, customerIndex)
+      collapseServices (contractDetail, customerIndex, contractIndex, serviceIndex) {
+        this.getServices(contractDetail, customerIndex)
         let record = customerIndex + '-' + contractIndex + '-' + serviceIndex
         let index = this.openingService.findIndex(item => item === record)
         if (index > -1) {
@@ -389,6 +392,7 @@
     height: 52px;
     background: #ddf3fe;
     text-align: center;
+    cursor: pointer;
   }
 
   .separator p {
