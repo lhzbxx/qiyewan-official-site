@@ -23,7 +23,7 @@
     top: 8px;
   }
 
-  #location:hover #area {
+  #location:hover #area.active {
     display: block;
   }
 
@@ -170,7 +170,7 @@
         <i class="ci-right">
           <s>◇</s>
         </i>
-        <div id="area">
+        <div id="area" v-bind:class="{'active': isShowing}">
           <ul>
             <p></p>
             <li v-for="(item, index) in getRegions"
@@ -224,6 +224,11 @@
 <script>
   import {mapGetters} from 'vuex'
   export default {
+    data () {
+      return {
+        isShowing: true
+      }
+    },
     computed: mapGetters({
       isLogin: 'isLogin',
       getPhone: 'getPhone',
@@ -252,10 +257,13 @@
       changeRegion (index) {
         let vm = this
         this.$store.commit('CHANGE_REGION', index)
+        this.isShowing = false
         this.$router.replace('/')
         this.$message({
           message: '已经切换到地区：' + vm.getRegion.name,
           type: 'success'
+        }).onClose(() => {
+          vm.isShowing = true
         })
       },
       logout () {
