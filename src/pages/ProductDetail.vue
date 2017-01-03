@@ -234,7 +234,7 @@
 </style>
 <template>
   <div class="container">
-    <lh-loading v-if="!product"></lh-loading>
+    <lh-loading v-if="!product || loading"></lh-loading>
     <div v-else>
       <el-breadcrumb separator=">" class="bread-crumb">
         <el-breadcrumb-item>
@@ -349,9 +349,10 @@
                       :url="getRegion.code+item.serialId"></lh-product>
         </el-col>
         <el-col :span="18" class="detail_tab">
-          <el-tabs type="border-card"
+          <el-tabs v-model="currentTab"
+                   type="border-card"
                    style="width: 100%;padding: 0;">
-            <el-tab-pane label="服务详情">
+            <el-tab-pane label="服务详情" name="服务详情">
               <div class="detail_bg">
                 <div class="detail_pic">
                   <div class="detail_tit">
@@ -432,7 +433,7 @@
                 <div class="advan_img"><img :src="'advan.png' | cdn-filter"></div>
               </div>
             </el-tab-pane>
-            <el-tab-pane :label="'用户评价（' + product.purchaseNumber + '）'">
+            <el-tab-pane :label="'用户评价（' + product.purchaseNumber + '）'" name="用户评价">
               <div class="padd">
                 <div v-for="item in reviews">
                   <el-row style="margin: 10px 0;">
@@ -468,7 +469,7 @@
 
               </div>
             </el-tab-pane>
-            <el-tab-pane label="常见问题">
+            <el-tab-pane label="常见问题" name="常见问题">
               <div v-for="item in faq" style="margin-bottom: 10px; padding: 10px">
                 <p style="color: orange;
                                   font-size: 16px;
@@ -504,6 +505,7 @@
         error: null,
         loading: false,
         isAdding: false,
+        currentTab: '服务详情',
         form: {
           amount: 1,
           member: 1,
@@ -534,6 +536,7 @@
     methods: {
       fetchData () {
         this.loading = true
+        this.currentTab = '服务详情'
         let vm = this
         productApi.getProductDetail(this.$route.params.serialId,
           data => {
