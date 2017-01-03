@@ -10,7 +10,8 @@
       <el-tabs @tab-click="changeOrderState">
         <el-tab-pane label="全部订单"></el-tab-pane>
         <el-tab-pane label="未付款"></el-tab-pane>
-        <el-tab-pane label="已付款"></el-tab-pane>
+        <el-tab-pane label="待评价"></el-tab-pane>
+        <el-tab-pane label="已评价"></el-tab-pane>
       </el-tabs>
       <lh-loading v-if="isLoading"></lh-loading>
       <div v-if="!isLoading">
@@ -50,7 +51,7 @@
     methods: {
       fetchData (page) {
         if (page < 1) return
-        this.loading = true
+        this.page = page
         let vm = this
         this.$store.dispatch('getOrders', {
           page: this.page,
@@ -76,6 +77,9 @@
             break
           case '3':
             this.orderState = 'PAID'
+            break
+          case '4':
+            this.orderState = 'REVIEWED'
             break
         }
         this.fetchData(1)

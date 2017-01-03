@@ -3,7 +3,8 @@
     <el-dialog title="微信支付"
                v-model="isVisible"
                size="tiny"
-               ref="dialog">
+               ref="dialog"
+               @close="handleDialogClose">
       <span>请扫描下面二维码：</span>
       <img :src="'http://qr.liantu.com/api.php?mhid=4xDADwDpnJ0hMHcvKtxTP6s&text=' + data"
            width="260px"
@@ -28,6 +29,9 @@
       openDialog (data) {
         this.data = data
         this.$refs.dialog.open()
+      },
+      handleDialogClose () {
+        this.$router.replace({name: 'order'})
       }
     }
   }
