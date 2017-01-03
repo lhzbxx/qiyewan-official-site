@@ -300,7 +300,7 @@
             </el-form-item>
             <el-form-item label="购买时长" style="margin-bottom: 8px" v-if="!product.isInstant">
               <el-radio-group v-model="form.amount">
-                <!--<el-radio-button label="6">半年</el-radio-button>-->
+                <el-radio-button label="6" disabled>半年</el-radio-button>
                 <el-radio-button label="12">一年</el-radio-button>
               </el-radio-group>
             </el-form-item>
