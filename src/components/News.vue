@@ -114,7 +114,7 @@
 </style>
 
 <template>
-  <router-link :to="{ name: 'article', params: { id: id }}">
+  <router-link :to="{name: 'article', params: {id: id}}">
     <div id="news" class="everynew">
       <div class="new_pic">
         <img :src="img" alt="">

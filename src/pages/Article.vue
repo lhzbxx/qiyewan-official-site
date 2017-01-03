@@ -253,7 +253,7 @@
   export default {
     data () {
       return {
-        article: [],
+        article: null,
         recommendNewsList: null
       }
     },

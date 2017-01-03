@@ -294,7 +294,7 @@
 <script>
   import {mapGetters} from 'vuex'
 //  import authApi from '../api/auth'
-//  import articleApi from '../api/article'
+  import articleApi from '../api/article'
   export default {
     computed: mapGetters({
       getRegion: 'getRegion'
@@ -967,15 +967,15 @@
       }
     },
     created () {
-//      let vm = this
+      let vm = this
 //      authApi.getRegion(region => {
 //        vm.$store.commit('CHANGE_REGION', region)
 //      })
-//      articleApi.getHomeNews(data => {
-//        vm.news = data.data
-//      }, error => {
-//        vm.error = error
-//      })
+      articleApi.getHomeNews(data => {
+        vm.news = data.data
+      }, error => {
+        vm.error = error
+      })
     },
     mounted () {
       let vm = this
@@ -985,14 +985,14 @@
         } else {
           vm.banner += 1
         }
-      }, 5000)
+      }, 10000)
       setInterval(function () {
         if (vm.voiceBanner === (vm.customerVoices.length - 1)) {
           vm.voiceBanner = 0
         } else {
           vm.voiceBanner += 1
         }
-      }, 5000)
+      }, 10000)
     }
   }
 </script>
@@ -1914,7 +1914,7 @@
 
   .promise-image {
     height: 390px;
-    background: url(http://cdn.qiyewan.com/about-us-banner1.png);
+    background: url(http://cdn.qiyewan.com/about-us-banner1_1.png);
     background-size: auto 100%;
     background-repeat: no-repeat;
     background-position: center;
