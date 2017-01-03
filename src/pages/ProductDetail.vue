@@ -269,10 +269,7 @@
                 style="display: inline-flex;">
               </el-rate>
               <span style="color: #ff9900; font-size: 17px;">{{ product.rate.toFixed(1) }}</span>
-              <span style="color: #aaa">
-                                （<b> {{ product.purchaseNumber }} </b>
-                                位用户参与评分）
-                            </span>
+              <span style="color: #aaa">（<b> {{ product.purchaseNumber }} </b>位用户参与评分）</span>
             </p>
           </div>
           <el-form :model="form" label-width="75px" style="text-align:left">
@@ -303,7 +300,7 @@
             </el-form-item>
             <el-form-item label="购买时长" style="margin-bottom: 8px" v-if="!product.isInstant">
               <el-radio-group v-model="form.amount">
-                <el-radio-button label="6">半年</el-radio-button>
+                <!--<el-radio-button label="6">半年</el-radio-button>-->
                 <el-radio-button label="12">一年</el-radio-button>
               </el-radio-group>
             </el-form-item>
@@ -614,7 +611,7 @@
         if (this.product.isInstant) {
           this.form.amount = 1
         } else {
-          this.form.amount = '6'
+          this.form.amount = '12'
         }
       },
       getLocalTime (nS) {
