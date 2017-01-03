@@ -13,8 +13,8 @@
         <el-tab-pane label="待评价"></el-tab-pane>
         <el-tab-pane label="已评价"></el-tab-pane>
       </el-tabs>
-      <lh-loading v-if="isLoading"></lh-loading>
-      <div v-if="!isLoading">
+      <lh-loading v-show="isLoading"></lh-loading>
+      <div v-show="!isLoading">
         <lh-order :orders="data"></lh-order>
         <el-pagination
           small
@@ -51,6 +51,7 @@
     methods: {
       fetchData (page) {
         if (page < 1) return
+        this.isLoading = true
         this.page = page
         let vm = this
         this.$store.dispatch('getOrders', {
