@@ -1465,7 +1465,7 @@
     border-top-width: 24px;
     border-right-width: 14px;
     border-bottom-width: 24px;
-    border-left: 14px white;
+    border-left: 14px solid white;
     z-index: 10;
   }
 
@@ -1914,7 +1914,7 @@
 
   .promise-image {
     height: 390px;
-    background: url(http://cdn.qiyewan.com/about-us-banner1.png);
+    background: url(http://cdn.qiyewan.com/about-us-banner1_1.png);
     background-size: auto 100%;
     background-repeat: no-repeat;
     background-position: center;
