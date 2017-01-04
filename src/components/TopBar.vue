@@ -164,7 +164,7 @@
 <template>
   <div id="top-bar">
     <div class="container">
-      <div id="location" class="l">
+      <div id="location" class="l" v-on:mouseenter="isShowing = true">
         <img src="../assets/icon_location.png">
         <span style="color: #0ca6ea;">{{ getRegion.name }}</span>
         <i class="ci-right">
@@ -262,8 +262,6 @@
         this.$message({
           message: '已经切换到地区：' + vm.getRegion.name,
           type: 'success'
-        }).onClose(() => {
-          vm.isShowing = true
         })
       },
       logout () {
