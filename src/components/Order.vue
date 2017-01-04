@@ -8,6 +8,10 @@
     line-height: 40px;
     color: #333;
     border-bottom: 1px solid #eee;
+    margin-left: -18px;
+    padding-left: 18px;
+    margin-right: -18px;
+    background: #eee;
   }
 
   .order-detail {
@@ -31,6 +35,15 @@
     font-size: 13px;
     line-height: 20px;
     color: #aaa;
+  }
+
+  .top-splitter {
+    width: 100%;
+    height: 42px;
+    background: #eee;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 </style>
 
@@ -80,22 +93,26 @@
         inline-template
         property="amount"
         label="数量">
-        <el-row style="height: 90px; padding-top: 42px;" v-for="item in row.details">
-          <el-col :span="24"
-                  class="order-detail">
-            <div class="order-detail-wrapper" style="padding-left: 0;">
-              <p class="order-detail-product-title">
-                <b>{{ item.amount }}</b> {{ item.unit }}
-              </p>
-            </div>
-          </el-col>
-        </el-row>
+        <div>
+          <div class="top-splitter"></div>
+          <el-row style="height: 90px; padding-top: 42px;" v-for="item in row.details">
+            <el-col :span="24"
+                    class="order-detail">
+              <div class="order-detail-wrapper" style="padding-left: 0;">
+                <p class="order-detail-product-title">
+                  <b>{{ item.amount }}</b> {{ item.unit }}
+                </p>
+              </div>
+            </el-col>
+          </el-row>
+        </div>
       </el-table-column>
       <el-table-column
         inline-template
         property="totalPrice"
         label="金额">
-        <div style="color: red;">
+        <div style="color: red; padding-top: 42px;">
+          <div class="top-splitter"></div>
           &yen;
           <span>{{ row.totalPrice.toFixed(2) }}</span>
         </div>
@@ -103,7 +120,8 @@
       <el-table-column
         inline-template
         label="交易状态">
-        <div>
+        <div style="padding-top: 42px;">
+          <div class="top-splitter"></div>
           {{ orderStage(row.orderStage) }}
         </div>
       </el-table-column>
@@ -112,6 +130,7 @@
         align="center"
         label="操作">
         <div>
+          <div class="top-splitter"></div>
           <div v-if="row.orderStage == 'UNPAID'">
             <el-button type="primary"
                        size="small"
@@ -164,11 +183,18 @@
               </el-col>
             </el-row>
           </div>
-          <div v-if="row.orderStage == 'TIMEOUT' || row.orderStage == 'CANCELED'">
+          <div v-if="row.orderStage == 'TIMEOUT' || row.orderStage == 'CANCELED'"
+               style="padding-top: 42px;">
             <el-button type="text"
                        :disabled="true"
                        size="small">
               已失效
+            </el-button>
+            <br>
+            <el-button type="danger"
+                       size="small"
+                       @click.native="deleteOrder($index, row.serialId)">
+              删除
             </el-button>
           </div>
         </div>
@@ -240,6 +266,26 @@
           vm.$store.dispatch('cancelOrder', serialId).then(
             function () {
               vm.orders[index].orderStage = 'Canceled'
+              vm.$message({
+                type: 'success',
+                message: '成功取消订单'
+              })
+            },
+            function () {
+              vm.$message.error('取消订单失败...')
+            }
+          )
+        }).catch(function () {}
+        )
+      },
+      deleteOrder (index, serialId) {
+        let vm = this
+        this.$confirm('删除后，该订单将不再显示，确认删除该订单吗？', '删除订单', {
+          type: 'warning'
+        }).then(function () {
+          vm.$store.dispatch('cancelOrder', serialId).then(
+            function () {
+              vm.orders.splice(index)
               vm.$message({
                 type: 'success',
                 message: '成功取消订单'
