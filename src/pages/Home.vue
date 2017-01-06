@@ -1465,7 +1465,7 @@
     border-top-width: 24px;
     border-right-width: 14px;
     border-bottom-width: 24px;
-    border-left: 14px white;
+    border-left: 14px solid white;
     z-index: 10;
   }
 
