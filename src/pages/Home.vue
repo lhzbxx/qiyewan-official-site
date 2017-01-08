@@ -209,7 +209,7 @@
       </div>
     </div>
     <div class="container" v-if="news.length > 0">
-      <ul id="news-tabs">
+      <ul id="news-tabs" style="display: flex;">
         <li class="news-tab"
             v-for="(item, index) in news"
             :class="{active: isNewsTab(index)}"
@@ -293,7 +293,7 @@
 </template>
 <script>
   import {mapGetters} from 'vuex'
-//  import authApi from '../api/auth'
+  //  import authApi from '../api/auth'
   import articleApi from '../api/article'
   export default {
     computed: mapGetters({
