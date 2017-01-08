@@ -35,6 +35,13 @@ const mutations = {
     if (state.history.length > 6) {
       state.history.pop()
     }
+    window.localStorage.setItem('history', JSON.stringify(state.history))
+  },
+  [types.GET_DATA_FROM_STORAGE] (state) {
+    state.history = JSON.parse(window.localStorage.getItem('history'))
+    if (state.history == null) {
+      state.history = []
+    }
   }
 }
 
