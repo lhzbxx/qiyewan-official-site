@@ -21,7 +21,8 @@
           </div>
           <div class="slide-right"
                onmouseleave="this.style.transform='rotateX(0deg) rotateY(0deg)'"
-               onmousemove="x = event.clientY + document.body.scrollTop - 108;
+               onmousemove="x =
+               .clientY + document.body.scrollTop - 108;
                           y = (event.clientX + document.body.scrollLeft - 360 - (window.screen.width - 1160) / 2);
                           this.style.transform='rotateX(' + 15 * (x - 250) / 500 + 'deg) rotateY(' + 15 * (400 - y) / 800 + 'deg)'">
             <div class="right-image" data-zindex="50" style="transform: translateZ(50px);">
@@ -209,7 +210,7 @@
       </div>
     </div>
     <div class="container" v-if="news.length > 0">
-      <ul id="news-tabs">
+      <ul id="news-tabs" style="display: flex;">
         <li class="news-tab"
             v-for="(item, index) in news"
             :class="{active: isNewsTab(index)}"
@@ -293,7 +294,7 @@
 </template>
 <script>
   import {mapGetters} from 'vuex'
-//  import authApi from '../api/auth'
+  //  import authApi from '../api/auth'
   import articleApi from '../api/article'
   export default {
     computed: mapGetters({

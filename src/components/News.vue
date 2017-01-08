@@ -114,6 +114,7 @@
 </style>
 
 <template>
+  <div style="float: left;">
   <router-link :to="{name: 'article', params: {id: id}}">
     <div id="news" class="everynew">
       <div class="new_pic">
@@ -133,6 +134,7 @@
       </div>
     </div>
   </router-link>
+  </div>
 </template>
 
 <script>
