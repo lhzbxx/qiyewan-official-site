@@ -16,7 +16,7 @@
                  style="font-size: 40px;
                                       color: #58B7FF;
                                       margin-right: 10px;"></i>
-              订单提交成功！
+              请选择支付方式：
             </p>
             </p>
           </div>

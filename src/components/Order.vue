@@ -131,7 +131,7 @@
         label="操作">
         <div>
           <div class="top-splitter"></div>
-          <div v-if="row.orderStage == 'UNPAID'">
+          <div v-if="row.orderStage == 'UNPAID'" style="padding-top: 42px;">
             <el-button type="primary"
                        size="small"
                        @click.native="jumpToPay(row)">
@@ -265,7 +265,7 @@
         }).then(function () {
           vm.$store.dispatch('cancelOrder', serialId).then(
             function () {
-              vm.orders[index].orderStage = 'Canceled'
+              vm.orders[index].orderStage = 'CANCELED'
               vm.$message({
                 type: 'success',
                 message: '成功取消订单'
