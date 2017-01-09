@@ -11,7 +11,7 @@
     margin-left: -18px;
     padding-left: 18px;
     margin-right: -18px;
-    background: #eee;
+    background: #f5f5f5;
   }
 
   .order-detail {
@@ -40,7 +40,7 @@
   .top-splitter {
     width: 100%;
     height: 42px;
-    background: #eee;
+    background: #f5f5f5;
     position: absolute;
     top: 0;
     left: 0;
