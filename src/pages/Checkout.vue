@@ -13,10 +13,8 @@
                                font-size: 16px;">
             <p>
               <i class="el-icon-circle-check"
-                 style="font-size: 40px;
-                                      color: #58B7FF;
-                                      margin-right: 10px;"></i>
-              请选择支付方式：
+                 style="font-size: 40px; color: #67d76c; margin-right: 10px; vertical-align: middle;"></i>
+              商品信息提交成功
             </p>
             </p>
           </div>
