@@ -23,10 +23,7 @@
                 style="text-align: right;
                                height: 100%;
                                display: table;">
-          <div style="display: table-cell;
-                               height: 100%;
-                               vertical-align: middle;
-                               font-size: 16px;">
+          <div style="display: table-cell; height: 100%; vertical-align: middle; font-size: 16px;">
             应付金额
             <span style="color: red; font-size: 24px;">{{ totalPrice() }}</span>元
           </div>
