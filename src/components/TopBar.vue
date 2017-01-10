@@ -15,6 +15,7 @@
     cursor: default;
     border: 1px solid #f7f7f7;
     border-top: none;
+    background: #eee;
   }
 
   #location img {
@@ -36,7 +37,7 @@
   #location span {
     position: relative;
     left: 25px;
-    top: 5px;
+    top: 3px;
   }
 
   #area {
@@ -144,7 +145,7 @@
     position: absolute;
     display: block;
     font: 400 15px/15px consolas;
-    color: #6A6A6A;
+    color: #00a7f0;
     transform: rotate(0deg);
     transition: transform .2s ease-in 0s;
   }
@@ -168,7 +169,8 @@
         <img src="../assets/icon_location.png">
         <span style="color: #0ca6ea;">{{ getRegion.name }}</span>
         <i class="ci-right">
-          <s>◇</s>
+          <!--<s>◇</s>-->
+          <s>◆</s>
         </i>
         <div id="area" v-bind:class="{'active': isShowing}">
           <ul>
