@@ -176,7 +176,7 @@ export const addToOrder = ({commit, state}, {carts, payment}) => {
 }
 export const cancelOrder = ({commit, state}, serialId) => {
   return new Promise((resolve, reject) => {
-    orderApi.removeOrder(state.auth.user.token, serialId,
+    orderApi.cancelOrder(state.auth.user.token, serialId,
       response => {
         commit(types.REMOVE_ORDER, serialId)
         resolve(response)

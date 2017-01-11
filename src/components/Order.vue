@@ -283,9 +283,9 @@
         this.$confirm('删除后，该订单将不再显示，确认删除该订单吗？', '删除订单', {
           type: 'warning'
         }).then(function () {
-          vm.$store.dispatch('cancelOrder', serialId).then(
+          vm.$store.dispatch('deleteOrder', serialId).then(
             function () {
-              vm.orders.splice(index)
+              vm.orders.splice(index, 1)
               vm.$message({
                 type: 'success',
                 message: '成功取消订单'
