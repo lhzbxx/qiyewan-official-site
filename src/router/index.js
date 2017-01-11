@@ -11,7 +11,7 @@ import ProductDetail from '../pages/ProductDetail.vue'
 import OrderList from '../pages/OrderList.vue'
 import MyCart from '../pages/MyCart.vue'
 import Checkout from '../pages/Checkout.vue'
-import AccountProfile from '../pages/AccountProfile.vue'
+// import AccountProfile from '../pages/AccountProfile.vue'
 import PersonalCenter from '../pages/PersonalCenter.vue'
 import Article from '../pages/Article.vue'
 import NewsList from '../pages/NewsList.vue'
@@ -62,12 +62,12 @@ const route = [
     beforeEnter: requireAuth,
     component: Checkout
   },
-  {
-    path: '/account',
-    name: 'account',
-    beforeEnter: requireAuth,
-    component: AccountProfile
-  },
+  // {
+  //   path: '/account',
+  //   name: 'account',
+  //   beforeEnter: requireAuth,
+  //   component: AccountProfile
+  // },
   {
     path: '/person',
     name: 'person',

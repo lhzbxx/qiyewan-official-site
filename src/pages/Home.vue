@@ -281,7 +281,7 @@
           </div>
         </li>
         <li>
-          <div class="l"><img src="../assets/pro_1.png"></div>
+          <div class="l"><img src="../assets/pro_4.png"></div>
           <div class="l promise-right">
             <h5>全程无忧</h5>
             <p>服务进度实时反馈</p>

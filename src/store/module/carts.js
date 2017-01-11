@@ -25,7 +25,7 @@ const mutations = {
     window.localStorage.setItem('cartInfo', JSON.stringify(state.info))
   },
   [types.ADD_TO_CART] (state, cart) {
-    if (cart.amount === 1) {
+    if (cart.amount === 1 || cart.amount === 12) {
       state.info.total += 1
       window.localStorage.setItem('cartInfo', JSON.stringify(state.info))
     }
