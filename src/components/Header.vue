@@ -175,7 +175,7 @@
           <router-link to="/inv">投融资</router-link>
         </p>
         <p>
-          <a href="https://123.59.50.191:8443/dashboard">财税平台</a>
+          <a href="http://tax.qiyewan.com/dashboard">财税平台</a>
         </p>
       </ul>
     </div>
