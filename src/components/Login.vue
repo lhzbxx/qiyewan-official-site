@@ -12,7 +12,10 @@
           <el-input v-model="formStacked.phone"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
-          <el-input type="password" v-model="formStacked.password"></el-input>
+          <el-input type="password"
+                    @keyup.enter.native="submit"
+                    v-model="formStacked.password">
+          </el-input>
         </el-form-item>
       </el-form>
       <div class="clearfix"></div>

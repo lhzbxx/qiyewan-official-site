@@ -29,6 +29,7 @@
         <el-form-item label="确认密码" prop="password2">
           <el-input type="password"
                     auto-complete="off"
+                    @keyup.enter.native="submit"
                     v-model="formStacked.password2"></el-input>
         </el-form-item>
       </el-form>
