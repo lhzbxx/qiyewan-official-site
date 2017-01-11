@@ -19,7 +19,7 @@
     height: 100%;
   }
   #main {
-    padding-bottom: 190px;
+    padding-bottom: 210px;
     overflow: hidden;
     min-height: 100%;
   }
