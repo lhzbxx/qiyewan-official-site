@@ -16,7 +16,7 @@
               <router-link
                 v-if="index === 0"
                 :to="{ name: 'about-us', params: { liName: 'about' }}">
-                了解详情
+                关于我们
               </router-link>
               <router-link
                 v-else
