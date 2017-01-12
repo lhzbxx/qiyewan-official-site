@@ -14,6 +14,12 @@
             <p>{{ item.summary }}</p>
             <button>
               <router-link
+                v-if="index === 0"
+                :to="{ name: 'about-us', params: { liName: 'about' }}">
+                了解详情
+              </router-link>
+              <router-link
+                v-else
                 :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
                 了解详情
               </router-link>
@@ -828,9 +834,9 @@
         banners: [
           {
             serialId: 'IC0001',
-            mainTitle: '公司服务',
-            subTitle: '想你所想',
-            summary: '让您满意是我们不变的服务追求',
+            mainTitle: '一站超值',
+            subTitle: '快速响应',
+            summary: '打造企业服务新生态',
             imageTopUrl: 'http://cdn.qiyewan.com/banner-1-top.png',
             imageMiddleUrl: 'http://cdn.qiyewan.com/banner-1-middle.png',
             imageBottomUrl: 'http://cdn.qiyewan.com/banner-1-bottom.png',
