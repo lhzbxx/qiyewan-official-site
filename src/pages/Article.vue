@@ -177,8 +177,7 @@
             <span class="con_time">{{ article.created_at }}</span>
             <span class="con_department">发表于：{{ article.from }}</span>
           </div>
-          <div class="con_article" v-html="compiledMarkdown">
-            {{ article.content }}
+          <div class="con_article" v-html="article.content">
           </div>
           <hr>
           <div class="art_before">
@@ -218,7 +217,6 @@
 </template>
 
 <script>
-  import marked from 'marked'
   import articleApi from '../api/article'
 
   export default {
@@ -234,11 +232,6 @@
     },
     created () {
       this.fetchData()
-    },
-    computed: {
-      compiledMarkdown: function () {
-        return marked(this.article.content, {sanitize: true})
-      }
     },
     methods: {
       nav2article: function (articleId) {
