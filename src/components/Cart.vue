@@ -159,14 +159,8 @@
       },
       totalPrice () {
         var r = 0
-        for (var i of this.multipleSelection) {
-          let amount = i.amount
-          let member = i.member
-          if (i.product.serialId.substr(4) === 'HR0003') {
-            r += member > 3 ? ((98.8 + 18.8 * (member - 3)) * amount) : (98.8 * amount)
-          } else {
-            r += (amount * i.product.unitPrice)
-          }
+        for (let i of this.multipleSelection) {
+          r += i.amount * (i.product.unitPrice + i.product.perPrice * (i.member - i.product.minMember))
         }
         return r.toFixed(2)
       },
