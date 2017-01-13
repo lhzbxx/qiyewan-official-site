@@ -210,13 +210,7 @@
       totalPrice () {
         var result = 0
         for (let i of this.checkout) {
-          let amount = i.amount
-          let member = i.member
-          if (i.product.serialId.substr(4) === 'HR0003') {
-            result += member > 3 ? ((98.8 + 18.8 * (member - 3)) * amount) : (98.8 * amount)
-          } else {
-            result += (amount * i.product.unitPrice)
-          }
+          result += i.amount * (i.product.unitPrice + i.product.perPrice * (i.member - i.product.minMember))
         }
         return result.toFixed(2)
       }

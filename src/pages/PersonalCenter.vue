@@ -62,7 +62,7 @@
               </div>
               <div class="product">
                 <div class="flex-2 product-info">
-                  <img :src="'product-' + contractDetail.product + '-cover-1.jpg' | cdn-filter" style="height: 60px;">
+                  <img :src="'product-' + contractDetail.product.substr(4, 6) + '-cover.jpg' | cdn-filter" style="height: 60px;">
                   <div class="product-info-name">
                     <p>{{contractDetail.product}}</p><br>
                     <p>区域：{{contract.area | region-filter}}</p>
