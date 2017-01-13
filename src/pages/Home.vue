@@ -51,11 +51,11 @@
     <div id="introduce">
       <div class="container">
         <ul>
-          <li v-for="item in introduces" v-if="getRegion.code+item.serialId != 'SCCDPS0004'">
+          <li v-for="item in introduces" v-if="getRegion.code+item.serialId !== 'SCCDPS0004'">
             <router-link
               :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
               <div class="l">
-                <h5>{{ getRegion.code+item.serialId === 'BJBJPS0004' ? '注册宝' : item.title }}</h5>
+                <h5>{{ item.serialId === 'PS0005' ? '注册宝' : item.title }}</h5>
                 <p>{{ item.summary }}</p>
               </div>
               <div class="r introduce_img" :class="item.image"></div>
@@ -144,11 +144,11 @@
           </li>
         </ul>
         <div class="timeline-products">
-                    <span v-for="(item, index) in timelines[state].types"
-                          v-on:click="stateType=index"
-                          :class="{active: stateType === index}">
-                        {{ item.title }}
-                    </span>
+          <span v-for="(item, index) in timelines[state].types"
+                v-on:click="stateType=index"
+                :class="{active: stateType === index}">
+              {{ item.title }}
+          </span>
         </div>
         <div class="timeline-pics">
           <div class="timeline-pic-left">
