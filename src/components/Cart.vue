@@ -160,7 +160,12 @@
       totalPrice () {
         var r = 0
         for (let i of this.multipleSelection) {
-          r += i.amount * (i.product.unitPrice + i.product.perPrice * (i.member - i.product.minMember))
+          let member = i.member - i.product.minMember
+          if (member > 0) {
+            r += i.amount * (i.product.unitPrice + i.product.perPrice * (i.member - i.product.minMember))
+          } else {
+            r += i.amount * i.product.unitPrice
+          }
         }
         return r.toFixed(2)
       },

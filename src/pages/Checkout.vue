@@ -210,7 +210,12 @@
       totalPrice () {
         var result = 0
         for (let i of this.checkout) {
-          result += i.amount * (i.product.unitPrice + i.product.perPrice * (i.member - i.product.minMember))
+          let member = i.member - i.product.minMember
+          if (member > 0) {
+            result += i.amount * (i.product.unitPrice + i.product.perPrice * (i.member - i.product.minMember))
+          } else {
+            result += i.amount * i.product.unitPrice
+          }
         }
         return result.toFixed(2)
       }
