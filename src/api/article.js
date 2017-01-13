@@ -3,7 +3,7 @@ import VueResource from 'vue-resource'
 
 Vue.use(VueResource)
 let invHost = 'http://123.59.50.191:3005'
-let articleHost = 'http://123.59.50.191:3001/api'
+let articleHost = 'http://123.59.50.191:4567/api'
 
 export default {
   getHomeNews (success, error) {

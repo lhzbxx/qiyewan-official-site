@@ -118,7 +118,7 @@
   <router-link :to="{name: 'article', params: {id: id}}">
     <div id="news" class="everynew">
       <div class="new_pic">
-        <img :src="img" alt="">
+        <img :src="cover" alt="">
       </div>
       <div id="detail">
         <h3>{{ title }}</h3>
@@ -129,7 +129,7 @@
         <div class="clearfix"></div>
         <div style="width: 100%;">
           <span id="time">{{ date }}</span>
-          <span id="views">{{ views }} 次浏览</span>
+          <span id="views">{{ pv }} 次浏览</span>
         </div>
       </div>
     </div>
@@ -143,13 +143,13 @@
       return {}
     },
     props: {
-      img: String,
+      cover: String,
       id: String,
       title: String,
       summary: String,
       tags: String,
       date: String,
-      views: Number
+      pv: Number
     }
   }
 </script>

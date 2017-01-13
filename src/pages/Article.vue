@@ -175,7 +175,7 @@
           <div class="con_note">
             <span class="con_author">作者：{{ article.author }}</span>
             <span class="con_time">{{ article.created_at }}</span>
-            <span class="con_department">发表于：{{ article.from }}</span>
+            <span class="con_department">发表于：{{ article.source }}</span>
           </div>
           <div class="con_article" v-html="article.content">
           </div>
@@ -194,7 +194,7 @@
             <ul>
               <li id="art_num">0篇文章</li>
               <li class="vertical-splitter"></li>
-              <li>阅读量{{ article.view_count }}</li>
+              <li>阅读量{{ article.pv }}</li>
             </ul>
           </div>
           <div class="recommend">
