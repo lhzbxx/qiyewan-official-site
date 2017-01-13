@@ -304,7 +304,7 @@
                 <el-radio-button label="12">一年</el-radio-button>
               </el-radio-group>
             </el-form-item>
-            <el-form-item label="参与人数" style="margin-bottom: 8px" v-if="product.serialId.substr(4) === 'HR0003'">
+            <el-form-item label="参与人数" style="margin-bottom: 8px" v-if="product.perPrice > 0">
               <el-input-number :min="1"
                                size="small"
                                v-model="form.member">
