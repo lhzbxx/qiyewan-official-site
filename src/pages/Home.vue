@@ -225,12 +225,12 @@
       </ul>
       <div id="news">
         <lh-news v-for="article in news[newsTab].articles.data" class="news_link"
-                 :img="article.thumb"
+                 :cover="article.cover"
                  :title="article.title"
-                 :summary="article.desc"
+                 :summary="article.summary"
                  :tags="article.tags"
                  :date="article.updated_at"
-                 :views="article.view_count"
+                 :pv="article.pv"
                  :id="article.id+''">
         </lh-news>
       </div>
