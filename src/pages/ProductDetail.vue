@@ -540,6 +540,9 @@
         let vm = this
         productApi.getProductDetail(this.$route.params.serialId,
           data => {
+            if (!data.serialId) {
+              vm.$router.replace({name: 'not-found'})
+            }
             vm.product = data
             vm.product.rate = Math.round(vm.product.rate * 10) / 10
             vm.form.product = data

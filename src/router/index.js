@@ -107,6 +107,11 @@ const route = [
     component: Success
   },
   {
+    path: '/404',
+    name: 'not-found',
+    component: NotFound
+  },
+  {
     path: '*',
     component: NotFound
   }
