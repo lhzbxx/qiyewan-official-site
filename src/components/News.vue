@@ -103,13 +103,16 @@
     bottom: 10px;
     color: #888;
     font-size: 12px;
+    line-height: 13px;
   }
 
   #views {
     position: absolute;
-    right: 20px;
+    right: 12px;
     bottom: 10px;
     color: #888;
+    font-size: 12px;
+    line-height: 13px;
   }
 </style>
 
