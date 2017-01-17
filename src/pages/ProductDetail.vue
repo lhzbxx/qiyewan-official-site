@@ -259,7 +259,10 @@
                             margin: 10px 0;
                             padding: 10px 20px 20px;">
             <p style="margin: 10px 0;">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：
-              <span style="font-size: 20px; color: red;" v-if="isExist">&yen; {{ form | sub-total-price-filter }}</span>
+              <span style="font-size: 20px; color: red;" v-if="isExist">
+                &yen; {{ form | sub-total-price-filter }}
+                <span style="font-size: 16px;" v-show="isExist && form.premium > 0"> ( &plus; &yen; {{ form.premium.toFixed(2) }} ) </span>
+              </span>
               <span style="font-size: 20px; color: red;" v-else>该城市不可用本产品</span>
             </p>
             <p style="">用户评分：
@@ -313,6 +316,12 @@
               <el-input-number :min="1"
                                size="small"
                                v-model="form.amount">
+              </el-input-number>
+            </el-form-item>
+            <el-form-item label="补 差 价" style="margin-bottom: 8px" v-if="isExist">
+              <el-input-number :min="0"
+                               size="small"
+                               v-model="form.premium">
               </el-input-number>
             </el-form-item>
           </el-form>
@@ -512,7 +521,8 @@
           product: null,
           serialId: null,
           regionCode: null,
-          region: null
+          region: null,
+          premium: 0
         },
         address: {
           province: null,

@@ -94,10 +94,13 @@
       <el-table-column
         inline-template
         property="totalPrice"
-        label="小计">
+        label="小计"
+        width="200">
         <div style="color: red;">
           &yen;
-          <span>{{ row | sub-total-price-filter }}</span>
+          <span>{{ row | sub-total-price-filter }}
+            <span style="font-size: 13px;" v-show="row.premium > 0"> ( &plus; {{ row.premium.toFixed(2) }} ) </span>
+          </span>
         </div>
       </el-table-column>
     </el-table>
@@ -212,9 +215,9 @@
         for (let i of this.checkout) {
           let member = i.member - i.product.minMember
           if (member > 0) {
-            result += i.amount * (i.product.unitPrice + i.product.perPrice * (i.member - i.product.minMember))
+            result += i.amount * (i.product.unitPrice + i.product.perPrice * (i.member - i.product.minMember)) + i.premium
           } else {
-            result += i.amount * i.product.unitPrice
+            result += i.amount * i.product.unitPrice + i.premium
           }
         }
         return result.toFixed(2)
