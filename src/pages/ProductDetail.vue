@@ -259,8 +259,9 @@
                             margin: 10px 0;
                             padding: 10px 20px 20px;">
             <p style="margin: 10px 0;">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：
-              <span style="font-size: 20px;
-                                     color: red;">&yen; {{ form | sub-total-price-filter }}</span></p>
+              <span style="font-size: 20px; color: red;" v-if="isExist">&yen; {{ form | sub-total-price-filter }}</span>
+              <span style="font-size: 20px; color: red;" v-else>该城市不可用本产品</span>
+            </p>
             <p style="">用户评分：
               <el-rate
                 v-model="product.rate"
@@ -276,19 +277,24 @@
             <el-form-item label="服务区域">
               <el-row>
                 <el-col :span="5" style="margin-right: 15px">
-                  <el-select v-model="form.regionCityCode"
-                             :placeholder="address.city">
+                  <el-select v-model="address.city"
+                             :placeholder="address.city"
+                             @change="handleCityChange">
+                    <el-option v-for="area in address.cities"
+                               :value="area"></el-option>
                   </el-select>
                 </el-col>
                 <el-col :span="6" style="margin-right: 15px">
-                  <el-select v-model="address.district" :placeholder="address.district">
+                  <el-select v-model="address.district"
+                             :placeholder="address.district"
+                             @change="handleDistrictChange">
                     <el-option v-for="area in address.districts"
                                :value="area"></el-option>
                   </el-select>
                 </el-col>
               </el-row>
               <!--<p style="font-size: 12px; color: #dd2726; line-height:1.8em">-->
-                <!--温馨提示：请在页面左上角切换服务区域。-->
+              <!--温馨提示：请在页面左上角切换服务区域。-->
               <!--</p>-->
             </el-form-item>
             <el-form-item label="购买时长" style="margin-bottom: 8px" v-if="!product.isInstant">
@@ -498,6 +504,7 @@
         error: null,
         loading: false,
         isAdding: false,
+        isExist: true,
         currentTab: '服务详情',
         form: {
           amount: 1,
@@ -510,12 +517,14 @@
         address: {
           province: null,
           city: null,
+          cities: [],
           district: null,
           districts: null
         }
       }
     },
     computed: mapGetters({
+      getRegions: 'getRegions',
       getRegion: 'getRegion',
       hotProducts: 'hotProducts',
       isLogin: 'isLogin'
@@ -528,6 +537,9 @@
     },
     methods: {
       fetchData () {
+        if (this.product && this.$route.query.isRefresh) {
+          return
+        }
         this.loading = true
         this.currentTab = '服务详情'
         let vm = this
@@ -600,8 +612,42 @@
           }, () => {
           })
       },
+      handleCityChange (city) {
+        this.$store.commit('CHANGE_REGION', this.address.cities.indexOf(city))
+        this.address.city = this.getRegion.name
+        this.address.district = this.getRegion.areas[0]
+        this.address.districts = this.getRegion.areas
+        this.form.regionCode = this.getRegion.code
+        this.form.region = this.address.province + '-' + this.address.city + '-' + this.address.district
+        this.$router.replace({name: 'product-detail',
+          params: {serialId: this.form.regionCode + this.form.serialId.substr(4)},
+          query: {isRefresh: true}})
+        let vm = this
+        productApi.getProductDetail(this.$route.params.serialId,
+          data => {
+            if (!data.serialId) {
+              vm.isExist = false
+            } else {
+              vm.isExist = true
+              vm.product = data
+              vm.product.rate = Math.round(vm.product.rate * 10) / 10
+              vm.form.product = data
+              vm.$store.commit('BROWSE_PRODUCT', data)
+            }
+          },
+          error => {
+            vm.error = error
+          }
+        )
+      },
+      handleDistrictChange () {
+        this.form.region = this.address.province + '-' + this.address.city + '-' + this.address.district
+      },
       refreshForm () {
         this.address.province = this.getRegion.pName
+        for (let i of this.getRegions) {
+          this.address.cities.push(i.name)
+        }
         this.address.city = this.getRegion.name
         this.address.district = this.getRegion.areas[0]
         this.address.districts = this.getRegion.areas
