@@ -31,7 +31,7 @@
 
 <script>
   import productApi from '../api/product'
-
+  import {mapGetters} from 'vuex'
   export default {
     data () {
       return {
@@ -39,16 +39,21 @@
         categoryName: ''
       }
     },
-    created () {
+    mounted () {
       this.fetchData()
     },
     watch: {
       '$route': 'fetchData'
     },
+    computed: {
+      ...mapGetters([
+        'getRegion'
+      ])
+    },
     methods: {
       fetchData () {
         let category = this.$route.params.category
-        let regionCode = this.$route.params.regionCode
+        let regionCode = this.getRegion.code
         this.loading = true
         let vm = this
         productApi.getProductList(regionCode, category,
