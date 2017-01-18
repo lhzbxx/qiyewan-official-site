@@ -229,14 +229,14 @@
             }
           },
           {
-            title: '人事服务',
+            title: '人力资源服务',
             code: 'HR',
             l: {
-              title: '社保',
+              title: '企业',
               list: []
             },
             r: {
-              title: '公司人事',
+              title: '个人',
               list: []
             }
           },
