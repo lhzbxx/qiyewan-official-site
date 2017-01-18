@@ -335,7 +335,7 @@
         <div class="dream">
           <h3 class="about_tit">企业湾展望</h3>
           <div class="about_tit_b1"></div>
-          <div class="advan_img"><img src="about_dream.44f86ae-(2).png"></div>
+          <div class="advan_img"><img :src="'about_dream.44f86ae-1.png' | cdn-filter"></div>
         </div>
       </div>
       <div class="contact_con" :class="{show: isShow('contact'),hide: !isShow('contact')}">
