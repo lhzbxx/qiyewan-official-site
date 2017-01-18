@@ -290,6 +290,7 @@
                 <el-col :span="6" style="margin-right: 15px">
                   <el-select v-model="address.district"
                              :placeholder="address.district"
+                             :disabled="!isExist"
                              @change="handleDistrictChange">
                     <el-option v-for="area in address.districts"
                                :value="area"></el-option>

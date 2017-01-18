@@ -14,7 +14,7 @@
   #nav ul li, #nav ul p {
     float: left;
     height: 58px;
-    padding-left: 40px;
+    padding-left: 37px;
     font-size: 16px;
     letter-spacing: 2px;
     position: relative;
