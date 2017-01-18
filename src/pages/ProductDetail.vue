@@ -632,6 +632,7 @@
       },
       handleCityChange (city) {
         this.$store.commit('CHANGE_REGION', this.address.cities.indexOf(city))
+        this.address.province = this.getRegion.pName
         this.address.city = this.getRegion.name
         this.address.district = this.getRegion.areas[0]
         this.address.districts = this.getRegion.areas

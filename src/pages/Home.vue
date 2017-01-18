@@ -185,13 +185,13 @@
       </div>
     </div>
     <div class="clearfix"></div>
-    <div class="container" style="height: 100%;">
-      <div class="title1">
-        <h3>客户声音</h3>
-        <div class="prompt">您的声音，是我们前进的动力</div>
-      </div>
-    </div>
     <div id="voices">
+      <div class="container" style="height: 100%;">
+        <div class="title1">
+          <h3>客户声音</h3>
+          <div class="prompt">您的声音，是我们前进的动力</div>
+        </div>
+      </div>
       <div class="voice"
            :class="{show: isVoiceBannerActive(index)}"
            v-for="(voice,index) in customerVoices">
@@ -1716,9 +1716,9 @@
 
   #voices {
     width: 100%;
-    height: 440px;
+    /*height: 440px;*/
     margin-bottom: 20px;
-    background: url("http://cdn.qiyewan.com/voice-bg.png") no-repeat;
+    background: url("http://cdn.qiyewan.com/customer-service-background.png") no-repeat;
     position: relative;
   }
 
@@ -1739,8 +1739,9 @@
   }
 
   .voice-control {
-    width: 35px;
+    width: 50px;
     height: 50px;
+    border-radius: 50%;
     position: absolute;
     top: 65%;
     margin-top: -25px;
