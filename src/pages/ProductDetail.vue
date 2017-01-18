@@ -301,7 +301,8 @@
               <!--</p>-->
             </el-form-item>
             <el-form-item label="购买时长" style="margin-bottom: 8px" v-if="!product.isInstant">
-              <el-radio-group v-model="form.amount">
+              <el-radio-group v-model="form.amount"
+                              :disabled="!isExist">
                 <el-radio-button label="6" disabled>半年</el-radio-button>
                 <el-radio-button label="12">一年</el-radio-button>
               </el-radio-group>
@@ -309,18 +310,21 @@
             <el-form-item label="参与人数" style="margin-bottom: 8px" v-if="product.perPrice > 0">
               <el-input-number :min="1"
                                size="small"
+                               :disabled="!isExist"
                                v-model="form.member">
               </el-input-number>
             </el-form-item>
             <el-form-item label="购买数量" style="margin-bottom: 8px" v-if="product.isInstant">
               <el-input-number :min="1"
                                size="small"
+                               :disabled="!isExist"
                                v-model="form.amount">
               </el-input-number>
             </el-form-item>
             <el-form-item label="补 差 价" style="margin-bottom: 8px" v-if="isExist">
               <el-input-number :min="0"
                                size="small"
+                               :disabled="!isExist"
                                v-model="form.premium">
               </el-input-number>
             </el-form-item>
@@ -328,6 +332,7 @@
           <el-button type="primary"
                      size="large"
                      @click.native="directOrder"
+                     :disabled="!isExist"
                      style="width: 120px; margin-left: 10px;">
             立即购买
           </el-button>
@@ -336,6 +341,7 @@
                                       margin-left: 10px;
                                       color:#279ad2"
                      :loading="isAdding"
+                     :disabled="!isExist"
                      v-on:click="addToCart">
             {{ isAdding ? "加入中..." : "加入购物车" }}
           </el-button>
@@ -550,6 +556,7 @@
         if (this.product && this.$route.query.isRefresh) {
           return
         }
+        this.isExist = true
         this.loading = true
         this.currentTab = '服务详情'
         let vm = this
