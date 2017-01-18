@@ -6,7 +6,8 @@
     overflow: hidden;
     position: relative;
     cursor: pointer;
-    margin-right: 20px;
+    margin: 10px;
+    background: white;
   }
 
   .new_pic {
@@ -131,7 +132,7 @@
         </ul>
         <div class="clearfix"></div>
         <div style="width: 100%;">
-          <span id="time">{{ date }}</span>
+          <span id="time">{{ date.substr(0, 10) }}</span>
           <!--<span id="views">{{ pv }} 次浏览</span>-->
           <span id="views">{{ Math.floor(Math.random()*1000) }} 次浏览</span>
         </div>

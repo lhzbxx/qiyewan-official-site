@@ -188,8 +188,8 @@
     <div id="voices">
       <div class="container" style="height: 100%;">
         <div class="title1">
-          <h3>客户声音</h3>
-          <div class="prompt">您的声音，是我们前进的动力</div>
+          <h3 style="color: white;">客户声音</h3>
+          <div class="prompt" style="color: white;">您的声音，是我们前进的动力</div>
         </div>
       </div>
       <div class="voice"
@@ -214,25 +214,27 @@
              class="voice-control  el-icon-arrow-right"></div>
       </div>
     </div>
-    <div class="container" v-if="news.length > 0">
-      <ul id="news-tabs" style="display: flex;">
-        <li class="news-tab"
-            v-for="(item, index) in news"
-            :class="{active: isNewsTab(index)}"
-            v-on:mouseover="setNewsTab(index),newsTab=index">
-          {{ item.category }}
-        </li>
-      </ul>
-      <div id="news">
-        <lh-news v-for="article in news[newsTab].articles.data" class="news_link"
-                 :cover="article.cover"
-                 :title="article.title"
-                 :summary="article.summary"
-                 :tags="article.tags"
-                 :date="article.updated_at"
-                 :pv="article.pv"
-                 :id="article.id+''">
-        </lh-news>
+    <div id="news-wrapper">
+      <div class="container" v-if="news.length > 0">
+        <ul id="news-tabs">
+          <li class="news-tab"
+              v-for="(item, index) in news"
+              :class="{active: isNewsTab(index)}"
+              v-on:mouseover="setNewsTab(index),newsTab=index">
+            {{ item.category }}
+          </li>
+        </ul>
+        <div id="news">
+          <lh-news v-for="article in news[newsTab].articles.data" class="news_link"
+                   :cover="article.cover"
+                   :title="article.title"
+                   :summary="article.summary"
+                   :tags="article.tags"
+                   :date="article.updated_at"
+                   :pv="article.pv"
+                   :id="article.id+''">
+          </lh-news>
+        </div>
       </div>
     </div>
     <div class="clearfix"></div>
@@ -1726,6 +1728,7 @@
     width: 100%;
     height: 400px;
     display: none;
+    margin-top: -50px;
     animation: fadeIn 0.5s;
   }
 
@@ -1739,13 +1742,16 @@
   }
 
   .voice-control {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     position: absolute;
     top: 65%;
     margin-top: -25px;
     cursor: pointer;
+    padding-top: 16px;
+    padding-left: 19px;
+    background-color: rgba(108, 108, 108, 0.2);
   }
 
   .voice-left-img {
@@ -1811,9 +1817,8 @@
 
   #voice-control-left {
     left: 0;
-    padding-top: 10px;
-    padding-left: 2px;
     font-size: 28px;
+    padding-left: 15px;
     color: #d5d5d5;
   }
 
@@ -1823,7 +1828,7 @@
 
   .voice-control-con {
     position: absolute;
-    height: 300px;
+    height: 400px;
     top: 0;
     margin-left: -580px;
     left: 50%;
@@ -1831,8 +1836,6 @@
 
   #voice-control-right {
     right: 0;
-    padding-top: 10px;
-    padding-left: 5px;
     font-size: 28px;
     color: #d5d5d5;
   }
@@ -1840,6 +1843,17 @@
   #news {
     float: left;
     margin-top: 5px;
+  }
+
+  #news-wrapper {
+    height: 450px;
+    background: #f9f9f9;
+  }
+
+  #news-tabs {
+    display: flex;
+    background: #efefef;
+    padding: 10px 20px;
   }
 
   .news-tab {
