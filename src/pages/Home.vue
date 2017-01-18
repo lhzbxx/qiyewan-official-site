@@ -263,8 +263,32 @@
         </ul>
       </div>
     </div>
+    <div id="areas">
+      <div class="container">
+        <div class="title">
+          <h3>企业湾 一站超值</h3>
+          <div class="prompt">
+            神器在手，天下我有
+          </div>
+        </div>
+        <div id="map-wrapper">
+          <div class="city"
+               v-bind:style="{ right: city.x, bottom: city.y }"
+               v-for="(city, index) in cities">
+            <div class="city-dot"></div>
+            <div class="city-name"
+                 v-bind:style="{ left: city._x, bottom: city._y }">{{ city.name }}
+            </div>
+            <div class="city-wave1"
+                 v-bind:style="{ 'animation-delay': index * 0.4 + 0.6 + 's' }"></div>
+            <div class="city-wave1 city-wave2"
+                 v-bind:style="{ 'animation-delay': index * 0.4 + 's' }"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="promise">
-      <div class="promise-image"></div>
+      <!--<div class="promise-image"></div>-->
       <ul>
         <li>
           <div class="l"><img src="../assets/pro_1.png"></div>
@@ -309,6 +333,72 @@
     }),
     data () {
       return {
+        cities: [
+          {
+            name: '北京',
+            x: '387px',
+            y: '450px',
+            _x: '3px',
+            _y: '-18px',
+            delay: '0.1s'
+          },
+          {
+            name: '南京',
+            x: '348px',
+            y: '236px',
+            _x: '3px',
+            _y: '-18px',
+            delay: '0.3s'
+          },
+          {
+            name: '镇江',
+            x: '340px',
+            y: '280px',
+            _x: '3px',
+            _y: '10px',
+            delay: '0.5s'
+          },
+          {
+            name: '上海',
+            x: '303px',
+            y: '260px',
+            _x: '3px',
+            _y: '-18px',
+            delay: '0.7s'
+          },
+          {
+            name: '苏州',
+            x: '321px',
+            y: '261px',
+            _x: '3px',
+            _y: '10px',
+            delay: '0.9s'
+          },
+          {
+            name: '深圳',
+            x: '438px',
+            y: '90px',
+            _x: '3px',
+            _y: '-18px',
+            delay: '1.1s'
+          },
+          {
+            name: '合肥',
+            x: '374px',
+            y: '272px',
+            _x: '3px',
+            _y: '-18px',
+            delay: '1.3s'
+          },
+          {
+            name: '成都',
+            x: '597px',
+            y: '247px',
+            _x: '3px',
+            _y: '-18px',
+            delay: '1.5s'
+          }
+        ],
         introduces: [
           {
             serialId: 'PS0001',
@@ -1005,6 +1095,61 @@
   }
 </script>
 <style scoped>
+  #areas {
+    height: 817px;
+    background: #f8f8f8;
+    position: relative;
+  }
+
+  .city {
+    position: absolute;
+  }
+
+  .city-dot {
+    background: #55b2da;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .city-name {
+    background-color: #55b2da;
+    color: white;
+    position: absolute;
+    width: 35px;
+    text-align: center;
+  }
+
+  .city-wave1 {
+    width: 100px;
+    height: 100px;
+    background: #7cc2ff;
+    border-radius: 50%;
+    display: block;
+    animation: animation-wave 2s 2s infinite both;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -50px 0 0 -50px;
+    filter: alpha(opacity=10);
+  }
+
+  .city-wave2 {
+    animation: animation-wave 2s 1.4s infinite both;
+    filter: alpha(opacity=50);
+  }
+
+  @keyframes animation-wave {
+    from {
+      opacity: 1;
+      transform: scale(0, 0);
+    }
+    to {
+      opacity: 0;
+      transform: scale(1, 1);
+    }
+  }
+
   #introduce {
     height: 127px;
     width: 100%;
@@ -1889,9 +2034,10 @@
   }
 
   .promise {
-    height: 530px;
+    height: 140px;
     background-color: #f6f6f6;
     border: 1px solid #d2d2d2;
+    margin-bottom: -20px;
   }
 
   .promise ul {
@@ -1939,5 +2085,11 @@
     background-size: auto 100%;
     background-repeat: no-repeat;
     background-position: center;
+  }
+
+  #map-wrapper {
+    background: url('http://cdn.qiyewan.com/china-map.png') no-repeat center;
+    height: 700px;
+    margin-top: -50px;
   }
 </style>
