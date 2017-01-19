@@ -11,6 +11,7 @@ import ProductDetail from '../pages/ProductDetail.vue'
 import OrderList from '../pages/OrderList.vue'
 import MyCart from '../pages/MyCart.vue'
 import Checkout from '../pages/Checkout.vue'
+import Pay from '../pages/Pay.vue'
 // import AccountProfile from '../pages/AccountProfile.vue'
 import PersonalCenter from '../pages/PersonalCenter.vue'
 import Article from '../pages/Article.vue'
@@ -61,6 +62,12 @@ const route = [
     name: 'checkout',
     beforeEnter: requireAuth,
     component: Checkout
+  },
+  {
+    path: '/pay',
+    name: 'pay',
+    beforeEnter: requireAuth,
+    component: Pay
   },
   // {
   //   path: '/account',

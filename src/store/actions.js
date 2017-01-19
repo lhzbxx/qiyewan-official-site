@@ -18,6 +18,7 @@ export const init = ({commit, state}) => {
     }
   )
 }
+
 export const isRegistered = ({commit}, phone) => {
   return new Promise((resolve, reject) => {
     authApi.isRegistered(phone,
@@ -27,6 +28,7 @@ export const isRegistered = ({commit}, phone) => {
     )
   })
 }
+
 export const requestCaptcha = ({commit}, phone) => {
   return new Promise((resolve, reject) => {
     authApi.requestCaptcha(phone,
@@ -40,6 +42,7 @@ export const requestCaptcha = ({commit}, phone) => {
     )
   })
 }
+
 export const userLogin = ({commit}, {phone, password}) => {
   return new Promise((resolve, reject) => {
     authApi.login(phone, password,
@@ -57,6 +60,7 @@ export const userLogin = ({commit}, {phone, password}) => {
     )
   })
 }
+
 export const userResetPassword = ({commit}, {phone, password, captcha}) => {
   return new Promise((resolve, reject) => {
     authApi.resetPassword(phone, password, captcha,
@@ -74,6 +78,7 @@ export const userResetPassword = ({commit}, {phone, password, captcha}) => {
     )
   })
 }
+
 export const userRegister = ({commit}, {phone, password, captcha}) => {
   return new Promise((resolve, reject) => {
     authApi.register(phone, password, captcha,
@@ -91,6 +96,7 @@ export const userRegister = ({commit}, {phone, password, captcha}) => {
     )
   })
 }
+
 export const getCarts = ({commit, state}, page) => {
   return new Promise((resolve, reject) => {
     cartApi.getCarts(state.auth.user.token, page,
@@ -105,6 +111,7 @@ export const getCarts = ({commit, state}, page) => {
     )
   })
 }
+
 export const addToCart = ({commit, state}, {cart, isOverride}) => {
   return new Promise((resolve, reject) => {
     cartApi.addCart(state.auth.user.token, cart, isOverride,
@@ -119,6 +126,7 @@ export const addToCart = ({commit, state}, {cart, isOverride}) => {
     )
   })
 }
+
 export const removeCart = ({commit, state}, cartId) => {
   return new Promise((resolve, reject) => {
     cartApi.removeCart(state.auth.user.token, cartId,
@@ -133,6 +141,7 @@ export const removeCart = ({commit, state}, cartId) => {
     )
   })
 }
+
 export const updateCart = ({commit, state}, cart) => {
   return new Promise((resolve, reject) => {
     cartApi.updateCart(state.auth.user.token, cart,
@@ -146,6 +155,7 @@ export const updateCart = ({commit, state}, cart) => {
     )
   })
 }
+
 export const getOrders = ({commit, state}, {page, orderState}) => {
   return new Promise((resolve, reject) => {
     orderApi.getOrders(state.auth.user.token, page, orderState,
@@ -160,6 +170,7 @@ export const getOrders = ({commit, state}, {page, orderState}) => {
     )
   })
 }
+
 export const addToOrder = ({commit, state}, {carts, payment}) => {
   return new Promise((resolve, reject) => {
     orderApi.addOrder(state.auth.user.token, carts, payment,
@@ -174,6 +185,20 @@ export const addToOrder = ({commit, state}, {carts, payment}) => {
     )
   })
 }
+
+export const changePayment = ({commit, state}, {serialId, payment}) => {
+  return new Promise((resolve, reject) => {
+    orderApi.changePayment(state.auth.user.token, serialId, payment, state.auth.user.openId,
+      order => {
+        resolve(order)
+      },
+      error => {
+        reject(error)
+      }
+    )
+  })
+}
+
 export const cancelOrder = ({commit, state}, serialId) => {
   return new Promise((resolve, reject) => {
     orderApi.cancelOrder(state.auth.user.token, serialId,
@@ -188,6 +213,7 @@ export const cancelOrder = ({commit, state}, serialId) => {
     )
   })
 }
+
 export const deleteOrder = ({commit, state}, serialId) => {
   return new Promise((resolve, reject) => {
     orderApi.removeOrder(state.auth.user.token, serialId,

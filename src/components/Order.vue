@@ -205,7 +205,6 @@
 </template>
 
 <script>
-  import pingpp from 'pingpp-js'
   export default {
     data () {
       return {
@@ -229,25 +228,8 @@
     },
     methods: {
       jumpToPay (row) {
-        if (row.payment.substr(-3) === 'WAP') {
-          return this.$message({
-            type: 'warning',
-            message: '请在官网的移动端进行支付！'
-          })
-        }
-        if (row.payment === 'WXPAY') {
-          this.$refs.wxpayDialog.openDialog(JSON.parse(row.charge).credential.wx_pub_qr)
-        } else {
-          pingpp.createPayment(row.charge, function (result, err) {
-            if (result === 'success') {
-              // 只有微信公众账号 wx_pub 支付成功的结果会在这里返回，其他的支付结果都会跳转到 extra 中对应的 URL。
-            } else if (result === 'fail') {
-              // charge 不正确或者微信公众账号支付失败时会在此处返回
-            } else if (result === 'cancel') {
-              // 微信公众账号支付取消支付
-            }
-          })
-        }
+        this.$store.commit('ORDER', row)
+        this.$router.push({name: 'pay'})
       },
       getLocalTime (nS) {
         return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, ' ')

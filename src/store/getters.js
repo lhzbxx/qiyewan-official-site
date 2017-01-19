@@ -52,6 +52,10 @@ export const getCheckout = state => {
   return state.orders.checkout
 }
 
+export const getOrder = state => {
+  return state.orders.order
+}
+
 export const getHistory = state => {
   return state.global.history
 }

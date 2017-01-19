@@ -12,7 +12,8 @@ const state = {
     page: 0
   },
   savedItems: [],
-  checkout: []
+  checkout: [],
+  order: null
 }
 
 const mutations = {
@@ -31,6 +32,9 @@ const mutations = {
   },
   [types.CHECKOUT] (state, carts) {
     state.checkout = carts
+  },
+  [types.ORDER] (state, order) {
+    state.order = order
   },
   [types.GET_DATA_FROM_STORAGE] (state) {
     state.info = JSON.parse(window.localStorage.getItem('orderInfo'))
