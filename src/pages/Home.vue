@@ -336,64 +336,64 @@
         cities: [
           {
             name: '北京',
-            x: '387px',
-            y: '450px',
+            x: '372px',
+            y: '414px',
             _x: '3px',
             _y: '-18px',
             delay: '0.1s'
           },
           {
             name: '南京',
-            x: '348px',
-            y: '236px',
+            x: '344px',
+            y: '240px',
             _x: '3px',
             _y: '-18px',
             delay: '0.3s'
           },
           {
             name: '镇江',
-            x: '340px',
-            y: '280px',
+            x: '325px',
+            y: '244px',
             _x: '3px',
             _y: '10px',
             delay: '0.5s'
           },
           {
             name: '上海',
-            x: '303px',
-            y: '260px',
+            x: '288px',
+            y: '224px',
             _x: '3px',
             _y: '-18px',
             delay: '0.7s'
           },
           {
             name: '苏州',
-            x: '321px',
-            y: '261px',
+            x: '306px',
+            y: '225px',
             _x: '3px',
             _y: '10px',
             delay: '0.9s'
           },
           {
             name: '深圳',
-            x: '438px',
-            y: '90px',
+            x: '388px',
+            y: '58px',
             _x: '3px',
             _y: '-18px',
             delay: '1.1s'
           },
           {
             name: '合肥',
-            x: '374px',
-            y: '272px',
+            x: '366px',
+            y: '226px',
             _x: '3px',
             _y: '-18px',
             delay: '1.3s'
           },
           {
             name: '成都',
-            x: '597px',
-            y: '247px',
+            x: '582px',
+            y: '211px',
             _x: '3px',
             _y: '-18px',
             delay: '1.5s'
@@ -2091,5 +2091,6 @@
     background: url('http://cdn.qiyewan.com/china-map.png') no-repeat center;
     height: 700px;
     margin-top: -50px;
+    position: relative;
   }
 </style>
