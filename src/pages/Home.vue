@@ -12,18 +12,16 @@
               {{ item.subTitle }}
             </h1>
             <p>{{ item.summary }}</p>
-            <button>
-              <router-link
-                v-if="index === 0"
-                :to="{ name: 'about-us', params: { liName: 'about' }}">
-                关于我们
-              </router-link>
-              <router-link
-                v-else
-                :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
-                了解详情
-              </router-link>
-            </button>
+            <router-link
+              v-if="index === 0"
+              :to="{ name: 'about-us', params: { liName: 'about' }}">
+              关于我们
+            </router-link>
+            <router-link
+              v-else
+              :to="{ name: 'product-detail', params: { serialId: getRegion.code+item.serialId }}">
+              了解详情
+            </router-link>
           </div>
           <div class="slide-right"
                onmouseleave="this.style.transform='rotateX(0deg) rotateY(0deg)'"
@@ -104,12 +102,11 @@
                   <div class="main-product-summary">
                     {{ hotProduct.main.summary }}
                   </div>
-                  <button class="main-btn">
-                    <router-link
-                      :to="{ name: 'product-detail', params: { serialId: getRegion.code+hotProduct.main.serialId }}">
-                      立即购买
-                    </router-link>
-                  </button>
+                  <router-link
+                    class="main-btn"
+                    :to="{ name: 'product-detail', params: { serialId: getRegion.code+hotProduct.main.serialId }}">
+                    立即购买
+                  </router-link>
                 </div>
                 <div class="l other-product"
                      v-for="item in hotProduct.other">
@@ -1420,7 +1417,7 @@
   }
 
   .main-product {
-    padding-bottom: 25px;
+    padding-bottom: 20px;
     border-bottom: 1px solid #eee;
   }
 
@@ -1446,11 +1443,12 @@
 
   .main-btn {
     background-color: white;
-    margin-top: 20px;
+    display: block;
+    margin-top: 15px;
     width: 96px;
-    height: 30px;
     font-size: 14px;
     line-height: 28px;
+    padding: 3px 10px;
     text-align: center;
     border: 1px solid rgb(34, 166, 224);
     color: #0098db;
@@ -1473,7 +1471,7 @@
 
   .other-product {
     width: 50%;
-    margin-top: 25px;
+    margin-top: 20px;
   }
 
   .other-product h6 {
@@ -1799,7 +1797,7 @@
     background: rgba(0, 0, 0, 0.3);
   }
 
-  #banner button {
+  #banner a {
     background-color: transparent;
     width: 120px;
     height: 36px;
@@ -1808,12 +1806,13 @@
     border: 1px solid white;
     color: white;
     margin-top: 30px;
+    padding: 8px 15px;
     cursor: pointer;
     outline: none;
     transition: all 0.3s ease-in-out;
   }
 
-  #banner button:hover {
+  #banner a:hover {
     background-color: white;
     color: #139cd7;
   }
