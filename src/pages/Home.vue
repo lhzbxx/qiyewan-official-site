@@ -192,18 +192,15 @@
       <div class="voice"
            :class="{show: isVoiceBannerActive(index)}"
            v-for="(voice,index) in customerVoices">
-        <div class="voice-left-img">
-          <img :src="voice.headImg">
-        </div>
-        <div class="voice-right-img">
-          <div class="summary">
-            <h2>{{ voice.content}}</h2>
-            <p>{{ voice.company}}</p>
-            <p class="position">{{ voice.posion}}</p>
-            <p class="name">{{ voice.name}}</p>
-          </div>
-        </div>
+        <img class="voice-avatar"
+             :src="'avatar-' + voice.code + '.png' | cdn-filter">
+        <img class="voice-logo"
+             :src="'logo-' + voice.code + '.png' | cdn-filter">
+        <span class="voice-name">{{ voice.name }}</span>
+        <span class="voice-position">{{ voice.position }}</span>
+        <p>{{ voice.content }}</p>
       </div>
+      <br>
       <div class="container voice-control-con">
         <div id="voice-control-left" v-on:click="setVoiceBanner(voiceBanner-1)"
              class="voice-control el-icon-arrow-left"></div>
@@ -976,46 +973,16 @@
         news: [],
         customerVoices: [
           {
-            headImg: 'http://cdn.qiyewan.com/customer1.png',
-            content: '企业湾的增值服务特别适合像我们这样的创业型公司。服务专业，价格公道,适合创业公司在经费不宽裕的情况下满足企业刚需。我认为企业湾是一个一站式、超值，适合初创公司的企业服务提供商。',
-            company: '成都天添益网络科技有限公司',
-            position: 'COO',
-            name: ''
-          },
-          {
-            headImg: 'http://cdn.qiyewan.com/customer2.png',
-            content: '平和温润、真诚无华为朴；知行合一、志坚质洁为正。正是这种相同的真挚价值观让朴正教育咨询和企业湾相遇相知，并开始了旗下花田儿童教育项目。项目的顺利筹建离不开企业湾专业细致的服务和支持，让我们不忘初心一起走下去。',
-            company: '四川朴正教育咨询有限公司',
-            position: '花田教育',
-            name: ''
-          },
-          {
-            headImg: 'http://cdn.qiyewan.com/customer3_1.png',
-            content: '企业湾为我们提供人事、法律、财务等专业服务，他们以专业的水准、负责的态度服务客户，提供全方位的咨询与帮助，使我们没有后顾之忧。',
-            company: '镇江市红包兔信息技术有限公司',
-            position: '创始人兼CEO',
-            name: ''
-          },
-          {
-            headImg: 'http://cdn.qiyewan.com/customer4_1.png',
-            content: '企业湾为我们解决了初创企业在财务、法律方面资源短缺、缺乏行业经验的老大难问题，让我们在创业的路上省了不少心。用优质贴心专业的服务，为中小型企业的创业之路保驾护航。',
-            company: '上海恩陶投资管理有限公司',
-            position: '公司负责人',
-            name: ''
-          },
-          {
-            headImg: 'http://cdn.qiyewan.com/customer5.png',
-            content: '我们不仅是企业湾的客户，也是企业湾的战略合作伙伴。企业湾人诚恳的态度、专业的服务让我感动，作为创业企业，我们共同进步。',
-            company: '上海云简软件科技有限公司',
-            position: '创始人兼CEO',
-            name: ''
-          },
-          {
-            headImg: 'http://cdn.qiyewan.com/customer6_1.png',
+            name: '徐鹏',
+            code: 'beibeibang',
             content: '企业湾响应迅速，帮我们节省了很多的时间，从工商到人事法律，在企业湾都得到了一站式的解决，省时省事，使我们有更多的精力专注在本质工作。',
-            company: '南京贝贝帮教育咨询有限公司',
-            position: '创始人兼CEO',
-            name: ''
+            position: 'CEO'
+          },
+          {
+            name: '俞洋',
+            code: 'jiandanbaoxiao',
+            content: '我们不仅是企业湾的客户，也是企业湾的战略合作伙伴。企业湾人诚恳的态度、专业的服务让我感动，作为创业企业，我们共同进步。',
+            position: 'CEO'
           }
         ],
         currentDate: '2016年10月13日',
@@ -1047,8 +1014,8 @@
         return this.hotActive === index
       },
       setVoiceBanner (index) {
-        if (index < 0) index = 5
-        if (index > 5) index = 0
+        if (index < 0) index = 1
+        if (index > 1) index = 0
         this.voiceBanner = index
       },
       isVoiceBannerActive (index) {
@@ -1869,11 +1836,53 @@
   }
 
   .voice {
-    width: 100%;
-    height: 400px;
+    width: 942px;
+    height: 286px;
     display: none;
-    margin-top: -50px;
     animation: fadeIn 0.5s;
+    background: white;
+    margin: 0 auto 30px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+  }
+
+  .voice-logo {
+    margin-top: 30px;
+  }
+
+  .voice-avatar {
+    position: absolute;
+    left: 94px;
+    width: 90px;
+    bottom: 109px;
+  }
+
+  .voice span {
+    position: absolute;
+    left: 94px;
+    width: 90px;
+    text-align: center;
+  }
+
+  .voice-name {
+    bottom: 85px;
+    font-size: 16px;
+  }
+
+  .voice-position {
+    bottom: 69px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .voice p {
+    text-align: left;
+    position: absolute;
+    width: 624px;
+    margin-top: 30px;
+    font-size: 20px;
+    right: 91px;
   }
 
   @keyframes fadeIn {
@@ -1896,67 +1905,6 @@
     padding-top: 16px;
     padding-left: 19px;
     background-color: rgba(108, 108, 108, 0.2);
-  }
-
-  .voice-left-img {
-    float: left;
-    width: 45%;
-    height: 100%;
-    position: relative;
-    margin-left: 55px;
-  }
-
-  .voice-left-img img {
-    position: absolute;
-    right: 0;
-    top: 40%;
-    height: 280px;
-    width: 420px;
-    margin-top: -100px;
-    border: 3px solid #e0e0e0;
-    border-radius: 5px;
-  }
-
-  .voice-right-img {
-    float: left;
-    width: 50%;
-    height: 100%;
-    position: relative;
-  }
-
-  .voice-right-img .summary {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto 0;
-    height: 280px;
-    width: 473px;
-    padding-right: 61px;
-    color: #e9e9e9;
-    margin-left: 40px;
-  }
-
-  .voice-right-img .summary h2 {
-    margin-top: 30px;
-    margin-bottom: 20px;
-    overflow: hidden;
-    font-weight: normal;
-    line-height: 2em;
-  }
-
-  .voice-right-img .summary h2:first-letter {
-    margin-left: 20px;
-  }
-
-  .voice-right-img .summary p {
-    text-align: right;
-    font-size: 15px;
-    line-height: 25px;
-  }
-
-  .voice-right-img .summary .name {
-    font-weight: 800;
   }
 
   #voice-control-left {
