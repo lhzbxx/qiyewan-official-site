@@ -121,6 +121,9 @@
       </el-row>
     </div>
     <br>
+    <input placeholder="订单备注（非必填）"
+           v-model="comment"
+           style="width: 500px; height: 30px; padding-left: 10px;">
     <el-tooltip effect="dark"
                 content="支付金额不能为￥0"
                 placement="top-end"
@@ -165,7 +168,8 @@
           }
         ],
         payment: 0,
-        isOrdering: false
+        isOrdering: false,
+        comment: ''
       }
     },
     computed: {
@@ -184,7 +188,8 @@
         let vm = this
         this.$store.dispatch('addToOrder', {
           carts: this.checkout,
-          payment: this.payments[this.payment].code
+          payment: this.payments[this.payment].code,
+          comment: this.comment
         }).then(
           function (order) {
             if (order.payment === 'WXPAY') {

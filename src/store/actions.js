@@ -171,9 +171,9 @@ export const getOrders = ({commit, state}, {page, orderState}) => {
   })
 }
 
-export const addToOrder = ({commit, state}, {carts, payment}) => {
+export const addToOrder = ({commit, state}, {carts, payment, comment}) => {
   return new Promise((resolve, reject) => {
-    orderApi.addOrder(state.auth.user.token, carts, payment,
+    orderApi.addOrder(state.auth.user.token, carts, payment, comment,
       order => {
         commit(types.ADD_TO_ORDER, carts.length)
         resolve(order)
